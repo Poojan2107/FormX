@@ -8,7 +8,7 @@ export function Clients() {
   const row = [...clients, ...clients];
 
   return (
-    <section id="clients" className="scroll-mt-24 overflow-hidden bg-white py-20 md:py-24">
+    <section id="clients" className="scroll-mt-32 overflow-hidden bg-white py-20 md:py-24">
       <Container>
         <Reveal className="flex flex-col items-center gap-6 text-center">
           <SectionHeading

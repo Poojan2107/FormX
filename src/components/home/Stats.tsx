@@ -40,7 +40,7 @@ export function Stats() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-6">
           {cells.map((cell, i) => (
             <Reveal key={i} delay={0.02 * i}>
               <Cell cell={cell} />
@@ -59,7 +59,7 @@ function Cell({
 }) {
   if (cell.kind === "red") {
     return (
-      <div className="group relative aspect-square bg-x-red transition-transform duration-300 hover:scale-[1.01]">
+      <div className="group relative aspect-[2/1] bg-x-red transition-transform duration-300 hover:scale-[1.01] sm:aspect-square">
         <span className="absolute inset-0 flex items-center justify-center font-display text-5xl font-bold text-black/20 transition-colors group-hover:text-black/35">
           X
         </span>
@@ -68,27 +68,22 @@ function Cell({
   }
 
   if (cell.kind === "stripe") {
-    return <div className="aspect-square bg-black pattern-stripe" />;
+    return <div className="aspect-[2/1] bg-black pattern-stripe sm:aspect-square" />;
   }
 
   return (
     <div
       className={cn(
-        "group flex aspect-square flex-col justify-end p-3 transition-colors",
+        "group flex min-h-[100px] flex-col justify-end p-4 transition-colors sm:aspect-square sm:min-h-0 sm:p-3",
         cell.dark ? "bg-black text-white" : "bg-white text-ink",
       )}
     >
-      <p
-        className={cn(
-          "font-display text-[11px] font-bold uppercase tracking-[0.14em]",
-          cell.dark ? "text-x-red" : "text-x-red",
-        )}
-      >
+      <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
         {cell.title}
       </p>
       <p
         className={cn(
-          "mt-1.5 text-[11px] leading-snug",
+          "mt-1.5 text-[12px] leading-snug break-words sm:text-[11px]",
           cell.dark ? "text-white/55" : "text-ink-muted",
         )}
       >

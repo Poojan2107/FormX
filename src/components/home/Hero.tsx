@@ -137,26 +137,38 @@ export function Hero() {
               {hero.body}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href={hero.primaryCta.href} variant="primary" className="min-w-[160px]">
+            <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button
+                href={hero.primaryCta.href}
+                variant="primary"
+                className="w-full min-w-0 sm:w-auto sm:min-w-[160px]"
+              >
                 {hero.primaryCta.label}
                 <ArrowRight className="size-4" />
               </Button>
-              <Button href={hero.secondaryCta.href} variant="outline">
+              <Button
+                href={hero.secondaryCta.href}
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
                 {hero.secondaryCta.label}
               </Button>
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
-              {hero.trust?.map((t) => (
-                <div key={t.label}>
-                  <p className="font-display text-sm font-bold text-ink">{t.label}</p>
-                  <p className="text-[11px] text-ink-muted">{t.hint}</p>
-                </div>
-              ))}
+            <div className="mt-7 flex flex-col gap-4 border-t border-line pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2">
+              <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-x-5">
+                {hero.trust?.map((t) => (
+                  <div key={t.label} className="min-w-0">
+                    <p className="font-display text-[13px] font-bold text-ink sm:text-sm">
+                      {t.label}
+                    </p>
+                    <p className="text-[11px] text-ink-muted">{t.hint}</p>
+                  </div>
+                ))}
+              </div>
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="ml-auto inline-flex items-center gap-2 text-[13px] font-semibold text-ink transition-colors hover:text-x-red"
+                className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink transition-colors hover:text-x-red sm:ml-auto"
               >
                 <Phone className="size-3.5 text-x-red" />
                 {site.phone}
@@ -167,7 +179,7 @@ export function Hero() {
 
         <motion.div
           ref={panelRef}
-          className="relative min-h-[300px] overflow-hidden bg-black sm:min-h-[360px] lg:min-h-[440px]"
+          className="relative overflow-hidden bg-black lg:min-h-[440px]"
           style={{
             rotateX: reduce ? 0 : springY,
             rotateY: reduce ? 0 : springX,
@@ -187,13 +199,13 @@ export function Hero() {
             my.set(0);
           }}
         >
-          <div className="absolute inset-0 pattern-grid-dark opacity-60" />
-          <div className="absolute inset-0 pattern-stripe opacity-25" />
-          <div className="absolute inset-y-0 left-0 w-1 bg-x-red" />
+          <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-60" />
+          <div className="pointer-events-none absolute inset-0 pattern-stripe opacity-25" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-x-red" />
 
-          <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-7">
-            <div className="flex items-start justify-between">
-              <div>
+          <div className="relative flex flex-col justify-between gap-6 p-5 sm:min-h-[340px] md:p-7 lg:absolute lg:inset-0 lg:min-h-0 lg:gap-0">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
                 <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
                   Delivery lens
                 </p>

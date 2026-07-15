@@ -48,7 +48,7 @@ export function BrochureCta({
       <Button
         href="/brochure/formx.pdf"
         variant={invert ? "primary" : "secondary"}
-        className="shrink-0"
+        className="w-full shrink-0 sm:w-auto"
       >
         Download brochure
         <Download className="size-4" />
@@ -77,7 +77,7 @@ export function CtaBand({
           <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
             {eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="mt-3 font-display text-[1.65rem] font-bold tracking-tight text-balance sm:text-3xl md:text-4xl">
             {title}
           </h2>
           {description ? (
@@ -86,13 +86,13 @@ export function CtaBand({
             </p>
           ) : null}
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Button href={primary.href} variant="primary">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
+          <Button href={primary.href} variant="primary" className="w-full sm:w-auto">
             {primary.label}
             <ArrowRight className="size-4" />
           </Button>
           {secondary ? (
-            <Button href={secondary.href} variant="ghost-light">
+            <Button href={secondary.href} variant="ghost-light" className="w-full sm:w-auto">
               {secondary.label}
             </Button>
           ) : null}

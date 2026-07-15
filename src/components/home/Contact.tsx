@@ -64,10 +64,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-white section-y">
+    <section id="contact" className="scroll-mt-32 bg-white section-y">
       <Container>
         <div className="grid overflow-hidden border border-line lg:grid-cols-2">
-          <Reveal className="bg-black p-8 text-white md:p-12">
+          <Reveal className="bg-black p-5 text-white sm:p-8 md:p-12">
             <Logo invert variant="full" />
             <h2 className="mt-8 font-display text-3xl font-bold tracking-tight md:text-[2.15rem]">
               Design <span className="text-x-red">|</span> Engineering
@@ -80,19 +80,19 @@ export function Contact() {
             <div className="mt-10 space-y-4">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-[14px] text-white/75 transition-colors hover:text-x-red"
+                className="flex min-w-0 items-center gap-3 break-words text-[14px] text-white/75 transition-colors hover:text-x-red"
               >
                 <Phone className="size-4 text-x-red" />
                 {site.phone}
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-3 text-[14px] text-white/75 transition-colors hover:text-x-red"
+                className="flex min-w-0 items-center gap-3 break-words text-[14px] text-white/75 transition-colors hover:text-x-red"
               >
                 <Mail className="size-4 text-x-red" />
                 {site.email}
               </a>
-              <p className="flex items-start gap-3 text-[14px] text-white/75">
+              <p className="flex min-w-0 items-start gap-3 break-words text-[14px] text-white/75">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
                 {site.addressDetail}
               </p>
@@ -108,7 +108,7 @@ export function Contact() {
             </a>
           </Reveal>
 
-          <Reveal delay={0.08} className="border border-line bg-white p-8 md:p-12">
+          <Reveal delay={0.08} className="border border-line bg-white p-5 sm:p-8 md:p-12">
             <SectionHeading
               eyebrow="Send a message"
               title="Start a conversation"

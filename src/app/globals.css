@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -36,6 +37,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -100,12 +102,14 @@ body {
 
 /* Shared section rhythm — denser, less airy */
 .section-y {
-  padding-block: 3.5rem;
+  padding-block: 2.75rem;
+  scroll-margin-top: 7.5rem;
 }
 
 @media (min-width: 768px) {
   .section-y {
     padding-block: 4.5rem;
+    scroll-margin-top: 8rem;
   }
 }
 

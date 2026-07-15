@@ -7,7 +7,7 @@ const highlights = whyPoints.slice(0, 4);
 
 export function WhyFormx() {
   return (
-    <section id="why" className="scroll-mt-24 bg-white section-y">
+    <section id="why" className="scroll-mt-32 bg-white section-y">
       <Container>
         <Reveal>
           <SectionHeading

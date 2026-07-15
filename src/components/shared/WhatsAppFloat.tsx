@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { site } from "@/data/site";
+import { cn } from "@/lib/cn";
 
 function messageForPath(path: string) {
   if (path.startsWith("/services/")) {
@@ -25,11 +26,21 @@ function messageForPath(path: string) {
   return `Hello FormX — I would like to discuss a project.`;
 }
 
-export function WhatsAppFloat() {
+/** Detail pages that mount StickyEnquire on mobile */
+function hasStickyEnquire(path: string) {
+  return (
+    /^\/(services|projects|sectors)\/[^/]+/.test(path)
+  );
+}
+
+export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
   const pathname = usePathname() || "/";
   const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     messageForPath(pathname),
   )}`;
+  const lift = hasStickyEnquire(pathname);
+
+  if (menuOpen) return null;
 
   return (
     <a
@@ -37,9 +48,15 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] md:bottom-8 md:right-8"
+      className={cn(
+        "fixed right-4 z-50 inline-flex items-center gap-2 bg-[#25D366] px-3.5 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] md:right-8",
+        lift
+          ? "bottom-[4.75rem] md:bottom-8"
+          : "bottom-5 md:bottom-8",
+      )}
+      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
-      <MessageCircle className="size-5" />
+      <MessageCircle className="size-5 shrink-0" />
       <span className="hidden sm:inline">WhatsApp</span>
     </a>
   );

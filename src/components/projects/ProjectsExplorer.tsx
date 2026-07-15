@@ -39,26 +39,26 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-4 border border-line bg-white p-4 md:p-5">
+      <div className="mb-8 flex flex-col gap-4 border border-line bg-white p-3 sm:p-4 md:p-5">
         <label className="relative block">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search projects, clients, sectors…"
+            placeholder="Search projects…"
             className="w-full border border-line bg-white py-3 pl-10 pr-4 text-sm outline-none transition-colors focus:border-x-red"
             aria-label="Search projects"
           />
         </label>
 
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by sector">
+        <div className="flex max-w-full flex-wrap gap-2 overflow-x-auto pb-1" role="group" aria-label="Filter by sector">
           {sectors.map((s) => (
             <button
               key={s}
               type="button"
               onClick={() => setSector(s)}
               className={cn(
-                "border px-3 py-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                "shrink-0 border px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[11px] sm:tracking-[0.12em]",
                 sector === s
                   ? "border-x-red bg-x-red text-white"
                   : "border-line text-ink/55 hover:border-ink/30 hover:text-ink",
@@ -69,15 +69,15 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <label className="flex items-center gap-2 text-[12px] text-ink-muted">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <label className="flex min-w-0 flex-col gap-2 text-[12px] text-ink-muted sm:flex-row sm:items-center">
             <span className="font-display text-[11px] font-semibold uppercase tracking-[0.12em]">
               Service
             </span>
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-x-red"
+              className="w-full border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-x-red sm:w-auto sm:max-w-[280px]"
             >
               {services.map((s) => (
                 <option key={s} value={s}>
@@ -86,7 +86,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               ))}
             </select>
           </label>
-          <p className="ml-auto text-[12px] text-ink-muted">
+          <p className="text-[12px] text-ink-muted sm:ml-auto">
             {filtered.length} of {projects.length}
           </p>
         </div>

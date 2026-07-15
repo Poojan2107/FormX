@@ -16,7 +16,7 @@ export function PageHero({
 }) {
   return (
     <section className={cn("border-b border-line bg-white", className)}>
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-12 md:px-8 md:py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-[1180px] px-4 py-10 sm:px-5 sm:py-12 md:px-8 md:py-16 lg:py-20">
         {crumbs ? (
           <nav className="mb-5 flex flex-wrap items-center gap-2 text-[12px] text-ink-muted">
             <Link href="/" className="transition-colors hover:text-x-red">

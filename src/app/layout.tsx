@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Source_Sans_3 } from "next/font/google";
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
+import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
 import "./globals.css";
 
@@ -54,12 +53,12 @@ export default function RootLayout({
           Skip to content
         </a>
         <JsonLd />
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppFloat />
+        <AppShell>
+          <main id="main" className="flex-1 pb-20 md:pb-0">
+            {children}
+          </main>
+          <Footer />
+        </AppShell>
       </body>
     </html>
   );
