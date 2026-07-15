@@ -7,7 +7,7 @@ const highlights = whyPoints.slice(0, 4);
 
 export function WhyFormx() {
   return (
-    <section id="why" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="why" className="scroll-mt-24 bg-white section-y">
       <Container>
         <Reveal>
           <SectionHeading
@@ -17,7 +17,7 @@ export function WhyFormx() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2">
+        <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
           {highlights.map((point, i) => (
             <Reveal key={point.num} delay={0.04 * (i % 2)}>
               <p className="font-display text-[11px] font-bold tracking-[0.16em] text-x-red">
@@ -33,7 +33,7 @@ export function WhyFormx() {
           ))}
         </div>
 
-        <Reveal className="mt-14 border border-line bg-white p-8 md:p-10">
+        <Reveal className="mt-10 border border-line bg-white p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12">
             <SectionHeading eyebrow={method.eyebrow} title={method.title} />
             <p className="text-[15px] leading-[1.75] text-ink-muted">

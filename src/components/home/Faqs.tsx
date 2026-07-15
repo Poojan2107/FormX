@@ -16,11 +16,11 @@ export function Faqs() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="border-y border-line bg-white py-20 md:py-28">
+    <section className="border-y border-line bg-white section-y">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           {/* VMS-style: left title stays while accordion scrolls */}
-          <Reveal className="lg:sticky lg:top-28 lg:self-start">
+          <Reveal className="lg:sticky lg:top-36 lg:self-start">
             <SectionHeading
               eyebrow="FAQs"
               title="Answers before the first workshop"

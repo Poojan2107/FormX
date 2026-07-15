@@ -9,7 +9,7 @@ import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="projects" className="scroll-mt-24 bg-white section-y">
       <Container>
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading

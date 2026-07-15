@@ -21,7 +21,7 @@ export function Logo({
           alt="FormX Consultants"
           width={168}
           height={56}
-          className="h-11 w-auto object-contain object-left md:h-12"
+          className="h-9 w-auto object-contain object-left md:h-10"
           priority
         />
       </span>

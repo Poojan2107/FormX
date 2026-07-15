@@ -24,7 +24,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 flex items-center gap-3 font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+        <p className="mb-2.5 flex items-center gap-3 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
           {align === "center" ? null : (
             <span className="inline-block h-px w-8 bg-x-red" aria-hidden />
           )}
@@ -42,7 +42,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "mt-4 max-w-xl text-lead",
+            "mt-3 max-w-xl text-lead",
             invert ? "text-white/65" : "text-ink-muted",
             align === "center" && "mx-auto",
           )}

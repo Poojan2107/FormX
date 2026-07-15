@@ -1,54 +1,55 @@
 import { tickerItems } from "@/data/site";
+import { cn } from "@/lib/cn";
 
-function Row({
-  items,
+type Tone = "red" | "black";
+
+export function TickerBand({
   tone,
   reverse = false,
+  className,
 }: {
-  items: string[];
-  tone: "ink" | "x";
+  tone: Tone;
   reverse?: boolean;
+  className?: string;
 }) {
-  const row = [...items, ...items, ...items];
-  const ink = tone === "ink";
+  const items =
+    tone === "red"
+      ? tickerItems.slice(Math.ceil(tickerItems.length / 2))
+      : tickerItems.slice(0, Math.ceil(tickerItems.length / 2));
+  const source = items.length ? items : tickerItems;
+  const row = [...source, ...source, ...source];
+  const isRed = tone === "red";
 
   return (
     <div
-      className={
-        ink
-          ? "overflow-hidden bg-black py-2.5"
-          : "overflow-hidden bg-x-red py-2.5"
-      }
+      className={cn(
+        "overflow-hidden",
+        isRed ? "bg-x-red" : "bg-black",
+        className,
+      )}
+      aria-hidden
     >
       <div
-        className={
-          reverse
-            ? "animate-ticker-reverse flex w-max gap-0"
-            : "animate-ticker flex w-max gap-0"
-        }
+        className={cn(
+          "flex w-max py-3.5 md:py-4",
+          reverse ? "animate-ticker-reverse" : "animate-ticker",
+        )}
       >
         {row.map((item, i) => (
           <span
             key={`${tone}-${item}-${i}`}
-            className={
-              ink
-                ? "inline-flex items-center gap-5 px-5 font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
-                : "inline-flex items-center gap-5 px-5 font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
-            }
+            className="inline-flex items-center gap-4 px-5 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-white md:gap-5 md:px-6 md:text-[12px] md:tracking-[0.2em]"
           >
             <span
-              className={
-                ink
-                  ? "inline-block size-1.5 rotate-45 bg-x-red"
-                  : "inline-block size-1.5 rotate-45 bg-black"
-              }
-              aria-hidden
+              className={cn(
+                "inline-block size-1.5 rotate-45",
+                isRed ? "bg-black" : "bg-x-red",
+              )}
             />
             {item}
-            {!ink ? (
-              <span className="font-display text-[10px] font-bold text-white/50">
-                Form
-                <span className="text-white">X</span>
+            {isRed ? (
+              <span className="hidden font-display text-[10px] font-bold tracking-[0.12em] text-white/45 sm:inline">
+                Form<span className="text-white">X</span>
               </span>
             ) : null}
           </span>
@@ -58,17 +59,7 @@ function Row({
   );
 }
 
+/** @deprecated Use TickerBand — kept for import safety */
 export function Ticker() {
-  const half = Math.ceil(tickerItems.length / 2);
-  const a = tickerItems.slice(0, half);
-  const b = tickerItems.slice(half);
-
-  return (
-    <div className="relative border-y border-black/10" aria-hidden>
-      <Row items={a.length ? a : tickerItems} tone="ink" />
-      <Row items={b.length ? b : tickerItems} tone="x" reverse />
-      {/* Soft join line */}
-      <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-white/25" />
-    </div>
-  );
+  return <TickerBand tone="red" />;
 }

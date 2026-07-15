@@ -8,7 +8,7 @@ import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Services() {
   return (
-    <section id="services" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="services" className="scroll-mt-24 bg-white section-y">
       <Container>
         <Reveal>
           <SectionHeading
@@ -18,7 +18,7 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 9).map((service, i) => (
             <Reveal key={service.slug} delay={0.04 * (i % 3)}>
               <TiltCard intensity={6} className="h-full border border-line bg-white">

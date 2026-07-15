@@ -7,7 +7,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="about" className="scroll-mt-24 bg-white section-y">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal className="order-2 lg:order-1">

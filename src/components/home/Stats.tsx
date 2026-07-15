@@ -29,7 +29,7 @@ const mosaic: Cell[] = [
 
 export function Stats() {
   return (
-    <section className="border-y border-line bg-white py-16 md:py-20">
+    <section className="border-y border-line bg-white section-y">
       <Container>
         <Reveal>
           <p className="mb-8 max-w-2xl font-display text-2xl font-bold uppercase tracking-[-0.03em] text-ink md:text-3xl">

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function Sectors() {
   return (
-    <section id="sectors" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="sectors" className="scroll-mt-24 bg-white section-y">
       <Container>
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading

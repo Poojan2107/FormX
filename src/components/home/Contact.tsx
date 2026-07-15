@@ -33,7 +33,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-white py-20 md:py-28">
+    <section id="contact" className="scroll-mt-24 bg-white section-y">
       <Container>
         <div className="grid overflow-hidden border border-line lg:grid-cols-2">
           <Reveal className="bg-black p-8 text-white md:p-12">

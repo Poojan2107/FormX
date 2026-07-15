@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Syne, IBM_Plex_Sans } from "next/font/google";
+import { Montserrat, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
 import "./globals.css";
 
-const display = Syne({
+/** Geometric bold — close to FormX lockup (Gotham / Montserrat family) */
+const display = Montserrat({
   variable: "--font-display-family",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
 });
 
-const body = IBM_Plex_Sans({
+/** Clean readable body with industrial clarity */
+const body = Source_Sans_3({
   variable: "--font-body-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],

@@ -7,7 +7,7 @@ import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Process() {
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-white section-y">
       <Container>
         <Reveal>
           <SectionHeading
