@@ -30,10 +30,10 @@ export function Projects() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.slice(0, 6).map((project, i) => (
             <Reveal key={project.slug} delay={0.04 * (i % 3)}>
-              <TiltCard intensity={5} className="h-full border border-line bg-white">
+              <TiltCard intensity={5} className="formx-cut h-full border border-line bg-white transition-shadow duration-300 hover:shadow-[0_12px_36px_rgba(222,48,36,0.06)]">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="group block overflow-hidden"
+                  className="x-hover-rail group relative block overflow-hidden"
                 >
                   <AssetImage
                     alt={project.title}

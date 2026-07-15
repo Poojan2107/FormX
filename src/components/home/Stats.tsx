@@ -56,26 +56,17 @@ export function Stats() {
             <Reveal key={item.num} delay={0.04 * (i % 3)}>
               <article
                 className={cn(
-                  "group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden border border-line p-5 transition-all duration-300 sm:min-h-[180px] sm:p-6",
+                  "formx-cut x-hover-rail group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden border border-line p-5 transition-all duration-300 sm:min-h-[180px] sm:p-6",
                   item.featured
-                    ? "bg-black text-white sm:col-span-2 lg:col-span-1"
-                    : "bg-white hover:border-ink/20",
+                    ? "border-transparent bg-[#1a1a1a] text-white sm:col-span-2 lg:col-span-1"
+                    : "bg-white hover:border-x-red/35 hover:shadow-[0_12px_32px_rgba(222,48,36,0.06)]",
                 )}
               >
-                {/* Corner accent */}
-                <span
-                  className={cn(
-                    "absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 transition-transform duration-300 group-hover:scale-y-100",
-                    item.featured ? "bg-x-red scale-y-100" : "bg-x-red",
-                  )}
-                  aria-hidden
-                />
-
                 <div className="flex items-start justify-between gap-3">
                   <span
                     className={cn(
                       "font-display text-[11px] font-bold tracking-[0.16em]",
-                      item.featured ? "text-x-red" : "text-ink/25",
+                      item.featured ? "text-x-red" : "text-ink/25 group-hover:text-x-red",
                     )}
                   >
                     {item.num}
@@ -85,7 +76,7 @@ export function Stats() {
                       X
                     </span>
                   ) : (
-                    <span className="size-1.5 rotate-45 bg-x-red/80 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <span className="size-1.5 rotate-45 bg-x-red/0 transition-all duration-300 group-hover:bg-x-red" />
                   )}
                 </div>
 
@@ -106,6 +97,12 @@ export function Stats() {
                   >
                     {item.hint}
                   </p>
+                  <span
+                    className={cn(
+                      "mt-4 block h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-10",
+                      item.featured && "w-8",
+                    )}
+                  />
                 </div>
               </article>
             </Reveal>

@@ -21,10 +21,10 @@ export function Services() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 9).map((service, i) => (
             <Reveal key={service.slug} delay={0.04 * (i % 3)}>
-              <TiltCard intensity={6} className="h-full border border-line bg-white">
+              <TiltCard intensity={6} className="formx-cut h-full border border-line bg-white transition-shadow duration-300 hover:shadow-[0_12px_36px_rgba(222,48,36,0.06)]">
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group flex h-full flex-col p-7 md:p-8"
+                  className="x-hover-rail group relative flex h-full flex-col p-7 md:p-8"
                 >
                   <div className="mb-8 flex items-start justify-between gap-4">
                     <span className="font-display text-[11px] font-bold tracking-[0.14em] text-x-red">
@@ -38,7 +38,7 @@ export function Services() {
                   <p className="mt-3 text-[14px] leading-[1.7] text-ink-muted">
                     {service.short}
                   </p>
-                  <span className="mt-auto pt-8 h-px w-0 bg-x-red transition-all duration-300 group-hover:w-10" />
+                  <span className="mt-auto h-px w-0 bg-x-red pt-8 transition-all duration-300 group-hover:w-10" />
                 </Link>
               </TiltCard>
             </Reveal>

@@ -213,7 +213,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
         ))}
       </div>
 
-      <aside className="flex flex-col justify-between bg-black p-5 text-white md:p-6">
+      <aside className="formx-cut flex flex-col justify-between bg-[#1a1a1a] p-5 text-white md:p-6">
         <div>
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
             Single window
@@ -262,28 +262,26 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
         </Link>
       </div>
       <div className="grid gap-3 md:grid-cols-3">
-        {featured.map((p, i) => (
+        {featured.map((p) => (
           <Link
             key={p.slug}
             href={`/projects/${p.slug}`}
             onClick={onNavigate}
-            className="group relative flex flex-col overflow-hidden border border-line bg-white transition-all hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
+            className="formx-cut x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
           >
-            <div
-              className={cn(
-                "relative flex h-24 items-end p-4",
-                i % 2 === 0 ? "bg-black" : "bg-[#111]",
-              )}
-            >
-              <div className="absolute inset-0 pattern-grid-dark opacity-50" />
-              <div className="absolute inset-y-0 left-0 w-1 bg-x-red" />
-              <Factory className="relative mb-auto size-5 text-white/25 transition-colors group-hover:text-x-red" />
+            <div className="relative flex h-20 items-end overflow-hidden bg-[#f3f3f3] p-4">
+              <div className="absolute inset-0 pattern-grid opacity-60" />
+              <span
+                className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
+                aria-hidden
+              />
+              <Factory className="relative mb-auto size-4 text-ink/20 transition-colors duration-300 group-hover:text-x-red" />
               <p className="relative text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
                 {p.sector}
               </p>
             </div>
             <div className="flex flex-1 flex-col p-4">
-              <p className="font-display text-[15px] font-bold text-ink transition-colors group-hover:text-x-red">
+              <p className="font-display text-[15px] font-bold text-ink transition-colors duration-300 group-hover:text-x-red">
                 {p.client}
               </p>
               <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-ink-muted">
@@ -327,15 +325,19 @@ function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
             key={s.slug}
             href={`/sectors/${s.slug}`}
             onClick={onNavigate}
-            className="group relative flex min-h-[72px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-250 hover:border-black hover:bg-black"
+            className="formx-cut-sm x-hover-rail group relative flex min-h-[76px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa]"
           >
-            <span className="font-display text-[10px] font-bold tabular-nums tracking-[0.12em] text-ink/20 transition-colors group-hover:text-white/30">
+            <span className="font-display text-[10px] font-bold tabular-nums tracking-[0.12em] text-ink/20 transition-colors group-hover:text-x-red">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span className="pr-5 font-display text-[13px] font-semibold leading-snug text-ink transition-colors group-hover:text-white">
+            <span className="pr-6 font-display text-[13px] font-semibold leading-snug text-ink transition-colors group-hover:text-ink">
               {s.title}
             </span>
-            <Building2 className="absolute bottom-3 right-3 size-4 text-x-red opacity-0 transition-opacity group-hover:opacity-100" />
+            <Building2 className="absolute bottom-3 right-3 size-3.5 text-x-red opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
+            <span
+              className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-full"
+              aria-hidden
+            />
           </Link>
         ))}
       </div>
@@ -349,7 +351,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/knowledge-center"
         onClick={onNavigate}
-        className="group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
+        className="group relative overflow-hidden border border-line formx-cut p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <BookOpen className="size-5 text-x-red" />
@@ -368,7 +370,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/news"
         onClick={onNavigate}
-        className="group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
+        className="group relative overflow-hidden border border-line formx-cut p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <Newspaper className="size-5 text-x-red" />
@@ -384,7 +386,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
         </span>
       </Link>
 
-      <div className="flex flex-col justify-between bg-black p-6 text-white">
+      <div className="flex flex-col justify-between bg-[#1a1a1a] formx-cut p-6 text-white">
         <div>
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
             Talk to FormX

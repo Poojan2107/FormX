@@ -29,20 +29,21 @@ export function Sectors() {
             <Reveal key={sector.slug} delay={0.025 * (i % 5)}>
               <Link
                 href={`/sectors/${sector.slug}`}
-                className="x-border group relative flex min-h-[110px] flex-col justify-between overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:bg-black sm:min-h-[120px] md:min-h-[140px] md:p-5"
+                className="formx-cut x-hover-rail group relative flex min-h-[110px] flex-col justify-between overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa] sm:min-h-[120px] md:min-h-[140px] md:p-5"
               >
                 <div
                   className="pointer-events-none absolute -right-6 -top-6 size-20 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(222,48,36,0.35), transparent 70%)",
+                      "radial-gradient(circle, rgba(222,48,36,0.2), transparent 70%)",
                   }}
                   aria-hidden
                 />
-                <ArrowUpRight className="relative size-3.5 self-end text-ink/25 transition-colors group-hover:text-x-red" />
-                <h3 className="relative font-display text-[14px] font-bold leading-snug tracking-tight text-ink break-words transition-colors group-hover:text-white sm:text-[13px] sm:uppercase md:text-sm">
+                <ArrowUpRight className="relative size-3.5 self-end text-ink/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
+                <h3 className="relative font-display text-[14px] font-bold leading-snug tracking-tight text-ink break-words transition-colors sm:text-[13px] sm:uppercase md:text-sm">
                   {sector.title}
                 </h3>
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-full" />
               </Link>
             </Reveal>
           ))}

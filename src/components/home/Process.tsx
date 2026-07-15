@@ -19,7 +19,6 @@ export function Process() {
         </Reveal>
 
         <div className="relative mt-10">
-          {/* Progress line — desktop */}
           <div
             className="pointer-events-none absolute left-0 right-0 top-[1.65rem] z-0 hidden h-px bg-line lg:block"
             aria-hidden
@@ -29,23 +28,21 @@ export function Process() {
             aria-hidden
           />
 
-          <ol className="relative z-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+          <ol className="relative z-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
             {processSteps.map((step, i) => (
               <Reveal key={step.num} delay={0.06 * i}>
                 <li
                   className={cn(
-                    "group flex h-full flex-col border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] sm:p-6",
-                    "lg:border-y lg:border-l-0 lg:border-r lg:border-line lg:first:border-l lg:hover:border-x-red/50 lg:hover:bg-[#fafafa]",
+                    "formx-cut x-hover-rail group flex h-full flex-col border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/45 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)] sm:p-6",
                   )}
                 >
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="relative flex size-12 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white transition-transform duration-300 group-hover:scale-105">
+                    <span className="formx-cut-sm relative flex size-12 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white transition-transform duration-300 group-hover:scale-105">
                       {step.num}
                     </span>
-                    <span className="hidden h-px flex-1 bg-line lg:block" aria-hidden />
                   </div>
 
-                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30 transition-colors group-hover:text-x-red">
                     Step {step.num}
                   </p>
                   <h3 className="mt-2 font-display text-[17px] font-bold leading-snug tracking-tight text-ink md:text-lg">
@@ -55,7 +52,7 @@ export function Process() {
                     {step.body}
                   </p>
 
-                  <span className="mt-6 h-[2px] w-0 bg-x-red transition-all duration-300 group-hover:w-10" />
+                  <span className="mt-6 h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-10" />
                 </li>
               </Reveal>
             ))}

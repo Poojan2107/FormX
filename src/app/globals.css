@@ -113,8 +113,81 @@ body {
   }
 }
 
-.brand-edge {
+/* FormX logo edge — diagonal cut like Form “m” terminal / X factor */
+.brand-edge,
+.formx-cut {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.formx-cut-sm {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+}
+
+.formx-cut-tr {
+  /* reverse: cut top-right like X terminal energy */
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.formx-cut-x {
+  /* dual-side nod to X — slight bottom-right + top-left soft */
+  clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+/* Soft charcoal — replace heavy pure black surfaces */
+.ink-soft {
+  background-color: #1a1a1a;
+}
+
+/* Red hover rail / underline animation */
+.x-hover-rail {
+  position: relative;
+  overflow: hidden;
+}
+
+.x-hover-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--x-red);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.x-hover-rail:hover::before,
+.x-hover-rail:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.x-hover-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--x-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.x-hover-line:hover::after,
+.x-hover-line:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@keyframes x-pulse-edge {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: inset 3px 0 0 0 var(--x-red);
+  }
 }
 
 /* Diagonal industrial texture */
