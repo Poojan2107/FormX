@@ -8,9 +8,10 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, serviceNavGroups, site } from "@/data/site";
+import { DesktopNav } from "@/components/layout/MegaMenu";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -56,7 +57,10 @@ function SiteHeader({
 
   return (
     <>
-      <header className="sticky top-0 z-50">
+      <header
+        className="sticky top-0 z-50"
+        style={{ ["--header-offset" as string]: "7.5rem" }}
+      >
         <div className="border-b border-white/10 bg-black text-white">
           <Container className="flex h-8 items-center justify-between gap-3 text-[10px] font-medium uppercase tracking-[0.14em] md:h-9 md:gap-4 md:text-[11px] md:tracking-[0.18em]">
             <p className="min-w-0 truncate text-white/55">
@@ -98,47 +102,7 @@ function SiteHeader({
               <Logo variant="lockup" />
             </Link>
 
-            <nav
-              className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center xl:flex"
-              aria-label="Primary"
-            >
-              {nav.map((item, i) => (
-                <div key={item.label} className="group relative flex items-center">
-                  {i > 0 ? (
-                    <span className="mx-0.5 h-3 w-px bg-ink/10" aria-hidden />
-                  ) : null}
-                  <Link
-                    href={item.href}
-                    className="relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink"
-                  >
-                    <span className="mr-0.5 text-[10px] font-bold text-x-red/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {item.label}
-                    {item.children ? (
-                      <ChevronDown className="size-3 opacity-40 transition-transform duration-200 group-hover:rotate-180 group-hover:text-x-red" />
-                    ) : null}
-                    <span className="absolute inset-x-3 bottom-1 h-[2px] origin-left scale-x-0 bg-x-red transition-transform duration-300 group-hover:scale-x-100" />
-                  </Link>
-                  {item.children ? (
-                    <div className="invisible absolute left-1/2 top-full z-20 min-w-[248px] -translate-x-1/2 translate-y-1 border border-line bg-white py-2 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="group/item flex items-center justify-between px-4 py-2.5 text-[13px] text-ink/60 transition-colors hover:bg-black/[0.02] hover:text-x-red"
-                        >
-                          {child.label}
-                          <span className="font-display text-x-red opacity-0 transition-opacity group-hover/item:opacity-100">
-                            ×
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              ))}
-            </nav>
+            <DesktopNav />
 
             <div className="relative z-10 hidden items-center gap-2 self-center xl:flex">
               <Link
