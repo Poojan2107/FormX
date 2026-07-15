@@ -63,7 +63,7 @@ export default function KnowledgeCenterPage() {
             ))}
           </div>
 
-          <div className="mt-16 border border-line bg-[#fafafa] p-8 md:p-10">
+          <div className="mt-16 border border-line bg-white p-8 md:p-10">
             <h3 className="font-display text-2xl font-bold uppercase text-ink">
               Subscribe for delivery notes
             </h3>

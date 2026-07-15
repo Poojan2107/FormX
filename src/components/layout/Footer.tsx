@@ -20,16 +20,15 @@ export function Footer() {
         <div>
           <Logo invert variant="full" />
           <p className="mt-6 max-w-md text-[14px] leading-[1.7] text-white/55">
-            FormX Consultants provides integrated design and engineering
-            solutions for manufacturing and industrial projects. Practical
-            planning, coordinated disciplines, and partner-led delivery.
+            Integrated design and engineering for manufacturing facilities —
+            coordinated disciplines, partner-led delivery.
           </p>
           <div className="mt-8 max-w-md">
             <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white">
               Newsletter
             </p>
             <p className="mt-2 mb-4 text-sm text-white/45">
-              Occasional notes on industrial planning and delivery.
+              Occasional notes on industrial planning.
             </p>
             <NewsletterForm invert />
           </div>

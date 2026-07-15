@@ -16,15 +16,15 @@ export function Faqs() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
+    <section className="border-y border-line bg-white py-20 md:py-28">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           {/* VMS-style: left title stays while accordion scrolls */}
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <SectionHeading
               eyebrow="FAQs"
-              title="Answers to your questions"
-              description="Clear responses for promoters and project teams evaluating an industrial design partner — before the first workshop."
+              title="Answers before the first workshop"
+              description="What promoters and project teams usually ask when evaluating FormX."
             />
             <div className="mt-8 hidden border border-line bg-white p-6 lg:block">
               <p className="font-display text-base font-bold text-ink">

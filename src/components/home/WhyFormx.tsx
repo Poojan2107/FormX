@@ -3,21 +3,23 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
+const highlights = whyPoints.slice(0, 4);
+
 export function WhyFormx() {
   return (
-    <section id="why" className="scroll-mt-24 bg-[#fafafa] py-20 md:py-28">
+    <section id="why" className="scroll-mt-24 bg-white py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading
             eyebrow="Why FormX"
-            title="Why is FormX your preferred design partner?"
-            description="Differentiators that reduce delivery risk — ownership, coordination, and senior involvement on industrial mandates."
+            title="What sets the practice apart"
+            description="Ownership, coordination, and senior involvement — delivered as one accountable window."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-x-10 gap-y-11 md:grid-cols-2 lg:grid-cols-3">
-          {whyPoints.map((point, i) => (
-            <Reveal key={point.num} delay={0.04 * (i % 3)}>
+        <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2">
+          {highlights.map((point, i) => (
+            <Reveal key={point.num} delay={0.04 * (i % 2)}>
               <p className="font-display text-[11px] font-bold tracking-[0.16em] text-x-red">
                 {point.num}
               </p>
@@ -31,10 +33,10 @@ export function WhyFormx() {
           ))}
         </div>
 
-        <Reveal className="mt-16 border border-line bg-white p-8 md:p-12">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
+        <Reveal className="mt-14 border border-line bg-white p-8 md:p-10">
+          <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12">
             <SectionHeading eyebrow={method.eyebrow} title={method.title} />
-            <p className="text-[15px] leading-[1.75] text-ink-muted md:text-base">
+            <p className="text-[15px] leading-[1.75] text-ink-muted">
               {method.body}
             </p>
           </div>

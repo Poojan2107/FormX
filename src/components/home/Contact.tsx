@@ -77,7 +77,7 @@ export function Contact() {
             </a>
           </Reveal>
 
-          <Reveal delay={0.08} className="bg-[#fafafa] p-8 md:p-12">
+          <Reveal delay={0.08} className="border border-line bg-white p-8 md:p-12">
             <SectionHeading
               eyebrow="Send a message"
               title="Start a conversation"

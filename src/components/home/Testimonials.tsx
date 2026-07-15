@@ -19,7 +19,7 @@ export function Testimonials() {
     setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
+    <section className="border-y border-line bg-white py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading

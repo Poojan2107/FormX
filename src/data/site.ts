@@ -34,10 +34,9 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
+  { label: "About", href: "/about" },
   {
-    label: "Our Services",
+    label: "Services",
     href: "/services",
     children: [
       { label: "Architectural Design", href: "/services/architectural-design" },
@@ -46,41 +45,20 @@ export const nav: NavItem[] = [
         label: "Mechanical Utility Engineering",
         href: "/services/mechanical-utility-engineering",
       },
-      {
-        label: "Fire Protection Engineering",
-        href: "/services/fire-protection-engineering",
-      },
+      { label: "Fire Protection", href: "/services/fire-protection-engineering" },
       { label: "HVAC Engineering", href: "/services/hvac-engineering" },
       { label: "Electrical Engineering", href: "/services/electrical-engineering" },
-      { label: "Site Infrastructure", href: "/services/site-infrastructure" },
-      { label: "Sustainable Design", href: "/services/sustainable-design" },
-      { label: "Project Management", href: "/services/project-management" },
-      { label: "Civil Engineering", href: "/services/civil-engineering" },
+      { label: "All services", href: "/services" },
     ],
   },
+  { label: "Projects", href: "/projects" },
+  { label: "Sectors", href: "/sectors" },
   {
-    label: "Our Work",
-    href: "/projects",
-    children: [
-      { label: "Our Projects", href: "/projects" },
-      { label: "Our Clients", href: "/clients" },
-    ],
-  },
-  {
-    label: "Resources",
+    label: "Insights",
     href: "/knowledge-center",
     children: [
       { label: "Knowledge Center", href: "/knowledge-center" },
-      { label: "News & Events", href: "/news" },
-    ],
-  },
-  { label: "Sectors", href: "/sectors" },
-  {
-    label: "Contact Us",
-    href: "/contact",
-    children: [
-      { label: "Vendor Registration", href: "/vendor-registration" },
-      { label: "Career", href: "/career" },
+      { label: "News", href: "/news" },
     ],
   },
 ];
@@ -116,8 +94,7 @@ export const about = {
   eyebrow: "About FormX",
   title: "Single-window design for complex industrial facilities",
   paragraphs: [
-    "FormX is built by practitioners with deep industrial and infrastructure experience across India and abroad. Knowledge-based delivery and senior involvement on every mandate are non-negotiable.",
-    "Architecture, structure, and utilities are planned as one system — so clients get coordinated outputs, clearer site execution, and fewer clashes between disciplines.",
+    "FormX is built by practitioners with deep industrial experience across India and abroad. Architecture, structure, and utilities are planned as one system — coordinated outputs, clearer site execution, fewer clashes between disciplines.",
   ],
   cta: { label: "Know more", href: "/about" },
   legacy: "Building industrial facilities with clarity, ownership, and precision",
@@ -300,35 +277,23 @@ export const testimonials = [
 export const faqs = [
   {
     q: "What services does FormX provide?",
-    a: "End-to-end industrial design: architecture and master planning, structural engineering, mechanical utilities, HVAC & R, electrical, fire protection, site infrastructure, civil packages, plus project management and procurement support — under one accountable window.",
+    a: "End-to-end industrial design — architecture, structure, mechanical utilities, HVAC, electrical, fire protection, site infrastructure, and project management — under one accountable window.",
   },
   {
-    q: "Does FormX support projects from concept through construction?",
-    a: "Yes. We engage from early concept and capacity planning through coordinated detailed design, tender documentation, and site assistance — design clarification, vendor interfaces, and progress-aligned GFC support.",
+    q: "Do you support projects from concept through construction?",
+    a: "Yes. From early concept and capacity planning through coordinated detail design, tender packages, and site assistance as vendor data firms up.",
   },
   {
-    q: "How is FormX different from hiring separate consultants?",
-    a: "Architecture, structure, and MEPF share one geometric and programme truth. That reduces clash loops, protects schedule when vendor data firms up, and keeps senior ownership close to decisions instead of fragmented hand-offs.",
+    q: "How is FormX different from separate consultants?",
+    a: "Architecture, structure, and MEPF share one geometric truth. Fewer clash loops, clearer schedule protection, and senior ownership close to decisions.",
   },
   {
-    q: "Can FormX assist with statutory and technical documentation?",
-    a: "We prepare technical documents required for building and industrial compliance discussions and support clients with the design inputs authorities typically request. Local statutory strategy stays client/ counsel-led where required.",
+    q: "Which sectors do you typically work in?",
+    a: "Renewable manufacturing, battery and EV, food and packaging, logistics, industrial parks, data centers, and broader manufacturing.",
   },
   {
-    q: "What does site support look like during construction?",
-    a: "Planned site visits, rapid design clarifications, coordination with vendors and contractors, and practical responses that keep execution aligned to design intent — without diluting drawing responsibility.",
-  },
-  {
-    q: "Which sectors does FormX typically work in?",
-    a: "Renewable manufacturing (module, cell, glass, blade), battery and EV components, food processing, packaging, logistics warehouses, industrial parks, data centers, and broader heavy / precision manufacturing.",
-  },
-  {
-    q: "How do we start a project with FormX?",
-    a: "Share facility type, location, capacity intent, and timeline through the contact form, email, or WhatsApp. A senior lead will connect to understand scope and propose the first alignment workshop.",
-  },
-  {
-    q: "Do you provide a brochure or capability note?",
-    a: "Yes — download the company brochure from the site, or request a sector-specific note when you write in. We tailor early decks to your process and geography.",
+    q: "How do we start a project?",
+    a: "Share facility type, location, capacity intent, and timeline via the contact form, email, or WhatsApp. A senior lead will propose the first alignment workshop.",
   },
 ];
 

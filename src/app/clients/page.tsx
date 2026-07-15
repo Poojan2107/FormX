@@ -35,7 +35,7 @@ export default function ClientsPage() {
             {clients.map((client, i) => (
               <Reveal key={client.name} delay={0.02 * (i % 8)}>
                 <div
-                  className="x-border flex h-28 flex-col items-center justify-center gap-1 border border-line bg-[#fafafa] px-4 transition-colors"
+                  className="x-border flex h-28 flex-col items-center justify-center gap-1 border border-line bg-white px-4 transition-colors"
                   title={`assets/${client.logo}`}
                 >
                   <span className="font-display text-sm font-bold tracking-[0.06em] text-ink/50">

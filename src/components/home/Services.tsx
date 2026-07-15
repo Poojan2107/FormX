@@ -8,7 +8,7 @@ import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Services() {
   return (
-    <section id="services" className="scroll-mt-24 bg-[#fafafa] py-20 md:py-28">
+    <section id="services" className="scroll-mt-24 bg-white py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading

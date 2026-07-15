@@ -58,7 +58,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-y border-line bg-[#fafafa] py-16 md:py-20">
+      <section className="border-y border-line bg-white py-16 md:py-20">
         <Container>
           <div className="grid gap-8 md:grid-cols-3">
             {aboutPage.pillars.map((pillar, i) => (
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {leadership.map((person, i) => (
               <Reveal key={person.role} delay={0.04 * i}>
-                <article className="x-border border border-line bg-[#fafafa]">
+                <article className="x-border border border-line bg-white">
                   <AssetImage
                     alt={person.name}
                     slot={person.asset}
@@ -157,7 +157,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-[#fafafa] py-14">
+      <section className="border-t border-line bg-white py-14">
         <Container className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="border-l-2 border-x-red pl-4">

@@ -34,7 +34,7 @@ export function Clients() {
           {row.map((client, i) => (
             <div
               key={`${client.name}-${i}`}
-              className="x-border flex h-[72px] w-44 shrink-0 items-center justify-center border border-line bg-[#fafafa] px-4"
+              className="x-border flex h-[72px] w-44 shrink-0 items-center justify-center border border-line bg-white px-4"
               title={`Logo slot: assets/${client.logo}`}
             >
               <span className="font-display text-[12px] font-bold tracking-[0.08em] text-ink/40">

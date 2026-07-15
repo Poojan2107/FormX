@@ -13,7 +13,7 @@ export function VendorForm() {
 
   if (sent) {
     return (
-      <div className="border border-line bg-[#fafafa] p-8">
+      <div className="border border-line bg-white p-8">
         <h2 className="font-display text-2xl font-bold text-ink">
           Registration received
         </h2>

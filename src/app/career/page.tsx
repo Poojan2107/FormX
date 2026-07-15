@@ -27,7 +27,7 @@ export default function CareerPage() {
 
       <section className="bg-white py-16 md:py-24">
         <Container>
-          <div className="mb-12 grid gap-4 border border-line bg-[#fafafa] p-6 md:grid-cols-3 md:p-8">
+          <div className="mb-12 grid gap-4 border border-line bg-white p-6 md:grid-cols-3 md:p-8">
             {[
               ["Culture", "Partner-led, site-aware, ownership first"],
               ["Practice", "Architecture · Structure · MEPF as one"],
@@ -65,7 +65,7 @@ export default function CareerPage() {
                         ))}
                       </ul>
                     </div>
-                    <div className="flex flex-col justify-between gap-4 border border-line bg-[#fafafa] p-5">
+                    <div className="flex flex-col justify-between gap-4 border border-line bg-white p-5">
                       <div className="space-y-2 text-[13px] text-ink-muted">
                         <p>
                           <span className="font-semibold text-ink">Type:</span>{" "}

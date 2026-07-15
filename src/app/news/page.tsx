@@ -32,7 +32,7 @@ export default function NewsPage() {
               <Reveal key={item.slug} delay={0.04 * i}>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="x-border group flex h-full flex-col border border-line bg-[#fafafa] transition-colors hover:border-transparent"
+                  className="x-border group flex h-full flex-col border border-line bg-white transition-colors hover:border-transparent"
                 >
                   <AssetImage
                     alt={item.title}

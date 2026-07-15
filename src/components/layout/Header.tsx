@@ -15,7 +15,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 6);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -32,42 +32,46 @@ export function Header() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 border-b border-white/10 bg-black transition-all duration-300",
-          scrolled && "shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-sm",
+          "sticky top-0 z-50 border-b bg-white transition-[box-shadow,border-color] duration-300",
+          scrolled
+            ? "border-black/8 shadow-[0_1px_0_rgba(0,0,0,0.04),0_8px_28px_rgba(0,0,0,0.06)]"
+            : "border-line",
         )}
       >
-        <Container className="flex h-[78px] items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="group shrink-0 transition-transform duration-300 hover:scale-[1.02]"
-            aria-label="FormX home"
-          >
-            <Logo invert variant="mark" />
+        {/* Brand rail — red accent left edge */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-[3px] bg-x-red" aria-hidden />
+
+        <Container className="flex h-[72px] items-center justify-between gap-8 md:h-[76px]">
+          <Link href="/" className="shrink-0" aria-label="FormX home">
+            <Logo variant="lockup" />
           </Link>
 
-          <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
+          <nav
+            className="hidden items-center gap-1 lg:flex"
+            aria-label="Primary"
+          >
             {nav.map((item) => (
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className="relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-white/70 transition-colors hover:text-white"
+                  className="relative inline-flex items-center gap-1 px-3.5 py-2 text-[13px] font-medium tracking-[-0.01em] text-ink/65 transition-colors hover:text-ink"
                 >
                   {item.label}
                   {item.children ? (
-                    <ChevronDown className="size-3.5 opacity-50 transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown className="size-3.5 text-ink/30 transition-transform duration-200 group-hover:rotate-180 group-hover:text-x-red" />
                   ) : null}
-                  <span className="absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-x-red transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
                 {item.children ? (
-                  <div className="invisible absolute left-0 top-full z-20 min-w-[270px] translate-y-1 border border-white/10 bg-[#0c0c0c] py-2 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="invisible absolute left-1/2 top-full z-20 min-w-[240px] -translate-x-1/2 translate-y-1 border border-line bg-white py-2 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="mb-1 h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent" />
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="group/item flex items-center justify-between px-4 py-2.5 text-[13px] text-white/55 transition-colors hover:bg-white/[0.04] hover:text-x-red"
+                        className="group/item flex items-center justify-between px-4 py-2.5 text-[13px] text-ink/60 transition-colors hover:bg-black/[0.02] hover:text-x-red"
                       >
                         {child.label}
-                        <span className="text-x-red opacity-0 transition-opacity group-hover/item:opacity-100">
+                        <span className="font-display text-x-red opacity-0 transition-opacity group-hover/item:opacity-100">
                           ×
                         </span>
                       </Link>
@@ -78,19 +82,25 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-3 lg:flex">
+            <Link
+              href="/career"
+              className="text-[12px] font-medium text-ink/45 transition-colors hover:text-ink"
+            >
+              Career
+            </Link>
             <Button
               href="/contact"
-              variant="primary"
-              className="relative overflow-hidden px-5 py-2.5 text-[11px] uppercase tracking-[0.16em] before:absolute before:inset-0 before:translate-x-[-100%] before:bg-white/15 before:transition-transform before:duration-300 hover:before:translate-x-0"
+              variant="secondary"
+              className="px-5 py-2.5 text-[12px] tracking-[0.02em]"
             >
-              <span className="relative">Get in touch</span>
+              Get in touch
             </Button>
           </div>
 
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center border border-white/20 text-white transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+            className="inline-flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -98,57 +108,59 @@ export function Header() {
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </Container>
-
-        {/* Thin red progress accent when scrolled */}
-        <div
-          className={cn(
-            "h-[2px] origin-left bg-x-red transition-transform duration-300",
-            scrolled ? "scale-x-100" : "scale-x-0",
-          )}
-        />
       </header>
 
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fixed inset-0 z-40 overflow-y-auto bg-black xl:hidden"
+            className="fixed inset-0 z-40 overflow-y-auto bg-white lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="flex min-h-full flex-col px-5 pb-10 pt-28">
-              <nav className="flex flex-col gap-1" aria-label="Mobile">
+            <div className="flex min-h-full flex-col px-5 pb-10 pt-24">
+              <div className="mb-8 flex items-center justify-between border-b border-line pb-4">
+                <Logo variant="lockup" />
+                <button
+                  type="button"
+                  className="inline-flex size-10 items-center justify-center border border-line text-ink"
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                >
+                  <X className="size-5" />
+                </button>
+              </div>
+              <nav className="flex flex-col" aria-label="Mobile">
                 {nav.map((item, i) => (
-                  <div key={item.label}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.04 * i }}
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.04 * i }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block border-b border-line py-4 font-display text-xl font-bold tracking-tight text-ink"
                     >
-                      <Link
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className="block border-b border-white/10 py-4 font-display text-2xl font-bold uppercase tracking-tight text-white"
-                      >
-                        {item.label}
-                      </Link>
-                      {item.children ? (
-                        <div className="border-b border-white/10 pb-3 pl-3">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => setOpen(false)}
-                              className="block py-2 text-sm text-white/55 hover:text-x-red"
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      ) : null}
-                    </motion.div>
-                  </div>
+                      {item.label}
+                    </Link>
+                    {item.children ? (
+                      <div className="border-b border-line pb-3 pl-1">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="block py-2 text-sm text-ink/55 hover:text-x-red"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </motion.div>
                 ))}
               </nav>
               <Button

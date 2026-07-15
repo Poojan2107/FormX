@@ -16,7 +16,7 @@ export function BrochureCta({
         "flex flex-col gap-5 border p-6 md:flex-row md:items-center md:justify-between md:p-8",
         invert
           ? "border-white/15 bg-white/5 text-white"
-          : "border-line bg-[#fafafa] text-ink",
+          : "border-line bg-white text-ink",
         className,
       )}
     >
@@ -77,7 +77,7 @@ export function CtaBand({
           <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
             {eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight md:text-4xl">
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-4xl">
             {title}
           </h2>
           {description ? (
@@ -111,7 +111,7 @@ export function RelatedLinks({
 }) {
   if (!items.length) return null;
   return (
-    <section className="border-t border-line bg-[#fafafa] py-16">
+    <section className="border-t border-line bg-white py-16">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
         <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
           {title}

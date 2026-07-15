@@ -30,7 +30,7 @@ export default function SectorsPage() {
               <Reveal key={sector.slug} delay={0.03 * (i % 3)}>
                 <Link
                   href={`/sectors/${sector.slug}`}
-                  className="x-border group flex h-full flex-col justify-between border border-line bg-[#fafafa] p-7 transition-all hover:border-transparent hover:bg-black md:p-8"
+                  className="x-border group flex h-full flex-col justify-between border border-line bg-white p-7 transition-all hover:border-transparent hover:bg-black md:p-8"
                 >
                   <ArrowUpRight className="size-4 self-end text-ink/25 group-hover:text-x-red" />
                   <div className="mt-10">

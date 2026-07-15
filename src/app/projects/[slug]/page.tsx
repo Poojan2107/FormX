@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-[#fafafa] py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <Container className="grid gap-12 lg:grid-cols-2">
           <Reveal>
             <h2 className="font-display text-2xl font-bold uppercase text-ink md:text-3xl">

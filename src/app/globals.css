@@ -2,10 +2,10 @@
 
 :root {
   --bg: #ffffff;
-  --bg-muted: #f6f6f6;
+  --bg-muted: #ffffff;
   --ink: #0a0a0a;
-  --ink-muted: #555555;
-  --line: #e5e5e5;
+  --ink-muted: #4a4a4a;
+  --line: #ebebeb;
   --black: #000000;
   --white: #ffffff;
   --x-red: #de3024;
@@ -197,7 +197,11 @@ body {
 }
 
 .animate-ticker {
-  animation: ticker 28s linear infinite;
+  animation: ticker 32s linear infinite;
+}
+
+.animate-ticker-reverse {
+  animation: ticker 36s linear infinite reverse;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -206,7 +210,8 @@ body {
   }
 
   .animate-marquee,
-  .animate-ticker {
+  .animate-ticker,
+  .animate-ticker-reverse {
     animation: none;
   }
 

@@ -7,7 +7,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 
 export function Resources() {
   return (
-    <section id="resources" className="scroll-mt-24 bg-[#fafafa] py-20 md:py-28">
+    <section id="resources" className="scroll-mt-24 bg-white py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading
