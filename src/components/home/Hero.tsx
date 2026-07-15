@@ -74,11 +74,11 @@ export function Hero() {
 
           {/* Claim is the hero headline — nav owns the FormX lockup */}
           <div className="relative mb-5">
-            <div className="relative min-h-[5.5rem] sm:min-h-[6.25rem] lg:min-h-[7rem]">
+            <div className="relative max-w-xl pb-1">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={lineIndex}
-                  className="absolute inset-x-0 top-0 max-w-xl font-display text-[clamp(1.65rem,1.1rem+2vw,2.65rem)] font-semibold leading-[1.18] tracking-[-0.03em] text-ink"
+                  className="font-display text-[clamp(1.65rem,1.1rem+2vw,2.65rem)] font-semibold leading-[1.22] tracking-[-0.03em] text-ink"
                   initial={reduce ? false : { opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={reduce ? undefined : { opacity: 0, y: -12 }}
@@ -89,14 +89,19 @@ export function Hero() {
               </AnimatePresence>
             </div>
 
-            <div className="mt-5 flex items-center gap-3">
-              <div className="relative h-[3px] w-16 overflow-hidden bg-ink" aria-hidden>
-                <motion.span
+            {/* Dual-tone progress — clear of descenders, single aligned rail */}
+            <div className="mt-6 flex items-center gap-3 border-t border-line pt-4">
+              <div
+                className="relative h-0.5 w-20 shrink-0 bg-ink"
+                aria-hidden
+              >
+                <motion.div
                   key={lineIndex}
-                  className="absolute inset-y-0 left-0 bg-x-red"
-                  initial={reduce ? false : { width: "0%" }}
-                  animate={{ width: "100%" }}
+                  className="absolute inset-y-0 left-0 h-full bg-x-red"
+                  initial={reduce ? false : { scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
                   transition={{ duration: 3.4, ease: "linear" }}
+                  style={{ transformOrigin: "left center", width: "100%" }}
                 />
               </div>
               <div className="flex items-center gap-1.5">
@@ -108,10 +113,10 @@ export function Hero() {
                     aria-current={i === lineIndex}
                     onClick={() => setLineIndex(i)}
                     className={[
-                      "h-1.5 transition-all duration-300",
+                      "h-1 transition-all duration-300",
                       i === lineIndex
                         ? "w-5 bg-x-red"
-                        : "w-1.5 bg-ink/15 hover:bg-ink/35",
+                        : "w-1.5 bg-ink/20 hover:bg-ink/40",
                     ].join(" ")}
                   />
                 ))}
