@@ -33,11 +33,11 @@ export function Process() {
               <Reveal key={step.num} delay={0.06 * i}>
                 <li
                   className={cn(
-                    "formx-cut x-hover-rail group flex h-full flex-col border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/45 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)] sm:p-6",
+                    "formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/45 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)] sm:p-6",
                   )}
                 >
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="formx-cut-sm relative flex size-12 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white transition-transform duration-300 group-hover:scale-105">
+                    <span className="formx-cut-sm formx-edge formx-edge-sm relative flex size-12 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white transition-transform duration-300 group-hover:scale-105">
                       {step.num}
                     </span>
                   </div>

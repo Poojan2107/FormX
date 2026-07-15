@@ -34,7 +34,7 @@ export default function KnowledgeCenterPage() {
               <Reveal key={post.slug} delay={0.03 * (i % 3)}>
                 <Link
                   href={`/knowledge-center/${post.slug}`}
-                  className="x-border group flex h-full flex-col border border-line transition-all hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.05)]"
+                  className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line transition-all hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
                 >
                   <AssetImage
                     alt={post.title}
@@ -63,7 +63,7 @@ export default function KnowledgeCenterPage() {
             ))}
           </div>
 
-          <div className="mt-16 border border-line bg-white p-8 md:p-10">
+          <div className="formx-cut-x formx-edge formx-edge-x mt-16 border border-line bg-white p-8 md:p-10">
             <h3 className="font-display text-2xl font-bold uppercase text-ink">
               Subscribe for delivery notes
             </h3>

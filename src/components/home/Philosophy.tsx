@@ -46,7 +46,7 @@ export function Philosophy() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="flex h-full flex-col justify-between border border-line bg-black p-8 text-white md:p-10">
+            <div className="formx-cut-lg formx-edge formx-edge-lg flex h-full flex-col justify-between border border-line bg-[#1a1a1a] p-8 text-white md:p-10">
               <div>
                 <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
                   Collaboration

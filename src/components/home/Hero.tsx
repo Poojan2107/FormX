@@ -179,7 +179,7 @@ export function Hero() {
 
         <motion.div
           ref={panelRef}
-          className="formx-cut relative overflow-hidden bg-[#1a1a1a] lg:min-h-[440px]"
+          className="formx-cut-lg formx-edge formx-edge-lg relative overflow-hidden bg-[#1a1a1a] lg:min-h-[440px]"
           style={{
             rotateX: reduce ? 0 : springY,
             rotateY: reduce ? 0 : springX,

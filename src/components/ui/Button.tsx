@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import { cn } from "@/lib/cn";
 
 const base =
-  "formx-cut-sm inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 text-[13px] font-semibold tracking-[0.04em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-x-red";
+  "formx-cut-sm formx-edge formx-edge-sm inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 text-[13px] font-semibold tracking-[0.04em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-x-red";
 
 const variants = {
   primary: "bg-x-red text-white hover:bg-x-red-hover",

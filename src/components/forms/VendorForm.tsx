@@ -13,7 +13,7 @@ export function VendorForm() {
 
   if (sent) {
     return (
-      <div className="border border-line bg-white p-8">
+      <div className="formx-cut-x formx-edge formx-edge-x border border-line bg-white p-8">
         <h2 className="font-display text-2xl font-bold text-ink">
           Registration received
         </h2>
@@ -36,7 +36,7 @@ export function VendorForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-4 border border-line p-6 md:p-8"
+      className="formx-cut-x formx-edge formx-edge-x space-y-4 border border-line p-6 md:p-8"
     >
       <Field label="Company name" name="company" required />
       <Field label="Contact person" name="contact" required />

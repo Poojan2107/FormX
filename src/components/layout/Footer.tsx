@@ -15,7 +15,13 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black text-white">
+    <footer
+      className="border-t border-white/10 bg-[#0a0a0a] text-white"
+      style={{
+        clipPath:
+          "polygon(0 18px, 18px 0, 100% 0, 100% 100%, 0 100%)",
+      }}
+    >
       <Container className="grid gap-12 py-16 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Logo invert variant="full" />

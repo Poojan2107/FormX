@@ -67,7 +67,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-32 bg-white section-y">
       <Container>
         <div className="grid overflow-hidden border border-line lg:grid-cols-2">
-          <Reveal className="formx-cut bg-[#1a1a1a] p-5 text-white sm:p-8 md:p-12">
+          <Reveal className="formx-cut-lg formx-edge formx-edge-lg bg-[#1a1a1a] p-5 text-white sm:p-8 md:p-12">
             <Logo invert variant="full" />
             <h2 className="mt-8 font-display text-3xl font-bold tracking-tight md:text-[2.15rem]">
               Design <span className="text-x-red">|</span> Engineering
@@ -108,7 +108,7 @@ export function Contact() {
             </a>
           </Reveal>
 
-          <Reveal delay={0.08} className="border border-line bg-white p-5 sm:p-8 md:p-12">
+          <Reveal delay={0.08} className="formx-cut-bl border border-line bg-white p-5 sm:p-8 md:p-12">
             <SectionHeading
               eyebrow="Send a message"
               title="Start a conversation"

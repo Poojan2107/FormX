@@ -29,7 +29,7 @@ export function Sectors() {
             <Reveal key={sector.slug} delay={0.025 * (i % 5)}>
               <Link
                 href={`/sectors/${sector.slug}`}
-                className="formx-cut x-hover-rail group relative flex min-h-[110px] flex-col justify-between overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa] sm:min-h-[120px] md:min-h-[140px] md:p-5"
+                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex min-h-[110px] flex-col justify-between overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa] sm:min-h-[120px] md:min-h-[140px] md:p-5"
               >
                 <div
                   className="pointer-events-none absolute -right-6 -top-6 size-20 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"

@@ -71,7 +71,7 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="formx-cut-tr bg-[#1a1a1a] py-12 text-white md:py-16">
+    <section className="formx-cut-tr formx-edge formx-edge-lg bg-[#1a1a1a] py-12 text-white md:py-16">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center md:px-8">
         <div className="max-w-xl">
           <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
@@ -121,7 +121,7 @@ export function RelatedLinks({
             <Link
               key={item.href}
               href={item.href}
-              className="x-border group border border-line bg-white p-6 transition-colors hover:border-transparent"
+              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group border border-line bg-white p-6 transition-colors hover:border-x-red/35"
             >
               {item.meta ? (
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">

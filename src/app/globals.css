@@ -113,24 +113,149 @@ body {
   }
 }
 
-/* FormX logo edge — diagonal cut like Form “m” terminal / X factor */
+/* FormX logo edge — diagonal cuts (Form “m” / X terminals) */
+:root {
+  --formx-cut: 22px;
+  --formx-cut-sm: 14px;
+  --formx-cut-lg: 36px;
+}
+
 .brand-edge,
 .formx-cut {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--formx-cut)),
+    calc(100% - var(--formx-cut)) 100%,
+    0 100%
+  );
 }
 
 .formx-cut-sm {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--formx-cut-sm)),
+    calc(100% - var(--formx-cut-sm)) 100%,
+    0 100%
+  );
+}
+
+.formx-cut-lg {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--formx-cut-lg)),
+    calc(100% - var(--formx-cut-lg)) 100%,
+    0 100%
+  );
 }
 
 .formx-cut-tr {
-  /* reverse: cut top-right like X terminal energy */
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--formx-cut)) 0,
+    100% var(--formx-cut),
+    100% 100%,
+    0 100%
+  );
 }
 
 .formx-cut-x {
-  /* dual-side nod to X — slight bottom-right + top-left soft */
-  clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  /* X-factor: cut top-left + bottom-right */
+  clip-path: polygon(
+    0 var(--formx-cut-sm),
+    var(--formx-cut-sm) 0,
+    100% 0,
+    100% calc(100% - var(--formx-cut)),
+    calc(100% - var(--formx-cut)) 100%,
+    0 100%
+  );
+}
+
+.formx-cut-bl {
+  /* mirror — bottom-left bite like alternate m stroke */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--formx-cut) 100%,
+    0 calc(100% - var(--formx-cut))
+  );
+}
+
+/* Red accent stroke along the cut (makes the X-edge readable) */
+.formx-edge {
+  position: relative;
+  isolation: isolate;
+}
+
+.formx-edge::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  right: -0.5px;
+  bottom: -0.5px;
+  width: var(--formx-cut);
+  height: var(--formx-cut);
+  background: linear-gradient(
+    225deg,
+    transparent 42%,
+    var(--x-red) 42%,
+    var(--x-red) 58%,
+    transparent 58%
+  );
+  opacity: 0.85;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+  z-index: 2;
+}
+
+.formx-edge:hover::after,
+.formx-edge:focus-visible::after {
+  opacity: 1;
+  width: calc(var(--formx-cut) + 3px);
+  height: calc(var(--formx-cut) + 3px);
+}
+
+/* Dual-corner red ticks for formx-cut-x */
+.formx-edge-x::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: -0.5px;
+  top: -0.5px;
+  width: var(--formx-cut-sm);
+  height: var(--formx-cut-sm);
+  background: linear-gradient(
+    135deg,
+    transparent 42%,
+    var(--x-red) 42%,
+    var(--x-red) 58%,
+    transparent 58%
+  );
+  opacity: 0.85;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.formx-edge-x:hover::before,
+.formx-edge-x:focus-visible::before {
+  opacity: 1;
+}
+
+.formx-edge-sm::after {
+  width: var(--formx-cut-sm);
+  height: var(--formx-cut-sm);
+}
+
+.formx-edge-sm:hover::after {
+  width: calc(var(--formx-cut-sm) + 2px);
+  height: calc(var(--formx-cut-sm) + 2px);
+}
+
+.formx-edge-lg::after {
+  width: var(--formx-cut-lg);
+  height: var(--formx-cut-lg);
 }
 
 /* Soft charcoal — replace heavy pure black surfaces */
@@ -138,28 +263,24 @@ body {
   background-color: #1a1a1a;
 }
 
-/* Red hover rail / underline animation */
+/* Red hover rail / underline animation (no pseudo — frees ::before for formx-edge-x) */
 .x-hover-rail {
   position: relative;
   overflow: hidden;
+  background-image: linear-gradient(var(--x-red), var(--x-red));
+  background-size: 3px 0%;
+  background-position: left top;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.x-hover-rail::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--x-red);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+.x-hover-rail:hover,
+.x-hover-rail:focus-visible {
+  background-size: 3px 100%;
 }
 
-.x-hover-rail:hover::before,
-.x-hover-rail:focus-visible::before {
-  transform: scaleY(1);
+.x-hover-line {
+  position: relative;
 }
 
 .x-hover-line::after {
@@ -178,16 +299,6 @@ body {
 .x-hover-line:hover::after,
 .x-hover-line:focus-visible::after {
   transform: scaleX(1);
-}
-
-@keyframes x-pulse-edge {
-  0%,
-  100% {
-    box-shadow: inset 0 0 0 0 transparent;
-  }
-  50% {
-    box-shadow: inset 3px 0 0 0 var(--x-red);
-  }
 }
 
 /* Diagonal industrial texture */

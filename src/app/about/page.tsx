@@ -79,7 +79,7 @@ export default function AboutPage() {
             {aboutPage.values.map((v) => (
               <span
                 key={v}
-                className="border border-line bg-white px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink"
+                className="formx-cut-sm formx-edge formx-edge-sm border border-line bg-white px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-ink"
               >
                 {v}
               </span>
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {leadership.map((person, i) => (
               <Reveal key={person.role} delay={0.04 * i}>
-                <article className="x-border border border-line bg-white">
+                <article className="formx-cut-x formx-edge formx-edge-x border border-line bg-white">
                   <AssetImage
                     alt={person.name}
                     slot={person.asset}

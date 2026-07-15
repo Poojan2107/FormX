@@ -79,7 +79,11 @@ export function DesktopNav() {
             role="region"
             aria-label={`${panel} menu`}
             className="fixed inset-x-0 z-[46] border-b border-line bg-white shadow-[0_28px_70px_rgba(0,0,0,0.12)]"
-            style={{ top: "var(--header-offset, 7.5rem)" }}
+            style={{
+              top: "var(--header-offset, 7.5rem)",
+              clipPath:
+                "polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%)",
+            }}
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
@@ -134,8 +138,10 @@ export function DesktopNav() {
                 <button
                   type="button"
                   className={cn(
-                    "relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
-                    active ? "text-ink" : "text-ink/55 hover:text-ink",
+                    "formx-cut-sm relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                    active
+                      ? "bg-[#fafafa] text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
+                      : "text-ink/55 hover:bg-[#fafafa] hover:text-ink",
                   )}
                   aria-expanded={active}
                   aria-haspopup="true"
@@ -153,12 +159,6 @@ export function DesktopNav() {
                     className={cn(
                       "size-3 opacity-40 transition-transform duration-200",
                       active && "rotate-180 text-x-red opacity-100",
-                    )}
-                  />
-                  <span
-                    className={cn(
-                      "absolute inset-x-3 bottom-1 h-[2px] origin-left bg-x-red transition-transform duration-300",
-                      active ? "scale-x-100" : "scale-x-0",
                     )}
                   />
                 </button>
@@ -213,7 +213,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
         ))}
       </div>
 
-      <aside className="formx-cut flex flex-col justify-between bg-[#1a1a1a] p-5 text-white md:p-6">
+      <aside className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-5 text-white md:p-6">
         <div>
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
             Single window
@@ -267,7 +267,7 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
             key={p.slug}
             href={`/projects/${p.slug}`}
             onClick={onNavigate}
-            className="formx-cut x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
+            className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
           >
             <div className="relative flex h-20 items-end overflow-hidden bg-[#f3f3f3] p-4">
               <div className="absolute inset-0 pattern-grid opacity-60" />
@@ -325,7 +325,7 @@ function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
             key={s.slug}
             href={`/sectors/${s.slug}`}
             onClick={onNavigate}
-            className="formx-cut-sm x-hover-rail group relative flex min-h-[76px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa]"
+            className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex min-h-[76px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa]"
           >
             <span className="font-display text-[10px] font-bold tabular-nums tracking-[0.12em] text-ink/20 transition-colors group-hover:text-x-red">
               {String(i + 1).padStart(2, "0")}
@@ -351,7 +351,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/knowledge-center"
         onClick={onNavigate}
-        className="group relative overflow-hidden border border-line formx-cut p-6 transition-colors hover:border-x-red/40"
+        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <BookOpen className="size-5 text-x-red" />
@@ -370,7 +370,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/news"
         onClick={onNavigate}
-        className="group relative overflow-hidden border border-line formx-cut p-6 transition-colors hover:border-x-red/40"
+        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <Newspaper className="size-5 text-x-red" />
@@ -386,7 +386,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
         </span>
       </Link>
 
-      <div className="flex flex-col justify-between bg-[#1a1a1a] formx-cut p-6 text-white">
+      <div className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-6 text-white">
         <div>
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
             Talk to FormX

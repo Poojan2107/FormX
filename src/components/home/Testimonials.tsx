@@ -29,7 +29,7 @@ export function Testimonials() {
           />
         </Reveal>
 
-        <div className="mt-12 border border-line bg-white p-8 md:p-12">
+        <div className="formx-cut-x formx-edge formx-edge-x mt-12 border border-line bg-white p-8 md:p-12">
           <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-12">
             <Quote className="size-10 text-x-red/70" strokeWidth={1.25} />
 

@@ -39,7 +39,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-4 border border-line bg-white p-3 sm:p-4 md:p-5">
+      <div className="formx-cut-x formx-edge formx-edge-x mb-8 flex flex-col gap-4 border border-line bg-white p-3 sm:p-4 md:p-5">
         <label className="relative block">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
           <input
@@ -116,7 +116,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="x-border group block border border-line transition-all hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)]"
+              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative block border border-line transition-all hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
             >
               <AssetImage
                 alt={project.title}

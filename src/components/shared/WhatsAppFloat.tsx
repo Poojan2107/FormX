@@ -49,7 +49,7 @@ export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className={cn(
-        "fixed right-4 z-50 inline-flex items-center gap-2 bg-[#25D366] px-3.5 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] md:right-8",
+        "formx-cut-sm fixed right-4 z-50 inline-flex items-center gap-2 bg-[#25D366] px-3.5 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] md:right-8",
         lift
           ? "bottom-[4.75rem] md:bottom-8"
           : "bottom-5 md:bottom-8",

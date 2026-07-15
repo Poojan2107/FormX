@@ -26,7 +26,7 @@ export function Faqs() {
               title="Answers before the first workshop"
               description="What promoters and project teams usually ask when evaluating FormX."
             />
-            <div className="mt-8 hidden border border-line bg-white p-6 lg:block">
+            <div className="formx-cut-x formx-edge formx-edge-x mt-8 hidden border border-line bg-white p-6 lg:block">
               <p className="font-display text-base font-bold text-ink">
                 Still deciding?
               </p>
@@ -42,7 +42,7 @@ export function Faqs() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="overflow-hidden border border-line bg-white">
+            <div className="formx-cut-x formx-edge formx-edge-x overflow-hidden border border-line bg-white">
               {faqs.map((faq, i) => {
                 const isOpen = open === i;
                 return (

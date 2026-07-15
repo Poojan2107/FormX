@@ -56,7 +56,7 @@ export function Stats() {
             <Reveal key={item.num} delay={0.04 * (i % 3)}>
               <article
                 className={cn(
-                  "formx-cut x-hover-rail group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden border border-line p-5 transition-all duration-300 sm:min-h-[180px] sm:p-6",
+                  "formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full min-h-[168px] flex-col justify-between overflow-hidden border border-line p-5 transition-all duration-300 sm:min-h-[180px] sm:p-6",
                   item.featured
                     ? "border-transparent bg-[#1a1a1a] text-white sm:col-span-2 lg:col-span-1"
                     : "bg-white hover:border-x-red/35 hover:shadow-[0_12px_32px_rgba(222,48,36,0.06)]",

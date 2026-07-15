@@ -61,7 +61,13 @@ function SiteHeader({
         className="sticky top-0 z-50"
         style={{ ["--header-offset" as string]: "7.5rem" }}
       >
-        <div className="border-b border-white/10 bg-black text-white">
+        <div
+          className="border-b border-white/10 bg-[#0a0a0a] text-white"
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))",
+          }}
+        >
           <Container className="flex h-8 items-center justify-between gap-3 text-[10px] font-medium uppercase tracking-[0.14em] md:h-9 md:gap-4 md:text-[11px] md:tracking-[0.18em]">
             <p className="min-w-0 truncate text-white/55">
               Design <span className="text-x-red">|</span> Engineering
@@ -95,7 +101,7 @@ function SiteHeader({
           <Container className="relative flex h-[64px] items-stretch justify-between gap-3 sm:h-[72px] sm:gap-4 md:h-[84px] md:gap-6">
             <Link
               href="/"
-              className="relative z-10 flex min-w-0 max-w-[min(200px,calc(100%-3.5rem))] shrink items-center self-stretch border-l-[3px] border-b-[3px] border-x-red py-1.5 pl-2.5 pr-3 sm:max-w-[240px] sm:py-2 sm:pl-3 sm:pr-4 md:max-w-none md:pl-4 md:pr-5"
+              className="formx-cut-x formx-edge formx-edge-x relative z-10 flex min-w-0 max-w-[min(200px,calc(100%-3.5rem))] shrink items-center self-stretch border border-line bg-[#fafafa] py-1.5 pl-2.5 pr-3 transition-colors hover:border-x-red/40 hover:bg-white sm:max-w-[240px] sm:py-2 sm:pl-3 sm:pr-4 md:max-w-none md:pl-4 md:pr-5"
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
@@ -107,7 +113,7 @@ function SiteHeader({
             <div className="relative z-10 hidden items-center gap-2 self-center xl:flex">
               <Link
                 href="/career"
-                className="px-3 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40 transition-colors hover:text-ink"
+                className="formx-cut-sm formx-edge formx-edge-sm border border-transparent px-3 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40 transition-colors hover:border-line hover:text-ink"
               >
                 Career
               </Link>
@@ -122,7 +128,7 @@ function SiteHeader({
 
             <button
               type="button"
-              className="relative z-[60] inline-flex size-10 shrink-0 items-center justify-center self-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+              className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-10 shrink-0 items-center justify-center self-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -216,7 +222,7 @@ function SiteHeader({
                 </Button>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="inline-flex w-full items-center justify-center gap-2 border border-line py-3 text-sm font-semibold text-ink"
+                  className="formx-cut-sm formx-edge formx-edge-sm inline-flex w-full items-center justify-center gap-2 border border-line py-3 text-sm font-semibold text-ink"
                   onClick={() => setOpen(false)}
                 >
                   <Phone className="size-4 text-x-red" />

@@ -30,7 +30,7 @@ export default function ServicesPage() {
               <Reveal key={service.slug} delay={0.03 * (i % 3)}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="formx-cut x-hover-rail group flex h-full flex-col border border-line p-7 transition-all hover:border-x-red/35 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)] md:p-8"
+                  className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line p-7 transition-all hover:border-x-red/35 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)] md:p-8"
                 >
                   <div className="mb-6 flex justify-between">
                     <span className="font-display text-[11px] font-bold text-x-red">

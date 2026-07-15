@@ -33,7 +33,7 @@ export function WhyFormx() {
           ))}
         </div>
 
-        <Reveal className="mt-10 border border-line bg-white p-6 md:p-8">
+        <Reveal className="formx-cut-x formx-edge formx-edge-x mt-10 border border-line bg-white p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12">
             <SectionHeading eyebrow={method.eyebrow} title={method.title} />
             <p className="text-[15px] leading-[1.75] text-ink-muted">
