@@ -19,9 +19,9 @@ export function Logo({
         <Image
           src="/formx-lockup.png"
           alt="FormX Consultants"
-          width={168}
-          height={56}
-          className="h-9 w-auto object-contain object-left md:h-10"
+          width={220}
+          height={72}
+          className="h-12 w-auto object-contain object-left md:h-14"
           priority
         />
       </span>

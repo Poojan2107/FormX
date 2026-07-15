@@ -60,7 +60,7 @@ export function Header() {
               : "border-line",
           )}
         >
-          <Container className="relative flex h-[64px] items-center justify-between gap-6 md:h-[68px]">
+          <Container className="relative flex h-[72px] items-center justify-between gap-6 md:h-[78px]">
             {/* Red brand corner mark */}
             <span
               className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-x-red md:w-[3px]"
