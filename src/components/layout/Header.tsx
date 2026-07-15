@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { nav, site } from "@/data/site";
+import { nav, serviceNavGroups, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -181,7 +181,27 @@ export function Header() {
                       </span>
                       {item.label}
                     </Link>
-                    {item.children ? (
+                    {item.label === "Services" ? (
+                      <div className="space-y-4 border-b border-line pb-4 pl-9 pt-1">
+                        {serviceNavGroups.map((group) => (
+                          <div key={group.title}>
+                            <p className="mb-1.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+                              {group.title}
+                            </p>
+                            {group.items.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setOpen(false)}
+                                className="block py-1.5 text-sm text-ink/55 hover:text-x-red"
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    ) : item.children ? (
                       <div className="border-b border-line pb-3 pl-9">
                         {item.children.map((child) => (
                           <Link

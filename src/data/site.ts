@@ -19,8 +19,7 @@ export const site = {
   email: "contact@formxconsultants.com",
   careerEmail: "career@formxconsultants.com",
   address: "Ahmedabad, Gujarat, India",
-  addressDetail:
-    "Replace with full office address — Ahmedabad, Gujarat, India",
+  addressDetail: "Ahmedabad, Gujarat, India",
   whatsapp: "918866136236",
   brochurePath: "/brochure/formx.pdf",
 };
@@ -63,6 +62,44 @@ export const nav: NavItem[] = [
   },
 ];
 
+/** Mobile mega-menu groupings */
+export const serviceNavGroups = [
+  {
+    title: "Architecture",
+    items: [
+      { label: "Architectural Design", href: "/services/architectural-design" },
+      { label: "Site Infrastructure", href: "/services/site-infrastructure" },
+      { label: "Sustainable Design", href: "/services/sustainable-design" },
+    ],
+  },
+  {
+    title: "Structure",
+    items: [
+      { label: "Structural Engineering", href: "/services/structural-engineering" },
+      { label: "Civil Engineering", href: "/services/civil-engineering" },
+    ],
+  },
+  {
+    title: "MEPF",
+    items: [
+      {
+        label: "Mechanical Utilities",
+        href: "/services/mechanical-utility-engineering",
+      },
+      { label: "HVAC Engineering", href: "/services/hvac-engineering" },
+      { label: "Electrical Engineering", href: "/services/electrical-engineering" },
+      { label: "Fire Protection", href: "/services/fire-protection-engineering" },
+    ],
+  },
+  {
+    title: "Delivery",
+    items: [
+      { label: "Project Management", href: "/services/project-management" },
+      { label: "All services", href: "/services" },
+    ],
+  },
+];
+
 export const heroLines = [
   "Trusted industrial engineering & design partner",
   "Integrated architecture, structure & MEPF delivery",
@@ -77,9 +114,9 @@ export const hero = {
   primaryCta: { label: "Book a consultation", href: "/contact" },
   secondaryCta: { label: "Explore our work", href: "/projects" },
   trust: [
-    { label: "120+ yrs", hint: "Cumulative experience" },
-    { label: "300+", hint: "Projects delivered" },
     { label: "Single window", hint: "Architecture to MEPF" },
+    { label: "Partner-led", hint: "Senior ownership" },
+    { label: "Site-ready", hint: "Concept through GFC" },
   ],
 };
 

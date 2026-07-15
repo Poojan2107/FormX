@@ -48,6 +48,36 @@ body {
   outline-offset: 3px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--x-red);
+  color: white;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 .font-display {
   font-family: var(--font-display);
   font-feature-settings: "kern" on;

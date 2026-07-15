@@ -23,7 +23,7 @@ export default function ServicesPage() {
         crumbs={[{ label: "Our Services" }]}
       />
 
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (

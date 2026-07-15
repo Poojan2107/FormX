@@ -1,11 +1,34 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { site } from "@/data/site";
 
+function messageForPath(path: string) {
+  if (path.startsWith("/services/")) {
+    const slug = path.split("/")[2]?.replace(/-/g, " ") || "a service";
+    return `Hello FormX — I'm enquiring about ${slug}.`;
+  }
+  if (path.startsWith("/projects/")) {
+    return `Hello FormX — I'd like to discuss a project similar to this case study.`;
+  }
+  if (path.startsWith("/sectors/")) {
+    const slug = path.split("/")[2]?.replace(/-/g, " ") || "this sector";
+    return `Hello FormX — I'm planning a facility in ${slug}.`;
+  }
+  if (path.startsWith("/career")) {
+    return `Hello FormX — I'm interested in career opportunities.`;
+  }
+  if (path.startsWith("/contact") || path === "/") {
+    return `Hello FormX — I'd like to discuss a facility project.`;
+  }
+  return `Hello FormX — I would like to discuss a project.`;
+}
+
 export function WhatsAppFloat() {
+  const pathname = usePathname() || "/";
   const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    "Hello FormX — I would like to discuss a project.",
+    messageForPath(pathname),
   )}`;
 
   return (
