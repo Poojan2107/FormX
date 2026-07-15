@@ -13,15 +13,15 @@ export function Logo({
   if (variant === "lockup") {
     return (
       <span
-        className={cn("relative inline-flex items-center", className)}
+        className={cn("relative inline-flex h-full w-full items-center", className)}
         aria-label="FormX Consultants"
       >
         <Image
           src="/formx-lockup.png"
           alt="FormX Consultants"
-          width={220}
-          height={72}
-          className="h-12 w-auto object-contain object-left md:h-14"
+          width={280}
+          height={96}
+          className="h-full w-auto max-h-full object-contain object-left"
           priority
         />
       </span>

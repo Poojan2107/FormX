@@ -60,18 +60,12 @@ export function Header() {
               : "border-line",
           )}
         >
-          <Container className="relative flex h-[72px] items-center justify-between gap-6 md:h-[78px]">
-            {/* Red brand corner mark */}
-            <span
-              className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-x-red md:w-[3px]"
-              aria-hidden
-            />
-            <span
-              className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-16 bg-x-red md:w-24"
-              aria-hidden
-            />
-
-            <Link href="/" className="relative z-10 shrink-0 pl-2" aria-label="FormX home">
+          <Container className="relative flex h-[76px] items-stretch justify-between gap-6 md:h-[84px]">
+            <Link
+              href="/"
+              className="relative z-10 flex shrink-0 items-center self-stretch border-l-[3px] border-b-[3px] border-x-red py-2 pl-3 pr-4 md:pl-4 md:pr-5"
+              aria-label="FormX home"
+            >
               <Logo variant="lockup" />
             </Link>
 
@@ -117,7 +111,7 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="relative z-10 hidden items-center gap-2 lg:flex">
+            <div className="relative z-10 hidden items-center gap-2 self-center lg:flex">
               <Link
                 href="/career"
                 className="px-3 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40 transition-colors hover:text-ink"
@@ -135,7 +129,7 @@ export function Header() {
 
             <button
               type="button"
-              className="relative z-10 inline-flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+              className="relative z-10 inline-flex size-10 items-center justify-center self-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -156,8 +150,10 @@ export function Header() {
             transition={{ duration: 0.2 }}
           >
             <div className="flex min-h-full flex-col px-5 pb-10 pt-28">
-              <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
-                <Logo variant="lockup" />
+              <div className="mb-6 flex h-16 items-center justify-between border-b border-line pb-4">
+                <div className="h-14 border-l-[3px] border-b-[3px] border-x-red py-1 pl-2 pr-3">
+                  <Logo variant="lockup" />
+                </div>
                 <button
                   type="button"
                   className="inline-flex size-10 items-center justify-center border border-line text-ink"

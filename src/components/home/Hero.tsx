@@ -13,12 +13,10 @@ import { hero, heroLines, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
-const letters = ["F", "o", "r", "m"] as const;
-
 export function Hero() {
   const reduce = useReducedMotion();
   const [lineIndex, setLineIndex] = useState(0);
-  const [phase, setPhase] = useState(0);
+  const [ready, setReady] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const mx = useMotionValue(0);
@@ -28,43 +26,45 @@ export function Hero() {
 
   useEffect(() => {
     if (reduce) {
-      setPhase(5);
+      setReady(true);
       return;
     }
-    const timers = [
-      window.setTimeout(() => setPhase(1), 60),
-      window.setTimeout(() => setPhase(2), 220),
-      window.setTimeout(() => setPhase(3), 420),
-      window.setTimeout(() => setPhase(4), 680),
-      window.setTimeout(() => setPhase(5), 980),
-    ];
-    return () => timers.forEach(clearTimeout);
+    const id = window.setTimeout(() => setReady(true), 120);
+    return () => clearTimeout(id);
   }, [reduce]);
 
   useEffect(() => {
-    if (reduce || phase < 5) return;
+    if (reduce || !ready) return;
     const id = window.setInterval(() => {
       setLineIndex((i) => (i + 1) % heroLines.length);
     }, 3600);
     return () => clearInterval(id);
-  }, [phase, reduce]);
+  }, [ready, reduce]);
 
   return (
     <section className="relative isolate overflow-hidden bg-white">
-      <div className="pointer-events-none absolute inset-0 pattern-grid opacity-30" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 pattern-grid opacity-25" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(720px 360px at 90% 0%, rgba(222,48,36,0.06), transparent 55%)",
+            "radial-gradient(720px 360px at 88% 8%, rgba(222,48,36,0.05), transparent 55%)",
         }}
         aria-hidden
       />
 
-      <Container className="relative grid items-center gap-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-14">
-        <div>
+      <Container className="relative grid items-center gap-8 py-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:py-14">
+        <div className="relative">
+          {/* Soft geometric X — brand factor without repeating lockup wordmark */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-4 top-0 select-none font-display text-[7rem] font-light leading-none text-x-red/[0.05] md:-right-8 md:text-[9rem]"
+          >
+            ×
+          </span>
+
           <motion.p
-            className="mb-3 font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red"
+            className="mb-4 font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red"
             initial={reduce ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
@@ -72,76 +72,25 @@ export function Hero() {
             {hero.eyebrow}
           </motion.p>
 
-          <div className="relative mb-4" aria-label="FormX">
-            <motion.span
-              aria-hidden
-              className="pointer-events-none absolute -left-1 -top-6 select-none font-display text-[5.5rem] font-extrabold leading-none text-x-red/[0.06] md:-top-8 md:text-[7rem]"
-              initial={reduce ? false : { opacity: 0 }}
-              animate={phase >= 4 ? { opacity: 1 } : { opacity: 0 }}
-            >
-              X
-            </motion.span>
-
-            <div className="relative flex items-end">
-              {letters.map((letter, i) => (
-                <motion.span
-                  key={letter + i}
-                  className="font-display text-[clamp(2.5rem,5.5vw,4.75rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-ink"
-                  initial={reduce ? false : { opacity: 0, y: 16 }}
-                  animate={phase > i ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-                  transition={{ duration: 0.15, ease: "linear" }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
-              <motion.span
-                className="relative font-display text-[clamp(2.5rem,5.5vw,4.75rem)] font-extrabold leading-[0.9] tracking-[-0.04em] text-x-red"
-                initial={reduce ? false : { opacity: 0, scale: 0.6, rotate: -10 }}
-                animate={
-                  phase >= 4
-                    ? { opacity: 1, scale: 1, rotate: 0 }
-                    : { opacity: 0, scale: 0.6, rotate: -10 }
-                }
-                transition={{ type: "spring", stiffness: 380, damping: 16 }}
-              >
-                X
-              </motion.span>
-            </div>
-
-            <motion.div
-              initial={reduce ? false : { opacity: 0 }}
-              animate={phase >= 5 ? { opacity: 1 } : { opacity: 0 }}
-              className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1"
-            >
-              <p className="font-display text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-ink">
-                Consultants
-              </p>
-              <span className="text-ink/15">·</span>
-              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink-muted">
-                Design <span className="text-x-red">|</span> Engineering
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Rotating claim — room for text + dual-tone progress below */}
-          <div className="mb-5 border-t border-line pt-4">
-            <div className="relative min-h-[3.25rem] sm:min-h-[3.5rem]">
+          {/* Claim is the hero headline — nav owns the FormX lockup */}
+          <div className="relative mb-5">
+            <div className="relative min-h-[5.5rem] sm:min-h-[6.25rem] lg:min-h-[7rem]">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={lineIndex}
-                  className="absolute inset-x-0 top-0 font-display text-[clamp(1.2rem,0.85rem+1.2vw,1.7rem)] font-bold leading-[1.28] tracking-[-0.02em] text-ink"
-                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  className="absolute inset-x-0 top-0 max-w-xl font-display text-[clamp(1.65rem,1.1rem+2vw,2.65rem)] font-semibold leading-[1.18] tracking-[-0.03em] text-ink"
+                  initial={reduce ? false : { opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={reduce ? undefined : { opacity: 0, y: -10 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  exit={reduce ? undefined : { opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {heroLines[lineIndex]}
                 </motion.h1>
               </AnimatePresence>
             </div>
 
-            <div className="mt-4 flex items-center gap-3">
-              <div className="relative h-[3px] w-14 overflow-hidden bg-ink" aria-hidden>
+            <div className="mt-5 flex items-center gap-3">
+              <div className="relative h-[3px] w-16 overflow-hidden bg-ink" aria-hidden>
                 <motion.span
                   key={lineIndex}
                   className="absolute inset-y-0 left-0 bg-x-red"
@@ -176,7 +125,7 @@ export function Hero() {
 
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={phase >= 5 ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.35 }}
           >
             <p className="max-w-xl text-[15px] leading-[1.7] text-ink-muted md:text-base">
@@ -220,7 +169,7 @@ export function Hero() {
             transformStyle: "preserve-3d",
           }}
           initial={reduce ? false : { opacity: 0, x: 24 }}
-          animate={phase >= 3 ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
+          animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           onMouseMove={(e) => {
             if (reduce || !panelRef.current) return;
@@ -235,13 +184,7 @@ export function Hero() {
         >
           <div className="absolute inset-0 pattern-grid-dark opacity-60" />
           <div className="absolute inset-0 pattern-stripe opacity-25" />
-          <motion.div
-            className="absolute inset-y-0 left-0 w-1 bg-x-red"
-            initial={reduce ? false : { scaleY: 0 }}
-            animate={phase >= 4 ? { scaleY: 1 } : { scaleY: 0 }}
-            transition={{ duration: 0.35, ease: "linear" }}
-            style={{ transformOrigin: "top" }}
-          />
+          <div className="absolute inset-y-0 left-0 w-1 bg-x-red" />
 
           <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-7">
             <div className="flex items-start justify-between">
@@ -253,7 +196,7 @@ export function Hero() {
                   Layout · Structure · Utilities
                 </p>
               </div>
-              <span className="font-display text-3xl font-extrabold text-x-red">X</span>
+              <span className="font-display text-3xl font-light text-x-red">×</span>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -267,8 +210,8 @@ export function Hero() {
                   key={card.t}
                   className="border border-white/10 bg-white/[0.04] p-3 transition-colors hover:border-x-red/45"
                   initial={reduce ? false : { opacity: 0, y: 10 }}
-                  animate={phase >= 5 ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ delay: 0.12 + i * 0.07, duration: 0.25 }}
+                  animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ delay: 0.08 + i * 0.06, duration: 0.25 }}
                 >
                   <p className="font-display text-[11px] font-bold tracking-wide text-white">
                     {card.t}
@@ -279,10 +222,10 @@ export function Hero() {
             </div>
 
             <div>
-              <p className="font-display text-3xl font-extrabold tracking-[-0.03em] text-white md:text-4xl">
-                Form<span className="text-x-red">X</span>
+              <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+                Single-window delivery
               </p>
-              <p className="mt-1.5 max-w-xs text-sm leading-relaxed text-white/50">
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/50">
                 Coordinated industrial design — concept through site.
               </p>
             </div>
