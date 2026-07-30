@@ -2,6 +2,7 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string;
+  highlights?: string[];
   asset: string;
   linkedin?: string;
   featured?: boolean;
@@ -10,8 +11,15 @@ export type TeamMember = {
 export const leadership: TeamMember[] = [
   {
     name: "Hiren J. Shah",
-    role: "Founder & Managing Director",
-    bio: "Multidisciplinary design leader with extensive experience driving architectural planning, structural engineering, civil infrastructure, and MEP delivery across industrial manufacturing plants, commercial, and institutional projects in India.",
+    role: "Co-Founder & Managing Partner",
+    bio: "Co-Founder & Managing Partner of FormX Consultants LLP. Leading multidisciplinary engineering design focused on industrial, commercial, and building projects. Specialising in RCC & steel structural design, PEB support, and value engineering.",
+    highlights: [
+      "RCC & Steel Structural Design",
+      "Industrial & Greenfield Plants",
+      "PEB Design Support & Consultancy",
+      "Value Engineering & Optimization",
+      "Concept-to-Execution Stage Oversight",
+    ],
     asset: "team/hiren-j-shah.jpg",
     linkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     featured: true,
@@ -57,33 +65,75 @@ export type BlogPost = {
 
 export const blogs: BlogPost[] = [
   {
+    slug: "skeleton-behind-successful-buildings",
+    category: "Structural Design",
+    date: "July 28, 2026",
+    title: "The skeleton behind every successful building: Safe, economical, practical",
+    excerpt:
+      "People remember a building by its face. A building stands because of its skeleton. How thoughtful engineering turns concepts into buildable, long-term structures.",
+    author: "Hiren J. Shah",
+    authorRole: "Co-Founder & Managing Partner, FormX",
+    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
+    asset: "insights/policy.jpg",
+    body: [
+      "People remember a building by its face. A building stands because of its skeleton.",
+      "Every great building begins with a vision. But behind every beautiful structure lies something equally important — a strong, safe, and reliable structural system.",
+      "At FormX Consultants, we specialise in delivering structural engineering solutions that are safe (designs that ensure structural stability), economical (optimized designs that save cost), and practical (buildable solutions for smooth site execution).",
+      "We partner with architects, builders, developers, industries, and PEB manufacturers to transform concepts into structures that are efficient, buildable, and designed for long-term performance.",
+      "Our core expertise includes RCC Structural Design, Steel Structure Design, Industrial Buildings, Commercial Buildings, Residential Projects, PEB Design Support, and Structural Consultancy.",
+      "We believe that successful projects are not built by drawings alone. They are built through thoughtful engineering, practical solutions, and strong collaboration.",
+    ],
+  },
+  {
+    slug: "seismic-structural-resilience-failures",
+    category: "Earthquake Engineering",
+    date: "July 12, 2026",
+    title: "3 structural failures every engineer must know & how India must prepare",
+    excerpt:
+      "A technical journal on ground motion, seismic resilience, IS 1893 compliance, and building code lessons for structural engineers.",
+    author: "Hiren J. Shah",
+    authorRole: "Co-Founder & Managing Partner, FormX",
+    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
+    asset: "insights/power.jpg",
+    body: [
+      "Seismic events do not grade on intention. They grade strictly on what we built.",
+      "Reflecting on recent seismic events along subduction zones, three common structural failure patterns emerge:",
+      "1. Essential facilities non-operational: Hospitals evacuated patients onto the street on the day they were needed most. Seismic codes demand essential facilities stay operational.",
+      "2. Unreinforced masonry & condemned structures: Buildings that had been officially condemned or lacked proper seismic detailing failing under lateral forces.",
+      "3. Lack of ductile detailing: Unreinforced walls and improper column joint laps initiating progressive collapse under lateral loads.",
+      "Why India must care: The Makran Subduction Zone off the Gujarat coast and active faults across Zones III-V carry similar lateral vulnerabilities. Our hospitals, schools, industrial plants, and bridges must be engineered with ductile detailing and IS 1893 compliance.",
+      "At FormX, every structural package undergoes ground motion, ductility, and lateral drift verification so structures protect life and remain functional when it matters most.",
+    ],
+  },
+  {
     slug: "column-splice-beam-joint-detailing",
     category: "Site Learning",
-    date: "July 24, 2026",
-    title: "Site Learning: Why column splices at beam-column joints risk failure",
+    date: "June 24, 2026",
+    title: "Site Learning: Why column splices at beam-column joints risk structural failure",
     excerpt:
       "IS 13920 detailing lessons: lap splices placed at high-stress beam-column joints limit bar strength under seismic and lateral loads.",
     author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
+    authorRole: "Co-Founder & Managing Partner, FormX",
     authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     asset: "insights/column-splice.jpg",
     body: [
-      "During a recent bar bending schedule review prior to fabrication, our structural team caught a column lap splice placed directly at the beam-column joint — the highest stress zone in the entire frame.",
+      "A structural failure rarely starts with a dramatic mistake. More often, it begins with a small detailing decision that goes unnoticed.",
+      "During a routine review of a bar bending schedule, we identified a column splice located exactly where it should never be — at the beam-column joint.",
+      "The quantities were correct, the lap lengths were provided, and everything looked acceptable at first glance. But one critical detailing principle had been missed.",
       "IS 13920 and standard structural detailing practice are clear: lap splices in columns should be placed in the middle third of the column height away from the joint, away from the zone of maximum moment and seismic demand.",
       "When a splice lands at the joint, the bar cannot develop its full strength at the point where the structure needs it most. Under a seismic event or heavy lateral load, that's where failure initiates.",
-      "Why does this happen? Bar schedules are often prepared by fabricators working from span lengths, not from structural detailing intent. No one catches it until it's already bent and on site — or worse, already cast.",
-      "At FormX, our structural engineering team reviews BBS and construction documentation before cutting and pouring. Simple on paper, but expensive if caught after concreting.",
+      "Catching this issue before fabrication saved rework, delays, and potential performance concerns. Good structural design is not only about calculations — it is about ensuring every detail is placed where the structure can perform as intended.",
     ],
   },
   {
     slug: "ev-battery-facility-planning",
     category: "Design Process",
-    date: "July 5, 2026",
+    date: "June 5, 2026",
     title: "What to lock early for battery & EV manufacturing facilities",
     excerpt:
       "Architectural zoning, fire strategy, electrical capacity, and utility corridors that protect schedule on complex greenfield plants.",
     author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
+    authorRole: "Co-Founder & Managing Partner, FormX",
     authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     asset: "insights/ev-battery.jpg",
     body: [
@@ -97,12 +147,12 @@ export const blogs: BlogPost[] = [
   {
     slug: "industrial-policy-plant-design",
     category: "Industry Trends",
-    date: "July 1, 2026",
+    date: "May 18, 2026",
     title: "Industrial investment signals and what they mean for plant design",
     excerpt:
       "A practical read for promoters evaluating manufacturing investments and facility planning priorities.",
     author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
+    authorRole: "Co-Founder & Managing Partner, FormX",
     authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     asset: "insights/policy.jpg",
     body: [
@@ -113,72 +163,20 @@ export const blogs: BlogPost[] = [
     ],
   },
   {
-    slug: "power-infrastructure-manufacturing",
-    category: "Electrical Engineering",
-    date: "May 28, 2026",
-    title: "Power infrastructure planning for manufacturing facilities",
-    excerpt:
-      "Distribution, redundancy, and layout choices that keep operations dependable as capacity scales.",
-    author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
-    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
-    asset: "insights/power.jpg",
-    body: [
-      "Manufacturing uptime is often an electrical story. Load lists that ignore diversity or future bays force costly retrofit of substations and cable routing.",
-      "Early SLD thinking should define HT/LT hierarchy, redundancy ambitions, and maintainable access to switchgear — coordinated with architecture so electrical rooms are not an afterthought.",
-      "Lighting, earthing, lightning protection, and backup power must track process criticality. Different areas do not share the same failure consequence — design should show that difference clearly.",
-      "FormX electrical packages emphasise clarity for contractors: single-line diagrams that match layouts, schedules that match procurement, and site clarification notes that close loops quickly.",
-    ],
-  },
-  {
     slug: "water-conservation-industrial",
     category: "Sustainable Design",
-    date: "May 12, 2026",
+    date: "May 2, 2026",
     title: "Water efficiency in industrial facility design",
     excerpt:
       "Practical planning concepts that reduce demand and support long-term operations without bloating project budget.",
     author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
+    authorRole: "Co-Founder & Managing Partner, FormX",
     authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     asset: "insights/water.jpg",
     body: [
       "Industrial water strategy starts with demand mapping — process, domestic, landscaping, and fire — then decides where recycle, rainwater, and efficient fixtures actually move the needle.",
       "Site civil and infrastructure design (grading, drains, storage) either enables reuse or wastes the opportunity. Plant-room allocation for treatment equipment must be reserved in concept plans.",
       "Sustainability measures survive when they are embedded in base design documents, not appended as a late checklist. FormX tracks water and energy measures inside the same coordinated documentation used for MEP clash checks.",
-    ],
-  },
-  {
-    slug: "clash-free-utility-coordination",
-    category: "Design Process",
-    date: "April 20, 2026",
-    title: "Clash-free utility coordination before construction starts",
-    excerpt:
-      "How coordinated mechanical, electrical, and fire junctions reduce site delays for multi-service industrial buildings.",
-    author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
-    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
-    asset: "insights/clash.jpg",
-    body: [
-      "Most site delays blamed on execution began as unresolved junctions in design. Multi-service ceilings and shafts need deliberate ownership: who leads the corridor, what is primary, what yields.",
-      "FormX coordinates mechanical utilities, HVAC, electrical, and fire protection with architecture and structure — enlarging critical junctions and access envelopes before duct fabrication and before pouring.",
-      "The deliverable is not a pretty model alone; it is a set of decisions documented early enough that BOQs and shop drawings inherit the same geometry. That is how coordinated consultancy protects client schedule.",
-    ],
-  },
-  {
-    slug: "industrial-park-master-planning",
-    category: "Site Infrastructure",
-    date: "March 8, 2026",
-    title: "What good industrial park infrastructure gets right",
-    excerpt:
-      "Plot logic, corridor planning, and phased external development that keep campuses investable and operable.",
-    author: "Hiren J. Shah",
-    authorRole: "Founder & Managing Director, FormX",
-    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
-    asset: "insights/park.jpg",
-    body: [
-      "Industrial parks succeed when shared infrastructure anticipates future occupants without overbuilding day-one capex. Right-of-way for roads, drains, power, and utilities must be generous and protected.",
-      "Plot depth, truck courts, and setbacks define which industries can actually land. Marketing drawings that ignore logistics create empty plots with poor yield.",
-      "FormX site infrastructure and civil packages link land use to engineered corridors and phased trunk works — so promoters can sell plots with credible utility stories and builders can execute without rewriting the campus every year.",
     ],
   },
 ];

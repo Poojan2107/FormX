@@ -189,27 +189,46 @@ export default function AboutPage() {
           {/* Featured Founder Spotlight Card */}
           {leadership.filter((p) => p.featured).map((founder) => (
             <Reveal key={founder.name} delay={0.04}>
-              <div className="formx-cut-x formx-edge formx-edge-x mt-10 border border-line bg-[#1a1a1a] p-6 text-white md:p-8 lg:p-10">
-                <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
-                  {/* Founder avatar badge */}
-                  <div className="formx-cut-lg flex size-28 shrink-0 items-center justify-center bg-x-red font-display text-3xl font-bold text-white shadow-[0_8px_32px_rgba(222,48,36,0.3)] md:size-36 md:text-4xl">
-                    HJS
+              <div className="mt-10 border border-line bg-[#1a1a1a] p-6 text-white md:p-8 lg:p-10">
+                <div className="grid gap-8 lg:grid-cols-[220px_1fr] lg:items-center lg:gap-10">
+                  {/* Founder photo */}
+                  <div className="overflow-hidden border border-white/10 shadow-[0_8px_32px_rgba(222,48,36,0.25)]">
+                    <AssetImage
+                      alt={founder.name}
+                      slot={founder.asset}
+                      kind="team"
+                      aspect="portrait"
+                      tone="light"
+                      label="Management"
+                      caption={founder.name}
+                    />
                   </div>
 
                   <div className="flex flex-col justify-between">
                     <div>
                       <span className="inline-block border border-x-red/40 bg-x-red/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
-                        Founder & Managing Director
+                        {founder.role}
                       </span>
                       <h3 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
                         {founder.name}
                       </h3>
-                      <p className="mt-4 max-w-3xl text-[15px] leading-[1.8] text-white/70 md:text-base">
+                      <p className="mt-3 max-w-3xl text-[14px] leading-[1.8] text-white/70 md:text-[15px]">
                         {founder.bio}
                       </p>
+
+                      {founder.highlights ? (
+                        <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                          {founder.highlights.map((h) => (
+                            <li key={h} className="flex items-center gap-2.5 text-[12px] text-white/80">
+                              <span className="size-1.5 rotate-45 bg-x-red" />
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                     </div>
 
-                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                    <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
                       {founder.linkedin ? (
                         <a
                           href={founder.linkedin}
