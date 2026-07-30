@@ -57,6 +57,25 @@ export type BlogPost = {
 
 export const blogs: BlogPost[] = [
   {
+    slug: "column-splice-beam-joint-detailing",
+    category: "Site Learning",
+    date: "July 24, 2026",
+    title: "Site Learning: Why column splices at beam-column joints risk failure",
+    excerpt:
+      "IS 13920 detailing lessons: lap splices placed at high-stress beam-column joints limit bar strength under seismic and lateral loads.",
+    author: "Hiren J. Shah",
+    authorRole: "Founder & Managing Director, FormX",
+    authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
+    asset: "insights/column-splice.jpg",
+    body: [
+      "During a recent bar bending schedule review prior to fabrication, our structural team caught a column lap splice placed directly at the beam-column joint — the highest stress zone in the entire frame.",
+      "IS 13920 and standard structural detailing practice are clear: lap splices in columns should be placed in the middle third of the column height away from the joint, away from the zone of maximum moment and seismic demand.",
+      "When a splice lands at the joint, the bar cannot develop its full strength at the point where the structure needs it most. Under a seismic event or heavy lateral load, that's where failure initiates.",
+      "Why does this happen? Bar schedules are often prepared by fabricators working from span lengths, not from structural detailing intent. No one catches it until it's already bent and on site — or worse, already cast.",
+      "At FormX, our structural engineering team reviews BBS and construction documentation before cutting and pouring. Simple on paper, but expensive if caught after concreting.",
+    ],
+  },
+  {
     slug: "ev-battery-facility-planning",
     category: "Design Process",
     date: "July 5, 2026",

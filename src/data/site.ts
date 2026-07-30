@@ -22,6 +22,8 @@ export const site = {
   addressDetail: "Ahmedabad, Gujarat, India",
   whatsapp: "918866136236",
   brochurePath: "/brochure/formx.pdf",
+  linkedinCompany: "https://www.linkedin.com/company/formx-consultants-llp/",
+  hirenLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
 };
 
 export type NavChild = { label: string; href: string };

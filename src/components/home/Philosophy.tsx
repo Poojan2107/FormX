@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 const collab = [
   "Cross-functional expertise",
@@ -36,11 +36,13 @@ export function Philosophy() {
               ))}
             </div>
             <div className="mt-10 hidden md:block">
-              <PlaceholderMedia
+              <AssetImage
+                slot="about/manifesto.jpg"
+                alt="FormX Manifesto — Better Engineering Standard"
+                kind="studio"
                 aspect="wide"
-                tone="light"
-                label="Philosophy visual"
-                caption="Integrated thinking, practical outcomes"
+                label="FormX Standard"
+                caption="Engineering clarity over confusion"
               />
             </div>
           </Reveal>
