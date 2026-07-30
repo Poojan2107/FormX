@@ -128,11 +128,11 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* Challenge / Approach / Outcome */}
       <section className="bg-white py-14 md:py-20">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
+          <div className="grid gap-6 lg:grid-cols-3 lg:gap-8 items-stretch">
             {/* Challenge */}
-            <Reveal>
-              <div className="formx-cut-x formx-edge formx-edge-x h-full border border-line bg-white p-6 md:p-8">
-                <p className="mb-4 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+            <Reveal className="h-full">
+              <div className="flex h-full flex-col border border-line border-t-4 border-t-x-red bg-white p-6 md:p-8">
+                <p className="mb-3 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
                   01 — Challenge
                 </p>
                 <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
@@ -145,24 +145,24 @@ export default async function ProjectDetailPage({ params }: Props) {
             </Reveal>
 
             {/* Approach */}
-            <Reveal delay={0.06}>
-              <div className="formx-cut-x formx-edge formx-edge-x h-full border border-line bg-[#1a1a1a] p-6 text-white md:p-8">
-                <p className="mb-4 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+            <Reveal delay={0.06} className="h-full">
+              <div className="flex h-full flex-col border border-line border-t-4 border-t-x-red bg-[#1a1a1a] p-6 text-white md:p-8">
+                <p className="mb-3 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
                   02 — Approach
                 </p>
                 <h2 className="font-display text-xl font-bold uppercase tracking-tight text-white">
                   Our response
                 </h2>
-                <p className="mt-4 text-[14px] leading-[1.8] text-white/60">
+                <p className="mt-4 text-[14px] leading-[1.8] text-white/65">
                   {project.approach}
                 </p>
               </div>
             </Reveal>
 
             {/* Outcome */}
-            <Reveal delay={0.12}>
-              <div className="formx-cut-x formx-edge formx-edge-x h-full border border-line bg-white p-6 md:p-8">
-                <p className="mb-4 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+            <Reveal delay={0.12} className="h-full">
+              <div className="flex h-full flex-col border border-line border-t-4 border-t-x-red bg-white p-6 md:p-8">
+                <p className="mb-3 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
                   03 — Outcome
                 </p>
                 <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
@@ -171,7 +171,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <p className="mt-4 text-[14px] leading-[1.8] text-ink-muted">
                   {project.outcome}
                 </p>
-                <ul className="mt-5 space-y-2.5">
+                <ul className="mt-5 space-y-2.5 border-t border-line/60 pt-4">
                   {project.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2.5">
                       <Check className="mt-0.5 size-3.5 shrink-0 text-x-red" />

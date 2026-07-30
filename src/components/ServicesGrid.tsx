@@ -37,6 +37,13 @@ const categoryColors: Record<string, string> = {
   delivery: "bg-purple-50 text-purple-700 border-purple-200",
 };
 
+const categoryBorders: Record<string, string> = {
+  architecture: "border-t-blue-500",
+  structure: "border-t-amber-500",
+  mep: "border-t-emerald-500",
+  delivery: "border-t-purple-500",
+};
+
 const categoryLabels: Record<string, string> = {
   architecture: "Architecture",
   structure: "Structure & Civil",
@@ -109,15 +116,20 @@ export function ServicesGrid() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col overflow-hidden border border-line bg-white transition-all hover:border-x-red/35 hover:shadow-[0_12px_40px_rgba(222,48,36,0.06)]"
+                className={cn(
+                  "group flex h-full flex-col overflow-hidden border border-line border-t-4 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]",
+                  categoryBorders[cat] ?? "border-t-line",
+                )}
               >
-                <AssetImage
-                  alt={service.title}
-                  slot={service.asset}
-                  kind="service"
-                  aspect="landscape"
-                  className="w-full"
-                />
+                <div className="relative overflow-hidden">
+                  <AssetImage
+                    alt={service.title}
+                    slot={service.asset}
+                    kind="service"
+                    aspect="landscape"
+                    className="w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
                 <div className="flex flex-1 flex-col p-6 md:p-7">
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <span className="font-display text-[11px] font-bold text-x-red">
@@ -126,13 +138,13 @@ export function ServicesGrid() {
                     <div className="flex items-center gap-2">
                       <span
                         className={cn(
-                          "border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]",
+                          "border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]",
                           categoryColors[cat] ?? "",
                         )}
                       >
                         {categoryLabels[cat]}
                       </span>
-                      <ArrowUpRight className="size-4 text-ink/25 group-hover:text-x-red" />
+                      <ArrowUpRight className="size-4 text-ink/25 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
                     </div>
                   </div>
                   <h2 className="font-display text-xl font-bold uppercase text-ink">
@@ -143,19 +155,19 @@ export function ServicesGrid() {
                   </p>
 
                   {/* Highlights preview */}
-                  <ul className="mt-4 space-y-1.5">
+                  <ul className="mt-5 space-y-2 border-t border-line/60 pt-4">
                     {service.highlights.slice(0, 3).map((h) => (
                       <li
                         key={h}
                         className="flex items-start gap-2 text-[12px] text-ink-muted"
                       >
-                        <Check className="mt-0.5 size-3 shrink-0 text-x-red" />
+                        <Check className="mt-0.5 size-3.5 shrink-0 text-x-red" />
                         {h}
                       </li>
                     ))}
                   </ul>
 
-                  <span className="mt-auto pt-6 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="mt-auto pt-6 inline-flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red opacity-0 transition-opacity group-hover:opacity-100">
                     View service →
                   </span>
                 </div>
