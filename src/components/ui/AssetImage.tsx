@@ -18,7 +18,7 @@ type Kind =
 /**
  * Handover-ready media slot.
  * Drop file at /public/assets/{slot} — it loads automatically.
- * Until then, a content-aware placeholder is shown.
+ * Until then, a content-aware placeholder is shown cleanly.
  */
 export function AssetImage({
   src,
@@ -34,7 +34,7 @@ export function AssetImage({
 }: {
   src?: string | null;
   alt: string;
-  /** e.g. "projects/solar-module-cover.jpg" under /public/assets/ */
+  /** e.g. "services/architecture.jpg" under /public/assets/ */
   slot?: string;
   label?: string;
   caption?: string;
@@ -72,6 +72,7 @@ export function AssetImage({
           alt={alt}
           fill
           priority={priority}
+          unoptimized
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"
           onError={() => setFailed(true)}
@@ -88,7 +89,7 @@ export function AssetImage({
   return (
     <PlaceholderMedia
       label={label}
-      caption={caption ?? (slot ? `Drop file → assets/${slot}` : undefined)}
+      caption={caption}
       kind={kind === "team" || kind === "client" ? "studio" : kind}
       aspect={aspect}
       tone={tone}
