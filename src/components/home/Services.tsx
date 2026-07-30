@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -58,46 +58,103 @@ export function Services() {
         </Reveal>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <Reveal key={service.slug} delay={0.04 * (i % 3)} className="h-full">
-              <div className={`group relative flex h-full flex-col overflow-hidden border border-line border-t-4 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)] ${categoryBorders[service.slug] ?? "border-t-line"}`}>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="flex flex-1 flex-col"
-                >
-                  <div className="relative overflow-hidden">
-                    <AssetImage
-                      alt={service.title}
-                      slot={service.asset}
-                      kind="service"
-                      aspect="landscape"
-                      className="w-full transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
+          {services.map((service, i) => {
+            const isTenth = i === 9;
 
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-3.5 flex items-start justify-between gap-4">
-                      <span
-                        className={`inline-block border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] ${categoryBadgeColors[service.slug] ?? ""}`}
-                      >
-                        {categoryLabels[service.slug]}
-                      </span>
-                      <ArrowUpRight className="size-4 shrink-0 text-ink/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
-                    </div>
-                    <h3 className="font-display text-base font-bold leading-snug tracking-tight text-ink md:text-lg">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
-                      {service.short}
-                    </p>
-                    <span className="mt-auto pt-6 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-x-red opacity-0 transition-opacity group-hover:opacity-100">
-                      View service →
-                    </span>
+            if (isTenth) {
+              return (
+                <Reveal key={service.slug} delay={0.04 * (i % 3)} className="h-full lg:col-span-3">
+                  <div className="group relative flex h-full flex-col overflow-hidden border border-line border-t-4 border-t-purple-500 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_20px_50px_rgba(222,48,36,0.1)] lg:grid lg:grid-cols-[1.1fr_1.9fr]">
+                    <Link href={`/services/${service.slug}`} className="contents">
+                      <div className="relative min-h-[220px] overflow-hidden lg:min-h-[100%]">
+                        <AssetImage
+                          alt={service.title}
+                          slot={service.asset}
+                          kind="service"
+                          aspect="landscape"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                        <span className="absolute left-4 top-4 border border-purple-200 bg-purple-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
+                          Featured Delivery Discipline
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col justify-between p-6 md:p-8 lg:p-10">
+                        <div>
+                          <div className="mb-3.5 flex items-center justify-between gap-4">
+                            <span className="inline-block border border-purple-200 bg-purple-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
+                              {categoryLabels[service.slug]}
+                            </span>
+                            <ArrowUpRight className="size-5 text-ink/25 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-x-red" />
+                          </div>
+                          <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-ink md:text-2xl">
+                            {service.title}
+                          </h3>
+                          <p className="mt-3 text-[14px] leading-[1.75] text-ink-muted">
+                            {service.short}
+                          </p>
+                          <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-4">
+                            {service.highlights.map((h) => (
+                              <li key={h} className="flex items-start gap-2.5 text-[12px] text-ink-muted">
+                                <ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-x-red" />
+                                {h}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="mt-8 flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.12em] text-x-red">
+                          Explore project management scope
+                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-            </Reveal>
-          ))}
+                </Reveal>
+              );
+            }
+
+            return (
+              <Reveal key={service.slug} delay={0.04 * (i % 3)} className="h-full">
+                <div className={`group relative flex h-full flex-col overflow-hidden border border-line border-t-4 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)] ${categoryBorders[service.slug] ?? "border-t-line"}`}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="flex flex-1 flex-col"
+                  >
+                    <div className="relative overflow-hidden">
+                      <AssetImage
+                        alt={service.title}
+                        slot={service.asset}
+                        kind="service"
+                        aspect="landscape"
+                        className="w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="mb-3.5 flex items-start justify-between gap-4">
+                        <span
+                          className={`inline-block border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] ${categoryBadgeColors[service.slug] ?? ""}`}
+                        >
+                          {categoryLabels[service.slug]}
+                        </span>
+                        <ArrowUpRight className="size-4 shrink-0 text-ink/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
+                      </div>
+                      <h3 className="font-display text-base font-bold leading-snug tracking-tight text-ink md:text-lg">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
+                        {service.short}
+                      </p>
+                      <span className="mt-auto pt-6 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-x-red opacity-0 transition-opacity group-hover:opacity-100">
+                        View service →
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </Container>
     </section>
