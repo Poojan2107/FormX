@@ -171,6 +171,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Leadership & Founder Spotlight */}
       <section className="bg-white py-16 md:py-24">
         <Container>
           <Reveal>
@@ -181,33 +182,77 @@ export default function AboutPage() {
               Partners close to the work
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] text-ink-muted">
-              Senior practice directors leading architectural planning, structural systems, MEP engineering, and project delivery.
+              Led by Founder & Managing Director Hiren J. Shah alongside senior practice partners overseeing architecture, structural systems, MEP engineering, and project execution.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((person, i) => (
-              <Reveal key={person.role} delay={0.04 * i}>
-                <article className="formx-cut-x formx-edge formx-edge-x border border-line bg-white">
-                  <AssetImage
-                    alt={person.name}
-                    slot={person.asset}
-                    kind="team"
-                    aspect="square"
-                    tone="light"
-                    label="Portrait"
-                    caption={person.role}
-                  />
-                  <div className="p-5">
-                    <h3 className="font-display text-base font-bold text-ink">
-                      {person.name}
-                    </h3>
-                    <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red">
-                      {person.role}
-                    </p>
-                    <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
-                      {person.bio}
-                    </p>
+
+          {/* Featured Founder Spotlight Card */}
+          {leadership.filter((p) => p.featured).map((founder) => (
+            <Reveal key={founder.name} delay={0.04}>
+              <div className="formx-cut-x formx-edge formx-edge-x mt-10 border border-line bg-[#1a1a1a] p-6 text-white md:p-8 lg:p-10">
+                <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
+                  {/* Founder avatar badge */}
+                  <div className="formx-cut-lg flex size-28 shrink-0 items-center justify-center bg-x-red font-display text-3xl font-bold text-white shadow-[0_8px_32px_rgba(222,48,36,0.3)] md:size-36 md:text-4xl">
+                    HJS
                   </div>
+
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <span className="inline-block border border-x-red/40 bg-x-red/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                        Founder & Managing Director
+                      </span>
+                      <h3 className="mt-3 font-display text-2xl font-bold text-white md:text-3xl">
+                        {founder.name}
+                      </h3>
+                      <p className="mt-4 max-w-3xl text-[15px] leading-[1.8] text-white/70 md:text-base">
+                        {founder.bio}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                      {founder.linkedin ? (
+                        <a
+                          href={founder.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2.5 border border-white/20 bg-white/10 px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-all hover:border-x-red hover:bg-x-red hover:text-white"
+                        >
+                          <svg className="size-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                          </svg>
+                          Connect on LinkedIn
+                        </a>
+                      ) : null}
+                      <span className="text-[12px] text-white/40">
+                        Ahmedabad, Gujarat · India
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+
+          {/* Practice Leads Grid */}
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {leadership.filter((p) => !p.featured).map((person, i) => (
+              <Reveal key={person.role} delay={0.04 * i}>
+                <article className="formx-cut-x formx-edge formx-edge-x flex h-full flex-col border border-line bg-white p-5 md:p-6">
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="font-display text-[11px] font-bold tracking-[0.16em] text-x-red">
+                      0{i + 1}
+                    </span>
+                    <span className="size-1.5 rotate-45 bg-x-red/40" />
+                  </div>
+                  <h3 className="font-display text-base font-bold text-ink">
+                    {person.name}
+                  </h3>
+                  <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red">
+                    {person.role}
+                  </p>
+                  <p className="mt-3 flex-1 text-[13px] leading-relaxed text-ink-muted">
+                    {person.bio}
+                  </p>
                 </article>
               </Reveal>
             ))}
