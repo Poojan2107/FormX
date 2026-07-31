@@ -21,8 +21,25 @@ All media uses `AssetImage` with documented **slots**.
 | News | `/public/assets/news/*` |
 | Team | `/public/assets/team/*` |
 | Clients | `/public/assets/clients/*` |
-| About | `/public/assets/about/*` |
 | Brochure PDF | `/public/brochure/formx.pdf` |
+
+### Exact drop-in list (slots currently missing a file)
+
+Missing files render a branded placeholder automatically — no 404s. Drop the real files at the paths below to go live.
+
+| Area | Slots needed |
+|------|--------------|
+| Insights | `ev-battery.jpg` · `policy.jpg` · `power.jpg` · `water.jpg` |
+| News | `careers.jpg` · `expansion.jpg` · `greenfield.jpg` |
+| Sectors | `cable.jpg` · `ev.jpg` · `food.jpg` · `packaging.jpg` |
+| Team | `partner-architecture.jpg` · `partner-structures.jpg` · `partner-mepf.jpg` · `partner-delivery.jpg` |
+| Clients | `adani.svg` · `alstom.svg` · `cello.svg` · `constantia.svg` · `duravit.svg` · `hitachi.svg` · `mccain.svg` · `metso.svg` · `mg.svg` · `rapiscan.svg` · `renew.svg` · `sael.svg` · `siemens.svg` · `uflex.svg` · `voltbek.svg` · `waghbakri.svg` |
+
+Already present (no action): all `projects/*`, all `services/*`, `about/*`, `insights/column-splice.jpg`, sectors `battery|data-center|industrial-park|renewable|semiconductor|solar-cell|solar-glass|wind-blade`, `team/hiren-j-shah.jpg`, `brochure/formx.pdf`.
+
+Notes:
+- Client logos are defined in `src/data/site.ts` but the `/clients` page currently shows text names. Wire a logo wall once the SVGs are provided.
+- Team partner photos are optional — the About "practice leads" grid is text-only today.
 
 ### Wire an image after drop-in
 
