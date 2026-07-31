@@ -32,10 +32,10 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Masterpiece Architectural Split Showcase — Full-Bleed Edge-to-Edge Visual Stage */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 items-stretch">
+        {/* Masterpiece Editorial Split Showcase — Full Portrait Uncropped Image Panel */}
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-8 items-stretch">
 
-          {/* LEFT: Full-Bleed High-Impact Stage (Edge-to-Edge, Top-Aligned) */}
+          {/* LEFT: Side-by-Side Editorial Stage (Full Uncropped Portrait Image + Scope Details) */}
           <Reveal className="w-full h-full">
             <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
@@ -45,10 +45,10 @@ export function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex h-full flex-col justify-between"
+                  className="flex h-full flex-col md:flex-row"
                 >
-                  {/* Full-Bleed Edge-to-Edge Image Container — Zero White Side Margins, Top-Aligned */}
-                  <div className="relative h-[300px] sm:h-[360px] md:h-[400px] w-full overflow-hidden bg-[#111111] border-b border-line">
+                  {/* Left Column: Full-Height Portrait Image Panel — 100% Uncropped Source Display */}
+                  <div className="relative w-full md:w-[46%] min-h-[360px] md:min-h-[460px] bg-[#111111] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
@@ -56,7 +56,7 @@ export function Services() {
                       aspect="auto"
                       fit="cover"
                       tone="dark"
-                      className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     />
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
                       <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
@@ -65,21 +65,24 @@ export function Services() {
                     </div>
                   </div>
 
-                  {/* Stage Info Body */}
+                  {/* Right Column: Scope Details Body */}
                   <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white">
                     <div>
-                      <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
+                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                        FormX Scope Package
+                      </span>
+                      <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
                         {currentService.title}
                       </h3>
-                      <p className="mt-3 text-[14px] leading-[1.8] text-ink-muted md:text-[15px]">
+                      <p className="mt-3 text-[13px] leading-[1.75] text-ink-muted md:text-[14px]">
                         {currentService.summary}
                       </p>
 
-                      <div className="mt-5 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-4">
+                      <div className="mt-5 space-y-2 border-t border-line/60 pt-4">
                         {currentService.highlights.slice(0, 4).map((h) => (
-                          <div key={h} className="flex items-center gap-2 text-[12px] font-semibold text-ink">
+                          <div key={h} className="flex items-center gap-2.5 text-[12px] font-semibold text-ink">
                             <Check className="size-3.5 text-x-red shrink-0" />
-                            <span className="truncate">{h}</span>
+                            <span>{h}</span>
                           </div>
                         ))}
                       </div>
@@ -88,7 +91,7 @@ export function Services() {
                     <div className="mt-8 pt-4 border-t border-line">
                       <Link
                         href={`/services/${currentService.slug}`}
-                        className="inline-flex items-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
+                        className="inline-flex w-full items-center justify-center gap-2.5 border border-x-red bg-x-red px-5 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
                       >
                         Explore Full Service Scope
                         <ArrowUpRight className="size-4" />
@@ -100,12 +103,12 @@ export function Services() {
             </div>
           </Reveal>
 
-          {/* RIGHT: Smooth Architectural Navigation Index */}
+          {/* RIGHT: Architectural Navigation Index */}
           <Reveal delay={0.06} className="w-full h-full">
             <div className="flex h-full flex-col border border-line bg-white divide-y divide-line/60 shadow-lg">
               <div className="bg-[#111111] p-4 md:p-5 text-white flex items-center justify-between">
                 <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
-                  Engineering Disciplines Index
+                  Engineering Index
                 </span>
                 <span className="text-[11px] text-white/50">Select to preview</span>
               </div>
