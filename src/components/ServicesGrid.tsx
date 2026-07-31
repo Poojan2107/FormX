@@ -93,7 +93,8 @@ export function ServicesGrid() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
+              transitionTypes={["nav-forward"]}
+              className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
             >
               {/* Full-bleed media panel */}
               <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line/60 bg-[#141414]">

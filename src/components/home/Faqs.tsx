@@ -120,7 +120,7 @@ export function Faqs() {
 
             <p className="mt-6 text-center text-sm text-ink-muted lg:hidden">
               Still have a question?{" "}
-              <Link href="/contact" className="font-semibold text-x-red">
+              <Link href="/contact" transitionTypes={["nav-forward"]} className="font-semibold text-x-red">
                 Contact FormX →
               </Link>
             </p>

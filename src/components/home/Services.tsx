@@ -25,6 +25,7 @@ export function Services() {
           />
           <Link
             href="/services"
+            transitionTypes={["nav-forward"]}
             className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-all hover:translate-x-1"
           >
             View All Services
@@ -92,6 +93,7 @@ export function Services() {
                     <div className="mt-8 pt-4 border-t border-line">
                       <Link
                         href={`/services/${currentService.slug}`}
+                        transitionTypes={["nav-forward"]}
                         className="inline-flex w-full items-center justify-center gap-2.5 border border-x-red bg-x-red px-5 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
                       >
                         Explore Full Service Scope

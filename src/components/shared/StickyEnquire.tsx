@@ -36,6 +36,7 @@ export function StickyEnquire({
         </p>
         <Link
           href={href}
+          transitionTypes={["nav-forward"]}
           className="formx-cut-sm formx-edge formx-edge-sm inline-flex shrink-0 items-center gap-1.5 bg-x-red px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.12em] text-white"
         >
           Enquire

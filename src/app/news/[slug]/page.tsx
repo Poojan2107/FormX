@@ -57,13 +57,14 @@ export default async function NewsDetailPage({ params }: Props) {
             {slug === "career-openings" ? (
               <Link
                 href="/career"
+                transitionTypes={["nav-forward"]}
                 className="mt-8 inline-block text-sm font-semibold text-ink hover:text-x-red"
               >
                 View careers →
               </Link>
             ) : null}
             <p className="mt-10">
-              <Link href="/news" className="text-sm font-semibold hover:text-x-red">
+              <Link href="/news" transitionTypes={["nav-back"]} className="text-sm font-semibold hover:text-x-red">
                 ← All news
               </Link>
             </p>

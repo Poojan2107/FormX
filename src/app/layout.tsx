@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ViewTransition } from "react";
 import { Chakra_Petch, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
@@ -62,7 +63,21 @@ export default function RootLayout({
         <JsonLd />
         <AppShell>
           <main id="main" className="flex-1 pb-20 md:pb-0">
-            {children}
+            <ViewTransition
+              enter={{
+                "nav-forward": "nav-forward",
+                "nav-back": "nav-back",
+                default: "none",
+              }}
+              exit={{
+                "nav-forward": "nav-forward",
+                "nav-back": "nav-back",
+                default: "none",
+              }}
+              default="none"
+            >
+              {children}
+            </ViewTransition>
           </main>
           <Footer />
         </AppShell>

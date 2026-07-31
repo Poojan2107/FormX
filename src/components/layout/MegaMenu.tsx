@@ -212,6 +212,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
                   <Link
                     href={item.href}
                     onClick={onNavigate}
+                    transitionTypes={["nav-forward"]}
                     className="group/link flex items-start justify-between gap-2 py-1.5 text-[13px] leading-snug text-ink/65 transition-colors hover:text-ink"
                   >
                     <span className="min-w-0">{item.label}</span>
@@ -243,6 +244,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
           variant="primary"
           className="mt-6 w-full"
           onClick={onNavigate}
+          transitionTypes={["nav-forward"]}
         >
           All services
           <ArrowRight className="size-4" />
@@ -268,6 +270,7 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
         <Link
           href="/projects"
           onClick={onNavigate}
+          transitionTypes={["nav-forward"]}
           className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink/50 transition-colors hover:text-x-red"
         >
           View all
@@ -280,6 +283,7 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
             key={p.slug}
             href={`/projects/${p.slug}`}
             onClick={onNavigate}
+            transitionTypes={["nav-forward"]}
             className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
           >
             <div className="relative flex h-20 items-end overflow-hidden bg-[#f3f3f3] p-4">
@@ -326,6 +330,7 @@ function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
         <Link
           href="/sectors"
           onClick={onNavigate}
+          transitionTypes={["nav-forward"]}
           className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink/50 transition-colors hover:text-x-red"
         >
           All sectors
@@ -338,6 +343,7 @@ function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
             key={s.slug}
             href={`/sectors/${s.slug}`}
             onClick={onNavigate}
+            transitionTypes={["nav-forward"]}
             className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex min-h-[76px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa]"
           >
             <span className="font-display text-[10px] font-bold tabular-nums tracking-[0.12em] text-ink/20 transition-colors group-hover:text-x-red">
@@ -364,6 +370,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/knowledge-center"
         onClick={onNavigate}
+        transitionTypes={["nav-forward"]}
         className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
@@ -383,6 +390,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       <Link
         href="/news"
         onClick={onNavigate}
+        transitionTypes={["nav-forward"]}
         className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
       >
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
@@ -414,6 +422,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
           variant="primary"
           className="mt-6 w-full"
           onClick={onNavigate}
+          transitionTypes={["nav-forward"]}
         >
           Enquire
           <ArrowRight className="size-4" />

@@ -119,6 +119,7 @@ export default function AboutPage() {
                       <li key={svc.href}>
                         <Link
                           href={svc.href}
+                          transitionTypes={["nav-forward"]}
                           className="group flex items-start gap-2 text-[13px] font-medium text-ink-muted transition-colors hover:text-x-red"
                         >
                           <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-x-red/30 transition-colors group-hover:bg-x-red" />

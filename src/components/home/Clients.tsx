@@ -26,6 +26,7 @@ export function Clients() {
           />
           <Link
             href="/clients"
+            transitionTypes={["nav-forward"]}
             className="text-[13px] font-semibold text-ink transition-colors hover:text-x-red"
           >
             View all clients →

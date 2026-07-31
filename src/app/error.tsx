@@ -54,6 +54,7 @@ export default function Error({
           </button>
           <Link
             href="/"
+            transitionTypes={["nav-back"]}
             className="inline-flex items-center gap-2 border border-white/25 px-6 py-3 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white/80 transition-colors hover:border-white/60 hover:text-white"
           >
             Back to home

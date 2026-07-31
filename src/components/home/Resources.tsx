@@ -22,7 +22,8 @@ export function Resources() {
             <Reveal key={post.slug} delay={0.05 * i}>
               <Link
                 href={`/knowledge-center/${post.slug}`}
-                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
+                transitionTypes={["nav-forward"]}
+                className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
               >
                 <AssetImage
                   alt={post.title}

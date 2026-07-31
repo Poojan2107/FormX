@@ -163,6 +163,7 @@ export function Hero() {
             >
               <Link
                 href="/contact"
+                transitionTypes={["nav-forward"]}
                 className="group inline-flex items-center gap-2.5 bg-x-red px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_8px_28px_rgba(222,48,36,0.4)] transition-all duration-300 hover:bg-x-red-hover hover:shadow-[0_12px_36px_rgba(222,48,36,0.5)] hover:-translate-y-0.5"
               >
                 Enquire Now
@@ -170,6 +171,7 @@ export function Hero() {
               </Link>
               <Link
                 href="/projects"
+                transitionTypes={["nav-forward"]}
                 className="inline-flex items-center gap-2 border border-white/25 px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:text-white"
               >
                 View Portfolio
@@ -263,6 +265,27 @@ export function Hero() {
             ))}
           </div>
         </motion.div>
+
+        {/* Mobile slide caption */}
+        <div className="mt-6 border-l-2 border-x-red pl-4 lg:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slideIndex}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="font-display text-[11px] font-bold uppercase tracking-[0.12em] text-white">
+                {current.title}
+              </p>
+              <p className="mt-0.5 flex items-center gap-1 text-[11px] text-white/45">
+                <MapPin className="size-3" />
+                {current.location} · {current.year}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </Container>
     </section>
   );

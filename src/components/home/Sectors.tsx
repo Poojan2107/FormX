@@ -65,6 +65,7 @@ export function Sectors() {
               </button>
               <Link
                 href="/sectors"
+                transitionTypes={["nav-forward"]}
                 className="ml-2 flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-x-red"
               >
                 All Sectors <ArrowUpRight className="size-3.5" />
@@ -83,7 +84,8 @@ export function Sectors() {
             <Link
               key={sector.slug}
               href={`/sectors/${sector.slug}`}
-              className="group relative shrink-0 overflow-hidden"
+              transitionTypes={["nav-forward"]}
+              className="x-desat group relative shrink-0 overflow-hidden"
               style={{
                 width: "260px",
                 height: "380px",
@@ -136,6 +138,7 @@ export function Sectors() {
         <Container className="mt-8 md:hidden">
           <Link
             href="/sectors"
+            transitionTypes={["nav-forward"]}
             className="flex w-full items-center justify-center gap-2 border border-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
           >
             View All Sectors <ArrowUpRight className="size-4" />

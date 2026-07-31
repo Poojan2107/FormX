@@ -32,6 +32,7 @@ export default function NotFound() {
           <div className="mt-10 grid gap-3 sm:grid-cols-3 text-left">
             <Link
               href="/"
+              transitionTypes={["nav-back"]}
               className="formx-cut-x formx-edge formx-edge-x group flex flex-col justify-between border border-line bg-white p-5 transition-all hover:border-x-red/40 hover:shadow-[0_8px_24px_rgba(222,48,36,0.06)]"
             >
               <Home className="size-5 text-x-red" />
@@ -43,6 +44,7 @@ export default function NotFound() {
 
             <Link
               href="/services"
+              transitionTypes={["nav-forward"]}
               className="formx-cut-x formx-edge formx-edge-x group flex flex-col justify-between border border-line bg-white p-5 transition-all hover:border-x-red/40 hover:shadow-[0_8px_24px_rgba(222,48,36,0.06)]"
             >
               <Layers className="size-5 text-x-red" />
@@ -54,6 +56,7 @@ export default function NotFound() {
 
             <Link
               href="/projects"
+              transitionTypes={["nav-forward"]}
               className="formx-cut-x formx-edge formx-edge-x group flex flex-col justify-between border border-line bg-white p-5 transition-all hover:border-x-red/40 hover:shadow-[0_8px_24px_rgba(222,48,36,0.06)]"
             >
               <Building2 className="size-5 text-x-red" />

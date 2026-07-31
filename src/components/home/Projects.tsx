@@ -32,6 +32,7 @@ export function Projects() {
           </div>
           <Link
             href="/projects"
+            transitionTypes={["nav-forward"]}
             className="group hidden shrink-0 items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/40 transition-all hover:text-x-red sm:flex"
           >
             All Projects
@@ -86,6 +87,7 @@ export function Projects() {
         <Reveal className="mt-8 sm:hidden">
           <Link
             href="/projects"
+            transitionTypes={["nav-forward"]}
             className="flex w-full items-center justify-center gap-2 border border-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
           >
             View All Projects <ArrowUpRight className="size-4" />

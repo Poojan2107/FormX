@@ -56,7 +56,10 @@ function SiteHeader({
 
   return (
     <>
-      <header className="sticky top-0 z-50">
+      <header
+        className="sticky top-0 z-50"
+        style={{ viewTransitionName: "site-header" }}
+      >
         {/* Main nav bar */}
         <div
           className={cn(
@@ -72,6 +75,7 @@ function SiteHeader({
               href="/"
               className="relative z-10 flex min-w-0 shrink items-center self-stretch py-4 pr-4 transition-opacity hover:opacity-80"
               aria-label="FormX home"
+              transitionTypes={["nav-back"]}
               onClick={() => setOpen(false)}
             >
               <Logo variant="lockup" />
@@ -93,6 +97,7 @@ function SiteHeader({
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 bg-x-red px-5 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)] transition-all duration-200 hover:bg-x-red-hover hover:shadow-[0_6px_20px_rgba(222,48,36,0.4)]"
+                transitionTypes={["nav-forward"]}
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
@@ -155,6 +160,9 @@ function SiteHeader({
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
+                        transitionTypes={
+                          item.href === "/" ? ["nav-back"] : ["nav-forward"]
+                        }
                         className={cn(
                           "flex items-baseline gap-4 border-b border-white/10 py-4 font-display text-2xl font-bold tracking-tight transition-colors",
                           isActive ? "text-x-red" : "text-white hover:text-x-red",
@@ -177,6 +185,7 @@ function SiteHeader({
                                   key={child.href}
                                   href={child.href}
                                   onClick={() => setOpen(false)}
+                                  transitionTypes={["nav-forward"]}
                                   className="block py-1 text-[12px] text-white/45 hover:text-x-red"
                                 >
                                   {child.label}
@@ -192,6 +201,7 @@ function SiteHeader({
                               key={child.href}
                               href={child.href}
                               onClick={() => setOpen(false)}
+                              transitionTypes={["nav-forward"]}
                               className="block py-1.5 text-[13px] text-white/45 hover:text-x-red"
                             >
                               {child.label}
@@ -213,6 +223,7 @@ function SiteHeader({
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
+                  transitionTypes={["nav-forward"]}
                   className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_24px_rgba(222,48,36,0.4)]"
                 >
                   Enquire Now <ArrowUpRight className="size-4" />

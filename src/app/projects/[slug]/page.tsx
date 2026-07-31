@@ -281,6 +281,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               </Button>
               <Link
                 href="/projects"
+                transitionTypes={["nav-back"]}
                 className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-x-red"
               >
                 <ArrowLeft className="size-4" />

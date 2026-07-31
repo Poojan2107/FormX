@@ -49,6 +49,7 @@ export function BrochureCta({
         href="/brochure/formx.pdf"
         variant={invert ? "primary" : "secondary"}
         className="w-full shrink-0 sm:w-auto"
+        transitionTypes={["nav-forward"]}
       >
         Download brochure
         <Download className="size-4" />
@@ -87,12 +88,22 @@ export function CtaBand({
           ) : null}
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
-          <Button href={primary.href} variant="primary" className="w-full sm:w-auto">
+          <Button
+            href={primary.href}
+            variant="primary"
+            className="w-full sm:w-auto"
+            transitionTypes={["nav-forward"]}
+          >
             {primary.label}
             <ArrowRight className="size-4" />
           </Button>
           {secondary ? (
-            <Button href={secondary.href} variant="ghost-light" className="w-full sm:w-auto">
+            <Button
+              href={secondary.href}
+              variant="ghost-light"
+              className="w-full sm:w-auto"
+              transitionTypes={["nav-forward"]}
+            >
               {secondary.label}
             </Button>
           ) : null}
@@ -121,6 +132,7 @@ export function RelatedLinks({
             <Link
               key={item.href}
               href={item.href}
+              transitionTypes={["nav-forward"]}
               className="formx-cut-x formx-edge formx-edge-x x-hover-rail group border border-line bg-white p-6 transition-colors hover:border-x-red/35"
             >
               {item.meta ? (

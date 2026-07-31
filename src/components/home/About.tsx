@@ -92,6 +92,7 @@ export function About() {
               <div className="mt-8">
                 <Link
                   href={about.cta.href}
+                  transitionTypes={["nav-forward"]}
                   className="group inline-flex items-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.28)] transition-all duration-300 hover:bg-transparent hover:text-x-red"
                 >
                   {about.cta.label}

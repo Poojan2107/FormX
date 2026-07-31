@@ -22,8 +22,9 @@ export function ProjectCard({
   return (
     <Link
       href={`/projects/${project.slug}`}
+      transitionTypes={["nav-forward"]}
       className={cn(
-        "group relative block overflow-hidden bg-gray-100 x-lift",
+        "group relative block overflow-hidden bg-gray-100 x-lift x-desat",
         aspect === "4/3" && "aspect-[4/3]",
         className,
       )}

@@ -107,6 +107,7 @@ export default async function BlogDetailPage({ params }: Props) {
             <p className="mt-8">
               <Link
                 href="/knowledge-center"
+                transitionTypes={["nav-back"]}
                 className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors hover:text-x-red"
               >
                 ← Back to Knowledge Center

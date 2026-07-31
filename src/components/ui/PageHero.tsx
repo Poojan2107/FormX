@@ -76,7 +76,11 @@ export function PageHero({
             aria-label="Breadcrumb"
             className="mb-6 flex flex-wrap items-center gap-x-2 text-[12px] text-white/50"
           >
-            <Link href="/" className="transition-colors hover:text-x-red">
+            <Link
+              href="/"
+              transitionTypes={["nav-back"]}
+              className="transition-colors hover:text-x-red"
+            >
               Home
             </Link>
             {crumbs.map((c) => (
@@ -85,6 +89,7 @@ export function PageHero({
                 {c.href ? (
                   <Link
                     href={c.href}
+                    transitionTypes={["nav-forward"]}
                     className="transition-colors hover:text-x-red"
                   >
                     {c.label}

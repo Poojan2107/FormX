@@ -22,6 +22,7 @@ type Common = {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  transitionTypes?: string[];
 };
 
 type AsButton = Common &

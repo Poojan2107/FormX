@@ -8,7 +8,10 @@ import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#0a0a0a] text-white">
+    <footer
+      className="relative isolate overflow-hidden border-t border-white/10 bg-[#0a0a0a] text-white"
+      style={{ viewTransitionName: "site-footer" }}
+    >
       {/* Background grid texture */}
       <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-30" aria-hidden />
 
@@ -69,6 +72,9 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    transitionTypes={
+                      item.href === "/" ? ["nav-back"] : ["nav-forward"]
+                    }
                     className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white"
                   >
                     <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
@@ -77,7 +83,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/career" className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white">
+                <Link href="/career" transitionTypes={["nav-forward"]} className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white">
                   <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
                   Career
                 </Link>
@@ -93,6 +99,7 @@ export function Footer() {
             <div className="space-y-3">
               <Link
                 href="/contact"
+                transitionTypes={["nav-forward"]}
                 className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
               >
                 <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
@@ -157,7 +164,7 @@ export function Footer() {
             <a href={site.hirenLinkedin} target="_blank" rel="noopener noreferrer" className="hover:text-x-red transition-colors">
               Hiren J. Shah
             </a>
-            <Link href="/contact" className="hover:text-x-red transition-colors">Contact</Link>
+            <Link href="/contact" transitionTypes={["nav-forward"]} className="hover:text-x-red transition-colors">Contact</Link>
           </div>
         </Container>
       </div>
