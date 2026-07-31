@@ -15,11 +15,6 @@ type Kind =
   | "team"
   | "client";
 
-/**
- * Handover-ready media slot.
- * Drop file at /public/assets/{slot} — it loads automatically.
- * Until then, a content-aware placeholder is shown cleanly.
- */
 export function AssetImage({
   src,
   alt,
@@ -28,14 +23,13 @@ export function AssetImage({
   caption,
   kind = "generic",
   aspect = "landscape",
-  tone = "dark",
+  tone = "light",
   className,
   priority = false,
-  fit = "cover",
+  fit = "contain",
 }: {
   src?: string | null;
   alt: string;
-  /** e.g. "services/architecture.jpg" under /public/assets/ */
   slot?: string;
   label?: string;
   caption?: string;
@@ -61,7 +55,8 @@ export function AssetImage({
     return (
       <div
         className={cn(
-          "relative overflow-hidden bg-[#111111]",
+          "relative overflow-hidden",
+          tone === "dark" ? "bg-[#111111]" : "bg-[#f4f4f5]",
           aspects[aspect],
           className,
         )}
@@ -74,13 +69,13 @@ export function AssetImage({
           unoptimized
           className={cn(
             "transition-transform duration-700 hover:scale-[1.02]",
-            fit === "contain" ? "object-contain p-1" : "object-cover object-center",
+            fit === "contain" ? "object-contain p-2" : "object-cover object-center",
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
           onError={() => setFailed(true)}
         />
         {label ? (
-          <span className="absolute left-3 top-3 border border-white/20 bg-black/85 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+          <span className="absolute left-3 top-3 border border-line bg-white/90 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm">
             {label}
           </span>
         ) : null}

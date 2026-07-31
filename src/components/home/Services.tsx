@@ -67,7 +67,7 @@ export function Services() {
           })}
         </div>
 
-        {/* Bright, Visual-First Services Grid — Large Prominent Uncropped Images */}
+        {/* Services Grid — 100% Uncropped Full Asset Showcase */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredServices.map((service, i) => (
             <Reveal key={service.slug} delay={0.03 * (i % 3)} className="h-full">
@@ -75,20 +75,21 @@ export function Services() {
                 href={`/services/${service.slug}`}
                 className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
               >
-                {/* Large Prominent Uncropped Image Container */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 border-b border-line/60">
+                {/* 100% Uncropped Full Asset Container */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line/60">
                   <AssetImage
                     alt={service.title}
                     slot={service.asset}
                     kind="service"
                     aspect="landscape"
-                    fit="cover"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fit="contain"
+                    tone="light"
+                    className="h-full w-full"
                   />
-                  <span className="absolute left-3.5 top-3.5 border border-line bg-white/90 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm">
+                  <span className="absolute left-3.5 top-3.5 border border-line bg-white/95 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm">
                     0{i + 1}
                   </span>
-                  <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full bg-white/90 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
+                  <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full bg-white/95 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
                     <ArrowUpRight className="size-4" />
                   </div>
                 </div>

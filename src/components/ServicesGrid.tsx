@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "@/data/site";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
@@ -79,7 +79,7 @@ export function ServicesGrid() {
         </div>
       </Reveal>
 
-      {/* Visual Architectural Grid */}
+      {/* 100% Uncropped Services Grid */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
@@ -93,25 +93,24 @@ export function ServicesGrid() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group relative flex h-full flex-col overflow-hidden border border-line bg-[#111111] text-white transition-all duration-500 hover:border-x-red/60 hover:shadow-[0_20px_45px_rgba(222,48,36,0.18)]"
+              className="group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
             >
               {/* Full Uncropped Aspect Media Container */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0a0a0a]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line/60">
                 <AssetImage
                   alt={service.title}
                   slot={service.asset}
                   kind="service"
                   aspect="landscape"
-                  fit="cover"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fit="contain"
+                  tone="light"
+                  className="h-full w-full"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red/80 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+                <span className="absolute left-3.5 top-3.5 border border-line bg-white/95 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm">
                   0{i + 1}
                 </span>
 
-                <div className="absolute right-4 top-4 flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red">
+                <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full border border-line bg-white/95 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
                   <ArrowUpRight className="size-4" />
                 </div>
               </div>
@@ -119,16 +118,16 @@ export function ServicesGrid() {
               {/* Content Body */}
               <div className="flex flex-1 flex-col justify-between p-6">
                 <div>
-                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white transition-colors group-hover:text-x-red">
+                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
                     {service.title}
                   </h3>
-                  <p className="mt-2.5 text-[13px] leading-[1.7] text-white/65 line-clamp-3">
+                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
                     {service.short}
                   </p>
 
-                  <ul className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                  <ul className="mt-4 space-y-2 border-t border-line/60 pt-4">
                     {service.highlights.slice(0, 2).map((h) => (
-                      <li key={h} className="flex items-center gap-2 text-[12px] text-white/70">
+                      <li key={h} className="flex items-center gap-2 text-[12px] text-ink-muted">
                         <Check className="size-3.5 text-x-red shrink-0" />
                         <span className="truncate">{h}</span>
                       </li>
@@ -136,7 +135,7 @@ export function ServicesGrid() {
                   </ul>
                 </div>
 
-                <div className="mt-6 border-t border-white/10 pt-4">
+                <div className="mt-6 border-t border-line/60 pt-4">
                   <span className="inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red transition-all group-hover:translate-x-1">
                     Explore Service Scope →
                   </span>
