@@ -58,8 +58,3 @@ export function TickerBand({
     </div>
   );
 }
-
-/** @deprecated Use TickerBand — kept for import safety */
-export function Ticker() {
-  return <TickerBand tone="red" />;
-}

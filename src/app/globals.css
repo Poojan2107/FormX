@@ -454,44 +454,6 @@ body {
   animation: ken-burns 8s ease-in-out alternate infinite;
 }
 
-@keyframes x-flash {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
-}
-
-@keyframes draw-x {
-  0% {
-    stroke-dashoffset: 100;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes pulse-line {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  40% {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  60% {
-    transform: scaleX(1);
-    transform-origin: right;
-  }
-  100% {
-    transform: scaleX(0);
-    transform-origin: right;
-  }
-}
-
 @keyframes ticker {
   from {
     transform: translateX(0);
