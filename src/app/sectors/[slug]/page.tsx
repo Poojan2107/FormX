@@ -2,11 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  getSector,
-  getService,
-  sectors,
-  projects,
-} from "@/data/site";
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  ShieldCheck,
+  Cpu,
+  Layers,
+  Activity,
+  Compass,
+} from "lucide-react";
+import { getSector, getService, sectors, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -58,7 +63,7 @@ export default async function SectorDetailPage({ params }: Props) {
   return (
     <>
       <PageHero
-        eyebrow="Sector"
+        eyebrow="Sector Expertise"
         title={sector.title}
         description={sector.summary}
         crumbs={[
@@ -67,46 +72,101 @@ export default async function SectorDetailPage({ params }: Props) {
         ]}
       />
 
+      {/* Main Visual Infographic Grid */}
       <section className="bg-white py-16 md:py-24">
-        <Container className="grid gap-12 lg:grid-cols-2">
+        <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
-            <h2 className="font-display text-3xl font-bold uppercase text-ink">
-              Sector challenges we design for
-            </h2>
-            <ul className="mt-8 space-y-4">
-              {sector.challenges.map((c) => (
-                <li key={c} className="border-l-2 border-x-red pl-4 text-[15px] text-ink-muted">
-                  {c}
-                </li>
-              ))}
-            </ul>
+            {/* Sector Challenges — Visual Alert Cards */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
+                  <AlertTriangle className="size-5" />
+                </span>
+                <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
+                  Critical Sector Challenges
+                </h2>
+              </div>
 
-            <h3 className="mt-12 font-display text-xl font-bold uppercase text-ink">
-              FormX capabilities
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {sector.capabilities.map((c) => (
-                <li key={c} className="text-[14px] text-ink-muted">
-                  <span className="mr-2 text-x-red">×</span>
-                  {c}
-                </li>
-              ))}
-            </ul>
+              <div className="space-y-3">
+                {sector.challenges.map((c, i) => (
+                  <div
+                    key={c}
+                    className="flex items-start gap-4 border border-line bg-[#fafafa] p-4 transition-colors hover:border-x-red/40 hover:bg-white"
+                  >
+                    <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-x-red text-[11px] font-bold text-white">
+                      !
+                    </span>
+                    <span className="text-[14px] font-medium leading-relaxed text-ink">
+                      {c}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <Button href="/contact" className="mt-10">
-              Talk to our sector team
+            {/* FormX Engineering Capabilities — Visual Icon Cards */}
+            <div className="mt-14">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
+                  <ShieldCheck className="size-5" />
+                </span>
+                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
+                  FormX Sector Capabilities
+                </h3>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {sector.capabilities.map((cap, i) => (
+                  <div
+                    key={cap}
+                    className="group flex flex-col justify-between border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_10px_25px_rgba(222,48,36,0.1)]"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <CheckCircle2 className="size-5 text-x-red" />
+                      <span className="font-display text-[10px] font-bold text-ink/30">
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <p className="font-display text-xs font-bold uppercase tracking-wider text-ink group-hover:text-x-red transition-colors">
+                      {cap}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button href="/contact" variant="primary" className="mt-10 gap-2 px-8 py-4">
+              Talk To Our Sector Lead
+              <ArrowRight className="size-4" />
             </Button>
           </Reveal>
+
+          {/* Dedicated Photorealistic Industry Image Backdrop */}
           <Reveal delay={0.08}>
-            <AssetImage
-              alt={sector.title}
-              slot={sector.asset}
-              kind="sector"
-              tone="dark"
-              label={sector.title}
-              caption="Sector facility visual"
-              aspect="portrait"
-            />
+            <div className="sticky top-28 space-y-6">
+              <div className="group relative overflow-hidden border border-line bg-[#121212] shadow-2xl">
+                <AssetImage
+                  alt={sector.title}
+                  slot={sector.asset}
+                  kind="sector"
+                  aspect="portrait"
+                  fit="cover"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                  {sector.title} Facility
+                </span>
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <p className="font-display text-lg font-bold uppercase">
+                    Integrated Greenfield Delivery
+                  </p>
+                  <p className="mt-1 text-[12px] text-white/70">
+                    Coordinated architecture, structural steel/RCC, and process utilities.
+                  </p>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </Container>
       </section>
@@ -115,14 +175,6 @@ export default async function SectorDetailPage({ params }: Props) {
       {relatedProjects.length ? (
         <RelatedLinks title="Related projects" items={relatedProjects} />
       ) : null}
-
-      <section className="border-t border-line bg-white py-10">
-        <Container>
-          <Link href="/sectors" className="text-sm font-semibold hover:text-x-red">
-            ← All sectors
-          </Link>
-        </Container>
-      </section>
 
       <CtaBand title={`Build your ${sector.title.toLowerCase()} facility with FormX`} />
       <StickyEnquire label={`Talk ${sector.title}`} />

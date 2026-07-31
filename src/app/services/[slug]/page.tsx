@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, ArrowUpRight, FileText, Layers } from "lucide-react";
+import {
+  Check,
+  ArrowUpRight,
+  FileText,
+  Layers,
+  ShieldCheck,
+  Cpu,
+  CheckCircle2,
+  Zap,
+  ChevronRight,
+  Compass,
+  Ruler,
+} from "lucide-react";
 import { getService, getSector, services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -9,6 +21,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { BrochureCta, CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { PageHero } from "@/components/ui/PageHero";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -24,17 +37,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const categoryMap: Record<string, { label: string; color: string }> = {
-  "architectural-design": { label: "Architecture & Planning", color: "#3b82f6" },
-  "site-infrastructure": { label: "Architecture & Planning", color: "#3b82f6" },
-  "sustainable-design": { label: "Architecture & Planning", color: "#3b82f6" },
-  "structural-engineering": { label: "Structure & Civil", color: "#f59e0b" },
-  "civil-engineering": { label: "Structure & Civil", color: "#f59e0b" },
-  "mechanical-utility-engineering": { label: "MEP & Utilities", color: "#10b981" },
-  "hvac-engineering": { label: "MEP & Utilities", color: "#10b981" },
-  "electrical-engineering": { label: "MEP & Utilities", color: "#10b981" },
-  "fire-protection-engineering": { label: "MEP & Utilities", color: "#10b981" },
-  "project-management": { label: "Delivery", color: "#8b5cf6" },
+  "architectural-design": { label: "Architecture & Planning", color: "#de3024" },
+  "site-infrastructure": { label: "Architecture & Planning", color: "#de3024" },
+  "sustainable-design": { label: "Architecture & Planning", color: "#de3024" },
+  "structural-engineering": { label: "Structure & Civil", color: "#de3024" },
+  "civil-engineering": { label: "Structure & Civil", color: "#de3024" },
+  "mechanical-utility-engineering": { label: "MEP & Utilities", color: "#de3024" },
+  "hvac-engineering": { label: "MEP & Utilities", color: "#de3024" },
+  "electrical-engineering": { label: "MEP & Utilities", color: "#de3024" },
+  "fire-protection-engineering": { label: "MEP & Utilities", color: "#de3024" },
+  "project-management": { label: "Delivery", color: "#de3024" },
 };
+
+const featureIcons = [ShieldCheck, Cpu, Layers, Compass, Ruler, Zap];
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
@@ -55,170 +70,179 @@ export default async function ServiceDetailPage({ params }: Props) {
       meta: "Sector",
     }));
 
-  const cat = categoryMap[slug] ?? { label: "Engineering", color: "#de3024" };
+  const cat = categoryMap[slug] ?? { label: "Engineering Practice", color: "#de3024" };
 
   return (
     <>
-      {/* Page header */}
-      <section className="border-b border-line bg-white">
-        <div className="mx-auto w-full max-w-[1180px] px-4 pb-0 pt-10 sm:px-5 sm:pt-12 md:px-8 md:pt-16">
-          {/* Breadcrumb */}
-          <nav className="mb-5 flex flex-wrap items-center gap-2 text-[12px] text-ink-muted">
-            <Link href="/" className="transition-colors hover:text-x-red">Home</Link>
-            <span className="text-line">/</span>
-            <Link href="/services" className="transition-colors hover:text-x-red">Our Services</Link>
-            <span className="text-line">/</span>
-            <span className="text-ink">{service.title}</span>
-          </nav>
+      {/* Sleek Dark Architectural Hero Header */}
+      <PageHero
+        eyebrow={cat.label}
+        title={service.title}
+        description={service.summary}
+        crumbs={[
+          { label: "Services", href: "/services" },
+          { label: service.title },
+        ]}
+      />
 
-          {/* Category pill */}
-          <span
-            className="mb-3 inline-flex items-center gap-2 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em]"
-            style={{ background: `${cat.color}18`, color: cat.color }}
-          >
-            <span
-              className="size-1.5 rounded-full"
-              style={{ background: cat.color }}
-            />
-            {cat.label}
-          </span>
-
-          <h1 className="max-w-3xl text-display text-ink">{service.title}</h1>
-          <p className="mt-5 max-w-2xl text-lead text-ink-muted">{service.summary}</p>
-
-          {/* Quick meta strip */}
-          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6 pb-0">
-            {service.highlights.slice(0, 3).map((h) => (
-              <div key={h} className="flex items-center gap-2">
-                <Check className="size-3.5 shrink-0 text-x-red" />
-                <span className="text-[13px] text-ink-muted">{h}</span>
-              </div>
-            ))}
+      {/* Highlights KPI Badges Ribbon */}
+      <div className="border-b border-line bg-[#0d0d0d] py-6 text-white">
+        <Container className="flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
+              IS Code Compliant
+            </span>
           </div>
-        </div>
-      </section>
+          <div className="flex items-center gap-3">
+            <CheckCircle2 className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
+              100% GFC Construction Ready
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Cpu className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
+              BIM 3D Coordinated
+            </span>
+          </div>
+        </Container>
+      </div>
 
-      {/* Main content */}
+      {/* Main Visual Grid Content */}
       <section className="bg-white py-14 md:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-
-          {/* LEFT — Detailed content */}
+          {/* LEFT — Visual Scope & Deliverables Cards */}
           <Reveal>
-            {/* Scope highlights */}
+            {/* Scope Highlights — Visual Graphic Cards */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <span
-                  className="inline-flex size-8 items-center justify-center"
-                  style={{ background: `${cat.color}15` }}
-                >
-                  <Layers className="size-4" style={{ color: cat.color }} />
+                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
+                  <Layers className="size-5" />
                 </span>
                 <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
-                  Scope highlights
+                  Core Engineering Scope
                 </h2>
               </div>
-              <ul className="space-y-3">
-                {service.highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-3 rounded-sm border border-line bg-[#fafafa] px-4 py-3">
-                    <Check className="mt-0.5 size-4 shrink-0 text-x-red" />
-                    <span className="text-[14px] leading-relaxed text-ink">{item}</span>
-                  </li>
-                ))}
-              </ul>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {service.highlights.map((item, i) => {
+                  const Icon = featureIcons[i % featureIcons.length];
+                  return (
+                    <div
+                      key={item}
+                      className="group flex flex-col justify-between border border-line bg-[#fafafa] p-5 transition-all duration-300 hover:border-x-red/50 hover:bg-white hover:shadow-[0_12px_28px_rgba(222,48,36,0.1)]"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <Icon className="size-5 text-x-red" />
+                        <span className="font-display text-[10px] font-bold text-ink/30">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <p className="font-display text-sm font-bold leading-snug text-ink group-hover:text-x-red transition-colors">
+                        {item}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Typical deliverables */}
-            <div className="mt-12">
+            {/* Typical Deliverables — Visual Checklist Grid */}
+            <div className="mt-14">
               <div className="flex items-center gap-3 mb-6">
-                <span
-                  className="inline-flex size-8 items-center justify-center"
-                  style={{ background: `${cat.color}15` }}
-                >
-                  <FileText className="size-4" style={{ color: cat.color }} />
+                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
+                  <FileText className="size-5" />
                 </span>
                 <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
-                  Typical deliverables
+                  GFC Drawing Deliverables
                 </h3>
               </div>
-              <div className="grid gap-2.5 sm:grid-cols-2">
+
+              <div className="grid gap-3 sm:grid-cols-2">
                 {service.deliverables.map((d, i) => (
                   <div
                     key={d}
-                    className="flex items-start gap-3 border border-line bg-white p-4"
+                    className="flex items-start gap-3 border.5 border-line bg-white p-4 transition-colors hover:border-x-red/40"
                   >
-                    <span
-                      className="mt-0.5 font-display text-[10px] font-bold tabular-nums tracking-widest shrink-0"
-                      style={{ color: cat.color }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-x-red/10 text-[10px] font-bold text-x-red">
+                      ✓
                     </span>
-                    <span className="text-[13px] leading-relaxed text-ink-muted">{d}</span>
+                    <span className="text-[13px] font-medium leading-relaxed text-ink">
+                      {d}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* How we deliver */}
-            <div className="mt-12">
+            {/* Workflow Timeline — Visual Process Nodes */}
+            <div className="mt-14">
               <h3 className="mb-6 font-display text-xl font-bold uppercase tracking-tight text-ink">
-                How we deliver
+                Execution Workflow
               </h3>
-              <ol className="relative space-y-0">
-                {/* Vertical connector */}
-                <div
-                  className="absolute left-[1.35rem] top-4 bottom-4 w-px"
-                  style={{ background: `${cat.color}30` }}
-                  aria-hidden
-                />
+
+              <div className="space-y-4">
                 {service.process.map((step, i) => (
-                  <li key={step} className="relative flex gap-5 pb-5 last:pb-0">
-                    <span
-                      className="relative z-10 mt-0.5 flex size-[2.1rem] shrink-0 items-center justify-center rounded-sm font-display text-[11px] font-bold text-white"
-                      style={{ background: cat.color }}
-                    >
-                      {String(i + 1).padStart(2, "0")}
+                  <div
+                    key={step}
+                    className="group relative flex items-start gap-4 border border-line bg-[#fcfcfc] p-5 transition-all hover:border-x-red/40 hover:bg-white"
+                  >
+                    <span className="flex size-10 shrink-0 items-center justify-center border border-x-red bg-x-red font-display text-sm font-bold text-white shadow-md">
+                      0{i + 1}
                     </span>
-                    <div className="flex-1 pt-1.5 pb-5 border-b border-line last:border-b-0">
-                      <p className="text-[14px] leading-relaxed text-ink-muted">{step}</p>
+                    <div className="pt-0.5">
+                      <p className="font-display text-xs font-bold uppercase tracking-wider text-x-red">
+                        Phase 0{i + 1}
+                      </p>
+                      <p className="mt-1 text-[14px] leading-relaxed text-ink">
+                        {step}
+                      </p>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ol>
+              </div>
             </div>
 
-            <Button href="/contact" variant="primary" className="mt-10 gap-2">
-              Discuss this service
+            <Button href="/contact" variant="primary" className="mt-10 gap-2 px-8 py-4">
+              Engage FormX For This Service
               <ArrowUpRight className="size-4" />
             </Button>
           </Reveal>
 
-          {/* RIGHT — Media + brochure */}
+          {/* RIGHT — Visual Gallery & Capability Card */}
           <Reveal delay={0.08}>
-            <div className="sticky top-28 space-y-5">
-              <AssetImage
-                alt={service.title}
-                slot={service.asset}
-                kind="service"
-                tone="dark"
-                label={service.title}
-                caption={service.title}
-                aspect="portrait"
-                className="w-full"
-              />
+            <div className="sticky top-28 space-y-6">
+              <div className="overflow-hidden border border-line bg-[#121212] shadow-xl">
+                <AssetImage
+                  alt={service.title}
+                  slot={service.asset}
+                  kind="service"
+                  tone="dark"
+                  label={service.title}
+                  caption={service.title}
+                  aspect="portrait"
+                  className="w-full"
+                />
+              </div>
+
               {service.gallery && service.gallery.length > 1 ? (
                 <div className="grid grid-cols-2 gap-3">
                   {service.gallery.slice(1, 5).map((item, idx) => (
-                    <AssetImage
-                      key={item}
-                      alt={`${service.title} detail ${idx + 2}`}
-                      slot={item}
-                      kind="service"
-                      tone="light"
-                      aspect="landscape"
-                    />
+                    <div key={item} className="overflow-hidden border border-line bg-[#121212]">
+                      <AssetImage
+                        alt={`${service.title} detail ${idx + 2}`}
+                        slot={item}
+                        kind="service"
+                        tone="light"
+                        aspect="landscape"
+                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
                   ))}
                 </div>
               ) : null}
+
               <BrochureCta />
             </div>
           </Reveal>
