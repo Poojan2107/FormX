@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, ShieldCheck, Check } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -32,40 +32,49 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Creative Architectural Interactive Split Showcase — Card-Free Design */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 items-stretch">
+        {/* Architectural Interactive Split Showcase */}
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 items-start">
 
-          {/* LEFT: Massive Full-Stage Visual Showcase */}
-          <Reveal className="h-full">
-            <div className="relative flex h-full min-h-[460px] flex-col justify-between overflow-hidden border border-line bg-white shadow-xl">
+          {/* LEFT: Full Uncropped Visual Stage */}
+          <Reveal className="w-full">
+            <div className="relative flex flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentService.slug}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35 }}
-                  className="flex h-full flex-col justify-between"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex flex-col"
                 >
-                  {/* Large High-Res Visual Stage */}
-                  <div className="relative h-[280px] sm:h-[340px] md:h-[380px] w-full overflow-hidden bg-gray-100 border-b border-line">
+                  {/* High-Res Uncropped Visual Stage — 100% Full Image Visibility */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
-                      aspect="auto"
-                      fit="cover"
+                      aspect="landscape"
+                      fit="contain"
                       tone="light"
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="h-full w-full"
                     />
                     <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
-                      Discipline 0{activeIdx + 1} / 10
+                      Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
                     </span>
                   </div>
 
                   {/* Stage Details */}
-                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white">
+                  <div className="flex flex-col justify-between p-6 md:p-8 bg-white">
                     <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
+                          FormX Engineering Scope
+                        </span>
+                        <span className="font-display text-[11px] font-bold text-ink/40">
+                          {currentService.slug}
+                        </span>
+                      </div>
+
                       <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
                         {currentService.title}
                       </h3>
@@ -77,7 +86,7 @@ export function Services() {
                         {currentService.highlights.slice(0, 4).map((h) => (
                           <div key={h} className="flex items-center gap-2 text-[12px] font-semibold text-ink">
                             <Check className="size-3.5 text-x-red shrink-0" />
-                            <span>{h}</span>
+                            <span className="truncate">{h}</span>
                           </div>
                         ))}
                       </div>
@@ -98,46 +107,42 @@ export function Services() {
             </div>
           </Reveal>
 
-          {/* RIGHT: Interactive Architectural Navigation Index */}
-          <Reveal delay={0.06} className="h-full">
-            <div className="flex h-full flex-col border border-line bg-white divide-y divide-line/60">
-              <div className="bg-[#111111] p-5 text-white flex items-center justify-between">
+          {/* RIGHT: Smooth Architectural Navigation Index */}
+          <Reveal delay={0.06} className="w-full">
+            <div className="flex flex-col border border-line bg-white divide-y divide-line/60">
+              <div className="bg-[#111111] p-4 md:p-5 text-white flex items-center justify-between">
                 <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
                   Engineering Disciplines Index
                 </span>
-                <span className="text-[11px] text-white/50">Hover / Select to view</span>
+                <span className="text-[11px] text-white/50">Select to preview</span>
               </div>
 
-              <div className="flex-1 overflow-y-auto max-h-[580px]">
+              <div className="divide-y divide-line/60">
                 {services.map((svc, i) => {
                   const isActive = i === activeIdx;
                   return (
                     <button
                       key={svc.slug}
                       type="button"
-                      onMouseEnter={() => setActiveIdx(i)}
                       onClick={() => setActiveIdx(i)}
-                      className={`w-full text-left p-4 md:p-5 transition-all duration-200 flex items-center justify-between group ${
+                      className={`w-full text-left p-3.5 md:p-4 transition-all duration-300 flex items-center justify-between group ${
                         isActive
-                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-5"
-                          : "hover:bg-gray-50 hover:pl-5"
+                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-4"
+                          : "hover:bg-gray-50 hover:pl-4"
                       }`}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3">
                         <span className={`font-display text-xs font-bold ${isActive ? "text-x-red" : "text-ink/40"}`}>
-                          0{i + 1}
+                          {String(i + 1).padStart(2, "0")}
                         </span>
                         <div>
-                          <h4 className={`font-display text-sm font-bold uppercase transition-colors ${isActive ? "text-x-red" : "text-ink group-hover:text-x-red"}`}>
+                          <h4 className={`font-display text-xs md:text-sm font-bold uppercase transition-colors ${isActive ? "text-x-red" : "text-ink group-hover:text-x-red"}`}>
                             {svc.title}
                           </h4>
-                          <p className="text-[12px] text-ink-muted line-clamp-1">
-                            {svc.short}
-                          </p>
                         </div>
                       </div>
 
-                      <ArrowUpRight className={`size-4 transition-transform duration-200 ${isActive ? "text-x-red translate-x-0.5 -translate-y-0.5" : "text-ink/20 group-hover:text-x-red"}`} />
+                      <ArrowUpRight className={`size-4 transition-transform duration-300 ${isActive ? "text-x-red translate-x-0.5 -translate-y-0.5" : "text-ink/20 group-hover:text-x-red"}`} />
                     </button>
                   );
                 })}
