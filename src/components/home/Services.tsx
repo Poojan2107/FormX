@@ -32,10 +32,10 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Seamless Architectural Split Showcase — Pure White Seamless Artwork Bleed */}
+        {/* Masterpiece Architectural Split Showcase — Full-Bleed Edge-to-Edge Visual Stage */}
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 items-stretch">
 
-          {/* LEFT: Full Uncropped Visual Stage with Seamless White Background */}
+          {/* LEFT: Full-Bleed High-Impact Stage (Edge-to-Edge, Top-Aligned) */}
           <Reveal className="w-full h-full">
             <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
@@ -47,19 +47,19 @@ export function Services() {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full flex-col justify-between"
                 >
-                  {/* Seamless Image Container — Pure White Bleed (Zero Cropping, Zero Grey Bars) */}
-                  <div className="relative aspect-[16/11] w-full overflow-hidden bg-white border-b border-line p-3">
+                  {/* Full-Bleed Edge-to-Edge Image Container — Zero White Side Margins, Top-Aligned */}
+                  <div className="relative h-[300px] sm:h-[360px] md:h-[400px] w-full overflow-hidden bg-[#111111] border-b border-line">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
-                      aspect="landscape"
-                      fit="contain"
-                      tone="light"
-                      className="h-full w-full bg-white"
+                      aspect="auto"
+                      fit="cover"
+                      tone="dark"
+                      className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
-                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm">
+                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
                         Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
                       </span>
                     </div>
