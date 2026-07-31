@@ -26,7 +26,7 @@ export function AssetImage({
   tone = "light",
   className,
   priority = false,
-  fit = "contain",
+  fit = "cover",
 }: {
   src?: string | null;
   alt: string;
@@ -55,8 +55,7 @@ export function AssetImage({
     return (
       <div
         className={cn(
-          "relative overflow-hidden",
-          tone === "dark" ? "bg-[#111111]" : "bg-[#f4f4f5]",
+          "relative overflow-hidden w-full h-full bg-[#111111]",
           aspects[aspect],
           className,
         )}
@@ -68,14 +67,14 @@ export function AssetImage({
           priority={priority}
           unoptimized
           className={cn(
-            "transition-transform duration-700 hover:scale-[1.02]",
-            fit === "contain" ? "object-contain p-2" : "object-cover object-center",
+            "w-full h-full transition-transform duration-700 hover:scale-105",
+            fit === "contain" ? "object-contain" : "object-cover object-center",
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
           onError={() => setFailed(true)}
         />
         {label ? (
-          <span className="absolute left-3 top-3 border border-line bg-white/90 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm">
+          <span className="absolute left-3 top-3 border border-white/20 bg-black/80 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md z-10">
             {label}
           </span>
         ) : null}

@@ -32,12 +32,12 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Architectural Interactive Split Showcase */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 items-start">
+        {/* Full-Bleed Architectural Split Showcase — Images Own The Component */}
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 items-stretch">
 
-          {/* LEFT: Full Uncropped Visual Stage */}
-          <Reveal className="w-full">
-            <div className="relative flex flex-col overflow-hidden border border-line bg-white shadow-xl">
+          {/* LEFT: Full-Bleed High-Impact Visual Stage */}
+          <Reveal className="w-full h-full">
+            <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentService.slug}
@@ -45,36 +45,30 @@ export function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col"
+                  className="flex h-full flex-col justify-between"
                 >
-                  {/* High-Res Uncropped Visual Stage — 100% Full Image Visibility */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line">
+                  {/* Full-Bleed Image Container — Image OWNS the stage */}
+                  <div className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full overflow-hidden bg-[#111111] border-b border-line">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
-                      aspect="landscape"
-                      fit="contain"
-                      tone="light"
-                      className="h-full w-full"
+                      aspect="auto"
+                      fit="cover"
+                      tone="dark"
+                      className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     />
-                    <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
-                      Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
-                    </span>
+                    {/* Badge Floating directly over the full-bleed image */}
+                    <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
+                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                        Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Stage Details */}
-                  <div className="flex flex-col justify-between p-6 md:p-8 bg-white">
+                  {/* Stage Info Body */}
+                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white">
                     <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
-                          FormX Engineering Scope
-                        </span>
-                        <span className="font-display text-[11px] font-bold text-ink/40">
-                          {currentService.slug}
-                        </span>
-                      </div>
-
                       <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
                         {currentService.title}
                       </h3>
@@ -108,8 +102,8 @@ export function Services() {
           </Reveal>
 
           {/* RIGHT: Smooth Architectural Navigation Index */}
-          <Reveal delay={0.06} className="w-full">
-            <div className="flex flex-col border border-line bg-white divide-y divide-line/60">
+          <Reveal delay={0.06} className="w-full h-full">
+            <div className="flex h-full flex-col border border-line bg-white divide-y divide-line/60 shadow-lg">
               <div className="bg-[#111111] p-4 md:p-5 text-white flex items-center justify-between">
                 <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
                   Engineering Disciplines Index
@@ -117,7 +111,7 @@ export function Services() {
                 <span className="text-[11px] text-white/50">Select to preview</span>
               </div>
 
-              <div className="divide-y divide-line/60">
+              <div className="flex-1 divide-y divide-line/60">
                 {services.map((svc, i) => {
                   const isActive = i === activeIdx;
                   return (
@@ -127,8 +121,8 @@ export function Services() {
                       onClick={() => setActiveIdx(i)}
                       className={`w-full text-left p-3.5 md:p-4 transition-all duration-300 flex items-center justify-between group ${
                         isActive
-                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-4"
-                          : "hover:bg-gray-50 hover:pl-4"
+                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-5"
+                          : "hover:bg-gray-50 hover:pl-5"
                       }`}
                     >
                       <div className="flex items-center gap-3">
