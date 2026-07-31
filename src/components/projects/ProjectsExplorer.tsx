@@ -116,7 +116,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative block border border-line transition-all hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
+              className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
             >
               <AssetImage
                 alt={project.title}

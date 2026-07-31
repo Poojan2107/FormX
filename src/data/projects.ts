@@ -1,4 +1,4 @@
-/** Project case studies — illustrative until FormX-true project data is confirmed */
+/** FormX Real Projects Portfolio — 15 Authentic Projects */
 
 export type Project = {
   slug: string;
@@ -21,278 +21,457 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "solar-module-manufacturing",
-    sector: "Renewable Energy",
-    title: "Solar Module Manufacturing Facility",
-    client: "Confidential — Renewable Manufacturing",
-    location: "Rajasthan, India",
-    year: "2024",
-    area: "Large campus manufacturing scope",
+    slug: "kalpataru-corporate-house",
+    sector: "Commercial & Corporate",
+    title: "Kalpataru Corporate House",
+    client: "Kalpataru Group",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Multi-story Corporate Headquarters",
     services: [
       "Architectural Drawings",
       "Structural Engineering",
+      "Civil Engineering",
+      "MEP & Utilities",
+    ],
+    challenge:
+      "Design and engineer a landmark corporate headquarters requiring clear-span executive office spaces, refined facade integration, and coordinated MEP ceiling distribution.",
+    approach:
+      "FormX engineered optimal RCC column grids, integrated hidden beam transitions for open executive floors, and delivered construction-ready GFC packages.",
+    outcome:
+      "High-efficiency corporate office space delivered with seamless structural stiffness and zero clash rework during MEP installation.",
+    highlights: [
+      "Clear-span executive floor plates",
+      "Seismic RCC structural frame",
+      "Coordinated MEP ceiling risers",
+      "Construction-ready GFC package",
+    ],
+    assets: {
+      cover: "projects/kalpataru-corporate-house.jpg",
+      gallery: ["projects/kalpataru-corporate-house-gallery.jpg"],
+    },
+  },
+  {
+    slug: "vir-bhadra-enterprise",
+    sector: "Industrial & Commercial",
+    title: "Vir Bhadra Enterprise Industrial Hub",
+    client: "Vir Bhadra Enterprise",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Heavy Industrial & Administration Campus",
+    services: [
+      "Structural Engineering",
+      "PEB Design Support",
+      "Site Infrastructure",
+      "Civil Engineering",
+    ],
+    challenge:
+      "Engineering a heavy industrial manufacturing plant and administration office requiring long-span steel/RCC hybrid framing and high overhead crane loading.",
+    approach:
+      "FormX developed optimized PEB portal frame geometry, foundation load distribution for heavy industrial machinery, and clash-free site utility networks.",
+    outcome:
+      "Robust, buildable industrial facility engineered for long-term operational durability and cost-optimized steel consumption.",
+    highlights: [
+      "PEB heavy steel structural framing",
+      "Crane gantry beam load engineering",
+      "Machinery isolation foundations",
+      "Site storm water drainage network",
+    ],
+    assets: {
+      cover: "projects/vir-bhadra-enterprise.jpg",
+      gallery: ["projects/vir-bhadra-enterprise-gallery.jpg"],
+    },
+  },
+  {
+    slug: "nutan-vidhyalaya",
+    sector: "Institutional & Education",
+    title: "Nutan Vidhyalaya Campus",
+    client: "Nutan Education Trust",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Multi-wing Educational Campus",
+    services: [
+      "Architectural Drawings",
+      "Structural Engineering",
+      "Fire Protection Engineering",
+      "Sustainable Design",
+    ],
+    challenge:
+      "Planning a multi-story institutional school campus requiring child-safe layouts, high natural ventilation, and strict IS 1893 seismic compliance.",
+    approach:
+      "FormX designed modular classroom spans, fire evacuation stairwells, and cost-effective RCC framing optimized for rapid educational construction.",
+    outcome:
+      "Safe, vibrant educational environment providing maximum daylighting, thermal comfort, and fully compliant fire safety infrastructure.",
+    highlights: [
+      "Modular classroom spatial planning",
+      "Seismic IS 1893 RCC structural design",
+      "Dual fire escape stairwells",
+      "Natural cross-ventilation orientation",
+    ],
+    assets: {
+      cover: "projects/nutan-vidhyalaya.jpg",
+      gallery: ["projects/nutan-vidhyalaya-gallery.jpg"],
+    },
+  },
+  {
+    slug: "jignesh-patel-bungalow",
+    sector: "Residential Architecture",
+    title: "Jigneshbhai Patel Luxury Bungalow",
+    client: "Private Client",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "High-End Private Residence",
+    services: [
+      "Architectural Drawings",
+      "Structural Engineering",
+      "Sustainable Design",
+    ],
+    challenge:
+      "High-end luxury private bungalow requiring expansive cantilevered slab elements, double-height living spaces, and sleek structural detailing.",
+    approach:
+      "FormX engineered hidden post-tensioned beam transitions, integrated structural glass facade anchors, and customized interior structural features.",
+    outcome:
+      "Striking modern luxury villa combining dramatic architectural cantilevers with rock-solid structural integrity.",
+    highlights: [
+      "Large cantilevered roof & balcony slabs",
+      "Double-height living room structural span",
+      "Integrated glass curtain wall anchors",
+      "Bespoke structural detailing",
+    ],
+    assets: {
+      cover: "projects/jignesh-patel-bungalow.jpg",
+      gallery: ["projects/jignesh-patel-bungalow-gallery.jpg"],
+    },
+  },
+  {
+    slug: "sitapur-nutan-upashray",
+    sector: "Community & Institutional",
+    title: "Sitapur Nutan Upashray",
+    client: "Sitapur Community Trust",
+    location: "Sitapur, Gujarat, India",
+    year: "2024–2026",
+    area: "Cultural & Community Facility",
+    services: [
+      "Architectural Drawings",
+      "Structural Engineering",
+      "Civil Engineering",
+    ],
+    challenge:
+      "Cultural & community facility balancing traditional aesthetic requirements with modern structural safety and large column-free gathering spaces.",
+    approach:
+      "FormX designed large-span RCC prayer halls, column-free central spaces, and durable civil drainage infrastructure to handle seasonal rains.",
+    outcome:
+      "Serene, highly functional community hub built for high occupancy gatherings and enduring structural longevity.",
+    highlights: [
+      "Column-free main prayer hall",
+      "Traditional & contemporary architectural synthesis",
+      "High-capacity civil drainage",
+      "Durable RCC structural system",
+    ],
+    assets: {
+      cover: "projects/sitapur-nutan-upashray.jpg",
+      gallery: ["projects/sitapur-nutan-upashray-gallery.jpg"],
+    },
+  },
+  {
+    slug: "g5-residential-tower",
+    sector: "Multi-Family Residential",
+    title: "G+5 Urban Residential Tower",
+    client: "Urban Developers",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "G+5 Multi-Family Residential Tower",
+    services: [
+      "Structural Engineering",
+      "Architectural Drawings",
       "Electrical Engineering",
+    ],
+    challenge:
+      "Urban multi-story residential building requiring economical RCC structural frame design and optimized apartment floor plate layouts.",
+    approach:
+      "FormX executed rapid RCC frame analysis, ductile beam-column joint detailing (IS 13920), and coordinated GFC packages.",
+    outcome:
+      "High-density urban residential tower delivered with optimized steel reinforcement ratios and quick construction cycle times.",
+    highlights: [
+      "Optimized RCC frame steel ratio",
+      "IS 13920 ductile seismic detailing",
+      "Compact apartment layout efficiency",
+      "Ground floor stilt parking design",
+    ],
+    assets: {
+      cover: "projects/g5-residential-tower.jpg",
+      gallery: ["projects/g5-residential-tower-gallery.jpg"],
+    },
+  },
+  {
+    slug: "kesar-heritage",
+    sector: "Residential Architecture",
+    title: "Kesar Heritage Residential Enclave",
+    client: "Kesar Developers",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Premium Residential Enclave",
+    services: [
+      "Architectural Drawings",
+      "Structural Engineering",
       "Site Infrastructure",
     ],
     challenge:
-      "Plan a scalable manufacturing campus with clear process zoning, buildable structural systems, and utility corridors that support phased expansion without disrupting operations.",
+      "Heritage-inspired residential development requiring precise architectural detailing and a robust structural foundation system.",
     approach:
-      "FORMX aligned architectural layouts with operational flow, developed optimised structural systems for production halls, and coordinated electrical and site infrastructure as construction-ready packages ahead of tender milestones.",
+      "FormX blended traditional spatial planning with modern seismic structural engineering and efficient underground utility corridors.",
     outcome:
-      "Coordinated documentation supported clearer tendering and site execution — with expansion logic and statutory compliance embedded from concept stage.",
+      "Elegant residential community offering timeless architectural character backed by state-of-the-art structural performance.",
     highlights: [
-      "Process-led architectural planning",
-      "Industrial structural systems",
-      "HT/LT power distribution planning",
-      "Roads, drainage & utility networks",
+      "Heritage architectural facade detailing",
+      "Seismic foundation design",
+      "Underground utility & drainage network",
+      "Integrated landscaping structural pads",
     ],
     assets: {
-      cover: "projects/solar-module-cover.jpg",
-      gallery: [
-        "projects/solar-module-01.jpg",
-        "projects/solar-module-02.jpg",
-        "projects/solar-module-03.jpg",
-      ],
+      cover: "projects/kesar-heritage.jpg",
+      gallery: ["projects/kesar-heritage-gallery.jpg"],
     },
   },
   {
-    slug: "aerial-platform-plant",
-    sector: "Automotive & Equipment",
-    title: "Aerial Work Platform Manufacturing Facility",
-    client: "Confidential — Equipment OEM",
-    location: "Sanand, Gujarat",
-    year: "2025",
-    services: [
-      "Architectural Drawings",
-      "Structural Engineering",
-      "Mechanical Utility Engineering",
-      "HVAC & Refrigeration Engineering",
-    ],
-    challenge:
-      "Deliver a manufacturing facility for large equipment with precise circulation, assembly clearances, and mechanical utilities sized for production tempo.",
-    approach:
-      "Layouts prioritised material flow and clear heights. Structure and mechanical utilities were coordinated with HVAC so service access and operational comfort stayed intact through GFC.",
-    outcome:
-      "Buildable drawing packages and continuous technical clarifications kept design ownership close to construction sequencing.",
-    highlights: [
-      "Assembly-flow architecture",
-      "Clear-height structural design",
-      "Utility system planning",
-      "HVAC for production environments",
-    ],
-    assets: {
-      cover: "projects/terex-cover.jpg",
-      gallery: ["projects/terex-01.jpg", "projects/terex-02.jpg"],
-    },
-  },
-  {
-    slug: "metallurgical-equipment",
-    sector: "Heavy Engineering",
-    title: "Heavy Metallurgical Equipment Manufacturing Facility",
-    client: "Confidential — Heavy Engineering",
-    location: "India",
-    year: "2024",
+    slug: "swagatam-elenza",
+    sector: "Multi-Family Residential",
+    title: "Swagatam Elenza Residential Tower",
+    client: "Swagatam Realty",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "High-Rise Residential Development",
     services: [
       "Structural Engineering",
       "Architectural Drawings",
       "Civil Engineering",
-      "Project Management & Procurement",
     ],
     challenge:
-      "Support heavy process equipment and industrial loads while maintaining constructability and coordinated civil interfaces.",
+      "Premium residential apartment complex requiring basement parking, high structural lateral stiffness, and optimized material usage.",
     approach:
-      "Structural systems and foundations were engineered for industrial duty; architecture and civil packages stayed aligned to equipment constraints, with project coordination through tender and execution.",
+      "FormX executed retaining wall structural design, optimized RCC steel ratios, and issued construction-ready GFC drawings.",
     outcome:
-      "Reliable structural language and clearer civil interfaces reduced redesign loops during vendor finalisation.",
+      "Modern residential landmark combining luxury apartment living with efficient structural engineering.",
     highlights: [
-      "RCC & steel structural design",
-      "Foundation engineering",
-      "Site grading & earthworks",
-      "Tender & progress coordination",
+      "Deep basement retaining wall design",
+      "High lateral stiffness shear walls",
+      "Efficient floor plate utilization",
+      "GFC documentation discipline",
     ],
     assets: {
-      cover: "projects/sms-cover.jpg",
-      gallery: ["projects/sms-01.jpg", "projects/sms-02.jpg"],
+      cover: "projects/swagatam-elenza.jpg",
+      gallery: ["projects/swagatam-elenza-gallery.jpg"],
     },
   },
   {
-    slug: "packaging-machinery",
-    sector: "Packaging",
-    title: "Packaging Machinery Manufacturing Facility",
-    client: "Confidential — Packaging OEM",
-    location: "India",
-    year: "2024",
-    services: [
-      "Architectural Drawings",
-      "Electrical Engineering",
-      "Fire Protection Engineering",
-      "HVAC & Refrigeration Engineering",
-    ],
-    challenge:
-      "Create a precise manufacturing environment with clean process organisation and dependable building services across fabrication, assembly, and testing.",
-    approach:
-      "Spatial planning separated process zones; electrical, fire protection, and HVAC design followed industrial risk profiles, heat loads, and life-safety requirements.",
-    outcome:
-      "Coordinated services reduced late-stage routing conflicts and supported smoother installation and commissioning.",
-    highlights: [
-      "Functional space planning",
-      "Power, lighting & earthing",
-      "Hydrant & sprinkler layouts",
-      "Ventilation & comfort HVAC",
-    ],
-    assets: {
-      cover: "projects/techlong-cover.jpg",
-      gallery: ["projects/techlong-01.jpg"],
-    },
-  },
-  {
-    slug: "frozen-foods-unit",
-    sector: "Food Processing",
-    title: "Frozen Foods Processing Facility",
-    client: "Confidential — Food Processing",
+    slug: "shashwat-empire",
+    sector: "Commercial & Retail",
+    title: "Shashwat Empire Commercial Complex",
+    client: "Shashwat Group",
     location: "Gujarat, India",
-    year: "2023",
+    year: "2024–2026",
+    area: "Multi-Tier Commercial & Retail Destination",
     services: [
+      "Structural Engineering",
       "Architectural Drawings",
-      "HVAC & Refrigeration Engineering",
-      "Mechanical Utility Engineering",
-      "Fire Protection Engineering",
+      "MEP & Utilities",
     ],
     challenge:
-      "Design a food processing plant with hygienic zoning, refrigeration loads, and clear separation between process and personnel flows.",
+      "Multi-tier commercial and retail destination requiring flexible retail shop layouts and heavy foot-traffic structural loads.",
     approach:
-      "Architecture and MEP were planned around hygiene categories and process cooling, with utility maintainability and fire safety coordinated into GFC packages.",
+      "FormX optimized commercial span grids, high-capacity electrical risers, and coordinated facade anchor points.",
     outcome:
-      "Facility planning supported food-grade operations with construction-ready cold-chain and utility documentation.",
+      "Thriving commercial hub providing maximum retail frontage flexibility and dependable MEP utility distribution.",
     highlights: [
-      "Hygienic layout logic",
-      "Refrigeration & process cooling",
-      "Process & utility piping",
-      "Life safety planning",
+      "Flexible commercial span layout",
+      "High live-load floor slab engineering",
+      "Central electrical & HVAC risers",
+      "Modern retail facade integration",
     ],
     assets: {
-      cover: "projects/falcon-cover.jpg",
-      gallery: ["projects/falcon-01.jpg", "projects/falcon-02.jpg"],
+      cover: "projects/shashwat-empire.jpg",
+      gallery: ["projects/shashwat-empire-gallery.jpg"],
     },
   },
   {
-    slug: "logistics-warehouse",
-    sector: "Logistics",
-    title: "Integrated Logistics & Warehousing Facility",
-    client: "Confidential — Logistics",
-    location: "Indore, India",
-    year: "2023",
+    slug: "swagatam-elenza-2",
+    sector: "Multi-Family Residential",
+    title: "Swagatam Elenza — Phase II",
+    client: "Swagatam Realty",
+    location: "Gujarat, India",
+    year: "2025–2026",
+    area: "Phase II Multi-Family Development",
+    services: [
+      "Structural Engineering",
+      "Architectural Drawings",
+      "Project Management",
+    ],
+    challenge:
+      "Second phase of premium residential development integrated with existing site utility networks and basement infrastructure.",
+    approach:
+      "FormX delivered seamless structural continuity, expansion joint detailing, and value-engineered foundation designs.",
+    outcome:
+      "Seamlessly integrated Phase II expansion completed on schedule with zero disruption to Phase I residents.",
+    highlights: [
+      "Expansion joint structural detailing",
+      "Integrated basement utility connections",
+      "Value-engineered raft foundations",
+      "Phase-wise site logistics support",
+    ],
+    assets: {
+      cover: "projects/swagatam-elenza-2.jpg",
+      gallery: ["projects/swagatam-elenza-2-gallery.jpg"],
+    },
+  },
+  {
+    slug: "aviniya-one",
+    sector: "Commercial & Corporate",
+    title: "Aviniya One Commercial Hub",
+    client: "Aviniya Group",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Corporate & Tech Office Tower",
     services: [
       "Architectural Drawings",
+      "Structural Engineering",
+      "HVAC & Refrigeration",
+      "Electrical Engineering",
+    ],
+    challenge:
+      "Modern commercial IT & office tower requiring energy-efficient HVAC zoning, structural glass facade anchoring, and open floor plates.",
+    approach:
+      "FormX provided coordinated structural-MEP ceiling clearances and structural steel entry canopy engineering.",
+    outcome:
+      "Premium corporate office destination attracting marquee business tenants with state-of-the-art facility infrastructure.",
+    highlights: [
+      "Open-plan office floor plates",
+      "Structural glass facade anchors",
+      "Energy-efficient HVAC zoning",
+      "High-speed electrical & data risers",
+    ],
+    assets: {
+      cover: "projects/aviniya-one.jpg",
+      gallery: ["projects/aviniya-one-gallery.jpg"],
+    },
+  },
+  {
+    slug: "qc-storage-room",
+    sector: "Industrial Infrastructure",
+    title: "Industrial QC & High-Tech Storage Room",
+    client: "Manufacturing Client",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Controlled Environment Testing Facility",
+    services: [
+      "Structural Engineering",
+      "Civil Engineering",
+      "Site Infrastructure",
+    ],
+    challenge:
+      "Controlled climate Quality Control & storage facility requiring strict temperature isolation, vibration-free structural flooring, and dust-tight detailing.",
+    approach:
+      "FormX designed isolated heavy machinery pad foundations, insulated panel envelope structures, and cleanroom drainage systems.",
+    outcome:
+      "Precision quality control facility operating with zero industrial vibration interference and strict climate compliance.",
+    highlights: [
+      "Vibration-isolated machine foundations",
+      "Insulated panel structural enclosure",
+      "Cleanroom floor slope & drainage",
+      "Dust-free joint detailing",
+    ],
+    assets: {
+      cover: "projects/qc-storage-room.jpg",
+      gallery: ["projects/qc-storage-room-gallery.jpg"],
+    },
+  },
+  {
+    slug: "peb-warehouse",
+    sector: "Industrial & Logistics",
+    title: "PEB Logistics Warehouse & Industrial Facility",
+    client: "Logistics Developer",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Large-Scale Steel Warehouse Facility",
+    services: [
+      "PEB Design Support",
       "Structural Engineering",
       "Site Infrastructure",
-      "Electrical Engineering",
     ],
     challenge:
-      "Deliver warehousing with efficient dock operations, clear-span structures, and durable site circulation for high throughput.",
+      "Large-scale logistics PEB warehouse requiring high-clearance clear spans, heavy forklift flooring slab design, and rapid erection timelines.",
     approach:
-      "Dock and truck logic led the architectural plan; long-span structure, site roads, drainage, and electrical layouts were issued as coordinated construction packages.",
+      "FormX optimized primary portal frames, secondary purlin spacing, and heavy industrial RCC floor slab reinforcement.",
     outcome:
-      "Operationally efficient warehouse layout with robust structural and site documentation for contractors.",
+      "High-throughput logistics warehouse providing maximum clear storage volume and durable industrial flooring.",
     highlights: [
-      "Dock & aisle optimisation",
-      "Long-span structural systems",
-      "Road & stormwater design",
-      "Lighting & small power",
+      "Long-span PEB portal steel frame",
+      "Heavy forklift floor slab engineering",
+      "High-eave clearance volume",
+      "Stormwater & dock leveler integration",
     ],
     assets: {
-      cover: "projects/tci-cover.jpg",
-      gallery: ["projects/tci-01.jpg"],
+      cover: "projects/peb-warehouse.jpg",
+      gallery: ["projects/peb-warehouse-gallery.jpg"],
     },
   },
   {
-    slug: "aseptic-packaging",
-    sector: "Packaging",
-    title: "Aseptic Packaging Manufacturing Facility",
-    client: "Confidential — Packaging",
-    location: "India",
-    year: "2023",
+    slug: "lavista-cafe",
+    sector: "Hospitality & Retail",
+    title: "Lavista Café & Commercial Venue",
+    client: "Lavista Hospitality",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Hospitality & Alfresco Venue",
     services: [
       "Architectural Drawings",
+      "Sustainable Design",
       "Structural Engineering",
-      "HVAC & Refrigeration Engineering",
-      "Project Management & Procurement",
     ],
     challenge:
-      "Support high-spec packaging manufacturing with tight coordination between process vendors and building systems.",
+      "Modern hospitality venue requiring artistic steel canopy structures, open alfresco dining layouts, and seamless indoor-outdoor flow.",
     approach:
-      "FORMX locked interfaces early; architecture, structure, and HVAC progressed with regular coordination reviews, supported by structured project and procurement oversight.",
+      "FormX designed lightweight steel structural elements, exposed structural finishes, and integrated ambient lighting channels.",
     outcome:
-      "Milestone-ready GFC and disciplined interface control across vendors and site teams.",
+      "Vibrant, inviting hospitality destination celebrated for its open architectural flow and structural design details.",
     highlights: [
-      "Vendor interface control",
-      "Coordinated HVAC design",
-      "Structural GA & detailing",
-      "Tender & vendor evaluation",
+      "Artistic structural steel canopy",
+      "Alfresco indoor-outdoor integration",
+      "Exposed architectural steelwork",
+      "Custom ambient lighting integration",
     ],
     assets: {
-      cover: "projects/sig-cover.jpg",
-      gallery: ["projects/sig-01.jpg", "projects/sig-02.jpg"],
+      cover: "projects/lavista-cafe.jpg",
+      gallery: ["projects/lavista-cafe-gallery.jpg"],
     },
   },
   {
-    slug: "solar-cell-module",
-    sector: "Solar Cell",
-    title: "Solar Cell & Module Manufacturing Facility",
-    client: "Confidential — Solar Manufacturing",
-    location: "India",
-    year: "2024",
+    slug: "box-culvert-infrastructure",
+    sector: "Civil Infrastructure",
+    title: "Heavy-Duty Box Culvert Infrastructure",
+    client: "Infrastructure Authority",
+    location: "Gujarat, India",
+    year: "2024–2026",
+    area: "Stormwater Civil Infrastructure",
     services: [
-      "Architectural Drawings",
-      "Electrical Engineering",
-      "Mechanical Utility Engineering",
-      "Fire Protection Engineering",
+      "Civil Engineering",
+      "Structural Engineering",
+      "Site Infrastructure",
     ],
     challenge:
-      "Plan precision manufacturing with controlled environments, high power density, and phased cell-to-module flow.",
+      "Heavy-duty RCC box culvert and stormwater drainage channel engineered for high soil overburden and heavy vehicular traffic loads.",
     approach:
-      "Zoning separated critical areas; electrical and mechanical utilities were sized for process demand with expansion hooks and integrated fire protection.",
+      "FormX performed structural culvert load analysis (IRC loading), rebar detailing, and earth pressure retaining wall engineering.",
     outcome:
-      "Scalable facility framework aligning process intensity with buildable engineering packages.",
+      "Durable, high-capacity drainage infrastructure preventing site waterlogging and supporting heavy transport corridors.",
     highlights: [
-      "Critical area zoning",
-      "Power distribution & SLDs",
-      "Plant utility infrastructure",
-      "Fire water & detection coordination",
+      "IRC heavy vehicle load analysis",
+      "Monolithic RCC box culvert design",
+      "Earth pressure retaining walls",
+      "High-velocity stormwater hydraulics",
     ],
     assets: {
-      cover: "projects/grew-cover.jpg",
-      gallery: ["projects/grew-01.jpg"],
-    },
-  },
-  {
-    slug: "battery-pack-plant",
-    sector: "Battery",
-    title: "Battery Pack Manufacturing Facility",
-    client: "Confidential — Battery Manufacturing",
-    location: "India",
-    year: "2024",
-    services: [
-      "Architectural Drawings",
-      "Fire Protection Engineering",
-      "Electrical Engineering",
-      "HVAC & Refrigeration Engineering",
-    ],
-    challenge:
-      "Establish a battery pack facility with rigorous safety zoning, controlled environments, and reliable building services.",
-    approach:
-      "Safety and process segregation drove planning. Fire, electrical, and HVAC strategies were developed together for detection, suppression, power reliability, and environmental control.",
-    outcome:
-      "Safety-led, construction-ready design prepared for industrial battery workflows and compliance scrutiny.",
-    highlights: [
-      "Safety zoning",
-      "Sprinkler & hydrant networks",
-      "Backup power planning",
-      "Energy-conscious HVAC",
-    ],
-    assets: {
-      cover: "projects/battery-cover.jpg",
-      gallery: ["projects/battery-01.jpg", "projects/battery-02.jpg"],
+      cover: "projects/box-culvert-infrastructure.jpg",
+      gallery: ["projects/box-culvert-infrastructure-gallery.jpg"],
     },
   },
 ];
