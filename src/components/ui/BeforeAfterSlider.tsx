@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { MoveHorizontal } from "lucide-react";
 import { AssetImage } from "@/components/ui/AssetImage";
 
 export function BeforeAfterSlider({
@@ -80,8 +79,10 @@ export function BeforeAfterSlider({
         className="absolute top-0 bottom-0 z-20 w-0.5 bg-x-red shadow-[0_0_12px_rgba(222,48,36,0.8)]"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="absolute top-1/2 -left-4 flex size-8 -translate-y-1/2 items-center justify-center rounded-full border border-x-red/50 bg-x-red text-white shadow-lg transition-transform duration-200 group-hover:scale-110">
-          <MoveHorizontal className="size-4" />
+        <div className="absolute top-1/2 -left-5 flex size-10 -translate-y-1/2 items-center justify-center border border-x-red/60 bg-[#0d0d0d] text-x-red shadow-[0_6px_20px_rgba(0,0,0,0.45)] transition-transform duration-200 group-hover:scale-110">
+          <span className="font-display text-xl font-black leading-none" aria-hidden>
+            ×
+          </span>
         </div>
       </div>
     </div>

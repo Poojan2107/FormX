@@ -579,3 +579,17 @@ body {
 .x-desat:focus-visible img {
   filter: grayscale(0);
 }
+
+/* Image load shimmer — gradient set inline per tone; only animation lives here */
+@keyframes x-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.x-shimmer {
+  animation: x-shimmer 1.4s ease-in-out infinite;
+}

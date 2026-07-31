@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { heroLines, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
@@ -51,6 +51,9 @@ export function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, [0, 900], [0, 120]);
+
   useEffect(() => {
     if (reduce) return;
     intervalRef.current = setInterval(() => {
@@ -74,8 +77,8 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#0c0c0c]" style={{ minHeight: "92vh" }}>
-      {/* Full-bleed background image with Ken Burns */}
-      <div className="absolute inset-0 z-0">
+      {/* Full-bleed background image with Ken Burns + scroll parallax */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: parallaxY }}>
         <AnimatePresence mode="sync">
           <motion.div
             key={slideIndex}
@@ -105,7 +108,7 @@ export function Hero() {
 
         {/* Architectural grid texture */}
         <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
-      </div>
+      </motion.div>
 
       {/* Red accent top-left corner line */}
       <div className="absolute left-0 top-0 z-10 h-32 w-1 bg-gradient-to-b from-x-red to-transparent" />
@@ -232,6 +235,20 @@ export function Hero() {
                   </span>
                 </button>
               ))}
+            </div>
+
+            {/* Scroll cue */}
+            <div className="mt-10 flex items-center gap-2.5">
+              <span className="relative block h-10 w-px overflow-hidden bg-white/15">
+                <motion.span
+                  className="absolute left-0 top-0 h-3 w-px bg-x-red"
+                  animate={reduce ? undefined : { y: [0, 40] }}
+                  transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </span>
+              <span className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-white/30">
+                Scroll
+              </span>
             </div>
           </motion.div>
         </div>

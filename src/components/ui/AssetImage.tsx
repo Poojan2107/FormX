@@ -42,6 +42,7 @@ export function AssetImage({
 }) {
   const resolved = src ?? (slot ? `/assets/${slot}` : null);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const aspects: Record<string, string> = {
     landscape: "aspect-[16/10]",
@@ -61,15 +62,30 @@ export function AssetImage({
           className,
         )}
       >
+        {!loaded ? (
+          <div
+            aria-hidden
+            className="x-shimmer absolute inset-0"
+            style={{
+              background:
+                tone === "dark"
+                  ? "linear-gradient(100deg,#151515 40%,#262626 50%,#151515 60%)"
+                  : "linear-gradient(100deg,#f0f0f0 40%,#fafafa 50%,#f0f0f0 60%)",
+              backgroundSize: "200% 100%",
+            }}
+          />
+        ) : null}
         <Image
           src={resolved}
           alt={alt}
           fill
           priority={priority}
           unoptimized
+          onLoad={() => setLoaded(true)}
           className={cn(
-            "w-full h-full transition-transform duration-700 hover:scale-105",
+            "w-full h-full transition-[opacity,transform] duration-700 hover:scale-105",
             fit === "contain" ? "object-contain" : "object-cover object-center",
+            loaded ? "opacity-100" : "opacity-0",
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
           onError={() => setFailed(true)}
