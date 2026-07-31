@@ -3,6 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { VendorForm } from "@/components/forms/VendorForm";
+import { CtaBand } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
   title: "Vendor Registration",
@@ -27,6 +28,12 @@ export default function VendorRegistrationPage() {
           </Reveal>
         </Container>
       </section>
+
+      <CtaBand
+        title="Prefer to reach us directly?"
+        description="Share capability profiles and certifications with our procurement team by email."
+        primary={{ label: "Email procurement", href: "mailto:contact@formxconsultants.com" }}
+      />
     </>
   );
 }

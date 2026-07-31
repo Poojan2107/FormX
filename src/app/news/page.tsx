@@ -55,7 +55,9 @@ export default function NewsPage() {
                     <p className="mt-3 flex-1 text-[14px] leading-[1.7] text-ink-muted">
                       {item.excerpt}
                     </p>
-                    <span className="mt-5 text-sm font-semibold">Read →</span>
+                    <span className="mt-5 inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red transition-transform duration-300 group-hover:translate-x-1">
+                      Read →
+                    </span>
                   </div>
                 </Link>
               </Reveal>
