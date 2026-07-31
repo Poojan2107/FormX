@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Cpu, Layers, Ruler, Zap, Compass } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,40 +10,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 
 const disciplineTabs = [
-  {
-    id: "all",
-    label: "All 10 Services",
-    icon: Layers,
-  },
-  {
-    id: "architecture",
-    label: "01. Architecture & Planning",
-    slugs: ["architectural-design", "site-infrastructure", "sustainable-design"],
-    icon: Compass,
-  },
-  {
-    id: "structure",
-    label: "02. Structure & Civil",
-    slugs: ["structural-engineering", "civil-engineering"],
-    icon: Ruler,
-  },
-  {
-    id: "mep",
-    label: "03. MEP & Utility",
-    slugs: [
-      "mechanical-utility-engineering",
-      "hvac-engineering",
-      "electrical-engineering",
-      "fire-protection-engineering",
-    ],
-    icon: Zap,
-  },
-  {
-    id: "delivery",
-    label: "04. Project Delivery",
-    slugs: ["project-management"],
-    icon: ShieldCheck,
-  },
+  { id: "all", label: "All 10 Services" },
+  { id: "architecture", label: "Architecture & Planning", slugs: ["architectural-design", "site-infrastructure", "sustainable-design"] },
+  { id: "structure", label: "Structure & Civil", slugs: ["structural-engineering", "civil-engineering"] },
+  { id: "mep", label: "MEP & Utilities", slugs: ["mechanical-utility-engineering", "hvac-engineering", "electrical-engineering", "fire-protection-engineering"] },
+  { id: "delivery", label: "Project Delivery", slugs: ["project-management"] },
 ];
 
 export function Services() {
@@ -58,68 +29,54 @@ export function Services() {
         });
 
   return (
-    <section id="services" className="relative isolate scroll-mt-32 bg-[#0a0a0a] text-white py-16 md:py-24 border-y border-white/10 overflow-hidden">
-      {/* Background Architectural Grid Pattern */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-35" aria-hidden />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(1000px 600px at 50% 0%, rgba(222,48,36,0.14), transparent 75%)",
-        }}
-        aria-hidden
-      />
-
-      <Container className="relative z-10">
+    <section id="services" className="scroll-mt-32 bg-[#fafafa] py-16 md:py-24 border-y border-line">
+      <Container>
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            eyebrow="Multidisciplinary Scope"
-            title="FormX Engineering & Architecture Matrix"
-            description="Integrated architectural planning, structural engineering, MEP utilities, and project management — coordinated as one package from concept to GFC."
-            invert
+            eyebrow="Our Services"
+            title="Complete solutions in engineering & architecture"
+            description="Multidisciplinary architectural drawings, structural engineering, MEP utilities, and project management — coordinated for 100% construction-ready packages."
           />
           <Link
             href="/services"
-            className="inline-flex shrink-0 items-center gap-2 border border-x-red bg-x-red px-6 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all hover:bg-white hover:text-ink"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-all hover:translate-x-1"
           >
-            Explore All 10 Services
+            View All Services
             <ArrowUpRight className="size-4" />
           </Link>
         </Reveal>
 
-        {/* Interactive Discipline Tab Selector — FormX Architectural Matrix */}
-        <div className="mt-10 flex flex-wrap items-center gap-2.5 border-b border-white/10 pb-6">
+        {/* Clean Discipline Filter Tabs */}
+        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-line pb-5">
           {disciplineTabs.map((tab) => {
-            const Icon = tab.icon;
             const active = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`inline-flex items-center gap-2.5 border px-4 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] transition-all ${
+                className={`border px-4 py-2 font-display text-[11px] font-bold uppercase tracking-[0.12em] transition-all ${
                   active
-                    ? "border-x-red bg-x-red text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)]"
-                    : "border-white/15 bg-white/[0.03] text-white/60 hover:border-white/30 hover:text-white"
+                    ? "border-x-red bg-x-red text-white shadow-sm"
+                    : "border-line bg-white text-ink hover:border-x-red/40 hover:text-x-red"
                 }`}
               >
-                <Icon className="size-4 text-x-red" />
                 {tab.label}
               </button>
             );
           })}
         </div>
 
-        {/* Dynamic Architectural Grid Showcase — Full Uncropped Imagery & X-Factor Styling */}
+        {/* Bright, Visual-First Services Grid — Large Prominent Uncropped Images */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredServices.map((service, i) => (
             <Reveal key={service.slug} delay={0.03 * (i % 3)} className="h-full">
               <Link
                 href={`/services/${service.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden border border-white/15 bg-white/[0.03] transition-all duration-500 hover:border-x-red/60 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_rgba(222,48,36,0.18)]"
+                className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
               >
-                {/* Image Container with Full Uncropped Visibility */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-white/10 bg-[#121212]">
+                {/* Large Prominent Uncropped Image Container */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100 border-b border-line/60">
                   <AssetImage
                     alt={service.title}
                     slot={service.asset}
@@ -128,36 +85,30 @@ export function Services() {
                     fit="cover"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-                  {/* Watermark Number & Red Diagonal Slash */}
-                  <div className="absolute left-4 top-4 flex items-center gap-1.5">
-                    <span className="border border-x-red/40 bg-x-red/20 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red backdrop-blur-md">
-                      0{i + 1}
-                    </span>
-                  </div>
-
-                  <div className="absolute right-4 top-4 flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:border-x-red group-hover:bg-x-red">
+                  <span className="absolute left-3.5 top-3.5 border border-line bg-white/90 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm">
+                    0{i + 1}
+                  </span>
+                  <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full bg-white/90 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
                     <ArrowUpRight className="size-4" />
                   </div>
                 </div>
 
-                {/* Content Overlay */}
+                {/* Content Area */}
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>
-                    <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white transition-colors group-hover:text-x-red">
+                    <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
                       {service.title}
                     </h3>
-                    <p className="mt-2.5 text-[13px] leading-[1.7] text-white/65 line-clamp-3">
+                    <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
                       {service.short}
                     </p>
                   </div>
 
-                  {/* Hover Progress Rail Indicator */}
-                  <div className="mt-6 border-t border-white/10 pt-4">
-                    <span className="inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red transition-all group-hover:translate-x-1">
-                      Explore Service Scope →
+                  <div className="mt-6 border-t border-line/60 pt-4 flex items-center justify-between">
+                    <span className="font-display text-[11px] font-bold uppercase tracking-[0.12em] text-x-red transition-all group-hover:translate-x-1">
+                      Explore Scope →
                     </span>
+                    <span className="h-0.5 w-6 bg-x-red transition-all duration-300 group-hover:w-12" />
                   </div>
                 </div>
               </Link>
