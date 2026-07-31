@@ -4,6 +4,7 @@ import { sectors } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 export function Sectors() {
   return (
@@ -13,37 +14,52 @@ export function Sectors() {
           <SectionHeading
             eyebrow="Our sectors"
             title="Industries we serve"
-            description="Coordinated design across renewable manufacturing, process plants, logistics, data centers, and infrastructure campuses."
+            description="Coordinated engineering design across renewable manufacturing, process plants, logistics, data centers, and infrastructure campuses."
           />
           <Link
             href="/sectors"
-            className="inline-flex shrink-0 items-center gap-2 text-[13px] font-semibold text-ink transition-colors hover:text-x-red"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-all hover:translate-x-1"
           >
             View all sectors
             <ArrowUpRight className="size-4" />
           </Link>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-3.5 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {sectors.slice(0, 10).map((sector, i) => (
-            <Reveal key={sector.slug} delay={0.025 * (i % 5)}>
+            <Reveal key={sector.slug} delay={0.03 * (i % 5)} className="h-full">
               <Link
                 href={`/sectors/${sector.slug}`}
-                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex min-h-[100px] flex-col justify-between overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa] sm:min-h-[120px] md:min-h-[130px] md:p-5"
+                className="group relative flex h-[200px] sm:h-[220px] flex-col justify-end overflow-hidden border border-line bg-[#121212] p-4 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.12)]"
               >
-                <div
-                  className="pointer-events-none absolute -right-5 -top-5 size-16 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(222,48,36,0.18), transparent 70%)",
-                  }}
-                  aria-hidden
+                {/* Sector Background Image */}
+                <AssetImage
+                  alt={sector.title}
+                  slot={sector.asset}
+                  kind="sector"
+                  aspect="portrait"
+                  fit="cover"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <ArrowUpRight className="relative size-3.5 self-end text-ink/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
-                <h3 className="relative font-display text-[13px] font-bold leading-snug tracking-tight text-ink transition-colors group-hover:text-x-red sm:text-sm">
-                  {sector.title}
-                </h3>
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-full" />
+
+                {/* Dark Gradient Overlay for High Contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent transition-opacity group-hover:from-black/90" />
+
+                {/* Top Badge & Arrow */}
+                <div className="relative z-10 mb-auto flex items-center justify-between">
+                  <span className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+                    0{i + 1}
+                  </span>
+                  <ArrowUpRight className="size-4 text-white/60 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-x-red" />
+                </div>
+
+                {/* Content Overlay */}
+                <div className="relative z-10">
+                  <h3 className="font-display text-sm font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red sm:text-base">
+                    {sector.title}
+                  </h3>
+                  <span className="mt-2 block h-0.5 w-6 bg-x-red transition-all duration-300 group-hover:w-full" />
+                </div>
               </Link>
             </Reveal>
           ))}

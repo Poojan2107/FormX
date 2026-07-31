@@ -1,5 +1,4 @@
 import { Hero } from "@/components/home/Hero";
-import { TickerBand } from "@/components/home/Ticker";
 import { About } from "@/components/home/About";
 import { Stats } from "@/components/home/Stats";
 import { Process } from "@/components/home/Process";
@@ -15,13 +14,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* Red band — top of page experience */}
-      <TickerBand tone="red" />
       <About />
       <Stats />
       <Services />
-      {/* Black band — mid-page rhythm break */}
-      <TickerBand tone="black" reverse className="border-y border-white/10" />
       <Process />
       <WhyFormx />
       <Projects />
