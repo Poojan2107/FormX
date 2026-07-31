@@ -8,6 +8,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { RelatedLinks, CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { ArticleJsonLd } from "@/components/shared/JsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -47,6 +48,15 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <>
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt}
+        datePublished={post.date}
+        author={post.author}
+        authorRole={post.authorRole}
+        url={`/knowledge-center/${post.slug}`}
+        image={`https://formxconsultants.com/assets/${post.asset}`}
+      />
       <PageHero
         eyebrow={post.category}
         title={post.title}

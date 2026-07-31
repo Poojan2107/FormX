@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { TickerBand } from "@/components/home/Ticker";
+import { BreadcrumbJsonLd } from "@/components/shared/JsonLd";
 
 export function PageHero({
   eyebrow,
@@ -29,6 +30,7 @@ export function PageHero({
         className,
       )}
     >
+      {crumbs ? <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, ...crumbs]} /> : null}
       {/* Faint full-bleed image layer */}
       {image ? (
         <>

@@ -8,6 +8,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { ArticleJsonLd } from "@/components/shared/JsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,6 +30,14 @@ export default async function NewsDetailPage({ params }: Props) {
 
   return (
     <>
+      <ArticleJsonLd
+        title={item.title}
+        description={item.excerpt}
+        datePublished={item.date}
+        author="FormX Consultants"
+        url={`/news/${item.slug}`}
+        image={`https://formxconsultants.com/assets/${item.asset}`}
+      />
       <PageHero
         eyebrow="News"
         title={item.title}

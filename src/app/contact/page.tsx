@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Contact } from "@/components/home/Contact";
 import { PageHero } from "@/components/ui/PageHero";
 import { Faqs } from "@/components/home/Faqs";
+import { FaqJsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <FaqJsonLd />
       <PageHero
         eyebrow="Contact"
         title="Let’s discuss your project"

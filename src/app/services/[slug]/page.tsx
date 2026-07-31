@@ -19,6 +19,7 @@ import { BrochureCta, CtaBand, RelatedLinks } from "@/components/shared/CtaBlock
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ServiceJsonLd } from "@/components/shared/JsonLd";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -71,6 +72,12 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
+      <ServiceJsonLd
+        name={service.title}
+        description={service.short}
+        url={`/services/${service.slug}`}
+        image={`https://formxconsultants.com/assets/${service.asset}`}
+      />
       {/* Sleek Dark Architectural Hero Header */}
       <PageHero
         eyebrow={cat}
