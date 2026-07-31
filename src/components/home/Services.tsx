@@ -32,10 +32,10 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Masterpiece Editorial Split Showcase — Full Portrait Uncropped Image Panel */}
+        {/* Masterpiece Editorial Split Showcase — Seamless Uncropped Asset Display */}
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-8 items-stretch">
 
-          {/* LEFT: Side-by-Side Editorial Stage (Full Uncropped Portrait Image + Scope Details) */}
+          {/* LEFT: Side-by-Side Editorial Stage (Full Uncropped Image + Scope Details) */}
           <Reveal className="w-full h-full">
             <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
@@ -47,16 +47,16 @@ export function Services() {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full flex-col md:flex-row"
                 >
-                  {/* Left Column: Full-Height Portrait Image Panel — 100% Uncropped Source Display */}
-                  <div className="relative w-full md:w-[46%] min-h-[360px] md:min-h-[460px] bg-[#111111] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
+                  {/* Left Column: Full Uncropped Image Panel — 100% Asset Preservation */}
+                  <div className="relative w-full md:w-[48%] min-h-[320px] md:min-h-[460px] bg-white overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0 p-4 flex items-center justify-center">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
                       aspect="auto"
-                      fit="cover"
-                      tone="dark"
-                      className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                      fit="contain"
+                      tone="light"
+                      className="h-full w-full bg-white"
                     />
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
                       <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
