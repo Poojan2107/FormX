@@ -2,31 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, ArrowRight, ShieldCheck, Check } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 
-const disciplineTabs = [
-  { id: "all", label: "All 10 Services" },
-  { id: "architecture", label: "Architecture & Planning", slugs: ["architectural-design", "site-infrastructure", "sustainable-design"] },
-  { id: "structure", label: "Structure & Civil", slugs: ["structural-engineering", "civil-engineering"] },
-  { id: "mep", label: "MEP & Utilities", slugs: ["mechanical-utility-engineering", "hvac-engineering", "electrical-engineering", "fire-protection-engineering"] },
-  { id: "delivery", label: "Project Delivery", slugs: ["project-management"] },
-];
-
 export function Services() {
-  const [activeTab, setActiveTab] = useState("all");
-
-  const filteredServices =
-    activeTab === "all"
-      ? services
-      : services.filter((s) => {
-          const tab = disciplineTabs.find((t) => t.id === activeTab);
-          return tab?.slugs?.includes(s.slug);
-        });
+  const [activeIdx, setActiveIdx] = useState(0);
+  const currentService = services[activeIdx];
 
   return (
     <section id="services" className="scroll-mt-32 bg-[#fafafa] py-16 md:py-24 border-y border-line">
@@ -35,86 +21,130 @@ export function Services() {
           <SectionHeading
             eyebrow="Our Services"
             title="Complete solutions in engineering & architecture"
-            description="Multidisciplinary architectural drawings, structural engineering, MEP utilities, and project management — coordinated for 100% construction-ready packages."
+            description="In-house multidisciplinary coordination across 10 specialized disciplines — delivered as one accountable construction-ready package."
           />
           <Link
             href="/services"
             className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-all hover:translate-x-1"
           >
             View All Services
-            <ArrowUpRight className="size-4" />
+            <ArrowRight className="size-4" />
           </Link>
         </Reveal>
 
-        {/* Clean Discipline Filter Tabs */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-line pb-5">
-          {disciplineTabs.map((tab) => {
-            const active = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`border px-4 py-2 font-display text-[11px] font-bold uppercase tracking-[0.12em] transition-all ${
-                  active
-                    ? "border-x-red bg-x-red text-white shadow-sm"
-                    : "border-line bg-white text-ink hover:border-x-red/40 hover:text-x-red"
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Creative Architectural Interactive Split Showcase — Card-Free Design */}
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 items-stretch">
 
-        {/* Services Grid — 100% Uncropped Full Asset Showcase */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredServices.map((service, i) => (
-            <Reveal key={service.slug} delay={0.03 * (i % 3)} className="h-full">
-              <Link
-                href={`/services/${service.slug}`}
-                className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
-              >
-                {/* 100% Uncropped Full Asset Container */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line/60">
-                  <AssetImage
-                    alt={service.title}
-                    slot={service.asset}
-                    kind="service"
-                    aspect="landscape"
-                    fit="contain"
-                    tone="light"
-                    className="h-full w-full"
-                  />
-                  <span className="absolute left-3.5 top-3.5 border border-line bg-white/95 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm">
-                    0{i + 1}
-                  </span>
-                  <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full bg-white/95 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
-                    <ArrowUpRight className="size-4" />
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                    <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
-                      {service.short}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 border-t border-line/60 pt-4 flex items-center justify-between">
-                    <span className="font-display text-[11px] font-bold uppercase tracking-[0.12em] text-x-red transition-all group-hover:translate-x-1">
-                      Explore Scope →
+          {/* LEFT: Massive Full-Stage Visual Showcase */}
+          <Reveal className="h-full">
+            <div className="relative flex h-full min-h-[460px] flex-col justify-between overflow-hidden border border-line bg-white shadow-xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentService.slug}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.35 }}
+                  className="flex h-full flex-col justify-between"
+                >
+                  {/* Large High-Res Visual Stage */}
+                  <div className="relative h-[280px] sm:h-[340px] md:h-[380px] w-full overflow-hidden bg-gray-100 border-b border-line">
+                    <AssetImage
+                      alt={currentService.title}
+                      slot={currentService.asset}
+                      kind="service"
+                      aspect="auto"
+                      fit="cover"
+                      tone="light"
+                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                      Discipline 0{activeIdx + 1} / 10
                     </span>
-                    <span className="h-0.5 w-6 bg-x-red transition-all duration-300 group-hover:w-12" />
                   </div>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+
+                  {/* Stage Details */}
+                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white">
+                    <div>
+                      <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
+                        {currentService.title}
+                      </h3>
+                      <p className="mt-3 text-[14px] leading-[1.8] text-ink-muted md:text-[15px]">
+                        {currentService.summary}
+                      </p>
+
+                      <div className="mt-5 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-4">
+                        {currentService.highlights.slice(0, 4).map((h) => (
+                          <div key={h} className="flex items-center gap-2 text-[12px] font-semibold text-ink">
+                            <Check className="size-3.5 text-x-red shrink-0" />
+                            <span>{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-8 pt-4 border-t border-line">
+                      <Link
+                        href={`/services/${currentService.slug}`}
+                        className="inline-flex items-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
+                      >
+                        Explore Full Service Scope
+                        <ArrowUpRight className="size-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </Reveal>
+
+          {/* RIGHT: Interactive Architectural Navigation Index */}
+          <Reveal delay={0.06} className="h-full">
+            <div className="flex h-full flex-col border border-line bg-white divide-y divide-line/60">
+              <div className="bg-[#111111] p-5 text-white flex items-center justify-between">
+                <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
+                  Engineering Disciplines Index
+                </span>
+                <span className="text-[11px] text-white/50">Hover / Select to view</span>
+              </div>
+
+              <div className="flex-1 overflow-y-auto max-h-[580px]">
+                {services.map((svc, i) => {
+                  const isActive = i === activeIdx;
+                  return (
+                    <button
+                      key={svc.slug}
+                      type="button"
+                      onMouseEnter={() => setActiveIdx(i)}
+                      onClick={() => setActiveIdx(i)}
+                      className={`w-full text-left p-4 md:p-5 transition-all duration-200 flex items-center justify-between group ${
+                        isActive
+                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-5"
+                          : "hover:bg-gray-50 hover:pl-5"
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span className={`font-display text-xs font-bold ${isActive ? "text-x-red" : "text-ink/40"}`}>
+                          0{i + 1}
+                        </span>
+                        <div>
+                          <h4 className={`font-display text-sm font-bold uppercase transition-colors ${isActive ? "text-x-red" : "text-ink group-hover:text-x-red"}`}>
+                            {svc.title}
+                          </h4>
+                          <p className="text-[12px] text-ink-muted line-clamp-1">
+                            {svc.short}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ArrowUpRight className={`size-4 transition-transform duration-200 ${isActive ? "text-x-red translate-x-0.5 -translate-y-0.5" : "text-ink/20 group-hover:text-x-red"}`} />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
+
         </div>
       </Container>
     </section>
