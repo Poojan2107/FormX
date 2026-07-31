@@ -31,6 +31,7 @@ export function AssetImage({
   tone = "dark",
   className,
   priority = false,
+  fit = "cover",
 }: {
   src?: string | null;
   alt: string;
@@ -39,10 +40,11 @@ export function AssetImage({
   label?: string;
   caption?: string;
   kind?: Kind;
-  aspect?: "landscape" | "portrait" | "square" | "wide";
+  aspect?: "landscape" | "portrait" | "square" | "wide" | "auto";
   tone?: "light" | "dark";
   className?: string;
   priority?: boolean;
+  fit?: "cover" | "contain";
 }) {
   const resolved = src ?? (slot ? `/assets/${slot}` : null);
   const [failed, setFailed] = useState(false);
@@ -52,20 +54,17 @@ export function AssetImage({
     portrait: "aspect-[4/5]",
     square: "aspect-square",
     wide: "aspect-[21/9]",
+    auto: "",
   };
 
   if (resolved && !failed) {
     return (
       <div
         className={cn(
-          "relative overflow-hidden bg-bg-muted",
+          "relative overflow-hidden bg-[#111111]",
           aspects[aspect],
           className,
         )}
-        style={{
-          clipPath:
-            "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
-        }}
       >
         <Image
           src={resolved}
@@ -73,12 +72,15 @@ export function AssetImage({
           fill
           priority={priority}
           unoptimized
-          className="object-cover"
+          className={cn(
+            "transition-transform duration-700 hover:scale-[1.02]",
+            fit === "contain" ? "object-contain p-1" : "object-cover object-center",
+          )}
           sizes="(max-width: 768px) 100vw, 50vw"
           onError={() => setFailed(true)}
         />
         {label ? (
-          <span className="absolute left-4 top-4 bg-black/70 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+          <span className="absolute left-3 top-3 border border-white/20 bg-black/85 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
             {label}
           </span>
         ) : null}
@@ -91,7 +93,7 @@ export function AssetImage({
       label={label}
       caption={caption}
       kind={kind === "team" || kind === "client" ? "studio" : kind}
-      aspect={aspect}
+      aspect={aspect === "auto" ? "landscape" : aspect}
       tone={tone}
       className={className}
     />

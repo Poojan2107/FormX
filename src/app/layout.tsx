@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Montserrat, Source_Sans_3 } from "next/font/google";
+import { Chakra_Petch, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
 import "./globals.css";
 
-const display = Montserrat({
+const display = Chakra_Petch({
   variable: "--font-display-family",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const body = Source_Sans_3({
+const body = Inter({
   variable: "--font-body-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -48,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="flex min-h-full flex-col font-body antialiased">
+      <body className="flex min-h-full flex-col font-body antialiased text-ink bg-bg">
         <a href="#main" className="skip-link sr-only">
           Skip to content
         </a>
