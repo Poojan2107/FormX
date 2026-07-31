@@ -7,8 +7,18 @@ import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { RelatedLinks, CtaBand } from "@/components/shared/CtaBlocks";
+import { StickyEnquire } from "@/components/shared/StickyEnquire";
 
 type Props = { params: Promise<{ slug: string }> };
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 3)
+    .join("")
+    .toUpperCase();
 
 export async function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }));
@@ -73,7 +83,7 @@ export default async function BlogDetailPage({ params }: Props) {
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-4">
                   <div className="formx-cut-sm flex size-14 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white shadow-[0_4px_16px_rgba(222,48,36,0.25)]">
-                    HJS
+                    {initials(post.author)}
                   </div>
                   <div>
                     <h3 className="font-display text-base font-bold text-ink">
@@ -119,6 +129,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
       <RelatedLinks title="More insights" items={related} />
       <CtaBand title="Discuss your facility brief with FormX" />
+      <StickyEnquire label="Discuss this insight with FormX" />
     </>
   );
 }

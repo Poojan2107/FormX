@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
+import { StickyEnquire } from "@/components/shared/StickyEnquire";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -37,7 +38,7 @@ export default async function NewsDetailPage({ params }: Props) {
           { label: item.title },
         ]}
       />
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-14 md:py-20">
         <Container className="max-w-3xl">
           <Reveal>
             <AssetImage
@@ -49,7 +50,7 @@ export default async function NewsDetailPage({ params }: Props) {
               label="News"
               className="mb-10"
             />
-            <div className="space-y-5 text-[16px] leading-[1.85] text-ink-muted">
+            <div className="space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {item.body.map((p) => (
                 <p key={p.slice(0, 36)}>{p}</p>
               ))}
@@ -64,7 +65,11 @@ export default async function NewsDetailPage({ params }: Props) {
               </Link>
             ) : null}
             <p className="mt-10">
-              <Link href="/news" transitionTypes={["nav-back"]} className="text-sm font-semibold hover:text-x-red">
+              <Link
+                href="/news"
+                transitionTypes={["nav-back"]}
+                className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors hover:text-x-red"
+              >
                 ← All news
               </Link>
             </p>
@@ -72,6 +77,7 @@ export default async function NewsDetailPage({ params }: Props) {
         </Container>
       </section>
       <CtaBand title="Connect with FormX" />
+      <StickyEnquire label="Talk to FormX about your facility" />
     </>
   );
 }

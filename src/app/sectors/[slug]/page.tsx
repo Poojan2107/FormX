@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,28 +29,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sector = getSector(slug);
   if (!sector) return {};
   return { title: sector.title, description: sector.summary };
-}
-
-function SectionHeader({
-  eyebrow,
-  title,
-}: {
-  eyebrow: string;
-  title: string;
-}) {
-  return (
-    <div className="mb-7">
-      <div className="mb-3 flex items-center gap-3">
-        <span className="h-px w-6 bg-x-red" />
-        <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
-          {eyebrow}
-        </span>
-      </div>
-      <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink md:text-2xl">
-        {title}
-      </h2>
-    </div>
-  );
 }
 
 export default async function SectorDetailPage({ params }: Props) {
@@ -88,7 +67,7 @@ export default async function SectorDetailPage({ params }: Props) {
       />
 
       {/* Main Visual Infographic Grid */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-14 md:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
             {/* Sector Challenges */}
