@@ -3,6 +3,7 @@ import { Chakra_Petch, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 const display = Chakra_Petch({
@@ -54,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="flex min-h-full flex-col font-body antialiased text-ink bg-bg">
+        <ScrollProgress />
         <a href="#main" className="skip-link sr-only">
           Skip to content
         </a>

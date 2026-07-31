@@ -22,6 +22,7 @@ export default function SectorsPage() {
         title="Industries we serve"
         description="As industrial design consultants, we deliver integrated solutions across renewable energy, advanced manufacturing, logistics, and infrastructure."
         crumbs={[{ label: "Sectors" }]}
+        image={{ slot: "sectors/renewable.jpg", kind: "sector" }}
       />
 
       <section className="bg-white section-y">

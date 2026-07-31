@@ -18,6 +18,7 @@ export default function ServicesPage() {
         title="Complete solutions in engineering & architecture"
         description="Precise, coordinated, and construction-ready packages across all FORMX disciplines — from architectural drawings and site infrastructure to structural, civil, MEP, fire protection, and project management."
         crumbs={[{ label: "Our Services" }]}
+        image={{ slot: "services/architecture.jpg", kind: "service" }}
       />
 
       <section className="bg-white section-y">

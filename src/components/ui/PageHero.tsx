@@ -1,6 +1,8 @@
 import { cn } from "@/lib/cn";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { AssetImage } from "@/components/ui/AssetImage";
+import { TickerBand } from "@/components/home/Ticker";
 
 export function PageHero({
   eyebrow,
@@ -8,15 +10,46 @@ export function PageHero({
   description,
   crumbs,
   className,
+  image,
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   crumbs?: { label: string; href?: string }[];
   className?: string;
+  image?: {
+    slot: string;
+    kind?: "facility" | "service" | "sector" | "article" | "studio" | "generic";
+  };
 }) {
   return (
-    <section className={cn("relative isolate overflow-hidden border-b border-white/10 bg-[#0a0a0a] text-white py-12 sm:py-16 md:py-20", className)}>
+    <section
+      className={cn(
+        "relative isolate overflow-hidden border-b border-white/10 bg-[#0a0a0a] text-white",
+        className,
+      )}
+    >
+      {/* Faint full-bleed image layer */}
+      {image ? (
+        <>
+          <div className="pointer-events-none absolute inset-0">
+            <AssetImage
+              alt="FormX — multidisciplinary design & engineering"
+              slot={image.slot}
+              kind={image.kind ?? "facility"}
+              tone="dark"
+              aspect="landscape"
+              fit="cover"
+              className="absolute inset-0 h-full w-full object-cover opacity-25"
+            />
+          </div>
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/75 to-[#0a0a0a]/45"
+            aria-hidden
+          />
+        </>
+      ) : null}
+
       {/* Background Grid Pattern */}
       <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-40" aria-hidden />
       <div
@@ -28,7 +61,16 @@ export function PageHero({
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 sm:px-5 md:px-8">
+      {/* Ghost X watermark */}
+      <div
+        className="pointer-events-none absolute right-[-3%] top-[-16%] select-none font-display font-black leading-none text-white/[0.05]"
+        style={{ fontSize: "clamp(10rem, 22vw, 22rem)" }}
+        aria-hidden
+      >
+        ×
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-12 pt-12 sm:px-5 sm:pb-12 sm:pt-16 md:px-8 md:pb-14 md:pt-20">
         {crumbs ? (
           <nav
             aria-label="Breadcrumb"
@@ -48,7 +90,7 @@ export function PageHero({
                     {c.label}
                   </Link>
                 ) : (
-                  <span className="text-white/90 font-medium">{c.label}</span>
+                  <span className="font-medium text-white/90">{c.label}</span>
                 )}
               </span>
             ))}
@@ -72,6 +114,8 @@ export function PageHero({
           </p>
         ) : null}
       </div>
+
+      <TickerBand tone="red" />
     </section>
   );
 }

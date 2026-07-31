@@ -17,10 +17,7 @@ export default function VendorRegistrationPage() {
         eyebrow="Contact"
         title="Vendor registration"
         description="Register your organisation to engage with FormX on industrial project packages, supply, and specialised services."
-        crumbs={[
-          { label: "Contact Us", href: "/contact" },
-          { label: "Vendor Registration" },
-        ]}
+        crumbs={[{ label: "Vendor Registration" }]}
       />
 
       <section className="bg-white py-16 md:py-24">

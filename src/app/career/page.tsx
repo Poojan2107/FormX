@@ -19,10 +19,7 @@ export default function CareerPage() {
         eyebrow="Careers"
         title="Build with FORMX"
         description="We look for professionals who value coordination, buildability, and construction-ready craft — designers and engineers who want packages that land cleanly at site."
-        crumbs={[
-          { label: "Contact Us", href: "/contact" },
-          { label: "Career" },
-        ]}
+        crumbs={[{ label: "Career" }]}
       />
 
       <section className="bg-white py-16 md:py-24">

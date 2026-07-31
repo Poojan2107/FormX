@@ -21,10 +21,8 @@ export default function KnowledgeCenterPage() {
         eyebrow="Resources"
         title="Knowledge Center"
         description="Practical writing and industrial facility perspectives for promoters, project directors, and engineering teams."
-        crumbs={[
-          { label: "Resources", href: "/knowledge-center" },
-          { label: "Knowledge Center" },
-        ]}
+        crumbs={[{ label: "Knowledge Center" }]}
+        image={{ slot: "insights/policy.jpg", kind: "article" }}
       />
 
       <section className="bg-white py-14 md:py-20">

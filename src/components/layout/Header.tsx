@@ -81,7 +81,7 @@ function SiteHeader({
             <DesktopNav />
 
             {/* Right CTAs */}
-            <div className="relative z-10 hidden items-center gap-3 self-center xl:flex">
+            <div className="relative z-10 hidden items-center gap-3 self-center lg:flex">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
                 className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/50 transition-colors hover:text-ink"

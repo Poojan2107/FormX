@@ -24,6 +24,7 @@ export default function NewsPage() {
           { label: "Resources", href: "/knowledge-center" },
           { label: "News & Events" },
         ]}
+        image={{ slot: "news/expansion.jpg", kind: "article" }}
       />
 
       <section className="bg-white py-16 md:py-24">

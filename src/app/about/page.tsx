@@ -60,6 +60,7 @@ export default function AboutPage() {
         title="Bridging design intent with on-site execution"
         description={aboutPage.intro}
         crumbs={[{ label: "About Us" }]}
+        image={{ slot: "about/home-about.jpg", kind: "studio" }}
       />
 
       <section className="bg-white py-16 md:py-24">

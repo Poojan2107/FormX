@@ -18,10 +18,8 @@ export default function ProjectsPage() {
         eyebrow="Our Work"
         title="Explore our projects"
         description="Integrated architecture and engineering for manufacturing plants, process facilities, logistics hubs, and industrial campuses."
-        crumbs={[
-          { label: "Our Work", href: "/projects" },
-          { label: "Our Projects" },
-        ]}
+        crumbs={[{ label: "Our Projects" }]}
+        image={{ slot: "projects/kalpataru-corporate-house.jpg", kind: "facility" }}
       />
 
       <section className="bg-white section-y">
