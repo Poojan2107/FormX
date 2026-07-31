@@ -93,7 +93,7 @@ export function ServicesGrid() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
+              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
             >
               {/* Full Uncropped Aspect Media Container */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line/60">

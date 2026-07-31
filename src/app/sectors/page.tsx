@@ -31,7 +31,7 @@ export default function SectorsPage() {
               <Reveal key={sector.slug} delay={0.04 * (i % 3)} className="h-full">
                 <Link
                   href={`/sectors/${sector.slug}`}
-                  className="group flex h-full flex-col overflow-hidden border border-line bg-[#141414] transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_40px_rgba(222,48,36,0.12)]"
+                  className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col overflow-hidden border border-line bg-[#141414] transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_40px_rgba(222,48,36,0.12)]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <AssetImage

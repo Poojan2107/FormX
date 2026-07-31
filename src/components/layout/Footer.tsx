@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Download, ArrowUpRight, ShieldCheck, Send } from "
 import { site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
+import { Button } from "@/components/ui/Button";
 
 export function Footer() {
   return (
@@ -34,23 +35,25 @@ export function Footer() {
               Ready to engineer your next facility?
             </h3>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
+          <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto">
+            <Button
               href="/contact"
-              className="inline-flex items-center gap-2 border border-x-red bg-x-red px-6 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all hover:bg-white hover:text-ink"
+              variant="primary"
+              className="w-full px-6 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] shadow-[0_6px_20px_rgba(222,48,36,0.35)] sm:w-auto"
             >
               Book a Consultation
               <ArrowUpRight className="size-4" />
-            </a>
-            <a
+            </Button>
+            <Button
               href={site.brochurePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-white/20 bg-white/5 px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-all hover:border-white hover:bg-white/10"
+              variant="ghost-light"
+              className="w-full px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] sm:w-auto"
             >
               <Download className="size-4 text-x-red" />
               Download Brochure PDF
-            </a>
+            </Button>
           </div>
         </Container>
       </div>

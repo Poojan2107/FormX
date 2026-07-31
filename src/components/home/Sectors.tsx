@@ -31,7 +31,7 @@ export function Sectors() {
             <Reveal key={sector.slug} delay={0.03 * (i % 5)} className="h-full">
               <Link
                 href={`/sectors/${sector.slug}`}
-                className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.12)]"
+                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.12)]"
               >
                 {/* Bright Crisp Industry Image */}
                 <div className="relative aspect-[16/11] w-full overflow-hidden bg-gray-100 border-b border-line/60">

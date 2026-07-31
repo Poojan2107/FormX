@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
-import { Search } from "lucide-react";
+import { RotateCcw, Search } from "lucide-react";
 import type { Project } from "@/data/projects";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { ProjectCard } from "@/components/projects/ProjectCard";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
@@ -18,11 +18,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   );
 
   const services = useMemo(
-    () =>
-      [
-        "All",
-        ...Array.from(new Set(projects.flatMap((p) => p.services))).sort(),
-      ],
+    () => [
+      "All",
+      ...Array.from(new Set(projects.flatMap((p) => p.services))).sort(),
+    ],
     [projects],
   );
 
@@ -36,6 +35,22 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       return hay.includes(query);
     });
   }, [projects, q, sector, service]);
+
+  const isActive = q.trim() !== "" || sector !== "All" || service !== "All";
+
+  const reset = () => {
+    setQ("");
+    setSector("All");
+    setService("All");
+  };
+
+  const chipClass = (active: boolean) =>
+    cn(
+      "shrink-0 border px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[11px] sm:tracking-[0.12em]",
+      active
+        ? "border-x-red bg-x-red text-white"
+        : "border-line text-ink/55 hover:border-ink/30 hover:text-ink",
+    );
 
   return (
     <div>
@@ -51,44 +66,48 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           />
         </label>
 
-        <div className="flex max-w-full flex-wrap gap-2 overflow-x-auto pb-1" role="group" aria-label="Filter by sector">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p className="text-[12px] text-ink-muted">
+            {filtered.length} of {projects.length} projects
+          </p>
+          {isActive ? (
+            <button
+              type="button"
+              onClick={reset}
+              className="inline-flex items-center gap-1.5 font-display text-[11px] font-bold uppercase tracking-[0.12em] text-x-red transition-colors hover:underline"
+            >
+              <RotateCcw className="size-3.5" />
+              Reset filters
+            </button>
+          ) : null}
+        </div>
+
+        <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by sector">
           {sectors.map((s) => (
             <button
               key={s}
               type="button"
               onClick={() => setSector(s)}
-              className={cn(
-                "shrink-0 border px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[11px] sm:tracking-[0.12em]",
-                sector === s
-                  ? "border-x-red bg-x-red text-white"
-                  : "border-line text-ink/55 hover:border-ink/30 hover:text-ink",
-              )}
+              aria-pressed={sector === s}
+              className={chipClass(sector === s)}
             >
               {s}
             </button>
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <label className="flex min-w-0 flex-col gap-2 text-[12px] text-ink-muted sm:flex-row sm:items-center">
-            <span className="font-display text-[11px] font-semibold uppercase tracking-[0.12em]">
-              Service
-            </span>
-            <select
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className="w-full border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-x-red sm:w-auto sm:max-w-[280px]"
+        <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by service">
+          {services.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setService(s)}
+              aria-pressed={service === s}
+              className={chipClass(service === s)}
             >
-              {services.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </label>
-          <p className="text-[12px] text-ink-muted sm:ml-auto">
-            {filtered.length} of {projects.length}
-          </p>
+              {s}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -101,11 +120,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           <button
             type="button"
             className="mt-5 text-sm font-semibold text-x-red hover:underline"
-            onClick={() => {
-              setQ("");
-              setSector("All");
-              setService("All");
-            }}
+            onClick={reset}
           >
             Reset filters
           </button>
@@ -113,30 +128,9 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project, i) => (
-            <Link
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
-            >
-              <AssetImage
-                alt={project.title}
-                slot={project.assets.cover}
-                kind="facility"
-                tone={i % 2 === 0 ? "dark" : "light"}
-                label={project.sector}
-                caption={project.title}
-                aspect="landscape"
-              />
-              <div className="p-5 md:p-6">
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
-                  {project.location} · {project.year}
-                </p>
-                <h2 className="mt-2 font-display text-lg font-bold text-ink group-hover:text-x-red">
-                  {project.client}
-                </h2>
-                <p className="mt-1.5 text-[14px] text-ink-muted">{project.title}</p>
-              </div>
-            </Link>
+            <Reveal key={project.slug} delay={0.04 * (i % 3)} className="h-full">
+              <ProjectCard project={project} index={i} />
+            </Reveal>
           ))}
         </div>
       )}
