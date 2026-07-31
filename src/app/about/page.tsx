@@ -22,8 +22,6 @@ export const metadata: Metadata = {
 const disciplineGroups = [
   {
     title: "Architecture & Planning",
-    accent: "border-t-blue-500",
-    badge: "bg-blue-50 text-blue-700",
     services: [
       { title: "Architectural Drawings", href: "/services/architectural-design" },
       { title: "Site Infrastructure", href: "/services/site-infrastructure" },
@@ -32,8 +30,6 @@ const disciplineGroups = [
   },
   {
     title: "Structure & Civil",
-    accent: "border-t-amber-500",
-    badge: "bg-amber-50 text-amber-700",
     services: [
       { title: "Structural Engineering", href: "/services/structural-engineering" },
       { title: "Civil Engineering", href: "/services/civil-engineering" },
@@ -41,8 +37,6 @@ const disciplineGroups = [
   },
   {
     title: "MEP & Utilities",
-    accent: "border-t-emerald-500",
-    badge: "bg-emerald-50 text-emerald-700",
     services: [
       { title: "Mechanical Utility Engineering", href: "/services/mechanical-utility-engineering" },
       { title: "HVAC & Refrigeration Engineering", href: "/services/hvac-engineering" },
@@ -52,8 +46,6 @@ const disciplineGroups = [
   },
   {
     title: "Delivery",
-    accent: "border-t-purple-500",
-    badge: "bg-purple-50 text-purple-700",
     services: [
       { title: "Project Management & Procurement", href: "/services/project-management" },
     ],
@@ -117,8 +109,8 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {disciplineGroups.map((group, i) => (
               <Reveal key={group.title} delay={0.05 * i}>
-                <div className={`formx-cut-x formx-edge formx-edge-x h-full border border-line border-t-4 bg-white p-6 ${group.accent}`}>
-                  <span className={`inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${group.badge}`}>
+                <div className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative h-full overflow-hidden border border-line border-t-2 border-t-x-red bg-white p-6 transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_12px_28px_rgba(222,48,36,0.08)]">
+                  <span className="inline-block border border-x-red/30 bg-x-red/10 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.1em] text-x-red">
                     {group.title}
                   </span>
                   <ul className="mt-5 space-y-2.5">

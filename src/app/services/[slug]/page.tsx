@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Check,
   ArrowUpRight,
-  FileText,
-  Layers,
-  ShieldCheck,
-  Cpu,
   CheckCircle2,
-  Zap,
-  ChevronRight,
   Compass,
+  Cpu,
+  Layers,
   Ruler,
+  ShieldCheck,
+  Zap,
 } from "lucide-react";
 import { getService, getSector, services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
@@ -36,20 +32,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: service.title, description: service.short };
 }
 
-const categoryMap: Record<string, { label: string; color: string }> = {
-  "architectural-design": { label: "Architecture & Planning", color: "#de3024" },
-  "site-infrastructure": { label: "Architecture & Planning", color: "#de3024" },
-  "sustainable-design": { label: "Architecture & Planning", color: "#de3024" },
-  "structural-engineering": { label: "Structure & Civil", color: "#de3024" },
-  "civil-engineering": { label: "Structure & Civil", color: "#de3024" },
-  "mechanical-utility-engineering": { label: "MEP & Utilities", color: "#de3024" },
-  "hvac-engineering": { label: "MEP & Utilities", color: "#de3024" },
-  "electrical-engineering": { label: "MEP & Utilities", color: "#de3024" },
-  "fire-protection-engineering": { label: "MEP & Utilities", color: "#de3024" },
-  "project-management": { label: "Delivery", color: "#de3024" },
+const categoryLabels: Record<string, string> = {
+  "architectural-design": "Architecture & Planning",
+  "site-infrastructure": "Architecture & Planning",
+  "sustainable-design": "Architecture & Planning",
+  "structural-engineering": "Structure & Civil",
+  "civil-engineering": "Structure & Civil",
+  "mechanical-utility-engineering": "MEP & Utilities",
+  "hvac-engineering": "MEP & Utilities",
+  "electrical-engineering": "MEP & Utilities",
+  "fire-protection-engineering": "MEP & Utilities",
+  "project-management": "Delivery",
 };
 
 const featureIcons = [ShieldCheck, Cpu, Layers, Compass, Ruler, Zap];
+
+function SectionHeader({
+  eyebrow,
+  title,
+}: {
+  eyebrow: string;
+  title: string;
+}) {
+  return (
+    <div className="mb-7">
+      <div className="mb-3 flex items-center gap-3">
+        <span className="h-px w-6 bg-x-red" />
+        <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+          {eyebrow}
+        </span>
+      </div>
+      <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink md:text-2xl">
+        {title}
+      </h2>
+    </div>
+  );
+}
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
@@ -70,13 +88,13 @@ export default async function ServiceDetailPage({ params }: Props) {
       meta: "Sector",
     }));
 
-  const cat = categoryMap[slug] ?? { label: "Engineering Practice", color: "#de3024" };
+  const cat = categoryLabels[slug] ?? "Engineering Practice";
 
   return (
     <>
       {/* Sleek Dark Architectural Hero Header */}
       <PageHero
-        eyebrow={cat.label}
+        eyebrow={cat}
         title={service.title}
         description={service.summary}
         crumbs={[
@@ -114,16 +132,9 @@ export default async function ServiceDetailPage({ params }: Props) {
         <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           {/* LEFT — Visual Scope & Deliverables Cards */}
           <Reveal>
-            {/* Scope Highlights — Visual Graphic Cards */}
+            {/* Scope Highlights */}
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
-                  <Layers className="size-5" />
-                </span>
-                <h2 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
-                  Core Engineering Scope
-                </h2>
-              </div>
+              <SectionHeader eyebrow="The Scope" title="Core Engineering Scope" />
 
               <div className="grid gap-4 sm:grid-cols-2">
                 {service.highlights.map((item, i) => {
@@ -131,7 +142,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   return (
                     <div
                       key={item}
-                      className="group flex flex-col justify-between border border-line bg-[#fafafa] p-5 transition-all duration-300 hover:border-x-red/50 hover:bg-white hover:shadow-[0_12px_28px_rgba(222,48,36,0.1)]"
+                      className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col justify-between overflow-hidden border border-line bg-[#fafafa] p-5 transition-all duration-300 hover:border-x-red/50 hover:bg-white hover:shadow-[0_12px_28px_rgba(222,48,36,0.1)]"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <Icon className="size-5 text-x-red" />
@@ -142,31 +153,28 @@ export default async function ServiceDetailPage({ params }: Props) {
                       <p className="font-display text-sm font-bold leading-snug text-ink group-hover:text-x-red transition-colors">
                         {item}
                       </p>
+                      <span
+                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
+                        aria-hidden
+                      />
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Typical Deliverables — Visual Checklist Grid */}
+            {/* Typical Deliverables */}
             <div className="mt-14">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="flex size-9 items-center justify-center border border-x-red/30 bg-x-red/10 text-x-red">
-                  <FileText className="size-5" />
-                </span>
-                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
-                  GFC Drawing Deliverables
-                </h3>
-              </div>
+              <SectionHeader eyebrow="The Output" title="GFC Drawing Deliverables" />
 
               <div className="grid gap-3 sm:grid-cols-2">
                 {service.deliverables.map((d, i) => (
                   <div
                     key={d}
-                    className="flex items-start gap-3 border.5 border-line bg-white p-4 transition-colors hover:border-x-red/40"
+                    className="formx-cut-x formx-edge formx-edge-x x-hover-rail flex items-start gap-3 border border-line bg-white p-4 transition-colors hover:border-x-red/40"
                   >
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-x-red/10 text-[10px] font-bold text-x-red">
-                      ✓
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center bg-x-red/10 font-display text-[10px] font-bold text-x-red">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="text-[13px] font-medium leading-relaxed text-ink">
                       {d}
@@ -176,17 +184,15 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Workflow Timeline — Visual Process Nodes */}
+            {/* Workflow Timeline */}
             <div className="mt-14">
-              <h3 className="mb-6 font-display text-xl font-bold uppercase tracking-tight text-ink">
-                Execution Workflow
-              </h3>
+              <SectionHeader eyebrow="The Process" title="Execution Workflow" />
 
               <div className="space-y-4">
                 {service.process.map((step, i) => (
                   <div
                     key={step}
-                    className="group relative flex items-start gap-4 border border-line bg-[#fcfcfc] p-5 transition-all hover:border-x-red/40 hover:bg-white"
+                    className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex items-start gap-4 border border-line bg-[#fcfcfc] p-5 transition-all hover:border-x-red/40 hover:bg-white"
                   >
                     <span className="flex size-10 shrink-0 items-center justify-center border border-x-red bg-x-red font-display text-sm font-bold text-white shadow-md">
                       0{i + 1}

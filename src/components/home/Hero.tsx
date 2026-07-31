@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { heroLines, site } from "@/data/site";
@@ -48,13 +49,11 @@ export function Hero() {
   const reduce = useReducedMotion();
   const [lineIndex, setLineIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
-  const [prevSlide, setPrevSlide] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (reduce) return;
     intervalRef.current = setInterval(() => {
-      setPrevSlide(slideIndex);
       setLineIndex((i) => (i + 1) % heroLines.length);
       setSlideIndex((i) => (i + 1) % heroSlides.length);
     }, 6500);
@@ -62,12 +61,10 @@ export function Hero() {
   }, [reduce, slideIndex]);
 
   const goToSlide = (i: number) => {
-    setPrevSlide(slideIndex);
     setSlideIndex(i);
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (!reduce) {
       intervalRef.current = setInterval(() => {
-        setPrevSlide((s) => s);
         setSlideIndex((s) => (s + 1) % heroSlides.length);
       }, 6500);
     }
@@ -164,20 +161,20 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap items-center gap-3"
             >
-              <a
+              <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2.5 bg-x-red px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_8px_28px_rgba(222,48,36,0.4)] transition-all duration-300 hover:bg-x-red-hover hover:shadow-[0_12px_36px_rgba(222,48,36,0.5)] hover:-translate-y-0.5"
               >
                 Enquire Now
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/projects"
                 className="inline-flex items-center gap-2 border border-white/25 px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:text-white"
               >
                 View Portfolio
                 <ArrowUpRight className="size-4" />
-              </a>
+              </Link>
             </motion.div>
           </div>
 

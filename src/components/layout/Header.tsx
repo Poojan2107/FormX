@@ -120,15 +120,6 @@ function SiteHeader({
               </AnimatePresence>
             </button>
           </Container>
-
-          {/* Active page indicator bar */}
-          <div className="h-[2px] w-full bg-line/40">
-            <motion.div
-              className="h-full bg-x-red"
-              layoutId="nav-indicator"
-              style={{ width: "0%" }}
-            />
-          </div>
         </div>
       </header>
 

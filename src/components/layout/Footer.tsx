@@ -139,7 +139,7 @@ export function Footer() {
                 FORM<span className="text-x-red/60 transition-colors group-hover:text-x-red">×</span>
               </span>
               <p className="mt-1 font-display text-[10px] font-semibold uppercase tracking-[0.3em] text-white/20">
-                23°01'N 72°35'E · Ahmedabad, Gujarat, India
+                23°01&rsquo;N 72°35&rsquo;E · Ahmedabad, Gujarat, India
               </p>
             </div>
             <span className="border border-x-red/30 bg-x-red/10 px-3 py-1.5 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red/80 self-center">

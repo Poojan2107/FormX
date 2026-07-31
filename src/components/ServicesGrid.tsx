@@ -79,7 +79,7 @@ export function ServicesGrid() {
         </div>
       </Reveal>
 
-      {/* 100% Uncropped Services Grid */}
+      {/* Services Grid */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
@@ -95,24 +95,29 @@ export function ServicesGrid() {
               href={`/services/${service.slug}`}
               className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
             >
-              {/* Full Uncropped Aspect Media Container */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f4f4f5] border-b border-line/60">
+              {/* Full-bleed media panel */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line/60 bg-[#141414]">
                 <AssetImage
                   alt={service.title}
                   slot={service.asset}
                   kind="service"
                   aspect="landscape"
-                  fit="contain"
-                  tone="light"
-                  className="h-full w-full"
+                  fit="cover"
+                  tone="dark"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <span className="absolute left-3.5 top-3.5 border border-line bg-white/95 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm">
-                  0{i + 1}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                <span className="absolute left-3.5 top-3.5 border border-x-red/40 bg-x-red px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white">
+                  Discipline {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="absolute right-3.5 top-3 font-display text-[28px] font-black leading-none tracking-tighter text-white/15 select-none">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <div className="absolute right-3.5 top-3.5 flex size-8 items-center justify-center rounded-full border border-line bg-white/95 text-ink shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:bg-x-red group-hover:text-white">
-                  <ArrowUpRight className="size-4" />
-                </div>
+                <span className="absolute bottom-3 right-3.5 flex size-9 items-center justify-center border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
+                  <ArrowUpRight className="size-4 text-white" />
+                </span>
               </div>
 
               {/* Content Body */}
@@ -121,7 +126,7 @@ export function ServicesGrid() {
                   <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
                     {service.title}
                   </h3>
-                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
+                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted line-clamp-2">
                     {service.short}
                   </p>
 
@@ -141,6 +146,11 @@ export function ServicesGrid() {
                   </span>
                 </div>
               </div>
+
+              <span
+                className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
+                aria-hidden
+              />
             </Link>
           ))}
         </motion.div>

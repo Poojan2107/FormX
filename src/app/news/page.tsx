@@ -5,6 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { CtaBand } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
   title: "News & Events",
@@ -60,6 +61,8 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
+
+      <CtaBand title="Follow FormX for the next delivery note" />
     </>
   );
 }

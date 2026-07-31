@@ -22,30 +22,13 @@ export function BeforeAfterSlider({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
     const x = clientX - rect.left;
-    let percentage = (x / rect.width) * 100;
-    if (percentage < 0) percentage = 0;
-    if (percentage > 100) percentage = 100;
-    setSliderPosition(percentage);
+    const pct = Math.min(100, Math.max(0, (x / rect.width) * 100));
+    setSliderPosition(pct);
   }, []);
-
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => {
-      if (!isDragging) return;
-      handleMove(e.touches[0].clientX);
-    },
-    [isDragging, handleMove]
-  );
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging) return;
-      handleMove(e.clientX);
-    },
-    [isDragging, handleMove]
-  );
 
   return (
     <div
@@ -76,22 +59,20 @@ export function BeforeAfterSlider({
 
       {/* Before Image (Left Side / Clipped) */}
       <div
-        className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-x-red"
-        style={{ width: `${sliderPosition}%` }}
+        className="absolute inset-0"
+        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <div className="relative h-full w-full" style={{ width: containerRef.current ? containerRef.current.clientWidth : "100%" }}>
-          <AssetImage
-            alt={`${alt} — ${beforeLabel}`}
-            slot={beforeSlot}
-            kind="facility"
-            aspect="landscape"
-            fit="cover"
-            className="h-full w-full object-cover grayscale brightness-90 contrast-125"
-          />
-          <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
-            {beforeLabel}
-          </span>
-        </div>
+        <AssetImage
+          alt={`${alt} — ${beforeLabel}`}
+          slot={beforeSlot}
+          kind="facility"
+          aspect="landscape"
+          fit="cover"
+          className="absolute inset-0 h-full w-full object-cover grayscale brightness-90 contrast-125"
+        />
+        <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+          {beforeLabel}
+        </span>
       </div>
 
       {/* Divider Bar & Drag Handle */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { about } from "@/data/site";
 import { Container } from "@/components/ui/Container";
@@ -89,13 +90,13 @@ export function About() {
 
               {/* CTA */}
               <div className="mt-8">
-                <a
+                <Link
                   href={about.cta.href}
                   className="group inline-flex items-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.28)] transition-all duration-300 hover:bg-transparent hover:text-x-red"
                 >
                   {about.cta.label}
                   <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                </Link>
               </div>
             </div>
           </Reveal>

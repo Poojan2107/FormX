@@ -179,6 +179,7 @@ export function Contact() {
                         <button
                           key={svc}
                           type="button"
+                          aria-pressed={active}
                           onClick={() =>
                             setSelectedServices((prev) =>
                               prev.includes(svc)

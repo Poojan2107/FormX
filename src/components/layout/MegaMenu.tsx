@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ArrowRight,
   ChevronDown,
@@ -27,12 +28,11 @@ type Panel = "Services" | "Projects" | "Sectors" | "Insights" | null;
 
 export function DesktopNav() {
   const [panel, setPanel] = useState<Panel>(null);
-  const [mounted, setMounted] = useState(false);
+  const [mounted] = useState(() => typeof document !== "undefined");
   const closeTimer = useRef<number | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const panelId = useId();
-
-  useEffect(() => setMounted(true), []);
+  const pathname = usePathname();
 
   const open = (next: Panel) => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
@@ -127,7 +127,13 @@ export function DesktopNav() {
             item.label === "Projects" ||
             item.label === "Sectors" ||
             item.label === "Insights";
-          const active = panel === item.label;
+          const panelOpen = panel === item.label;
+          const routeActive =
+            item.label === "Insights"
+              ? pathname.startsWith("/knowledge-center") ||
+                pathname.startsWith("/news")
+              : pathname === item.href || pathname.startsWith(item.href + "/");
+          const highlighted = panelOpen || routeActive;
 
           return (
             <div key={item.label} className="relative flex items-center">
@@ -139,16 +145,17 @@ export function DesktopNav() {
                   type="button"
                   className={cn(
                     "formx-cut-sm relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
-                    active
+                    highlighted
                       ? "bg-[#fafafa] text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
                       : "text-ink/55 hover:bg-[#fafafa] hover:text-ink",
                   )}
-                  aria-expanded={active}
+                  aria-expanded={panelOpen}
                   aria-haspopup="true"
+                  aria-current={routeActive ? "page" : undefined}
                   onMouseEnter={() => open(item.label as Panel)}
                   onFocus={() => open(item.label as Panel)}
                   onClick={() =>
-                    open(active ? null : (item.label as Panel))
+                    open(panelOpen ? null : (item.label as Panel))
                   }
                 >
                   <span className="mr-0.5 text-[10px] font-bold text-x-red/70">
@@ -158,14 +165,20 @@ export function DesktopNav() {
                   <ChevronDown
                     className={cn(
                       "size-3 opacity-40 transition-transform duration-200",
-                      active && "rotate-180 text-x-red opacity-100",
+                      panelOpen && "rotate-180 text-x-red opacity-100",
                     )}
                   />
                 </button>
               ) : (
                 <Link
                   href={item.href}
-                  className="relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink"
+                  className={cn(
+                    "relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                    routeActive
+                      ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
+                      : "text-ink/55 hover:bg-[#fafafa] hover:text-ink",
+                  )}
+                  aria-current={routeActive ? "page" : undefined}
                   onMouseEnter={() => setPanel(null)}
                 >
                   <span className="mr-0.5 text-[10px] font-bold text-x-red/70">

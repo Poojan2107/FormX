@@ -64,7 +64,7 @@ export function Testimonials() {
                   style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
                   aria-hidden
                 >
-                  "
+                  &ldquo;
                 </div>
 
                 <blockquote
