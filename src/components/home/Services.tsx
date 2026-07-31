@@ -32,35 +32,34 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Full-Bleed Architectural Split Showcase — Images Own The Component */}
+        {/* Seamless Architectural Split Showcase — Pure White Seamless Artwork Bleed */}
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 items-stretch">
 
-          {/* LEFT: Full-Bleed High-Impact Visual Stage */}
+          {/* LEFT: Full Uncropped Visual Stage with Seamless White Background */}
           <Reveal className="w-full h-full">
             <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentService.slug}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full flex-col justify-between"
                 >
-                  {/* Full-Bleed Image Container — Image OWNS the stage */}
-                  <div className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full overflow-hidden bg-[#111111] border-b border-line">
+                  {/* Seamless Image Container — Pure White Bleed (Zero Cropping, Zero Grey Bars) */}
+                  <div className="relative aspect-[16/11] w-full overflow-hidden bg-white border-b border-line p-3">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
-                      aspect="auto"
-                      fit="cover"
-                      tone="dark"
-                      className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                      aspect="landscape"
+                      fit="contain"
+                      tone="light"
+                      className="h-full w-full bg-white"
                     />
-                    {/* Badge Floating directly over the full-bleed image */}
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
-                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-sm">
                         Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
                       </span>
                     </div>

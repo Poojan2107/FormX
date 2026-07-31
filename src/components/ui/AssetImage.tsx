@@ -55,7 +55,8 @@ export function AssetImage({
     return (
       <div
         className={cn(
-          "relative overflow-hidden w-full h-full bg-[#111111]",
+          "relative overflow-hidden w-full h-full",
+          tone === "dark" ? "bg-[#111111]" : "bg-white",
           aspects[aspect],
           className,
         )}
