@@ -102,20 +102,26 @@ body {
 
 /* Shared section rhythm */
 .section-y {
-  padding-block: 3rem;
+  padding-block: 4rem;
   scroll-margin-top: 7.5rem;
 }
 
 @media (min-width: 640px) {
   .section-y {
-    padding-block: 3.75rem;
+    padding-block: 5rem;
   }
 }
 
 @media (min-width: 768px) {
   .section-y {
-    padding-block: 5rem;
+    padding-block: 6rem;
     scroll-margin-top: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 7rem;
   }
 }
 
@@ -426,6 +432,82 @@ body {
   animation-play-state: paused;
 }
 
+/* Hover lift — subtle card elevation */
+.x-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.x-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* Float animation — for hero decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 5s ease-in-out 1s infinite;
+}
+
+/* Ken Burns slow zoom — hero images */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 8s ease-in-out alternate infinite;
+}
+
+/* Image reveal — horizontal wipe */
+@keyframes img-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+.animate-img-reveal {
+  animation: img-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Number counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Red line draw — section separators */
+@keyframes line-draw {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
+.animate-line-draw {
+  animation: line-draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @keyframes x-flash {
   0%,
   100% {
@@ -499,4 +581,13 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Hide scrollbar for horizontal scroll strips */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

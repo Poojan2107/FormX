@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/site";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
-import { cn } from "@/lib/cn";
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -15,132 +12,118 @@ export function Testimonials() {
   const reduce = useReducedMotion();
   const item = testimonials[index];
 
-  const prev = () =>
-    setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-  const next = () =>
-    setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
+  const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
-  // Auto-rotate every 5s unless paused or reduced motion
   useEffect(() => {
     if (paused || reduce) return;
     const id = setInterval(() => {
       setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
-    }, 5000);
+    }, 6000);
     return () => clearInterval(id);
   }, [paused, reduce]);
 
   return (
     <section
-      className="border-y border-line bg-[#f6f6f6] py-20 md:py-28"
+      className="relative overflow-hidden bg-white py-20 md:py-32"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Client feedback"
-            title="What project teams value"
-            description="Themes we hear when coordinated, construction-ready packages reach tender and site."
-          />
-        </Reveal>
+      {/* Architectural background detail — large X mark */}
+      <div
+        className="pointer-events-none absolute right-[-5%] top-[-10%] select-none font-display font-black text-ink/[0.025]"
+        style={{ fontSize: "clamp(14rem, 28vw, 28rem)", lineHeight: 1 }}
+        aria-hidden
+      >
+        ×
+      </div>
 
-        <div className="mt-12 border-l-4 border-x-red bg-white p-6 shadow-[0_8px_32px_rgba(0,0,0,0.06)] md:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-12">
-            <Quote
-              className="hidden size-10 text-x-red/60 lg:block"
-              strokeWidth={1.25}
-            />
+      <Container className="relative">
+        {/* Section label */}
+        <div className="mb-16 flex items-center gap-3">
+          <span className="h-px w-6 bg-x-red" />
+          <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+            Client Feedback
+          </span>
+        </div>
 
-            <div>
-              <div className="min-h-[160px] md:min-h-[180px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={item.name + index}
-                    initial={reduce ? false : { opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduce ? undefined : { opacity: 0, y: -8 }}
-                    transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {/* Mobile quote icon */}
-                    <Quote
-                      className="mb-4 size-7 text-x-red/50 lg:hidden"
-                      strokeWidth={1.25}
-                    />
-                    <blockquote className="max-w-3xl text-[18px] font-medium leading-[1.8] text-ink md:text-2xl md:leading-[1.7]">
-                      "{item.quote}"
-                    </blockquote>
-                    <footer className="mt-6 md:mt-8">
-                      <p className="font-display text-base font-bold text-ink">
-                        {item.name}
-                      </p>
-                      <p className="mt-1 text-[13px] text-ink-muted">
-                        {item.role} — {item.company}
-                      </p>
-                    </footer>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Controls row */}
-              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6">
-                {/* Prev / Next */}
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={prev}
-                    className="inline-flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
-                    aria-label="Previous testimonial"
-                  >
-                    <ChevronLeft className="size-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    className="inline-flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
-                    aria-label="Next testimonial"
-                  >
-                    <ChevronRight className="size-4" />
-                  </button>
+        {/* Large quote area */}
+        <div className="max-w-4xl">
+          <div className="mb-8" style={{ minHeight: "200px" }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={item.name + index}
+                initial={reduce ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { opacity: 0, y: -12 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* Quote mark */}
+                <div
+                  className="mb-6 font-display font-black leading-none text-x-red/25"
+                  style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
+                  aria-hidden
+                >
+                  "
                 </div>
 
-                {/* Dot navigation */}
-                <div className="flex items-center gap-2">
-                  {testimonials.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      aria-label={`Go to testimonial ${i + 1}`}
-                      aria-current={i === index}
-                      onClick={() => setIndex(i)}
-                      className={cn(
-                        "h-1.5 rounded-full transition-all duration-300",
-                        i === index
-                          ? "w-6 bg-x-red"
-                          : "w-1.5 bg-ink/20 hover:bg-ink/40",
-                      )}
-                    />
-                  ))}
-                </div>
+                <blockquote
+                  className="font-display font-bold leading-[1.35] tracking-[-0.01em] text-ink"
+                  style={{ fontSize: "clamp(1.3rem, 2.5vw, 2.1rem)" }}
+                >
+                  {item.quote}
+                </blockquote>
 
-                {/* Counter */}
-                <p className="ml-auto font-display text-[12px] tabular-nums text-ink-muted">
-                  {String(index + 1).padStart(2, "0")} /{" "}
-                  {String(testimonials.length).padStart(2, "0")}
-                </p>
-              </div>
+                <footer className="mt-8 flex items-center gap-4">
+                  {/* Avatar placeholder — initials */}
+                  <div className="flex size-12 items-center justify-center bg-x-red font-display text-[14px] font-bold text-white">
+                    {item.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
+                  </div>
+                  <div>
+                    <p className="font-display text-[14px] font-bold text-ink">{item.name}</p>
+                    <p className="text-[12px] text-ink/40">{item.role} — {item.company}</p>
+                  </div>
+                </footer>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-              {/* Auto-rotate progress bar */}
-              {!reduce && !paused && (
+          {/* Controls */}
+          <div className="flex items-center gap-4 border-t border-line pt-6">
+            <button
+              type="button"
+              onClick={prev}
+              className="flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              className="flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
+              aria-label="Next"
+            >
+              <ChevronRight className="size-4" />
+            </button>
+
+            <p className="ml-2 font-display text-[12px] tabular-nums text-ink/30">
+              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+            </p>
+
+            {/* Progress bar */}
+            {!reduce && !paused && (
+              <div className="ml-auto h-px flex-1 overflow-hidden bg-line">
                 <motion.div
                   key={`progress-${index}`}
-                  className="mt-2 h-0.5 bg-x-red/30"
+                  className="h-full bg-x-red"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 5, ease: "linear" }}
+                  transition={{ duration: 6, ease: "linear" }}
                   style={{ transformOrigin: "left center" }}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </Container>

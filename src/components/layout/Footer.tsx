@@ -1,190 +1,163 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Download, ArrowUpRight, ShieldCheck, Send } from "lucide-react";
-import { site } from "@/data/site";
+import { Mail, Phone, MapPin, ArrowUpRight, Download } from "lucide-react";
+import { nav, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#070707] text-white">
-      {/* Background Architectural Grid Pattern */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-35" aria-hidden />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(1000px 600px at 50% 100%, rgba(222,48,36,0.12), transparent 75%)",
-        }}
-        aria-hidden
-      />
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#0a0a0a] text-white">
+      {/* Background grid texture */}
+      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-30" aria-hidden />
 
-      {/* Red Accent Top Indicator Bar */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-x-red via-red-500 to-x-red" />
-
-      {/* Top CTA Banner Strip — High-Impact Entry */}
-      <div className="border-b border-white/10 bg-white/[0.02] py-8">
-        <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
-              Start Your Project
-            </span>
-            <h3 className="mt-1 font-display text-xl font-bold uppercase tracking-tight text-white md:text-2xl">
-              Ready to engineer your next facility?
-            </h3>
-          </div>
-          <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto">
-            <Button
-              href="/contact"
-              variant="primary"
-              className="w-full px-6 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] shadow-[0_6px_20px_rgba(222,48,36,0.35)] sm:w-auto"
-            >
-              Book a Consultation
-              <ArrowUpRight className="size-4" />
-            </Button>
-            <Button
-              href={site.brochurePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="ghost-light"
-              className="w-full px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] sm:w-auto"
-            >
-              <Download className="size-4 text-x-red" />
-              Download Brochure PDF
-            </Button>
-          </div>
-        </Container>
-      </div>
+      {/* Red top bar */}
+      <div className="relative h-[3px] w-full bg-gradient-to-r from-transparent via-x-red to-transparent" />
 
       <Container className="relative z-10">
-        {/* Middle Information Section — Zero Duplicate Nav Links */}
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.4fr_1fr]">
-          {/* Brand & Direct Contacts */}
+        {/* Main 3-column grid */}
+        <div className="grid gap-12 py-16 md:py-20 lg:grid-cols-[1.8fr_1fr_1fr] lg:gap-16">
+
+          {/* COL 1: Brand */}
           <div>
             <Logo invert variant="full" />
-            <p className="mt-4 max-w-lg text-[14px] leading-[1.8] text-white/65">
-              Multidisciplinary design & engineering consultancy — delivering precise, coordinated, construction-ready packages across Architecture, Structure, Civil, and MEP for industrial and infrastructure clients.
+            <p className="mt-5 max-w-sm text-[14px] leading-[1.8] text-white/50">
+              Multidisciplinary design & engineering consultancy delivering coordinated, construction-ready packages across Architecture, Structure, Civil, and MEP.
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {/* Contact cards */}
+            <div className="mt-8 space-y-3">
               <a
                 href={`mailto:${site.email}`}
-                className="group flex flex-col border border-white/10 bg-white/[0.03] p-4 transition-all hover:border-x-red/50 hover:bg-white/[0.06]"
+                className="flex items-center gap-3 group"
               >
-                <div className="flex items-center gap-2 text-x-red">
-                  <Mail className="size-4" />
-                  <span className="font-display text-[10px] font-bold uppercase tracking-wider text-white/50">Email Us</span>
+                <div className="flex size-8 shrink-0 items-center justify-center border border-white/10 bg-white/5 text-x-red transition-colors group-hover:border-x-red/50 group-hover:bg-x-red/10">
+                  <Mail className="size-3.5" />
                 </div>
-                <span className="mt-2 text-[13px] font-medium text-white group-hover:text-x-red transition-colors">
+                <span className="text-[13px] text-white/60 transition-colors group-hover:text-white">
                   {site.email}
                 </span>
               </a>
-
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="group flex flex-col border border-white/10 bg-white/[0.03] p-4 transition-all hover:border-x-red/50 hover:bg-white/[0.06]"
+                className="flex items-center gap-3 group"
               >
-                <div className="flex items-center gap-2 text-x-red">
-                  <Phone className="size-4" />
-                  <span className="font-display text-[10px] font-bold uppercase tracking-wider text-white/50">Call Us</span>
+                <div className="flex size-8 shrink-0 items-center justify-center border border-white/10 bg-white/5 text-x-red transition-colors group-hover:border-x-red/50 group-hover:bg-x-red/10">
+                  <Phone className="size-3.5" />
                 </div>
-                <span className="mt-2 text-[13px] font-medium text-white group-hover:text-x-red transition-colors">
+                <span className="text-[13px] text-white/60 transition-colors group-hover:text-white">
                   {site.phone}
                 </span>
               </a>
-
-              <div className="flex flex-col border border-white/10 bg-white/[0.03] p-4">
-                <div className="flex items-center gap-2 text-x-red">
-                  <MapPin className="size-4" />
-                  <span className="font-display text-[10px] font-bold uppercase tracking-wider text-white/50">Headquarters</span>
+              <div className="flex items-center gap-3">
+                <div className="flex size-8 shrink-0 items-center justify-center border border-white/10 bg-white/5 text-x-red">
+                  <MapPin className="size-3.5" />
                 </div>
-                <span className="mt-2 text-[13px] font-medium text-white/80">
-                  {site.addressDetail}
-                </span>
+                <span className="text-[13px] text-white/40">{site.addressDetail}</span>
               </div>
             </div>
           </div>
 
-          {/* Practice Assurance Card */}
-          <div className="flex flex-col justify-between border border-white/10 bg-white/[0.02] p-6 md:p-8">
-            <div>
-              <span className="font-display text-[10px] font-bold uppercase tracking-[0.24em] text-x-red">
-                Engineering Standard
-              </span>
-              <h4 className="mt-2 font-display text-lg font-bold uppercase text-white">
-                Coordinated GFC Packages
-              </h4>
-              <p className="mt-2 text-[13px] text-white/60 leading-relaxed">
-                Zero-clash architectural, structural, and MEP documentation engineered for constructability and site efficiency.
-              </p>
-              <ul className="mt-4 space-y-2 border-t border-white/10 pt-4">
-                <li className="flex items-center gap-2 text-[12px] text-white/80">
-                  <ShieldCheck className="size-4 text-x-red shrink-0" />
-                  100% Construction-Ready GFC Drawings
+          {/* COL 2: Navigation */}
+          <div>
+            <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
+              Navigate
+            </p>
+            <ul className="space-y-3">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white"
+                  >
+                    <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
+                    {item.label}
+                  </Link>
                 </li>
-                <li className="flex items-center gap-2 text-[12px] text-white/80">
-                  <ShieldCheck className="size-4 text-x-red shrink-0" />
-                  IS 13920 & IS 1893 Seismic Detailing
-                </li>
-              </ul>
+              ))}
+              <li>
+                <Link href="/career" className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white">
+                  <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
+                  Career
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* COL 3: Quick actions */}
+          <div>
+            <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
+              Quick Actions
+            </p>
+            <div className="space-y-3">
+              <Link
+                href="/contact"
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  Book Consultation
+                </span>
+                <ArrowUpRight className="size-4 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <a
+                href={site.brochurePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  Download Brochure
+                </span>
+                <Download className="size-4 text-x-red" />
+              </a>
+              <a
+                href={site.linkedinCompany}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  LinkedIn
+                </span>
+                <svg className="size-4 fill-current text-x-red" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Jacobs Creative Monumental Brand Typography Banner */}
-        <div className="relative border-t border-white/10 py-12 md:py-16 overflow-hidden">
-          <div className="flex flex-col md:flex-row items-baseline justify-between gap-6">
-            <div className="relative group cursor-default">
-              <span className="font-display text-[clamp(4rem,13vw,12rem)] font-black uppercase tracking-tighter leading-none text-white transition-all duration-500 group-hover:text-white/90">
-                FORMX<span className="text-x-red inline-block transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">×</span>
+        {/* Monumental brand typography */}
+        <div className="relative border-t border-white/10 pb-6 pt-10 overflow-hidden">
+          <div className="flex flex-col items-start md:flex-row md:items-baseline md:justify-between gap-4">
+            <div className="group cursor-default select-none">
+              <span
+                className="block font-display font-black uppercase leading-none tracking-tighter text-white/10 transition-colors duration-700 group-hover:text-white/15"
+                style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
+              >
+                FORM<span className="text-x-red/60 transition-colors group-hover:text-x-red">×</span>
               </span>
-              <p className="mt-2 font-display text-[11px] font-semibold uppercase tracking-[0.3em] text-white/40">
-                23°01'N 72°35'E · AHMEDABAD, GUJARAT, INDIA
+              <p className="mt-1 font-display text-[10px] font-semibold uppercase tracking-[0.3em] text-white/20">
+                23°01'N 72°35'E · Ahmedabad, Gujarat, India
               </p>
             </div>
-
-            <div className="flex flex-col items-start md:items-end">
-              <span className="border border-x-red/40 bg-x-red/10 px-3.5 py-1.5 font-display text-[12px] font-bold uppercase tracking-[0.28em] text-x-red">
-                Design | Engineering
-              </span>
-              <p className="mt-3 max-w-xs text-left md:text-right text-[12px] text-white/45 leading-relaxed">
-                Multidisciplinary consultancy — architecture, structural engineering, civil infrastructure, and MEP delivery.
-              </p>
-            </div>
+            <span className="border border-x-red/30 bg-x-red/10 px-3 py-1.5 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red/80 self-center">
+              Design | Engineering
+            </span>
           </div>
         </div>
       </Container>
 
-      {/* Creative Sub-Footer Bar with Socials */}
-      <div className="border-t border-white/10 bg-black py-5">
-        <Container className="flex flex-col gap-4 text-[12px] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      {/* Bottom bar */}
+      <div className="border-t border-white/[0.06] bg-black/30 py-4">
+        <Container className="flex flex-col items-start gap-2 text-[11px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} FormX Consultants LLP. All rights reserved.</p>
-
-          <div className="flex flex-wrap items-center gap-6">
-            <a
-              href={site.linkedinCompany}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-x-red"
-            >
-              <svg className="size-4 fill-current text-x-red" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-              </svg>
-              FormX LinkedIn
+          <div className="flex items-center gap-4">
+            <a href={site.hirenLinkedin} target="_blank" rel="noopener noreferrer" className="hover:text-x-red transition-colors">
+              Hiren J. Shah
             </a>
-            <a
-              href={site.hirenLinkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-x-red"
-            >
-              Hiren J. Shah LinkedIn
-            </a>
-            <Link href="/contact" className="text-x-red font-semibold hover:underline">
-              Enquire / Contact
-            </Link>
+            <Link href="/contact" className="hover:text-x-red transition-colors">Contact</Link>
           </div>
         </Container>
       </div>
