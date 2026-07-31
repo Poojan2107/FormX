@@ -1,160 +1,168 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Cpu, Layers, Ruler, Zap, Compass } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 
-const categoryBorders: Record<string, string> = {
-  "architectural-design": "border-t-blue-500",
-  "site-infrastructure": "border-t-blue-500",
-  "sustainable-design": "border-t-blue-500",
-  "structural-engineering": "border-t-amber-500",
-  "civil-engineering": "border-t-amber-500",
-  "mechanical-utility-engineering": "border-t-emerald-500",
-  "hvac-engineering": "border-t-emerald-500",
-  "electrical-engineering": "border-t-emerald-500",
-  "fire-protection-engineering": "border-t-emerald-500",
-  "project-management": "border-t-purple-500",
-};
-
-const categoryLabels: Record<string, string> = {
-  "architectural-design": "Architecture",
-  "site-infrastructure": "Architecture",
-  "sustainable-design": "Architecture",
-  "structural-engineering": "Structure",
-  "civil-engineering": "Structure",
-  "mechanical-utility-engineering": "MEP",
-  "hvac-engineering": "MEP",
-  "electrical-engineering": "MEP",
-  "fire-protection-engineering": "MEP",
-  "project-management": "Delivery",
-};
-
-const categoryBadgeColors: Record<string, string> = {
-  "architectural-design": "text-blue-600 bg-blue-50 border-blue-200",
-  "site-infrastructure": "text-blue-600 bg-blue-50 border-blue-200",
-  "sustainable-design": "text-blue-600 bg-blue-50 border-blue-200",
-  "structural-engineering": "text-amber-600 bg-amber-50 border-amber-200",
-  "civil-engineering": "text-amber-600 bg-amber-50 border-amber-200",
-  "mechanical-utility-engineering": "text-emerald-600 bg-emerald-50 border-emerald-200",
-  "hvac-engineering": "text-emerald-600 bg-emerald-50 border-emerald-200",
-  "electrical-engineering": "text-emerald-600 bg-emerald-50 border-emerald-200",
-  "fire-protection-engineering": "text-emerald-600 bg-emerald-50 border-emerald-200",
-  "project-management": "text-purple-600 bg-purple-50 border-purple-200",
-};
+const disciplineTabs = [
+  {
+    id: "all",
+    label: "All 10 Services",
+    icon: Layers,
+  },
+  {
+    id: "architecture",
+    label: "01. Architecture & Planning",
+    slugs: ["architectural-design", "site-infrastructure", "sustainable-design"],
+    icon: Compass,
+  },
+  {
+    id: "structure",
+    label: "02. Structure & Civil",
+    slugs: ["structural-engineering", "civil-engineering"],
+    icon: Ruler,
+  },
+  {
+    id: "mep",
+    label: "03. MEP & Utility",
+    slugs: [
+      "mechanical-utility-engineering",
+      "hvac-engineering",
+      "electrical-engineering",
+      "fire-protection-engineering",
+    ],
+    icon: Zap,
+  },
+  {
+    id: "delivery",
+    label: "04. Project Delivery",
+    slugs: ["project-management"],
+    icon: ShieldCheck,
+  },
+];
 
 export function Services() {
+  const [activeTab, setActiveTab] = useState("all");
+
+  const filteredServices =
+    activeTab === "all"
+      ? services
+      : services.filter((s) => {
+          const tab = disciplineTabs.find((t) => t.id === activeTab);
+          return tab?.slugs?.includes(s.slug);
+        });
+
   return (
-    <section id="services" className="scroll-mt-32 bg-white section-y">
-      <Container>
-        <Reveal>
+    <section id="services" className="relative isolate scroll-mt-32 bg-[#0a0a0a] text-white py-16 md:py-24 border-y border-white/10 overflow-hidden">
+      {/* Background Architectural Grid Pattern */}
+      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-35" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(1000px 600px at 50% 0%, rgba(222,48,36,0.14), transparent 75%)",
+        }}
+        aria-hidden
+      />
+
+      <Container className="relative z-10">
+        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            eyebrow="Services"
-            title="Complete solutions in engineering & architecture"
-            description="In-house multidisciplinary design — Architectural Drawings, Site Infrastructure, Structural & Civil, MEP, Fire Protection, and Project Management — coordinated for construction-ready packages."
+            eyebrow="Multidisciplinary Scope"
+            title="FormX Engineering & Architecture Matrix"
+            description="Integrated architectural planning, structural engineering, MEP utilities, and project management — coordinated as one package from concept to GFC."
+            invert
           />
+          <Link
+            href="/services"
+            className="inline-flex shrink-0 items-center gap-2 border border-x-red bg-x-red px-6 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all hover:bg-white hover:text-ink"
+          >
+            Explore All 10 Services
+            <ArrowUpRight className="size-4" />
+          </Link>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => {
-            const isTenth = i === 9;
-
-            if (isTenth) {
-              return (
-                <Reveal key={service.slug} delay={0.04 * (i % 3)} className="h-full lg:col-span-3">
-                  <div className="group relative flex h-full flex-col overflow-hidden border border-line border-t-4 border-t-purple-500 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_20px_50px_rgba(222,48,36,0.1)] lg:grid lg:grid-cols-[1.1fr_1.9fr]">
-                    <Link href={`/services/${service.slug}`} className="contents">
-                      <div className="relative min-h-[220px] overflow-hidden lg:min-h-[100%]">
-                        <AssetImage
-                          alt={service.title}
-                          slot={service.asset}
-                          kind="service"
-                          aspect="landscape"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        />
-                        <span className="absolute left-4 top-4 border border-purple-200 bg-purple-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
-                          Featured Delivery Discipline
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col justify-between p-6 md:p-8 lg:p-10">
-                        <div>
-                          <div className="mb-3.5 flex items-center justify-between gap-4">
-                            <span className="inline-block border border-purple-200 bg-purple-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-purple-700">
-                              {categoryLabels[service.slug]}
-                            </span>
-                            <ArrowUpRight className="size-5 text-ink/25 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-x-red" />
-                          </div>
-                          <h3 className="font-display text-xl font-bold leading-snug tracking-tight text-ink md:text-2xl">
-                            {service.title}
-                          </h3>
-                          <p className="mt-3 text-[14px] leading-[1.75] text-ink-muted">
-                            {service.short}
-                          </p>
-                          <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-4">
-                            {service.highlights.map((h) => (
-                              <li key={h} className="flex items-start gap-2.5 text-[12px] text-ink-muted">
-                                <ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-x-red" />
-                                {h}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="mt-8 flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.12em] text-x-red">
-                          Explore project management scope
-                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                </Reveal>
-              );
-            }
-
+        {/* Interactive Discipline Tab Selector — FormX Architectural Matrix */}
+        <div className="mt-10 flex flex-wrap items-center gap-2.5 border-b border-white/10 pb-6">
+          {disciplineTabs.map((tab) => {
+            const Icon = tab.icon;
+            const active = activeTab === tab.id;
             return (
-              <Reveal key={service.slug} delay={0.04 * (i % 3)} className="h-full">
-                <div className={`group relative flex h-full flex-col overflow-hidden border border-line border-t-4 bg-white transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)] ${categoryBorders[service.slug] ?? "border-t-line"}`}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="flex flex-1 flex-col"
-                  >
-                    <div className="relative overflow-hidden">
-                      <AssetImage
-                        alt={service.title}
-                        slot={service.asset}
-                        kind="service"
-                        aspect="landscape"
-                        className="w-full transition-transform duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="mb-3.5 flex items-start justify-between gap-4">
-                        <span
-                          className={`inline-block border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em] ${categoryBadgeColors[service.slug] ?? ""}`}
-                        >
-                          {categoryLabels[service.slug]}
-                        </span>
-                        <ArrowUpRight className="size-4 shrink-0 text-ink/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
-                      </div>
-                      <h3 className="font-display text-base font-bold leading-snug tracking-tight text-ink md:text-lg">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
-                        {service.short}
-                      </p>
-                      <span className="mt-auto pt-6 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-x-red opacity-0 transition-opacity group-hover:opacity-100">
-                        View service →
-                      </span>
-                    </div>
-                  </Link>
-                </div>
-              </Reveal>
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`inline-flex items-center gap-2.5 border px-4 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] transition-all ${
+                  active
+                    ? "border-x-red bg-x-red text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)]"
+                    : "border-white/15 bg-white/[0.03] text-white/60 hover:border-white/30 hover:text-white"
+                }`}
+              >
+                <Icon className="size-4 text-x-red" />
+                {tab.label}
+              </button>
             );
           })}
+        </div>
+
+        {/* Dynamic Architectural Grid Showcase — Full Uncropped Imagery & X-Factor Styling */}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredServices.map((service, i) => (
+            <Reveal key={service.slug} delay={0.03 * (i % 3)} className="h-full">
+              <Link
+                href={`/services/${service.slug}`}
+                className="group relative flex h-full flex-col overflow-hidden border border-white/15 bg-white/[0.03] transition-all duration-500 hover:border-x-red/60 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_rgba(222,48,36,0.18)]"
+              >
+                {/* Image Container with Full Uncropped Visibility */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-white/10 bg-[#121212]">
+                  <AssetImage
+                    alt={service.title}
+                    slot={service.asset}
+                    kind="service"
+                    aspect="landscape"
+                    fit="cover"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                  {/* Watermark Number & Red Diagonal Slash */}
+                  <div className="absolute left-4 top-4 flex items-center gap-1.5">
+                    <span className="border border-x-red/40 bg-x-red/20 px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red backdrop-blur-md">
+                      0{i + 1}
+                    </span>
+                  </div>
+
+                  <div className="absolute right-4 top-4 flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:border-x-red group-hover:bg-x-red">
+                    <ArrowUpRight className="size-4" />
+                  </div>
+                </div>
+
+                {/* Content Overlay */}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white transition-colors group-hover:text-x-red">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2.5 text-[13px] leading-[1.7] text-white/65 line-clamp-3">
+                      {service.short}
+                    </p>
+                  </div>
+
+                  {/* Hover Progress Rail Indicator */}
+                  <div className="mt-6 border-t border-white/10 pt-4">
+                    <span className="inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red transition-all group-hover:translate-x-1">
+                      Explore Service Scope →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </Container>
     </section>
