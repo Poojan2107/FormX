@@ -1,11 +1,12 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Mail, Phone, MapPin, Check } from "lucide-react";
 import { site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { FormMessage } from "@/components/ui/FormMessage";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
@@ -35,6 +36,12 @@ export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const el = formRef.current?.querySelector<HTMLElement>("[aria-invalid='true']");
+    el?.focus();
+  }, [errors]);
 
   const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     "Hello FormX — I'd like to discuss a facility project.",
@@ -145,7 +152,13 @@ export function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="mt-8 space-y-4" noValidate>
+              <form
+                ref={formRef}
+                onSubmit={onSubmit}
+                className="mt-8 space-y-4"
+                noValidate
+                aria-busy={loading}
+              >
                 <Field
                   label="Full name"
                   name="name"
@@ -209,21 +222,20 @@ export function Contact() {
                     name="message"
                     rows={4}
                     aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? "message-error" : undefined}
                     className={cn(
                       "w-full border bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-x-red",
                       errors.message ? "border-x-red" : "border-line",
                     )}
                   />
                   {errors.message ? (
-                    <span className="mt-1.5 block text-[12px] text-x-red">
+                    <FormMessage id="message-error" className="mt-1.5">
                       {errors.message}
-                    </span>
+                    </FormMessage>
                   ) : null}
                 </label>
                 {formError ? (
-                  <p className="text-[13px] text-x-red" role="alert">
-                    {formError}
-                  </p>
+                  <FormMessage className="text-[13px]">{formError}</FormMessage>
                 ) : null}
                 <Button type="submit" variant="primary" className="mt-2" disabled={loading}>
                   {loading ? "Sending…" : "Submit enquiry"}
@@ -250,6 +262,7 @@ function Field({
   required?: boolean;
   error?: string;
 }) {
+  const errorId = `${name}-error`;
   return (
     <label className="block">
       <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
@@ -260,13 +273,16 @@ function Field({
         name={name}
         type={type}
         aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : undefined}
         className={cn(
           "w-full border bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-x-red",
           error ? "border-x-red" : "border-line",
         )}
       />
       {error ? (
-        <span className="mt-1.5 block text-[12px] text-x-red">{error}</span>
+        <FormMessage id={errorId} className="mt-1.5">
+          {error}
+        </FormMessage>
       ) : null}
     </label>
   );

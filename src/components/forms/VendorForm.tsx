@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FormMessage } from "@/components/ui/FormMessage";
 
 const VENDOR_CATEGORIES = [
   "Architectural Work",
@@ -16,11 +17,24 @@ const VENDOR_CATEGORIES = [
   "Project Management / Site QC",
 ];
 
+function isEmail(v: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+type Errors = Partial<Record<"company" | "contact" | "email" | "phone", string>>;
+
 export function VendorForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [errors, setErrors] = useState<Errors>({});
   const [errorMsg, setErrorMsg] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const el = formRef.current?.querySelector<HTMLElement>("[aria-invalid='true']");
+    el?.focus();
+  }, [errors]);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +46,16 @@ export function VendorForm() {
     const phone = String(fd.get("phone") || "").trim();
     const city = String(fd.get("city") || "").trim();
     const note = String(fd.get("note") || "").trim();
+
+    const next: Errors = {};
+    if (company.length < 2) next.company = "Please enter your company name.";
+    if (contact.length < 2) next.contact = "Please enter a contact person's name.";
+    if (!isEmail(email)) next.email = "Enter a valid email address.";
+    if (phone && phone.replace(/\D/g, "").length < 8) {
+      next.phone = "Enter a valid phone number.";
+    }
+    setErrors(next);
+    if (Object.keys(next).length) return;
 
     const categoryStr =
       selectedCategories.length > 0
@@ -65,7 +89,10 @@ export function VendorForm() {
 
   if (sent) {
     return (
-      <div className="formx-cut-x formx-edge formx-edge-x border border-line bg-white p-8 md:p-10">
+      <div
+        className="formx-cut-x formx-edge formx-edge-x border border-line bg-white p-8 md:p-10"
+        role="status"
+      >
         <div className="inline-flex size-10 items-center justify-center bg-x-red/10 text-x-red mb-4">
           <Check className="size-5" />
         </div>
@@ -89,14 +116,17 @@ export function VendorForm() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={onSubmit}
+      aria-busy={loading}
+      noValidate
       className="formx-cut-x formx-edge formx-edge-x space-y-4 border border-line bg-white p-6 md:p-8"
     >
-      <Field label="Company name" name="company" required />
-      <Field label="Contact person" name="contact" required />
+      <Field label="Company name" name="company" required error={errors.company} />
+      <Field label="Contact person" name="contact" required error={errors.contact} />
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Email" name="email" type="email" required />
-        <Field label="Phone" name="phone" type="tel" required />
+        <Field label="Email" name="email" type="email" required error={errors.email} />
+        <Field label="Phone" name="phone" type="tel" required error={errors.phone} />
       </div>
 
       {/* Category multi-select chips */}
@@ -111,6 +141,7 @@ export function VendorForm() {
               <button
                 key={cat}
                 type="button"
+                aria-pressed={active}
                 onClick={() =>
                   setSelectedCategories((prev) =>
                     prev.includes(cat)
@@ -151,7 +182,7 @@ export function VendorForm() {
         />
       </label>
 
-      {errorMsg ? <p className="text-[13px] text-x-red">{errorMsg}</p> : null}
+      {errorMsg ? <FormMessage className="text-[13px]">{errorMsg}</FormMessage> : null}
 
       <Button type="submit" variant="primary" className="gap-2" disabled={loading}>
         <Send className="size-4" />
@@ -167,13 +198,16 @@ function Field({
   type = "text",
   required,
   placeholder,
+  error,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
   placeholder?: string;
+  error?: string;
 }) {
+  const errorId = `${name}-error`;
   return (
     <label className="block">
       <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
@@ -185,8 +219,11 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : undefined}
         className="w-full border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-x-red"
       />
+      {error ? <FormMessage id={errorId} className="mt-1.5">{error}</FormMessage> : null}
     </label>
   );
 }

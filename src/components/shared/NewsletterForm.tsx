@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { FormMessage } from "@/components/ui/FormMessage";
 import { cn } from "@/lib/cn";
 
 function isEmail(v: string) {
@@ -50,13 +51,14 @@ export function NewsletterForm({ invert = false }: { invert?: boolean }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-2" noValidate>
+    <form onSubmit={onSubmit} className="flex flex-col gap-2" noValidate aria-busy={loading}>
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
           name="email"
           type="email"
           placeholder="Work email"
           aria-invalid={Boolean(error)}
+          aria-describedby={error ? "newsletter-email-error" : undefined}
           className={cn(
             "w-full px-4 py-3 text-sm outline-none transition-colors",
             invert
@@ -74,9 +76,9 @@ export function NewsletterForm({ invert = false }: { invert?: boolean }) {
         </Button>
       </div>
       {error ? (
-        <p className="text-[12px] text-x-red" role="alert">
+        <FormMessage id="newsletter-email-error" className="text-[12px]">
           {error}
-        </p>
+        </FormMessage>
       ) : null}
     </form>
   );
