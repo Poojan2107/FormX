@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { ClientsRibbon } from "@/components/home/ClientsRibbon";
 import { About } from "@/components/home/About";
 import { Stats } from "@/components/home/Stats";
 import { Process } from "@/components/home/Process";
@@ -6,6 +7,7 @@ import { Services } from "@/components/home/Services";
 import { WhyFormx } from "@/components/home/WhyFormx";
 import { Projects } from "@/components/home/Projects";
 import { Sectors } from "@/components/home/Sectors";
+import { ScopeEstimator } from "@/components/shared/ScopeEstimator";
 import { Faqs } from "@/components/home/Faqs";
 import { Contact } from "@/components/home/Contact";
 import { CtaBand } from "@/components/shared/CtaBlocks";
@@ -14,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ClientsRibbon />
       <About />
       <Stats />
       <Services />
@@ -21,6 +24,7 @@ export default function Home() {
       <WhyFormx />
       <Projects />
       <Sectors />
+      <ScopeEstimator />
       <Faqs />
       <Contact />
       <CtaBand

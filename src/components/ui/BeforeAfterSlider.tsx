@@ -1,0 +1,108 @@
+"use client";
+
+import { useState, useRef, useCallback } from "react";
+import { MoveHorizontal } from "lucide-react";
+import { AssetImage } from "@/components/ui/AssetImage";
+
+export function BeforeAfterSlider({
+  beforeSlot,
+  afterSlot,
+  beforeLabel = "Structural GFC Model / CAD",
+  afterLabel = "Finished Completed Facility",
+  alt = "FormX Engineering Comparison",
+}: {
+  beforeSlot: string;
+  afterSlot: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  alt?: string;
+}) {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    let percentage = (x / rect.width) * 100;
+    if (percentage < 0) percentage = 0;
+    if (percentage > 100) percentage = 100;
+    setSliderPosition(percentage);
+  }, []);
+
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      if (!isDragging) return;
+      handleMove(e.touches[0].clientX);
+    },
+    [isDragging, handleMove]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) return;
+      handleMove(e.clientX);
+    },
+    [isDragging, handleMove]
+  );
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative aspect-[16/10] w-full overflow-hidden border border-line bg-[#0d0d0d] select-none cursor-ew-resize group"
+      onMouseDown={() => setIsDragging(true)}
+      onMouseUp={() => setIsDragging(false)}
+      onMouseLeave={() => setIsDragging(false)}
+      onMouseMove={(e) => isDragging && handleMove(e.clientX)}
+      onTouchStart={() => setIsDragging(true)}
+      onTouchEnd={() => setIsDragging(false)}
+      onTouchMove={(e) => isDragging && handleMove(e.touches[0].clientX)}
+    >
+      {/* After Image (Right Side / Full Backdrop) */}
+      <div className="absolute inset-0 h-full w-full">
+        <AssetImage
+          alt={`${alt} — ${afterLabel}`}
+          slot={afterSlot}
+          kind="facility"
+          aspect="landscape"
+          fit="cover"
+          className="h-full w-full object-cover"
+        />
+        <span className="absolute right-4 top-4 border border-black/40 bg-black/75 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+          {afterLabel}
+        </span>
+      </div>
+
+      {/* Before Image (Left Side / Clipped) */}
+      <div
+        className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-x-red"
+        style={{ width: `${sliderPosition}%` }}
+      >
+        <div className="relative h-full w-full" style={{ width: containerRef.current ? containerRef.current.clientWidth : "100%" }}>
+          <AssetImage
+            alt={`${alt} — ${beforeLabel}`}
+            slot={beforeSlot}
+            kind="facility"
+            aspect="landscape"
+            fit="cover"
+            className="h-full w-full object-cover grayscale brightness-90 contrast-125"
+          />
+          <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+            {beforeLabel}
+          </span>
+        </div>
+      </div>
+
+      {/* Divider Bar & Drag Handle */}
+      <div
+        className="absolute top-0 bottom-0 z-20 w-0.5 bg-x-red shadow-[0_0_12px_rgba(222,48,36,0.8)]"
+        style={{ left: `${sliderPosition}%` }}
+      >
+        <div className="absolute top-1/2 -left-4 flex size-8 -translate-y-1/2 items-center justify-center rounded-full border border-x-red/50 bg-x-red text-white shadow-lg transition-transform duration-200 group-hover:scale-110">
+          <MoveHorizontal className="size-4" />
+        </div>
+      </div>
+    </div>
+  );
+}

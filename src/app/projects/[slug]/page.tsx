@@ -5,6 +5,7 @@ import { MapPin, Calendar, Building2, Ruler, ArrowLeft, Check } from "lucide-rea
 import { getProject, projects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
@@ -90,15 +91,12 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="bg-white pt-10 md:pt-14">
         <Container>
           <Reveal>
-            <AssetImage
-              alt={project.title}
-              slot={project.assets.cover}
-              kind="facility"
-              tone="dark"
-              label={project.sector}
-              caption={project.client}
-              aspect="wide"
-              priority
+            <BeforeAfterSlider
+              beforeSlot={project.assets.gallery && project.assets.gallery[0] ? project.assets.gallery[0] : project.assets.cover}
+              afterSlot={project.assets.cover}
+              beforeLabel="Raw Structural GFC Model / CAD"
+              afterLabel="Completed Executed Facility"
+              alt={project.client}
             />
           </Reveal>
 
