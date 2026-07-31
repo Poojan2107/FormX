@@ -56,14 +56,13 @@ export function WhyFormx() {
         </div>
 
         {/* Execution Method Banner */}
-        <Reveal className="mt-8 border border-line bg-[#161616] p-6 text-white md:p-8 lg:p-10">
+        <Reveal className="mt-8 border-l-4 border-x-red bg-white p-6 shadow-[0_8px_28px_rgba(0,0,0,0.06)] md:p-8 lg:p-10">
           <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12">
             <SectionHeading
               eyebrow={method.eyebrow}
               title={method.title}
-              className="[&_*]:text-white [&_.text-ink-muted]:text-white/60"
             />
-            <p className="text-[14px] leading-[1.8] text-white/70 md:text-[15px]">
+            <p className="text-[14px] leading-[1.8] text-ink-muted md:text-[15px]">
               {method.body}
             </p>
           </div>

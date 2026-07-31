@@ -45,7 +45,7 @@ export function Hero() {
     const id = window.setInterval(() => {
       setLineIndex((i) => (i + 1) % heroLines.length);
       setSlideIndex((i) => (i + 1) % heroSlides.length);
-    }, 4500);
+    }, 6500);
     return () => clearInterval(id);
   }, [reduce]);
 
@@ -151,7 +151,7 @@ export function Hero() {
                   fit="cover"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
                   {currentSlide.tag}
                 </span>

@@ -47,17 +47,18 @@ export function Services() {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="flex h-full flex-col md:flex-row"
                 >
-                  {/* Left Column: Full Uncropped Image Panel — 100% Asset Preservation */}
-                  <div className="relative w-full md:w-[48%] min-h-[320px] md:min-h-[460px] bg-white overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0 p-4 flex items-center justify-center">
+                  {/* Left Column: Full-Bleed Image Panel */}
+                  <div className="relative w-full md:w-[48%] min-h-[320px] md:min-h-[460px] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
-                      aspect="auto"
-                      fit="contain"
-                      tone="light"
-                      className="h-full w-full bg-white"
+                      aspect="landscape"
+                      fit="cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
+                    {/* Bottom gradient so badge reads against any photo */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
                       <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
                         Discipline {String(activeIdx + 1).padStart(2, "0")} / 10

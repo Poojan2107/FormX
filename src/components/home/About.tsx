@@ -12,7 +12,7 @@ export function About() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
-            <div className="overflow-hidden border border-line bg-gray-100 shadow-[0_16px_40px_rgba(0,0,0,0.06)]">
+            <div className="relative aspect-[4/3] overflow-hidden border border-line bg-gray-100 shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
               <AssetImage
                 alt="FormX industrial design practice"
                 slot="about/home-about.jpg"
@@ -22,7 +22,7 @@ export function About() {
                 caption="Coordination that holds from concept to site"
                 aspect="landscape"
                 fit="cover"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </div>
           </Reveal>

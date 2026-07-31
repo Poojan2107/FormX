@@ -31,7 +31,7 @@ export function Testimonials() {
 
   return (
     <section
-      className="border-y border-line bg-white py-20 md:py-28"
+      className="border-y border-line bg-[#f6f6f6] py-20 md:py-28"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -44,7 +44,7 @@ export function Testimonials() {
           />
         </Reveal>
 
-        <div className="formx-cut-x formx-edge formx-edge-x mt-12 border border-line bg-white p-6 md:p-10 lg:p-12">
+        <div className="mt-12 border-l-4 border-x-red bg-white p-6 shadow-[0_8px_32px_rgba(0,0,0,0.06)] md:p-10 lg:p-12">
           <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-12">
             <Quote
               className="hidden size-10 text-x-red/60 lg:block"
@@ -66,7 +66,7 @@ export function Testimonials() {
                       className="mb-4 size-7 text-x-red/50 lg:hidden"
                       strokeWidth={1.25}
                     />
-                    <blockquote className="max-w-3xl text-[16px] leading-[1.8] text-ink md:text-xl md:leading-[1.7]">
+                    <blockquote className="max-w-3xl text-[18px] font-medium leading-[1.8] text-ink md:text-2xl md:leading-[1.7]">
                       "{item.quote}"
                     </blockquote>
                     <footer className="mt-6 md:mt-8">

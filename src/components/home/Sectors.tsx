@@ -25,24 +25,25 @@ export function Sectors() {
           </Link>
         </Reveal>
 
-        {/* Large Prominent Industry Sector Image Cards */}
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {sectors.slice(0, 10).map((sector, i) => (
-            <Reveal key={sector.slug} delay={0.03 * (i % 5)} className="h-full">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {sectors.slice(0, 8).map((sector, i) => (
+            <Reveal key={sector.slug} delay={0.03 * (i % 4)} className="h-full">
               <Link
                 href={`/sectors/${sector.slug}`}
-                className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.12)]"
+                className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.12)]"
               >
-                {/* Bright Crisp Industry Image */}
-                <div className="relative aspect-[16/11] w-full overflow-hidden bg-gray-100 border-b border-line/60">
+                {/* Sector Image — taller so it dominates the card */}
+                <div className="relative aspect-[3/2] w-full overflow-hidden bg-gray-100">
                   <AssetImage
                     alt={sector.title}
                     slot={sector.asset}
                     kind="sector"
                     aspect="landscape"
                     fit="cover"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  {/* Subtle gradient for index badge */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <span className="absolute left-3 top-3 border border-line bg-white/90 px-2 py-0.5 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-ink shadow-sm">
                     0{i + 1}
                   </span>
