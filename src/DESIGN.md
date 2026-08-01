@@ -4,8 +4,9 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 
 ## 定位
 
-- **app/** — 路由页面（静态 SSG + 动态 detail 页）
+- **app/** — 路由页面（静态 SSG + 动态 detail 页，含 `/estimator` 交互工具页）
 - **components/** — UI 设计系统、布局、共享组件、表单
+- **components/tools/** — 交互式工程工具（`StructuralEstimator` PEB 荷载估算器）
 - **data/** — 内容数据（services / sectors / projects / content / site）
 - **lib/** — 工具（`cn` 类名合并）
 
@@ -26,6 +27,13 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 - 所有资源为占位/示例资产，正式事实待移交填充；客户 logo SVG 见 `HANDOVER.md`。
 
 ## 变更历史
+
+### [2026-08-01] — FORMX V2：建筑序列引擎、信任矩阵、估算工具
+
+**变更内容**: (1) 新增 `ConstructionSequence` 六阶段交互式施工流程引擎（场地勘察→建筑总图→结构 RCC/钢框架→MEP 路由→GFC 交付→建成设施，含阶段里程碑、IS 码标注、交付清单与指标）；(2) 新增 `EngineeringTrustMatrix` 实证信任面板（FORMX by Numbers 计数、IS 456/800/1893 合规、客户 logo 墙，logo 缺失走 `PlaceholderMedia` 文案回退）；(3) 新增 `/estimator` PEB 荷载估算工具页 + `StructuralEstimator`（面积/檐高/吊车/结构体系/楼板/抗震分区输入，输出钢吨位、RCC 体积、板厚、GFC 周期，CTA 携带 `?area=&crane=&type=` 参数）；(4) Hero 增加 CAD 蓝图网格叠加开关（`showBlueprintGrid`，含 GRID REF/抗震分区标注）；(5) 表单侧：Contact 从估算器 CTA 参数预填消息正文并自动勾选「Structural Engineering」服务；(6) 全站图片主导视觉升级（about/services/projects/hero）。
+**变更理由**: FORMX V2 品牌升级——把工程能力做成可交互、可验证的营销证据（估算器获客、六阶段叙事、实证数据面板）。
+**影响范围**: `src/components/{home/{ConstructionSequence,EngineeringTrustMatrix,Hero},tools/StructuralEstimator}.tsx`、`src/app/{estimator/page,page}.tsx`、`src/components/home/Contact.tsx`、`src/app/{about,knowledge-center}/page.tsx`、`src/components/{home/About,home/Services,ServicesGrid,projects/ProjectsExplorer}.tsx`、`src/DESIGN.md`。
+**修复**: 清理 FORMX V2 引入的 23 处未使用导入；修正 `services/structure.jpg`→`services/structural.jpg`（估算器 hero 与施工序列阶段 03 的失效图片引用）；估算器 CTA 参数接入 Contact 预填（defer setState 满足 react-hooks 新规则）。
 
 ### [2026-08-01] — 收尾加固：共享校验、限流、CSP、Vitest
 
