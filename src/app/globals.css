@@ -86,42 +86,51 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Fluid type scale — geometric, lockup-adjacent */
+/* Enlarged fluid type scale — geometric, lockup-adjacent */
 .text-display {
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 1.15rem + 1.6vw, 2.35rem);
-  font-weight: 700;
-  line-height: 1.18;
+  font-size: clamp(1.75rem, 1.25rem + 2.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
   letter-spacing: -0.025em;
+  text-transform: uppercase;
 }
 
 .text-lead {
-  font-size: clamp(0.98rem, 0.92rem + 0.2vw, 1.08rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.15rem);
+  line-height: 1.75;
 }
 
-/* Shared section rhythm */
+/* Strict readability line-length measure constraint */
+.prose-measure {
+  max-width: 70ch;
+}
+.prose-measure-lg {
+  max-width: 80ch;
+}
+
+/* Expanded shared section rhythm for generous white space */
 .section-y {
-  padding-block: 4rem;
+  padding-block: 4.5rem;
   scroll-margin-top: 7.5rem;
 }
 
 @media (min-width: 640px) {
   .section-y {
-    padding-block: 5rem;
+    padding-block: 5.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .section-y {
-    padding-block: 6rem;
+    padding-block: 6.5rem;
     scroll-margin-top: 8rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-y {
-    padding-block: 7rem;
+    padding-block: 7.5rem;
   }
 }
 
@@ -150,7 +159,6 @@ body {
     min-width: 44px;
   }
 
-  /* Exceptions for inline text links */
   p a,
   li a,
   nav a {
@@ -159,7 +167,7 @@ body {
   }
 }
 
-/* FormX logo edge — diagonal cuts (Form “m” / X terminals) */
+/* FormX logo edge — diagonal cuts */
 :root {
   --formx-cut: 22px;
   --formx-cut-sm: 14px;
@@ -208,7 +216,6 @@ body {
 }
 
 .formx-cut-x {
-  /* X-factor: cut top-left + bottom-right */
   clip-path: polygon(
     0 var(--formx-cut-sm),
     var(--formx-cut-sm) 0,
@@ -220,7 +227,6 @@ body {
 }
 
 .formx-cut-bl {
-  /* mirror — bottom-left bite like alternate m stroke */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -230,7 +236,6 @@ body {
   );
 }
 
-/* Red accent stroke along the cut (makes the X-edge readable) */
 .formx-edge {
   position: relative;
   isolation: isolate;
@@ -263,7 +268,6 @@ body {
   height: calc(var(--formx-cut) + 3px);
 }
 
-/* Dual-corner red ticks for formx-cut-x */
 .formx-edge-x::before {
   content: "";
   pointer-events: none;
@@ -304,12 +308,10 @@ body {
   height: var(--formx-cut-lg);
 }
 
-/* Soft charcoal — replace heavy pure black surfaces */
 .ink-soft {
   background-color: #1a1a1a;
 }
 
-/* Red hover rail / underline animation (no pseudo — frees ::before for formx-edge-x) */
 .x-hover-rail {
   position: relative;
   overflow: hidden;
@@ -347,7 +349,6 @@ body {
   transform: scaleX(1);
 }
 
-/* Diagonal industrial texture */
 .pattern-stripe {
   background-image: repeating-linear-gradient(
     -45deg,
@@ -380,7 +381,6 @@ body {
   background-size: 36px 36px;
 }
 
-/* Micro red border on hover */
 .x-border {
   position: relative;
   transition:
@@ -407,32 +407,6 @@ body {
   border-color: transparent;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 42s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-.animate-marquee-reverse {
-  animation: marquee 48s linear infinite reverse;
-}
-
-.animate-marquee-reverse:hover {
-  animation-play-state: paused;
-}
-
-/* Hover lift — subtle card elevation */
 .x-lift {
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -444,7 +418,6 @@ body {
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
 }
 
-/* Ken Burns slow zoom — hero images */
 @keyframes ken-burns {
   from { transform: scale(1); }
   to { transform: scale(1.06); }
@@ -454,32 +427,9 @@ body {
   animation: ken-burns 8s ease-in-out alternate infinite;
 }
 
-@keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-ticker {
-  animation: ticker 32s linear infinite;
-}
-
-.animate-ticker-reverse {
-  animation: ticker 36s linear infinite reverse;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .animate-marquee,
-  .animate-ticker,
-  .animate-ticker-reverse {
-    animation: none;
   }
 
   ::view-transition-old(*),
@@ -498,7 +448,6 @@ body {
   }
 }
 
-/* Hide scrollbar for horizontal scroll strips */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -507,9 +456,6 @@ body {
   display: none;
 }
 
-/* ---------- View Transitions ---------- */
-
-/* Persistent chrome: header + footer must not slide */
 ::view-transition-group(site-header),
 ::view-transition-group(site-footer) {
   animation: none;
@@ -524,7 +470,6 @@ body {
   animation: none;
 }
 
-/* Directional page slides */
 ::view-transition-old(.nav-forward) {
   --slide-offset: -60px;
   animation:
@@ -570,7 +515,6 @@ body {
   }
 }
 
-/* Desaturate-to-color hover for listing imagery */
 .x-desat img {
   filter: grayscale(1);
   transition: filter 0.5s ease;
@@ -580,7 +524,6 @@ body {
   filter: grayscale(0);
 }
 
-/* Image load shimmer — gradient set inline per tone; only animation lives here */
 @keyframes x-shimmer {
   0% {
     background-position: 200% 0;

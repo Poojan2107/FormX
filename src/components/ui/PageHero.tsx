@@ -30,7 +30,8 @@ export function PageHero({
       )}
     >
       {crumbs ? <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, ...crumbs]} /> : null}
-      {/* Faint full-bleed image layer */}
+      
+      {/* Background visual image layer */}
       {image ? (
         <>
           <div className="pointer-events-none absolute inset-0">
@@ -41,7 +42,7 @@ export function PageHero({
               tone="dark"
               aspect="landscape"
               fit="cover"
-              className="absolute inset-0 h-full w-full object-cover opacity-25"
+              className="absolute inset-0 h-full w-full object-cover opacity-30"
             />
           </div>
           <div
@@ -51,31 +52,31 @@ export function PageHero({
         </>
       ) : null}
 
-      {/* Background Grid Pattern */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-40" aria-hidden />
+      {/* Grid pattern & radial red glow */}
+      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-35" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(800px 500px at 50% 0%, rgba(222,48,36,0.12), transparent 75%)",
+            "radial-gradient(900px 500px at 50% 0%, rgba(222,48,36,0.14), transparent 75%)",
         }}
         aria-hidden
       />
 
-      {/* Ghost X watermark */}
+      {/* Watermark X */}
       <div
-        className="pointer-events-none absolute right-[-3%] top-[-16%] select-none font-display font-black leading-none text-white/[0.05]"
-        style={{ fontSize: "clamp(10rem, 22vw, 22rem)" }}
+        className="pointer-events-none absolute right-[-2%] top-[-15%] select-none font-display font-black leading-none text-white/[0.04]"
+        style={{ fontSize: "clamp(12rem, 24vw, 24rem)" }}
         aria-hidden
       >
         ×
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-12 pt-12 sm:px-5 sm:pb-12 sm:pt-16 md:px-8 md:pb-14 md:pt-20">
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-14 pt-16 sm:px-5 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24">
         {crumbs ? (
           <nav
             aria-label="Breadcrumb"
-            className="mb-6 flex flex-wrap items-center gap-x-2 text-[12px] text-white/50"
+            className="mb-6 flex flex-wrap items-center gap-x-2 text-[12px] font-semibold text-white/50"
           >
             <Link
               href="/"
@@ -96,7 +97,7 @@ export function PageHero({
                     {c.label}
                   </Link>
                 ) : (
-                  <span className="font-medium text-white/90">{c.label}</span>
+                  <span className="font-bold text-white/90">{c.label}</span>
                 )}
               </span>
             ))}
@@ -104,18 +105,18 @@ export function PageHero({
         ) : null}
 
         {eyebrow ? (
-          <p className="mb-3 flex items-center gap-3 font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+          <p className="mb-3.5 flex items-center gap-3 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
             <span className="inline-block h-px w-8 bg-x-red" aria-hidden />
             {eyebrow}
           </p>
         ) : null}
 
-        <h1 className="max-w-3xl font-display text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl leading-[1.08]">
+        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl leading-[1.06]">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-5 max-w-2xl text-[15px] leading-[1.8] text-white/65 md:text-base">
+          <p className="mt-5 prose-measure text-[15px] leading-[1.8] text-white/70 md:text-base">
             {description}
           </p>
         ) : null}

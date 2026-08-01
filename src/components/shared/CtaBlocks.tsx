@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Download, FileText } from "lucide-react";
+import { ArrowRight, Download, FileText, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { site } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 export function BrochureCta({
@@ -31,17 +32,15 @@ export function BrochureCta({
         </span>
         <div>
           <p className="font-display text-lg font-bold tracking-tight">
-            Company brochure
+            Company Brochure
           </p>
           <p
             className={cn(
-              "mt-1 text-sm",
+              "mt-1 text-sm prose-measure",
               invert ? "text-white/55" : "text-ink-muted",
             )}
           >
-            Capabilities, sectors, and delivery approach — ready for stakeholder
-            sharing.{" "}
-            <span className="text-x-red">Download PDF at /brochure/formx.pdf</span>
+            Capabilities, sectors, and delivery approach — ready for promoter &amp; stakeholder review.
           </p>
         </div>
       </div>
@@ -51,7 +50,7 @@ export function BrochureCta({
         className="w-full shrink-0 sm:w-auto"
         transitionTypes={["nav-forward"]}
       >
-        Download brochure
+        Download PDF Brochure
         <Download className="size-4" />
       </Button>
     </div>
@@ -59,10 +58,10 @@ export function BrochureCta({
 }
 
 export function CtaBand({
-  eyebrow = "Next step",
+  eyebrow = "Start A Conversation",
   title,
   description,
-  primary = { label: "Contact FormX", href: "/contact" },
+  primary = { label: "Contact FORMX Leads", href: "/contact" },
   secondary,
 }: {
   eyebrow?: string;
@@ -72,26 +71,48 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="formx-cut-tr formx-edge formx-edge-lg bg-[#1a1a1a] py-12 text-white md:py-16">
+    <section className="formx-cut-tr formx-edge formx-edge-lg bg-[#141414] py-14 text-white md:py-18">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center md:px-8">
-        <div className="max-w-xl">
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+        <div className="max-w-xl prose-measure">
+          <p className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
             {eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-[1.65rem] font-bold tracking-tight text-balance sm:text-3xl md:text-4xl">
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight">
             {title}
           </h2>
           {description ? (
-            <p className="mt-3 text-sm leading-relaxed text-white/55">
+            <p className="mt-3 text-sm leading-relaxed text-white/60">
               {description}
             </p>
           ) : null}
+
+          {/* Quick Direct Affordance: Phone & WhatsApp */}
+          <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-white/10 pt-4 text-xs font-semibold text-white/70">
+            <a
+              href={`tel:${site.phone.replace(/\s/g, "")}`}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-x-red"
+            >
+              <Phone className="size-3.5 text-x-red" />
+              <span>{site.phone}</span>
+            </a>
+            <span className="text-white/20">•</span>
+            <a
+              href={`https://wa.me/${site.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400"
+            >
+              <MessageSquare className="size-3.5 text-emerald-400" />
+              <span>WhatsApp Direct</span>
+            </a>
+          </div>
         </div>
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
+
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap shrink-0">
           <Button
             href={primary.href}
             variant="primary"
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto px-7 py-4"
             transitionTypes={["nav-forward"]}
           >
             {primary.label}
@@ -101,7 +122,7 @@ export function CtaBand({
             <Button
               href={secondary.href}
               variant="ghost-light"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto px-6 py-4"
               transitionTypes={["nav-forward"]}
             >
               {secondary.label}
@@ -131,7 +152,7 @@ export function RelatedLinks({
         : "sm:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <section className="border-t border-line bg-white py-14 md:py-16">
+    <section className="border-t border-line bg-white py-14 md:py-18">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
         <div className="flex items-center justify-between border-b border-line pb-4 mb-6">
           <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">

@@ -1,8 +1,10 @@
 import { Hero } from "@/components/home/Hero";
-import { ClientsRibbon } from "@/components/home/ClientsRibbon";
+import { ClientLogoWall } from "@/components/shared/ClientLogoWall";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 import { About } from "@/components/home/About";
 import { Services } from "@/components/home/Services";
 import { Projects } from "@/components/home/Projects";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 import { Sectors } from "@/components/home/Sectors";
 import { Stats } from "@/components/home/Stats";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -12,17 +14,23 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ClientsRibbon />
+      <ClientLogoWall />
+      <ProofStrip />
       <About />
       <Services />
       <Projects />
+      <LeadStrip
+        title="Ready to brief FORMX on your next industrial or commercial facility?"
+        subtitle="Our engineering leads engage early to optimize structural grids, site zoning, and clash-free MEP corridors."
+      />
       <Sectors />
       <Stats />
       <Testimonials />
       <CtaBand
-        title="Ready to brief FORMX on your next facility?"
-        description="Architecture, Structure, Civil &amp; MEP — coordinated packages from concept to GFC."
-        secondary={{ label: "Explore services", href: "/services" }}
+        eyebrow="Start A Project Conversation"
+        title="Brief FORMX on your next facility mandate"
+        description="Architecture, Structure, Civil & MEP — coordinated GFC packages delivered from concept to construction."
+        secondary={{ label: "Explore 10 disciplines", href: "/services" }}
       />
     </>
   );

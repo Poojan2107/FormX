@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
-  CheckCircle2,
   Compass,
   Cpu,
   Layers,
@@ -20,6 +19,7 @@ import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return { title: service.title, description: service.short };
+  return { title: `${service.title} Services | FORMX`, description: service.short };
 }
 
 const categoryLabels: Record<string, string> = {
@@ -78,7 +78,6 @@ export default async function ServiceDetailPage({ params }: Props) {
         url={`/services/${service.slug}`}
         image={`https://formxconsultants.com/assets/${service.asset}`}
       />
-      {/* Sleek Dark Architectural Hero Header */}
       <PageHero
         eyebrow={cat}
         title={service.title}
@@ -89,36 +88,13 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
       />
 
-      {/* Highlights KPI Badges Ribbon */}
-      <div className="border-b border-line bg-[#0d0d0d] py-6 text-white">
-        <Container className="flex flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
-              IS Code Compliant
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
-              100% GFC Construction Ready
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Cpu className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider text-white">
-              BIM 3D Coordinated
-            </span>
-          </div>
-        </Container>
-      </div>
+      <ProofStrip />
 
       {/* Main Visual Grid Content */}
       <section className="bg-white py-14 md:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           {/* LEFT — Visual Scope & Deliverables Cards */}
           <Reveal>
-            {/* Scope Highlights */}
             <div>
               <SectionHeader eyebrow="The Scope" title="Core Engineering Scope" />
 
@@ -139,10 +115,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                       <p className="font-display text-sm font-bold leading-snug text-ink group-hover:text-x-red transition-colors">
                         {item}
                       </p>
-                      <span
-                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
-                        aria-hidden
-                      />
                     </div>
                   );
                 })}
@@ -197,7 +169,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
 
             <Button href="/contact" variant="primary" className="mt-10 gap-2 px-8 py-4">
-              Engage FormX For This Service
+              Engage FORMX For This Service
               <ArrowUpRight className="size-4" />
             </Button>
           </Reveal>
@@ -246,7 +218,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       ) : null}
       <RelatedLinks title="Related services" items={others} />
       <CtaBand
-        title={`Engage FormX for ${service.title.toLowerCase()}`}
+        title={`Engage FORMX for ${service.title.toLowerCase()}`}
         secondary={{ label: "All services", href: "/services" }}
       />
       <StickyEnquire label={`Discuss ${service.title}`} />

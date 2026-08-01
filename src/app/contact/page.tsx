@@ -3,11 +3,12 @@ import { Contact } from "@/components/home/Contact";
 import { PageHero } from "@/components/ui/PageHero";
 import { Faqs } from "@/components/home/Faqs";
 import { FaqJsonLd } from "@/components/shared/JsonLd";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact FORMX | Industrial & Commercial Engineering Leads",
   description:
-    "Contact FORMX Consultants for architecture, structural, civil, and MEP design engagements.",
+    "Connect with FORMX Consultants for architectural drawings, structural engineering, civil works, and MEP utility coordination in India.",
 };
 
 export default function ContactPage() {
@@ -15,11 +16,12 @@ export default function ContactPage() {
     <>
       <FaqJsonLd />
       <PageHero
-        eyebrow="Contact"
+        eyebrow="Direct Lead Channel"
         title="Let’s discuss your project"
-        description="Share your facility requirements, timeline, and location. Our team will connect to understand scope and propose next steps."
+        description="Share your facility requirements, location, and timeline. Our multidisciplinary engineering leads will connect within 24 hours."
         crumbs={[{ label: "Contact Us" }]}
       />
+      <ProofStrip />
       <Contact />
       <Faqs />
     </>
