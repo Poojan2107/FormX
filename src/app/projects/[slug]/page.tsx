@@ -18,8 +18,7 @@ import {
 import { getProject, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
-import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
+import { ProjectGalleryViewer } from "@/components/projects/ProjectGalleryViewer";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
@@ -68,15 +67,9 @@ export default async function ProjectDetailPage({ params }: Props) {
     ["Scale", project.area ?? "Industrial facility"],
   ];
 
-  // Gallery items guaranteed to fill layout
-  const galleryList =
-    project.assets.gallery && project.assets.gallery.length > 0
-      ? project.assets.gallery
-      : [project.assets.cover];
-
   return (
     <>
-      {/* Sleek Dark Architectural Page Hero */}
+      {/* Dark Architectural Page Hero */}
       <PageHero
         eyebrow={project.sector}
         title={project.client}
@@ -87,21 +80,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         ]}
       />
 
-      {/* Cover Comparison Slider */}
-      <section className="bg-white pt-10 md:pt-14">
+      {/* Key Specs Grid */}
+      <section className="bg-white pt-8">
         <Container>
-          <Reveal>
-            <BeforeAfterSlider
-              beforeSlot={galleryList[0]}
-              afterSlot={project.assets.cover}
-              beforeLabel="Raw Structural GFC Model / CAD"
-              afterLabel="Completed Executed Facility"
-              alt={project.client}
-            />
-          </Reveal>
-
-          {/* Key Specs Grid */}
-          <div className="mt-6 grid grid-cols-2 border border-line md:grid-cols-4 bg-[#fafafa]">
+          <div className="grid grid-cols-2 border border-line md:grid-cols-4 bg-[#fafafa]">
             {metas.map(([key, value]) => {
               const Icon = metaIcons[key];
               return (
@@ -126,7 +108,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* Engineering Blueprint Specs Ribbon */}
-      <div className="mt-10 border-y border-white/10 bg-[#0d0d0d] py-6 text-white">
+      <div className="mt-8 border-y border-white/10 bg-[#0d0d0d] py-6 text-white">
         <Container className="flex flex-wrap items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <ShieldCheck className="size-5 text-x-red" />
@@ -241,49 +223,33 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Project Gallery Showcase — Full Container Layout */}
+      {/* Project Gallery Showcase — Full Scale Uncropped Photo Grid & Lightbox */}
       <section className="bg-white py-14 md:py-20">
         <Container>
           <Reveal>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-line pb-4">
               <div>
                 <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
-                  Facility Visuals
+                  Full Scale Visuals
                 </p>
                 <h2 className="mt-1 font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-ink">
-                  Project Gallery Showcase
+                  Project Gallery — Uncropped Frame View
                 </h2>
               </div>
               <p className="text-[13px] text-ink-muted">
-                Architectural &amp; structural engineering views
+                100% Full-Frame Architectural &amp; Structural Engineering Views
               </p>
             </div>
           </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
-            {galleryList.map((slot, i) => (
-              <Reveal key={slot + i} delay={0.05 * i} className="h-full">
-                <div className="group relative flex h-full flex-col overflow-hidden border border-line bg-[#141414] shadow-md transition-all duration-300 hover:border-x-red/40 hover:shadow-xl">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <AssetImage
-                      alt={`${project.client} — view ${i + 1}`}
-                      slot={slot}
-                      kind="facility"
-                      aspect="landscape"
-                      fit="cover"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <span className="absolute left-3 top-3 border border-white/20 bg-black/70 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-white">
-                      View 0{i + 1}
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          {/* Interactive Uncropped Photo Gallery */}
+          <ProjectGalleryViewer
+            cover={project.assets.cover}
+            gallery={project.assets.gallery}
+            title={project.client}
+          />
 
-          <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-line pt-8">
+          <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-line pt-8">
             <Button href="/contact" variant="primary" className="px-8 py-3.5">
               Enquire About Similar Work
             </Button>
