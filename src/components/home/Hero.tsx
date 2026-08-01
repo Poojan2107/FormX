@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Grid, Layers } from "lucide-react";
 import { heroLines, hero } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -50,6 +50,7 @@ export function Hero() {
   const reduce = useReducedMotion();
   const [lineIndex, setLineIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [showBlueprintGrid, setShowBlueprintGrid] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -105,7 +106,25 @@ export function Hero() {
         {/* Multi-layered Architectural Dark Gradients & Blueprint Texture */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/75 to-[#0a0a0a]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
-        <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-30" />
+        
+        {/* Toggleable CAD Engineering Grid */}
+        <div className={`pointer-events-none absolute inset-0 pattern-grid-dark transition-opacity duration-500 ${showBlueprintGrid ? "opacity-70" : "opacity-30"}`} />
+
+        {/* Crosshair Engineering Annotations when Grid Active */}
+        {showBlueprintGrid && (
+          <div className="pointer-events-none absolute inset-0 z-0 border border-x-red/30">
+            <div className="absolute left-8 top-8 font-display text-[9px] font-bold text-x-red">
+              GRID REF: X-01 · Y-04 · TOLERANCE: ±0.5mm
+            </div>
+            <div className="absolute right-8 top-8 font-display text-[9px] font-bold text-x-red">
+              IS 1893 SEISMIC ZONE IV
+            </div>
+            <div className="absolute bottom-12 left-8 font-display text-[9px] font-bold text-white/40">
+              STAAD.PRO MODEL COORDINATION LOAD PATH ACTIVE
+            </div>
+          </div>
+        )}
+
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -123,17 +142,33 @@ export function Hero() {
         <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:items-end">
           {/* Main Copy Area */}
           <div className="max-w-3xl">
-            {/* Top Status Pill */}
+            {/* Top Status Pill with Interactive CAD Blueprint Toggle */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6 inline-flex items-center gap-2.5 border border-white/20 bg-black/60 px-3.5 py-1.5 backdrop-blur-md"
+              className="mb-6 flex flex-wrap items-center gap-3"
             >
-              <span className="flex size-2 rounded-full bg-x-red animate-pulse" />
-              <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.24em] text-white/90">
-                FORMX Consultants · Single-Window Multidisciplinary Practice
-              </span>
+              <div className="inline-flex items-center gap-2.5 border border-white/20 bg-black/60 px-3.5 py-1.5 backdrop-blur-md">
+                <span className="flex size-2 rounded-full bg-x-red animate-pulse" />
+                <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.24em] text-white/90">
+                  FORMX Consultants · Single-Window Multidisciplinary Practice
+                </span>
+              </div>
+
+              {/* CAD Grid Overlay Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setShowBlueprintGrid((prev) => !prev)}
+                className={`inline-flex items-center gap-1.5 border px-3 py-1.5 font-display text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-md transition-all ${
+                  showBlueprintGrid
+                    ? "border-x-red bg-x-red text-white shadow-[0_0_12px_rgba(222,48,36,0.5)]"
+                    : "border-white/20 bg-black/40 text-white/70 hover:border-white/40 hover:text-white"
+                }`}
+              >
+                <Grid className="size-3" />
+                <span>{showBlueprintGrid ? "CAD Grid Active" : "Toggle CAD Overlay"}</span>
+              </button>
             </motion.div>
 
             {/* Dynamic Title Switcher */}
