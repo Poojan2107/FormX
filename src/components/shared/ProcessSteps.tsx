@@ -16,25 +16,25 @@ const defaultSteps: ProcessStep[] = [
   {
     num: "02",
     title: "Schematic Engineering",
-    body: "Multi-discipline 3D BIM coordination aligning RCC/steel structural frames with HVAC ducting, piping, and electrical risers.",
+    body: "Multi-discipline 3D BIM coordination aligning RCC/steel frames with HVAC, piping, and electrical risers.",
   },
   {
     num: "03",
     title: "Tender & GFC Package",
-    body: "100% construction-ready GFC drawings, structural calculation reports, bill of quantities (BOQ), and tender technical specs.",
+    body: "Construction-ready GFC drawings, calculation reports, BOQ, and tender technical specs.",
   },
   {
     num: "04",
     title: "Site Execution Support",
-    body: "Continuous technical clarifications, shop drawing reviews, structural revisions, and on-site engineering verification.",
+    body: "Technical clarifications, shop drawing reviews, revisions, and on-site engineering verification.",
   },
 ];
 
 export function ProcessSteps({
   steps = defaultSteps,
-  eyebrow = "FormX Delivery Methodology",
-  title = "01 to 04 Process — Concept to Construction",
-  description = "A disciplined 4-stage engineering workflow ensuring zero clash rework and 100% constructability on site.",
+  eyebrow = "Delivery methodology",
+  title = "Concept to construction",
+  description = "A disciplined workflow for constructability and clash-free GFC packages.",
 }: {
   steps?: ProcessStep[];
   eyebrow?: string;
@@ -42,45 +42,34 @@ export function ProcessSteps({
   description?: string;
 }) {
   return (
-    <section className="border-t border-line bg-white py-16 md:py-24">
+    <section className="border-t border-line bg-white py-14 md:py-18">
       <Container>
-        <Reveal>
-          <div className="mb-12 prose-measure">
-            <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
-              {eyebrow}
-            </span>
-            <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              {title}
-            </h2>
-            <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">
-              {description}
-            </p>
-          </div>
+        <Reveal className="mb-8 max-w-2xl md:mb-10">
+          <span className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+            {eyebrow}
+          </span>
+          <h2 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-ink md:text-3xl">
+            {title}
+          </h2>
+          <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">{description}</p>
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid border border-line sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <Reveal key={s.num} delay={0.05 * i} className="h-full">
-              <div className="formx-cut-x formx-edge formx-edge-x group flex h-full flex-col justify-between border border-line bg-[#fafafa] p-6 transition-all hover:border-x-red/40 hover:bg-white hover:shadow-md">
-                <div>
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="font-display text-xs font-bold text-x-red">
-                      STAGE {s.num}
-                    </span>
-                    <span className="size-2 rotate-45 bg-x-red/40" />
-                  </div>
-                  <h3 className="font-display text-lg font-bold uppercase text-ink">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
-                    {s.body}
-                  </p>
-                </div>
-
-                <div className="mt-6 border-t border-line/60 pt-3 text-[10px] font-bold uppercase tracking-wider text-x-red">
-                  Stage {s.num} Deliverable →
-                </div>
-              </div>
+            <Reveal
+              key={s.num}
+              delay={0.04 * i}
+              className={`border-line p-5 md:p-6 ${
+                i > 0 ? "border-t sm:border-t-0 sm:border-l" : ""
+              } ${i >= 2 ? "lg:border-t-0" : ""} ${i === 2 ? "sm:border-t lg:border-t-0" : ""}`}
+            >
+              <p className="font-display text-[11px] font-bold text-x-red">
+                {s.num}
+              </p>
+              <h3 className="mt-2 font-display text-base font-bold uppercase tracking-tight text-ink">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-ink-muted">{s.body}</p>
             </Reveal>
           ))}
         </div>

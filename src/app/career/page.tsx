@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { careerRoles, site } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
   title: "Careers at FORMX | Architecture, Structure, Civil & MEP Roles",
@@ -23,34 +21,10 @@ export default function CareerPage() {
         title="Build with FORMX"
         description="Professionals who value coordination, buildability, and construction-ready craft — packages that land cleanly at site."
         crumbs={[{ label: "Career" }]}
+        image={{ slot: "about/home-about.jpg", kind: "studio" }}
       />
 
-      <ProofStrip />
-
-      <section className="relative overflow-hidden bg-[#0c0c0c]">
-        <div className="absolute inset-0">
-          <AssetImage
-            alt="FORMX practice"
-            slot="about/home-about.jpg"
-            kind="studio"
-            fit="cover"
-            tone="dark"
-            className="h-full w-full object-cover opacity-45"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40" />
-        </div>
-        <Container className="relative z-10 py-14 md:py-16">
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
-            Join the practice
-          </p>
-          <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl">
-            Build facilities that land cleanly at site
-          </h2>
-          <p className="mt-3 max-w-[55ch] text-[14px] leading-relaxed text-white/60">
-            Coordinated Architecture, Structure, Civil &amp; MEP — ownership first, site-aware delivery.
-          </p>
-        </Container>
-      </section>
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container>
@@ -138,11 +112,6 @@ export default function CareerPage() {
           </div>
         </Container>
       </section>
-
-      <LeadStrip
-        title="Questions about joining FORMX?"
-        subtitle={`Email ${site.careerEmail} with your CV and preferred discipline.`}
-      />
 
       <CtaBand
         title="Prefer to speak with the practice first?"

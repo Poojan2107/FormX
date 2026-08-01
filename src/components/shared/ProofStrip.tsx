@@ -1,50 +1,38 @@
 import { Container } from "@/components/ui/Container";
-import { ShieldCheck, Award, Layers, CheckCircle2 } from "lucide-react";
 
-export function ProofStrip() {
+const items = [
+  { label: "IS & NBC Compliant", note: "Code-ready packages" },
+  { label: "25+ Projects", note: "Turnkey & greenfield" },
+  { label: "10 Disciplines", note: "Single-window delivery" },
+  { label: "GFC Ready", note: "Clash-free coordination" },
+];
+
+export function ProofStrip({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="border-y border-line bg-[#fafafa] py-6">
+    <div
+      className={
+        compact
+          ? "border-b border-line bg-white py-3.5"
+          : "border-b border-line bg-white py-4 md:py-5"
+      }
+    >
       <Container>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="size-5 text-x-red shrink-0" />
-            <div>
-              <p className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
-                IS &amp; NBC Code Compliant
-              </p>
-              <p className="text-[10px] text-ink-muted">IS 456, 800 &amp; 1893 Certified</p>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          {items.map((item, i) => (
+            <div
+              key={item.label}
+              className={`flex min-w-0 items-baseline gap-2 ${
+                i > 0 ? "md:border-l md:border-line md:pl-6" : ""
+              }`}
+            >
+              <span className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
+                {item.label}
+              </span>
+              <span className="hidden text-[11px] text-ink/40 sm:inline">
+                {item.note}
+              </span>
             </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Award className="size-5 text-x-red shrink-0" />
-            <div>
-              <p className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
-                25+ Delivered Projects
-              </p>
-              <p className="text-[10px] text-ink-muted">Turnkey &amp; Greenfield</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Layers className="size-5 text-x-red shrink-0" />
-            <div>
-              <p className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
-                10 Integrated Disciplines
-              </p>
-              <p className="text-[10px] text-ink-muted">Single-Window Delivery</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="size-5 text-x-red shrink-0" />
-            <div>
-              <p className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
-                100% GFC Construction Ready
-              </p>
-              <p className="text-[10px] text-ink-muted">Zero-Clash Coordination</p>
-            </div>
-          </div>
+          ))}
         </div>
       </Container>
     </div>

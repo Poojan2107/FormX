@@ -80,9 +80,10 @@ export default async function ProjectDetailPage({ params }: Props) {
           { label: "Projects", href: "/projects" },
           { label: project.client },
         ]}
+        image={{ slot: project.assets.cover, kind: "facility" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       {/* Design intent → built facility comparison */}
       <section className="bg-[#0c0c0c] py-10 md:py-14">

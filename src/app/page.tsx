@@ -1,6 +1,5 @@
 import { Hero } from "@/components/home/Hero";
 import { ClientLogoWall } from "@/components/shared/ClientLogoWall";
-import { ProofStrip } from "@/components/shared/ProofStrip";
 import { About } from "@/components/home/About";
 import { Services } from "@/components/home/Services";
 import { Projects } from "@/components/home/Projects";
@@ -15,7 +14,6 @@ export default function Home() {
     <>
       <Hero />
       <ClientLogoWall />
-      <ProofStrip />
       <About />
       <Services />
       <Projects />

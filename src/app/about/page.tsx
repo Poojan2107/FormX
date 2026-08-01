@@ -66,7 +66,7 @@ export default function AboutPage() {
         image={{ slot: "about/home-about.jpg", kind: "studio" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container className="grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Download, FileText, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/data/site";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
 export function BrochureCta({
@@ -71,7 +72,7 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="formx-cut-tr formx-edge formx-edge-lg bg-[#141414] py-14 text-white md:py-18">
+    <section className="bg-[#141414] py-12 text-white md:py-14">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center md:px-8">
         <div className="max-w-xl prose-measure">
           <p className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
@@ -139,7 +140,7 @@ export function RelatedLinks({
   items,
 }: {
   title: string;
-  items: { href: string; title: string; meta?: string }[];
+  items: { href: string; title: string; meta?: string; image?: string }[];
 }) {
   if (!items.length) return null;
 
@@ -151,41 +152,73 @@ export function RelatedLinks({
         ? "sm:grid-cols-2"
         : "sm:grid-cols-2 lg:grid-cols-3";
 
+  const hasImages = items.some((i) => i.image);
+
   return (
-    <section className="border-t border-line bg-white py-14 md:py-18">
+    <section className="border-t border-line bg-white py-12 md:py-14">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
-        <div className="flex items-center justify-between border-b border-line pb-4 mb-6">
-          <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
+        <div className="mb-5 flex items-end justify-between gap-4 border-b border-line pb-3">
+          <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink md:text-xl">
             {title}
           </h3>
-          <span className="text-[11px] font-bold text-x-red uppercase tracking-wider">
-            {count} Items
+          <span className="font-display text-[10px] font-bold uppercase tracking-wider text-x-red">
+            {count} items
           </span>
         </div>
-        <div className={cn("grid gap-4", gridCols)}>
-          {items.map((item) => (
-            <Link
-              key={item.href + item.title}
-              href={item.href}
-              transitionTypes={["nav-forward"]}
-              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex flex-col justify-between border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/40 hover:shadow-md"
-            >
-              <div>
-                {item.meta ? (
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-x-red mb-1">
-                    {item.meta}
-                  </p>
-                ) : null}
-                <h4 className="font-display text-base font-bold text-ink transition-colors group-hover:text-x-red leading-snug">
-                  {item.title}
-                </h4>
-              </div>
-              <div className="mt-4 pt-3 border-t border-line/50 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-ink/40 group-hover:text-x-red transition-colors">
-                <span>View Details</span>
-                <span className="font-display transition-transform group-hover:translate-x-1">→</span>
-              </div>
-            </Link>
-          ))}
+        <div className={cn("grid gap-2.5", gridCols)}>
+          {items.map((item) =>
+            hasImages && item.image ? (
+              <Link
+                key={item.href + item.title}
+                href={item.href}
+                transitionTypes={["nav-forward"]}
+                className="group relative block aspect-[16/10] overflow-hidden bg-[#111]"
+              >
+                <AssetImage
+                  alt={item.title}
+                  slot={item.image}
+                  kind="facility"
+                  aspect="auto"
+                  fit="cover"
+                  tone="dark"
+                  zoomOnHover
+                  className="absolute inset-0 h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  {item.meta ? (
+                    <p className="font-display text-[9px] font-bold uppercase tracking-[0.14em] text-x-red">
+                      {item.meta}
+                    </p>
+                  ) : null}
+                  <h4 className="mt-1 font-display text-sm font-bold uppercase leading-snug text-white transition-colors group-hover:text-x-red">
+                    {item.title}
+                  </h4>
+                </div>
+              </Link>
+            ) : (
+              <Link
+                key={item.href + item.title}
+                href={item.href}
+                transitionTypes={["nav-forward"]}
+                className="group flex flex-col justify-between border border-line p-4 transition-colors hover:border-x-red/40"
+              >
+                <div>
+                  {item.meta ? (
+                    <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
+                      {item.meta}
+                    </p>
+                  ) : null}
+                  <h4 className="font-display text-base font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
+                    {item.title}
+                  </h4>
+                </div>
+                <p className="mt-4 font-display text-[11px] font-bold uppercase tracking-wider text-ink/35 transition-colors group-hover:text-x-red">
+                  View →
+                </p>
+              </Link>
+            ),
+          )}
         </div>
       </div>
     </section>

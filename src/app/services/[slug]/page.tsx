@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  ArrowUpRight,
-  Compass,
-  Cpu,
-  Layers,
-  Ruler,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { getService, getSector, services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -17,7 +9,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { BrochureCta, CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { PageHero } from "@/components/ui/PageHero";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
 import { ProofStrip } from "@/components/shared/ProofStrip";
 import { ProcessSteps } from "@/components/shared/ProcessSteps";
@@ -51,8 +42,6 @@ const categoryLabels: Record<string, string> = {
   "project-management": "Delivery",
 };
 
-const featureIcons = [ShieldCheck, Cpu, Layers, Compass, Ruler, Zap];
-
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
   const service = getService(slug);
@@ -61,7 +50,12 @@ export default async function ServiceDetailPage({ params }: Props) {
   const others = services
     .filter((s) => s.slug !== slug)
     .slice(0, 3)
-    .map((s) => ({ href: `/services/${s.slug}`, title: s.title, meta: "Service" }));
+    .map((s) => ({
+      href: `/services/${s.slug}`,
+      title: s.title,
+      meta: "Service",
+      image: s.asset,
+    }));
 
   const sectorLinks = service.relatedSectors
     .map((s) => getSector(s))
@@ -70,6 +64,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       href: `/sectors/${s!.slug}`,
       title: s!.title,
       meta: "Sector",
+      image: s!.asset,
     }));
 
   const cat = categoryLabels[slug] ?? "Engineering Practice";
@@ -90,137 +85,102 @@ export default async function ServiceDetailPage({ params }: Props) {
           { label: "Services", href: "/services" },
           { label: service.title },
         ]}
+        image={{ slot: service.asset, kind: "service" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
-      {/* Main Visual Grid Content */}
-      <section className="bg-white py-14 md:py-20">
-        <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          {/* LEFT — Visual Scope & Deliverables Cards */}
-          <Reveal>
-            <div>
-              <SectionHeader eyebrow="The Scope" title="Core Engineering Scope" />
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {service.highlights.map((item, i) => {
-                  const Icon = featureIcons[i % featureIcons.length];
-                  return (
-                    <div
-                      key={item}
-                      className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col justify-between overflow-hidden border border-line bg-[#fafafa] p-5 transition-all duration-300 hover:border-x-red/50 hover:bg-white hover:shadow-[0_12px_28px_rgba(222,48,36,0.1)]"
-                    >
-                      <div className="flex items-center justify-between mb-3">
-                        <Icon className="size-5 text-x-red" />
-                        <span className="font-display text-[10px] font-bold text-ink/30">
-                          0{i + 1}
-                        </span>
-                      </div>
-                      <p className="font-display text-sm font-bold leading-snug text-ink group-hover:text-x-red transition-colors">
-                        {item}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
+      {/* Editorial intro — media owns left frame */}
+      <section className="bg-white section-y">
+        <Container className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="relative lg:col-span-7">
+            <div className="relative aspect-[16/11] overflow-hidden bg-[#111] lg:aspect-auto lg:min-h-[520px]">
+              <AssetImage
+                alt={service.title}
+                slot={service.asset}
+                kind="service"
+                tone="dark"
+                aspect="auto"
+                fit="cover"
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="absolute inset-0 h-full w-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <p className="absolute bottom-5 left-5 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+                {service.title}
+              </p>
             </div>
-
-            {/* Typical Deliverables */}
-            <div className="mt-14">
-              <SectionHeader eyebrow="The Output" title="GFC Drawing Deliverables" />
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                {service.deliverables.map((d, i) => (
-                  <div
-                    key={d}
-                    className="formx-cut-x formx-edge formx-edge-x x-hover-rail flex items-start gap-3 border border-line bg-white p-4 transition-colors hover:border-x-red/40"
-                  >
-                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center bg-x-red/10 font-display text-[10px] font-bold text-x-red">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-[13px] font-medium leading-relaxed text-ink">
-                      {d}
-                    </span>
+            {service.gallery && service.gallery.length > 1 ? (
+              <div className="mt-2.5 grid grid-cols-3 gap-2.5">
+                {service.gallery.slice(1, 4).map((item, idx) => (
+                  <div key={item} className="relative aspect-[4/3] overflow-hidden bg-[#111]">
+                    <AssetImage
+                      alt={`${service.title} detail ${idx + 2}`}
+                      slot={item}
+                      kind="service"
+                      tone="dark"
+                      aspect="auto"
+                      fit="cover"
+                      className="absolute inset-0 h-full w-full"
+                    />
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Workflow Timeline */}
-            <div className="mt-14">
-              <SectionHeader eyebrow="The Process" title="Execution Workflow" />
-
-              <div className="space-y-4">
-                {service.process.map((step, i) => (
-                  <div
-                    key={step}
-                    className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex items-start gap-4 border border-line bg-[#fcfcfc] p-5 transition-all hover:border-x-red/40 hover:bg-white"
-                  >
-                    <span className="flex size-10 shrink-0 items-center justify-center border border-x-red bg-x-red font-display text-sm font-bold text-white shadow-md">
-                      0{i + 1}
-                    </span>
-                    <div className="pt-0.5">
-                      <p className="font-display text-xs font-bold uppercase tracking-wider text-x-red">
-                        Phase 0{i + 1}
-                      </p>
-                      <p className="mt-1 text-[14px] leading-relaxed text-ink">
-                        {step}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <Button href="/contact" variant="primary" className="mt-10 gap-2 px-8 py-4">
-              Engage FORMX For This Service
-              <ArrowUpRight className="size-4" />
-            </Button>
+            ) : null}
           </Reveal>
 
-          {/* RIGHT — Visual Gallery & Capability Card */}
-          <Reveal delay={0.08}>
-            <div className="sticky top-28 space-y-6">
-              <div className="overflow-hidden border border-line bg-[#121212] shadow-xl">
-                <AssetImage
-                  alt={service.title}
-                  slot={service.asset}
-                  kind="service"
-                  tone="dark"
-                  label={service.title}
-                  caption={service.title}
-                  aspect="portrait"
-                  className="w-full"
-                />
-              </div>
+          <Reveal delay={0.06} className="lg:col-span-5">
+            <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+              Scope package
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-ink md:text-3xl">
+              What this discipline delivers
+            </h2>
+            <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">{service.short}</p>
 
-              {service.gallery && service.gallery.length > 1 ? (
-                <div className="grid grid-cols-2 gap-3">
-                  {service.gallery.slice(1, 5).map((item, idx) => (
-                    <div key={item} className="overflow-hidden border border-line bg-[#121212]">
-                      <AssetImage
-                        alt={`${service.title} detail ${idx + 2}`}
-                        slot={item}
-                        kind="service"
-                        tone="light"
-                        aspect="landscape"
-                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : null}
+            <ul className="mt-7 space-y-0 border-y border-line">
+              {service.highlights.map((item, i) => (
+                <li
+                  key={item}
+                  className="flex gap-3 border-b border-line py-3.5 last:border-b-0"
+                >
+                  <span className="font-display text-[11px] font-bold text-x-red">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[14px] font-semibold leading-snug text-ink">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
 
-              <BrochureCta />
+            <div className="mt-8">
+              <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-ink/40">
+                GFC deliverables
+              </p>
+              <ul className="mt-3 space-y-2">
+                {service.deliverables.map((d) => (
+                  <li key={d} className="border-l-2 border-x-red pl-3 text-[13px] text-ink-muted">
+                    {d}
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            <Button href="/contact" variant="primary" className="mt-8 gap-2">
+              Engage FORMX for this service
+              <ArrowUpRight className="size-4" />
+            </Button>
+
+            <BrochureCta className="mt-6" />
           </Reveal>
         </Container>
       </section>
 
       <ProcessSteps
-        eyebrow={`${service.title} Delivery`}
-        title="Discipline workflow — brief to GFC"
-        description="How FORMX sequences this service within the coordinated multidisciplinary package."
+        eyebrow={`${service.title} delivery`}
+        title="Brief to GFC workflow"
+        description="How FORMX sequences this discipline inside the coordinated multidisciplinary package."
         steps={service.process.map((step, i) => ({
           num: String(i + 1).padStart(2, "0"),
           title: `Phase ${String(i + 1).padStart(2, "0")}`,

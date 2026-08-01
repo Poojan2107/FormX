@@ -11,36 +11,36 @@ export function LeadStrip({
   subtitle?: string;
 }) {
   return (
-    <section className="border-y border-line bg-gradient-to-r from-[#141414] via-[#1a1a1a] to-[#141414] py-10 text-white">
-      <Container className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-        <div className="max-w-2xl prose-measure">
-          <span className="font-display text-[10px] font-bold uppercase tracking-[0.24em] text-x-red">
-            Direct Lead Engagement
-          </span>
-          <h3 className="mt-1 font-display text-xl font-bold uppercase tracking-tight text-white md:text-2xl">
+    <section className="border-y border-line bg-[#111] py-8 text-white md:py-9">
+      <Container className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center md:gap-8">
+        <div className="max-w-2xl">
+          <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+            Direct lead engagement
+          </p>
+          <h3 className="mt-1 font-display text-lg font-bold uppercase tracking-tight text-white md:text-xl">
             {title}
           </h3>
-          <p className="mt-1.5 text-[13px] leading-relaxed text-white/60">
+          <p className="mt-1.5 max-w-[55ch] text-[13px] leading-relaxed text-white/50">
             {subtitle}
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 shrink-0 w-full sm:w-auto">
+        <div className="flex w-full flex-wrap items-center gap-2.5 sm:w-auto">
           <Link
             href="/contact"
             transitionTypes={["nav-forward"]}
-            className="formx-cut-sm inline-flex items-center justify-center gap-2 bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_4px_16px_rgba(222,48,36,0.35)] transition-all hover:bg-x-red-hover w-full sm:w-auto"
+            className="inline-flex flex-1 items-center justify-center gap-2 bg-x-red px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover sm:flex-none"
           >
-            Request Facility Briefing <ArrowRight className="size-4" />
+            Request briefing <ArrowRight className="size-3.5" />
           </Link>
           <a
             href={`https://wa.me/${site.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border border-white/20 px-5 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white/80 transition-colors hover:border-emerald-400 hover:text-emerald-400 w-full sm:w-auto"
+            className="inline-flex flex-1 items-center justify-center gap-2 border border-white/20 px-4 py-3 font-display text-[11px] font-bold uppercase tracking-[0.12em] text-white/70 transition-colors hover:border-emerald-400/50 hover:text-emerald-400 sm:flex-none"
           >
             <MessageSquare className="size-3.5 text-emerald-400" />
-            <span>WhatsApp</span>
+            WhatsApp
           </a>
         </div>
       </Container>

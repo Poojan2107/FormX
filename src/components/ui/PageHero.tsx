@@ -25,52 +25,52 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden border-b border-white/10 bg-[#0a0a0a] text-white",
+        "relative isolate overflow-hidden border-b border-white/10 bg-[#0c0c0c] text-white",
         className,
       )}
     >
-      {crumbs ? <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, ...crumbs]} /> : null}
-      
-      {/* Background visual image layer */}
+      {crumbs ? (
+        <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, ...crumbs]} />
+      ) : null}
+
       {image ? (
         <>
           <div className="pointer-events-none absolute inset-0">
             <AssetImage
-              alt="FormX — multidisciplinary design & engineering"
+              alt=""
               slot={image.slot}
               kind={image.kind ?? "facility"}
               tone="dark"
-              aspect="landscape"
+              aspect="auto"
               fit="cover"
-              className="absolute inset-0 h-full w-full object-cover opacity-30"
+              objectPosition="center"
+              sizes="100vw"
+              priority
+              className="absolute inset-0 h-full w-full"
             />
           </div>
+          {/* Cinematic scrim — photography readable on the right */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/75 to-[#0a0a0a]/45"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/88 via-black/55 to-black/25"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"
             aria-hidden
           />
         </>
-      ) : null}
+      ) : (
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(800px 420px at 70% 20%, rgba(222,48,36,0.12), transparent 70%)",
+          }}
+          aria-hidden
+        />
+      )}
 
-      {/* Grid pattern & radial red glow */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-35" aria-hidden />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(900px 500px at 50% 0%, rgba(222,48,36,0.14), transparent 75%)",
-        }}
-        aria-hidden
-      />
-
-      {/* Watermark X */}
-      <div
-        className="pointer-events-none absolute right-[-2%] top-[-15%] select-none font-display font-black leading-none text-white/[0.04]"
-        style={{ fontSize: "clamp(12rem, 24vw, 24rem)" }}
-        aria-hidden
-      >
-        ×
-      </div>
+      <div className="absolute left-0 top-0 z-10 h-24 w-1 bg-gradient-to-b from-x-red to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-14 pt-16 sm:px-5 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24">
         {crumbs ? (
@@ -105,18 +105,18 @@ export function PageHero({
         ) : null}
 
         {eyebrow ? (
-          <p className="mb-3.5 flex items-center gap-3 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+          <p className="mb-3.5 flex items-center gap-3 font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
             <span className="inline-block h-px w-8 bg-x-red" aria-hidden />
             {eyebrow}
           </p>
         ) : null}
 
-        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl leading-[1.06]">
+        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.4rem]">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-5 prose-measure text-[15px] leading-[1.8] text-white/70 md:text-base">
+          <p className="mt-5 max-w-[62ch] text-[15px] leading-[1.75] text-white/65 md:text-base">
             {description}
           </p>
         ) : null}
