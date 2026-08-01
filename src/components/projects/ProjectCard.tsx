@@ -6,7 +6,6 @@ import { cn } from "@/lib/cn";
 
 type ProjectCardProps = {
   project: Project;
-  index?: number;
   priority?: boolean;
   aspect?: "4/3" | "fill";
   className?: string;
@@ -14,7 +13,6 @@ type ProjectCardProps = {
 
 export function ProjectCard({
   project,
-  index = 0,
   priority = false,
   aspect = "4/3",
   className,

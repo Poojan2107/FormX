@@ -247,7 +247,6 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                 >
                   <ProjectCard
                     project={project}
-                    index={i + 1}
                     priority={i < 3}
                     aspect="4/3"
                     className="h-full min-h-[240px] sm:min-h-[280px]"

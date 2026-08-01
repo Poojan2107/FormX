@@ -45,7 +45,6 @@ export function Projects() {
           <Reveal from="left" className="h-full">
             <ProjectCard
               project={featured}
-              index={0}
               priority
               aspect="fill"
               className="h-full min-h-[440px] lg:min-h-[620px]"
@@ -57,7 +56,6 @@ export function Projects() {
               <Reveal key={project.slug} delay={0.06 * (i + 1)} from="right" className="h-full">
                 <ProjectCard
                   project={project}
-                  index={i + 1}
                   priority={i === 0}
                   aspect="fill"
                   className="h-full min-h-[210px] lg:min-h-[304px]"
@@ -72,7 +70,6 @@ export function Projects() {
             <Reveal key={project.slug} delay={0.05 * i} className="h-full">
               <ProjectCard
                 project={project}
-                index={i + 3}
                 aspect="fill"
                 className="h-full min-h-[260px]"
               />
