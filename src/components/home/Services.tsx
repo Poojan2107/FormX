@@ -37,8 +37,8 @@ export function Services() {
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-8 items-stretch">
 
           {/* LEFT: Side-by-Side Editorial Stage (Full Uncropped Image + Scope Details) */}
-          <Reveal className="w-full h-full">
-            <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl">
+          <Reveal className="w-full h-full min-w-0">
+            <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl min-w-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentService.slug}
@@ -46,10 +46,10 @@ export function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex h-full flex-col md:flex-row"
+                  className="flex h-full flex-col md:flex-row min-w-0 w-full"
                 >
                   {/* Left Column: Full-Bleed Image Panel */}
-                  <div className="relative w-full md:w-[48%] min-h-[320px] md:min-h-[460px] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
+                  <div className="relative w-full md:w-[46%] min-h-[320px] md:min-h-[460px] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
@@ -67,37 +67,37 @@ export function Services() {
                     </div>
                   </div>
 
-                  {/* Right Column: Scope Details Body */}
-                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white">
-                    <div>
+                  {/* Right Column: Scope Details Body — min-w-0 and break-words ensure text never clips */}
+                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white min-w-0 overflow-hidden">
+                    <div className="min-w-0">
                       <span className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
                         FormX Scope Package
                       </span>
-                      <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
+                      <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl break-words">
                         {currentService.title}
                       </h3>
-                      <p className="mt-3 text-[13px] leading-[1.75] text-ink-muted md:text-[14px]">
+                      <p className="mt-3 text-[13px] leading-[1.75] text-ink-muted md:text-[14px] break-words">
                         {currentService.summary}
                       </p>
 
-                      <div className="mt-5 space-y-2 border-t border-line/60 pt-4">
+                      <div className="mt-5 space-y-2 border-t border-line/60 pt-4 min-w-0">
                         {currentService.highlights.slice(0, 4).map((h) => (
-                          <div key={h} className="flex items-center gap-2.5 text-[12px] font-semibold text-ink">
-                            <Check className="size-3.5 text-x-red shrink-0" />
-                            <span>{h}</span>
+                          <div key={h} className="flex items-start gap-2.5 text-[12px] font-semibold text-ink min-w-0">
+                            <Check className="size-3.5 text-x-red shrink-0 mt-0.5" />
+                            <span className="break-words leading-snug">{h}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="mt-8 pt-4 border-t border-line">
+                    <div className="mt-8 pt-4 border-t border-line min-w-0">
                       <Link
                         href={`/services/${currentService.slug}`}
                         transitionTypes={["nav-forward"]}
                         className="inline-flex w-full items-center justify-center gap-2.5 border border-x-red bg-x-red px-5 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
                       >
                         Explore Full Service Scope
-                        <ArrowUpRight className="size-4" />
+                        <ArrowUpRight className="size-4 shrink-0" />
                       </Link>
                     </div>
                   </div>

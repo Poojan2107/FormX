@@ -100,8 +100,8 @@ export function PlaceholderMedia({
         aria-hidden
       />
 
-      {/* Schematic blocks — read as facility content */}
-      <div className="absolute inset-6 grid grid-cols-3 gap-2 opacity-30 md:inset-8">
+      {/* Schematic blocks */}
+      <div className="absolute inset-6 grid grid-cols-3 gap-2 opacity-25 md:inset-8">
         <div
           className={cn(
             "col-span-2 row-span-2 rounded-sm border",
@@ -124,7 +124,7 @@ export function PlaceholderMedia({
         />
         <div
           className={cn(
-            "col-span-3 h-8 rounded-sm border",
+            "col-span-3 h-6 rounded-sm border",
             isDark ? "border-white/10" : "border-black/8",
           )}
         />
@@ -133,41 +133,42 @@ export function PlaceholderMedia({
       {/* Left red accent line */}
       <div className="absolute left-0 top-0 h-full w-0.5 origin-top scale-y-0 bg-x-red transition-transform duration-300 group-hover:scale-y-100" />
 
-      {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6">
-        <div className="flex items-start justify-between">
-          <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+      {/* Content overlay — clean layout preventing text collision */}
+      <div className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5">
+        <div className="flex items-start justify-between z-10">
+          <p className="font-display text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-x-red truncate max-w-[85%]">
             {label ?? copy.overlay}
           </p>
-          <span className="font-display text-base font-light text-x-red/40 transition-colors duration-200 group-hover:text-x-red">
+          <span className="font-display text-sm font-light text-x-red/40 transition-colors duration-200 group-hover:text-x-red shrink-0">
             ×
           </span>
         </div>
 
-        <div>
+        <div className="z-10">
           {displayCaption ? (
             <p
               className={cn(
-                "mb-3 max-w-[16rem] font-display text-base font-bold leading-snug tracking-tight md:text-lg",
+                "font-display text-xs sm:text-sm font-bold leading-snug tracking-tight truncate",
                 isDark ? "text-white/80" : "text-ink",
               )}
             >
               {displayCaption}
             </p>
-          ) : null}
-          <ul className="space-y-1">
-            {copy.lines.map((line) => (
-              <li
-                key={line}
-                className={cn(
-                  "text-[10px] uppercase tracking-[0.12em]",
-                  isDark ? "text-white/35" : "text-ink/40",
-                )}
-              >
-                {line}
-              </li>
-            ))}
-          </ul>
+          ) : (
+            <ul className="space-y-0.5">
+              {copy.lines.map((line) => (
+                <li
+                  key={line}
+                  className={cn(
+                    "text-[9px] uppercase tracking-[0.12em] truncate",
+                    isDark ? "text-white/35" : "text-ink/40",
+                  )}
+                >
+                  {line}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

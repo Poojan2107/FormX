@@ -19,6 +19,8 @@ export function ProjectCard({
   aspect = "4/3",
   className,
 }: ProjectCardProps) {
+  const formattedYear = project.year.replace("-", "–");
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -42,34 +44,43 @@ export function ProjectCard({
       />
 
       {/* Permanent subtle gradient at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
 
-      {/* Sector tag */}
-      <span className="absolute left-4 top-4 z-10 border border-x-red/50 bg-x-red px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white">
+      {/* Sector tag badge — formatted with max-width and leading-tight to avoid ugly overflow */}
+      <span className="absolute left-3.5 top-3.5 z-10 max-w-[85%] border border-x-red/50 bg-x-red px-2.5 py-1 font-display text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.16em] text-white leading-tight shadow-md truncate">
         {project.sector}
       </span>
 
       {/* Index number watermark */}
-      <span className="absolute right-5 top-5 z-10 font-display text-[48px] font-black leading-none tracking-tighter text-white/5 select-none">
+      <span className="absolute right-4 top-4 z-10 font-display text-[40px] sm:text-[48px] font-black leading-none tracking-tighter text-white/5 select-none">
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      {/* Bottom info — always visible, stronger on hover */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">
-              <MapPin className="size-3" /> {project.location} · {project.year}
-            </p>
-            <h3 className="mt-1 font-display text-[16px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red md:text-lg">
+      {/* Bottom info — clean flex spacing with truncate preventing text overlap */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5">
+        <div className="flex items-end justify-between gap-3 min-w-0">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-x-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70 mb-1 leading-snug">
+              <span className="inline-flex items-center gap-1 shrink-0">
+                <MapPin className="size-3 text-x-red shrink-0" />
+                <span>{project.location}</span>
+              </span>
+              <span className="text-white/40">·</span>
+              <span className="whitespace-nowrap font-medium text-white/80">{formattedYear}</span>
+            </div>
+
+            <h3 className="font-display text-[15px] sm:text-[17px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red truncate">
               {project.client}
             </h3>
-            <p className="mt-0.5 text-[12px] text-white/50">{project.title}</p>
+            <p className="mt-0.5 text-[11px] sm:text-[12px] text-white/60 truncate leading-normal">
+              {project.title}
+            </p>
           </div>
-          <span className="shrink-0 flex size-10 items-center justify-center border border-white/20 bg-white/5 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
+
+          <span className="shrink-0 flex size-8 sm:size-9 items-center justify-center border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
             <ArrowUpRight className="size-4 text-white" />
           </span>
         </div>

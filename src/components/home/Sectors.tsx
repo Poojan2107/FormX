@@ -14,7 +14,7 @@ export function Sectors() {
   const scrollBy = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
     scrollRef.current.scrollBy({
-      left: dir === "right" ? 320 : -320,
+      left: dir === "right" ? 340 : -340,
       behavior: "smooth",
     });
   };
@@ -74,10 +74,10 @@ export function Sectors() {
           </Reveal>
         </Container>
 
-        {/* Horizontal scroll strip — full bleed */}
+        {/* Horizontal scroll strip — full bleed with clean 280px card widths */}
         <div
           ref={scrollRef}
-          className="flex gap-3 overflow-x-auto pb-4 pl-4 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] scrollbar-hide"
+          className="flex gap-4 overflow-x-auto pb-4 pl-4 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] scrollbar-hide"
           style={{ scrollSnapType: "x mandatory" }}
         >
           {sectors.map((sector, i) => (
@@ -85,9 +85,9 @@ export function Sectors() {
               key={sector.slug}
               href={`/sectors/${sector.slug}`}
               transitionTypes={["nav-forward"]}
-              className="x-desat group relative shrink-0 overflow-hidden"
+              className="x-desat group relative shrink-0 overflow-hidden border border-white/10 bg-[#161616]"
               style={{
-                width: "260px",
+                width: "280px",
                 height: "380px",
                 scrollSnapAlign: "start",
               }}
@@ -105,23 +105,23 @@ export function Sectors() {
               </div>
 
               {/* Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20" />
 
-              {/* Index */}
-              <div className="absolute left-4 top-4">
-                <span className="font-display text-[10px] font-bold text-white/30">
-                  {String(i + 1).padStart(2, "0")}
+              {/* Index badge */}
+              <div className="absolute left-4 top-4 z-10">
+                <span className="border border-white/10 bg-black/60 px-2 py-0.5 font-display text-[10px] font-bold text-white/60 backdrop-blur-sm">
+                  0{String(i + 1).padStart(2, "0")}
                 </span>
               </div>
 
-              {/* Bottom info */}
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h3 className="font-display text-[15px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
+              {/* Bottom info — clean positioning without text clipping */}
+              <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
+                <h3 className="font-display text-[15px] font-bold uppercase leading-tight tracking-tight text-white transition-colors group-hover:text-x-red">
                   {sector.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  Explore <ArrowUpRight className="size-3" />
+                <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
+                  Explore Sector <ArrowUpRight className="size-3 shrink-0" />
                 </div>
               </div>
 

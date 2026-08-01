@@ -175,7 +175,7 @@ export const sectors: Sector[] = [
       "electrical-engineering",
       "fire-protection-engineering",
     ],
-    asset: "sectors/cable.jpg",
+    asset: "sectors/electrical-cable.jpg",
   },
   {
     slug: "industrial-park",
@@ -247,7 +247,7 @@ export const sectors: Sector[] = [
       "mechanical-utility-engineering",
       "fire-protection-engineering",
     ],
-    asset: "sectors/food.jpg",
+    asset: "sectors/food-processing.jpg",
   },
   {
     slug: "sustainable-packaging",
@@ -271,7 +271,7 @@ export const sectors: Sector[] = [
       "electrical-engineering",
       "sustainable-design",
     ],
-    asset: "sectors/packaging.jpg",
+    asset: "sectors/industrial-park.jpg",
   },
   {
     slug: "ev-electronics",
@@ -295,7 +295,7 @@ export const sectors: Sector[] = [
       "hvac-engineering",
       "fire-protection-engineering",
     ],
-    asset: "sectors/ev.jpg",
+    asset: "sectors/semiconductor.jpg",
   },
 ];
 
