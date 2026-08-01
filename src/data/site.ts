@@ -63,6 +63,7 @@ export const nav: NavItem[] = [
     href: "/knowledge-center",
     children: [
       { label: "Knowledge Center", href: "/knowledge-center" },
+      { label: "PEB Load Estimator", href: "/estimator" },
       { label: "News", href: "/news" },
     ],
   },
