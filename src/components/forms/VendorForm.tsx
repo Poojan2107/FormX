@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FormMessage } from "@/components/ui/FormMessage";
+import { validateVendor, type VendorErrors } from "@/lib/formValidation";
 
 const VENDOR_CATEGORIES = [
   "Architectural Work",
@@ -17,17 +18,11 @@ const VENDOR_CATEGORIES = [
   "Project Management / Site QC",
 ];
 
-function isEmail(v: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
-
-type Errors = Partial<Record<"company" | "contact" | "email" | "phone", string>>;
-
 export function VendorForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [errors, setErrors] = useState<Errors>({});
+  const [errors, setErrors] = useState<VendorErrors>({});
   const [errorMsg, setErrorMsg] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -47,13 +42,7 @@ export function VendorForm() {
     const city = String(fd.get("city") || "").trim();
     const note = String(fd.get("note") || "").trim();
 
-    const next: Errors = {};
-    if (company.length < 2) next.company = "Please enter your company name.";
-    if (contact.length < 2) next.contact = "Please enter a contact person's name.";
-    if (!isEmail(email)) next.email = "Enter a valid email address.";
-    if (phone && phone.replace(/\D/g, "").length < 8) {
-      next.phone = "Enter a valid phone number.";
-    }
+    const next = validateVendor({ company, contact, email, phone });
     setErrors(next);
     if (Object.keys(next).length) return;
 

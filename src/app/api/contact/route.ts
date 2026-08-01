@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
-
-function isEmail(v: unknown) {
-  return typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
+import { isContactValid } from "@/lib/formValidation";
+import { clientIp, rateLimited } from "@/lib/rateLimit";
 
 function str(v: unknown) {
   return typeof v === "string" ? v.trim() : "";
@@ -11,6 +9,12 @@ function str(v: unknown) {
 
 export async function POST(request: Request) {
   try {
+    if (rateLimited(clientIp(request))) {
+      return NextResponse.json(
+        { ok: false, error: "Too many requests" },
+        { status: 429 },
+      );
+    }
     const body = await request.json();
     const name = str(body?.name);
     const email = str(body?.email);
@@ -23,7 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    if (name.length < 2 || !isEmail(email) || message.length < 10) {
+    if (!isContactValid({ name, email, message })) {
       return NextResponse.json(
         { ok: false, error: "Invalid payload" },
         { status: 400 },

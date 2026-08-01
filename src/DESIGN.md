@@ -21,11 +21,17 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 
 ## 已知限制
 
-- **无测试框架**：仓库无 test script（package.json 无 jest/vitest）。变更闸门的测试警告暂以本记录说明，未引入测试基建。
+- **测试覆盖有限**：已引入 Vitest 覆盖 `formValidation`/`email` 核心逻辑（16 用例），组件交互与 API 全链路未覆盖。
 - 数据文案行较长（`data/content.ts` 等为内容数据，质量检查器仅提示 ℹ 级别，非阻断）。
 - 所有资源为占位/示例资产，正式事实待移交填充；客户 logo SVG 见 `HANDOVER.md`。
 
 ## 变更历史
+
+### [2026-08-01] — 收尾加固：共享校验、限流、CSP、Vitest
+
+**变更内容**: (1) 抽取 `src/lib/formValidation.ts` 共享校验（`isEmail`/`isValidPhone`/`validateContact`/`validateVendor` 及服务端 `isContactValid`/`isVendorValid`），Contact/VendorForm/NewsletterForm 与三个 API route 统一复用；(2) 新增 `src/lib/rateLimit.ts` 内存限流（每 IP 10 分钟 5 次，`x-forwarded-for`/`x-real-ip` 识别，超限返回 429，条目 >1000 自动清理），接入 contact/newsletter/vendor-registration；(3) `next.config.ts` 增加生产环境 CSP（default-src 'self'；script/style 'unsafe-inline'；img/font data:；object-src 'none'；form-action/frame-ancestors 'self'），已在 `next start` 下实测响应头；(4) 引入 Vitest 测试基建（`vitest.config.mts` + `src/test/setup.ts`，jsdom + jest-dom），新增 `src/lib/formValidation.test.ts`（11 用例）与 `src/lib/email.test.ts`（5 用例），`npm test` 全部通过；(5) Testimonials 引用区固定最小高度避免轮播跳动；(6) 依赖安全——Next 升到 16.2.12，`overrides` 强制 next 嵌套 postcss/sharp 至已修复版本，`npm audit` 0 漏洞。
+**变更理由**: 交付前安全/健壮性闭环——防滥用（限流）、防注入（共享转义与校验）、防安全头缺失（CSP）、防回归（测试）。
+**影响范围**: `src/lib/{formValidation,rateLimit,email}.ts`、`src/app/api/{contact,newsletter,vendor-registration}/route.ts`、`src/components/{home/Contact,home/Testimonials,forms/VendorForm,shared/NewsletterForm}.tsx`、`next.config.ts`、`vitest.config.mts`、`src/test/setup.ts`、`package.json`。
 
 ### [2026-08-01] — Waves 3–6 Premium Polish
 

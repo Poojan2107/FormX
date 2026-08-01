@@ -3,11 +3,8 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { FormMessage } from "@/components/ui/FormMessage";
+import { isEmail } from "@/lib/formValidation";
 import { cn } from "@/lib/cn";
-
-function isEmail(v: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
 
 export function NewsletterForm({ invert = false }: { invert?: boolean }) {
   const [done, setDone] = useState(false);

@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
-
-function isEmail(v: unknown) {
-  return typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
+import { isVendorValid } from "@/lib/formValidation";
+import { clientIp, rateLimited } from "@/lib/rateLimit";
 
 function str(v: unknown) {
   return typeof v === "string" ? v.trim() : "";
@@ -11,6 +9,12 @@ function str(v: unknown) {
 
 export async function POST(request: Request) {
   try {
+    if (rateLimited(clientIp(request))) {
+      return NextResponse.json(
+        { ok: false, error: "Too many requests" },
+        { status: 429 },
+      );
+    }
     const body = await request.json();
     const company = str(body?.company);
     const contact = str(body?.contact);
@@ -24,7 +28,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    if (company.length < 2 || contact.length < 2 || !isEmail(email)) {
+    if (!isVendorValid({ company, contact, email })) {
       return NextResponse.json(
         { ok: false, error: "Invalid registration payload" },
         { status: 400 },

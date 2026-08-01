@@ -1,12 +1,16 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
-
-function isEmail(v: unknown) {
-  return typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
+import { isEmail } from "@/lib/formValidation";
+import { clientIp, rateLimited } from "@/lib/rateLimit";
 
 export async function POST(request: Request) {
   try {
+    if (rateLimited(clientIp(request))) {
+      return NextResponse.json(
+        { ok: false, error: "Too many requests" },
+        { status: 429 },
+      );
+    }
     const body = await request.json();
     const email = typeof body?.email === "string" ? body.email.trim() : "";
 
