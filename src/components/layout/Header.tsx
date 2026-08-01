@@ -58,86 +58,87 @@ function SiteHeader({
 
   return (
     <>
-      <header className="sticky top-0 z-50 transition-all duration-300">
-        {/* Clean Glassmorphic Header Bar */}
+      <header
+        className="sticky top-0 z-50"
+        style={{ ["--header-offset" as string]: "4.5rem" }}
+      >
         <div
           className={cn(
-            "border-b bg-white/95 backdrop-blur-xl transition-all duration-300",
+            "border-b bg-white/95 backdrop-blur-xl transition-colors duration-300",
             scrolled
-              ? "border-black/10 bg-white/98 py-0 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-              : "border-line/60 bg-white/95 py-0.5",
+              ? "border-black/10 bg-white/98 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
+              : "border-line/70",
           )}
         >
-          <Container className="relative flex items-center justify-between gap-4 h-[64px] sm:h-[70px] transition-all duration-300">
-            {/* Left: Clean Vector Brand Logo */}
+          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-[4.5rem] sm:gap-4">
             <Link
               href="/"
               transitionTypes={["nav-back"]}
-              className="group relative z-10 flex shrink-0 items-center py-1 transition-transform duration-200 hover:scale-[1.01]"
+              className="relative z-10 flex shrink-0 items-center"
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
               <Logo variant="full" />
             </Link>
 
-            {/* Middle: Desktop Mega Menu Nav */}
-            <DesktopNav />
+            <div className="hidden min-w-0 justify-center xl:flex">
+              <DesktopNav />
+            </div>
 
-            {/* Right: Action Controls & Status */}
-            <div className="relative z-10 hidden items-center gap-3 self-center xl:flex">
-              <div className="flex h-9 items-center gap-2 border border-line px-3 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/55">
-                <span className="size-1.5 bg-emerald-500" />
-                <span>Greenfield Ready</span>
+            <div className="relative z-10 flex items-center justify-end gap-2 sm:gap-3">
+              {/* Status chip — large screens only so it never collides with Insights */}
+              <div
+                className="hidden h-8 items-center gap-2 border border-line px-2.5 font-display text-[9px] font-bold uppercase tracking-[0.12em] text-ink/50 2xl:flex"
+                title="Greenfield Ready"
+              >
+                <span className="size-1.5 shrink-0 bg-emerald-500" aria-hidden />
+                Greenfield
               </div>
 
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex h-9 items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/55 transition-colors hover:text-x-red"
+                className="hidden h-8 items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-x-red lg:flex"
+                aria-label={`Call ${site.phone}`}
               >
-                <Phone className="size-3.5 text-x-red" />
-                <span className="hidden lg:inline">{site.phone}</span>
+                <Phone className="size-3.5 shrink-0 text-x-red" />
+                <span className="hidden xl:inline">{site.phone}</span>
               </a>
-
-              <div className="h-4 w-px bg-line" />
 
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex h-9 items-center gap-2 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors duration-200 hover:bg-x-red-hover"
+                className="formx-cut-sm formx-edge formx-edge-sm relative hidden h-8 items-center gap-1.5 bg-x-red px-4 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
               </Link>
-            </div>
 
-            {/* Mobile Menu Hamburger */}
-            <button
-              type="button"
-              className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-10 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={open ? "x" : "menu"}
-                  initial={{ opacity: 0, rotate: open ? -45 : 45 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {open ? <X className="size-5" /> : <Menu className="size-5" />}
-                </motion.div>
-              </AnimatePresence>
-            </button>
+              <button
+                type="button"
+                className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                onClick={() => setOpen((v) => !v)}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={open ? "x" : "menu"}
+                    initial={{ opacity: 0, rotate: open ? -45 : 45 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {open ? <X className="size-5" /> : <Menu className="size-5" />}
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+            </div>
           </Container>
 
-          {/* Glowing Red Top Border Line */}
-          <div className="h-[2px] w-full bg-gradient-to-r from-x-red/0 via-x-red to-x-red/0 opacity-60" />
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent opacity-70" />
         </div>
       </header>
 
-      {/* Mobile Full-Screen Menu */}
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -147,7 +148,6 @@ function SiteHeader({
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Background texture */}
             <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
             <div
               className="pointer-events-none absolute inset-0"
@@ -231,11 +231,15 @@ function SiteHeader({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
+                <div className="mb-2 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/40">
+                  <span className="size-1.5 bg-emerald-500" />
+                  Greenfield Ready
+                </div>
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
                   transitionTypes={["nav-forward"]}
-                  className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_24px_rgba(222,48,36,0.4)]"
+                  className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white"
                 >
                   Enquire Now <ArrowUpRight className="size-4" />
                 </Link>

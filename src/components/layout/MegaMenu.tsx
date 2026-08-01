@@ -68,7 +68,7 @@ export function DesktopNav() {
             type="button"
             aria-label="Close menu"
             className="fixed inset-x-0 bottom-0 z-[45] bg-black/30 backdrop-blur-[1px]"
-            style={{ top: "var(--header-offset, 7.5rem)" }}
+            style={{ top: "var(--header-offset, 4.5rem)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -80,7 +80,7 @@ export function DesktopNav() {
             aria-label={`${panel} menu`}
             className="fixed inset-x-0 z-[46] border-b border-line bg-white shadow-[0_28px_70px_rgba(0,0,0,0.12)]"
             style={{
-              top: "var(--header-offset, 7.5rem)",
+              top: "var(--header-offset, 4.5rem)",
               clipPath:
                 "polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%)",
             }}
@@ -116,7 +116,7 @@ export function DesktopNav() {
     <>
       <nav
         ref={navRef}
-        className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center xl:flex"
+        className="flex max-w-full items-center justify-center"
         aria-label="Primary"
         onMouseLeave={scheduleClose}
         onMouseEnter={cancelClose}
@@ -137,17 +137,14 @@ export function DesktopNav() {
 
           return (
             <div key={item.label} className="relative flex items-center">
-              {i > 0 ? (
-                <span className="mx-0.5 h-3 w-px bg-ink/10" aria-hidden />
-              ) : null}
               {expandable ? (
                 <button
                   type="button"
                   className={cn(
-                    "formx-cut-sm relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                    "relative inline-flex items-center gap-0.5 px-2 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors xl:px-2.5",
                     highlighted
-                      ? "bg-[#fafafa] text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
-                      : "text-ink/55 hover:bg-[#fafafa] hover:text-ink",
+                      ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
+                      : "text-ink/50 hover:text-ink",
                   )}
                   aria-expanded={panelOpen}
                   aria-haspopup="true"
@@ -158,7 +155,7 @@ export function DesktopNav() {
                     open(panelOpen ? null : (item.label as Panel))
                   }
                 >
-                  <span className="mr-0.5 text-[10px] font-bold text-x-red/70">
+                  <span className="mr-0.5 text-[9px] font-bold text-x-red/70">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {item.label}
@@ -173,15 +170,15 @@ export function DesktopNav() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "relative inline-flex items-center gap-1 px-3 py-2 font-display text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors",
+                    "relative inline-flex items-center gap-0.5 px-2 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors xl:px-2.5",
                     routeActive
                       ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
-                      : "text-ink/55 hover:bg-[#fafafa] hover:text-ink",
+                      : "text-ink/50 hover:text-ink",
                   )}
                   aria-current={routeActive ? "page" : undefined}
                   onMouseEnter={() => setPanel(null)}
                 >
-                  <span className="mr-0.5 text-[10px] font-bold text-x-red/70">
+                  <span className="mr-0.5 text-[9px] font-bold text-x-red/70">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {item.label}

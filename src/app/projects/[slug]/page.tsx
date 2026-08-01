@@ -15,6 +15,7 @@ import {
 import { getProject, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { ProjectGalleryViewer } from "@/components/projects/ProjectGalleryViewer";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -83,10 +84,43 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <ProofStrip />
 
+      {/* Design intent → built facility comparison */}
+      <section className="bg-[#0c0c0c] py-10 md:py-14">
+        <Container>
+          <Reveal>
+            <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+                  Design to delivery
+                </p>
+                <h2 className="mt-1 font-display text-2xl font-extrabold uppercase tracking-tight text-white md:text-3xl">
+                  Intent → executed facility
+                </h2>
+              </div>
+              <p className="max-w-sm text-[13px] leading-relaxed text-white/45">
+                Drag the × handle to compare engineering documentation views with the completed facility.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <BeforeAfterSlider
+              beforeSlot={
+                project.assets.gallery.find((g) => g !== project.assets.cover) ??
+                project.assets.cover
+              }
+              afterSlot={project.assets.cover}
+              beforeLabel="Engineering / documentation view"
+              afterLabel="Completed facility"
+              alt={project.client}
+            />
+          </Reveal>
+        </Container>
+      </section>
+
       {/* Key Specs Grid */}
       <section className="bg-white pt-8">
         <Container>
-          <div className="grid grid-cols-2 border border-line md:grid-cols-4 bg-[#fafafa]">
+          <div className="grid grid-cols-2 border border-line bg-[#fafafa] md:grid-cols-4">
             {metas.map(([key, value]) => {
               const Icon = metaIcons[key];
               return (
