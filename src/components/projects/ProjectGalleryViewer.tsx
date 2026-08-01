@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -14,10 +14,34 @@ export function ProjectGalleryViewer({
   gallery: string[];
   title: string;
 }) {
-  const allImages = [cover, ...gallery.filter((g) => g !== cover)];
+  const allImages = useMemo(
+    () => [cover, ...gallery.filter((g) => g !== cover)],
+    [cover, gallery],
+  );
+  const count = allImages.length;
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const activeSrc = lightboxIdx !== null ? `/assets/${allImages[lightboxIdx]}` : null;
+
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    triggerRef.current = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIdx(null);
+      else if (e.key === "ArrowLeft")
+        setLightboxIdx((i) => (i === null || i === 0 ? count - 1 : i - 1));
+      else if (e.key === "ArrowRight")
+        setLightboxIdx((i) => (i === null || i === count - 1 ? 0 : i + 1));
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      triggerRef.current?.focus();
+    };
+  }, [lightboxIdx, count]);
 
   return (
     <>
@@ -57,10 +81,14 @@ export function ProjectGalleryViewer({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} full view`}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-xl"
             onClick={() => setLightboxIdx(null)}
           >
             <button
+              ref={closeRef}
               type="button"
               onClick={() => setLightboxIdx(null)}
               className="absolute right-6 top-6 z-10 flex size-12 items-center justify-center border border-white/20 bg-black/80 text-white transition-colors hover:border-x-red hover:bg-x-red"
@@ -113,7 +141,7 @@ export function ProjectGalleryViewer({
                 <span className="font-display text-xs font-bold uppercase tracking-widest text-x-red">
                   {title}
                 </span>
-                <span className="text-xs text-white/50">
+                <span aria-live="polite" className="text-xs text-white/50">
                   {lightboxIdx + 1} / {allImages.length}
                 </span>
               </div>

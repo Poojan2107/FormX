@@ -153,6 +153,7 @@ export function Services() {
                       type="button"
                       onClick={() => setActiveIdx(i)}
                       onMouseEnter={() => setActiveIdx(i)}
+                      aria-pressed={isActive}
                       className={cn(
                         "flex w-full items-center justify-between gap-2 border-b border-line/70 px-4 py-2.5 text-left transition-colors last:border-b-0",
                         isActive

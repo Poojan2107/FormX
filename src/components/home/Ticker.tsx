@@ -1,7 +1,6 @@
 "use client";
 
-export function TickerBand({ tone = "red" }: { tone?: "red" | "dark" | "light" }) {
-  // Moving bar removed per client directive
+export function TickerBand() {
   return null;
 }
 

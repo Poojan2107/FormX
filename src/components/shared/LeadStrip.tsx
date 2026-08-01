@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone, MessageSquare } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/data/site";
 
