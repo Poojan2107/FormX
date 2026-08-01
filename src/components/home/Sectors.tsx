@@ -1,150 +1,100 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import { sectors } from "@/data/site";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Pill,
+  Utensils,
+  FlaskConical,
+  Scissors,
+  Wrench,
+  Car,
+  Warehouse,
+} from "lucide-react";
+import { industriesServed } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { AssetImage } from "@/components/ui/AssetImage";
+
+const iconMap: Record<string, React.ReactNode> = {
+  Pill: <Pill className="size-6 text-x-red" />,
+  Utensils: <Utensils className="size-6 text-x-red" />,
+  FlaskConical: <FlaskConical className="size-6 text-x-red" />,
+  Scissors: <Scissors className="size-6 text-x-red" />,
+  Wrench: <Wrench className="size-6 text-x-red" />,
+  Car: <Car className="size-6 text-x-red" />,
+  Warehouse: <Warehouse className="size-6 text-x-red" />,
+};
 
 export function Sectors() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollBy = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({
-      left: dir === "right" ? 340 : -340,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <section id="sectors" className="scroll-mt-32 bg-[#0c0c0c] overflow-hidden">
-      {/* Pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-15" aria-hidden />
-
-      <div className="relative py-16 md:py-24">
-        <Container>
-          <Reveal className="mb-10 flex items-end justify-between gap-6">
-            <div>
-              <div className="mb-3 flex items-center gap-3">
-                <span className="h-px w-6 bg-x-red" />
-                <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
-                  Our Sectors
-                </span>
-              </div>
-              <h2
-                className="font-display font-extrabold leading-[1.1] tracking-[-0.02em] text-white"
-                style={{ fontSize: "clamp(1.6rem, 3vw, 2.8rem)" }}
-              >
-                Industries we serve
-              </h2>
-              <p className="mt-3 max-w-lg text-[14px] leading-relaxed text-white/45">
-                Coordinated engineering across renewable manufacturing, process plants, logistics, and infrastructure campuses.
-              </p>
+    <section id="sectors" className="scroll-mt-32 bg-[#fafafa] py-20 md:py-28 border-y border-line">
+      <Container>
+        {/* Section Header */}
+        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="mb-3 flex items-center gap-3">
+              <span className="h-px w-8 bg-x-red" />
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
+                Industries Served
+              </span>
             </div>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
+              Specialized Engineering Across Key Sectors
+            </h2>
+            <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-ink-muted">
+              Deep technical domain expertise in industrial process plants, heavy engineering facilities, pharmaceutical cleanrooms, and logistics hubs.
+            </p>
+          </div>
 
-            {/* Scroll controls */}
-            <div className="hidden items-center gap-2 md:flex">
-              <button
-                type="button"
-                onClick={() => scrollBy("left")}
-                className="flex size-10 items-center justify-center border border-white/20 text-white/60 transition-all hover:border-x-red hover:text-x-red"
-                aria-label="Scroll left"
-              >
-                <ArrowLeft className="size-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollBy("right")}
-                className="flex size-10 items-center justify-center border border-white/20 text-white/60 transition-all hover:border-x-red hover:text-x-red"
-                aria-label="Scroll right"
-              >
-                <ArrowRight className="size-4" />
-              </button>
-              <Link
-                href="/sectors"
-                transitionTypes={["nav-forward"]}
-                className="ml-2 flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-x-red"
-              >
-                All Sectors <ArrowUpRight className="size-3.5" />
-              </Link>
-            </div>
-          </Reveal>
-        </Container>
-
-        {/* Horizontal scroll strip — full bleed with clean 280px card widths */}
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 pl-4 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] scrollbar-hide"
-          style={{ scrollSnapType: "x mandatory" }}
-        >
-          {sectors.map((sector, i) => (
-            <Link
-              key={sector.slug}
-              href={`/sectors/${sector.slug}`}
-              transitionTypes={["nav-forward"]}
-              className="x-desat group relative shrink-0 overflow-hidden border border-white/10 bg-[#161616]"
-              style={{
-                width: "280px",
-                height: "380px",
-                scrollSnapAlign: "start",
-              }}
-            >
-              {/* Full-bleed image */}
-              <div className="absolute inset-0">
-                <AssetImage
-                  alt={sector.title}
-                  slot={sector.asset}
-                  kind="sector"
-                  aspect="portrait"
-                  fit="cover"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20" />
-
-              {/* Index badge */}
-              <div className="absolute left-4 top-4 z-10">
-                <span className="border border-white/10 bg-black/60 px-2 py-0.5 font-display text-[10px] font-bold text-white/60 backdrop-blur-sm">
-                  0{String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Bottom info — clean positioning without text clipping */}
-              <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-                <h3 className="font-display text-[15px] font-bold uppercase leading-tight tracking-tight text-white transition-colors group-hover:text-x-red">
-                  {sector.title}
-                </h3>
-                <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
-                  Explore Sector <ArrowUpRight className="size-3 shrink-0" />
-                </div>
-              </div>
-
-              {/* Red left border on hover */}
-              <div className="absolute left-0 top-0 h-full w-[3px] bg-x-red opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </Link>
-          ))}
-
-          {/* End spacer */}
-          <div className="shrink-0 w-4" />
-        </div>
-
-        {/* Mobile CTA */}
-        <Container className="mt-8 md:hidden">
           <Link
             href="/sectors"
             transitionTypes={["nav-forward"]}
-            className="flex w-full items-center justify-center gap-2 border border-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-all hover:translate-x-1"
           >
-            View All Sectors <ArrowUpRight className="size-4" />
+            Explore All Sectors <ArrowRight className="size-4" />
           </Link>
-        </Container>
-      </div>
+        </Reveal>
+
+        {/* 7 Industries Served Visual Cards Grid */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {industriesServed.map((item, i) => (
+            <Reveal key={item.id} delay={0.04 * (i % 4)} className="h-full">
+              <Link
+                href={`/sectors/${item.slug}`}
+                transitionTypes={["nav-forward"]}
+                className="formx-cut-x formx-edge formx-edge-x x-lift group flex h-full flex-col justify-between border border-line bg-white p-6 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_40px_rgba(222,48,36,0.1)]"
+              >
+                <div>
+                  {/* Top Bar with Icon & Number */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex size-12 items-center justify-center border border-line bg-[#fafafa] transition-colors group-hover:border-x-red/30 group-hover:bg-x-red/10">
+                      {iconMap[item.icon] ?? <Wrench className="size-6 text-x-red" />}
+                    </div>
+                    <span className="font-display text-xs font-bold text-ink/30">
+                      0{i + 1}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink group-hover:text-x-red transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Footer Action */}
+                <div className="mt-6 pt-4 border-t border-line/60 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
+                  <span>View Practice Scope</span>
+                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }

@@ -3,60 +3,64 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
-
-const metrics = [
-  { value: 15, suffix: "+", label: "Real projects delivered", sub: "Across India" },
-  { value: 10, suffix: "+", label: "Engineering disciplines", sub: "One coordinated practice" },
-  { value: 4, suffix: "", label: "Project delivery stages", sub: "Concept to site" },
-  { value: 100, suffix: "%", label: "Construction-ready", sub: "GFC precision packages" },
-];
+import { formxNumbers } from "@/data/site";
 
 export function Stats() {
   return (
-    <section className="relative overflow-hidden bg-[#111111]">
-      {/* Subtle pattern */}
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
-      {/* Red ambient glow */}
+    <section className="relative overflow-hidden bg-[#0d0d0d] py-20 md:py-28 text-white border-y border-white/10">
+      {/* Background texture & ambient glow */}
+      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-25" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(800px 400px at 50% 100%, rgba(222,48,36,0.08), transparent 70%)" }}
+        style={{ background: "radial-gradient(900px 500px at 50% 50%, rgba(222,48,36,0.1), transparent 70%)" }}
         aria-hidden
       />
 
-      <Container className="relative py-16 md:py-24">
-        {/* Top label */}
-        <Reveal className="mb-12">
-          <div className="flex items-center gap-3">
-            <span className="h-px w-6 bg-x-red" />
-            <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
-              By the Numbers
+      <Container className="relative z-10">
+        {/* Top Header */}
+        <Reveal className="mb-14 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3">
+            <span className="h-px w-8 bg-x-red" />
+            <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
+              FORMX by Numbers
             </span>
           </div>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl lg:text-5xl">
+            Track Record of Industrial Scale
+          </h2>
+          <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-white/50">
+            Delivering high-precision GFC packages across major industrial hubs, manufacturing complexes, and logistics developments in India.
+          </p>
         </Reveal>
 
-        {/* Metrics — massive numbers, no card borders */}
-        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
-          {metrics.map((m, i) => (
-            <Reveal key={m.label} delay={0.07 * i}>
-              <div className="group">
-                {/* The number */}
-                <p
-                  className="font-display font-black leading-none text-white transition-colors duration-300 group-hover:text-x-red"
-                  style={{ fontSize: "clamp(2.8rem, 5vw, 5rem)" }}
-                >
-                  <Counter value={m.value} suffix={m.suffix} />
-                </p>
+        {/* 6 Metrics Grid — Clean 3-col Grid */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:gap-x-10 lg:gap-y-14">
+          {formxNumbers.map((m, i) => (
+            <Reveal key={m.label} delay={0.05 * i}>
+              <div className="group formx-cut-x formx-edge formx-edge-x relative border border-white/10 bg-white/5 p-6 md:p-8 transition-all duration-300 hover:border-x-red/50 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(222,48,36,0.15)]">
+                {/* Metric Number */}
+                <div className="flex items-baseline gap-1">
+                  <p
+                    className="font-display font-black leading-none text-white transition-colors duration-300 group-hover:text-x-red"
+                    style={{ fontSize: "clamp(2.6rem, 4.5vw, 4.2rem)" }}
+                  >
+                    <Counter value={m.value} suffix={m.suffix} />
+                  </p>
+                </div>
 
-                {/* Red divider line */}
-                <div className="my-4 h-px w-12 bg-x-red/40 transition-all duration-500 group-hover:w-20 group-hover:bg-x-red" />
+                {/* Accent Divider Line */}
+                <div className="my-4 h-px w-10 bg-x-red/50 transition-all duration-500 group-hover:w-16 group-hover:bg-x-red" />
 
-                {/* Labels */}
-                <p className="font-display text-[13px] font-bold uppercase tracking-tight text-white/80 md:text-[14px]">
+                {/* Title & Sublabel */}
+                <h3 className="font-display text-base font-bold uppercase tracking-tight text-white md:text-lg">
                   {m.label}
+                </h3>
+                <p className="mt-1 text-[11px] font-semibold text-white/40 uppercase tracking-[0.14em]">
+                  {m.highlight ?? m.sublabel}
                 </p>
-                <p className="mt-1 text-[11px] text-white/30 uppercase tracking-[0.12em]">
-                  {m.sub}
-                </p>
+
+                {/* Red Left Accent */}
+                <span className="absolute left-0 top-0 h-full w-[2px] bg-x-red opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
             </Reveal>
           ))}

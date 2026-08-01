@@ -13,27 +13,27 @@ export function Projects() {
   const tertiary = projects.slice(3, 6);
 
   return (
-    <section id="projects" className="scroll-mt-32 bg-white section-y">
+    <section id="projects" className="scroll-mt-32 bg-white py-20 md:py-28 border-b border-line">
       <Container>
-        <Reveal className="mb-10 flex items-end justify-between gap-6">
+        <Reveal className="mb-12 flex items-end justify-between gap-6">
           <div>
             <div className="mb-3 flex items-center gap-3">
-              <span className="h-px w-6 bg-x-red" />
-              <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+              <span className="h-px w-8 bg-x-red" />
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
                 Our Projects
               </span>
             </div>
-            <h2
-              className="font-display font-extrabold leading-[1.1] tracking-[-0.02em] text-ink"
-              style={{ fontSize: "clamp(1.6rem, 3vw, 2.8rem)" }}
-            >
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
               Featured Portfolio
             </h2>
+            <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-ink-muted">
+              Coordinated GFC packages delivered across commercial headquarters, heavy manufacturing facilities, and institutional campuses.
+            </p>
           </div>
           <Link
             href="/projects"
             transitionTypes={["nav-forward"]}
-            className="group hidden shrink-0 items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/40 transition-all hover:text-x-red sm:flex"
+            className="group hidden shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-all hover:translate-x-1 sm:flex"
           >
             All Projects
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -3,46 +3,47 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, ShieldCheck } from "lucide-react";
 import { heroLines, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { DrawingLineAnimation } from "@/components/ui/DrawingLineAnimation";
 
 const heroSlides = [
   {
     title: "Kalpataru Corporate House",
-    tag: "Commercial",
+    tag: "Commercial Development",
     location: "Ahmedabad, Gujarat",
     slot: "projects/kalpataru-corporate-house.jpg",
     year: "2024",
   },
   {
     title: "FormX Practice & Studio",
-    tag: "Studio",
+    tag: "Studio & Engineering Hub",
     location: "Ahmedabad, Gujarat",
     slot: "about/home-about.jpg",
     year: "2023",
   },
   {
     title: "Nutan Vidhyalaya Campus",
-    tag: "Institutional",
+    tag: "Institutional Campus",
     location: "Gujarat, India",
     slot: "projects/nutan-vidhyalaya.jpg",
     year: "2023",
   },
   {
     title: "PEB Logistics Warehouse",
-    tag: "Industrial",
+    tag: "Industrial Logistics Hub",
     location: "Gujarat, India",
     slot: "projects/peb-warehouse.jpg",
     year: "2024",
   },
 ];
 
-const stats = [
-  { value: "15+", label: "Projects" },
-  { value: "10", label: "Disciplines" },
-  { value: "100%", label: "GFC Ready" },
+const heroStats = [
+  { value: "25+", label: "Projects Delivered" },
+  { value: "15 Lakh+", label: "Sq.Ft Designed" },
+  { value: "15+", label: "Industrial Clients" },
 ];
 
 export function Hero() {
@@ -103,8 +104,8 @@ export function Hero() {
         </AnimatePresence>
 
         {/* Gradient layers */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0c]/90 via-[#0c0c0c]/50 to-[#0c0c0c]/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c]/70 via-transparent to-[#0c0c0c]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0c]/95 via-[#0c0c0c]/65 to-[#0c0c0c]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c]/85 via-transparent to-[#0c0c0c]/30" />
 
         {/* Architectural grid texture */}
         <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
@@ -113,20 +114,29 @@ export function Hero() {
       {/* Red accent top-left corner line */}
       <div className="absolute left-0 top-0 z-10 h-32 w-1 bg-gradient-to-b from-x-red to-transparent" />
 
+      {/* Subtle CAD Drawing Line SVG Animation */}
+      <div className="pointer-events-none absolute right-12 top-24 z-10 hidden xl:block w-96 opacity-35">
+        <DrawingLineAnimation />
+      </div>
+
       <Container className="relative z-10 flex min-h-[92vh] flex-col justify-end pb-12 pt-32 md:pb-16 md:pt-36 lg:pb-20">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           {/* Left: Main content */}
           <div className="max-w-3xl">
-            {/* Eyebrow */}
+            {/* Eyebrow & Technical Badge */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-6 flex items-center gap-3"
+              className="mb-5 flex flex-wrap items-center gap-3"
             >
               <span className="h-px w-8 bg-x-red" />
               <span className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
-                {site.tagline} · Ahmedabad, India
+                FORMX Consultants · Ahmedabad, India
+              </span>
+              <span className="inline-flex items-center gap-1.5 border border-white/20 bg-white/10 px-2.5 py-0.5 font-display text-[9px] font-bold uppercase tracking-[0.16em] text-white/80 backdrop-blur-sm">
+                <ShieldCheck className="size-3 text-x-red" />
+                IS Code &amp; NBC Compliant
               </span>
             </motion.div>
 
@@ -140,21 +150,21 @@ export function Hero() {
                   exit={reduce ? undefined : { opacity: 0, y: -16 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="font-display font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
-                  style={{ fontSize: "clamp(2.4rem, 6vw, 5.5rem)" }}
+                  style={{ fontSize: "clamp(2.4rem, 5.5vw, 5.2rem)" }}
                 >
                   {heroLines[lineIndex]}
                 </motion.h1>
               </AnimatePresence>
             </div>
 
-            {/* Sub-headline */}
+            {/* Sub-headline with max-w-[65ch] limit for optimum reading length */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-8 max-w-lg text-[15px] leading-[1.8] text-white/60 md:text-[16px]"
+              className="mb-8 max-w-[65ch] text-[15px] leading-[1.8] text-white/70 md:text-[16px]"
             >
-              In-house multidisciplinary practice delivering Architecture, Structure, Civil &amp; MEP — as one construction-ready package.
+              Expert Industrial Engineering &amp; Architectural Consultancy. Delivering coordinated GFC drawings across Architecture, Structure, Civil, and MEP as one construction-ready package.
             </motion.p>
 
             {/* CTAs */}
@@ -253,17 +263,17 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Bottom stats strip */}
+        {/* Bottom stats strip featuring exact FORMX metrics */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-12 flex items-center gap-8 border-t border-white/10 pt-8 md:gap-12"
+          className="mt-12 flex flex-wrap items-center gap-8 border-t border-white/10 pt-8 md:gap-12"
         >
-          {stats.map((stat, i) => (
+          {heroStats.map((stat, i) => (
             <div key={stat.label} className={`${i !== 0 ? "border-l border-white/10 pl-8 md:pl-12" : ""}`}>
               <p className="font-display text-2xl font-extrabold text-white md:text-3xl">{stat.value}</p>
-              <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+              <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
                 {stat.label}
               </p>
             </div>
@@ -282,27 +292,6 @@ export function Hero() {
             ))}
           </div>
         </motion.div>
-
-        {/* Mobile slide caption */}
-        <div className="mt-6 border-l-2 border-x-red pl-4 lg:hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={slideIndex}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="font-display text-[11px] font-bold uppercase tracking-[0.12em] text-white">
-                {current.title}
-              </p>
-              <p className="mt-0.5 flex items-center gap-1 text-[11px] text-white/45">
-                <MapPin className="size-3" />
-                {current.location} · {current.year}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
       </Container>
     </section>
   );

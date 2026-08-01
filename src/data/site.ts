@@ -106,6 +106,93 @@ export const serviceNavGroups = [
   },
 ];
 
+export const clients = [
+  { name: "Kalpataru Group", tag: "Corporate HQ Developer" },
+  { name: "Vir Bhadra Enterprise", tag: "Industrial Manufacturing" },
+  { name: "Nutan Vidhyalaya Trust", tag: "Institutional Campus" },
+  { name: "Shashwat Empire", tag: "Commercial Real Estate" },
+  { name: "Aviniya One", tag: "High-Rise Commercial" },
+  { name: "Lavista Group", tag: "Hospitality & Retail" },
+];
+
+export const testimonials = [
+  {
+    name: "Project Director",
+    quote:
+      "FormX delivered our complete industrial facility GFC drawings with zero inter-discipline clash. Their structural engineering and utility coordination saved us weeks on site.",
+    author: "Project Director",
+    company: "Industrial Manufacturing Group",
+    location: "Gujarat, India",
+    role: "Project Director",
+  },
+  {
+    name: "Infrastructure Lead",
+    quote:
+      "The multidisciplinary coordination under Hiren Shah's leadership ensured statutory compliance and seamless buildability across architecture, structure, and MEP.",
+    author: "Infrastructure Lead",
+    company: "Commercial Real Estate Firm",
+    location: "Ahmedabad",
+    role: "Infrastructure Lead",
+  },
+];
+
+export const faqs = [
+  {
+    q: "What services does FormX Consultants provide?",
+    a: "FormX delivers integrated multidisciplinary packages across 10 disciplines — Architectural Drawings, Site Infrastructure, Sustainable Design, Structural Engineering, Civil Engineering, Mechanical Utility Engineering, HVAC & Refrigeration, Electrical Engineering, Fire Protection, and Project Management.",
+  },
+  {
+    q: "Which industrial sectors does FormX specialize in?",
+    a: "We specialize in Pharmaceuticals, Food Processing, Chemical Manufacturing, Textile Plants, Heavy Engineering, Automobile Assembly, and Logistics Warehouses across India.",
+  },
+  {
+    q: "Does FormX handle statutory and building code compliance?",
+    a: "Yes. All our architectural and structural engineering packages are 100% compliant with National Building Code (NBC), local IS Codes, and statutory authority guidelines.",
+  },
+];
+
+export const careerRoles = [
+  {
+    title: "Senior Structural Engineer",
+    type: "Full-Time",
+    location: "Ahmedabad",
+    experience: "5+ Years",
+    dept: "Structural & Civil",
+    blurb: "Lead structural engineering design for RCC, PEB steel structures, crane sheds, and heavy equipment foundations.",
+    responsibilities: [
+      "Prepare structural calculations in STAAD.Pro / ETABS complying with IS 456, IS 800, and IS 1893.",
+      "Review structural GA drawings and GFC packages for industrial complexes and PEB sheds.",
+      "Coordinate with architecture and MEP leads for clash-free grid alignment.",
+    ],
+  },
+  {
+    title: "MEP Coordination Engineer",
+    type: "Full-Time",
+    location: "Ahmedabad",
+    experience: "4+ Years",
+    dept: "MEP Utilities",
+    blurb: "Drive mechanical, electrical, HVAC, and fire protection engineering coordination across industrial facilities.",
+    responsibilities: [
+      "Develop single line diagrams (SLDs) and utility trunk routing drawings for factory plants.",
+      "Perform HVAC heat load calculations and electrical transformer sizing for greenfield projects.",
+      "Interface with promoters and contractors to resolve technical RFIs.",
+    ],
+  },
+  {
+    title: "Industrial Architect",
+    type: "Full-Time",
+    location: "Ahmedabad",
+    experience: "3+ Years",
+    dept: "Architecture & Planning",
+    blurb: "Create operational, NBC-compliant architectural layouts and master planning for manufacturing campuses.",
+    responsibilities: [
+      "Develop functional floor plans, statutory approval drawings, and elevation details.",
+      "Ensure statutory building code compliance and smooth authority approvals.",
+      "Coordinate architectural details with structural and MEP discipline teams.",
+    ],
+  },
+];
+
 export const heroLines = [
   "Precise, coordinated construction-ready design",
   "Architecture, structure, civil & MEP under one window",
@@ -116,7 +203,7 @@ export const heroLines = [
 export const hero = {
   eyebrow: "FORMX Consultants",
   title: "Precise, coordinated, construction-ready design",
-  body: "At FORMX Consultants, we develop precise, coordinated, and construction-ready packages that bridge design intent with on-site execution — with strong emphasis on functionality, buildability, regulatory compliance, and seamless coordination across all engineering disciplines.",
+  body: "Expert Industrial Facility Engineering & Multi-Discipline Architectural Consultancy. Delivering coordinated GFC drawings across Architecture, Structure, Civil, and MEP.",
   primaryCta: { label: "Book a consultation", href: "/contact" },
   secondaryCta: { label: "Explore our services", href: "/services" },
   trust: [
@@ -126,11 +213,69 @@ export const hero = {
   ],
 };
 
-export const stats = [
-  { value: 10, suffix: "", label: "Core engineering services" },
-  { value: 4, suffix: "", label: "Delivery stages — concept to site" },
-  { value: 1, suffix: "", label: "Coordinated design window" },
-  { value: 100, suffix: "%", label: "Focus on construction readiness" },
+/** Exact FORMX by Numbers specified in client feedback document */
+export const formxNumbers = [
+  { value: 25, suffix: "+", label: "Completed Projects", highlight: "Turnkey & Greenfield Facilities" },
+  { value: 15, suffix: " Lakh+", label: "Sq.Ft Designed", sublabel: "Industrial & Heavy Engineering Area", isLarge: true },
+  { value: 15, suffix: "+", label: "Industrial Clients", highlight: "Promoters & Corporate Leaders" },
+  { value: 10, suffix: "+", label: "Steel Structures", highlight: "Heavy PEB & Crane Sheds" },
+  { value: 10, suffix: "+", label: "Warehouses", highlight: "Logistics & Supply Chain Hubs" },
+  { value: 5, suffix: "", label: "States Served", highlight: "Across Industrial Hubs in India" },
+];
+
+export const stats = formxNumbers;
+
+/** Industries Served with icon mapping specified in client feedback document */
+export const industriesServed = [
+  {
+    id: "pharmaceuticals",
+    title: "Pharmaceuticals",
+    icon: "Pill",
+    description: "Cleanroom design, cGMP compliance, process utility distribution & HVAC zoning.",
+    slug: "pharmaceuticals",
+  },
+  {
+    id: "food-processing",
+    title: "Food Processing",
+    icon: "Utensils",
+    description: "HACCP compliant layouts, cold storage systems, hygiene drainage & steam utilities.",
+    slug: "food-processing",
+  },
+  {
+    id: "chemical",
+    title: "Chemical",
+    icon: "FlaskConical",
+    description: "Hazardous area classification, explosion-proof electricals, effluent treatment & pipe racks.",
+    slug: "chemical-manufacturing",
+  },
+  {
+    id: "textile",
+    title: "Textile",
+    icon: "Scissors",
+    description: "High-bay weaving sheds, humidification plants, heavy floor load distribution & power centers.",
+    slug: "textile-apparel",
+  },
+  {
+    id: "engineering",
+    title: "Engineering",
+    icon: "Wrench",
+    description: "Heavy machinery foundations, EOT crane girder design, industrial ventilation & power substations.",
+    slug: "heavy-engineering",
+  },
+  {
+    id: "automobile",
+    title: "Automobile",
+    icon: "Car",
+    description: "Assembly line logistics, paint shop utility piping, automated warehouse slabs & fire suppression.",
+    slug: "automotive",
+  },
+  {
+    id: "warehouses",
+    title: "Warehouses & Logistics",
+    icon: "Warehouse",
+    description: "Wide-span PEB sheds, FM2 high-flatness flooring, dock leveller pits & solar-ready roofing.",
+    slug: "industrial-park",
+  },
 ];
 
 export const about = {
@@ -197,202 +342,5 @@ export const whyPoints = [
     num: "05",
     title: "Sustainable by design",
     body: "Climate-responsive, energy- and water-efficient strategies embedded without compromising function or project budget.",
-  },
-  {
-    num: "06",
-    title: "Project management & procurement",
-    body: "Structured coordination, tender support, vendor evaluation, and progress monitoring from planning through closeout.",
-  },
-];
-
-export const method = {
-  eyebrow: "How we deliver",
-  title: "Coordinated design from concept to completion",
-  body: "Every FORMX engagement follows a clear delivery rhythm: understand requirements and site conditions, develop optimised concepts, prepare coordinated construction documentation across disciplines, and provide continuous technical support during execution.",
-};
-
-export const processSteps = [
-  {
-    num: "1",
-    shape: "circle" as const,
-    title: "Understand requirements",
-    body: "Assess project needs, operational demands, loading criteria, site conditions, and applicable design standards before design begins.",
-  },
-  {
-    num: "2",
-    shape: "petal" as const,
-    title: "Develop optimised concepts",
-    body: "Create efficient layouts and system options focused on safety, functionality, energy performance, and constructability.",
-  },
-  {
-    num: "3",
-    shape: "triangle" as const,
-    title: "Coordinate across disciplines",
-    body: "Integrate architecture, structure, civil, and MEP so junctions, corridors, and clearances are resolved before they reach site.",
-  },
-  {
-    num: "4",
-    shape: "square" as const,
-    title: "Deliver & support execution",
-    body: "Issue tender and GFC packages, support procurement where required, and provide technical clarifications through construction and commissioning.",
-  },
-];
-
-export const tickerItems = [
-  "Architectural Drawings",
-  "Site Infrastructure",
-  "Sustainable & Energy Efficient Design",
-  "Structural Engineering",
-  "Civil Engineering",
-  "Mechanical Utility Engineering",
-  "HVAC & Refrigeration Engineering",
-  "Electrical Engineering",
-  "Fire Protection Engineering",
-  "Project Management & Procurement",
-];
-
-export const philosophy = [
-  {
-    num: "1",
-    title: "Functionality first",
-    body: "Every layout and system balances operational performance, user comfort, and day-to-day maintainability.",
-  },
-  {
-    num: "2",
-    title: "Integrated collaboration",
-    body: "Architecture, structure, civil, and MEP stay connected from concept through construction documentation.",
-  },
-  {
-    num: "3",
-    title: "Sustainable performance",
-    body: "Practical energy, daylight, and water strategies improve long-term facility performance without bloating cost.",
-  },
-];
-
-export const clients = [
-  { name: "Adani", logo: "clients/adani.svg" },
-  { name: "Metso", logo: "clients/metso.svg" },
-  { name: "Siemens", logo: "clients/siemens.svg" },
-  { name: "Voltbek", logo: "clients/voltbek.svg" },
-  { name: "Uflex", logo: "clients/uflex.svg" },
-  { name: "Cello", logo: "clients/cello.svg" },
-  { name: "Hitachi", logo: "clients/hitachi.svg" },
-  { name: "Renew", logo: "clients/renew.svg" },
-  { name: "MG", logo: "clients/mg.svg" },
-  { name: "Alstom", logo: "clients/alstom.svg" },
-  { name: "SAEL", logo: "clients/sael.svg" },
-  { name: "Wagh Bakri", logo: "clients/waghbakri.svg" },
-  { name: "Constantia", logo: "clients/constantia.svg" },
-  { name: "McCain", logo: "clients/mccain.svg" },
-  { name: "Duravit", logo: "clients/duravit.svg" },
-  { name: "Rapiscan", logo: "clients/rapiscan.svg" },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "FORMX delivered coordinated architectural and MEP packages that were genuinely construction-ready. Clash issues we usually see during execution were closed in design — which kept our tender and site sequence cleaner.",
-    name: "Project Director",
-    role: "Greenfield Manufacturing",
-    company: "Industrial Client",
-  },
-  {
-    quote:
-      "Structural, civil, and site infrastructure came through as one language. GA drawings, drainage, and utility networks were clear enough for contractors to build from without constant reinterpretation.",
-    name: "Projects Lead",
-    role: "Campus Development",
-    company: "Infrastructure Client",
-  },
-  {
-    quote:
-      "HVAC, electrical, and fire protection were planned together with architecture. Load calculations, SLDs, and fire layouts lined up — commissioning had far fewer surprises than our previous projects.",
-    name: "Plant Engineering Head",
-    role: "Process Facility",
-    company: "Manufacturing Client",
-  },
-  {
-    quote:
-      "Their project management and procurement support kept vendors, consultants, and contractors aligned. We got tender documentation, progress visibility, and technical clarifications when the site needed them.",
-    name: "Programme Manager",
-    role: "Multi-disciplinary Build",
-    company: "Commercial Client",
-  },
-];
-
-export const faqs = [
-  {
-    q: "What services does FormX provide?",
-    a: "Architectural Drawings, Site Infrastructure, Sustainable & Energy Efficient Design, Structural Engineering, Civil Engineering, Mechanical Utility Engineering, HVAC & Refrigeration Engineering, Electrical Engineering, Fire Protection Engineering, and Project Management & Procurement — delivered as precise, coordinated, construction-ready packages.",
-  },
-  {
-    q: "Do you support projects from concept through construction?",
-    a: "Yes. From understanding project requirements and site constraints through coordinated construction drawings, tender and GFC packages, and continuous design support during construction through revisions and technical clarifications.",
-  },
-  {
-    q: "How is FormX different from separate consultants?",
-    a: "Our drawings and engineering packages emphasise functionality, buildability, regulatory compliance, and seamless coordination across all engineering disciplines — so design intent bridges cleanly to on-site execution.",
-  },
-  {
-    q: "Which sectors do you typically work in?",
-    a: "Industrial, commercial, institutional, and infrastructure developments.",
-  },
-  {
-    q: "How do we start a project?",
-    a: "Share facility type, location, capacity intent, and timeline via the contact form, email, or WhatsApp. A senior lead will propose the first alignment workshop.",
-  },
-];
-
-export const careerRoles = [
-  {
-    title: "Architect — Industrial & Institutional",
-    type: "Full-time",
-    location: "Ahmedabad",
-    experience: "3–6 years",
-    blurb:
-      "Experience developing planning layouts, GA drawings, and GFC packages with strong statutory and multidisciplinary coordination.",
-    responsibilities: [
-      "Develop concept to GFC architectural packages for industrial, commercial, and institutional buildings",
-      "Coordinate with structural and MEP disciplines for clash-free documentation",
-      "Prepare floor plans, elevations, sections, schedules, and tender drawings",
-    ],
-  },
-  {
-    title: "Structural Engineer",
-    type: "Full-time",
-    location: "Ahmedabad",
-    experience: "4–8 years",
-    blurb:
-      "RCC & steel design for industrial and commercial structures, with constructability-led detailing and site support.",
-    responsibilities: [
-      "Analyse and design structures, foundations, and connections to applicable standards",
-      "Produce GA, reinforcement, and steel fabrication detailing for contractors",
-      "Provide construction-stage engineering support and value engineering reviews",
-    ],
-  },
-  {
-    title: "MEP Engineer / Coordinator",
-    type: "Full-time",
-    location: "Ahmedabad",
-    experience: "4–7 years",
-    blurb:
-      "Mechanical utilities, HVAC, electrical, or fire — with proven coordination across architecture and structure.",
-    responsibilities: [
-      "Develop utility, HVAC, electrical, or fire layouts and technical specifications",
-      "Lead corridor and junction coordination to eliminate clashes before site",
-      "Support BOQs, vendor data integration, and installation clarifications",
-    ],
-  },
-  {
-    title: "CAD / BIM Technician — Architecture / Structure / MEP",
-    type: "Full-time",
-    location: "Ahmedabad",
-    experience: "3+ years",
-    blurb:
-      "Strong drafting discipline for construction documentation across industrial and infrastructure projects.",
-    responsibilities: [
-      "Produce accurate drawings from engineer and architect direction",
-      "Maintain drawing standards, revisions, and coordinated model outputs",
-      "Support tender and GFC packages under senior guidance",
-    ],
   },
 ];
