@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { about } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -65,9 +65,8 @@ export function About() {
                 {about.title}
               </h2>
 
-              {/* Text with max 65ch line length limit for optimal readability */}
-              <p className="mt-5 max-w-[65ch] text-[15px] leading-[1.8] text-ink-muted">
-                At FORMX Consultants, we operate as an expert multi-disciplinary consultancy practice bridging complex architectural design intent with on-site construction execution across industrial, commercial, and institutional developments.
+              <p className="mt-5 max-w-[65ch] prose-measure text-[15px] leading-[1.8] text-ink-muted">
+                {about.paragraphs[0]}
               </p>
 
               {/* Authority Credentials Checklist */}

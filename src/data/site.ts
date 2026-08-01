@@ -194,18 +194,18 @@ export const careerRoles = [
 ];
 
 export const heroLines = [
-  "Precise, coordinated construction-ready design",
-  "Architecture, structure, civil & MEP under one window",
-  "Functionality, buildability & code compliance first",
-  "From concept to GFC with continuous site support",
+  "Construction-ready GFC under one window",
+  "Architecture, structure, civil & MEP coordinated",
+  "Buildability and code compliance first",
+  "From concept to site with continuous support",
 ];
 
 export const hero = {
   eyebrow: "FORMX Consultants",
   title: "Precise, coordinated, construction-ready design",
-  body: "Expert Industrial Facility Engineering & Multi-Discipline Architectural Consultancy. Delivering coordinated GFC drawings across Architecture, Structure, Civil, and MEP.",
-  primaryCta: { label: "Book a consultation", href: "/contact" },
-  secondaryCta: { label: "Explore our services", href: "/services" },
+  body: "Coordinated GFC packages across Architecture, Structure, Civil, and MEP — for industrial, commercial, and institutional facilities.",
+  primaryCta: { label: "Brief FORMX", href: "/contact" },
+  secondaryCta: { label: "View portfolio", href: "/projects" },
   trust: [
     { label: "Coordinated", hint: "All disciplines aligned" },
     { label: "Buildable", hint: "Tender & GFC packages" },
@@ -231,49 +231,49 @@ export const industriesServed = [
     id: "pharmaceuticals",
     title: "Pharmaceuticals",
     icon: "Pill",
-    description: "Cleanroom design, cGMP compliance, process utility distribution & HVAC zoning.",
+    description: "Cleanrooms, cGMP utilities, HVAC zoning.",
     slug: "pharmaceuticals",
   },
   {
     id: "food-processing",
     title: "Food Processing",
     icon: "Utensils",
-    description: "HACCP compliant layouts, cold storage systems, hygiene drainage & steam utilities.",
+    description: "Hygiene layouts, cold chain, steam utilities.",
     slug: "food-processing",
   },
   {
     id: "chemical",
     title: "Chemical",
     icon: "FlaskConical",
-    description: "Hazardous area classification, explosion-proof electricals, effluent treatment & pipe racks.",
+    description: "Hazard zoning, pipe racks, effluent systems.",
     slug: "chemical-manufacturing",
   },
   {
     id: "textile",
     title: "Textile",
     icon: "Scissors",
-    description: "High-bay weaving sheds, humidification plants, heavy floor load distribution & power centers.",
+    description: "High-bay sheds, humidification, power centers.",
     slug: "textile-apparel",
   },
   {
     id: "engineering",
     title: "Engineering",
     icon: "Wrench",
-    description: "Heavy machinery foundations, EOT crane girder design, industrial ventilation & power substations.",
+    description: "Machine foundations, EOT cranes, ventilation.",
     slug: "heavy-engineering",
   },
   {
     id: "automobile",
     title: "Automobile",
     icon: "Car",
-    description: "Assembly line logistics, paint shop utility piping, automated warehouse slabs & fire suppression.",
+    description: "Assembly logistics, paint utilities, fire safety.",
     slug: "automotive",
   },
   {
     id: "warehouses",
     title: "Warehouses & Logistics",
     icon: "Warehouse",
-    description: "Wide-span PEB sheds, FM2 high-flatness flooring, dock leveller pits & solar-ready roofing.",
+    description: "PEB spans, dock pits, solar-ready roofs.",
     slug: "industrial-park",
   },
 ];
@@ -282,9 +282,9 @@ export const about = {
   eyebrow: "About FORMX",
   title: "Bridging design intent with on-site execution",
   paragraphs: [
-    "At FORMX Consultants, we develop precise, coordinated, and construction-ready architectural drawings that bridge design intent with on-site execution. Our drawings are prepared with a strong emphasis on functionality, buildability, regulatory compliance, and seamless coordination across all engineering disciplines, ensuring efficient project delivery from concept to completion.",
+    "FORMX delivers coordinated, construction-ready packages — Architecture, Structure, Civil, and MEP — with emphasis on buildability, code compliance, and clash-free site delivery.",
   ],
-  cta: { label: "Know more", href: "/about" },
+  cta: { label: "About the practice", href: "/about" },
   legacy: "Efficient project delivery from concept to completion",
 };
 

@@ -1,14 +1,22 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { Mail, Phone, MapPin, Check } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Check,
+  MessageSquare,
+  Clock,
+  ShieldCheck,
+  Layers,
+} from "lucide-react";
 import { site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { FormMessage } from "@/components/ui/FormMessage";
 import { Reveal } from "@/components/ui/Reveal";
-import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 
 const SERVICE_OPTIONS = [
@@ -77,6 +85,7 @@ export function Contact() {
       if (!res.ok) throw new Error("failed");
       setSent(true);
       e.currentTarget.reset();
+      setSelectedServices([]);
     } catch {
       setFormError("Something went wrong. Please try again or reach us on WhatsApp.");
     } finally {
@@ -87,60 +96,19 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-32 bg-white section-y">
       <Container>
-        <div className="grid overflow-hidden border border-line lg:grid-cols-2">
-          <Reveal className="formx-cut-lg formx-edge formx-edge-lg bg-[#1a1a1a] p-5 text-white sm:p-8 md:p-12">
-            <Logo invert variant="full" />
-            <h2 className="mt-8 font-display text-3xl font-bold tracking-tight md:text-[2.15rem]">
-              Design <span className="text-x-red">|</span> Engineering
-            </h2>
-            <p className="mt-4 max-w-md text-[14px] leading-[1.7] text-white/60">
-              Share your project requirements and our team will respond with the
-              information you need to move forward.
-            </p>
-
-            <div className="mt-10 space-y-4">
-              <a
-                href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex min-w-0 items-center gap-3 break-words text-[14px] text-white/75 transition-colors hover:text-x-red"
-              >
-                <Phone className="size-4 text-x-red" />
-                {site.phone}
-              </a>
-              <a
-                href={`mailto:${site.email}`}
-                className="flex min-w-0 items-center gap-3 break-words text-[14px] text-white/75 transition-colors hover:text-x-red"
-              >
-                <Mail className="size-4 text-x-red" />
-                {site.email}
-              </a>
-              <p className="flex min-w-0 items-start gap-3 break-words text-[14px] text-white/75">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
-                {site.addressDetail}
-              </p>
-            </div>
-
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex border border-white/25 px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:border-x-red hover:text-x-red"
-            >
-              WhatsApp FormX
-            </a>
-          </Reveal>
-
-          <Reveal delay={0.08} className="formx-cut-bl border border-line bg-white p-5 sm:p-8 md:p-12">
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:items-start">
+          <Reveal className="formx-cut-x formx-edge formx-edge-x border border-line bg-white p-5 sm:p-8 md:p-10">
             <SectionHeading
               eyebrow="Send a message"
-              title="Start a conversation"
-              description="Tell us about your facility, timeline, and scope."
+              title="Brief FORMX on your facility"
+              description="Share requirements, location, and timeline. Our engineering leads respond within 24 hours."
             />
 
             {sent ? (
-              <div className="mt-10 border border-line bg-white p-6" role="status">
+              <div className="mt-10 border border-line bg-[#fafafa] p-6" role="status">
                 <p className="font-display text-lg font-bold text-ink">Thank you</p>
                 <p className="mt-2 text-sm text-ink-muted">
-                  Your enquiry has been received. A FormX lead will connect shortly.
+                  Your enquiry has been received. A FORMX lead will connect shortly.
                 </p>
                 <Button
                   type="button"
@@ -167,27 +135,25 @@ export function Contact() {
                   aria-hidden="true"
                   style={{ position: "absolute", left: "-9999px", opacity: 0 }}
                 />
-                <Field
-                  label="Full name"
-                  name="name"
-                  required
-                  error={errors.name}
-                />
-                <Field label="Company" name="company" />
-                <Field
-                  label="Email"
-                  name="email"
-                  type="email"
-                  required
-                  error={errors.email}
-                />
-                <Field
-                  label="Phone"
-                  name="phone"
-                  type="tel"
-                  error={errors.phone}
-                />
-                {/* Service interest picker */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field label="Full name" name="name" required error={errors.name} />
+                  <Field label="Company" name="company" />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field
+                    label="Email"
+                    name="email"
+                    type="email"
+                    required
+                    error={errors.email}
+                  />
+                  <Field
+                    label="Phone"
+                    name="phone"
+                    type="tel"
+                    error={errors.phone}
+                  />
+                </div>
                 <div>
                   <span className="mb-2.5 block text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
                     Services interested in
@@ -246,10 +212,105 @@ export function Contact() {
                   <FormMessage className="text-[13px]">{formError}</FormMessage>
                 ) : null}
                 <Button type="submit" variant="primary" className="mt-2" disabled={loading}>
-                  {loading ? "Sending…" : "Submit enquiry"}
+                  {loading ? "Sending…" : "Submit facility brief"}
                 </Button>
               </form>
             )}
+          </Reveal>
+
+          <Reveal delay={0.08} className="space-y-5">
+            <div className="formx-cut-lg formx-edge formx-edge-lg bg-[#141414] p-6 text-white sm:p-8">
+              <p className="font-display text-[10px] font-bold uppercase tracking-[0.24em] text-x-red">
+                Direct lead channel
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight">
+                Design <span className="text-x-red">|</span> Engineering
+              </h2>
+              <p className="mt-3 max-w-[40ch] text-[13px] leading-relaxed text-white/55">
+                Architecture, Structure, Civil &amp; MEP — one accountable window from concept to GFC.
+              </p>
+
+              <div className="mt-8 space-y-4">
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  className="flex items-center gap-3 text-[14px] text-white/80 transition-colors hover:text-x-red"
+                >
+                  <span className="flex size-9 items-center justify-center border border-white/15 bg-white/5 text-x-red">
+                    <Phone className="size-4" />
+                  </span>
+                  {site.phone}
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="flex items-center gap-3 text-[14px] text-white/80 transition-colors hover:text-x-red"
+                >
+                  <span className="flex size-9 items-center justify-center border border-white/15 bg-white/5 text-x-red">
+                    <Mail className="size-4" />
+                  </span>
+                  {site.email}
+                </a>
+                <p className="flex items-start gap-3 text-[14px] text-white/70">
+                  <span className="flex size-9 shrink-0 items-center justify-center border border-white/15 bg-white/5 text-x-red">
+                    <MapPin className="size-4" />
+                  </span>
+                  {site.addressDetail}
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-2 border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-300 transition-colors hover:bg-emerald-400/20"
+                >
+                  <MessageSquare className="size-3.5" />
+                  WhatsApp FORMX
+                </a>
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  className="inline-flex flex-1 items-center justify-center gap-2 border border-white/20 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:border-x-red hover:text-x-red"
+                >
+                  <Phone className="size-3.5 text-x-red" />
+                  Call now
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-3">
+              {[
+                {
+                  icon: Clock,
+                  title: "24-hour response SLA",
+                  body: "Engineering leads acknowledge briefs within one business day.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "IS & NBC compliant",
+                  body: "Structural and statutory packages aligned to Indian codes.",
+                },
+                {
+                  icon: Layers,
+                  title: "10 disciplines, one window",
+                  body: "Architecture through MEP delivered as a clash-free GFC set.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex gap-3 border border-line bg-[#fafafa] p-4"
+                >
+                  <item.icon className="size-5 shrink-0 text-x-red" />
+                  <div>
+                    <p className="font-display text-[12px] font-bold uppercase tracking-tight text-ink">
+                      {item.title}
+                    </p>
+                    <p className="mt-0.5 text-[12px] leading-relaxed text-ink-muted">
+                      {item.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </Container>

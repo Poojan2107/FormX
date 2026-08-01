@@ -31,20 +31,20 @@ export const metadata: Metadata = {
     template: "%s | FormX Consultants",
   },
   description:
-    "FORMX Consultants delivers precise, coordinated, construction-ready architecture, structural, civil, and MEP design for industrial, commercial, and institutional projects.",
+    "FORMX Consultants — Ahmedabad industrial design & engineering. Architecture, Structure, Civil, and MEP coordinated as construction-ready GFC packages for industrial, commercial, and institutional facilities.",
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "FormX Consultants",
     title: "FormX Consultants | Design | Engineering",
     description:
-      "Architecture, structure, civil, and MEP — coordinated packages from concept to GFC.",
+      "Architecture, structure, civil, and MEP — coordinated GFC packages from concept to site support. Ahmedabad, India.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FormX Consultants",
+    title: "FormX Consultants | Design | Engineering",
     description:
-      "Construction-ready multidisciplinary design for industrial and infrastructure projects.",
+      "Construction-ready multidisciplinary design for industrial and infrastructure projects across India.",
   },
 };
 

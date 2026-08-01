@@ -28,8 +28,8 @@ export function Stats() {
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl lg:text-5xl">
             Track Record of Industrial Scale
           </h2>
-          <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-white/50">
-            Delivering high-precision GFC packages across major industrial hubs, manufacturing complexes, and logistics developments in India.
+          <p className="mt-3 max-w-[70ch] prose-measure text-[14px] leading-relaxed text-white/50">
+            High-precision GFC packages across industrial hubs, manufacturing complexes, and logistics developments.
           </p>
         </Reveal>
 

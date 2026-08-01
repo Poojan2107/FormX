@@ -13,10 +13,13 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { Counter } from "@/components/ui/Counter";
 import { Reveal } from "@/components/ui/Reveal";
 import { BrochureCta, CtaBand } from "@/components/shared/CtaBlocks";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { ProcessSteps } from "@/components/shared/ProcessSteps";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: about.title,
+  title: "About FORMX Consultants | Multidisciplinary Design & Engineering, Ahmedabad",
+  description:
+    "FORMX Consultants delivers coordinated Architecture, Structure, Civil, and MEP packages from concept to GFC — bridging design intent with on-site execution in Ahmedabad, India.",
 };
 
 const disciplineGroups = [
@@ -63,8 +66,10 @@ export default function AboutPage() {
         image={{ slot: "about/home-about.jpg", kind: "studio" }}
       />
 
+      <ProofStrip />
+
       {/* Intro Practice Overview */}
-      <section className="bg-white py-14 md:py-18">
+      <section className="bg-white section-y">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <div className="overflow-hidden border border-line shadow-xl">
@@ -84,14 +89,14 @@ export default function AboutPage() {
             <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
               Our Identity
             </span>
-            <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl lg:text-4xl">
+            <h2 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-ink md:text-3xl lg:text-4xl">
               {about.title}
             </h2>
-            <div className="mt-5 space-y-3.5 text-[14px] leading-[1.8] text-ink-muted">
-              {about.paragraphs.map((p) => (
+            <div className="mt-5 prose-measure space-y-4 text-[14px] leading-[1.8] text-ink-muted">
+              {about.paragraphs.slice(0, 1).map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
-              {aboutPage.story.map((p) => (
+              {aboutPage.story.slice(0, 1).map((p) => (
                 <p key={p.slice(0, 28)}>{p}</p>
               ))}
             </div>
@@ -193,6 +198,8 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      <ProcessSteps />
 
       {/* Leadership & Founder Spotlight */}
       <section className="border-t border-line bg-[#fafafa] py-14 md:py-20">
@@ -354,8 +361,8 @@ export default function AboutPage() {
       </section>
 
       <CtaBand
-        title="Start a project conversation"
-        description="Share facility type, location, and timeline — senior leads will engage early."
+        title="Start a project conversation with FORMX"
+        description="Share facility type, location, and timeline — senior leads engage early on zoning, structure, and MEP corridors."
         secondary={{ label: "View projects", href: "/projects" }}
       />
     </>

@@ -40,16 +40,16 @@ export function Testimonials() {
 
       <Container className="relative">
         {/* Section label */}
-        <div className="mb-16 flex items-center gap-3">
-          <span className="h-px w-6 bg-x-red" />
+        <div className="mb-12 flex items-center gap-3 md:mb-16">
+          <span className="h-px w-8 bg-x-red" />
           <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
             Client Feedback
           </span>
         </div>
 
         {/* Large quote area */}
-        <div className="max-w-4xl">
-          <div className="mb-8" style={{ minHeight: "200px" }}>
+        <div className="max-w-3xl prose-measure-lg">
+          <div className="mb-8" style={{ minHeight: "180px" }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={item.name + index}
@@ -60,8 +60,8 @@ export function Testimonials() {
               >
                 {/* Quote mark */}
                 <div
-                  className="mb-6 font-display font-black leading-none text-x-red/25"
-                  style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
+                  className="mb-5 font-display font-black leading-none text-x-red/25"
+                  style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
                   aria-hidden
                 >
                   &ldquo;
@@ -69,7 +69,7 @@ export function Testimonials() {
 
                 <blockquote
                   className="font-display font-bold leading-[1.35] tracking-[-0.01em] text-ink"
-                  style={{ fontSize: "clamp(1.3rem, 2.5vw, 2.1rem)" }}
+                  style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.95rem)" }}
                 >
                   {item.quote}
                 </blockquote>

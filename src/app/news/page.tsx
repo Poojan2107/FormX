@@ -6,11 +6,13 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CtaBand } from "@/components/shared/CtaBlocks";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
-  title: "News & Events",
+  title: "News & Events | FORMX Consultants Practice Updates",
   description:
-    "Updates from FormX Consultants — practice news, openings, and delivery notes.",
+    "Updates from FORMX Consultants — practice news, openings, greenfield delivery notes, and engineering team announcements.",
 };
 
 export default function NewsPage() {
@@ -19,7 +21,7 @@ export default function NewsPage() {
       <PageHero
         eyebrow="Resources"
         title="News & Events"
-        description="Practice updates, delivery notes, and opportunities across the FormX team."
+        description="Practice updates, delivery notes, and opportunities across the FORMX team."
         crumbs={[
           { label: "Resources", href: "/knowledge-center" },
           { label: "News & Events" },
@@ -27,7 +29,9 @@ export default function NewsPage() {
         image={{ slot: "news/expansion.jpg", kind: "article" }}
       />
 
-      <section className="bg-white py-16 md:py-24">
+      <ProofStrip />
+
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-6 md:grid-cols-3">
             {news.map((item, i) => (
@@ -52,11 +56,11 @@ export default function NewsPage() {
                     <h2 className="mt-3 font-display text-xl font-bold text-ink group-hover:text-x-red">
                       {item.title}
                     </h2>
-                    <p className="mt-3 flex-1 text-[14px] leading-[1.7] text-ink-muted">
+                    <p className="mt-3 flex-1 text-[14px] leading-[1.7] text-ink-muted line-clamp-3">
                       {item.excerpt}
                     </p>
                     <span className="mt-5 inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red transition-transform duration-300 group-hover:translate-x-1">
-                      Read →
+                      Read update →
                     </span>
                   </div>
                 </Link>
@@ -66,7 +70,15 @@ export default function NewsPage() {
         </Container>
       </section>
 
-      <CtaBand title="Follow FormX for the next delivery note" />
+      <LeadStrip
+        title="Follow FORMX for the next delivery note"
+        subtitle="Or brief our leads directly on your greenfield or expansion mandate."
+      />
+
+      <CtaBand
+        title="Ready to start a facility conversation?"
+        secondary={{ label: "View knowledge center", href: "/knowledge-center" }}
+      />
     </>
   );
 }

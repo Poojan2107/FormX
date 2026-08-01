@@ -54,20 +54,20 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="formx-cut-x formx-edge formx-edge-x mb-8 flex flex-col gap-4 border border-line bg-white p-3 sm:p-4 md:p-5">
+      <div className="formx-cut-x formx-edge formx-edge-x mb-10 flex flex-col gap-5 border border-line bg-[#fafafa] p-4 sm:p-5 md:p-6">
         <label className="relative block">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search projects…"
-            className="w-full border border-line bg-white py-3 pl-10 pr-4 text-sm outline-none transition-colors focus:border-x-red"
+            className="w-full border border-line bg-white py-3.5 pl-11 pr-4 text-sm outline-none transition-colors focus:border-x-red"
             aria-label="Search projects"
           />
         </label>
 
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <p className="text-[12px] text-ink-muted">
+          <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
             {filtered.length} of {projects.length} projects
           </p>
           {isActive ? (
@@ -82,32 +82,42 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ) : null}
         </div>
 
-        <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by sector">
-          {sectors.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setSector(s)}
-              aria-pressed={sector === s}
-              className={chipClass(sector === s)}
-            >
-              {s}
-            </button>
-          ))}
+        <div>
+          <p className="mb-2 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+            Sector
+          </p>
+          <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by sector">
+            {sectors.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSector(s)}
+                aria-pressed={sector === s}
+                className={chipClass(sector === s)}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by service">
-          {services.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setService(s)}
-              aria-pressed={service === s}
-              className={chipClass(service === s)}
-            >
-              {s}
-            </button>
-          ))}
+        <div>
+          <p className="mb-2 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+            Service
+          </p>
+          <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by service">
+            {services.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setService(s)}
+                aria-pressed={service === s}
+                className={chipClass(service === s)}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

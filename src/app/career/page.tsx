@@ -5,11 +5,13 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/shared/CtaBlocks";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
-  title: "Career",
+  title: "Careers at FORMX | Architecture, Structure, Civil & MEP Roles",
   description:
-    "Build with FORMX — openings across architecture, structure, civil, and MEP.",
+    "Join FORMX Consultants in Ahmedabad — openings across architecture, structural engineering, civil, and MEP for construction-ready industrial delivery.",
 };
 
 export default function CareerPage() {
@@ -18,11 +20,13 @@ export default function CareerPage() {
       <PageHero
         eyebrow="Careers"
         title="Build with FORMX"
-        description="We look for professionals who value coordination, buildability, and construction-ready craft — designers and engineers who want packages that land cleanly at site."
+        description="Professionals who value coordination, buildability, and construction-ready craft — packages that land cleanly at site."
         crumbs={[{ label: "Career" }]}
       />
 
-      <section className="bg-white py-16 md:py-24">
+      <ProofStrip />
+
+      <section className="bg-white section-y">
         <Container>
           <div className="formx-cut-x formx-edge formx-edge-x mb-12 grid gap-4 border border-line bg-white p-6 md:grid-cols-3 md:p-8">
             {[
@@ -48,7 +52,7 @@ export default function CareerPage() {
                       <h2 className="font-display text-xl font-bold uppercase text-ink">
                         {role.title}
                       </h2>
-                      <p className="mt-2 text-[14px] leading-[1.65] text-ink-muted">
+                      <p className="mt-2 max-w-[70ch] text-[14px] leading-[1.65] text-ink-muted">
                         {role.blurb}
                       </p>
                       <ul className="mt-5 space-y-2">
@@ -62,7 +66,7 @@ export default function CareerPage() {
                         ))}
                       </ul>
                     </div>
-                    <div className="formx-cut-sm formx-edge formx-edge-sm flex flex-col justify-between gap-4 border border-line bg-white p-5">
+                    <div className="formx-cut-sm formx-edge formx-edge-sm flex flex-col justify-between gap-4 border border-line bg-[#fafafa] p-5">
                       <div className="space-y-2 text-[13px] text-ink-muted">
                         <p>
                           <span className="font-semibold text-ink">Type:</span>{" "}
@@ -95,7 +99,7 @@ export default function CareerPage() {
             <h3 className="font-display text-2xl font-bold uppercase">
               Open application
             </h3>
-            <p className="mt-3 max-w-2xl text-[15px] text-white/60">
+            <p className="mt-3 max-w-2xl prose-measure text-[15px] text-white/60">
               Don’t see a matching role? Send your CV to{" "}
               <a
                 href={`mailto:${site.careerEmail}`}
@@ -109,7 +113,16 @@ export default function CareerPage() {
         </Container>
       </section>
 
-      <CtaBand title="Questions about joining FormX?" primary={{ label: "Contact us", href: "/contact" }} />
+      <LeadStrip
+        title="Questions about joining FORMX?"
+        subtitle={`Email ${site.careerEmail} with your CV and preferred discipline.`}
+      />
+
+      <CtaBand
+        title="Prefer to speak with the practice first?"
+        primary={{ label: "Contact FORMX", href: "/contact" }}
+        secondary={{ label: `Email careers`, href: `mailto:${site.careerEmail}` }}
+      />
     </>
   );
 }

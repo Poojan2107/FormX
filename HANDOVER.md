@@ -33,12 +33,12 @@ Missing files render a branded placeholder automatically — no 404s. Drop the r
 | News | `careers.jpg` · `expansion.jpg` · `greenfield.jpg` |
 | Sectors | `cable.jpg` · `ev.jpg` · `food.jpg` · `packaging.jpg` |
 | Team | `partner-architecture.jpg` · `partner-structures.jpg` · `partner-mepf.jpg` · `partner-delivery.jpg` |
-| Clients | `adani.svg` · `alstom.svg` · `cello.svg` · `constantia.svg` · `duravit.svg` · `hitachi.svg` · `mccain.svg` · `metso.svg` · `mg.svg` · `rapiscan.svg` · `renew.svg` · `sael.svg` · `siemens.svg` · `uflex.svg` · `voltbek.svg` · `waghbakri.svg` |
+| Clients | `adani.svg` · `alstom.svg` · `cello.svg` · `constantia.svg` · `duravit.svg` · `hitachi.svg` · `mccain.svg` · `metso.svg` · `mg.svg` · `rapiscan.svg` · `renew.svg` · `sael.svg` · `siemens.svg` · `uflex.svg` · `voltbek.svg` · `waghbakri.svg` · **logo wall PNGs:** `kalpataru.png` · `vir-bhadra.png` · `nutan-vidhyalaya.png` · `shashwat.png` · `aviniya.png` · `lavista.png` |
 
 Already present (no action): all `projects/*`, all `services/*`, `about/*`, `insights/column-splice.jpg`, sectors `battery|data-center|industrial-park|renewable|semiconductor|solar-cell|solar-glass|wind-blade`, `team/hiren-j-shah.jpg`, `brochure/formx.pdf`.
 
 Notes:
-- Client logos are defined in `src/data/site.ts` but the `/clients` page currently shows text names. Wire a logo wall once the SVGs are provided.
+- Home + `/clients` use `ClientLogoWall` (`src/components/shared/ClientLogoWall.tsx`) with slots under `/assets/clients/*`. Until files exist, `AssetImage` shows branded placeholders / name fallback — drop PNGs/SVGs at those slots to go live.
 - Team partner photos are optional — the About "practice leads" grid is text-only today.
 
 ### Wire an image after drop-in

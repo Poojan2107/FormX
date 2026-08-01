@@ -26,8 +26,8 @@ export function Projects() {
             <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
               Featured Portfolio
             </h2>
-            <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-ink-muted">
-              Coordinated GFC packages delivered across commercial headquarters, heavy manufacturing facilities, and institutional campuses.
+            <p className="mt-3 max-w-[70ch] prose-measure text-[14px] leading-relaxed text-ink-muted">
+              Coordinated GFC packages across commercial HQ, manufacturing, and institutional campuses.
             </p>
           </div>
           <Link

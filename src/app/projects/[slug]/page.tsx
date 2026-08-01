@@ -11,9 +11,6 @@ import {
   AlertOctagon,
   Compass,
   Trophy,
-  ShieldCheck,
-  Cpu,
-  Layers,
 } from "lucide-react";
 import { getProject, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
@@ -23,6 +20,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -34,7 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return { title: project.client, description: project.title };
+  return {
+    title: `${project.client} | ${project.sector} Project | FORMX`,
+    description: project.title,
+  };
 }
 
 const metaIcons = {
@@ -80,6 +81,8 @@ export default async function ProjectDetailPage({ params }: Props) {
         ]}
       />
 
+      <ProofStrip />
+
       {/* Key Specs Grid */}
       <section className="bg-white pt-8">
         <Container>
@@ -107,32 +110,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Engineering Blueprint Specs Ribbon */}
-      <div className="mt-8 border-y border-white/10 bg-[#0d0d0d] py-6 text-white">
-        <Container className="flex flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              IS 1893 / IS 13920 Code Compliant
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Cpu className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              Zero-Clash BIM Package
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Layers className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              100% On-Site Constructability
-            </span>
-          </div>
-        </Container>
-      </div>
+      {/* Engineering Blueprint Specs Ribbon — removed in favor of ProofStrip */}
 
       {/* Visual Case Study Cards — Challenge / Approach / Outcome */}
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-white section-y">
         <Container>
           <div className="grid gap-6 lg:grid-cols-3 lg:gap-8 items-stretch">
             {/* Challenge Card */}
@@ -266,7 +247,11 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       <RelatedLinks title="Related projects" items={relatedItems} />
-      <CtaBand title="Plan your next facility with FormX" />
+      <CtaBand
+        title="Plan your next facility with FORMX"
+        description="Share a similar brief — our leads coordinate Architecture, Structure, Civil & MEP as one GFC package."
+        secondary={{ label: "All projects", href: "/projects" }}
+      />
       <StickyEnquire label="Enquire about this project type" />
     </>
   );

@@ -11,19 +11,27 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 
 ## 关键设计决策
 
-1. **品牌令牌**：`x-red` `#de3024`、`x-desat`、`formx-cut-x formx-edge`、`section-y`、`x-lift`、`font-display`（Chakra Petch）、`ink`/`ink-muted`。
+1. **品牌令牌**：`x-red` `#de3024`、`x-desat`、`formx-cut-x formx-edge`、`section-y`、`x-lift`、`font-display`（Chakra Petch）、`ink`/`ink-muted`、`prose-measure`（70ch）/`prose-measure-lg`（80ch）。
 2. **视图过渡**：`experimental.viewTransition` + `<ViewTransition>`（`nav-forward`/`nav-back` 方向映射），header/footer 锚定，reduced-motion 关闭。
 3. **表单反馈**：`FormMessage`（`role=alert`/`role=status` 活动区域）+ `aria-invalid`/`aria-describedby`/`aria-busy`，提交后聚焦首个非法字段。
 4. **结构化数据**：Organization 站点级；BreadcrumbList 由 PageHero 统一输出；Article（知识中心/新闻）、Service（服务）、FAQPage（仅 `/contact`）。
 5. **SEO/韧性**：品牌化 error/global-error、动态 OG 卡片、`metadataBase`、viewport。
+6. **信任 / 转化条带**：`ProofStrip`（凭证栏）、`LeadStrip`（中页线索）、`ProcessSteps`（01–04 交付流程，可传自定义 steps）、`ClientLogoWall`（`/assets/clients/*` 槽位 + 文案回退）、强化版 `CtaBand`（电话 + WhatsApp）。
+7. **内页配方**：PageHero → ProofStrip → section-y 正文 → ProcessSteps（适用时）→ LeadStrip（可选）→ CtaBand；详情页保留 StickyEnquire。
 
 ## 已知限制
 
 - **无测试框架**：仓库无 test script（package.json 无 jest/vitest）。变更闸门的测试警告暂以本记录说明，未引入测试基建。
 - 数据文案行较长（`data/content.ts` 等为内容数据，质量检查器仅提示 ℹ 级别，非阻断）。
-- 所有资源为占位/示例资产，正式事实待移交填充。
+- 所有资源为占位/示例资产，正式事实待移交填充；客户 logo SVG 见 `HANDOVER.md`。
 
 ## 变更历史
+
+### [2026-08-01] — Waves 3–6 Premium Polish
+
+**变更内容**: 全站 listing/detail 接入 ProofStrip/LeadStrip/ProcessSteps；Contact 拆分为表单 + 权威侧栏；ClientLogoWall 用于首页与 `/clients`；统一详情页节奏与 SEO metadata；首页文案收紧；DESIGN 同步共享条带组件。
+**变更理由**: website comment.docx 要求权威感、证明、线索与更少文字密度；完成 Premium Polish 剩余波次。
+**影响范围**: `src/app/**/page.tsx`、`src/components/shared/{ProofStrip,LeadStrip,ProcessSteps,ClientLogoWall,CtaBlocks}.tsx`、`src/components/home/{Hero,About,Contact,Sectors,Stats,Projects}.tsx`、`src/data/site.ts`、`src/app/layout.tsx`、`src/DESIGN.md`。
 
 ### [2026-07-31] — 批量 B：详情页视觉统一
 

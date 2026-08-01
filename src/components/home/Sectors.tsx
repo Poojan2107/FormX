@@ -42,8 +42,8 @@ export function Sectors() {
             <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
               Specialized Engineering Across Key Sectors
             </h2>
-            <p className="mt-3 max-w-[70ch] text-[14px] leading-relaxed text-ink-muted">
-              Deep technical domain expertise in industrial process plants, heavy engineering facilities, pharmaceutical cleanrooms, and logistics hubs.
+            <p className="mt-3 max-w-[70ch] prose-measure text-[14px] leading-relaxed text-ink-muted">
+              Domain expertise for process plants, heavy engineering, cleanrooms, and logistics hubs.
             </p>
           </div>
 

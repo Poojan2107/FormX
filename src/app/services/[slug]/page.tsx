@@ -20,6 +20,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
 import { ProofStrip } from "@/components/shared/ProofStrip";
+import { ProcessSteps } from "@/components/shared/ProcessSteps";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,7 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return { title: `${service.title} Services | FORMX`, description: service.short };
+  return {
+    title: `${service.title} | FORMX Industrial Design Consultants India`,
+    description: service.short,
+  };
 }
 
 const categoryLabels: Record<string, string> = {
@@ -213,12 +217,24 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       </section>
 
+      <ProcessSteps
+        eyebrow={`${service.title} Delivery`}
+        title="Discipline workflow — brief to GFC"
+        description="How FORMX sequences this service within the coordinated multidisciplinary package."
+        steps={service.process.map((step, i) => ({
+          num: String(i + 1).padStart(2, "0"),
+          title: `Phase ${String(i + 1).padStart(2, "0")}`,
+          body: step,
+        }))}
+      />
+
       {sectorLinks.length ? (
         <RelatedLinks title="Relevant sectors" items={sectorLinks} />
       ) : null}
       <RelatedLinks title="Related services" items={others} />
       <CtaBand
         title={`Engage FORMX for ${service.title.toLowerCase()}`}
+        description="Share site constraints and capacity targets — our leads scope Architecture through MEP as one accountable window."
         secondary={{ label: "All services", href: "/services" }}
       />
       <StickyEnquire label={`Discuss ${service.title}`} />

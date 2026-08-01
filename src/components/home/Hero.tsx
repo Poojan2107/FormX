@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, MapPin, ShieldCheck } from "lucide-react";
-import { heroLines, site } from "@/data/site";
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { heroLines, hero } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { DrawingLineAnimation } from "@/components/ui/DrawingLineAnimation";
@@ -134,10 +134,6 @@ export function Hero() {
               <span className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
                 FORMX Consultants · Ahmedabad, India
               </span>
-              <span className="inline-flex items-center gap-1.5 border border-white/20 bg-white/10 px-2.5 py-0.5 font-display text-[9px] font-bold uppercase tracking-[0.16em] text-white/80 backdrop-blur-sm">
-                <ShieldCheck className="size-3 text-x-red" />
-                IS Code &amp; NBC Compliant
-              </span>
             </motion.div>
 
             {/* Headline — animated cycling */}
@@ -157,14 +153,13 @@ export function Hero() {
               </AnimatePresence>
             </div>
 
-            {/* Sub-headline with max-w-[65ch] limit for optimum reading length */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-8 max-w-[65ch] text-[15px] leading-[1.8] text-white/70 md:text-[16px]"
+              className="mb-8 max-w-[65ch] prose-measure text-[15px] leading-[1.75] text-white/70 md:text-[16px]"
             >
-              Expert Industrial Engineering &amp; Architectural Consultancy. Delivering coordinated GFC drawings across Architecture, Structure, Civil, and MEP as one construction-ready package.
+              {hero.body}
             </motion.p>
 
             {/* CTAs */}
@@ -175,19 +170,19 @@ export function Hero() {
               className="flex flex-wrap items-center gap-3"
             >
               <Link
-                href="/contact"
+                href={hero.primaryCta.href}
                 transitionTypes={["nav-forward"]}
                 className="group inline-flex items-center gap-2.5 bg-x-red px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_8px_28px_rgba(222,48,36,0.4)] transition-all duration-300 hover:bg-x-red-hover hover:shadow-[0_12px_36px_rgba(222,48,36,0.5)] hover:-translate-y-0.5"
               >
-                Enquire Now
+                {hero.primaryCta.label}
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/projects"
+                href={hero.secondaryCta.href}
                 transitionTypes={["nav-forward"]}
                 className="inline-flex items-center gap-2 border border-white/25 px-7 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:text-white"
               >
-                View Portfolio
+                {hero.secondaryCta.label}
                 <ArrowUpRight className="size-4" />
               </Link>
             </motion.div>

@@ -36,7 +36,7 @@ export function Services() {
           <SectionHeading
             eyebrow="Multidisciplinary Practice"
             title="Complete solutions in engineering & architecture"
-            description="In-house coordination across 10 specialized disciplines — delivered as one accountable construction-ready package."
+            description="10 disciplines coordinated as one GFC-ready package."
           />
           <Link
             href="/services"

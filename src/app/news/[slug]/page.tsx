@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ArticleJsonLd } from "@/components/shared/JsonLd";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -20,7 +21,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = getNews(slug);
   if (!item) return {};
-  return { title: item.title, description: item.excerpt };
+  return {
+    title: `${item.title} | FORMX News`,
+    description: item.excerpt,
+  };
 }
 
 export default async function NewsDetailPage({ params }: Props) {
@@ -47,7 +51,8 @@ export default async function NewsDetailPage({ params }: Props) {
           { label: item.title },
         ]}
       />
-      <section className="bg-white py-14 md:py-20">
+      <ProofStrip />
+      <section className="bg-white section-y">
         <Container className="max-w-3xl">
           <Reveal>
             <AssetImage
@@ -59,7 +64,7 @@ export default async function NewsDetailPage({ params }: Props) {
               label="News"
               className="mb-10"
             />
-            <div className="space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
+            <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {item.body.map((p) => (
                 <p key={p.slice(0, 36)}>{p}</p>
               ))}
@@ -85,7 +90,10 @@ export default async function NewsDetailPage({ params }: Props) {
           </Reveal>
         </Container>
       </section>
-      <CtaBand title="Connect with FormX" />
+      <CtaBand
+        title="Connect with FORMX on your next facility"
+        secondary={{ label: "All news", href: "/news" }}
+      />
       <StickyEnquire label="Talk to FormX about your facility" />
     </>
   );

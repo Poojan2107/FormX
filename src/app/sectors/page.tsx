@@ -7,11 +7,13 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
-  title: "Sectors",
+  title: "Industrial Sectors We Serve | FORMX Design Consultants India",
   description:
-    "FormX sector expertise across renewable energy, manufacturing, logistics, and infrastructure.",
+    "FORMX sector expertise across pharmaceuticals, food processing, chemicals, textiles, engineering, automobile, warehouses, and renewable manufacturing.",
 };
 
 export default function SectorsPage() {
@@ -20,25 +22,24 @@ export default function SectorsPage() {
       <PageHero
         eyebrow="Sectors"
         title="Industries we serve"
-        description="As industrial design consultants, we deliver integrated solutions across renewable energy, advanced manufacturing, logistics, and infrastructure."
+        description="Deep technical domain expertise for industrial process plants, heavy engineering facilities, and logistics hubs."
         crumbs={[{ label: "Sectors" }]}
         image={{ slot: "sectors/renewable.jpg", kind: "sector" }}
       />
 
+      <ProofStrip />
+
       <section className="bg-white section-y">
         <Container>
           <Reveal className="mb-10 flex items-end justify-between gap-6">
-            <div>
+            <div className="prose-measure">
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-6 bg-x-red" />
                 <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
                   Sector Expertise
                 </span>
               </div>
-              <h2
-                className="font-display font-extrabold leading-[1.1] tracking-[-0.02em] text-ink"
-                style={{ fontSize: "clamp(1.6rem, 3vw, 2.8rem)" }}
-              >
+              <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
                 Pick your facility type
               </h2>
             </div>
@@ -77,7 +78,7 @@ export default function SectorsPage() {
                     <h2 className="font-display text-xl font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
                       {sector.title}
                     </h2>
-                    <p className="mt-2 text-[13px] leading-[1.7] text-white/60 line-clamp-2">
+                    <p className="mt-2 text-[13px] leading-[1.7] text-white/60 line-clamp-1">
                       {sector.summary}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
@@ -92,7 +93,16 @@ export default function SectorsPage() {
         </Container>
       </section>
 
-      <CtaBand title="Looking for a sector-specific briefing?" />
+      <LeadStrip
+        title="Discuss this sector mandate with FORMX"
+        subtitle="Share process loads, cleanroom class, crane capacity, or logistics throughput — we scope Architecture through MEP as one package."
+      />
+
+      <CtaBand
+        title="Looking for a sector-specific briefing?"
+        description="Engage early for zoning, structural grids, and utility corridors tuned to your industry."
+        secondary={{ label: "View portfolio", href: "/projects" }}
+      />
     </>
   );
 }

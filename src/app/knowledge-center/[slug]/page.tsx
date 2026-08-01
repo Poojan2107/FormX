@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { RelatedLinks, CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ArticleJsonLd } from "@/components/shared/JsonLd";
+import { ProofStrip } from "@/components/shared/ProofStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,7 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlog(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: `${post.title} | FORMX Knowledge Center`,
+    description: post.excerpt,
+  };
 }
 
 export default async function BlogDetailPage({ params }: Props) {
@@ -67,7 +71,9 @@ export default async function BlogDetailPage({ params }: Props) {
         ]}
       />
 
-      <section className="bg-white py-14 md:py-20">
+      <ProofStrip />
+
+      <section className="bg-white section-y">
         <Container className="max-w-3xl">
           <Reveal>
             <AssetImage
@@ -82,7 +88,7 @@ export default async function BlogDetailPage({ params }: Props) {
             />
 
             {/* Main body */}
-            <div className="space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
+            <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {post.body.map((para) => (
                 <p key={para.slice(0, 40)}>{para}</p>
               ))}
@@ -138,7 +144,11 @@ export default async function BlogDetailPage({ params }: Props) {
       </section>
 
       <RelatedLinks title="More insights" items={related} />
-      <CtaBand title="Discuss your facility brief with FormX" />
+      <CtaBand
+        title="Discuss your facility brief with FORMX"
+        description="Share site constraints and capacity targets — coordinated Architecture through MEP."
+        secondary={{ label: "More insights", href: "/knowledge-center" }}
+      />
       <StickyEnquire label="Discuss this insight with FormX" />
     </>
   );

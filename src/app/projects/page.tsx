@@ -4,11 +4,13 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
-  title: "Our Projects",
+  title: "Industrial & Infrastructure Projects | FORMX Portfolio",
   description:
-    "Explore FormX industrial and infrastructure project experience. Filter by sector and service.",
+    "Explore FORMX industrial and infrastructure project experience across commercial HQ, manufacturing, PEB warehouses, and institutional campuses. Filter by sector and service.",
 };
 
 export default function ProjectsPage() {
@@ -22,13 +24,24 @@ export default function ProjectsPage() {
         image={{ slot: "projects/kalpataru-corporate-house.jpg", kind: "facility" }}
       />
 
+      <ProofStrip />
+
       <section className="bg-white section-y">
         <Container>
           <ProjectsExplorer projects={projects} />
         </Container>
       </section>
 
-      <CtaBand title="Have a similar facility brief?" />
+      <LeadStrip
+        title="Have a similar facility brief?"
+        subtitle="Share site constraints, capacity targets, and preferred structural system — our leads respond with coordinated scope guidance."
+      />
+
+      <CtaBand
+        title="Brief FORMX on your next facility mandate"
+        description="Architecture, Structure, Civil & MEP — coordinated GFC packages from concept to site support."
+        secondary={{ label: "View all services", href: "/services" }}
+      />
     </>
   );
 }

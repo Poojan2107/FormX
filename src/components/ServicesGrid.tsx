@@ -87,7 +87,7 @@ export function ServicesGrid() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25 }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3"
         >
           {filtered.map((service, i) => (
             <Link
@@ -97,7 +97,7 @@ export function ServicesGrid() {
               className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_16px_36px_rgba(222,48,36,0.1)]"
             >
               {/* Full-bleed media panel */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line/60 bg-[#141414]">
+              <div className="relative aspect-[16/11] w-full overflow-hidden border-b border-line/60 bg-[#141414]">
                 <AssetImage
                   alt={service.title}
                   slot={service.asset}
@@ -122,9 +122,9 @@ export function ServicesGrid() {
               </div>
 
               {/* Content Body */}
-              <div className="flex flex-1 flex-col justify-between p-6">
+              <div className="flex flex-1 flex-col justify-between p-6 md:p-7">
                 <div>
-                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
+                  <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red md:text-xl">
                     {service.title}
                   </h3>
                   <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted line-clamp-2">

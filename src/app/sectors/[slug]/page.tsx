@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Layers } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { getSector, getService, sectors, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +10,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,7 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const sector = getSector(slug);
   if (!sector) return {};
-  return { title: sector.title, description: sector.summary };
+  return {
+    title: `${sector.title} | Industrial Design Consultants India | FORMX`,
+    description: sector.summary,
+  };
 }
 
 export default async function SectorDetailPage({ params }: Props) {
@@ -67,32 +72,10 @@ export default async function SectorDetailPage({ params }: Props) {
         ]}
       />
 
-      {/* Engineering Blueprint Specs Ribbon */}
-      <div className="border-b border-white/10 bg-[#0d0d0d] py-6 text-white">
-        <Container className="flex flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              High-Utility Density Zoning
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Cpu className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              IS Code Compliant Facility Structural Design
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Layers className="size-5 text-x-red" />
-            <span className="font-display text-xs font-bold uppercase tracking-wider">
-              Zero-Interference MEP Coordination
-            </span>
-          </div>
-        </Container>
-      </div>
+      <ProofStrip />
 
       {/* Main Visual Grid Content */}
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-white section-y">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <Reveal>
             {/* Sector Challenges */}
@@ -185,7 +168,16 @@ export default async function SectorDetailPage({ params }: Props) {
       <RelatedLinks title="Related services" items={serviceLinks} />
       <RelatedLinks title="Related projects" items={relatedProjects} />
 
-      <CtaBand title={`Build your ${sector.title.toLowerCase()} facility with FormX`} />
+      <LeadStrip
+        title={`Discuss this ${sector.title.toLowerCase()} mandate`}
+        subtitle="Share process loads, cleanroom class, crane capacity, or logistics throughput — we scope Architecture through MEP as one package."
+      />
+
+      <CtaBand
+        title={`Build your ${sector.title.toLowerCase()} facility with FORMX`}
+        description="Coordinated GFC packages — Architecture, Structure, Civil & MEP under one window."
+        secondary={{ label: "View related projects", href: "/projects" }}
+      />
       <StickyEnquire label={`Talk ${sector.title}`} />
     </>
   );

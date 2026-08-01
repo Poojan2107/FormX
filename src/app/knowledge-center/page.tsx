@@ -7,11 +7,13 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { CtaBand } from "@/components/shared/CtaBlocks";
+import { ProofStrip } from "@/components/shared/ProofStrip";
+import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
-  title: "Knowledge Center | Insights by Hiren J. Shah",
+  title: "Knowledge Center | Industrial Design Insights by FORMX",
   description:
-    "Industrial facility planning insights, utility coordination, and design perspectives by Hiren J. Shah, Founder & Managing Director at FormX Consultants.",
+    "Industrial facility planning insights, utility coordination, and GFC delivery perspectives by Hiren J. Shah, Founder & Managing Director at FORMX Consultants.",
 };
 
 export default function KnowledgeCenterPage() {
@@ -20,14 +22,15 @@ export default function KnowledgeCenterPage() {
       <PageHero
         eyebrow="Resources"
         title="Knowledge Center"
-        description="Practical writing and industrial facility perspectives for promoters, project directors, and engineering teams."
+        description="Practical industrial facility perspectives for promoters, project directors, and engineering teams."
         crumbs={[{ label: "Knowledge Center" }]}
         image={{ slot: "insights/policy.jpg", kind: "article" }}
       />
 
-      <section className="bg-white py-14 md:py-20">
+      <ProofStrip />
+
+      <section className="bg-white section-y">
         <Container>
-          {/* Author Feature Banner */}
           <Reveal>
             <div className="formx-cut-x formx-edge formx-edge-x mb-12 border border-line bg-[#1a1a1a] p-6 text-white md:p-8">
               <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -63,7 +66,6 @@ export default function KnowledgeCenterPage() {
             </div>
           </Reveal>
 
-          {/* Blog posts grid */}
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((post, i) => (
               <Reveal key={post.slug} delay={0.03 * (i % 3)}>
@@ -93,7 +95,7 @@ export default function KnowledgeCenterPage() {
                     <h2 className="font-display text-base font-bold text-ink group-hover:text-x-red md:text-lg">
                       {post.title}
                     </h2>
-                    <p className="mt-2 flex-1 text-[13px] leading-[1.65] text-ink-muted">
+                    <p className="mt-2 flex-1 text-[13px] leading-[1.65] text-ink-muted line-clamp-3">
                       {post.excerpt}
                     </p>
                     <span className="mt-5 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red">
@@ -109,7 +111,7 @@ export default function KnowledgeCenterPage() {
             <h3 className="font-display text-2xl font-bold uppercase text-ink">
               Subscribe for delivery notes
             </h3>
-            <p className="mt-2 mb-6 max-w-xl text-sm text-ink-muted">
+            <p className="mt-2 mb-6 max-w-xl prose-measure text-sm text-ink-muted">
               Occasional insights on industrial planning — no noise.
             </p>
             <div className="max-w-md">
@@ -119,7 +121,15 @@ export default function KnowledgeCenterPage() {
         </Container>
       </section>
 
-      <CtaBand title="Need a tailored facility briefing?" />
+      <LeadStrip
+        title="Need a tailored facility briefing?"
+        subtitle="Share your site, capacity, and timeline — FORMX leads respond with coordinated multidisciplinary scope."
+      />
+
+      <CtaBand
+        title="Brief FORMX on your next industrial mandate"
+        secondary={{ label: "Explore services", href: "/services" }}
+      />
     </>
   );
 }
