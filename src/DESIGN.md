@@ -48,3 +48,9 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 **变更内容**: 运行 verify-quality（通过，0 错误/0 警告）与 verify-change；按闸门要求补齐本 DESIGN.md 文档同步；测试覆盖因仓库无测试框架而记录留待决策。
 **变更理由**: CCG 质量闸门要求变更留痕与文档同步。
 **影响范围**: 文档层面。
+
+### [2026-08-01] — 收尾：资产审计、表单投递、性能清理
+
+**变更内容**: (1) 资产槽位审计——91 个引用槽位核对出 31 个缺失，缺省文件以占位图兜底，缺失清单写入 `HANDOVER.md` 供客户按槽位投放；(2) 表单投递打通——新增 `src/lib/email.ts`（Resend REST，零新增依赖，`RESEND_API_KEY` 未配置时回退服务端日志并仍返回成功），contact/newsletter/vendor-registration 三个 route 改为真实邮件投递 + `reply_to` 指向提交者 + HTML 转义，三个客户端表单增加 honeypot 反垃圾字段；(3) 性能清理——删除未引用的临时文件（`PROJECT DETAILS.pptx/pdf`、根目录散落 PDF/JPG、`projects_real/`、`extracted-docx-images/`），用 sharp 压缩 14 张超大项目图（共省 41.19MB，9.27MB→0.25MB）；(4) 新增 `.env.example` 并在 `.gitignore` 放行。
+**变更理由**: 达成"客户端只需提供资产"的交付边界——功能、投递、质量、文档全部闭环。
+**影响范围**: `src/lib/email.ts`、`src/app/api/{contact,newsletter,vendor-registration}/route.ts`、`src/components/{home/Contact,forms/VendorForm,shared/NewsletterForm}.tsx`、`public/assets/projects/*`、`.env.example`、`.gitignore`、`HANDOVER.md`。

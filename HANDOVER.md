@@ -68,12 +68,20 @@ Edit `src/data/site.ts`, `projects.ts`, `services.ts`, `sectors.ts`, `content.ts
 
 ## 3. Wire production services
 
+Forms are fully implemented and delivery-ready. The only remaining action is providing a Resend API key — see `.env.example`.
+
 | Feature | Current | Production |
 |---------|---------|------------|
-| Contact form | `POST /api/contact` logs payload | Resend / SMTP / CRM |
-| Newsletter | `POST /api/newsletter` logs email | Email provider |
+| Contact form | `POST /api/contact` → `src/lib/email.ts` (Resend) | Add `RESEND_API_KEY` + verify sender domain |
+| Newsletter | `POST /api/newsletter` → email notification | Add `RESEND_API_KEY` |
+| Vendor registration | `POST /api/vendor-registration` → email notification | Add `RESEND_API_KEY` |
 | Brochure | Link to `/brochure/formx.pdf` | Drop real PDF |
 | WhatsApp | Uses `site.whatsapp` | Confirm number |
+
+Env vars (copy `.env.example` → `.env.local`):
+- `RESEND_API_KEY` — required for live delivery; without it forms log payloads server-side and still return success (safe in dev).
+- `RESEND_FROM_EMAIL` — verified Resend sender, e.g. `"FormX Consultants <contact@formxconsultants.com>"`.
+- `CONTACT_EMAIL` — delivery inbox (defaults to `contact@formxconsultants.com`).
 
 ---
 
