@@ -33,10 +33,10 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Masterpiece Editorial Split Showcase — Seamless Uncropped Asset Display */}
+        {/* Masterpiece Big Image Stage + Captioned Scope Details */}
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-8 items-stretch">
 
-          {/* LEFT: Side-by-Side Editorial Stage (Full Uncropped Image + Scope Details) */}
+          {/* LEFT: Big Image Stage & Full Captioned Scope Body */}
           <Reveal className="w-full h-full min-w-0">
             <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl min-w-0">
               <AnimatePresence mode="wait">
@@ -46,55 +46,63 @@ export function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex h-full flex-col md:flex-row min-w-0 w-full"
+                  className="flex flex-col h-full justify-between"
                 >
-                  {/* Left Column: Full-Bleed Image Panel */}
-                  <div className="relative w-full md:w-[46%] min-h-[320px] md:min-h-[460px] overflow-hidden border-b md:border-b-0 md:border-r border-line shrink-0">
+                  {/* Top: Big Full-Bleed Landscape Image Panel */}
+                  <div className="relative w-full h-[280px] sm:h-[340px] md:h-[380px] overflow-hidden bg-[#111111] border-b border-line shrink-0">
                     <AssetImage
                       alt={currentService.title}
                       slot={currentService.asset}
                       kind="service"
                       aspect="landscape"
                       fit="cover"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      tone="dark"
+                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                     />
-                    {/* Bottom gradient so badge reads against any photo */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                    {/* Gradient overlay for clear badge contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
                     <div className="absolute left-4 top-4 flex items-center gap-2 z-10">
                       <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
                         Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
                       </span>
                     </div>
+
+                    <div className="absolute bottom-4 left-4 right-4 z-10 hidden sm:block">
+                      <span className="inline-block border border-white/20 bg-black/60 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+                        Coordinated Engineering Package
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Right Column: Scope Details Body — min-w-0 and break-words ensure text never clips */}
-                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white min-w-0 overflow-hidden">
+                  {/* Bottom: Captioned Scope Body */}
+                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white min-w-0">
                     <div className="min-w-0">
-                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
                         FormX Scope Package
                       </span>
-                      <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl break-words">
+                      <h3 className="mt-1.5 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
                         {currentService.title}
                       </h3>
-                      <p className="mt-3 text-[13px] leading-[1.75] text-ink-muted md:text-[14px] break-words">
+                      <p className="mt-3 text-[14px] leading-[1.8] text-ink-muted md:text-[15px]">
                         {currentService.summary}
                       </p>
 
-                      <div className="mt-5 space-y-2 border-t border-line/60 pt-4 min-w-0">
+                      <div className="mt-6 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-5 min-w-0">
                         {currentService.highlights.slice(0, 4).map((h) => (
                           <div key={h} className="flex items-start gap-2.5 text-[12px] font-semibold text-ink min-w-0">
                             <Check className="size-3.5 text-x-red shrink-0 mt-0.5" />
-                            <span className="break-words leading-snug">{h}</span>
+                            <span className="leading-snug">{h}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="mt-8 pt-4 border-t border-line min-w-0">
+                    <div className="mt-8 pt-5 border-t border-line min-w-0">
                       <Link
                         href={`/services/${currentService.slug}`}
                         transitionTypes={["nav-forward"]}
-                        className="inline-flex w-full items-center justify-center gap-2.5 border border-x-red bg-x-red px-5 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink"
+                        className="inline-flex items-center justify-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink w-full sm:w-auto"
                       >
                         Explore Full Service Scope
                         <ArrowUpRight className="size-4 shrink-0" />
