@@ -27,6 +27,9 @@ export function AssetImage({
   className,
   priority = false,
   fit = "cover",
+  objectPosition = "center",
+  sizes = "(max-width: 768px) 100vw, (max-width: 1280px) 70vw, 1200px",
+  zoomOnHover = false,
 }: {
   src?: string | null;
   alt: string;
@@ -39,6 +42,9 @@ export function AssetImage({
   className?: string;
   priority?: boolean;
   fit?: "cover" | "contain";
+  objectPosition?: string;
+  sizes?: string;
+  zoomOnHover?: boolean;
 }) {
   const resolved = src ?? (slot ? `/assets/${slot}` : null);
   const [failed, setFailed] = useState(false);
@@ -52,13 +58,20 @@ export function AssetImage({
     auto: "",
   };
 
+  // Fill parents (absolute inset-0) must not also force an aspect box — that crops/blurs.
+  const isFill =
+    typeof className === "string" &&
+    className.includes("absolute") &&
+    className.includes("inset-0");
+
   if (resolved && !failed) {
     return (
       <div
         className={cn(
-          "relative overflow-hidden w-full h-full",
+          "relative overflow-hidden",
+          !isFill && "h-full w-full",
           tone === "dark" ? "bg-[#111111]" : "bg-white",
-          aspects[aspect],
+          !isFill && aspects[aspect],
           className,
         )}
       >
@@ -82,16 +95,19 @@ export function AssetImage({
           priority={priority}
           unoptimized
           onLoad={() => setLoaded(true)}
+          sizes={sizes}
           className={cn(
-            "w-full h-full transition-[opacity,transform] duration-700 hover:scale-105",
-            fit === "contain" ? "object-contain" : "object-cover object-center",
+            "h-full w-full transition-opacity duration-500",
+            fit === "contain" ? "object-contain" : "object-cover",
+            zoomOnHover &&
+              "transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03]",
             loaded ? "opacity-100" : "opacity-0",
           )}
-          sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectPosition }}
           onError={() => setFailed(true)}
         />
         {label ? (
-          <span className="absolute left-3 top-3 border border-white/20 bg-black/80 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md z-10">
+          <span className="absolute left-3 top-3 z-10 border border-white/20 bg-black/80 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
             {label}
           </span>
         ) : null}

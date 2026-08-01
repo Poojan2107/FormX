@@ -39,29 +39,32 @@ export default function NewsPage() {
                 <Link
                   href={`/news/${item.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="group relative block min-h-[340px] overflow-hidden bg-[#111]"
+                  className="group flex h-full flex-col overflow-hidden bg-[#111]"
                 >
-                  <AssetImage
-                    alt={item.title}
-                    slot={item.asset}
-                    kind="article"
-                    tone="dark"
-                    fit="cover"
-                    aspect="landscape"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
-                  <span className="absolute left-3 top-3 z-10 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
-                    News
-                  </span>
-                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <AssetImage
+                      alt={item.title}
+                      slot={item.asset}
+                      kind="article"
+                      tone="dark"
+                      fit="cover"
+                      aspect="auto"
+                      zoomOnHover
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="absolute inset-0 h-full w-full"
+                    />
+                    <span className="absolute left-3 top-3 z-10 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+                      News
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-5 md:p-6">
                     <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
                       {item.date}
                     </p>
                     <h2 className="mt-2 font-display text-xl font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
                       {item.title}
                     </h2>
-                    <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-white/60">
+                    <p className="mt-2 line-clamp-2 flex-1 text-[13px] leading-relaxed text-white/55">
                       {item.excerpt}
                     </p>
                     <span className="mt-4 inline-block font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">

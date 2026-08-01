@@ -20,10 +20,10 @@ export function Sectors() {
                 Industries Served
               </span>
             </div>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
-              Specialized Engineering Across Key Sectors
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+              Specialized engineering across key sectors
             </h2>
-            <p className="mt-2 max-w-[60ch] text-[14px] leading-relaxed text-ink-muted">
+            <p className="mt-2 max-w-[58ch] text-[14px] leading-relaxed text-ink-muted">
               Domain expertise for process plants, heavy engineering, cleanrooms, and logistics hubs.
             </p>
           </div>
@@ -31,14 +31,13 @@ export function Sectors() {
           <Link
             href="/sectors"
             transitionTypes={["nav-forward"]}
-            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-all hover:translate-x-1"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-transform hover:translate-x-1"
           >
             Explore All Sectors <ArrowRight className="size-4" />
           </Link>
         </Reveal>
 
-        {/* 3 + 4 image mosaic — no orphan gap */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-12">
           {industriesServed.map((item, i) => {
             const topRow = i < 3;
             return (
@@ -50,20 +49,23 @@ export function Sectors() {
                 <Link
                   href={`/sectors/${item.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="group relative block aspect-[5/4] overflow-hidden bg-[#111] lg:aspect-[4/3]"
+                  className="group relative block aspect-[16/11] overflow-hidden bg-[#111] lg:aspect-[5/4]"
                 >
                   <AssetImage
                     alt={item.title}
                     slot={item.asset}
                     kind="sector"
-                    aspect="landscape"
+                    aspect="auto"
                     fit="cover"
+                    objectPosition="center"
                     tone="dark"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    zoomOnHover
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    className="absolute inset-0 h-full w-full"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity group-hover:from-black/90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
 
-                  <span className="absolute left-3 top-3 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.16em] text-white">
+                  <span className="absolute left-3 top-3 font-display text-[10px] font-bold text-x-red">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -71,9 +73,11 @@ export function Sectors() {
                     <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-white transition-colors group-hover:text-x-red md:text-lg">
                       {item.title}
                     </h3>
-                    <p className="mt-1 line-clamp-1 text-[12px] text-white/60">{item.description}</p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
-                      View Practice Scope
+                    <p className="mt-1 line-clamp-2 text-[12px] leading-snug text-white/55">
+                      {item.description}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
+                      View practice scope
                       <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>

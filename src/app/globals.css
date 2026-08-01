@@ -420,11 +420,11 @@ body {
 
 @keyframes ken-burns {
   from { transform: scale(1); }
-  to { transform: scale(1.06); }
+  to { transform: scale(1.025); }
 }
 
 .animate-ken-burns {
-  animation: ken-burns 8s ease-in-out alternate infinite;
+  animation: ken-burns 14s ease-in-out alternate infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

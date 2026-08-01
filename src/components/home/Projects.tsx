@@ -13,11 +13,11 @@ export function Projects() {
   const tertiary = projects.slice(3, 6);
 
   return (
-    <section id="projects" className="scroll-mt-32 bg-white py-20 md:py-28 border-b border-line">
+    <section id="projects" className="scroll-mt-32 border-b border-line bg-white section-y">
       <Container>
-        <Reveal className="mb-12 flex items-end justify-between gap-6">
+        <Reveal className="mb-8 flex items-end justify-between gap-6 md:mb-10">
           <div>
-            <div className="mb-3 flex items-center gap-3">
+            <div className="mb-2.5 flex items-center gap-3">
               <span className="h-px w-8 bg-x-red" />
               <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
                 Our Projects
@@ -26,57 +26,55 @@ export function Projects() {
             <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
               Featured Portfolio
             </h2>
-            <p className="mt-3 max-w-[70ch] prose-measure text-[14px] leading-relaxed text-ink-muted">
+            <p className="mt-2 max-w-[58ch] text-[14px] leading-relaxed text-ink-muted">
               Coordinated GFC packages across commercial HQ, manufacturing, and institutional campuses.
             </p>
           </div>
           <Link
             href="/projects"
             transitionTypes={["nav-forward"]}
-            className="group hidden shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-all hover:translate-x-1 sm:flex"
+            className="group hidden shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-transform hover:translate-x-1 sm:flex"
           >
             All Projects
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </Reveal>
 
-        <div className="grid gap-3 lg:grid-cols-2">
-          {/* LEFT: Featured (tall) */}
+        {/* Editorial masonry — photography first */}
+        <div className="grid gap-2.5 lg:grid-cols-2">
           <Reveal from="left" className="h-full">
             <ProjectCard
               project={featured}
               index={0}
               priority
               aspect="fill"
-              className="h-full min-h-[420px] lg:min-h-[580px]"
+              className="h-full min-h-[440px] lg:min-h-[620px]"
             />
           </Reveal>
 
-          {/* RIGHT: 2 stacked */}
-          <div className="grid grid-rows-2 gap-3">
+          <div className="grid grid-rows-2 gap-2.5">
             {secondary.map((project, i) => (
-              <Reveal key={project.slug} delay={0.08 * (i + 1)} from="right" className="h-full">
+              <Reveal key={project.slug} delay={0.06 * (i + 1)} from="right" className="h-full">
                 <ProjectCard
                   project={project}
                   index={i + 1}
                   priority={i === 0}
                   aspect="fill"
-                  className="h-full min-h-[200px] lg:min-h-[284px]"
+                  className="h-full min-h-[210px] lg:min-h-[304px]"
                 />
               </Reveal>
             ))}
           </div>
         </div>
 
-        {/* Bottom row: 3 equal */}
-        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+        <div className="mt-2.5 grid gap-2.5 sm:grid-cols-3">
           {tertiary.map((project, i) => (
-            <Reveal key={project.slug} delay={0.06 * i} className="h-full">
+            <Reveal key={project.slug} delay={0.05 * i} className="h-full">
               <ProjectCard
                 project={project}
                 index={i + 3}
                 aspect="fill"
-                className="h-full min-h-[240px]"
+                className="h-full min-h-[260px]"
               />
             </Reveal>
           ))}
