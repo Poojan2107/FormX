@@ -41,7 +41,7 @@ export function BrochureCta({
           >
             Capabilities, sectors, and delivery approach — ready for stakeholder
             sharing.{" "}
-            <span className="text-x-red">Replace PDF at /brochure/formx.pdf</span>
+            <span className="text-x-red">Download PDF at /brochure/formx.pdf</span>
           </p>
         </div>
       </div>
@@ -121,28 +121,48 @@ export function RelatedLinks({
   items: { href: string; title: string; meta?: string }[];
 }) {
   if (!items.length) return null;
+
+  const count = items.length;
+  const gridCols =
+    count === 4
+      ? "sm:grid-cols-2 lg:grid-cols-4"
+      : count === 2
+        ? "sm:grid-cols-2"
+        : "sm:grid-cols-2 lg:grid-cols-3";
+
   return (
-    <section className="border-t border-line bg-white py-16">
+    <section className="border-t border-line bg-white py-14 md:py-16">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
-        <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
-          {title}
-        </h3>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="flex items-center justify-between border-b border-line pb-4 mb-6">
+          <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink">
+            {title}
+          </h3>
+          <span className="text-[11px] font-bold text-x-red uppercase tracking-wider">
+            {count} Items
+          </span>
+        </div>
+        <div className={cn("grid gap-4", gridCols)}>
           {items.map((item) => (
             <Link
-              key={item.href}
+              key={item.href + item.title}
               href={item.href}
               transitionTypes={["nav-forward"]}
-              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group border border-line bg-white p-6 transition-colors hover:border-x-red/35"
+              className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex flex-col justify-between border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/40 hover:shadow-md"
             >
-              {item.meta ? (
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
-                  {item.meta}
-                </p>
-              ) : null}
-              <h4 className="mt-2 font-display text-lg font-bold text-ink transition-colors group-hover:text-x-red">
-                {item.title}
-              </h4>
+              <div>
+                {item.meta ? (
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-x-red mb-1">
+                    {item.meta}
+                  </p>
+                ) : null}
+                <h4 className="font-display text-base font-bold text-ink transition-colors group-hover:text-x-red leading-snug">
+                  {item.title}
+                </h4>
+              </div>
+              <div className="mt-4 pt-3 border-t border-line/50 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-ink/40 group-hover:text-x-red transition-colors">
+                <span>View Details</span>
+                <span className="font-display transition-transform group-hover:translate-x-1">→</span>
+              </div>
             </Link>
           ))}
         </div>

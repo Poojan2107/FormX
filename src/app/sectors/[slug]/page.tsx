@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Layers } from "lucide-react";
 import { getSector, getService, sectors, projects } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -42,17 +42,18 @@ export default async function SectorDetailPage({ params }: Props) {
     .map((s) => ({
       href: `/services/${s!.slug}`,
       title: s!.title,
-      meta: "Service",
+      meta: "Engineering Discipline",
     }));
 
-  const relatedProjects = projects
-    .filter((p) => tokens(sector.title).some((w) => tokens(p.sector).includes(w)))
-    .slice(0, 3)
-    .map((p) => ({
-      href: `/projects/${p.slug}`,
-      title: p.client,
-      meta: p.sector,
-    }));
+  const sameSectorProjects = projects.filter((p) =>
+    tokens(sector.title).some((w) => tokens(p.sector).includes(w)),
+  );
+  const fallbackProjects = projects.filter((p) => !sameSectorProjects.includes(p));
+  const relatedProjects = [...sameSectorProjects, ...fallbackProjects].slice(0, 3).map((p) => ({
+    href: `/projects/${p.slug}`,
+    title: p.client,
+    meta: `${p.sector} · ${p.location}`,
+  }));
 
   return (
     <>
@@ -66,9 +67,33 @@ export default async function SectorDetailPage({ params }: Props) {
         ]}
       />
 
-      {/* Main Visual Infographic Grid */}
+      {/* Engineering Blueprint Specs Ribbon */}
+      <div className="border-b border-white/10 bg-[#0d0d0d] py-6 text-white">
+        <Container className="flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider">
+              High-Utility Density Zoning
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Cpu className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider">
+              IS Code Compliant Facility Structural Design
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Layers className="size-5 text-x-red" />
+            <span className="font-display text-xs font-bold uppercase tracking-wider">
+              Zero-Interference MEP Coordination
+            </span>
+          </div>
+        </Container>
+      </div>
+
+      {/* Main Visual Grid Content */}
       <section className="bg-white py-14 md:py-20">
-        <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <Reveal>
             {/* Sector Challenges */}
             <div>
@@ -80,7 +105,7 @@ export default async function SectorDetailPage({ params }: Props) {
                     key={c}
                     className="formx-cut-x formx-edge formx-edge-x x-hover-rail flex items-start gap-4 border border-line bg-[#fafafa] p-4 transition-colors hover:border-x-red/40 hover:bg-white"
                   >
-                    <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center bg-x-red font-display text-[11px] font-bold text-white">
+                    <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center bg-x-red font-display text-[11px] font-bold text-white shadow-xs">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="text-[14px] font-medium leading-relaxed text-ink">
@@ -91,23 +116,23 @@ export default async function SectorDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* FormX Engineering Capabilities */}
-            <div className="mt-14">
+            {/* FormX Engineering Capabilities — Clean 2-column Grid */}
+            <div className="mt-12">
               <SectionHeader eyebrow="Our Response" title="FormX Sector Capabilities" />
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {sector.capabilities.map((cap, i) => (
                   <div
                     key={cap}
                     className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col justify-between overflow-hidden border border-line bg-white p-5 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_10px_25px_rgba(222,48,36,0.1)]"
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-3">
                       <CheckCircle2 className="size-5 text-x-red" />
                       <span className="font-display text-[10px] font-bold text-ink/30">
                         0{i + 1}
                       </span>
                     </div>
-                    <p className="font-display text-xs font-bold uppercase tracking-wider text-ink group-hover:text-x-red transition-colors">
+                    <p className="font-display text-xs font-bold uppercase tracking-wider text-ink group-hover:text-x-red transition-colors leading-snug">
                       {cap}
                     </p>
                     <span
@@ -125,29 +150,31 @@ export default async function SectorDetailPage({ params }: Props) {
             </Button>
           </Reveal>
 
-          {/* Dedicated Photorealistic Industry Image Backdrop */}
+          {/* Right Column: Dedicated Photorealistic Industry Image Stage */}
           <Reveal delay={0.08}>
             <div className="sticky top-28 space-y-6">
               <div className="group relative overflow-hidden border border-line bg-[#121212] shadow-2xl">
-                <AssetImage
-                  alt={sector.title}
-                  slot={sector.asset}
-                  kind="sector"
-                  aspect="portrait"
-                  fit="cover"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-                  {sector.title} Facility
-                </span>
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="font-display text-lg font-bold uppercase">
-                    Integrated Greenfield Delivery
-                  </p>
-                  <p className="mt-1 text-[12px] text-white/70">
-                    Coordinated architecture, structural steel/RCC, and process utilities.
-                  </p>
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <AssetImage
+                    alt={sector.title}
+                    slot={sector.asset}
+                    kind="sector"
+                    aspect="portrait"
+                    fit="cover"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+                  <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+                    {sector.title} Facility
+                  </span>
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <p className="font-display text-lg font-bold uppercase tracking-tight">
+                      Integrated Greenfield Delivery
+                    </p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-white/70">
+                      Coordinated architecture, structural steel/RCC, and process utilities.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -156,9 +183,7 @@ export default async function SectorDetailPage({ params }: Props) {
       </section>
 
       <RelatedLinks title="Related services" items={serviceLinks} />
-      {relatedProjects.length ? (
-        <RelatedLinks title="Related projects" items={relatedProjects} />
-      ) : null}
+      <RelatedLinks title="Related projects" items={relatedProjects} />
 
       <CtaBand title={`Build your ${sector.title.toLowerCase()} facility with FormX`} />
       <StickyEnquire label={`Talk ${sector.title}`} />

@@ -50,26 +50,16 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = getProject(slug);
   if (!project) notFound();
 
-  const related = projects
-    .filter((p) => p.slug !== slug && p.sector === project.sector)
-    .slice(0, 3)
-    .map((p) => ({
-      href: `/projects/${p.slug}`,
-      title: p.client,
-      meta: p.sector,
-    }));
+  // Always ensure exactly 3 related items to fill grid without whitespace gaps
+  const sameSector = projects.filter((p) => p.slug !== slug && p.sector === project.sector);
+  const otherProjects = projects.filter((p) => p.slug !== slug && p.sector !== project.sector);
+  const combinedRelated = [...sameSector, ...otherProjects].slice(0, 3);
 
-  const relatedFallback =
-    related.length > 0
-      ? related
-      : projects
-          .filter((p) => p.slug !== slug)
-          .slice(0, 3)
-          .map((p) => ({
-            href: `/projects/${p.slug}`,
-            title: p.client,
-            meta: p.sector,
-          }));
+  const relatedItems = combinedRelated.map((p) => ({
+    href: `/projects/${p.slug}`,
+    title: p.client,
+    meta: `${p.sector} · ${p.location}`,
+  }));
 
   const metas: [keyof typeof metaIcons, string][] = [
     ["Location", project.location],
@@ -77,6 +67,12 @@ export default async function ProjectDetailPage({ params }: Props) {
     ["Sector", project.sector],
     ["Scale", project.area ?? "Industrial facility"],
   ];
+
+  // Gallery items guaranteed to fill layout
+  const galleryList =
+    project.assets.gallery && project.assets.gallery.length > 0
+      ? project.assets.gallery
+      : [project.assets.cover];
 
   return (
     <>
@@ -96,11 +92,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <Container>
           <Reveal>
             <BeforeAfterSlider
-              beforeSlot={
-                project.assets.gallery && project.assets.gallery[0]
-                  ? project.assets.gallery[0]
-                  : project.assets.cover
-              }
+              beforeSlot={galleryList[0]}
               afterSlot={project.assets.cover}
               beforeLabel="Raw Structural GFC Model / CAD"
               afterLabel="Completed Executed Facility"
@@ -239,7 +231,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               {project.services.map((s) => (
                 <span
                   key={s}
-                  className="border border-line bg-white px-4 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-ink shadow-sm"
+                  className="border border-line bg-white px-4 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-ink shadow-xs"
                 >
                   ✓ {s}
                 </span>
@@ -249,50 +241,65 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Project Gallery */}
-      {project.assets.gallery && project.assets.gallery.length > 0 ? (
-        <section className="bg-white py-14 md:py-20">
-          <Container>
-            <Reveal>
-              <h2 className="mb-8 font-display text-xl font-bold uppercase tracking-tight text-ink">
-                Project Gallery Showcase
-              </h2>
-            </Reveal>
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-              {project.assets.gallery.map((slot, i) => (
-                <Reveal key={slot} delay={0.04 * (i % 3)}>
-                  <div className="group overflow-hidden border border-line bg-[#141414]">
+      {/* Project Gallery Showcase — Full Container Layout */}
+      <section className="bg-white py-14 md:py-20">
+        <Container>
+          <Reveal>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-line pb-4">
+              <div>
+                <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
+                  Facility Visuals
+                </p>
+                <h2 className="mt-1 font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-ink">
+                  Project Gallery Showcase
+                </h2>
+              </div>
+              <p className="text-[13px] text-ink-muted">
+                Architectural &amp; structural engineering views
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+            {galleryList.map((slot, i) => (
+              <Reveal key={slot + i} delay={0.05 * i} className="h-full">
+                <div className="group relative flex h-full flex-col overflow-hidden border border-line bg-[#141414] shadow-md transition-all duration-300 hover:border-x-red/40 hover:shadow-xl">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <AssetImage
                       alt={`${project.client} — view ${i + 1}`}
                       slot={slot}
                       kind="facility"
                       aspect="landscape"
                       fit="cover"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <span className="absolute left-3 top-3 border border-white/20 bg-black/70 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-white">
+                      View 0{i + 1}
+                    </span>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button href="/contact" variant="primary" className="px-8 py-3.5">
-                Enquire About Similar Work
-              </Button>
-              <Link
-                href="/projects"
-                transitionTypes={["nav-back"]}
-                className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-x-red"
-              >
-                <ArrowLeft className="size-4" />
-                View All Projects
-              </Link>
-            </div>
-          </Container>
-        </section>
-      ) : null}
+          <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-line pt-8">
+            <Button href="/contact" variant="primary" className="px-8 py-3.5">
+              Enquire About Similar Work
+            </Button>
+            <Link
+              href="/projects"
+              transitionTypes={["nav-back"]}
+              className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-x-red"
+            >
+              <ArrowLeft className="size-4" />
+              View All Projects
+            </Link>
+          </div>
+        </Container>
+      </section>
 
-      <RelatedLinks title="Related projects" items={relatedFallback} />
+      <RelatedLinks title="Related projects" items={relatedItems} />
       <CtaBand title="Plan your next facility with FormX" />
       <StickyEnquire label="Enquire about this project type" />
     </>

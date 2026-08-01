@@ -2,7 +2,6 @@ import { cn } from "@/lib/cn";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { TickerBand } from "@/components/home/Ticker";
 import { BreadcrumbJsonLd } from "@/components/shared/JsonLd";
 
 export function PageHero({
@@ -121,8 +120,6 @@ export function PageHero({
           </p>
         ) : null}
       </div>
-
-      <TickerBand tone="red" />
     </section>
   );
 }

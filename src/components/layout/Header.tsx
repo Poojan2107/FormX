@@ -9,7 +9,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
+import { Menu, X, Phone, ArrowUpRight, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, serviceNavGroups, site } from "@/data/site";
 import { DesktopNav } from "@/components/layout/MegaMenu";
@@ -43,7 +43,7 @@ function SiteHeader({
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -51,63 +51,70 @@ function SiteHeader({
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
     <>
-      <header
-        className="sticky top-0 z-50"
-        style={{ viewTransitionName: "site-header" }}
-      >
-        {/* Main nav bar */}
+      <header className="sticky top-0 z-50 transition-all duration-300">
+        {/* Dynamic Glassmorphic Navigation Bar */}
         <div
           className={cn(
-            "border-b bg-white/95 backdrop-blur-md transition-all duration-500",
+            "border-b bg-white/90 backdrop-blur-xl transition-all duration-500",
             scrolled
-              ? "border-black/8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]"
-              : "border-line/60",
+              ? "border-black/10 bg-white/95 py-0 shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
+              : "border-line/60 bg-white/85 py-1",
           )}
         >
-          <Container className="relative flex h-[68px] items-stretch justify-between gap-4 sm:h-[76px] md:h-[88px]">
-            {/* Logo */}
+          <Container className="relative flex items-center justify-between gap-4 h-[64px] sm:h-[72px] md:h-[80px] transition-all duration-300">
+            {/* Left: Brand Logo Lockup */}
             <Link
               href="/"
-              className="relative z-10 flex min-w-0 shrink items-center self-stretch py-4 pr-4 transition-opacity hover:opacity-80"
-              aria-label="FormX home"
               transitionTypes={["nav-back"]}
+              className="group relative z-10 flex shrink-0 items-center py-2 transition-transform duration-300 hover:scale-[1.02]"
+              aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
               <Logo variant="lockup" />
             </Link>
 
-            {/* Desktop nav */}
+            {/* Middle: Desktop Dynamic Mega Menu Nav */}
             <DesktopNav />
 
-            {/* Right CTAs */}
-            <div className="relative z-10 hidden items-center gap-3 self-center lg:flex">
+            {/* Right: Action Controls & Status */}
+            <div className="relative z-10 hidden items-center gap-4 self-center xl:flex">
+              {/* Practice Availability Pill */}
+              <div className="flex items-center gap-2 border border-line bg-gray-50 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/60 shadow-xs">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Greenfield Ready</span>
+              </div>
+
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/50 transition-colors hover:text-ink"
+                className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/60 transition-colors hover:text-x-red"
               >
                 <Phone className="size-3.5 text-x-red" />
                 <span className="hidden lg:inline">{site.phone}</span>
               </a>
+
               <div className="h-4 w-px bg-line" />
+
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-x-red px-5 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)] transition-all duration-200 hover:bg-x-red-hover hover:shadow-[0_6px_20px_rgba(222,48,36,0.4)]"
                 transitionTypes={["nav-forward"]}
+                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex items-center gap-2 bg-x-red px-5 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all duration-300 hover:bg-x-red-hover hover:shadow-[0_10px_28px_rgba(222,48,36,0.5)] hover:-translate-y-0.5"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
               </Link>
             </div>
 
-            {/* Mobile hamburger */}
+            {/* Mobile Menu Hamburger */}
             <button
               type="button"
-              className="relative z-[60] inline-flex size-10 shrink-0 items-center justify-center self-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+              className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-10 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -125,10 +132,13 @@ function SiteHeader({
               </AnimatePresence>
             </button>
           </Container>
+
+          {/* Glowing Red Top Border Line */}
+          <div className="h-[2px] w-full bg-gradient-to-r from-x-red/0 via-x-red to-x-red/0 opacity-60" />
         </div>
       </header>
 
-      {/* Mobile full-screen menu */}
+      {/* Mobile Full-Screen Menu */}
       <AnimatePresence>
         {open ? (
           <motion.div
@@ -142,14 +152,18 @@ function SiteHeader({
             <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
             <div
               className="pointer-events-none absolute inset-0"
-              style={{ background: "radial-gradient(600px 400px at 80% 20%, rgba(222,48,36,0.10), transparent 70%)" }}
+              style={{
+                background:
+                  "radial-gradient(600px 400px at 80% 20%, rgba(222,48,36,0.12), transparent 70%)",
+              }}
               aria-hidden
             />
 
             <div className="relative flex min-h-full flex-col px-6 pb-12 pt-[88px]">
               <nav className="flex flex-col" aria-label="Mobile navigation">
                 {nav.map((item, i) => {
-                  const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+                  const isActive =
+                    pathname === item.href || pathname.startsWith(item.href + "/");
                   return (
                     <motion.div
                       key={item.label}
@@ -160,9 +174,7 @@ function SiteHeader({
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        transitionTypes={
-                          item.href === "/" ? ["nav-back"] : ["nav-forward"]
-                        }
+                        transitionTypes={["nav-forward"]}
                         className={cn(
                           "flex items-baseline gap-4 border-b border-white/10 py-4 font-display text-2xl font-bold tracking-tight transition-colors",
                           isActive ? "text-x-red" : "text-white hover:text-x-red",
@@ -174,10 +186,10 @@ function SiteHeader({
                         {item.label}
                       </Link>
                       {item.label === "Services" ? (
-                        <div className="grid grid-cols-2 gap-1 border-b border-white/10 pb-3 pl-9 pt-2">
+                        <div className="grid grid-cols-2 gap-2 border-b border-white/10 pb-3 pl-9 pt-2">
                           {serviceNavGroups.map((group) => (
                             <div key={group.title}>
-                              <p className="mb-1.5 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red/70">
+                              <p className="mb-1.5 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red">
                                 {group.title}
                               </p>
                               {group.items.map((child) => (
@@ -186,7 +198,7 @@ function SiteHeader({
                                   href={child.href}
                                   onClick={() => setOpen(false)}
                                   transitionTypes={["nav-forward"]}
-                                  className="block py-1 text-[12px] text-white/45 hover:text-x-red"
+                                  className="block py-1 text-[12px] text-white/50 hover:text-x-red"
                                 >
                                   {child.label}
                                 </Link>
@@ -202,7 +214,7 @@ function SiteHeader({
                               href={child.href}
                               onClick={() => setOpen(false)}
                               transitionTypes={["nav-forward"]}
-                              className="block py-1.5 text-[13px] text-white/45 hover:text-x-red"
+                              className="block py-1.5 text-[13px] text-white/50 hover:text-x-red"
                             >
                               {child.label}
                             </Link>
