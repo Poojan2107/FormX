@@ -68,24 +68,24 @@ export default function AboutPage() {
 
       <ProofStrip />
 
-      {/* Intro Practice Overview */}
       <section className="bg-white section-y">
-        <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <div className="overflow-hidden border border-line shadow-xl">
-              <AssetImage
-                alt="FormX practice"
-                slot="about/studio-cover.jpg"
-                kind="studio"
-                tone="dark"
-                label="Practice Studio"
-                caption="Coordinated multidisciplinary delivery"
-                aspect="landscape"
-                className="w-full object-cover"
-              />
-            </div>
+        <Container className="grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
+          <Reveal className="relative min-h-[340px] overflow-hidden bg-[#111] lg:min-h-full">
+            <AssetImage
+              alt="FormX practice"
+              slot="about/studio-cover.jpg"
+              kind="studio"
+              tone="dark"
+              fit="cover"
+              aspect="landscape"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <p className="absolute bottom-5 left-5 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+              Practice studio · Ahmedabad
+            </p>
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} className="flex flex-col justify-center py-2 lg:py-6">
             <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
               Our Identity
             </span>

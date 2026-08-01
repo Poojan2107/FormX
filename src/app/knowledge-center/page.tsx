@@ -66,39 +66,40 @@ export default function KnowledgeCenterPage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((post, i) => (
               <Reveal key={post.slug} delay={0.03 * (i % 3)}>
                 <Link
                   href={`/knowledge-center/${post.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white transition-all hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
+                  className="group relative block min-h-[320px] overflow-hidden bg-[#111]"
                 >
                   <AssetImage
                     alt={post.title}
                     slot={post.asset}
                     kind="article"
-                    tone="light"
-                    label={post.category}
-                    caption={post.title}
+                    tone="dark"
+                    fit="cover"
                     aspect="landscape"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <div className="flex flex-1 flex-col p-5 md:p-6">
-                    <div className="mb-3 flex items-center justify-between gap-2">
-                      <span className="text-[11px] font-semibold text-ink-muted">
-                        {post.date}
-                      </span>
-                      <span className="text-[11px] font-semibold text-x-red">
-                        By {post.author}
-                      </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <span className="absolute left-3 top-3 z-10 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+                    {post.category}
+                  </span>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
+                    <div className="mb-2 flex items-center gap-2 text-[11px] text-white/50">
+                      <span>{post.date}</span>
+                      <span className="text-white/25">·</span>
+                      <span className="text-x-red">{post.author}</span>
                     </div>
-                    <h2 className="font-display text-base font-bold text-ink group-hover:text-x-red md:text-lg">
+                    <h2 className="font-display text-base font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red md:text-lg">
                       {post.title}
                     </h2>
-                    <p className="mt-2 flex-1 text-[13px] leading-[1.65] text-ink-muted line-clamp-3">
+                    <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-white/60">
                       {post.excerpt}
                     </p>
-                    <span className="mt-5 text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red">
+                    <span className="mt-4 inline-block font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
                       Read article →
                     </span>
                   </div>

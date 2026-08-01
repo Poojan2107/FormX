@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { careerRoles, site } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { CtaBand } from "@/components/shared/CtaBlocks";
@@ -26,9 +27,34 @@ export default function CareerPage() {
 
       <ProofStrip />
 
+      <section className="relative overflow-hidden bg-[#0c0c0c]">
+        <div className="absolute inset-0">
+          <AssetImage
+            alt="FORMX practice"
+            slot="about/home-about.jpg"
+            kind="studio"
+            fit="cover"
+            tone="dark"
+            className="h-full w-full object-cover opacity-45"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40" />
+        </div>
+        <Container className="relative z-10 py-14 md:py-16">
+          <p className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+            Join the practice
+          </p>
+          <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl">
+            Build facilities that land cleanly at site
+          </h2>
+          <p className="mt-3 max-w-[55ch] text-[14px] leading-relaxed text-white/60">
+            Coordinated Architecture, Structure, Civil &amp; MEP — ownership first, site-aware delivery.
+          </p>
+        </Container>
+      </section>
+
       <section className="bg-white section-y">
         <Container>
-          <div className="formx-cut-x formx-edge formx-edge-x mb-12 grid gap-4 border border-line bg-white p-6 md:grid-cols-3 md:p-8">
+          <div className="mb-10 grid gap-4 border-y border-line py-6 md:grid-cols-3">
             {[
               ["Culture", "Coordinated, site-aware, ownership first"],
               ["Practice", "Architecture · Structure · Civil · MEP as one"],

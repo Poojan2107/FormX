@@ -17,33 +17,32 @@ export function Resources() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-3 md:grid-cols-3">
           {blogs.slice(0, 3).map((post, i) => (
             <Reveal key={post.slug} delay={0.05 * i}>
               <Link
                 href={`/knowledge-center/${post.slug}`}
                 transitionTypes={["nav-forward"]}
-                className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.06)]"
+                className="group relative block min-h-[300px] overflow-hidden bg-[#111]"
               >
                 <AssetImage
                   alt={post.title}
                   slot={post.asset}
                   kind="article"
-                  tone="light"
-                  label={post.category}
+                  tone="dark"
+                  fit="cover"
                   aspect="landscape"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
-                <div className="flex flex-1 flex-col p-5 md:p-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/45">
                     {post.date}
                   </p>
-                  <h3 className="mt-3 font-display text-[17px] font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                  <h3 className="mt-2 font-display text-[17px] font-bold uppercase tracking-tight text-white transition-colors group-hover:text-x-red">
                     {post.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-ink-muted">
-                    {post.excerpt}
-                  </p>
-                  <span className="mt-5 text-[13px] font-semibold text-ink">
+                  <span className="mt-4 inline-block font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
                     Read more →
                   </span>
                 </div>

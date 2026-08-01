@@ -33,33 +33,38 @@ export default function NewsPage() {
 
       <section className="bg-white section-y">
         <Container>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-3">
             {news.map((item, i) => (
               <Reveal key={item.slug} delay={0.04 * i}>
                 <Link
                   href={`/news/${item.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col border border-line bg-white transition-all hover:border-x-red/35 hover:shadow-[0_12px_36px_rgba(222,48,36,0.06)]"
+                  className="group relative block min-h-[340px] overflow-hidden bg-[#111]"
                 >
                   <AssetImage
                     alt={item.title}
                     slot={item.asset}
                     kind="article"
                     tone="dark"
-                    label="News"
+                    fit="cover"
                     aspect="landscape"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-x-red">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+                  <span className="absolute left-3 top-3 z-10 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+                    News
+                  </span>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
+                    <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
                       {item.date}
                     </p>
-                    <h2 className="mt-3 font-display text-xl font-bold text-ink group-hover:text-x-red">
+                    <h2 className="mt-2 font-display text-xl font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
                       {item.title}
                     </h2>
-                    <p className="mt-3 flex-1 text-[14px] leading-[1.7] text-ink-muted line-clamp-3">
+                    <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-white/60">
                       {item.excerpt}
                     </p>
-                    <span className="mt-5 inline-block text-[12px] font-semibold uppercase tracking-[0.12em] text-x-red transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="mt-4 inline-block font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
                       Read update →
                     </span>
                   </div>

@@ -1,13 +1,21 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 import { RotateCcw, Search } from "lucide-react";
+import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import { Reveal } from "@/components/ui/Reveal";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
+  const reduce = useReducedMotion();
   const [q, setQ] = useState("");
   const [sector, setSector] = useState("All");
   const [service, setService] = useState("All");
@@ -37,6 +45,8 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   }, [projects, q, sector, service]);
 
   const isActive = q.trim() !== "" || sector !== "All" || service !== "All";
+  const featured = filtered[0];
+  const filterKey = `${sector}|${service}|${q.trim().toLowerCase()}`;
 
   const reset = () => {
     setQ("");
@@ -136,19 +146,117 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           </button>
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project, i) => (
-            <Reveal key={project.slug} delay={0.03 * (i % 3)} className="h-full">
-              <ProjectCard
-                project={project}
-                index={i}
-                priority={i < 3}
-                aspect="4/3"
-                className="h-full min-h-[240px] sm:min-h-[280px]"
+        <LayoutGroup>
+          {/* Cinematic stage — featured project morphs with filter */}
+          {featured ? (
+            <div className="relative mb-3 overflow-hidden bg-[#0c0c0c]">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={featured.slug}
+                  className="relative min-h-[280px] md:min-h-[360px] lg:min-h-[420px]"
+                  initial={reduce ? false : { opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+                  animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+                  exit={reduce ? undefined : { opacity: 0, clipPath: "inset(100% 0 0 0)" }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link
+                    href={`/projects/${featured.slug}`}
+                    transitionTypes={["nav-forward"]}
+                    className="absolute inset-0 block"
+                  >
+                    <AssetImage
+                      alt={featured.client}
+                      slot={featured.assets.cover}
+                      kind="facility"
+                      fit="cover"
+                      tone="dark"
+                      priority
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+                  </Link>
+
+                  {!reduce ? (
+                    <motion.span
+                      key={`scan-${filterKey}`}
+                      aria-hidden
+                      className="pointer-events-none absolute inset-y-0 left-0 z-20 w-px bg-x-red shadow-[0_0_24px_rgba(222,48,36,0.8)]"
+                      initial={{ left: "0%", opacity: 0.9 }}
+                      animate={{ left: "100%", opacity: 0 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
+                    />
+                  ) : null}
+
+                  <div className="pointer-events-none relative z-10 flex h-full min-h-[280px] flex-col justify-end p-6 md:min-h-[360px] md:p-10 lg:min-h-[420px]">
+                    <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+                      {isActive ? "Filtered lead" : "Featured work"} · {featured.sector}
+                    </p>
+                    <h2 className="mt-2 max-w-xl font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-white md:text-4xl lg:text-5xl">
+                      {featured.client}
+                    </h2>
+                    <p className="mt-2 max-w-lg text-[14px] text-white/65 md:text-[15px]">
+                      {featured.title} · {featured.location} · {featured.year}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          ) : null}
+
+          {/* Grid with layout morph + stagger */}
+          <motion.div
+            layout
+            className="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {!reduce ? (
+              <motion.span
+                key={`rail-${filterKey}`}
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px origin-left bg-x-red"
+                initial={{ scaleX: 0, opacity: 1 }}
+                animate={{ scaleX: 1, opacity: 0 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               />
-            </Reveal>
-          ))}
-        </div>
+            ) : null}
+
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filtered.slice(1).map((project, i) => (
+                <motion.div
+                  key={project.slug}
+                  layout
+                  layoutId={`project-card-${project.slug}`}
+                  className="h-full"
+                  initial={
+                    reduce
+                      ? false
+                      : { opacity: 0, y: 28, clipPath: "inset(12% 0 0 0)" }
+                  }
+                  animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
+                  exit={
+                    reduce
+                      ? undefined
+                      : { opacity: 0, scale: 0.96, transition: { duration: 0.2 } }
+                  }
+                  transition={{
+                    layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+                    opacity: { duration: 0.35, delay: reduce ? 0 : 0.04 * (i % 6) },
+                    y: { duration: 0.4, delay: reduce ? 0 : 0.04 * (i % 6) },
+                    clipPath: { duration: 0.45, delay: reduce ? 0 : 0.04 * (i % 6) },
+                  }}
+                >
+                  <ProjectCard
+                    project={project}
+                    index={i + 1}
+                    priority={i < 3}
+                    aspect="4/3"
+                    className="h-full min-h-[240px] sm:min-h-[280px]"
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </LayoutGroup>
       )}
     </div>
   );

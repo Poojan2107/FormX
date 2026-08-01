@@ -41,7 +41,7 @@ export function Testimonials() {
 
         <div className="grid items-stretch gap-0 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="flex flex-col justify-between border border-line border-b-0 p-6 md:p-8 lg:border-b lg:border-r-0 lg:p-10">
-            <div>
+            <div className="min-h-[230px] md:min-h-[250px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={item.name + index}

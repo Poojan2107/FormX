@@ -17,6 +17,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { FormMessage } from "@/components/ui/FormMessage";
 import { Reveal } from "@/components/ui/Reveal";
+import { validateContact, type ContactErrors } from "@/lib/formValidation";
 import { cn } from "@/lib/cn";
 
 const SERVICE_OPTIONS = [
@@ -32,11 +33,7 @@ const SERVICE_OPTIONS = [
   "Project Management",
 ];
 
-type Errors = Partial<Record<"name" | "email" | "message" | "phone", string>>;
-
-function isEmail(v: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
+type Errors = ContactErrors;
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -65,13 +62,7 @@ export function Contact() {
     const message = String(fd.get("message") || "").trim();
     const company = String(fd.get("company") || "").trim();
 
-    const next: Errors = {};
-    if (name.length < 2) next.name = "Please enter your full name.";
-    if (!isEmail(email)) next.email = "Enter a valid work email.";
-    if (message.length < 10) next.message = "Add a short note (at least 10 characters).";
-    if (phone && phone.replace(/\D/g, "").length < 8) {
-      next.phone = "Enter a valid phone number.";
-    }
+    const next = validateContact({ name, email, message, phone });
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -96,8 +87,8 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-32 bg-white section-y">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:items-start">
-          <Reveal className="formx-cut-x formx-edge formx-edge-x border border-line bg-white p-5 sm:p-8 md:p-10">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-8">
+          <Reveal className="border border-line bg-white p-5 sm:p-7">
             <SectionHeading
               eyebrow="Send a message"
               title="Brief FORMX on your facility"
@@ -105,7 +96,7 @@ export function Contact() {
             />
 
             {sent ? (
-              <div className="mt-10 border border-line bg-[#fafafa] p-6" role="status">
+              <div className="mt-8 border border-line bg-[#fafafa] p-5" role="status">
                 <p className="font-display text-lg font-bold text-ink">Thank you</p>
                 <p className="mt-2 text-sm text-ink-muted">
                   Your enquiry has been received. A FORMX lead will connect shortly.
@@ -113,7 +104,7 @@ export function Contact() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="mt-6"
+                  className="mt-5"
                   onClick={() => setSent(false)}
                 >
                   Send another
@@ -123,7 +114,7 @@ export function Contact() {
               <form
                 ref={formRef}
                 onSubmit={onSubmit}
-                className="mt-8 space-y-4"
+                className="mt-6 space-y-3.5"
                 noValidate
                 aria-busy={loading}
               >

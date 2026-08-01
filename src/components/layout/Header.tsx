@@ -84,16 +84,15 @@ function SiteHeader({
             <DesktopNav />
 
             {/* Right: Action Controls & Status */}
-            <div className="relative z-10 hidden items-center gap-4 self-center xl:flex">
-              {/* Practice Availability Pill */}
-              <div className="flex items-center gap-2 border border-line bg-gray-50 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/60 shadow-2xs">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="relative z-10 hidden items-center gap-3 self-center xl:flex">
+              <div className="flex h-9 items-center gap-2 border border-line px-3 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/55">
+                <span className="size-1.5 bg-emerald-500" />
                 <span>Greenfield Ready</span>
               </div>
 
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/60 transition-colors hover:text-x-red"
+                className="flex h-9 items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/55 transition-colors hover:text-x-red"
               >
                 <Phone className="size-3.5 text-x-red" />
                 <span className="hidden lg:inline">{site.phone}</span>
@@ -104,7 +103,7 @@ function SiteHeader({
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex items-center gap-2 bg-x-red px-5 py-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)] transition-all duration-200 hover:bg-x-red-hover hover:shadow-[0_6px_20px_rgba(222,48,36,0.45)]"
+                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex h-9 items-center gap-2 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors duration-200 hover:bg-x-red-hover"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
