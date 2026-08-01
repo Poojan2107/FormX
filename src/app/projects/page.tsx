@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
   title: "Industrial & Infrastructure Projects | FORMX Portfolio",
@@ -24,18 +23,13 @@ export default function ProjectsPage() {
         image={{ slot: "projects/kalpataru-corporate-house.jpg", kind: "facility" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container>
           <ProjectsExplorer projects={projects} />
         </Container>
       </section>
-
-      <LeadStrip
-        title="Have a similar facility brief?"
-        subtitle="Share site constraints, capacity targets, and preferred structural system — our leads respond with coordinated scope guidance."
-      />
 
       <CtaBand
         title="Brief FORMX on your next facility mandate"

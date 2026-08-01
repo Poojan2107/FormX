@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getBlog, blogs } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { RelatedLinks, CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
@@ -48,6 +47,7 @@ export default async function BlogDetailPage({ params }: Props) {
       href: `/knowledge-center/${b.slug}`,
       title: b.title,
       meta: b.category,
+      image: b.asset,
     }));
 
   return (
@@ -69,24 +69,14 @@ export default async function BlogDetailPage({ params }: Props) {
           { label: "Knowledge Center", href: "/knowledge-center" },
           { label: post.title },
         ]}
+        image={{ slot: post.asset, kind: "article" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container className="max-w-3xl">
           <Reveal>
-            <AssetImage
-              alt={post.title}
-              slot={post.asset}
-              kind="article"
-              tone="light"
-              label={post.category}
-              caption={post.title}
-              aspect="wide"
-              className="mb-10"
-            />
-
             {/* Main body */}
             <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {post.body.map((para) => (

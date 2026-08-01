@@ -23,7 +23,7 @@ export default function KnowledgeCenterPage() {
         title="Knowledge Center"
         description="Practical industrial facility perspectives for promoters, project directors, and engineering teams."
         crumbs={[{ label: "Knowledge Center" }]}
-        image={{ slot: "insights/policy.jpg", kind: "article" }}
+        image={{ slot: "insights/column-splice.jpg", kind: "article" }}
       />
 
       <ProofStrip compact />

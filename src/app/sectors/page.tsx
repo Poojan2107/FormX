@@ -8,7 +8,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
   title: "Industrial Sectors We Serve | FORMX Design Consultants India",
@@ -27,7 +26,7 @@ export default function SectorsPage() {
         image={{ slot: "sectors/renewable.jpg", kind: "sector" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container>
@@ -88,11 +87,6 @@ export default function SectorsPage() {
           </div>
         </Container>
       </section>
-
-      <LeadStrip
-        title="Discuss this sector mandate with FORMX"
-        subtitle="Share process loads, cleanroom class, crane capacity, or logistics throughput — we scope Architecture through MEP as one package."
-      />
 
       <CtaBand
         title="Looking for a sector-specific briefing?"

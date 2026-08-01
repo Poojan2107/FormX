@@ -7,7 +7,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
   title: "News & Events | FORMX Consultants Practice Updates",
@@ -26,10 +25,10 @@ export default function NewsPage() {
           { label: "Resources", href: "/knowledge-center" },
           { label: "News & Events" },
         ]}
-        image={{ slot: "news/expansion.jpg", kind: "article" }}
+        image={{ slot: "about/studio-cover.jpg", kind: "studio" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container>
@@ -77,11 +76,6 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
-
-      <LeadStrip
-        title="Follow FORMX for the next delivery note"
-        subtitle="Or brief our leads directly on your greenfield or expansion mandate."
-      />
 
       <CtaBand
         title="Ready to start a facility conversation?"

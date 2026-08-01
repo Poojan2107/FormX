@@ -5,7 +5,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { VendorForm } from "@/components/forms/VendorForm";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { LeadStrip } from "@/components/shared/LeadStrip";
 
 export const metadata: Metadata = {
   title: "Vendor Registration | Partner with FORMX Consultants",
@@ -21,9 +20,10 @@ export default function VendorRegistrationPage() {
         title="Vendor registration"
         description="Register your organisation to engage with FORMX on industrial project packages, supply, and specialised services."
         crumbs={[{ label: "Vendor Registration" }]}
+        image={{ slot: "sectors/industrial-park.jpg", kind: "sector" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white section-y">
         <Container>
@@ -55,11 +55,6 @@ export default function VendorRegistrationPage() {
           </div>
         </Container>
       </section>
-
-      <LeadStrip
-        title="Prefer to reach procurement directly?"
-        subtitle="Share capability profiles and certifications with our team by email."
-      />
 
       <CtaBand
         title="Ready to register as a FORMX vendor?"

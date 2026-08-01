@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getNews, news } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
@@ -50,20 +49,12 @@ export default async function NewsDetailPage({ params }: Props) {
           { label: "News & Events", href: "/news" },
           { label: item.title },
         ]}
+        image={{ slot: item.asset, kind: "article" }}
       />
-      <ProofStrip />
+      <ProofStrip compact />
       <section className="bg-white section-y">
         <Container className="max-w-3xl">
           <Reveal>
-            <AssetImage
-              alt={item.title}
-              slot={item.asset}
-              kind="article"
-              aspect="wide"
-              tone="light"
-              label="News"
-              className="mb-10"
-            />
             <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {item.body.map((p) => (
                 <p key={p.slice(0, 36)}>{p}</p>

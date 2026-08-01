@@ -23,7 +23,7 @@ export default function ServicesPage() {
         image={{ slot: "services/architecture.jpg", kind: "service" }}
       />
 
-      <ProofStrip />
+      <ProofStrip compact />
 
       <section className="bg-white py-16 md:py-24">
         <Container>

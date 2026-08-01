@@ -22,8 +22,9 @@ export default function ContactPage() {
         title="Let’s discuss your project"
         description="Share your facility requirements, location, and timeline. Our multidisciplinary engineering leads will connect within 24 hours."
         crumbs={[{ label: "Contact Us" }]}
+        image={{ slot: "about/studio-cover.jpg", kind: "studio" }}
       />
-      <ProofStrip />
+      <ProofStrip compact />
       <Contact />
       <Faqs />
       <section className="bg-white pb-16 md:pb-20">
