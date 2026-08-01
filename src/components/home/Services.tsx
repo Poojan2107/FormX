@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Check, Building2, Layers, ShieldCheck, Cpu } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check, ShieldCheck, Layers, Building2 } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,193 +11,281 @@ import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
-const categories = [
-  { id: "all", label: "All 10 Disciplines" },
-  { id: "architecture", label: "Architecture & Planning" },
-  { id: "structure", label: "Structure & Civil" },
-  { id: "mep", label: "MEP & Utilities" },
-  { id: "delivery", label: "Project Delivery" },
-];
-
-const serviceCategories: Record<string, string> = {
-  "architectural-design": "architecture",
-  "site-infrastructure": "architecture",
-  "sustainable-design": "architecture",
-  "structural-engineering": "structure",
-  "civil-engineering": "structure",
-  "mechanical-utility-engineering": "mep",
-  "hvac-engineering": "mep",
-  "electrical-engineering": "mep",
-  "fire-protection-engineering": "mep",
-  "project-management": "delivery",
-};
-
 export function Services() {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredServices =
-    activeCategory === "all"
-      ? services
-      : services.filter((s) => serviceCategories[s.slug] === activeCategory);
+  const [expandedIdx, setExpandedIdx] = useState(0);
 
   return (
-    <section id="services" className="scroll-mt-32 bg-[#fafafa] py-16 md:py-24 border-y border-line">
-      <Container>
-        {/* Section Header */}
+    <section id="services" className="scroll-mt-32 bg-[#0a0a0a] py-16 md:py-24 border-y border-white/10 text-white overflow-hidden">
+      {/* Background texture */}
+      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-30" aria-hidden />
+
+      <Container className="relative z-10">
+        {/* Section Heading */}
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            eyebrow="Multidisciplinary Practice"
-            title="Complete solutions in engineering & architecture"
-            description="In-house coordination across 10 specialized disciplines — delivered as one accountable construction-ready package."
-          />
+          <div>
+            <div className="mb-3 flex items-center gap-3">
+              <span className="h-px w-6 bg-x-red" />
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+                Multidisciplinary Practice
+              </span>
+            </div>
+            <h2
+              className="font-display font-extrabold leading-[1.1] tracking-[-0.02em] text-white"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 3.2rem)" }}
+            >
+              Complete solutions in engineering &amp; architecture
+            </h2>
+            <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-white/50">
+              In-house coordination across 10 specialized disciplines — delivered as one accountable construction-ready package.
+            </p>
+          </div>
+
           <Link
             href="/services"
             transitionTypes={["nav-forward"]}
-            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-all hover:translate-x-1"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-all hover:translate-x-1"
           >
-            View All 10 Services
-            <ArrowRight className="size-4" />
+            All 10 Disciplines Scope <ArrowRight className="size-4" />
           </Link>
         </Reveal>
 
-        {/* Interactive Category Filter Pills */}
-        <Reveal delay={0.04} className="mt-10">
-          <div className="flex flex-wrap items-center gap-2.5 border-b border-line pb-5">
-            {categories.map((cat) => {
-              const isSelected = activeCategory === cat.id;
-              const count =
-                cat.id === "all"
-                  ? services.length
-                  : services.filter((s) => serviceCategories[s.slug] === cat.id).length;
+        {/* DESKTOP: Awwwards-Style Horizontal Accordion Expansion Slats (Hidden on Mobile) */}
+        <Reveal delay={0.06} className="mt-12 hidden lg:block">
+          <div className="flex h-[520px] w-full gap-2.5 overflow-hidden">
+            {services.map((svc, i) => {
+              const isExpanded = i === expandedIdx;
               return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveCategory(cat.id)}
+                <motion.div
+                  key={svc.slug}
+                  layout
+                  onClick={() => setExpandedIdx(i)}
+                  onMouseEnter={() => setExpandedIdx(i)}
                   className={cn(
-                    "inline-flex items-center gap-2.5 border px-4 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.12em] transition-all duration-200",
-                    isSelected
-                      ? "border-x-red bg-x-red text-white shadow-[0_4px_20px_rgba(222,48,36,0.35)]"
-                      : "border-line bg-white text-ink/70 hover:border-x-red/40 hover:text-x-red",
+                    "relative flex h-full overflow-hidden border border-white/10 bg-[#121212] cursor-pointer transition-colors duration-300 select-none",
+                    isExpanded
+                      ? "flex-[4.2] border-x-red/60 shadow-[0_20px_50px_rgba(222,48,36,0.2)]"
+                      : "flex-1 hover:border-white/30 hover:bg-[#181818]",
                   )}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span>{cat.label}</span>
-                  <span
+                  {/* Backdrop Photo (Visible on All, Higher Opacity when Expanded) */}
+                  <div className="absolute inset-0">
+                    <AssetImage
+                      alt={svc.title}
+                      slot={svc.asset}
+                      kind="service"
+                      aspect="auto"
+                      fit="cover"
+                      tone="dark"
+                      className={cn(
+                        "h-full w-full object-cover transition-all duration-700",
+                        isExpanded ? "scale-105 opacity-40" : "scale-100 opacity-15",
+                      )}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
+                  </div>
+
+                  {/* COLLAPSED STATE: Vertical Rotated Slat Typography */}
+                  <AnimatePresence>
+                    {!isExpanded ? (
+                      <motion.div
+                        key="collapsed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="relative z-10 flex h-full w-full flex-col justify-between p-4 text-center"
+                      >
+                        {/* Number */}
+                        <span className="font-display text-xs font-bold text-x-red">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+
+                        {/* Rotated Vertical Title */}
+                        <div className="my-auto flex items-center justify-center">
+                          <span
+                            className="font-display text-sm font-bold uppercase tracking-[0.18em] text-white/70 whitespace-nowrap"
+                            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                          >
+                            {svc.title}
+                          </span>
+                        </div>
+
+                        {/* Icon */}
+                        <span className="mx-auto flex size-6 items-center justify-center rounded-full bg-white/5 text-white/30">
+                          +
+                        </span>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+
+                  {/* EXPANDED STATE: Full Visual Banner + Scope Content */}
+                  <AnimatePresence>
+                    {isExpanded ? (
+                      <motion.div
+                        key="expanded"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        transition={{ duration: 0.35, delay: 0.1 }}
+                        className="relative z-10 flex h-full w-full flex-col justify-between p-8 text-white min-w-0"
+                      >
+                        {/* Top Badges */}
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-2">
+                            <span className="border border-x-red/50 bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-md">
+                              Discipline {String(i + 1).padStart(2, "0")} / 10
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 border border-white/20 bg-black/60 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+                              <ShieldCheck className="size-3 text-x-red" />
+                              IS Code Compliant
+                            </span>
+                          </div>
+
+                          <span className="font-display text-3xl font-black text-white/10">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+
+                        {/* Middle Content */}
+                        <div className="my-auto max-w-xl min-w-0 pr-2">
+                          <p className="font-display text-[10px] font-bold uppercase tracking-[0.24em] text-x-red mb-1">
+                            FormX Scope Package
+                          </p>
+                          <h3 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white leading-tight">
+                            {svc.title}
+                          </h3>
+                          <p className="mt-3 text-[13px] leading-[1.8] text-white/70 tracking-normal line-clamp-3">
+                            {svc.summary}
+                          </p>
+
+                          {/* Deliverables Checklist */}
+                          <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-white/15 pt-4">
+                            {svc.highlights.slice(0, 4).map((h) => (
+                              <div key={h} className="flex items-center gap-2 text-[12px] font-semibold text-white/85 min-w-0">
+                                <Check className="size-3.5 text-x-red shrink-0" />
+                                <span className="truncate">{h}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom CTA Action */}
+                        <div className="border-t border-white/15 pt-4 flex items-center justify-between">
+                          <Link
+                            href={`/services/${svc.slug}`}
+                            transitionTypes={["nav-forward"]}
+                            className="inline-flex items-center gap-2 bg-x-red px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.4)] transition-all hover:bg-x-red-hover hover:translate-x-1"
+                          >
+                            Explore Service Scope <ArrowUpRight className="size-4" />
+                          </Link>
+
+                          <span className="text-[11px] font-display text-white/40 uppercase tracking-wider">
+                            Click slat or hover to preview
+                          </span>
+                        </div>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+
+                  {/* Red Left Accent Bar */}
+                  <div
                     className={cn(
-                      "px-1.5 py-0.5 text-[10px] font-bold tabular-nums",
-                      isSelected ? "bg-white/20 text-white" : "bg-gray-100 text-ink/50",
+                      "absolute left-0 top-0 h-full w-[3px] bg-x-red transition-opacity duration-300",
+                      isExpanded ? "opacity-100" : "opacity-0",
                     )}
-                  >
-                    {count}
-                  </span>
-                </button>
+                  />
+                </motion.div>
               );
             })}
           </div>
         </Reveal>
 
-        {/* Creative Editorial Visual Services Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {filteredServices.map((service, i) => (
-              <Reveal key={service.slug} delay={0.03 * (i % 3)} className="h-full">
-                <Link
-                  href={`/services/${service.slug}`}
-                  transitionTypes={["nav-forward"]}
-                  className="x-lift x-desat group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-md transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_20px_45px_rgba(222,48,36,0.12)]"
-                >
-                  {/* Image Container with Discipline Badge */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#111111] border-b border-line">
-                    <AssetImage
-                      alt={service.title}
-                      slot={service.asset}
-                      kind="service"
-                      aspect="landscape"
-                      fit="cover"
-                      tone="dark"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-
-                    {/* Discipline Badge */}
-                    <span className="absolute left-3.5 top-3.5 border border-x-red/40 bg-x-red px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white shadow-sm">
-                      Discipline {String(i + 1).padStart(2, "0")}
-                    </span>
-
-                    {/* Number Watermark */}
-                    <span className="absolute right-4 top-2 font-display text-[42px] font-black leading-none tracking-tighter text-white/10 select-none">
+        {/* MOBILE & TABLET: Stacked Interactive Card Accordion (Visible on Mobile/Tablet) */}
+        <div className="mt-8 space-y-3 lg:hidden">
+          {services.map((svc, i) => {
+            const isExpanded = i === expandedIdx;
+            return (
+              <div
+                key={svc.slug}
+                onClick={() => setExpandedIdx(i)}
+                className={cn(
+                  "overflow-hidden border border-white/10 bg-[#121212] transition-all duration-300",
+                  isExpanded && "border-x-red/60 bg-[#181818]",
+                )}
+              >
+                {/* Accordion Bar Header */}
+                <div className="flex items-center justify-between p-4 cursor-pointer">
+                  <div className="flex items-center gap-3">
+                    <span className="font-display text-xs font-bold text-x-red">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-
-                    {/* Arrow Action Button */}
-                    <span className="absolute bottom-3.5 right-3.5 flex size-9 items-center justify-center border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
-                      <ArrowUpRight className="size-4 text-white" />
-                    </span>
+                    <h3 className="font-display text-sm font-bold uppercase text-white">
+                      {svc.title}
+                    </h3>
                   </div>
+                  <span className="font-display text-base font-bold text-x-red">
+                    {isExpanded ? "−" : "+"}
+                  </span>
+                </div>
 
-                  {/* Card Content Body */}
-                  <div className="flex flex-1 flex-col justify-between p-6">
-                    <div>
-                      <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2.5 text-[13px] leading-[1.75] text-ink-muted line-clamp-2">
-                        {service.summary}
-                      </p>
-
-                      <div className="mt-4 space-y-2 border-t border-line/60 pt-4">
-                        {service.highlights.slice(0, 2).map((h) => (
-                          <div key={h} className="flex items-center gap-2 text-[12px] font-medium text-ink/80">
-                            <Check className="size-3.5 text-x-red shrink-0" />
-                            <span className="truncate">{h}</span>
-                          </div>
-                        ))}
-                      </div>
+                {/* Expanded Card Body */}
+                {isExpanded ? (
+                  <div className="p-4 pt-0 border-t border-white/10 space-y-4">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                      <AssetImage
+                        alt={svc.title}
+                        slot={svc.asset}
+                        kind="service"
+                        aspect="landscape"
+                        fit="cover"
+                        tone="dark"
+                        className="h-full w-full object-cover"
+                      />
                     </div>
-
-                    <div className="mt-6 border-t border-line/60 pt-4">
-                      <span className="inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red transition-all group-hover:translate-x-1">
-                        Explore Full Service Scope →
-                      </span>
+                    <p className="text-[13px] leading-relaxed text-white/70">
+                      {svc.summary}
+                    </p>
+                    <div className="space-y-1.5 pt-2">
+                      {svc.highlights.slice(0, 3).map((h) => (
+                        <div key={h} className="flex items-center gap-2 text-[12px] text-white/80">
+                          <Check className="size-3.5 text-x-red shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
                     </div>
+                    <Link
+                      href={`/services/${svc.slug}`}
+                      transitionTypes={["nav-forward"]}
+                      className="inline-flex w-full items-center justify-center gap-2 bg-x-red py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white"
+                    >
+                      Explore Service Scope →
+                    </Link>
                   </div>
-
-                  {/* Red Bottom Accent Line */}
-                  <span
-                    className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
-                    aria-hidden
-                  />
-                </Link>
-              </Reveal>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
 
         {/* Bottom Practice Integration Banner */}
-        <Reveal delay={0.1} className="mt-14">
-          <div className="formx-cut-x formx-edge formx-edge-x flex flex-col items-start justify-between gap-6 border border-line bg-[#111111] p-6 text-white md:flex-row md:items-center md:p-8">
+        <Reveal delay={0.1} className="mt-12">
+          <div className="formx-cut-x formx-edge formx-edge-x flex flex-col items-start justify-between gap-6 border border-white/10 bg-[#141414] p-6 text-white md:flex-row md:items-center md:p-8">
             <div>
               <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
-                Single-Window Coordination
+                Single-Window Multidisciplinary Package
               </p>
               <h3 className="mt-1.5 font-display text-xl font-bold uppercase tracking-tight text-white md:text-2xl">
                 Architecture, Structure, Civil &amp; MEP under one roof
               </h3>
-              <p className="mt-2 text-[13px] text-white/60">
-                100% GFC construction-ready packages with zero inter-discipline coordination gaps.
+              <p className="mt-2 text-[13px] text-white/50">
+                100% GFC construction-ready drawings with zero inter-discipline coordination clashes.
               </p>
             </div>
             <Link
               href="/contact"
               transitionTypes={["nav-forward"]}
-              className="formx-cut-sm shrink-0 inline-flex items-center gap-2.5 bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all hover:bg-x-red-hover"
+              className="shrink-0 inline-flex items-center gap-2.5 bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all hover:bg-x-red-hover"
             >
               Enquire About Package Scope
               <ArrowUpRight className="size-4" />
