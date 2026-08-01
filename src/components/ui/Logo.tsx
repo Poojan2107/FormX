@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 export function Logo({
   className,
   invert = false,
-  variant = "mark",
+  variant = "full",
 }: {
   className?: string;
   invert?: boolean;
@@ -13,15 +13,15 @@ export function Logo({
   if (variant === "lockup") {
     return (
       <span
-        className={cn("relative inline-flex h-full w-full items-center", className)}
+        className={cn("relative inline-flex items-center h-10 md:h-12 w-auto overflow-hidden", className)}
         aria-label="FormX Consultants"
       >
         <Image
           src="/formx-lockup.png"
           alt="FormX Consultants"
-          width={280}
-          height={96}
-          className="h-full w-auto max-h-full max-w-full object-contain object-left"
+          width={220}
+          height={60}
+          className="h-full w-auto object-contain object-left"
           priority
         />
       </span>
@@ -30,33 +30,29 @@ export function Logo({
 
   return (
     <span
-      className={cn("inline-flex flex-col leading-none", className)}
+      className={cn("inline-flex flex-col leading-none select-none", className)}
       aria-label="FormX Consultants"
     >
-      <span className="font-display text-[1.45rem] font-bold tracking-[-0.04em] md:text-[1.6rem]">
+      <span className="font-display text-[1.4rem] md:text-[1.65rem] font-black tracking-[-0.03em] uppercase">
         <span className={invert ? "text-white" : "text-ink"}>Form</span>
-        <span className="text-x-red">X</span>
+        <span className="text-x-red font-black">×</span>
       </span>
-      {variant === "full" ? (
-        <>
-          <span
-            className={cn(
-              "mt-1.5 font-display text-[0.55rem] font-semibold uppercase tracking-[0.28em]",
-              invert ? "text-white/85" : "text-ink",
-            )}
-          >
-            Consultants
-          </span>
-          <span
-            className={cn(
-              "mt-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.18em]",
-              invert ? "text-white/45" : "text-ink-muted",
-            )}
-          >
-            Design <span className="text-x-red">|</span> Engineering
-          </span>
-        </>
-      ) : null}
+      <span
+        className={cn(
+          "mt-0.5 font-display text-[0.6rem] font-extrabold uppercase tracking-[0.26em]",
+          invert ? "text-white/90" : "text-ink/90",
+        )}
+      >
+        Consultants
+      </span>
+      <span
+        className={cn(
+          "mt-0.5 font-display text-[0.5rem] font-bold uppercase tracking-[0.18em]",
+          invert ? "text-white/50" : "text-ink-muted/70",
+        )}
+      >
+        Design <span className="text-x-red font-bold">|</span> Engineering
+      </span>
     </span>
   );
 }

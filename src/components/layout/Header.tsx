@@ -9,7 +9,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, ArrowUpRight, Sparkles } from "lucide-react";
+import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, serviceNavGroups, site } from "@/data/site";
 import { DesktopNav } from "@/components/layout/MegaMenu";
@@ -59,34 +59,34 @@ function SiteHeader({
   return (
     <>
       <header className="sticky top-0 z-50 transition-all duration-300">
-        {/* Dynamic Glassmorphic Navigation Bar */}
+        {/* Clean Glassmorphic Header Bar */}
         <div
           className={cn(
-            "border-b bg-white/90 backdrop-blur-xl transition-all duration-500",
+            "border-b bg-white/95 backdrop-blur-xl transition-all duration-300",
             scrolled
-              ? "border-black/10 bg-white/95 py-0 shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
-              : "border-line/60 bg-white/85 py-1",
+              ? "border-black/10 bg-white/98 py-0 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+              : "border-line/60 bg-white/95 py-0.5",
           )}
         >
-          <Container className="relative flex items-center justify-between gap-4 h-[64px] sm:h-[72px] md:h-[80px] transition-all duration-300">
-            {/* Left: Brand Logo Lockup */}
+          <Container className="relative flex items-center justify-between gap-4 h-[64px] sm:h-[70px] transition-all duration-300">
+            {/* Left: Clean Vector Brand Logo */}
             <Link
               href="/"
               transitionTypes={["nav-back"]}
-              className="group relative z-10 flex shrink-0 items-center py-2 transition-transform duration-300 hover:scale-[1.02]"
+              className="group relative z-10 flex shrink-0 items-center py-1 transition-transform duration-200 hover:scale-[1.01]"
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
-              <Logo variant="lockup" />
+              <Logo variant="full" />
             </Link>
 
-            {/* Middle: Desktop Dynamic Mega Menu Nav */}
+            {/* Middle: Desktop Mega Menu Nav */}
             <DesktopNav />
 
             {/* Right: Action Controls & Status */}
             <div className="relative z-10 hidden items-center gap-4 self-center xl:flex">
               {/* Practice Availability Pill */}
-              <div className="flex items-center gap-2 border border-line bg-gray-50 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/60 shadow-xs">
+              <div className="flex items-center gap-2 border border-line bg-gray-50 px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-ink/60 shadow-2xs">
                 <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Greenfield Ready</span>
               </div>
@@ -104,7 +104,7 @@ function SiteHeader({
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex items-center gap-2 bg-x-red px-5 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.35)] transition-all duration-300 hover:bg-x-red-hover hover:shadow-[0_10px_28px_rgba(222,48,36,0.5)] hover:-translate-y-0.5"
+                className="formx-cut-sm formx-edge formx-edge-sm relative inline-flex items-center gap-2 bg-x-red px-5 py-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_4px_16px_rgba(222,48,36,0.3)] transition-all duration-200 hover:bg-x-red-hover hover:shadow-[0_6px_20px_rgba(222,48,36,0.45)]"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
@@ -257,5 +257,4 @@ function SiteHeader({
   );
 }
 
-/** Prefer MobileChrome from AppShell */
 export { MobileChrome as Header };

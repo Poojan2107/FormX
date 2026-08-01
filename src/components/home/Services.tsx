@@ -75,24 +75,24 @@ export function Services() {
                     </div>
                   </div>
 
-                  {/* Bottom: Captioned Scope Body */}
-                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8 bg-white min-w-0">
-                    <div className="min-w-0">
+                  {/* Bottom: Captioned Scope Body — generous padding and tracking prevents right-edge character slicing */}
+                  <div className="flex flex-1 flex-col justify-between p-6 sm:p-7 md:p-8 bg-white min-w-0">
+                    <div className="min-w-0 pr-1">
                       <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
                         FormX Scope Package
                       </span>
                       <h3 className="mt-1.5 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
                         {currentService.title}
                       </h3>
-                      <p className="mt-3 text-[14px] leading-[1.8] text-ink-muted md:text-[15px]">
+                      <p className="mt-3 text-[13px] leading-[1.8] text-ink-muted md:text-[14px] tracking-normal">
                         {currentService.summary}
                       </p>
 
-                      <div className="mt-6 grid gap-2.5 sm:grid-cols-2 border-t border-line/60 pt-5 min-w-0">
+                      <div className="mt-6 grid gap-3 sm:grid-cols-2 border-t border-line/60 pt-5 min-w-0">
                         {currentService.highlights.slice(0, 4).map((h) => (
-                          <div key={h} className="flex items-start gap-2.5 text-[12px] font-semibold text-ink min-w-0">
+                          <div key={h} className="flex items-start gap-2.5 text-[12px] font-semibold text-ink min-w-0 pr-1">
                             <Check className="size-3.5 text-x-red shrink-0 mt-0.5" />
-                            <span className="leading-snug">{h}</span>
+                            <span className="leading-snug tracking-normal">{h}</span>
                           </div>
                         ))}
                       </div>
