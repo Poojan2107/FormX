@@ -52,6 +52,14 @@ export function NewsletterForm({ invert = false }: { invert?: boolean }) {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-2" noValidate aria-busy={loading}>
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+      />
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
           name="email"

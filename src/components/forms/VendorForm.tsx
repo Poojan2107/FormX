@@ -122,6 +122,14 @@ export function VendorForm() {
       noValidate
       className="formx-cut-x formx-edge formx-edge-x space-y-4 border border-line bg-white p-6 md:p-8"
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", opacity: 0 }}
+      />
       <Field label="Company name" name="company" required error={errors.company} />
       <Field label="Contact person" name="contact" required error={errors.contact} />
       <div className="grid gap-4 sm:grid-cols-2">

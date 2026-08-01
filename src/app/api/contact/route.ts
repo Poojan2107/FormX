@@ -1,18 +1,27 @@
 import { NextResponse } from "next/server";
+import { sendEmail } from "@/lib/email";
 
 function isEmail(v: unknown) {
   return typeof v === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 
+function str(v: unknown) {
+  return typeof v === "string" ? v.trim() : "";
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const name = String(body?.name || "").trim();
-    const email = String(body?.email || "").trim();
-    const message = String(body?.message || "").trim();
-    const phone = String(body?.phone || "").trim();
-    const company = String(body?.company || "").trim();
+    const name = str(body?.name);
+    const email = str(body?.email);
+    const message = str(body?.message);
+    const phone = str(body?.phone);
+    const company = str(body?.company);
     const services = Array.isArray(body?.services) ? body.services : [];
+
+    if (body?.website) {
+      return NextResponse.json({ ok: true });
+    }
 
     if (name.length < 2 || !isEmail(email) || message.length < 10) {
       return NextResponse.json(
@@ -21,14 +30,18 @@ export async function POST(request: Request) {
       );
     }
 
-    console.info("[FormX contact enquiry]", {
-      name,
-      email,
-      company,
-      phone,
-      services,
-      message: message.slice(0, 500),
-      timestamp: new Date().toISOString(),
+    await sendEmail({
+      replyTo: email,
+      subject: `[FormX Contact] ${name}`,
+      title: "New project enquiry",
+      rows: [
+        { label: "Name", value: name },
+        { label: "Email", value: email },
+        { label: "Phone", value: phone || "—" },
+        { label: "Company", value: company || "—" },
+        { label: "Services interested", value: services.length ? services.join(", ") : "—" },
+        { label: "Message", value: message.slice(0, 500) },
+      ],
     });
 
     return NextResponse.json({ ok: true, message: "Enquiry received successfully" });
