@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { ProofStrip } from "@/components/shared/ProofStrip";
-import { BookOpen, ShieldCheck, FileText, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FORMX Engineering Journal | Technical Insights & Seismic Detailing",

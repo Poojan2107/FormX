@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Building2,
   ChevronRight,
-  ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -51,7 +50,7 @@ const stages = [
     icon: Layers,
     deliverables: ["STAAD.Pro 3D Calculation Sheet", "PEB Steel Structural Framing GFC", "Foundation Equipment Isolation GA"],
     code: "IS 456, IS 800 & IS 1893 Seismic",
-    asset: "services/structure.jpg",
+    asset: "services/structural.jpg",
     metric: "Seismic Zone III/IV Safe",
   },
   {

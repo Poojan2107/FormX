@@ -42,6 +42,40 @@ export function Contact() {
   const [formError, setFormError] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const area = params.get("area");
+    const crane = params.get("crane");
+    const type = params.get("type");
+    if (!area && !crane && !type) return;
+    const timer = window.setTimeout(() => {
+      setSelectedServices((prev) =>
+        prev.includes("Structural Engineering") ? prev : [...prev, "Structural Engineering"],
+      );
+    }, 0);
+    if (messageRef.current) {
+      const typeLabel =
+        type === "peb"
+          ? "PEB Steel Frame"
+          : type === "rcc"
+            ? "Heavy RCC Frame"
+            : type === "hybrid"
+              ? "Hybrid Steel-RCC"
+              : "";
+      messageRef.current.value = [
+        "Enquiry from the Industrial Structural & PEB Load Estimator.",
+        area ? `Facility area: ${Number(area).toLocaleString()} sq.ft` : null,
+        crane ? `EOT crane capacity: ${crane} tonnes` : null,
+        type ? `Structural system: ${typeLabel}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n");
+    }
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const el = formRef.current?.querySelector<HTMLElement>("[aria-invalid='true']");
@@ -184,6 +218,7 @@ export function Contact() {
                     Message
                   </span>
                   <textarea
+                    ref={messageRef}
                     name="message"
                     rows={4}
                     aria-invalid={Boolean(errors.message)}

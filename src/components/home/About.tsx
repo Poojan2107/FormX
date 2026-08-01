@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Layers, Award } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { about } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";

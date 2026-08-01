@@ -1,15 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Calculator,
-  Layers,
-  Building2,
-  HardHat,
-  ShieldCheck,
   ArrowRight,
-  Sparkles,
   RotateCcw,
   CheckCircle2,
   FileSpreadsheet,

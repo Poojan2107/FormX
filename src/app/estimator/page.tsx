@@ -18,7 +18,7 @@ export default function EstimatorPage() {
         title="Structural &amp; PEB Load Estimator"
         description="Estimate preliminary PEB steel tonnage, RCC concrete requirements, and GFC package timelines for your proposed industrial facility."
         crumbs={[{ label: "Structural Estimator" }]}
-        image={{ slot: "services/structure.jpg", kind: "service" }}
+        image={{ slot: "services/structural.jpg", kind: "service" }}
       />
 
       <ProofStrip compact />

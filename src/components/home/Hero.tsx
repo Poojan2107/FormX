@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, MapPin, Grid, Layers } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin, Grid } from "lucide-react";
 import { heroLines, hero } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";

@@ -15,7 +15,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { BrochureCta, CtaBand } from "@/components/shared/CtaBlocks";
 import { ProofStrip } from "@/components/shared/ProofStrip";
 import { ProcessSteps } from "@/components/shared/ProcessSteps";
-import { ShieldCheck, Compass, Award, CheckCircle2, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About FORMX Consultants | Multidisciplinary Design & Engineering, Ahmedabad",

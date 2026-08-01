@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { ShieldCheck, Award, Layers, CheckCircle2, Building2, MapPin } from "lucide-react";
+import { ShieldCheck, Award, Layers, CheckCircle2 } from "lucide-react";
 import { formxNumbers } from "@/data/site";
 import { Counter } from "@/components/ui/Counter";
 

@@ -46,7 +46,6 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   const isActive = q.trim() !== "" || sector !== "All" || service !== "All";
   const featured = filtered[0];
-  const filterKey = `${sector}|${service}|${q.trim().toLowerCase()}`;
 
   const reset = () => {
     setQ("");
