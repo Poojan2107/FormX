@@ -26,36 +26,31 @@ export function ProjectCard({
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
       className={cn(
-        "group relative block overflow-hidden bg-gray-100 x-lift x-desat",
+        "group relative block overflow-hidden bg-[#111]",
         aspect === "4/3" && "aspect-[4/3]",
         className,
       )}
     >
-      {/* Full-bleed image */}
       <AssetImage
         alt={project.title}
         slot={project.assets.cover}
         kind="facility"
-        tone={index % 2 === 0 ? "dark" : "light"}
+        tone="dark"
         aspect="landscape"
         fit="cover"
         priority={priority}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
       />
 
-      {/* Permanent subtle gradient at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+      {/* Light bottom scrim — keep photography readable, not buried */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/25" />
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
-
-      {/* Sector tag badge — formatted with max-width and leading-tight to avoid ugly overflow */}
-      <span className="absolute left-3.5 top-3.5 z-10 max-w-[85%] border border-x-red/50 bg-x-red px-2.5 py-1 font-display text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.16em] text-white leading-tight shadow-md truncate">
+      <span className="absolute left-3 top-3 z-10 max-w-[85%] bg-x-red px-2 py-1 font-display text-[8px] font-bold uppercase leading-tight tracking-[0.14em] text-white sm:text-[9px]">
         {project.sector}
       </span>
 
-      {/* Index number watermark */}
-      <span className="absolute right-4 top-4 z-10 font-display text-[40px] sm:text-[48px] font-black leading-none tracking-tighter text-white/5 select-none">
+      <span className="absolute right-3 top-3 z-10 select-none font-display text-[36px] font-black leading-none tracking-tighter text-white/10 sm:text-[44px]">
         {String(index + 1).padStart(2, "0")}
       </span>
 

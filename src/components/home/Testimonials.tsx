@@ -3,14 +3,16 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { testimonials } from "@/data/site";
+import { testimonials, projects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
   const item = testimonials[index];
+  const visual = projects[index % projects.length];
 
   const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
@@ -25,105 +27,133 @@ export function Testimonials() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white py-20 md:py-32"
+      className="relative overflow-hidden bg-white py-16 md:py-24"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Architectural background detail — large X mark */}
-      <div
-        className="pointer-events-none absolute right-[-5%] top-[-10%] select-none font-display font-black text-ink/[0.025]"
-        style={{ fontSize: "clamp(14rem, 28vw, 28rem)", lineHeight: 1 }}
-        aria-hidden
-      >
-        ×
-      </div>
-
       <Container className="relative">
-        {/* Section label */}
-        <div className="mb-12 flex items-center gap-3 md:mb-16">
+        <div className="mb-8 flex items-center gap-3 md:mb-10">
           <span className="h-px w-8 bg-x-red" />
           <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
             Client Feedback
           </span>
         </div>
 
-        {/* Large quote area */}
-        <div className="max-w-3xl prose-measure-lg">
-          <div className="mb-8" style={{ minHeight: "180px" }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={item.name + index}
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, y: -12 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        <div className="grid items-stretch gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex flex-col justify-between border border-line border-b-0 p-6 md:p-8 lg:border-b lg:border-r-0 lg:p-10">
+            <div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={item.name + index}
+                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div
+                    className="mb-4 font-display font-black leading-none text-x-red/20"
+                    style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+                    aria-hidden
+                  >
+                    &ldquo;
+                  </div>
+
+                  <blockquote
+                    className="font-display font-bold leading-[1.35] tracking-[-0.01em] text-ink"
+                    style={{ fontSize: "clamp(1.15rem, 2vw, 1.65rem)" }}
+                  >
+                    {item.quote}
+                  </blockquote>
+
+                  <footer className="mt-8 flex items-center gap-4">
+                    <div className="flex size-11 items-center justify-center bg-x-red font-display text-[13px] font-bold text-white">
+                      {item.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .slice(0, 2)}
+                    </div>
+                    <div>
+                      <p className="font-display text-[14px] font-bold text-ink">{item.name}</p>
+                      <p className="text-[12px] text-ink/40">
+                        {item.role} — {item.company}
+                      </p>
+                    </div>
+                  </footer>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="mt-10 flex items-center gap-3 border-t border-line pt-5">
+              <button
+                type="button"
+                onClick={prev}
+                className="flex size-9 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
+                aria-label="Previous"
               >
-                {/* Quote mark */}
-                <div
-                  className="mb-5 font-display font-black leading-none text-x-red/25"
-                  style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
-                  aria-hidden
-                >
-                  &ldquo;
+                <ChevronLeft className="size-4" />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="flex size-9 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
+                aria-label="Next"
+              >
+                <ChevronRight className="size-4" />
+              </button>
+
+              <p className="ml-1 font-display text-[12px] tabular-nums text-ink/30">
+                {String(index + 1).padStart(2, "0")} /{" "}
+                {String(testimonials.length).padStart(2, "0")}
+              </p>
+
+              {!reduce && !paused && (
+                <div className="ml-auto h-px max-w-[140px] flex-1 overflow-hidden bg-line">
+                  <motion.div
+                    key={`progress-${index}`}
+                    className="h-full bg-x-red"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 6, ease: "linear" }}
+                    style={{ transformOrigin: "left center" }}
+                  />
                 </div>
-
-                <blockquote
-                  className="font-display font-bold leading-[1.35] tracking-[-0.01em] text-ink"
-                  style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.95rem)" }}
-                >
-                  {item.quote}
-                </blockquote>
-
-                <footer className="mt-8 flex items-center gap-4">
-                  {/* Avatar placeholder — initials */}
-                  <div className="flex size-12 items-center justify-center bg-x-red font-display text-[14px] font-bold text-white">
-                    {item.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
-                  </div>
-                  <div>
-                    <p className="font-display text-[14px] font-bold text-ink">{item.name}</p>
-                    <p className="text-[12px] text-ink/40">{item.role} — {item.company}</p>
-                  </div>
-                </footer>
-              </motion.div>
-            </AnimatePresence>
+              )}
+            </div>
           </div>
 
-          {/* Controls */}
-          <div className="flex items-center gap-4 border-t border-line pt-6">
-            <button
-              type="button"
-              onClick={prev}
-              className="flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="size-4" />
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              className="flex size-10 items-center justify-center border border-line text-ink transition-colors hover:border-x-red hover:text-x-red"
-              aria-label="Next"
-            >
-              <ChevronRight className="size-4" />
-            </button>
-
-            <p className="ml-2 font-display text-[12px] tabular-nums text-ink/30">
-              {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
-            </p>
-
-            {/* Progress bar */}
-            {!reduce && !paused && (
-              <div className="ml-auto h-px flex-1 overflow-hidden bg-line">
-                <motion.div
-                  key={`progress-${index}`}
-                  className="h-full bg-x-red"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 6, ease: "linear" }}
-                  style={{ transformOrigin: "left center" }}
+          <div className="relative min-h-[280px] overflow-hidden bg-[#111] lg:min-h-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={visual.slug}
+                className="absolute inset-0"
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={reduce ? undefined : { opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <AssetImage
+                  alt={visual.client}
+                  slot={visual.assets.cover}
+                  kind="facility"
+                  fit="cover"
+                  tone="dark"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
-              </div>
-            )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+                    Featured work
+                  </p>
+                  <p className="mt-2 font-display text-xl font-bold uppercase tracking-tight text-white">
+                    {visual.client}
+                  </p>
+                  <p className="mt-1 text-[12px] text-white/55">
+                    {visual.sector} · {visual.location}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </Container>

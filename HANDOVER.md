@@ -4,7 +4,19 @@
 
 The site is **production-structured**. Remaining work before go-live is primarily **asset replacement** + **FormX-true copy/metrics** (where demo numbers still stand in).
 
-Preview: `npm run dev` in `formx-web/`
+Preview: `npm run dev` from the repo root.
+
+---
+
+## Sprint 7 status (go-live)
+
+| Track | Status |
+|-------|--------|
+| UI polish (image-led, gaps, explorer, stats, testimonials) | Done in code |
+| Security headers (`next.config.ts`) | Done |
+| FormX-true content (stats, bios, testimonials, contact) | **Client** |
+| Remaining client logos / team / insight slots | **Client drop-in** |
+| `RESEND_API_KEY` + verified sender | **Client / ops** |
 
 ---
 
@@ -94,7 +106,8 @@ Home · About · Services (+10) · Projects (+9) · Clients · Sectors (+12) · 
 ## 5. Design system (locked)
 
 - Colors: white / black / `#DE3024`
-- Display: Chakra Petch · Body: Source Sans 3
+- Display: Chakra Petch · Body: Inter
 - Black navbar · white-majority pages · red X-factor accents
 - Content psychology: S3M (proof → people → process → peers)
 - IA: VMS-aligned, elevated craft
+- Shared surfaces: ProofStrip · LeadStrip · ProcessSteps · ClientLogoWall · image-owning ProjectCard

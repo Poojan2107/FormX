@@ -46,47 +46,49 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   const chipClass = (active: boolean) =>
     cn(
-      "shrink-0 border px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[11px] sm:tracking-[0.12em]",
+      "shrink-0 px-2.5 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[11px]",
       active
-        ? "border-x-red bg-x-red text-white"
-        : "border-line text-ink/55 hover:border-ink/30 hover:text-ink",
+        ? "bg-x-red text-white"
+        : "bg-transparent text-ink/50 hover:bg-[#f4f4f4] hover:text-ink",
     );
 
   return (
     <div>
-      <div className="formx-cut-x formx-edge formx-edge-x mb-10 flex flex-col gap-5 border border-line bg-[#fafafa] p-4 sm:p-5 md:p-6">
-        <label className="relative block">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search projects…"
-            className="w-full border border-line bg-white py-3.5 pl-11 pr-4 text-sm outline-none transition-colors focus:border-x-red"
-            aria-label="Search projects"
-          />
-        </label>
+      <div className="mb-8 border-b border-line pb-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <label className="relative block w-full max-w-md">
+            <Search className="pointer-events-none absolute left-0 top-1/2 size-4 -translate-y-1/2 text-ink/35" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search projects…"
+              className="w-full border-0 border-b border-line bg-transparent py-2.5 pl-7 pr-2 text-sm outline-none transition-colors placeholder:text-ink/35 focus:border-x-red"
+              aria-label="Search projects"
+            />
+          </label>
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
-            {filtered.length} of {projects.length} projects
-          </p>
-          {isActive ? (
-            <button
-              type="button"
-              onClick={reset}
-              className="inline-flex items-center gap-1.5 font-display text-[11px] font-bold uppercase tracking-[0.12em] text-x-red transition-colors hover:underline"
-            >
-              <RotateCcw className="size-3.5" />
-              Reset filters
-            </button>
-          ) : null}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink/45">
+              {filtered.length} / {projects.length}
+            </p>
+            {isActive ? (
+              <button
+                type="button"
+                onClick={reset}
+                className="inline-flex items-center gap-1.5 font-display text-[11px] font-bold uppercase tracking-[0.12em] text-x-red transition-colors hover:underline"
+              >
+                <RotateCcw className="size-3.5" />
+                Reset
+              </button>
+            ) : null}
+          </div>
         </div>
 
-        <div>
-          <p className="mb-2 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-            Sector
-          </p>
-          <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by sector">
+        <div className="mt-5 flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Filter by sector">
+            <span className="mr-2 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+              Sector
+            </span>
             {sectors.map((s) => (
               <button
                 key={s}
@@ -99,13 +101,11 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               </button>
             ))}
           </div>
-        </div>
 
-        <div>
-          <p className="mb-2 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-            Service
-          </p>
-          <div className="flex max-w-full flex-wrap gap-2" role="group" aria-label="Filter by service">
+          <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Filter by service">
+            <span className="mr-2 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+              Service
+            </span>
             {services.map((s) => (
               <button
                 key={s}
@@ -122,7 +122,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="border border-line px-6 py-14 text-center">
+        <div className="px-6 py-16 text-center">
           <p className="font-display text-lg font-bold text-ink">No projects match</p>
           <p className="mt-2 text-sm text-ink-muted">
             Clear filters or try a different search term.
@@ -136,10 +136,16 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           </button>
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project, i) => (
-            <Reveal key={project.slug} delay={0.04 * (i % 3)} className="h-full">
-              <ProjectCard project={project} index={i} />
+            <Reveal key={project.slug} delay={0.03 * (i % 3)} className="h-full">
+              <ProjectCard
+                project={project}
+                index={i}
+                priority={i < 3}
+                aspect="4/3"
+                className="h-full min-h-[240px] sm:min-h-[280px]"
+              />
             </Reveal>
           ))}
         </div>

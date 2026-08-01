@@ -40,8 +40,7 @@ export function Projects() {
           </Link>
         </Reveal>
 
-        {/* Editorial masonry layout */}
-        <div className="grid gap-4 lg:grid-cols-2 lg:gap-4">
+        <div className="grid gap-3 lg:grid-cols-2">
           {/* LEFT: Featured (tall) */}
           <Reveal from="left" className="h-full">
             <ProjectCard
@@ -49,12 +48,12 @@ export function Projects() {
               index={0}
               priority
               aspect="fill"
-              className="h-full min-h-[400px] lg:min-h-[560px]"
+              className="h-full min-h-[420px] lg:min-h-[580px]"
             />
           </Reveal>
 
           {/* RIGHT: 2 stacked */}
-          <div className="grid grid-rows-2 gap-4">
+          <div className="grid grid-rows-2 gap-3">
             {secondary.map((project, i) => (
               <Reveal key={project.slug} delay={0.08 * (i + 1)} from="right" className="h-full">
                 <ProjectCard
@@ -62,7 +61,7 @@ export function Projects() {
                   index={i + 1}
                   priority={i === 0}
                   aspect="fill"
-                  className="h-full min-h-[180px] lg:min-h-[265px]"
+                  className="h-full min-h-[200px] lg:min-h-[284px]"
                 />
               </Reveal>
             ))}
@@ -70,14 +69,14 @@ export function Projects() {
         </div>
 
         {/* Bottom row: 3 equal */}
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
           {tertiary.map((project, i) => (
             <Reveal key={project.slug} delay={0.06 * i} className="h-full">
               <ProjectCard
                 project={project}
                 index={i + 3}
                 aspect="fill"
-                className="h-full min-h-[220px]"
+                className="h-full min-h-[240px]"
               />
             </Reveal>
           ))}

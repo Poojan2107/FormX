@@ -103,12 +103,12 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Gradient layers */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0c]/95 via-[#0c0c0c]/65 to-[#0c0c0c]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c]/85 via-transparent to-[#0c0c0c]/30" />
+        {/* Gradient layers — keep photography dominant */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0c]/88 via-[#0c0c0c]/45 to-[#0c0c0c]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c]/75 via-transparent to-[#0c0c0c]/25" />
 
         {/* Architectural grid texture */}
-        <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-12" aria-hidden />
       </motion.div>
 
       {/* Red accent top-left corner line */}
