@@ -1,39 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Pill,
-  Utensils,
-  FlaskConical,
-  Scissors,
-  Wrench,
-  Car,
-  Warehouse,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { industriesServed } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-
-const iconMap: Record<string, React.ReactNode> = {
-  Pill: <Pill className="size-6 text-x-red" />,
-  Utensils: <Utensils className="size-6 text-x-red" />,
-  FlaskConical: <FlaskConical className="size-6 text-x-red" />,
-  Scissors: <Scissors className="size-6 text-x-red" />,
-  Wrench: <Wrench className="size-6 text-x-red" />,
-  Car: <Car className="size-6 text-x-red" />,
-  Warehouse: <Warehouse className="size-6 text-x-red" />,
-};
+import { AssetImage } from "@/components/ui/AssetImage";
+import { cn } from "@/lib/cn";
 
 export function Sectors() {
   return (
-    <section id="sectors" className="scroll-mt-32 bg-[#fafafa] py-20 md:py-28 border-y border-line">
+    <section id="sectors" className="scroll-mt-32 border-y border-line bg-white section-y">
       <Container>
-        {/* Section Header */}
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="mb-3 flex items-center gap-3">
+            <div className="mb-2.5 flex items-center gap-3">
               <span className="h-px w-8 bg-x-red" />
               <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
                 Industries Served
@@ -42,7 +23,7 @@ export function Sectors() {
             <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
               Specialized Engineering Across Key Sectors
             </h2>
-            <p className="mt-3 max-w-[70ch] prose-measure text-[14px] leading-relaxed text-ink-muted">
+            <p className="mt-2 max-w-[60ch] text-[14px] leading-relaxed text-ink-muted">
               Domain expertise for process plants, heavy engineering, cleanrooms, and logistics hubs.
             </p>
           </div>
@@ -56,43 +37,50 @@ export function Sectors() {
           </Link>
         </Reveal>
 
-        {/* 7 Industries Served Visual Cards Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {industriesServed.map((item, i) => (
-            <Reveal key={item.id} delay={0.04 * (i % 4)} className="h-full">
-              <Link
-                href={`/sectors/${item.slug}`}
-                transitionTypes={["nav-forward"]}
-                className="formx-cut-x formx-edge formx-edge-x x-lift group flex h-full flex-col justify-between border border-line bg-white p-6 transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_40px_rgba(222,48,36,0.1)]"
+        {/* 3 + 4 image mosaic — no orphan gap */}
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-12">
+          {industriesServed.map((item, i) => {
+            const topRow = i < 3;
+            return (
+              <Reveal
+                key={item.id}
+                delay={0.03 * i}
+                className={cn("h-full", topRow ? "lg:col-span-4" : "lg:col-span-3")}
               >
-                <div>
-                  {/* Top Bar with Icon & Number */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="flex size-12 items-center justify-center border border-line bg-[#fafafa] transition-colors group-hover:border-x-red/30 group-hover:bg-x-red/10">
-                      {iconMap[item.icon] ?? <Wrench className="size-6 text-x-red" />}
-                    </div>
-                    <span className="font-display text-xs font-bold text-ink/30">
-                      0{i + 1}
+                <Link
+                  href={`/sectors/${item.slug}`}
+                  transitionTypes={["nav-forward"]}
+                  className="group relative block aspect-[5/4] overflow-hidden bg-[#111] lg:aspect-[4/3]"
+                >
+                  <AssetImage
+                    alt={item.title}
+                    slot={item.asset}
+                    kind="sector"
+                    aspect="landscape"
+                    fit="cover"
+                    tone="dark"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity group-hover:from-black/90" />
+
+                  <span className="absolute left-3 top-3 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.16em] text-white">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                    <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-white transition-colors group-hover:text-x-red md:text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 line-clamp-1 text-[12px] text-white/60">{item.description}</p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
+                      View Practice Scope
+                      <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
-
-                  {/* Title & Description */}
-                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink group-hover:text-x-red transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Footer Action */}
-                <div className="mt-6 pt-4 border-t border-line/60 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
-                  <span>View Practice Scope</span>
-                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </Container>
     </section>

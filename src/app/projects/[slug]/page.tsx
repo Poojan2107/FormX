@@ -184,19 +184,19 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* Services delivered */}
-      <section className="border-y border-line bg-[#fafafa] py-10 md:py-12">
+      <section className="border-y border-line bg-[#fafafa] py-8 md:py-10">
         <Container>
           <Reveal>
-            <p className="mb-5 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-ink/40">
+            <p className="mb-4 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-ink/40">
               Integrated FormX Services
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {project.services.map((s) => (
                 <span
                   key={s}
-                  className="border border-line bg-white px-4 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-ink shadow-xs"
+                  className="border border-line bg-white px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wider text-ink"
                 >
-                  ✓ {s}
+                  {s}
                 </span>
               ))}
             </div>
@@ -204,33 +204,31 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Project Gallery Showcase — Full Scale Uncropped Photo Grid & Lightbox */}
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-white section-y">
         <Container>
           <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-line pb-4">
+            <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
-                  Full Scale Visuals
+                  Project Gallery
                 </p>
-                <h2 className="mt-1 font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-ink">
-                  Project Gallery — Uncropped Frame View
+                <h2 className="mt-1 font-display text-2xl font-extrabold uppercase tracking-tight text-ink md:text-3xl">
+                  Facility visuals
                 </h2>
               </div>
-              <p className="text-[13px] text-ink-muted">
-                100% Full-Frame Architectural &amp; Structural Engineering Views
+              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                Click any frame to expand
               </p>
             </div>
           </Reveal>
 
-          {/* Interactive Uncropped Photo Gallery */}
           <ProjectGalleryViewer
             cover={project.assets.cover}
             gallery={project.assets.gallery}
             title={project.client}
           />
 
-          <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-line pt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6">
             <Button href="/contact" variant="primary" className="px-8 py-3.5">
               Enquire About Similar Work
             </Button>

@@ -225,14 +225,15 @@ export const formxNumbers = [
 
 export const stats = formxNumbers;
 
-/** Industries Served with icon mapping specified in client feedback document */
+/** Industries Served — image-led home strip (assets from public/assets) */
 export const industriesServed = [
   {
     id: "pharmaceuticals",
     title: "Pharmaceuticals",
     icon: "Pill",
     description: "Cleanrooms, cGMP utilities, HVAC zoning.",
-    slug: "pharmaceuticals",
+    slug: "semiconductor",
+    asset: "sectors/semiconductor.jpg",
   },
   {
     id: "food-processing",
@@ -240,34 +241,39 @@ export const industriesServed = [
     icon: "Utensils",
     description: "Hygiene layouts, cold chain, steam utilities.",
     slug: "food-processing",
+    asset: "sectors/food-processing.jpg",
   },
   {
     id: "chemical",
     title: "Chemical",
     icon: "FlaskConical",
     description: "Hazard zoning, pipe racks, effluent systems.",
-    slug: "chemical-manufacturing",
+    slug: "solar-glass",
+    asset: "sectors/solar-glass.jpg",
   },
   {
     id: "textile",
     title: "Textile",
     icon: "Scissors",
     description: "High-bay sheds, humidification, power centers.",
-    slug: "textile-apparel",
+    slug: "wind-blade",
+    asset: "sectors/wind-blade.jpg",
   },
   {
     id: "engineering",
     title: "Engineering",
     icon: "Wrench",
     description: "Machine foundations, EOT cranes, ventilation.",
-    slug: "heavy-engineering",
+    slug: "industrial-park",
+    asset: "projects/vir-bhadra-enterprise.jpg",
   },
   {
     id: "automobile",
     title: "Automobile",
     icon: "Car",
     description: "Assembly logistics, paint utilities, fire safety.",
-    slug: "automotive",
+    slug: "ev-electronics",
+    asset: "sectors/semiconductor.jpg",
   },
   {
     id: "warehouses",
@@ -275,6 +281,7 @@ export const industriesServed = [
     icon: "Warehouse",
     description: "PEB spans, dock pits, solar-ready roofs.",
     slug: "industrial-park",
+    asset: "projects/peb-warehouse.jpg",
   },
 ];
 

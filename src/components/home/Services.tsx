@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Check, ShieldCheck, Layers, Building2 } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Building2 } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
@@ -29,15 +28,23 @@ export function Services() {
   const currentService = services[activeIdx];
 
   return (
-    <section id="services" className="scroll-mt-32 bg-[#fafafa] py-16 md:py-24 border-y border-line">
+    <section id="services" className="scroll-mt-32 border-y border-line bg-[#fafafa] section-y">
       <Container>
-        {/* Section Heading */}
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            eyebrow="Multidisciplinary Practice"
-            title="Complete solutions in engineering & architecture"
-            description="10 disciplines coordinated as one GFC-ready package."
-          />
+        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <div className="mb-2.5 flex items-center gap-3">
+              <span className="h-px w-8 bg-x-red" />
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+                Multidisciplinary Practice
+              </span>
+            </div>
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+              Complete solutions in engineering &amp; architecture
+            </h2>
+            <p className="mt-2 max-w-[60ch] text-[14px] leading-relaxed text-ink-muted">
+              10 disciplines coordinated as one GFC-ready package.
+            </p>
+          </div>
           <Link
             href="/services"
             transitionTypes={["nav-forward"]}
@@ -48,118 +55,96 @@ export function Services() {
           </Link>
         </Reveal>
 
-        {/* Master Showcase: Light Architectural Split Stage */}
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:gap-8 items-stretch">
-
-          {/* LEFT: Full Architectural Visual Stage (Smooth Fade Crossfade) */}
-          <Reveal className="w-full h-full min-w-0">
-            <div className="relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-xl min-w-0">
+        <div className="mt-8 grid items-stretch gap-0 lg:grid-cols-[1.35fr_0.65fr] lg:border lg:border-line">
+          {/* LEFT: Media-first stage */}
+          <Reveal className="min-w-0">
+            <div className="relative flex h-full min-h-[520px] flex-col overflow-hidden border border-line bg-[#111] lg:border-0 lg:border-r">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={currentService.slug}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
-                  className="flex flex-col h-full justify-between min-w-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.28 }}
+                  className="absolute inset-0"
                 >
-                  {/* Top Landscape Photo Banner */}
-                  <div className="relative w-full h-[260px] sm:h-[320px] md:h-[360px] overflow-hidden bg-[#111111] border-b border-line shrink-0">
-                    <AssetImage
-                      alt={currentService.title}
-                      slot={currentService.asset}
-                      kind="service"
-                      aspect="landscape"
-                      fit="cover"
-                      tone="dark"
-                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
-                    
-                    {/* Top Badges */}
-                    <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2 z-10">
-                      <span className="border border-x-red/40 bg-x-red px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
-                        Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
-                      </span>
-                      <span className="hidden sm:inline-flex items-center gap-1.5 border border-white/20 bg-black/60 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
-                        <ShieldCheck className="size-3 text-x-red" />
-                        IS Code Compliant
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-4 left-4 right-4 z-10">
-                      <span className="inline-block border border-white/20 bg-black/60 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
-                        {categoryLabels[currentService.slug] ?? "FormX Scope Package"}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Scope Details Body */}
-                  <div className="flex flex-1 flex-col justify-between p-6 sm:p-7 md:p-8 bg-white min-w-0">
-                    <div className="min-w-0 pr-1">
-                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                        FormX Scope Package
-                      </span>
-                      <h3 className="mt-1.5 font-display text-2xl font-bold uppercase tracking-tight text-ink md:text-3xl">
-                        {currentService.title}
-                      </h3>
-                      <p className="mt-3 text-[13px] leading-[1.8] text-ink-muted md:text-[14px] tracking-normal">
-                        {currentService.summary}
-                      </p>
-
-                      {/* 2x2 Scope Deliverables Grid */}
-                      <div className="mt-6 grid gap-3 sm:grid-cols-2 border-t border-line/60 pt-5 min-w-0">
-                        {currentService.highlights.slice(0, 4).map((h, i) => (
-                          <div
-                            key={h}
-                            className="flex items-start gap-2.5 border border-line/60 bg-[#fafafa] p-3 transition-colors hover:border-x-red/40 hover:bg-white min-w-0"
-                          >
-                            <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center bg-x-red/10 font-display text-[10px] font-bold text-x-red">
-                              0{i + 1}
-                            </span>
-                            <span className="text-[12px] font-semibold text-ink leading-snug tracking-normal truncate">
-                              {h}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Bottom CTA Action Button */}
-                    <div className="mt-8 pt-5 border-t border-line min-w-0">
-                      <Link
-                        href={`/services/${currentService.slug}`}
-                        transitionTypes={["nav-forward"]}
-                        className="inline-flex items-center justify-center gap-2.5 border border-x-red bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(222,48,36,0.3)] transition-all hover:bg-white hover:text-ink w-full sm:w-auto"
-                      >
-                        Explore Full Service Scope
-                        <ArrowUpRight className="size-4 shrink-0" />
-                      </Link>
-                    </div>
-                  </div>
+                  <AssetImage
+                    alt={currentService.title}
+                    slot={currentService.asset}
+                    kind="service"
+                    aspect="landscape"
+                    fit="cover"
+                    tone="dark"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
                 </motion.div>
               </AnimatePresence>
+
+              <div className="relative z-10 mt-auto flex flex-col p-6 sm:p-8">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={currentService.slug + "-copy"}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      <span className="bg-x-red px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                        {String(activeIdx + 1).padStart(2, "0")} / 10
+                      </span>
+                      <span className="border border-white/25 bg-black/40 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm">
+                        {categoryLabels[currentService.slug] ?? "FormX Scope"}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white md:text-3xl">
+                      {currentService.title}
+                    </h3>
+                    <p className="mt-2 max-w-[55ch] text-[13px] leading-relaxed text-white/70 md:text-[14px]">
+                      {currentService.short}
+                    </p>
+                    <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                      {currentService.highlights.slice(0, 4).map((h, i) => (
+                        <li
+                          key={h}
+                          className="border border-white/15 bg-black/35 px-3 py-2 text-[11px] font-semibold text-white/85 backdrop-blur-sm"
+                        >
+                          <span className="mr-2 font-display text-x-red">0{i + 1}</span>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={`/services/${currentService.slug}`}
+                      transitionTypes={["nav-forward"]}
+                      className="formx-cut-sm mt-6 inline-flex items-center gap-2 bg-x-red px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover"
+                    >
+                      Explore Full Service Scope
+                      <ArrowUpRight className="size-4" />
+                    </Link>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </Reveal>
 
-          {/* RIGHT: Clean Interactive Discipline Index (Light Theme) */}
-          <Reveal delay={0.06} className="w-full h-full">
-            <div className="flex h-full flex-col border border-line bg-white divide-y divide-line/60 shadow-lg">
-              {/* Header */}
-              <div className="bg-[#161616] p-4 md:p-5 text-white flex items-center justify-between">
+          {/* RIGHT: Index — height matched, no orphan footer gap */}
+          <Reveal delay={0.05} className="min-w-0">
+            <div className="flex h-full flex-col border border-t-0 border-line bg-white lg:border-0">
+              <div className="flex items-center justify-between border-b border-line bg-[#161616] px-4 py-3.5 text-white">
                 <div className="flex items-center gap-2">
-                  <Building2 className="size-4 text-x-red" />
-                  <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white">
+                  <Building2 className="size-3.5 text-x-red" />
+                  <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em]">
                     Engineering Index
                   </span>
                 </div>
-                <span className="font-display text-[10px] font-bold text-x-red uppercase tracking-wider">
+                <span className="font-display text-[10px] font-bold text-x-red">
                   {String(activeIdx + 1).padStart(2, "0")} / 10
                 </span>
               </div>
 
-              {/* Discipline Items List */}
-              <div className="flex-1 divide-y divide-line/60 overflow-y-auto">
+              <div className="flex flex-1 flex-col">
                 {services.map((svc, i) => {
                   const isActive = i === activeIdx;
                   return (
@@ -169,54 +154,42 @@ export function Services() {
                       onClick={() => setActiveIdx(i)}
                       onMouseEnter={() => setActiveIdx(i)}
                       className={cn(
-                        "w-full text-left p-3.5 md:p-4 transition-all duration-200 flex items-center justify-between group relative select-none",
+                        "flex w-full items-center justify-between gap-2 border-b border-line/70 px-4 py-2.5 text-left transition-colors last:border-b-0",
                         isActive
-                          ? "bg-x-red/10 border-l-4 border-l-x-red pl-5 text-x-red"
-                          : "text-ink/80 hover:bg-gray-50 hover:pl-5 hover:text-x-red",
+                          ? "border-l-[3px] border-l-x-red bg-x-red/[0.07] pl-[13px]"
+                          : "border-l-[3px] border-l-transparent hover:bg-[#fafafa]",
                       )}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex min-w-0 items-center gap-2.5">
                         <span
                           className={cn(
-                            "font-display text-xs font-bold transition-colors",
-                            isActive ? "text-x-red" : "text-ink/35 group-hover:text-x-red/70",
+                            "shrink-0 font-display text-[10px] font-bold",
+                            isActive ? "text-x-red" : "text-ink/30",
                           )}
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <div>
-                          <h4
-                            className={cn(
-                              "font-display text-xs md:text-sm font-bold uppercase tracking-tight transition-colors",
-                              isActive ? "text-x-red" : "text-ink group-hover:text-x-red",
-                            )}
-                          >
-                            {svc.title}
-                          </h4>
-                        </div>
+                        <span
+                          className={cn(
+                            "truncate font-display text-[11px] font-bold uppercase tracking-tight md:text-[12px]",
+                            isActive ? "text-x-red" : "text-ink",
+                          )}
+                        >
+                          {svc.title}
+                        </span>
                       </div>
-
                       <ArrowUpRight
                         className={cn(
-                          "size-4 transition-transform duration-200 shrink-0",
-                          isActive
-                            ? "text-x-red translate-x-0.5 -translate-y-0.5 opacity-100"
-                            : "text-ink/20 opacity-0 group-hover:opacity-100 group-hover:text-x-red",
+                          "size-3.5 shrink-0",
+                          isActive ? "text-x-red opacity-100" : "text-ink/15 opacity-0",
                         )}
                       />
                     </button>
                   );
                 })}
               </div>
-
-              {/* Footer status */}
-              <div className="p-3.5 bg-[#fafafa] text-[11px] text-ink-muted flex items-center justify-between font-display border-t border-line">
-                <span>FormX Practice Scope</span>
-                <span className="text-x-red font-bold uppercase tracking-wider">100% GFC Ready</span>
-              </div>
             </div>
           </Reveal>
-
         </div>
       </Container>
     </section>

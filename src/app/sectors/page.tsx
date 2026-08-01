@@ -48,13 +48,13 @@ export default function SectorsPage() {
             </p>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {sectors.map((sector, i) => (
-              <Reveal key={sector.slug} delay={0.04 * (i % 3)} className="h-full">
+              <Reveal key={sector.slug} delay={0.03 * (i % 3)} className="h-full">
                 <Link
                   href={`/sectors/${sector.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group relative block aspect-[4/3] overflow-hidden border border-line bg-[#141414] transition-all duration-300 hover:border-x-red/50 hover:shadow-[0_16px_40px_rgba(222,48,36,0.12)]"
+                  className="group relative block aspect-[4/3] overflow-hidden bg-[#141414]"
                 >
                   <AssetImage
                     alt={sector.title}
@@ -64,26 +64,22 @@ export default function SectorsPage() {
                     fit="cover"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                  <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                  <span className="absolute left-4 top-4 border border-x-red/40 bg-x-red px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white">
-                    Sector {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="absolute right-5 top-4 font-display text-[40px] font-black leading-none tracking-tighter text-white/10 select-none">
+                  <span className="absolute left-3 top-3 bg-x-red px-2.5 py-1 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h2 className="font-display text-xl font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h2 className="font-display text-lg font-extrabold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red md:text-xl">
                       {sector.title}
                     </h2>
-                    <p className="mt-2 text-[13px] leading-[1.7] text-white/60 line-clamp-1">
+                    <p className="mt-1.5 line-clamp-1 text-[12px] leading-relaxed text-white/55">
                       {sector.summary}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
+                    <span className="mt-3 inline-flex items-center gap-1.5 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
                       Explore Sector Scope
-                      <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                   </div>
                 </Link>

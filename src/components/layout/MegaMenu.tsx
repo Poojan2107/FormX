@@ -9,8 +9,6 @@ import {
   ChevronDown,
   Newspaper,
   BookOpen,
-  Building2,
-  Factory,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -18,10 +16,12 @@ import {
   serviceNavGroups,
   projects,
   sectors,
+  services,
   site,
 } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
 type Panel = "Services" | "Projects" | "Sectors" | "Insights" | null;
@@ -198,12 +198,13 @@ export function DesktopNav() {
 }
 
 function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
+  const featured = services[0];
   return (
-    <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-8">
-      <div className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-7 md:grid-cols-4 md:gap-x-8">
+    <div className="grid items-stretch gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="grid min-w-0 grid-cols-2 gap-x-5 gap-y-5 md:grid-cols-4 md:gap-x-6">
         {serviceNavGroups.map((group) => (
           <div key={group.title} className="min-w-0">
-            <p className="mb-3 border-b border-line pb-2 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+            <p className="mb-2.5 border-b border-line pb-2 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
               {group.title}
             </p>
             <ul className="space-y-0.5">
@@ -227,28 +228,37 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
         ))}
       </div>
 
-      <aside className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-5 text-white md:p-6">
-        <div>
+      <aside className="relative min-h-[220px] overflow-hidden bg-[#111] text-white">
+        <AssetImage
+          alt={featured.title}
+          slot={featured.asset}
+          kind="service"
+          fit="cover"
+          tone="dark"
+          className="absolute inset-0 h-full w-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+        <div className="relative z-10 flex h-full flex-col justify-end p-5">
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
             Single window
           </p>
-          <p className="mt-3 font-display text-lg font-bold leading-snug tracking-tight md:text-xl">
+          <p className="mt-2 font-display text-lg font-bold leading-snug tracking-tight">
             Architecture · Structure · Civil · MEP
           </p>
-          <p className="mt-3 text-[13px] leading-relaxed text-white/55">
+          <p className="mt-2 text-[12px] leading-relaxed text-white/60">
             Coordinated industrial design under one accountable practice.
           </p>
+          <Button
+            href="/services"
+            variant="primary"
+            className="mt-4 w-full"
+            onClick={onNavigate}
+            transitionTypes={["nav-forward"]}
+          >
+            All services
+            <ArrowRight className="size-4" />
+          </Button>
         </div>
-        <Button
-          href="/services"
-          variant="primary"
-          className="mt-6 w-full"
-          onClick={onNavigate}
-          transitionTypes={["nav-forward"]}
-        >
-          All services
-          <ArrowRight className="size-4" />
-        </Button>
       </aside>
     </div>
   );
@@ -284,28 +294,28 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
             href={`/projects/${p.slug}`}
             onClick={onNavigate}
             transitionTypes={["nav-forward"]}
-            className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_16px_40px_rgba(222,48,36,0.08)]"
+            className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:border-x-red/35"
           >
-            <div className="relative flex h-20 items-end overflow-hidden bg-[#f3f3f3] p-4">
-              <div className="absolute inset-0 pattern-grid opacity-60" />
-              <span
-                className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-400 group-hover:w-full"
-                aria-hidden
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#111]">
+              <AssetImage
+                alt={p.client}
+                slot={p.assets.cover}
+                kind="facility"
+                fit="cover"
+                tone="dark"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <Factory className="relative mb-auto size-4 text-ink/20 transition-colors duration-300 group-hover:text-x-red" />
-              <p className="relative text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <p className="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
                 {p.sector}
               </p>
             </div>
-            <div className="flex flex-1 flex-col p-4">
-              <p className="font-display text-[15px] font-bold text-ink transition-colors duration-300 group-hover:text-x-red">
+            <div className="flex flex-1 flex-col p-3.5">
+              <p className="font-display text-[14px] font-bold text-ink transition-colors duration-300 group-hover:text-x-red">
                 {p.client}
               </p>
-              <p className="mt-1 line-clamp-2 text-[13px] leading-snug text-ink-muted">
+              <p className="mt-1 line-clamp-2 text-[12px] leading-snug text-ink-muted">
                 {p.title}
-              </p>
-              <p className="mt-auto pt-4 text-[11px] text-ink/40">
-                {p.location} · {p.year}
               </p>
             </div>
           </Link>
@@ -338,25 +348,29 @@ function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-        {sectors.map((s, i) => (
+        {sectors.slice(0, 8).map((s, i) => (
           <Link
             key={s.slug}
             href={`/sectors/${s.slug}`}
             onClick={onNavigate}
             transitionTypes={["nav-forward"]}
-            className="formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex min-h-[76px] flex-col justify-between overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-x-red/40 hover:bg-[#fafafa]"
+            className="group relative aspect-[16/10] overflow-hidden bg-[#111]"
           >
-            <span className="font-display text-[10px] font-bold tabular-nums tracking-[0.12em] text-ink/20 transition-colors group-hover:text-x-red">
+            <AssetImage
+              alt={s.title}
+              slot={s.asset}
+              kind="sector"
+              fit="cover"
+              tone="dark"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <span className="absolute left-2.5 top-2.5 font-display text-[9px] font-bold text-x-red">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span className="pr-6 font-display text-[13px] font-semibold leading-snug text-ink transition-colors group-hover:text-ink">
+            <span className="absolute bottom-2.5 left-2.5 right-2.5 font-display text-[12px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
               {s.title}
             </span>
-            <Building2 className="absolute bottom-3 right-3 size-3.5 text-x-red opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
-            <span
-              className="absolute bottom-0 left-0 h-[2px] w-0 bg-x-red transition-all duration-350 group-hover:w-full"
-              aria-hidden
-            />
           </Link>
         ))}
       </div>
