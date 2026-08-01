@@ -2,18 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { services } from "@/data/site";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 const categories = [
-  { id: "all", label: "All" },
-  { id: "architecture", label: "Architecture" },
+  { id: "all", label: "All Services" },
+  { id: "architecture", label: "Architecture & Planning" },
   { id: "structure", label: "Structure & Civil" },
-  { id: "mep", label: "MEP" },
+  { id: "mep", label: "MEP & Utilities" },
   { id: "delivery", label: "Delivery" },
 ];
 
@@ -31,7 +31,6 @@ const serviceCategories: Record<string, string> = {
 };
 
 export function ServicesGrid() {
-  const reduce = useReducedMotion();
   const [active, setActive] = useState("all");
 
   const filtered =
@@ -49,26 +48,28 @@ export function ServicesGrid() {
 
   return (
     <>
+      {/* Category Filter Tabs */}
       <Reveal>
-        <div className="mb-8 flex flex-wrap items-center gap-1 border-b border-line pb-5">
+        <div className="mb-10 flex flex-wrap gap-2.5">
           {counts.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => setActive(cat.id)}
-              aria-pressed={active === cat.id}
               className={cn(
-                "inline-flex items-center gap-2 px-3 py-2 font-display text-[11px] font-bold uppercase tracking-[0.12em] transition-colors",
+                "inline-flex items-center gap-2.5 border px-4 py-2.5 font-display text-[11px] font-extrabold uppercase tracking-[0.14em] transition-all duration-200",
                 active === cat.id
-                  ? "bg-x-red text-white"
-                  : "text-ink/50 hover:bg-[#f4f4f4] hover:text-ink",
+                  ? "border-x-red bg-x-red text-white shadow-[0_4px_16px_rgba(222,48,36,0.35)]"
+                  : "border-line bg-white text-ink hover:border-x-red/50 hover:text-x-red",
               )}
             >
               {cat.label}
               <span
                 className={cn(
-                  "tabular-nums text-[10px]",
-                  active === cat.id ? "text-white/70" : "text-ink/35",
+                  "px-2 py-0.5 font-display text-[10px] font-bold tabular-nums",
+                  active === cat.id
+                    ? "bg-white/20 text-white"
+                    : "bg-[#f0f0f0] text-ink-muted",
                 )}
               >
                 {cat.count}
@@ -78,52 +79,70 @@ export function ServicesGrid() {
         </div>
       </Reveal>
 
+      {/* Services Grid */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
-          initial={reduce ? false : { opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={reduce ? undefined : { opacity: 0, y: -8 }}
-          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25 }}
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {filtered.map((service, i) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
               transitionTypes={["nav-forward"]}
-              className="group relative block min-h-[300px] overflow-hidden bg-[#111] sm:min-h-[340px]"
+              className="x-desat formx-cut-x formx-edge formx-edge-x x-hover-rail group relative flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 hover:border-x-red/50 hover:shadow-xl"
             >
-              <AssetImage
-                alt={service.title}
-                slot={service.asset}
-                kind="service"
-                aspect="landscape"
-                fit="cover"
-                tone="dark"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-              <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/20" />
+              {/* Full-bleed media panel */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line/60 bg-[#141414]">
+                <AssetImage
+                  alt={service.title}
+                  slot={service.asset}
+                  kind="service"
+                  aspect="landscape"
+                  fit="cover"
+                  tone="dark"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-              <span className="absolute left-3 top-3 z-10 bg-x-red px-2 py-1 font-display text-[9px] font-bold uppercase tracking-[0.16em] text-white">
-                {String(i + 1).padStart(2, "0")} / {String(filtered.length).padStart(2, "0")}
-              </span>
+                <span className="absolute left-3.5 top-3.5 border border-x-red/40 bg-x-red px-2.5 py-1 font-display text-[9px] font-extrabold uppercase tracking-[0.18em] text-white shadow-md">
+                  Discipline {String(i + 1).padStart(2, "0")}
+                </span>
 
-              <span className="absolute right-3 top-3 z-10 flex size-9 items-center justify-center border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
-                <ArrowUpRight className="size-4 text-white" />
-              </span>
+                <span className="absolute bottom-3.5 right-3.5 flex size-9 items-center justify-center border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red">
+                  <ArrowUpRight className="size-4 text-white" />
+                </span>
+              </div>
 
-              <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
-                <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-white transition-colors group-hover:text-x-red md:text-xl">
-                  {service.title}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-white/65">
-                  {service.short}
-                </p>
-                <p className="mt-4 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-x-red">
-                  Explore scope →
-                </p>
+              {/* Content Body */}
+              <div className="flex flex-1 flex-col justify-between p-6">
+                <div>
+                  <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2.5 text-[13px] leading-[1.7] text-ink-muted line-clamp-2">
+                    {service.short}
+                  </p>
+
+                  <ul className="mt-4 space-y-2 border-t border-line/60 pt-4">
+                    {service.highlights.slice(0, 2).map((h) => (
+                      <li key={h} className="flex items-center gap-2 text-[12px] font-semibold text-ink-muted">
+                        <Check className="size-3.5 text-x-red shrink-0" />
+                        <span className="truncate">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-6 border-t border-line/60 pt-4">
+                  <span className="inline-flex items-center gap-2 font-display text-[11px] font-extrabold uppercase tracking-[0.16em] text-x-red transition-all group-hover:translate-x-1">
+                    Explore Discipline Scope →
+                  </span>
+                </div>
               </div>
             </Link>
           ))}

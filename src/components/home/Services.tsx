@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import { services } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -28,43 +28,43 @@ export function Services() {
   const current = services[activeIdx];
 
   return (
-    <section id="services" className="scroll-mt-32 border-y border-line bg-white section-y">
+    <section id="services" className="scroll-mt-32 border-y border-line bg-white py-16 md:py-24">
       <Container>
-        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
           <div className="max-w-2xl">
             <div className="mb-2.5 flex items-center gap-3">
               <span className="h-px w-8 bg-x-red" />
-              <span className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+              <span className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
                 Multidisciplinary Practice
               </span>
             </div>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Complete solutions in engineering &amp; architecture
+            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
+              10 Coordinated Engineering Services
             </h2>
-            <p className="mt-2 max-w-[58ch] text-[14px] leading-relaxed text-ink-muted">
-              10 disciplines coordinated as one GFC-ready package.
+            <p className="mt-2 prose-measure text-[14px] leading-relaxed text-ink-muted">
+              Delivered as one single-window GFC-ready package — zero inter-discipline clashes.
             </p>
           </div>
           <Link
             href="/services"
             transitionTypes={["nav-forward"]}
-            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-x-red transition-transform hover:translate-x-1"
+            className="inline-flex shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-transform hover:translate-x-1"
           >
-            View All Services
+            Explore All 10 Services
             <ArrowRight className="size-4" />
           </Link>
         </Reveal>
 
-        <div className="mt-8 grid gap-0 lg:grid-cols-[1.4fr_0.6fr]">
-          {/* Photography stage — minimal chrome on the image */}
-          <Reveal className="relative min-h-[420px] overflow-hidden bg-[#111] md:min-h-[520px] lg:min-h-[600px]">
+        <div className="grid gap-0 lg:grid-cols-[1.4fr_0.6fr] overflow-hidden border border-line shadow-xl">
+          {/* Main Visual Stage Panel */}
+          <Reveal className="relative min-h-[440px] bg-[#0d0d0d] md:min-h-[540px] lg:min-h-[620px]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={current.slug}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.35 }}
+                transition={{ duration: 0.4 }}
                 className="absolute inset-0"
               >
                 <AssetImage
@@ -76,43 +76,45 @@ export function Services() {
                   objectPosition="center"
                   tone="dark"
                   sizes="(max-width: 1024px) 100vw, 65vw"
-                  className="absolute inset-0 h-full w-full"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
+            {/* Top Discipline Tag */}
             <div className="absolute left-5 top-5 z-10 flex flex-wrap gap-2 md:left-7 md:top-7">
-              <span className="bg-x-red px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-                {String(activeIdx + 1).padStart(2, "0")} / 10
+              <span className="bg-x-red px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-md">
+                Discipline {String(activeIdx + 1).padStart(2, "0")} / 10
               </span>
-              <span className="bg-black/55 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.14em] text-white/90 backdrop-blur-sm">
-                {categoryLabels[current.slug] ?? "FormX Scope"}
+              <span className="bg-black/70 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-md">
+                {categoryLabels[current.slug] ?? "FormX Discipline"}
               </span>
             </div>
 
-            <div className="absolute inset-x-0 bottom-0 z-10 p-5 md:p-8">
+            {/* Bottom Content Overlay */}
+            <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={current.slug + "-copy"}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.28 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white md:text-4xl">
+                  <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white md:text-3xl lg:text-4xl">
                     {current.title}
                   </h3>
-                  <p className="mt-2 max-w-[48ch] text-[14px] leading-relaxed text-white/70">
+                  <p className="mt-2.5 max-w-[50ch] text-[14px] leading-relaxed text-white/75">
                     {current.short}
                   </p>
                   <Link
                     href={`/services/${current.slug}`}
                     transitionTypes={["nav-forward"]}
-                    className="mt-5 inline-flex items-center gap-2 bg-x-red px-5 py-3 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover"
+                    className="formx-cut-sm mt-5 inline-flex items-center gap-2 bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-md transition-colors hover:bg-x-red-hover"
                   >
-                    Explore Full Service Scope
+                    Explore Full Discipline Scope
                     <ArrowUpRight className="size-4" />
                   </Link>
                 </motion.div>
@@ -120,17 +122,18 @@ export function Services() {
             </div>
           </Reveal>
 
-          {/* Index rail */}
-          <Reveal delay={0.05} className="flex flex-col border border-t-0 border-line lg:border-l-0 lg:border-t">
-            <div className="flex items-center justify-between bg-[#141414] px-4 py-3.5 text-white">
-              <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em]">
-                Engineering Index
+          {/* Right Selector Index Rail */}
+          <Reveal delay={0.05} className="flex flex-col border-t border-line lg:border-l lg:border-t-0 bg-white">
+            <div className="flex items-center justify-between bg-[#141414] px-5 py-4 text-white">
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em]">
+                Discipline Directory
               </span>
               <span className="font-display text-[10px] font-bold text-x-red">
                 {String(activeIdx + 1).padStart(2, "0")} / 10
               </span>
             </div>
-            <div className="flex flex-1 flex-col bg-white">
+
+            <div className="flex flex-1 flex-col overflow-y-auto">
               {services.map((svc, i) => {
                 const isActive = i === activeIdx;
                 return (
@@ -141,16 +144,16 @@ export function Services() {
                     onMouseEnter={() => setActiveIdx(i)}
                     aria-pressed={isActive}
                     className={cn(
-                      "flex w-full items-center justify-between gap-2 border-b border-line/70 px-4 py-3 text-left transition-colors last:border-b-0",
+                      "flex w-full items-center justify-between gap-3 border-b border-line/60 px-5 py-3.5 text-left transition-all duration-200 last:border-b-0",
                       isActive
-                        ? "border-l-[3px] border-l-x-red bg-x-red/[0.06] pl-[13px]"
-                        : "border-l-[3px] border-l-transparent hover:bg-[#fafafa]",
+                        ? "border-l-4 border-l-x-red bg-x-red/[0.08] pl-4"
+                        : "border-l-4 border-l-transparent hover:bg-[#fafafa]",
                     )}
                   >
-                    <div className="flex min-w-0 items-center gap-2.5">
+                    <div className="flex min-w-0 items-center gap-3">
                       <span
                         className={cn(
-                          "shrink-0 font-display text-[10px] font-bold",
+                          "shrink-0 font-display text-[10px] font-extrabold",
                           isActive ? "text-x-red" : "text-ink/30",
                         )}
                       >
@@ -167,7 +170,7 @@ export function Services() {
                     </div>
                     <ArrowUpRight
                       className={cn(
-                        "size-3.5 shrink-0",
+                        "size-3.5 shrink-0 transition-opacity",
                         isActive ? "text-x-red opacity-100" : "opacity-0",
                       )}
                     />
@@ -178,15 +181,18 @@ export function Services() {
           </Reveal>
         </div>
 
-        {/* Scope strip — off the image so photography stays clean */}
-        <Reveal className="mt-0 border border-t-0 border-line bg-[#fafafa]">
+        {/* Bottom Scope Highlights Strip */}
+        <Reveal className="border border-t-0 border-line bg-[#fafafa]">
           <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {current.highlights.slice(0, 4).map((h, i) => (
-              <div key={h} className="bg-[#fafafa] px-5 py-4">
-                <p className="font-display text-[10px] font-bold text-x-red">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-1 text-[13px] font-semibold leading-snug text-ink">{h}</p>
+              <div key={h} className="bg-[#fafafa] p-5">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-display text-[10px] font-bold text-x-red">
+                    HIGHLIGHT 0{i + 1}
+                  </span>
+                  <Check className="size-3.5 text-x-red" />
+                </div>
+                <p className="text-[13px] font-semibold leading-snug text-ink">{h}</p>
               </div>
             ))}
           </div>
