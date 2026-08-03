@@ -27,11 +27,11 @@ export function Hero() {
 
   // Founder: photography comes after first paint / on scroll — not on open
   useEffect(() => {
-    if (reduce) {
-      setShowPhoto(true);
-      return;
-    }
     const reveal = () => setShowPhoto(true);
+    if (reduce) {
+      const t = window.setTimeout(reveal, 0);
+      return () => window.clearTimeout(t);
+    }
     const onScroll = () => {
       if (window.scrollY > 40) reveal();
     };

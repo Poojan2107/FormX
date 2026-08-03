@@ -7,7 +7,7 @@ import { ClientLogoWall } from "@/components/shared/ClientLogoWall";
 export const metadata: Metadata = {
   title: "Our Clients | Industrial Promoters Trusting FORMX",
   description:
-    "Organisations that trust FORMX Consultants for coordinated architecture, structural, civil, and MEP design across industrial and commercial mandates.",
+    "Organisations that trust FORMX Consultants for coordinated architecture, structure and infrastructure across industrial and commercial mandates.",
 };
 
 export default function ClientsPage() {
@@ -30,7 +30,7 @@ export default function ClientsPage() {
 
       <CtaBand
         title="Brief FORMX on your next facility"
-        description="Architecture, Structure, Civil & MEP — one coordinated construction-ready package."
+        description="Architecture, Structure & Infrastructure — one coordinated construction-ready package."
         secondary={{ label: "View projects", href: "/projects" }}
       />
     </>

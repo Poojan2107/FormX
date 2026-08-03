@@ -1,4 +1,4 @@
-/** FormX Real Projects Portfolio — 15 Authentic Projects from PDF */
+﻿/** FormX Real Projects Portfolio — 15 Authentic Projects from PDF */
 
 export type Project = {
   slug: string;
@@ -62,18 +62,36 @@ export const projects: Project[] = [
       "Architectural Drawings",
       "Structural Engineering",
       "Civil Engineering",
-      "MEP & Utilities",
+      "Utilities",
     ],
     challenge:
-      "Design and engineer a landmark corporate headquarters requiring clear-span executive office spaces, refined facade integration, and coordinated MEP ceiling distribution.",
+      "Design and engineer a landmark corporate headquarters requiring clear-span executive office spaces, refined facade integration, and coordinated utility ceiling distribution.",
     approach:
       "FormX engineered optimal RCC column grids, integrated hidden beam transitions for open executive floors, and delivered construction-ready GFC packages.",
     outcome:
-      "High-efficiency corporate office space delivered with seamless structural stiffness and zero clash rework during MEP installation.",
+      "High-efficiency corporate office space delivered with seamless structural stiffness and zero clash rework during utility installation.",
+    clientNeed:
+      "A corporate headquarters that reads as a landmark externally while delivering clear-span executive floors, refined facade integration and ceiling systems free of discipline clashes.",
+    engineeringThinking:
+      "Column grids and beam transitions were sized for open executive plates first—then facade and ceiling service zones were reserved so architecture and utilities did not fight the frame.",
+    coordination:
+      "Architectural layouts, RCC framing and utility ceiling distribution were issued as one coordinated GFC package with shared grid and riser logic.",
+    execution:
+      "Site RFIs on beam transitions and ceiling penetrations were closed against the issued model, avoiding inter-discipline rework during fit-out.",
+    completedFacility:
+      "High-efficiency corporate office space with structural stiffness and zero clash rework during utility installation.",
+    lessonsLearned:
+      "Reserving ceiling and riser corridors before facade detailing protects both schedule and the architectural intent of clear-span floors.",
+    relatedSystems: [
+      "Architectural Drawings",
+      "Structural Engineering",
+      "Civil Engineering",
+      "Electrical Engineering",
+    ],
     highlights: [
       "Clear-span executive floor plates",
       "Seismic RCC structural frame",
-      "Coordinated MEP ceiling risers",
+      "Coordinated utility ceiling risers",
       "Construction-ready GFC package",
     ],
     assets: {
@@ -101,6 +119,23 @@ export const projects: Project[] = [
       "FormX developed optimized PEB portal frame geometry, foundation load distribution for heavy industrial machinery, and clash-free site utility networks.",
     outcome:
       "Robust, buildable industrial facility engineered for long-term operational durability and cost-optimized steel consumption.",
+    clientNeed:
+      "A manufacturing plant and admin block that must carry heavy crane loads, protect machine foundations and keep external site drainage clear of building pads.",
+    engineeringThinking:
+      "PEB portal geometry and crane gantry loads drove the structural concept; foundations and isolation pads were sized before site utility corridors were locked.",
+    coordination:
+      "Structure, civil grading and site infrastructure were coordinated so crane loads, storm drainage and access roads did not conflict at the plot edge.",
+    execution:
+      "Foundation and PEB interface details were clarified with fabricators and contractors before steel erection—reducing mid-erection RFIs.",
+    completedFacility:
+      "Robust, buildable industrial facility engineered for long-term operational durability and cost-optimized steel consumption.",
+    lessonsLearned:
+      "Crane class and machine isolation must be decided before PEB bay spacing is frozen—or the frame pays for late changes.",
+    relatedSystems: [
+      "Structural Engineering",
+      "Civil Engineering",
+      "Site Infrastructure",
+    ],
     highlights: [
       "PEB heavy steel structural framing",
       "Crane gantry beam load engineering",
@@ -213,7 +248,7 @@ export const projects: Project[] = [
     services: [
       "Architectural Drawings",
       "Structural Engineering",
-      "MEP & Utilities",
+      "Utilities",
     ],
     challenge:
       "Optimizing structural shear walls and parking layout for a G+5 mid-rise residential building on a compact urban footprint.",
@@ -224,7 +259,7 @@ export const projects: Project[] = [
     highlights: [
       "G+5 RCC framed structure",
       "Stilt parking maneuverability layout",
-      "Vertical MEP utility shaft coordination",
+      "Vertical utility shaft coordination",
     ],
     assets: {
       cover: "projects/pdf_p11_1.jpeg",
@@ -275,7 +310,7 @@ export const projects: Project[] = [
     services: [
       "Architectural Drawings",
       "Structural Engineering",
-      "MEP & Utilities",
+      "Utilities",
     ],
     challenge:
       "Engineering a prominent commercial building requiring high-visibility retail storefronts and flexible office floor plates.",
@@ -309,7 +344,7 @@ export const projects: Project[] = [
     challenge:
       "High-density commercial office development requiring centralized HVAC chiller corridors and double-basement parking.",
     approach:
-      "FormX engineered diaphragm walls for double basement excavation, heavy RCC transfer slabs, and coordinated MEP risers.",
+      "FormX engineered diaphragm walls for double basement excavation, heavy RCC transfer slabs, and coordinated utility risers.",
     outcome:
       "High-performance commercial tower delivered with robust foundation engineering and clash-free mechanical plants.",
     highlights: [
@@ -362,7 +397,7 @@ export const projects: Project[] = [
     services: [
       "Architectural Drawings",
       "Structural Engineering",
-      "MEP & Fire Protection",
+      "Fire Protection",
     ],
     challenge:
       "Engineering an iconic high-rise commercial tower requiring high wind load stability and automated fire suppression systems.",
@@ -445,7 +480,7 @@ export const projects: Project[] = [
   {
     slug: "lavista-cafe",
     sector: "Hospitality & Commercial",
-    title: "Lavista Café & Commercial Space",
+    title: "Lavista CafÃ© & Commercial Space",
     client: "Lavista Group",
     location: "Gujarat, India",
     year: "2023",
@@ -453,14 +488,14 @@ export const projects: Project[] = [
     services: [
       "Architectural Drawings",
       "Structural Engineering",
-      "MEP Utilities",
+      "Utilities",
     ],
     challenge:
       "Designing an open-air indoor-outdoor hospitality cafe with steel glass pergolas and exposed structural steel aesthetics.",
     approach:
       "Engineered slim structural steel section frames, integrated ambient lighting conduits, and designed specialized kitchen utility traps.",
     outcome:
-      "An inviting, highly popular hospitality venue combining industrial aesthetic charm with flawless MEP support.",
+      "An inviting, highly popular hospitality venue combining industrial aesthetic charm with flawless utility support.",
     highlights: [
       "Exposed structural steel glass pergola",
       "Indoor-outdoor seamlessly integrated layout",

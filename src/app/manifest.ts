@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "FormX Consultants — Design | Engineering",
     short_name: "FormX",
     description:
-      "Precise, coordinated, construction-ready architecture, structural, civil, and MEP design.",
+      "Precise, coordinated, construction-ready architecture, structure and infrastructure design.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

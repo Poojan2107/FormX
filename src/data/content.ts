@@ -1,4 +1,4 @@
-export type TeamMember = {
+﻿export type TeamMember = {
   name: string;
   role: string;
   bio: string;
@@ -27,25 +27,25 @@ export const leadership: TeamMember[] = [
   {
     name: "Architecture & Planning Lead",
     role: "Architecture Planning & Master Layouts",
-    bio: "Directs master planning, space optimization, and statutory approval drawings—ensuring architectural layouts align seamlessly with structural grids and operational workflows.",
+    bio: "Directs master planning, space optimization, and statutory approval drawingsâ€”ensuring architectural layouts align seamlessly with structural grids and operational workflows.",
     asset: "team/partner-architecture.jpg",
   },
   {
     name: "Structural & Civil Engineering Lead",
     role: "Structural Engineering & Civil Design",
-    bio: "Responsible for RCC structural calculations, foundation design, and heavy steel frame stability—delivering buildable, economical, and code-verified structural GFC packages.",
+    bio: "Responsible for RCC structural calculations, foundation design, and heavy steel frame stabilityâ€”delivering buildable, economical, and code-verified structural GFC packages.",
     asset: "team/partner-structures.jpg",
   },
   {
     name: "Infrastructure & Utility Networks Lead",
     role: "Site Infrastructure & Utilities",
-    bio: "Oversees site infrastructure, stormwater systems, and utility corridors—ensuring external development and plant utility networks operate reliably without spatial clashes.",
+    bio: "Oversees site infrastructure, stormwater systems, and utility corridorsâ€”ensuring external development and plant utility networks operate reliably without spatial clashes.",
     asset: "team/partner-mepf.jpg",
   },
   {
     name: "Site Execution & Project Leadership",
     role: "Construction Support & Delivery",
-    bio: "Leads contractor coordination, RFI resolution, and site technical reviews—ensuring design intent is accurately translated into physical reality on site.",
+    bio: "Leads contractor coordination, RFI resolution, and site technical reviewsâ€”ensuring design intent is accurately translated into physical reality on site.",
     asset: "team/partner-delivery.jpg",
   },
 ];
@@ -77,7 +77,7 @@ export const blogs: BlogPost[] = [
     asset: "insights/policy.jpg",
     body: [
       "People remember a building by its face. A building stands because of its skeleton.",
-      "Every great building begins with a vision. But behind every beautiful structure lies something equally important — a strong, safe, and reliable structural system.",
+      "Every great building begins with a vision. But behind every beautiful structure lies something equally important â€” a strong, safe, and reliable structural system.",
       "At FormX Consultants, we specialise in delivering structural engineering solutions that are safe (designs that ensure structural stability), economical (optimized designs that save cost), and practical (buildable solutions for smooth site execution).",
       "We partner with architects, builders, developers, industries, and PEB manufacturers to transform concepts into structures that are efficient, buildable, and designed for long-term performance.",
       "Our core expertise includes RCC Structural Design, Steel Structure Design, Industrial Buildings, Commercial Buildings, Residential Projects, PEB Design Support, and Structural Consultancy.",
@@ -118,11 +118,11 @@ export const blogs: BlogPost[] = [
     asset: "insights/column-splice.jpg",
     body: [
       "A structural failure rarely starts with a dramatic mistake. More often, it begins with a small detailing decision that goes unnoticed.",
-      "During a routine review of a bar bending schedule, we identified a column splice located exactly where it should never be — at the beam-column joint.",
+      "During a routine review of a bar bending schedule, we identified a column splice located exactly where it should never be â€” at the beam-column joint.",
       "The quantities were correct, the lap lengths were provided, and everything looked acceptable at first glance. But one critical detailing principle had been missed.",
       "IS 13920 and standard structural detailing practice are clear: lap splices in columns should be placed in the middle third of the column height away from the joint, away from the zone of maximum moment and seismic demand.",
       "When a splice lands at the joint, the bar cannot develop its full strength at the point where the structure needs it most. Under a seismic event or heavy lateral load, that's where failure initiates.",
-      "Catching this issue before fabrication saved rework, delays, and potential performance concerns. Good structural design is not only about calculations — it is about ensuring every detail is placed where the structure can perform as intended.",
+      "Catching this issue before fabrication saved rework, delays, and potential performance concerns. Good structural design is not only about calculations â€” it is about ensuring every detail is placed where the structure can perform as intended.",
     ],
   },
   {
@@ -138,10 +138,10 @@ export const blogs: BlogPost[] = [
     asset: "insights/ev-battery.jpg",
     body: [
       "Battery and EV facilities lose time when zoning, fire protection, and utilities are treated as detailing tasks instead of concept constraints. The first move is to lock process adjacency: materials, assembly or pack lines, test areas, warehouse, and personnel flows.",
-      "Fire and electrical risk profiles should influence architecture before finishes. Separation distances, hydrant and sprinkler concepts, detection, and emergency power need a seat at the concept table — alongside process vendors.",
+      "Fire and electrical risk profiles should influence architecture before finishes. Separation distances, hydrant and sprinkler concepts, detection, and emergency power need a seat at the concept table â€” alongside process vendors.",
       "Utility intensity is the third early lock. Power density, process exhaust, chilled water, and compressed air corridors must share a structural grid that remains accessible after equipment lands. Clash resolution after awards is always more expensive than corridor discipline up front.",
-      "At FormX, we recommend a focused concept alignment: architectural block plan, structural span options, MEP corridor strategy, and a compliance risk register. That package becomes the brief every later drawing should obey.",
-      "For promoters, the outcome is predictability — fewer redesign loops when vendor data firms up, and contractors who receive GFC packages already speaking the same geometric language.",
+      "At FormX, we recommend a focused concept alignment: architectural block plan, structural span options, utility corridor strategy, and a compliance risk register. That package becomes the brief every later drawing should obey.",
+      "For promoters, the outcome is predictability â€” fewer redesign loops when vendor data firms up, and contractors who receive GFC packages already speaking the same geometric language.",
     ],
   },
   {
@@ -158,8 +158,8 @@ export const blogs: BlogPost[] = [
     body: [
       "Investment incentives change where capital lands; they should also change how early design briefs are written. Capacity targets and timeline pressure reshape zoning density and phasing strategy.",
       "Design teams should ask: what must the first phase prove for commissioning, and what can wait without trapping utilities? A plant that cannot phase cleanly becomes a cash-flow liability.",
-      "Statutory documentation readiness is part of design quality — plot constraints, setbacks, environmental buffers, and fire authority expectations belong in the concept checklist, not in late-stage surprise notes.",
-      "FormX frames policy-aware design as practical sequencing: concept → consentable packages → tenderable GFC — each stage carrying the same industrial logic so expansion does not rewrite the campus.",
+      "Statutory documentation readiness is part of design quality â€” plot constraints, setbacks, environmental buffers, and fire authority expectations belong in the concept checklist, not in late-stage surprise notes.",
+      "FormX frames policy-aware design as practical sequencing: concept â†’ consentable packages â†’ tenderable GFC â€” each stage carrying the same industrial logic so expansion does not rewrite the campus.",
     ],
   },
   {
@@ -174,9 +174,9 @@ export const blogs: BlogPost[] = [
     authorLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     asset: "insights/water.jpg",
     body: [
-      "Industrial water strategy starts with demand mapping — process, domestic, landscaping, and fire — then decides where recycle, rainwater, and efficient fixtures actually move the needle.",
+      "Industrial water strategy starts with demand mapping â€” process, domestic, landscaping, and fire â€” then decides where recycle, rainwater, and efficient fixtures actually move the needle.",
       "Site civil and infrastructure design (grading, drains, storage) either enables reuse or wastes the opportunity. Plant-room allocation for treatment equipment must be reserved in concept plans.",
-      "Sustainability measures survive when they are embedded in base design documents, not appended as a late checklist. FormX tracks water and energy measures inside the same coordinated documentation used for MEP clash checks.",
+      "Sustainability measures survive when they are embedded in base design documents, not appended as a late checklist. FormX tracks water and energy measures inside the same coordinated documentation used for utility clash checks.",
     ],
   },
 ];
@@ -200,10 +200,10 @@ export const news: NewsItem[] = [
     date: "June 18, 2026",
     title: "FormX strengthens multidisciplinary delivery capacity",
     excerpt:
-      "Additional capacity across architecture, structure, civil, and MEP to support concurrent industrial and infrastructure mandates.",
+      "Additional capacity across architecture, structure and infrastructure to support concurrent industrial and infrastructure mandates.",
     asset: "news/expansion.jpg",
     body: [
-      "FormX has strengthened delivery capacity across architecture, structural and civil engineering, and MEP coordination.",
+      "FormX has strengthened delivery capacity across architecture, structural and civil engineering, and utility coordination.",
       "The expansion supports concurrent greenfield and expansion mandates where construction-ready documentation and clash-free coordination are critical to client schedules.",
       "Organisations evaluating design partners can engage FormX through the contact page for capability discussions.",
     ],
@@ -217,19 +217,19 @@ export const news: NewsItem[] = [
     asset: "news/greenfield.jpg",
     body: [
       "Recent greenfield deliveries reinforced a simple pattern: early corridor decisions and coordinated packages prevent the majority of site RFIs.",
-      "Keeping GFC ahead of contractual milestones requires disciplined freeze points — process vendor data, structural grids, and utility trunks must move together.",
+      "Keeping GFC ahead of contractual milestones requires disciplined freeze points â€” process vendor data, structural grids, and utility trunks must move together.",
       "FormX continues to refine its delivery playbooks so promoters inherit clearer packages and contractors inherit fewer surprises.",
     ],
   },
   {
     slug: "career-openings",
     date: "April 10, 2026",
-    title: "Openings across architecture, structure & MEP roles",
+    title: "Openings across architecture, structure & infrastructure roles",
     excerpt:
       "FormX is hiring experienced design professionals. Explore current openings on the career page.",
     asset: "news/careers.jpg",
     body: [
-      "FormX is hiring architects, structural engineers, MEP engineers, and CAD technicians with industrial and infrastructure project experience.",
+      "FormX is hiring architects, structural engineers, utilities engineers, and CAD technicians with industrial and infrastructure project experience.",
       "Candidates who value coordination, buildability, and construction-stage support will find a practice built around precise, multidisciplinary delivery.",
       "See open roles and apply via the Career page, or email career@formxconsultants.com.",
     ],

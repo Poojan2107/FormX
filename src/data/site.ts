@@ -19,7 +19,7 @@ export const site = {
   phone: "+91 81284 44585",
   email: "inquiry@formxconsultants.com",
   careerEmail: "career@formxconsultants.com",
-  address: "Ahmedabad, Gujarat, India",
+  address: "311, Addor Aspire, University Area, Ahmedabad",
   addressDetail: "311, Addor Aspire, University Area, Ahmedabad, Gujarat 380015",
   whatsapp: "918128444585",
   brochurePath: "/brochure/formx.pdf",
@@ -58,12 +58,12 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Sectors", href: "/sectors" },
   {
     label: "Insights",
     href: "/knowledge-center",
     children: [
       { label: "Knowledge Center", href: "/knowledge-center" },
+      { label: "Sectors", href: "/sectors" },
       { label: "PEB Load Estimator", href: "/estimator" },
       { label: "News", href: "/news" },
     ],
@@ -117,39 +117,18 @@ export const clients = [
   { name: "Lavista Group", tag: "Hospitality & Retail" },
 ];
 
-export const testimonials = [
-  {
-    name: "Project Director",
-    quote:
-      "FormX delivered our complete industrial facility GFC drawings with zero inter-discipline clash. Their structural engineering and utility coordination saved us weeks on site.",
-    author: "Project Director",
-    company: "Industrial Manufacturing Group",
-    location: "Gujarat, India",
-    role: "Project Director",
-  },
-  {
-    name: "Infrastructure Lead",
-    quote:
-      "The multidisciplinary coordination under Hiren Shah's leadership ensured statutory compliance and seamless buildability across architecture, structure, and MEP.",
-    author: "Infrastructure Lead",
-    company: "Commercial Real Estate Firm",
-    location: "Ahmedabad",
-    role: "Infrastructure Lead",
-  },
-];
-
 export const faqs = [
   {
-    q: "What services does FormX Consultants provide?",
-    a: "FormX delivers integrated multidisciplinary packages across 10 disciplines — Architectural Drawings, Site Infrastructure, Sustainable Design, Structural Engineering, Civil Engineering, Mechanical Utility Engineering, HVAC & Refrigeration, Electrical Engineering, Fire Protection, and Project Management.",
+    q: "What does FormX Consultants deliver?",
+    a: "Coordinated, construction-ready documentation across architecture, structure and infrastructure—including utilities and fire where the facility requires them—under one accountable practice.",
   },
   {
     q: "Which industrial sectors does FormX specialize in?",
-    a: "We specialize in Pharmaceuticals, Food Processing, Chemical Manufacturing, Textile Plants, Heavy Engineering, Automobile Assembly, and Logistics Warehouses across India.",
+    a: "We work across pharmaceuticals, food processing, chemical manufacturing, textile plants, heavy engineering, automobile assembly, logistics warehouses and related industrial campuses across India.",
   },
   {
     q: "Does FormX handle statutory and building code compliance?",
-    a: "Yes. All our architectural and structural engineering packages are 100% compliant with National Building Code (NBC), local IS Codes, and statutory authority guidelines.",
+    a: "Yes. Architectural and structural packages are prepared to align with the National Building Code (NBC), applicable IS codes, and statutory authority guidelines.",
   },
 ];
 
@@ -164,15 +143,15 @@ export const careerRoles = [
     responsibilities: [
       "Prepare structural calculations in STAAD.Pro / ETABS complying with IS 456, IS 800, and IS 1893.",
       "Review structural GA drawings and GFC packages for industrial complexes and PEB sheds.",
-      "Coordinate with architecture and MEP leads for clash-free grid alignment.",
+      "Coordinate with architecture and infrastructure leads for clash-free grid alignment.",
     ],
   },
   {
-    title: "MEP Coordination Engineer",
+    title: "Utilities Coordination Engineer",
     type: "Full-Time",
     location: "Ahmedabad",
     experience: "4+ Years",
-    dept: "MEP Utilities",
+    dept: "Utilities",
     blurb: "Drive mechanical, electrical, HVAC, and fire protection engineering coordination across industrial facilities.",
     responsibilities: [
       "Develop single line diagrams (SLDs) and utility trunk routing drawings for factory plants.",
@@ -190,15 +169,9 @@ export const careerRoles = [
     responsibilities: [
       "Develop functional floor plans, statutory approval drawings, and elevation details.",
       "Ensure statutory building code compliance and smooth authority approvals.",
-      "Coordinate architectural details with structural and MEP discipline teams.",
+      "Coordinate architectural details with structural and infrastructure discipline teams.",
     ],
   },
-];
-
-export const heroLines = [
-  "Where Vision Takes Form",
-  "Architecture, structure & infrastructure coordinated",
-  "Construction-ready GFC under one window",
 ];
 
 export const hero = {
@@ -220,78 +193,6 @@ export const trustMetrics = [
   { value: "25+", label: "Completed Projects" },
   { value: "15 Lakh+", label: "Sq.Ft Designed" },
   { value: "5", label: "States Served" },
-];
-
-/** Exact FORMX by Numbers specified in client feedback document */
-export const formxNumbers = [
-  { value: 25, suffix: "+", label: "Completed Projects", highlight: "Turnkey & Greenfield Facilities" },
-  { value: 15, suffix: " Lakh+", label: "Sq.Ft Designed", sublabel: "Industrial & Heavy Engineering Area", isLarge: true },
-  { value: 15, suffix: "+", label: "Industrial Clients", highlight: "Promoters & Corporate Leaders" },
-  { value: 10, suffix: "+", label: "Steel Structures", highlight: "Heavy PEB & Crane Sheds" },
-  { value: 10, suffix: "+", label: "Warehouses", highlight: "Logistics & Supply Chain Hubs" },
-  { value: 5, suffix: "", label: "States Served", highlight: "Across Industrial Hubs in India" },
-];
-
-export const stats = formxNumbers;
-
-/** Industries Served — image-led home strip (assets from public/assets) */
-export const industriesServed = [
-  {
-    id: "pharmaceuticals",
-    title: "Pharmaceuticals",
-    icon: "Pill",
-    description: "Cleanrooms, cGMP utilities, HVAC zoning.",
-    slug: "semiconductor",
-    asset: "sectors/semiconductor.jpg",
-  },
-  {
-    id: "food-processing",
-    title: "Food Processing",
-    icon: "Utensils",
-    description: "Hygiene layouts, cold chain, steam utilities.",
-    slug: "food-processing",
-    asset: "sectors/food-processing.jpg",
-  },
-  {
-    id: "chemical",
-    title: "Chemical",
-    icon: "FlaskConical",
-    description: "Hazard zoning, pipe racks, effluent systems.",
-    slug: "solar-glass",
-    asset: "sectors/solar-glass.jpg",
-  },
-  {
-    id: "textile",
-    title: "Textile",
-    icon: "Scissors",
-    description: "High-bay sheds, humidification, power centers.",
-    slug: "wind-blade",
-    asset: "sectors/wind-blade.jpg",
-  },
-  {
-    id: "engineering",
-    title: "Engineering",
-    icon: "Wrench",
-    description: "Machine foundations, EOT cranes, ventilation.",
-    slug: "industrial-park",
-    asset: "projects/vir-bhadra-enterprise.jpg",
-  },
-  {
-    id: "automobile",
-    title: "Automobile",
-    icon: "Car",
-    description: "Assembly logistics, paint utilities, fire safety.",
-    slug: "ev-electronics",
-    asset: "sectors/semiconductor.jpg",
-  },
-  {
-    id: "warehouses",
-    title: "Warehouses & Logistics",
-    icon: "Warehouse",
-    description: "PEB spans, dock pits, solar-ready roofs.",
-    slug: "industrial-park",
-    asset: "projects/peb-warehouse.jpg",
-  },
 ];
 
 export const about = {

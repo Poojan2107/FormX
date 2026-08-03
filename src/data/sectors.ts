@@ -1,4 +1,4 @@
-export type Sector = {
+﻿export type Sector = {
   slug: string;
   title: string;
   summary: string;
@@ -13,7 +13,7 @@ export const sectors: Sector[] = [
     slug: "renewable-energy",
     title: "Renewable Energy",
     summary:
-      "Construction-ready facility design for renewable manufacturing — architectural planning, structural systems, power distribution, and site infrastructure that support phased capacity growth.",
+      "Construction-ready facility design for renewable manufacturing â€” architectural planning, structural systems, power distribution, and site infrastructure that support phased capacity growth.",
     challenges: [
       "Phased expansion without disrupting operations",
       "High utility intensity and clear corridor logic",
@@ -141,7 +141,7 @@ export const sectors: Sector[] = [
     ],
     capabilities: [
       "Precision architectural planning",
-      "Integrated MEP coordination",
+      "Integrated utility coordination",
       "Redundancy-aware electrical design",
       "Energy-efficient HVAC solutions",
     ],
@@ -157,7 +157,7 @@ export const sectors: Sector[] = [
     slug: "electrical-cable",
     title: "Electrical Cable",
     summary:
-      "Process-led plants for cable manufacturing — extrusion flow, industrial structure, power design, and fire protection packages.",
+      "Process-led plants for cable manufacturing â€” extrusion flow, industrial structure, power design, and fire protection packages.",
     challenges: [
       "Linear process flow and storage adjacency",
       "Heat and utility intensive lines",

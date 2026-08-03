@@ -34,7 +34,7 @@ const kindCopy: Record<
   },
   generic: {
     overlay: "Project visual",
-    lines: ["Architecture", "Structure", "MEP & Utilities"],
+    lines: ["Architecture", "Structure", "Infrastructure"],
   },
 };
 

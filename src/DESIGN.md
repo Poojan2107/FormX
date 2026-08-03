@@ -28,6 +28,13 @@ FormX Consultants 网站的 `src/` 模块：Next.js 16 App Router 架构、设�
 
 ## 变更历史
 
+### [2026-08-01] — 品牌叙事轮：总部叙事、创始人反馈、首页重构
+
+**变更内容**: (1) 全站改写为「FORMX 总部/单一窗口工程实践」叙事——`site.ts` 文案全面重写（hero "Where Vision Takes Form"、about/aboutPage 愿景-使命-价值观、口号、稀疏 `trustMetrics`），删除旧的 heroLines/heroStats/formxNumbers/industriesServed/testimonials 数据；(2) 首页重构为 08 段节奏：Hero → About → `TrustProof` → `HowWeThink` → `ConstructionSequence` → Projects → `PeopleGlimpse` → 单一项目咨询 CTA；(3) 新增 `WhyChooseAccordion`（关于页渐进式手风琴，`aria-expanded`）、`DisciplineStory`（服务详情学科叙事）、`serviceStories.ts`/`sectorStories.ts` 叙事数据、`getProjectNarrative` 工程案例叙事迁移（legacy challenge/approach/outcome 保留回退）；(4) About/详情页改为无照片背景的编辑式 hero + 稀疏真实指标；(5) 移除已无引用的 7 个组件（`EngineeringTrustMatrix`/`home{Services,Sectors,Stats,Testimonials}`/`shared/LeadStrip`/`ServicesGrid`）及其数据导出；(6) Header 精简（去掉编号子项与 Greenfield 状态徽标）。
+**变更理由**: 创始人反馈第二轮——从功能罗列转向「为什么信任 FORMX」的叙事与实证，减少营销堆叠、术语统一。
+**影响范围**: `src/data/{site,projects,serviceStories,sectorStories,content}.ts`、`src/app/{page,about,projects/[slug],knowledge-center,sectors/[slug],services/[slug]}/page.tsx`、`src/components/{about/WhyChooseAccordion,home/{Hero,About,TrustProof,HowWeThink,PeopleGlimpse,ConstructionSequence,Projects},layout/{Header,Footer},shared/WhatsAppFloat,services/DisciplineStory}.tsx`、`src/DESIGN.md`。
+**修复**: Hero `setShowPhoto` 同步 setState 改为 `setTimeout(0)` 以满足 react-hooks 新规则；删除冗余组件与数据后 lint/build/test 全绿。
+
 ### [2026-08-01] — FORMX V2：建筑序列引擎、信任矩阵、估算工具
 
 **变更内容**: (1) 新增 `ConstructionSequence` 六阶段交互式施工流程引擎（场地勘察→建筑总图→结构 RCC/钢框架→MEP 路由→GFC 交付→建成设施，含阶段里程碑、IS 码标注、交付清单与指标）；(2) 新增 `EngineeringTrustMatrix` 实证信任面板（FORMX by Numbers 计数、IS 456/800/1893 合规、客户 logo 墙，logo 缺失走 `PlaceholderMedia` 文案回退）；(3) 新增 `/estimator` PEB 荷载估算工具页 + `StructuralEstimator`（面积/檐高/吊车/结构体系/楼板/抗震分区输入，输出钢吨位、RCC 体积、板厚、GFC 周期，CTA 携带 `?area=&crane=&type=` 参数）；(4) Hero 增加 CAD 蓝图网格叠加开关（`showBlueprintGrid`，含 GRID REF/抗震分区标注）；(5) 表单侧：Contact 从估算器 CTA 参数预填消息正文并自动勾选「Structural Engineering」服务；(6) 全站图片主导视觉升级（about/services/projects/hero）。

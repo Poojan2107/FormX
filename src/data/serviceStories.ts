@@ -1,4 +1,4 @@
-import type { Service } from "@/data/services";
+﻿import type { Service } from "@/data/services";
 
 export type DisciplineFamily =
   | "architecture"
@@ -33,11 +33,11 @@ const familyBySlug: Record<string, DisciplineFamily> = {
 
 const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
   architecture: {
-    motif: "Concept · Planning · Space · Layouts",
-    lead: "Architecture at FORMX starts with how the facility will operate—then resolves statutory setbacks, clear heights and structural grids before elevations are finished for presentation.",
+    motif: "Concept Â· Planning Â· Space Â· Layouts",
+    lead: "Architecture at FORMX starts with how the facility will operateâ€”then resolves statutory setbacks, clear heights and structural grids before elevations are finished for presentation.",
     thinking: [
       "Operational zoning before cosmetic elevation work",
-      "Layouts that respect structural bays and MEP risers",
+      "Layouts that respect structural bays and utility risers",
       "Statutory approval drawings that match what can be built",
       "Design process that stays coordinated through GFC revisions",
     ],
@@ -51,8 +51,8 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "On site, architectural intent must survive contractor markups and utility penetrations. We stay in the revision loop until openings, docks and finishes match the coordinated package.",
   },
   structure: {
-    motif: "Frames · Loads · Steel · Reinforcement · Analysis",
-    lead: "Structural systems are sized for real industrial loads—cranes, process equipment, seismic and wind—then detailed so fabrication and reinforcement cages can be erected without guesswork.",
+    motif: "Frames Â· Loads Â· Steel Â· Reinforcement Â· Analysis",
+    lead: "Structural systems are sized for real industrial loadsâ€”cranes, process equipment, seismic and windâ€”then detailed so fabrication and reinforcement cages can be erected without guesswork.",
     thinking: [
       "Load path clarity from equipment to foundation",
       "PEB and RCC interfaces at base plates and splices",
@@ -69,8 +69,8 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Construction crews need unambiguous bar schedules and connection details. We support RFIs and shop drawing reviews until the frame matches the model.",
   },
   fire: {
-    motif: "Hydrant · Pump · Sprinkler · Code · Coverage",
-    lead: "Fire protection is designed as a life-safety system with verified coverage—hydrant loops, pump rooms, sprinklers and detection—coordinated with architecture and structure before pipes are hung.",
+    motif: "Hydrant Â· Pump Â· Sprinkler Â· Code Â· Coverage",
+    lead: "Fire protection is designed as a life-safety system with verified coverageâ€”hydrant loops, pump rooms, sprinklers and detectionâ€”coordinated with architecture and structure before pipes are hung.",
     thinking: [
       "Hazard classification drives system selection",
       "Hydrant and sprinkler coverage without dead zones",
@@ -84,11 +84,11 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Hydraulic calculations",
     ],
     siteReality:
-      "Authority inspections fail on incomplete coverage or uncoordinated penetrations. We keep fire routes clear of structural and MEP clashes before installation.",
+      "Authority inspections fail on incomplete coverage or uncoordinated penetrations. We keep fire routes clear of structural and utility clashes before installation.",
   },
   electrical: {
-    motif: "SLD · Transformers · Power · Routing",
-    lead: "Electrical design starts with load assessment and a clear single-line diagram—then routes HT/LT cables, trays and earthing through corridors reserved in the coordinated BIM / GA set.",
+    motif: "SLD Â· Transformers Â· Power Â· Routing",
+    lead: "Electrical design starts with load assessment and a clear single-line diagramâ€”then routes HT/LT cables, trays and earthing through corridors reserved in the coordinated BIM / GA set.",
     thinking: [
       "SLD that matches actual plant load growth",
       "Transformer and panel room spatial logic",
@@ -105,8 +105,8 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Rework happens when trays fight ducts and beams. We coordinate electrical routes with structure and HVAC before cable is pulled.",
   },
   mechanical: {
-    motif: "Ducts · HVAC · Utilities · Equipment",
-    lead: "Mechanical and HVAC systems are planned as plant utilities—duct trunks, chilled water, process piping and equipment pads—sized for maintainability and clash-free installation.",
+    motif: "Ducts Â· HVAC Â· Utilities Â· Equipment",
+    lead: "Mechanical and HVAC systems are planned as plant utilitiesâ€”duct trunks, chilled water, process piping and equipment padsâ€”sized for maintainability and clash-free installation.",
     thinking: [
       "Load and process demand before equipment selection",
       "Duct and pipe trunks in reserved corridors",
@@ -123,8 +123,8 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Ceiling congestion kills schedules. We close mechanical clashes against structure and electrical trays before GFC issue.",
   },
   infrastructure: {
-    motif: "Roads · Drainage · Utilities · Site networks",
-    lead: "Site infrastructure opens the plot for construction and operations—grading, roads, stormwater, water supply and external utilities—aligned with building footprints and future expansion.",
+    motif: "Roads Â· Drainage Â· Utilities Â· Site networks",
+    lead: "Site infrastructure opens the plot for construction and operationsâ€”grading, roads, stormwater, water supply and external utilitiesâ€”aligned with building footprints and future expansion.",
     thinking: [
       "Grading that drains without flooding pads",
       "Road and pavement for construction and plant traffic",
@@ -141,8 +141,8 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Wrong levels at the plot boundary cascade into foundation and dock problems. Civil GAs are issued with building interface notes contractors can stake.",
   },
   delivery: {
-    motif: "Coordination · Tender · Procurement · Site support",
-    lead: "Delivery holds the multidisciplinary package together—tender clarity, vendor evaluation, schedule pressure and construction-stage engineering until the facility matches intent.",
+    motif: "Coordination Â· Tender Â· Procurement Â· Site support",
+    lead: "Delivery holds the multidisciplinary package togetherâ€”tender clarity, vendor evaluation, schedule pressure and construction-stage engineering until the facility matches intent.",
     thinking: [
       "Scope that matches what will actually be built",
       "Tender documents contractors can price without ambiguity",
@@ -156,7 +156,7 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Progress & closeout documentation",
     ],
     siteReality:
-      "Projects stall when nobody owns the interface. FORMX delivery keeps architecture, structure and MEP answering as one practice through construction.",
+      "Projects stall when nobody owns the interface. FORMX delivery keeps architecture, structure and infrastructure answering as one practice through construction.",
   },
 };
 

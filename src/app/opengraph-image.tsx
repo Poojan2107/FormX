@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "FormX Consultants — Architecture, Structure, Civil & MEP";
+export const alt = "FormX Consultants — Architecture, Structure & Infrastructure";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -93,7 +93,7 @@ export default function Image() {
               marginTop: 26,
             }}
           >
-            Architecture · Structure · Civil · MEP
+            Architecture · Structure · Infrastructure
           </div>
           <div
             style={{

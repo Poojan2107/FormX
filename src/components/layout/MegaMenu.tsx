@@ -125,7 +125,6 @@ export function DesktopNav() {
           const expandable =
             item.label === "Services" ||
             item.label === "Projects" ||
-            item.label === "Sectors" ||
             item.label === "Insights";
           const panelOpen = panel === item.label;
           const routeActive =
@@ -388,6 +387,26 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
         </p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
           Read articles
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </Link>
+
+      <Link
+        href="/sectors"
+        onClick={onNavigate}
+        transitionTypes={["nav-forward"]}
+        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
+      >
+        <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
+        <BookOpen className="size-5 text-x-red" />
+        <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
+          Sectors
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+          Why food, battery, solar and industrial plants engineer differently.
+        </p>
+        <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
+          Explore sectors
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Link>

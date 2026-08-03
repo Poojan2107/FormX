@@ -253,7 +253,7 @@ export function Contact() {
                 Design <span className="text-x-red">|</span> Engineering
               </h2>
               <p className="mt-3 max-w-[40ch] text-[13px] leading-relaxed text-white/55">
-                Architecture, Structure, Civil &amp; MEP — one accountable window from concept to GFC.
+                Architecture, Structure &amp; Infrastructure — one accountable window from concept to GFC.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -288,7 +288,7 @@ export function Contact() {
                   href={wa}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-300 transition-colors hover:bg-emerald-400/20"
+                  className="inline-flex flex-1 items-center justify-center gap-2 border border-x-red/40 bg-x-red/10 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red/20"
                 >
                   <MessageSquare className="size-3.5" />
                   WhatsApp FORMX
@@ -317,8 +317,8 @@ export function Contact() {
                 },
                 {
                   icon: Layers,
-                  title: "10 disciplines, one window",
-                  body: "Architecture through MEP delivered as a clash-free GFC set.",
+                  title: "Architecture · Structure · Infrastructure",
+                  body: "Coordinated construction-ready documentation delivered as one accountable package.",
                 },
               ].map((item) => (
                 <div

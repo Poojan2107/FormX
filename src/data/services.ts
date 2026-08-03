@@ -1,4 +1,4 @@
-export type Service = {
+﻿export type Service = {
   slug: string;
   title: string;
   short: string;
@@ -24,7 +24,7 @@ export const services: Service[] = [
       "Industrial, commercial & institutional building design",
       "Space planning & functional optimization",
       "Statutory & building code compliance",
-      "Structural and MEP coordination",
+      "Structural and utility coordination",
     ],
     deliverables: [
       "General Arrangement (GA) Drawings",
@@ -36,7 +36,7 @@ export const services: Service[] = [
     process: [
       "Understanding project requirements, operational needs, and site constraints.",
       "Developing efficient architectural layouts and design concepts.",
-      "Preparing coordinated construction drawings integrated with structural and MEP disciplines.",
+      "Preparing coordinated construction drawings integrated with structural and utility disciplines.",
       "Providing continuous design support during construction through revisions and technical clarifications.",
     ],
     relatedSectors: ["industrial-park", "food-processing", "data-center"],
@@ -67,7 +67,7 @@ export const services: Service[] = [
     process: [
       "Study site conditions, topography, and project requirements.",
       "Develop optimized infrastructure layouts for circulation and utilities.",
-      "Coordinate with architectural, structural, MEP, and landscape disciplines.",
+      "Coordinate with architectural, structural, utilities, and landscape disciplines.",
       "Deliver construction-ready drawings with ongoing technical support during execution.",
     ],
     relatedSectors: ["industrial-park", "renewable-energy", "food-processing"],
@@ -80,7 +80,7 @@ export const services: Service[] = [
     short:
       "Practical strategies that improve energy efficiency without compromising functionality or project budget.",
     summary:
-      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities — then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architectural, structural, and MEP disciplines.",
+      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities â€” then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure and infrastructure.",
     highlights: [
       "Climate Responsive Design",
       "Passive Cooling & Daylighting Strategies",
@@ -98,7 +98,7 @@ export const services: Service[] = [
     process: [
       "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities.",
       "Develop practical strategies that improve energy efficiency without compromising functionality or project budget.",
-      "Coordinate architectural, structural, and MEP disciplines to seamlessly integrate sustainable design solutions.",
+      "Coordinate architecture, structure and infrastructure to seamlessly integrate sustainable design solutions.",
       "Deliver technically coordinated documentation that supports long-term performance, operational efficiency, and future-ready infrastructure.",
     ],
     relatedSectors: ["renewable-energy", "industrial-park", "data-center"],
@@ -131,7 +131,7 @@ export const services: Service[] = [
     process: [
       "Understand project requirements, loading criteria, and applicable design standards.",
       "Develop optimized structural systems focused on safety, efficiency, and constructability.",
-      "Coordinate with architectural, MEP, and infrastructure disciplines for seamless project integration.",
+      "Coordinate with architecture, utilities and infrastructure disciplines for seamless project integration.",
       "Deliver complete design documentation with construction-stage engineering support.",
     ],
     relatedSectors: ["renewable-energy", "industrial-park", "food-processing"],
@@ -164,7 +164,7 @@ export const services: Service[] = [
     process: [
       "Assess site conditions, project requirements, and applicable engineering standards.",
       "Develop optimized civil infrastructure layouts focused on safety, efficiency, and long-term performance.",
-      "Coordinate seamlessly with architectural, structural, and MEP disciplines for integrated project delivery.",
+      "Coordinate seamlessly with architecture, structure and infrastructure for integrated project delivery.",
       "Deliver construction-ready documentation with engineering support throughout execution.",
     ],
     relatedSectors: ["industrial-park", "renewable-energy", "wind-blade"],
@@ -296,7 +296,7 @@ export const services: Service[] = [
     process: [
       "Assess project risks, occupancy requirements, and applicable fire safety codes.",
       "Develop reliable fire protection systems that ensure rapid detection, suppression, and emergency response.",
-      "Coordinate seamlessly with architectural, structural, civil, electrical, and MEP disciplines for fully integrated fire protection solutions.",
+      "Coordinate seamlessly with architecture, structure, civil and electrical disciplines for fully integrated fire protection solutions.",
       "Deliver construction-ready documentation with technical support through installation, testing, and commissioning.",
     ],
     relatedSectors: ["battery", "data-center", "food-processing"],
