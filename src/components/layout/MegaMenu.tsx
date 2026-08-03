@@ -15,7 +15,6 @@ import {
   nav,
   serviceNavGroups,
   projects,
-  sectors,
   services,
   site,
 } from "@/data/site";
@@ -24,7 +23,7 @@ import { Button } from "@/components/ui/Button";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
-type Panel = "Services" | "Projects" | "Sectors" | "Insights" | null;
+type Panel = "Services" | "Projects" | "Insights" | null;
 
 export function DesktopNav() {
   const [panel, setPanel] = useState<Panel>(null);
@@ -98,9 +97,6 @@ export function DesktopNav() {
               ) : null}
               {panel === "Projects" ? (
                 <ProjectsMega onNavigate={() => setPanel(null)} />
-              ) : null}
-              {panel === "Sectors" ? (
-                <SectorsMega onNavigate={() => setPanel(null)} />
               ) : null}
               {panel === "Insights" ? (
                 <InsightsMega onNavigate={() => setPanel(null)} />
@@ -315,59 +311,6 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-function SectorsMega({ onNavigate }: { onNavigate: () => void }) {
-  return (
-    <div>
-      <div className="mb-5 flex items-end justify-between gap-4">
-        <div>
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-            Industries
-          </p>
-          <p className="mt-1 font-display text-lg font-bold text-ink">
-            Sectors we design for
-          </p>
-        </div>
-        <Link
-          href="/sectors"
-          onClick={onNavigate}
-          transitionTypes={["nav-forward"]}
-          className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink/50 transition-colors hover:text-x-red"
-        >
-          All sectors
-          <ArrowRight className="size-3.5" />
-        </Link>
-      </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-        {sectors.slice(0, 8).map((s, i) => (
-          <Link
-            key={s.slug}
-            href={`/sectors/${s.slug}`}
-            onClick={onNavigate}
-            transitionTypes={["nav-forward"]}
-            className="group relative aspect-[16/10] overflow-hidden bg-[#111]"
-          >
-            <AssetImage
-              alt={s.title}
-              slot={s.asset}
-              kind="sector"
-              fit="cover"
-              tone="dark"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-            <span className="absolute left-2.5 top-2.5 font-display text-[9px] font-bold text-x-red">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span className="absolute bottom-2.5 left-2.5 right-2.5 font-display text-[12px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red">
-              {s.title}
-            </span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
   return (
     <div className="grid gap-4 md:grid-cols-[1.15fr_1fr_0.95fr]">
@@ -392,26 +335,6 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       </Link>
 
       <Link
-        href="/sectors"
-        onClick={onNavigate}
-        transitionTypes={["nav-forward"]}
-        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
-      >
-        <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
-        <BookOpen className="size-5 text-x-red" />
-        <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
-          Sectors
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Why food, battery, solar and industrial plants engineer differently.
-        </p>
-        <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
-          Explore sectors
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-        </span>
-      </Link>
-
-      <Link
         href="/estimator"
         onClick={onNavigate}
         transitionTypes={["nav-forward"]}
@@ -430,6 +353,28 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Link>
+
+      <div className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-6 text-white">
+        <div>
+          <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+            Talk to FormX
+          </p>
+          <p className="mt-3 font-display text-lg font-bold tracking-tight">
+            Architecture · Structure · Infrastructure
+          </p>
+          <p className="mt-2 text-sm text-white/50">{site.phone}</p>
+        </div>
+        <Button
+          href="/contact"
+          variant="primary"
+          className="mt-6 w-full"
+          onClick={onNavigate}
+          transitionTypes={["nav-forward"]}
+        >
+          Enquire
+          <ArrowRight className="size-4" />
+        </Button>
+      </div>
     </div>
   );
 }

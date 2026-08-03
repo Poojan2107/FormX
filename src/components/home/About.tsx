@@ -15,13 +15,13 @@ export function About() {
           <Reveal className="lg:col-span-4">
             <Logo variant="full" className="scale-125 origin-left" />
             <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Where Vision Takes Form
+              Shaping form · Defining futures
             </p>
           </Reveal>
 
           <Reveal delay={0.06} className="lg:col-span-8">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Who we are
+              About Us
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-ink md:text-4xl lg:text-[2.75rem]">
               {about.title}

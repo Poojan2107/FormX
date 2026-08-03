@@ -6,7 +6,7 @@ import { aboutPage } from "@/data/site";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
-/** Founder ask: focus on core human values — team photo + accordion, not direct design cards */
+/** Founder: VMS-style — core human values + people visual, not design-feature cards */
 export function HumanValuesPanel() {
   const [open, setOpen] = useState(0);
 
@@ -29,14 +29,13 @@ export function HumanValuesPanel() {
 
       <div className="lg:col-span-7">
         <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-          Practice pillars
+          Why clients choose FORMX
         </p>
         <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-          How FormX works
+          Core human values
         </h2>
         <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-ink-muted">
-          Structural Integrity, Functional Design, Technical Expertise and Collaborative Insight —
-          the pillars from our practice brochure.
+          Focus on how we work with people — not a pitch of design features.
         </p>
 
         <div className="mt-8 space-y-2">

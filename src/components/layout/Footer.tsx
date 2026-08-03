@@ -96,15 +96,6 @@ export function Footer() {
               ))}
               <li>
                 <Link
-                  href="/sectors"
-                  transitionTypes={["nav-forward"]}
-                  className="text-[13px] text-white/55 transition-colors hover:text-white"
-                >
-                  Sectors
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/career"
                   transitionTypes={["nav-forward"]}
                   className="text-[13px] text-white/55 transition-colors hover:text-white"

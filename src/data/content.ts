@@ -8,18 +8,15 @@
   featured?: boolean;
 };
 
-/** Only named people from FORMX.pdf / practice materials */
+/** Only named people from FORMX.pdf / founder comments */
 export const leadership: TeamMember[] = [
   {
     name: "Hiren J. Shah",
     role: "Founder & Managing Partner",
-    bio: "Founder & Managing Partner of FORMX Consultants LLP. Structural Engineer — Grade 1 (AMC / BMC). Directly leads structural engineering design and site execution reviews across industrial, commercial and infrastructure developments.",
+    bio: "Founder & Managing Partner of FORMX Consultants LLP. Structural Engineer — Grade 1 (AMC / BMC). Leading structural design focused on industrial, commercial and building projects — specialising in RCC & steel structural design, PEB support, architecture planning and site execution.",
     highlights: [
-      "Structural Engineer — Grade 1 (AMC / BMC)",
-      "RCC & Heavy Steel Structural Engineering",
-      "Industrial Plants, PEB & Strengthening",
-      "Statutory Code & NBC Compliance",
-      "On-Site Execution & Drawing Reviews",
+      "RCC & Steel Structural Design",
+      "PEB Design Support & Consultancy",
     ],
     asset: "team/hiren-j-shah.jpg",
     linkedin: "https://www.linkedin.com/in/hiren-j-shah/",

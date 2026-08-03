@@ -12,32 +12,24 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Our Services | Design Solutions in Engineering & Architecture | FORMX",
+  title: "Our Services | Architecture · Structure · Infrastructure | FORMX",
   description:
-    "High-rise & residential, industrial projects, institutional & commercial, and strengthening & retrofitting — plus quantity estimation and construction support.",
+    "High-rise & residential, industrial, institutional & commercial, strengthening & retrofitting — Architecture, Structure and Infrastructure.",
 };
 
+/** Founder: Architecture · Structure · Infrastructure only (no MEP listing) */
 const groups = [
   {
-    title: "Architecture & Planning",
-    slugs: ["architectural-design", "site-infrastructure", "sustainable-design"],
+    title: "Architecture",
+    slugs: ["architectural-design", "sustainable-design"],
   },
   {
-    title: "Structure & Civil",
+    title: "Structure",
     slugs: ["structural-engineering", "civil-engineering"],
   },
   {
-    title: "Utilities & Fire",
-    slugs: [
-      "mechanical-utility-engineering",
-      "hvac-engineering",
-      "electrical-engineering",
-      "fire-protection-engineering",
-    ],
-  },
-  {
-    title: "Delivery",
-    slugs: ["project-management"],
+    title: "Infrastructure",
+    slugs: ["site-infrastructure", "project-management"],
   },
 ];
 

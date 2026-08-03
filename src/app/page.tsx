@@ -3,7 +3,6 @@ import { About } from "@/components/home/About";
 import { TrustProof } from "@/components/home/TrustProof";
 import { HowWeThink } from "@/components/home/HowWeThink";
 import { ServiceTypologies } from "@/components/home/ServiceTypologies";
-import { ConstructionSequence } from "@/components/home/ConstructionSequence";
 import { PortfolioWorkbench } from "@/components/home/PortfolioWorkbench";
 import { Projects } from "@/components/home/Projects";
 import { PeopleGlimpse } from "@/components/home/PeopleGlimpse";
@@ -19,7 +18,6 @@ export default function Home() {
       <TrustProof />
       <HowWeThink />
       <ServiceTypologies />
-      <ConstructionSequence />
       <PortfolioWorkbench />
       <Projects />
       <PeopleGlimpse />
@@ -35,7 +33,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
               Share facility type, location and timeline. We look forward to collaborating on your
-              next project.
+              next project — Architecture, Structure and Infrastructure.
             </p>
             <Link
               href="/contact"

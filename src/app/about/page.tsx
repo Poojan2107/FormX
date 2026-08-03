@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { aboutPage, trustMetrics } from "@/data/site";
+import { aboutPage } from "@/data/site";
 import { leadership } from "@/data/content";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -10,17 +10,10 @@ import { HumanValuesPanel } from "@/components/about/HumanValuesPanel";
 import { BrochureCta } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
-  title: "About FORMX Consultants | Multidisciplinary Engineering Consultancy, Ahmedabad",
+  title: "About Us | FORMX Consultants",
   description:
-    "FORMX is an engineering consultancy delivering coordinated Architecture, Structure and Infrastructure support from concept to GFC in Ahmedabad, India.",
+    "FORMX Consultants — Architecture, Structure and Infrastructure. Where Vision Takes Form. Ahmedabad.",
 };
-
-const documentaryShots = [
-  { slot: "projects/brochure/brochure_p1_1.png", caption: "Structural model" },
-  { slot: "projects/brochure/brochure_p3_2.png", caption: "Industrial facility" },
-  { slot: "projects/brochure/brochure_p4_4.png", caption: "High-rise residential" },
-  { slot: "projects/brochure/brochure_p10_1.png", caption: "Built form" },
-];
 
 export default function AboutPage() {
   const founder = leadership.find((p) => p.featured);
@@ -44,66 +37,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-b border-line bg-[#f7f7f7] py-12">
-        <Container className="grid gap-8 sm:grid-cols-3">
-          {trustMetrics.map((m) => (
-            <div key={m.label}>
-              <p className="font-display text-4xl font-black text-ink md:text-5xl">{m.value}</p>
-              <p className="mt-1 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-ink/45">
-                {m.label}
-              </p>
-            </div>
-          ))}
-        </Container>
-      </section>
-
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white py-16 md:py-20">
         <Container>
           <Reveal>
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Company philosophy
-            </p>
-            <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Lasting solutions that reflect stability, creativity, and precision
-            </h2>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              {aboutPage.philosophy}
+              Vision · Mission · Values
             </p>
           </Reveal>
-        </Container>
-      </section>
-
-      <section className="border-y border-line bg-[#0d0d0d] py-20 text-white md:py-28">
-        <Container className="grid gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Why FORMX exists
-            </p>
-          </Reveal>
-          <Reveal delay={0.06} className="lg:col-span-8">
-            <p className="text-[18px] leading-[1.9] text-white/80 md:text-[20px]">
-              {aboutPage.whyExists}
-            </p>
-          </Reveal>
-        </Container>
-      </section>
-
-      <section className="bg-white py-20 md:py-28">
-        <Container>
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Principles
-            </p>
-          </Reveal>
-          <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div className="mt-10 grid gap-10 md:grid-cols-3">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i}>
                 <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
                   0{i + 1}
                 </span>
-                <h3 className="mt-3 font-display text-xl font-extrabold uppercase text-ink">
+                <h2 className="mt-3 font-display text-xl font-extrabold uppercase text-ink">
                   {p.title}
-                </h3>
+                </h2>
                 <p className="mt-4 text-[14px] leading-[1.85] text-ink-muted">{p.body}</p>
               </Reveal>
             ))}
@@ -111,7 +60,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-[#fafafa] py-20 md:py-28">
+      <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
         <Container>
           <HumanValuesPanel />
           <BrochureCta className="mt-14" />
@@ -123,13 +72,14 @@ export default function AboutPage() {
           <Container>
             <Reveal>
               <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                Founder vision
+                Leadership
               </p>
               <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-                {founder.name}
+                Partners close to the work
               </h2>
-              <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">
-                {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
+              <p className="mt-3 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+                Led by Founder &amp; Managing Partner {founder.name} — structural designer,
+                architecture planning &amp; site execution.
               </p>
             </Reveal>
 
@@ -147,8 +97,23 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
-                <p className="text-[16px] leading-[1.9] text-ink-muted">{aboutPage.founderVision}</p>
+                <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
+                  {founder.name}
+                </h3>
+                <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">
+                  {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
+                </p>
                 <p className="mt-6 text-[15px] leading-[1.85] text-ink-muted">{founder.bio}</p>
+                {founder.highlights?.length ? (
+                  <ul className="mt-6 space-y-2">
+                    {founder.highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-3 text-[14px] text-ink">
+                        <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-x-red" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
                 {founder.linkedin ? (
                   <a
                     href={founder.linkedin}
@@ -161,73 +126,29 @@ export default function AboutPage() {
                 ) : null}
               </Reveal>
             </div>
-
-            <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
-              {documentaryShots.map((shot, i) => (
-                <Reveal key={shot.caption} delay={0.04 * i}>
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#111]">
-                    <AssetImage
-                      alt={shot.caption}
-                      slot={shot.slot}
-                      kind="facility"
-                      fit="contain"
-                      tone="dark"
-                      aspect="auto"
-                      className="absolute inset-0 h-full w-full p-2"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <p className="absolute bottom-3 left-3 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white/80">
-                      {shot.caption}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </Container>
         </section>
       ) : null}
 
-      <section className="bg-[#fafafa] py-20 md:py-28">
+      <section className="border-y border-line bg-[#0d0d0d] py-20 text-white md:py-28">
         <Container className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Multidisciplinary collaboration
+              Architecture · Structure · Infrastructure
             </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              How disciplines work as one package
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+              How we deliver
             </h2>
           </Reveal>
           <Reveal delay={0.06} className="lg:col-span-7">
-            <p className="text-[16px] leading-[1.9] text-ink-muted">{aboutPage.collaboration}</p>
+            <p className="text-[16px] leading-[1.9] text-white/75">{aboutPage.collaboration}</p>
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
               className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
             >
-              Explore practice disciplines
+              Explore services
               <ArrowRight className="size-4" />
-            </Link>
-          </Reveal>
-        </Container>
-      </section>
-
-      <section className="border-y border-line bg-[#0d0d0d] py-20 text-white md:py-28">
-        <Container>
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Through the office
-            </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
-              How projects move
-            </h2>
-            <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-white/65">
-              {aboutPage.studioFlow}
-            </p>
-            <Link
-              href="/"
-              className="mt-8 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
-            >
-              Return to headquarters →
             </Link>
           </Reveal>
         </Container>
@@ -240,7 +161,7 @@ export default function AboutPage() {
               Invitation
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Discuss your next facility
+              Discuss your next project
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
               Share location, facility type and timeline. We look forward to collaborating on your

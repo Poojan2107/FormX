@@ -51,7 +51,7 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { label: "About", href: "/about" },
+  { label: "About Us", href: "/about" },
   {
     label: "Services",
     href: "/services",
@@ -59,13 +59,6 @@ export const nav: NavItem[] = [
       { label: "Architectural Drawings", href: "/services/architectural-design" },
       { label: "Structural Engineering", href: "/services/structural-engineering" },
       { label: "Civil Engineering", href: "/services/civil-engineering" },
-      {
-        label: "Mechanical Utility Engineering",
-        href: "/services/mechanical-utility-engineering",
-      },
-      { label: "HVAC & Refrigeration", href: "/services/hvac-engineering" },
-      { label: "Electrical Engineering", href: "/services/electrical-engineering" },
-      { label: "Fire Protection", href: "/services/fire-protection-engineering" },
       { label: "Site Infrastructure", href: "/services/site-infrastructure" },
       { label: "Sustainable Design", href: "/services/sustainable-design" },
       { label: "Project Management", href: "/services/project-management" },
@@ -78,19 +71,17 @@ export const nav: NavItem[] = [
     href: "/knowledge-center",
     children: [
       { label: "Insights", href: "/knowledge-center" },
-      { label: "Sectors", href: "/sectors" },
       { label: "PEB Load Estimator", href: "/estimator" },
     ],
   },
 ];
 
-/** Mobile mega-menu groupings */
+/** Mobile mega-menu — Architecture · Structure · Infrastructure only (no MEP) */
 export const serviceNavGroups = [
   {
     title: "Architecture",
     items: [
       { label: "Architectural Drawings", href: "/services/architectural-design" },
-      { label: "Site Infrastructure", href: "/services/site-infrastructure" },
       { label: "Sustainable Design", href: "/services/sustainable-design" },
     ],
   },
@@ -102,20 +93,9 @@ export const serviceNavGroups = [
     ],
   },
   {
-    title: "Utilities",
+    title: "Infrastructure",
     items: [
-      {
-        label: "Mechanical Utilities",
-        href: "/services/mechanical-utility-engineering",
-      },
-      { label: "HVAC & Refrigeration", href: "/services/hvac-engineering" },
-      { label: "Electrical Engineering", href: "/services/electrical-engineering" },
-      { label: "Fire Protection", href: "/services/fire-protection-engineering" },
-    ],
-  },
-  {
-    title: "Delivery",
-    items: [
+      { label: "Site Infrastructure", href: "/services/site-infrastructure" },
       { label: "Project Management", href: "/services/project-management" },
       { label: "All services", href: "/services" },
     ],
@@ -170,19 +150,19 @@ export const trustMetrics = [
 ];
 
 export const about = {
-  eyebrow: "Who we are",
+  eyebrow: "About Us",
   title: "Where Vision Takes Form",
   paragraphs: [
     "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation. We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
   ],
-  cta: { label: "About the practice", href: "/about" },
-  legacy: "Design | Engineering",
+  cta: { label: "About Us", href: "/about" },
+  legacy: "Shaping form, defining futures",
 };
 
 export const aboutPage = {
   intro:
     "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation. We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
-  tagline: "Where Vision Takes Form",
+  tagline: "Shaping form, defining futures",
   philosophy:
     "At FormX, we don't just design structures — we craft lasting solutions that reflect stability, creativity, and precision. Always open to fresh ideas and complex challenges, we believe every structure has a story — and we're here to engineer it right.",
   whyExists:
@@ -190,54 +170,50 @@ export const aboutPage = {
   founderVision:
     "Hiren J. Shah, Founder & Managing Partner — Structural Engineer, Grade 1 (AMC / BMC). Stay close to the work: desk reviews, coordination meetings, site walks and drawing markups.",
   collaboration:
-    "We also assist with quantity estimation, construction support, and coordination for seamless execution. Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
+    "Structural design, architecture planning and site execution — with quantity estimation, construction support and coordination for seamless delivery. Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
   studioFlow:
-    "Projects move through the Ahmedabad studio with structural design, quantity estimation, construction support and coordination — from concept through site execution.",
+    "Projects move through the Ahmedabad studio with Architecture, Structure and Infrastructure — from concept through site execution.",
   story: [
     "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation.",
     "We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
   ],
   principles: [
     {
-      title: "Structural Integrity",
-      body: "Design safe, reliable Structural systems",
+      title: "Our Vision",
+      body: "Where Vision Takes Form — structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
     },
     {
-      title: "Functional Design",
-      body: "Create spaces that meet user needs",
+      title: "Our Mission",
+      body: "Deliver Architecture, Structure and Infrastructure with technical proficiency and practical wisdom — from concept through site execution.",
     },
     {
-      title: "Technical Expertise",
-      body: "Apply engineering principles and best practices",
-    },
-    {
-      title: "Collaborative Insight",
-      body: "Integrate architecture and practical feedback",
+      title: "Our Values",
+      body: "Integrity over presentation. People close to the work. Accountability through execution.",
     },
   ],
   humanValues: [
     {
-      title: "Structural Integrity",
-      body: "Design safe, reliable Structural systems",
+      title: "Integrity over presentation",
+      body: "We tell clients what the structure and site can safely carry — not what sounds impressive in a pitch deck.",
     },
     {
-      title: "Functional Design",
-      body: "Create spaces that meet user needs",
+      title: "People close to the work",
+      body: "Partners stay in reviews, meetings and site walks. Decisions are made by engineers who own the drawings.",
     },
     {
-      title: "Technical Expertise",
-      body: "Apply engineering principles and best practices",
+      title: "Accountability through execution",
+      body: "Our relationship does not end at drawing issue. We stay available for clarifications until the facility matches intent.",
     },
     {
-      title: "Collaborative Insight",
-      body: "Integrate architecture and practical feedback",
+      title: "Collaborative insight",
+      body: "Integrate architecture and practical feedback so structure, planning and site execution move as one practice.",
     },
   ],
   values: [
-    "Structural Integrity",
-    "Functional Design",
-    "Technical Expertise",
-    "Collaborative Insight",
+    "Integrity over presentation",
+    "People close to the work",
+    "Accountability through execution",
+    "Collaborative insight",
   ],
 };
 

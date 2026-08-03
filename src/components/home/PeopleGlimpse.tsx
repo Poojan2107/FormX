@@ -47,8 +47,7 @@ export function PeopleGlimpse() {
               {founder.bio}
             </p>
             <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-white/50">
-              A dynamic team of enthusiastic structural engineers and designers — dedicated to
-              crafting spaces that are robust, functional and aligned with architectural vision.
+              Structural designer, architecture planning &amp; site execution.
             </p>
             <Link
               href="/about"
