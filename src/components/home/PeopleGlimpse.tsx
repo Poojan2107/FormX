@@ -41,7 +41,7 @@ export function PeopleGlimpse() {
               Leadership close to the work
             </h2>
             <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-white/50">
-              {founder.name} · {founder.role}
+              {founder.name} · {founder.role} · Grade 1 (AMC / BMC)
             </p>
             <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-white/70">
               {founder.bio}

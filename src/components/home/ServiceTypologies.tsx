@@ -25,7 +25,7 @@ const typologies = [
   },
   {
     title: "Strengthening & Retrofitting",
-    body: "Assessment and strengthening of existing assets—jacketing, load reassessment and life extension with current codes.",
+    body: "NDT assessment, beam/column jacketing, load reassessment, solar mounting vetting (IS 875 Part 3) and life extension of existing industrial assets.",
     href: "/services/structural-engineering",
     tone: "dark" as const,
   },

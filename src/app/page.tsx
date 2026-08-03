@@ -4,6 +4,7 @@ import { TrustProof } from "@/components/home/TrustProof";
 import { HowWeThink } from "@/components/home/HowWeThink";
 import { ServiceTypologies } from "@/components/home/ServiceTypologies";
 import { ConstructionSequence } from "@/components/home/ConstructionSequence";
+import { PortfolioWorkbench } from "@/components/home/PortfolioWorkbench";
 import { Projects } from "@/components/home/Projects";
 import { PeopleGlimpse } from "@/components/home/PeopleGlimpse";
 import Link from "next/link";
@@ -19,6 +20,7 @@ export default function Home() {
       <HowWeThink />
       <ServiceTypologies />
       <ConstructionSequence />
+      <PortfolioWorkbench />
       <Projects />
       <PeopleGlimpse />
 

@@ -422,26 +422,35 @@ export const projects: Project[] = [
   {
     slug: "qc-storage-room",
     sector: "Industrial Special Projects",
-    title: "QC Storage Room & Facility",
-    client: "Industrial Client",
-    location: "Gujarat, India",
+    title: "Chemical Storage & QC Building",
+    client: "Aarti Industries",
+    location: "Indore",
     year: "2023",
-    area: "Controlled Quality Storage Facility",
-    services: [
-      "Structural Engineering",
-      "HVAC & Refrigeration",
-      "Civil Engineering",
-    ],
+    area: "8,000 sq.ft · G+1",
+    services: ["Structural Engineering", "Structural Design Report"],
     challenge:
-      "Designing a precision climate-controlled quality testing and chemical storage vault with strict temperature/humidity control.",
+      "Chemical storage and QC room required structural design to mechanical specifications, with an adjacent piperack supported off the QC building to control overall cost.",
     approach:
-      "FormX engineered insulated sandwich panel walls, precision HVAC duct distribution, and chemical spill containment flooring.",
+      "FORMX delivered structural calculations to latest IS codes and integrated the piperack support with the QC building frame for a cost-effective combined solution.",
     outcome:
-      "State-of-the-art QC storage facility meeting zero-tolerance environmental conditions.",
+      "Construction-ready structural package for chemical storage / QC with coordinated piperack support.",
+    clientNeed:
+      "A chemical storage and QC facility sized to mechanical requirements, with piperack support resolved without a separate expensive structure.",
+    engineeringThinking:
+      "Supporting the piperack from the QC building reduced foundation and steel duplication while keeping load paths clear in the IS-code calculation package.",
+    coordination:
+      "Structural framing, piperack reactions and mechanical clearances were coordinated before fabrication.",
+    execution:
+      "Calculation report and GAs issued for construction with strengthening notes where the existing interface required it.",
+    completedFacility:
+      "Chemical storage and QC building with cost-optimized piperack support.",
+    lessonsLearned:
+      "Sharing structure between process support and building frames saves capital when load paths are proven early in calculations.",
+    relatedSystems: ["Structural Engineering"],
     highlights: [
-      "Precision climate-controlled HVAC zoning",
-      "Epoxy chemical spill containment slab",
-      "Insulated cleanroom panel enclosures",
+      "IS-code structural calculation report",
+      "Piperack supported on QC building",
+      "8,000 sq.ft G+1 industrial special facility",
     ],
     assets: {
       cover: "projects/pdf_p19_1.jpeg",
@@ -451,36 +460,46 @@ export const projects: Project[] = [
   {
     slug: "peb-warehouse",
     sector: "Warehousing & Logistics",
-    title: "PEB Industrial Logistics Warehouse",
-    client: "Logistics Developer",
-    location: "Gujarat, India",
+    title: "PEB Mezzanine Warehouse",
+    client: "Industrial Client",
+    location: "Kheda, Gujarat",
     year: "2024",
-    area: "Large-Span Logistics Warehouse",
-    services: [
-      "PEB Design Support",
-      "Structural Engineering",
-      "Site Infrastructure",
-    ],
+    area: "90,000 sq.ft · Mezzanine + Roof",
+    services: ["Structural PEB Design", "Fabrication Drawings"],
     challenge:
-      "Designing a 120,000 sq.ft clear-span PEB logistics warehouse with FM2 laser-screed flooring for high-reach forklifts.",
+      "PEB mezzanine supporting machine load above ground had to fit steel columns onto existing small RCC pedestals, with a double-sloped roof and central pipe rack.",
     approach:
-      "FormX optimized tapered steel portal frames, engineered heavy-duty floor slabs, and planned wide-apron truck loading bays.",
+      "FORMX sized steel columns to the existing pedestals, detailed the double-sloped roof with central pipe rack connections, and issued fabrication drawings for each member.",
     outcome:
-      "High-throughput PEB logistics warehouse engineered for rapid construction and minimum steel weight per sq.ft.",
+      "Buildable PEB mezzanine warehouse package with fabrication-ready member drawings.",
+    clientNeed:
+      "Reuse existing RCC pedestals while carrying machine loads on a PEB mezzanine and integrating a central pipe rack in the roof.",
+    engineeringThinking:
+      "Column sizing was driven by pedestal capacity first; roof geometry and pipe rack connections followed so fabrication matched site constraints.",
+    coordination:
+      "PEB framing, mezzanine machine loads and pipe rack connections were coordinated in one fabrication set.",
+    execution:
+      "Member-wise fabrication drawings reduced shop ambiguity during PEB production.",
+    completedFacility:
+      "90,000 sq.ft PEB mezzanine warehouse engineered for machine loads on constrained pedestals.",
+    lessonsLearned:
+      "Existing pedestal geometry must freeze column base design before PEB member optimization—or fabrication redraws the entire frame.",
+    relatedSystems: ["Structural Engineering", "Site Infrastructure"],
     highlights: [
-      "120,000 sq.ft clear-span PEB structural framing",
-      "FM2 high-flatness concrete floor slab",
-      "Dock leveller loading bay civil detailing",
+      "90,000 sq.ft PEB mezzanine",
+      "Columns sized to existing RCC pedestals",
+      "Double-sloped roof with central pipe rack",
+      "Member fabrication drawings issued",
     ],
     assets: {
       cover: "projects/pdf_p20_1.jpeg",
-      gallery: ["projects/pdf_p21_1.jpeg"],
+      gallery: ["projects/pdf_p20_1.jpeg"],
     },
   },
   {
     slug: "lavista-cafe",
     sector: "Hospitality & Commercial",
-    title: "Lavista CafÃ© & Commercial Space",
+    title: "Lavista Cafe & Commercial Space",
     client: "Lavista Group",
     location: "Gujarat, India",
     year: "2023",

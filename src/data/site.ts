@@ -2,6 +2,11 @@ export { projects, getProject, getProjectNarrative, type Project } from "./proje
 export { services, getService, type Service } from "./services";
 export { sectors, getSector, type Sector } from "./sectors";
 export {
+  portfolioIntro,
+  portfolioOngoing,
+  portfolioSpecialized,
+} from "./portfolio";
+export {
   blogs,
   getBlog,
   news,

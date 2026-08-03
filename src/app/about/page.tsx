@@ -129,7 +129,7 @@ export default function AboutPage() {
                 {founder.name}
               </h2>
               <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">
-                {founder.role} · Structural designers, architecture planning &amp; site execution
+                {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
               </p>
             </Reveal>
 
