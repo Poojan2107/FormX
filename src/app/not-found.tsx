@@ -50,7 +50,7 @@ export default function NotFound() {
               <Layers className="size-5 text-x-red" />
               <div className="mt-6">
                 <p className="font-display text-sm font-bold text-ink group-hover:text-x-red">Services</p>
-                <p className="mt-1 text-[11px] text-ink-muted">10 disciplines</p>
+                <p className="mt-1 text-[11px] text-ink-muted">Architecture · Structure · Infra</p>
               </div>
             </Link>
 

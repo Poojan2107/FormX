@@ -34,7 +34,7 @@ export function ProcessSteps({
   steps = defaultSteps,
   eyebrow = "Delivery methodology",
   title = "Concept to construction",
-  description = "A disciplined workflow for constructability and clash-free GFC packages.",
+  description = "A disciplined workflow for Architecture, Structure and Infrastructure — from concept through site support.",
 }: {
   steps?: ProcessStep[];
   eyebrow?: string;

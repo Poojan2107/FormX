@@ -188,32 +188,38 @@ export const aboutPage = {
     },
     {
       title: "Our Values",
-      body: "Integrity over presentation. People close to the work. Accountability through execution.",
+      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes.",
     },
   ],
   humanValues: [
     {
-      title: "Integrity over presentation",
-      body: "We tell clients what the structure and site can safely carry — not what sounds impressive in a pitch deck.",
+      title: "Human-centric approach",
+      body: "Every design balances how people use the facility with structural safety, process efficiency and long-term usability.",
+    },
+    {
+      title: "Integrated collaboration",
+      body: "Architecture, Structure and Infrastructure move together from concept to site — clear coordination, not disconnected consultants.",
     },
     {
       title: "People close to the work",
       body: "Partners stay in reviews, meetings and site walks. Decisions are made by engineers who own the drawings.",
     },
     {
-      title: "Accountability through execution",
-      body: "Our relationship does not end at drawing issue. We stay available for clarifications until the facility matches intent.",
-    },
-    {
-      title: "Collaborative insight",
-      body: "Integrate architecture and practical feedback so structure, planning and site execution move as one practice.",
+      title: "Reliable outcomes",
+      body: "We stay accountable through execution — clarifications, reviews and practical support until the facility matches intent.",
     },
   ],
+  collaborationPoints: [
+    "Cross-functional expertise",
+    "Clear coordination",
+    "Integrated workflows",
+    "Reliable outcomes",
+  ],
   values: [
-    "Integrity over presentation",
+    "Human-centric approach",
+    "Integrated collaboration",
     "People close to the work",
-    "Accountability through execution",
-    "Collaborative insight",
+    "Reliable outcomes",
   ],
 };
 

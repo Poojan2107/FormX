@@ -24,9 +24,30 @@ const contentSecurityPolicy = [
   "frame-ancestors 'self'",
 ].join("; ");
 
+/** Founder: remove MEP + Sectors from public IA — keep old URLs from breaking */
+const mepServiceRedirects = [
+  "mechanical-utility-engineering",
+  "hvac-engineering",
+  "electrical-engineering",
+  "fire-protection-engineering",
+].map((slug) => ({
+  source: `/services/${slug}`,
+  destination: "/services",
+  permanent: false,
+}));
+
 const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
+  },
+  async redirects() {
+    return [
+      ...mepServiceRedirects,
+      { source: "/sectors", destination: "/services", permanent: false },
+      { source: "/sectors/:slug*", destination: "/services", permanent: false },
+      { source: "/news", destination: "/knowledge-center", permanent: false },
+      { source: "/news/:slug*", destination: "/knowledge-center", permanent: false },
+    ];
   },
   async headers() {
     return [

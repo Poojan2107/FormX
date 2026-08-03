@@ -142,7 +142,7 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
   },
   delivery: {
     motif: "Coordination · Tender · Procurement · Site support",
-    lead: "Delivery holds the multidisciplinary package together—tender clarity, vendor evaluation, schedule pressure and construction-stage engineering until the facility matches intent.",
+    lead: "Delivery holds Architecture, Structure and Infrastructure together — tender clarity, vendor evaluation, schedule pressure and construction-stage engineering until the facility matches intent.",
     thinking: [
       "Scope that matches what will actually be built",
       "Tender documents contractors can price without ambiguity",

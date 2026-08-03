@@ -56,7 +56,7 @@ export function Footer() {
               </div>
               <div>
                 <dt className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-x-red">
-                  Contact
+                  Inquiry
                 </dt>
                 <dd className="mt-1.5 space-y-2">
                   <a

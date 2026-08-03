@@ -41,7 +41,7 @@ export function BrochureCta({
               invert ? "text-white/55" : "text-ink-muted",
             )}
           >
-            Capabilities, sectors, and delivery approach — ready for promoter &amp; stakeholder review.
+            Architecture, Structure and Infrastructure — ready for promoter &amp; stakeholder review.
           </p>
         </div>
       </div>

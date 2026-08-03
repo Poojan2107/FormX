@@ -286,7 +286,7 @@ export function StructuralEstimator() {
                   <p className="mt-1 font-display text-xl font-bold text-white">
                     {estimatedTimelineWeeks} Weeks
                   </p>
-                  <p className="text-[9px] text-white/50">Full 10 Disciplines</p>
+                  <p className="text-[9px] text-white/50">Architecture · Structure · Infra</p>
                 </div>
               </div>
             </div>

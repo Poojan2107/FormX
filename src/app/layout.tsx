@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FormX Consultants | Design | Engineering",
     description:
-      "Construction-ready multidisciplinary design for industrial and infrastructure projects across India.",
+      "Architecture, Structure and Infrastructure — construction-ready design for industrial and building projects across India.",
   },
 };
 

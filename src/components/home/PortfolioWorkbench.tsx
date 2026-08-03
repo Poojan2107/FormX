@@ -31,8 +31,8 @@ export function PortfolioWorkbench() {
               Specialized &amp; ongoing work
             </h2>
             <p className="mt-4 text-[14px] leading-[1.85] text-ink-muted">
-              Beyond greenfield packages — strengthening, solar mounting vetting and live mandates
-              currently moving through the Ahmedabad studio.
+              Strengthening, solar mounting vetting and live mandates currently moving through the
+              Ahmedabad studio.
             </p>
 
             <div className="mt-8 space-y-8">
