@@ -11,6 +11,7 @@ export function PageHero({
   crumbs,
   className,
   image,
+  clean = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -21,6 +22,7 @@ export function PageHero({
     slot: string;
     kind?: "facility" | "service" | "sector" | "article" | "studio" | "generic";
   };
+  clean?: boolean;
 }) {
   return (
     <section
@@ -29,7 +31,7 @@ export function PageHero({
         className,
       )}
     >
-      {crumbs ? (
+      {crumbs && !clean ? (
         <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, ...crumbs]} />
       ) : null}
 
@@ -51,11 +53,11 @@ export function PageHero({
           </div>
           {/* Cinematic scrim — photography readable on the right */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/88 via-black/55 to-black/25"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/35"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"
             aria-hidden
           />
         </>
@@ -70,10 +72,12 @@ export function PageHero({
         />
       )}
 
-      <div className="absolute left-0 top-0 z-10 h-24 w-1 bg-gradient-to-b from-x-red to-transparent" />
+      {!clean ? (
+        <div className="absolute left-0 top-0 z-10 h-24 w-1 bg-gradient-to-b from-x-red to-transparent" />
+      ) : null}
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-14 pt-16 sm:px-5 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24">
-        {crumbs ? (
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-16 pt-18 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 md:pt-28">
+        {crumbs && !clean ? (
           <nav
             aria-label="Breadcrumb"
             className="mb-6 flex flex-wrap items-center gap-x-2 text-[12px] font-semibold text-white/50"
@@ -105,18 +109,18 @@ export function PageHero({
         ) : null}
 
         {eyebrow ? (
-          <p className="mb-3.5 flex items-center gap-3 font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
-            <span className="inline-block h-px w-8 bg-x-red" aria-hidden />
+          <p className="mb-4 flex items-center gap-3 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+            {!clean ? <span className="inline-block h-px w-8 bg-x-red" aria-hidden /> : null}
             {eyebrow}
           </p>
         ) : null}
 
-        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase leading-[1.06] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.6rem]">
           {title}
         </h1>
 
         {description ? (
-          <p className="mt-5 max-w-[62ch] text-[15px] leading-[1.75] text-white/65 md:text-base">
+          <p className="mt-6 max-w-[64ch] text-[15px] leading-[1.8] text-white/70 md:text-base font-normal">
             {description}
           </p>
         ) : null}

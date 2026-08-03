@@ -85,19 +85,10 @@ function SiteHeader({
               <DesktopNav />
             </div>
 
-            <div className="relative z-10 flex items-center justify-end gap-2 sm:gap-3">
-              {/* Status chip — large screens only so it never collides with Insights */}
-              <div
-                className="hidden h-8 items-center gap-2 border border-line px-2.5 font-display text-[9px] font-bold uppercase tracking-[0.12em] text-ink/50 2xl:flex"
-                title="Greenfield Ready"
-              >
-                <span className="size-1.5 shrink-0 bg-emerald-500" aria-hidden />
-                Greenfield
-              </div>
-
+            <div className="relative z-10 flex items-center justify-end gap-3">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="hidden h-8 items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-x-red lg:flex"
+                className="hidden h-9 items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/65 transition-colors hover:text-x-red lg:flex"
                 aria-label={`Call ${site.phone}`}
               >
                 <Phone className="size-3.5 shrink-0 text-x-red" />
@@ -107,9 +98,9 @@ function SiteHeader({
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="formx-cut-sm formx-edge formx-edge-sm relative hidden h-8 items-center gap-1.5 bg-x-red px-4 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
+                className="formx-cut-sm formx-edge formx-edge-sm relative hidden h-9 items-center gap-1.5 bg-x-red px-4 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
               >
-                Enquire
+                Discuss Project
                 <ArrowUpRight className="size-3.5" />
               </Link>
 

@@ -39,10 +39,10 @@ export function Services() {
               </span>
             </div>
             <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
-              10 Coordinated Engineering Services
+              Coordinated Engineering Disciplines
             </h2>
             <p className="mt-2 prose-measure text-[14px] leading-relaxed text-ink-muted">
-              Delivered as one single-window GFC-ready package — zero inter-discipline clashes.
+              Delivered under single-window accountability—Architecture, Structure, Infrastructure, and Execution.
             </p>
           </div>
           <Link

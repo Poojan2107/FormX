@@ -59,10 +59,10 @@ export function BrochureCta({
 }
 
 export function CtaBand({
-  eyebrow = "Start A Conversation",
+  eyebrow = "Start A Project Conversation",
   title,
   description,
-  primary = { label: "Contact FORMX Leads", href: "/contact" },
+  primary = { label: "Talk to our engineering team", href: "/contact" },
   secondary,
 }: {
   eyebrow?: string;

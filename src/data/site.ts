@@ -204,13 +204,13 @@ export const heroLines = [
 export const hero = {
   eyebrow: "FORMX Consultants",
   title: "Precise, coordinated, construction-ready design",
-  body: "Coordinated GFC packages across Architecture, Structure, Civil, and MEP — for industrial, commercial, and institutional facilities.",
-  primaryCta: { label: "Brief FORMX", href: "/contact" },
-  secondaryCta: { label: "View portfolio", href: "/projects" },
+  body: "Multidisciplinary design & engineering consultancy delivering coordinated, construction-ready packages across Architecture, Structure, Infrastructure, and Execution support.",
+  primaryCta: { label: "Talk to our engineering team", href: "/contact" },
+  secondaryCta: { label: "View completed projects", href: "/projects" },
   trust: [
-    { label: "Coordinated", hint: "All disciplines aligned" },
-    { label: "Buildable", hint: "Tender & GFC packages" },
-    { label: "Compliant", hint: "Statutory & code-ready" },
+    { label: "Coordinated", hint: "Single-window multidisciplinary alignment" },
+    { label: "Buildable", hint: "Tender & GFC drawing precision" },
+    { label: "Compliant", hint: "Statutory & code compliance" },
   ],
 };
 
@@ -287,68 +287,68 @@ export const industriesServed = [
 ];
 
 export const about = {
-  eyebrow: "About FORMX",
+  eyebrow: "Our Consultancy",
   title: "Bridging design intent with on-site execution",
   paragraphs: [
-    "FORMX delivers coordinated, construction-ready packages — Architecture, Structure, Civil, and MEP — with emphasis on buildability, code compliance, and clash-free site delivery.",
+    "FORMX is a multidisciplinary engineering consultancy. We deliver coordinated, construction-ready documentation across Architecture, Structure, Infrastructure, and Execution—ensuring buildability, statutory compliance, and clash-free site delivery.",
   ],
-  cta: { label: "About the practice", href: "/about" },
-  legacy: "Efficient project delivery from concept to completion",
+  cta: { label: "About our practice", href: "/about" },
+  legacy: "Trusted consulting for complex industrial and commercial assets",
 };
 
 export const aboutPage = {
   intro:
-    "At FORMX Consultants, we develop precise, coordinated, and construction-ready design packages that bridge design intent with on-site execution — across industrial, commercial, and institutional developments.",
+    "FORMX Consultants is a multidisciplinary design and engineering consultancy. We partner with industrial promoters, developers, and corporate leaders to transform complex spatial requirements into buildable, code-compliant, and high-performance infrastructure.",
   story: [
-    "Our work emphasises functionality, buildability, regulatory compliance, and seamless coordination across all engineering disciplines, ensuring efficient project delivery from concept to completion.",
-    "FORMX delivers Architectural Drawings, Site Infrastructure, Sustainable & Energy Efficient Design, Structural Engineering, Civil Engineering, Mechanical Utility Engineering, HVAC & Refrigeration Engineering, Electrical Engineering, Fire Protection Engineering, and Project Management & Procurement — as coordinated, construction-ready documentation with technical support through execution.",
+    "Founded on the principle that engineering must serve execution, FORMX brings architectural vision, structural engineering, civil infrastructure, and building utilities together under a single coordinated framework.",
+    "Our focus is continuous accountability—from early site planning and regulatory approvals to complete construction documentation and on-site engineering support.",
   ],
-  pillars: [
+  principles: [
     {
-      title: "Scope that matches delivery",
-      body: "From architectural planning and industrial building design to structural systems, civil works, MEP utilities, fire protection, and procurement — each service is defined by clear scope highlights and typical deliverables.",
+      title: "Integrity in Execution",
+      body: "We believe engineering drawings are not mere proposals—they are commitments to buildability. Every detail is calculated to protect site timelines, safety, and capital investments.",
     },
     {
-      title: "Coordinated across disciplines",
-      body: "Architecture, structure, civil, mechanical, electrical, and fire protection are integrated so layouts, junctions, and utility networks stay clash-free before they reach site.",
+      title: "Multidisciplinary Alignment",
+      body: "Architecture, structural systems, and infrastructure networks are designed in lockstep. By resolving spatial and utility conflicts prior to construction, we eliminate friction on site.",
     },
     {
-      title: "Support through execution",
-      body: "We provide continuous design support during construction through revisions, technical clarifications, tender documentation, and construction-stage engineering.",
+      title: "Long-Term Client Partnership",
+      body: "Our engagement extends beyond drawing delivery. Senior leads remain actively involved throughout construction, providing site support and technical guidance until commissioning.",
     },
   ],
   values: [
-    "Functionality & buildability",
-    "Regulatory compliance",
-    "Seamless multidisciplinary coordination",
-    "Concept to completion delivery",
+    "Buildability & Precision",
+    "Statutory Code Compliance",
+    "Single-Window Accountability",
+    "Continuous On-Site Support",
   ],
 };
 
 export const whyPoints = [
   {
     num: "01",
-    title: "Precise architectural planning",
-    body: "Layouts developed for operational needs, space efficiency, and statutory compliance — ready for structural and MEP integration.",
+    title: "Single-window multidisciplinary accountability",
+    body: "Architecture, structural engineering, civil design, and utility infrastructure are coordinated under one leadership team—eliminating inter-discipline clashes before drawings reach site.",
   },
   {
     num: "02",
-    title: "Safe, buildable structures & civil",
-    body: "RCC and steel systems, foundations, grading, roads, and drainage engineered for strength, constructability, and long-term performance.",
+    title: "Construction-ready GFC precision",
+    body: "We don't stop at schematic concepts. We deliver comprehensive, clash-free Good-for-Construction (GFC) packages that contractors can execute immediately without ambiguity.",
   },
   {
     num: "03",
-    title: "Reliable MEP & fire systems",
-    body: "Mechanical utilities, HVAC, electrical, and fire protection designed for operational reliability, energy efficiency, and code compliance.",
+    title: "Direct founder & senior leadership involvement",
+    body: "Senior practice leads and managing partners remain directly hands-on from initial zoning and structural sizing through site reviews and technical RFI resolutions.",
   },
   {
     num: "04",
-    title: "Site infrastructure that works",
-    body: "Roads, stormwater, water supply, and external development planned for connectivity, safety, and future expansion.",
+    title: "Statutory & code compliance engineered in",
+    body: "All structural calculations and architectural layouts strictly conform with IS codes, National Building Code (NBC) standards, and statutory authority requirements.",
   },
   {
     num: "05",
-    title: "Sustainable by design",
-    body: "Climate-responsive, energy- and water-efficient strategies embedded without compromising function or project budget.",
+    title: "Practical buildability & value optimization",
+    body: "Engineered with practical site realities in mind—optimizing material quantities, structural spans, and construction sequencing to prevent rework and budget overruns.",
   },
 ];

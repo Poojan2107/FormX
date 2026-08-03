@@ -13,45 +13,46 @@ import { CtaBand } from "@/components/shared/CtaBlocks";
 export default function Home() {
   return (
     <>
-      {/* 01. Hero — Establish identity, scale & ambition */}
+      {/* 01. Hero — Confident company introduction & ambition */}
       <Hero />
 
-      {/* 02. Engineering Trust Matrix — Immediate empirical proof (numbers, codes, clients) */}
-      <EngineeringTrustMatrix />
-
-      {/* 03. Signature Construction Sequence — 6-stage interactive building engineering lifecycle */}
-      <ConstructionSequence />
-
-      {/* 04. About FORMX — Practice identity & multidisciplinary execution */}
+      {/* 02. About FORMX — Practice identity & multidisciplinary ethos */}
       <About />
 
-      {/* 05. Engineering Disciplines — 10 coordinated services interactive explorer */}
-      <Services />
+      {/* 03. Engineering Trust Matrix — Code compliance & single-window accountability */}
+      <EngineeringTrustMatrix />
 
-      {/* 06. Featured Projects — Real industrial case studies & proof */}
+      {/* 04. Featured Projects — Real industrial case studies & proof of execution */}
       <Projects />
 
-      {/* 07. Mid-Page Lead Strip — Direct engagement for facility briefing */}
-      <LeadStrip
-        title="Ready to brief FORMX on your next industrial or commercial facility?"
-        subtitle="Our engineering leads engage early to optimize structural grids, site zoning, and clash-free MEP corridors."
-      />
+      {/* 05. Integrated Practice Areas — Coordinated engineering disciplines */}
+      <Services />
 
-      {/* 08. Industries Served — Specialized industrial sector ecosystem */}
+      {/* 06. Construction Journey — Methodological execution lifecycle */}
+      <ConstructionSequence />
+
+      {/* 07. Sectors Served — Specialized industrial domain expertise */}
       <Sectors />
 
-      {/* 09. Empirical Metrics & Verified Achievements */}
+      {/* 08. Mid-Page Consultative Lead Strip */}
+      <LeadStrip
+        title="Planning a greenfield plant or commercial asset?"
+        subtitle="Our senior practice leads engage early on structural grids, site infrastructure, and clash-free utility corridors."
+      />
+
+      {/* 09. Empirical Metrics & Promoter Proof */}
       <Stats />
 
-      {/* 10. Client & Promoter Testimonials */}
+      {/* 10. Promoter Verification & Testimonials */}
       <Testimonials />
 
-      {/* 11. High-Authority Project Consultation CTA */}
+      {/* 11. Consultative CTA */}
       <CtaBand
         eyebrow="Start A Project Conversation"
-        title="Brief FORMX on your next facility mandate"
-        description="Architecture, Structure, Civil & MEP — coordinated GFC packages delivered from concept to construction."
-        secondary={{ label: "Explore 10 disciplines", href: "/services" }}
+        title="Let's discuss your industrial facility"
+        description="Share your facility type, location, and timeline—our senior engineering leads engage directly from concept through site execution."
+        primary={{ label: "Talk to our engineering team", href: "/contact" }}
+        secondary={{ label: "Explore practice areas", href: "/services" }}
       />
     </>
   );

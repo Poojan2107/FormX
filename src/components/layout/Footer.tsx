@@ -62,32 +62,31 @@ export function Footer() {
             </div>
           </div>
 
-          {/* COL 2: Navigation */}
+          {/* COL 2: Practice & Navigation */}
           <div>
             <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Navigate
+              Practice
             </p>
             <ul className="space-y-3">
-              {nav.map((item) => (
+              {[
+                { label: "Architecture", href: "/services/architectural-design" },
+                { label: "Structure", href: "/services/structural-engineering" },
+                { label: "Infrastructure", href: "/services/site-infrastructure" },
+                { label: "Projects", href: "/projects" },
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    transitionTypes={
-                      item.href === "/" ? ["nav-back"] : ["nav-forward"]
-                    }
-                    className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white"
+                    transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
+                    className="group flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white"
                   >
                     <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
                     {item.label}
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/career" transitionTypes={["nav-forward"]} className="group flex items-center gap-2 text-[13px] text-white/50 transition-colors hover:text-white">
-                  <span className="h-px w-0 bg-x-red transition-all duration-300 group-hover:w-4" />
-                  Career
-                </Link>
-              </li>
             </ul>
           </div>
 

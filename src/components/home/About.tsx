@@ -15,9 +15,9 @@ const inlineStats = [
 ];
 
 const credentials = [
-  "IS & NBC Code Compliant Structural Engineering",
-  "Single-Window 3D BIM Clash-Free Coordination",
-  "Statutory Approval & GFC Precision Deliverables",
+  "Single-Window Multidisciplinary Accountability",
+  "Construction-Ready GFC Precision & Statutory Compliance",
+  "Continuous On-Site Support & Technical RFI Resolution",
 ];
 
 export function About() {
