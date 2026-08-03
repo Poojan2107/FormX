@@ -80,7 +80,7 @@ export const services: Service[] = [
     short:
       "Practical strategies that improve energy efficiency without compromising functionality or project budget.",
     summary:
-      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities â€” then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure and infrastructure.",
+      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities — then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure and infrastructure.",
     highlights: [
       "Climate Responsive Design",
       "Passive Cooling & Daylighting Strategies",
