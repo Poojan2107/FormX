@@ -380,13 +380,13 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <BookOpen className="size-5 text-x-red" />
         <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
-          Knowledge Center
+          Insights
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Notes on industrial facility planning, utilities, and delivery.
+          Specialized work, ongoing projects and service typologies from the practice brochure.
         </p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
-          Read articles
+          Open insights
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Link>
@@ -412,7 +412,7 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
       </Link>
 
       <Link
-        href="/news"
+        href="/estimator"
         onClick={onNavigate}
         transitionTypes={["nav-forward"]}
         className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
@@ -420,38 +420,16 @@ function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
         <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
         <Newspaper className="size-5 text-x-red" />
         <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
-          News
+          PEB Load Estimator
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Practice updates, openings, and delivery notes.
+          Early tonnage and framing guidance for warehouse discussions.
         </p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
-          Latest updates
+          Open estimator
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Link>
-
-      <div className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-6 text-white">
-        <div>
-          <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-            Talk to FormX
-          </p>
-          <p className="mt-3 font-display text-lg font-bold tracking-tight">
-            Brief a senior lead
-          </p>
-          <p className="mt-2 text-sm text-white/50">{site.phone}</p>
-        </div>
-        <Button
-          href="/contact"
-          variant="primary"
-          className="mt-6 w-full"
-          onClick={onNavigate}
-          transitionTypes={["nav-forward"]}
-        >
-          Enquire
-          <ArrowRight className="size-4" />
-        </Button>
-      </div>
     </div>
   );
 }

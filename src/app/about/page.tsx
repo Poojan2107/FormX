@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 const documentaryShots = [
-  { slot: "about/studio-cover.jpg", caption: "Coordination meeting" },
-  { slot: "about/home-about.jpg", caption: "Studio review" },
-  { slot: "projects/pdf_p4_1.jpeg", caption: "Site execution" },
-  { slot: "services/structural.jpg", caption: "Drawing review" },
+  { slot: "projects/brochure/brochure_p1_1.png", caption: "Structural model" },
+  { slot: "projects/brochure/brochure_p3_2.png", caption: "Industrial facility" },
+  { slot: "projects/brochure/brochure_p4_4.png", caption: "High-rise residential" },
+  { slot: "projects/brochure/brochure_p10_1.png", caption: "Built form" },
 ];
 
 export default function AboutPage() {
@@ -36,7 +36,7 @@ export default function AboutPage() {
             className="mt-4 max-w-4xl font-display font-black uppercase leading-[1.02] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)" }}
           >
-            Bridging design intent with on-site execution
+            Where Vision Takes Form
           </h1>
           <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
             {aboutPage.intro}
@@ -64,7 +64,7 @@ export default function AboutPage() {
               Company philosophy
             </p>
             <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Engineering designed for execution
+              Lasting solutions that reflect stability, creativity, and precision
             </h2>
             <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
               {aboutPage.philosophy}
@@ -95,7 +95,7 @@ export default function AboutPage() {
               Principles
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
+          <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i}>
                 <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
@@ -169,12 +169,13 @@ export default function AboutPage() {
                     <AssetImage
                       alt={shot.caption}
                       slot={shot.slot}
-                      kind="studio"
-                      fit="cover"
+                      kind="facility"
+                      fit="contain"
+                      tone="dark"
                       aspect="auto"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full p-2"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <p className="absolute bottom-3 left-3 font-display text-[9px] font-bold uppercase tracking-[0.18em] text-white/80">
                       {shot.caption}
                     </p>
@@ -242,8 +243,8 @@ export default function AboutPage() {
               Discuss your next facility
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-              Share location, facility type and timeline. Practice leads engage early on zoning,
-              structure and infrastructure—before corridors harden into expensive constraints.
+              Share location, facility type and timeline. We look forward to collaborating on your
+              next project.
             </p>
             <Link
               href="/contact"

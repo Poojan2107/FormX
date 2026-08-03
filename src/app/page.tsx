@@ -34,8 +34,8 @@ export default function Home() {
               Planning a facility?
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-              Share facility type, location and timeline. Senior engineering leads engage early on
-              structural grids, site infrastructure and utility corridors.
+              Share facility type, location and timeline. We look forward to collaborating on your
+              next project.
             </p>
             <Link
               href="/contact"

@@ -5,23 +5,23 @@ import { ProofStrip } from "@/components/shared/ProofStrip";
 import { ClientLogoWall } from "@/components/shared/ClientLogoWall";
 
 export const metadata: Metadata = {
-  title: "Our Clients | Industrial Promoters Trusting FORMX",
+  title: "Who We Partner With | FORMX Consultants",
   description:
-    "Organisations that trust FORMX Consultants for coordinated architecture, structure and infrastructure across industrial and commercial mandates.",
+    "FORMX clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
 };
 
 export default function ClientsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Work"
-        title="Explore our clientele"
-        description="Long-standing relationships and repeat collaborations reflect the reliability FORMX brings to industrial mandates."
+        eyebrow="Partners"
+        title="Who we partner with"
+        description="We look forward to collaborating with you on your next project. Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners."
         crumbs={[
-          { label: "Our Work", href: "/projects" },
-          { label: "Our Clients" },
+          { label: "Projects", href: "/projects" },
+          { label: "Partners" },
         ]}
-        image={{ slot: "projects/kalpataru-corporate-house.jpg", kind: "facility" }}
+        image={{ slot: "projects/brochure/brochure_p10_1.png", kind: "facility" }}
       />
 
       <ProofStrip compact />
@@ -29,8 +29,8 @@ export default function ClientsPage() {
       <ClientLogoWall />
 
       <CtaBand
-        title="Brief FORMX on your next facility"
-        description="Architecture, Structure & Infrastructure — one coordinated construction-ready package."
+        title="Discuss your next project"
+        description="Write to inquiry@formxconsultants.com or call +91 81284 44585."
         secondary={{ label: "View projects", href: "/projects" }}
       />
     </>

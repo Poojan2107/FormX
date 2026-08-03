@@ -1,11 +1,5 @@
+import { portfolioPillars } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
-
-const items = [
-  { label: "IS & NBC Compliant", note: "Code-ready packages" },
-  { label: "25+ Projects", note: "Turnkey & greenfield" },
-  { label: "10 Disciplines", note: "Single-window delivery" },
-  { label: "GFC Ready", note: "Clash-free coordination" },
-];
 
 export function ProofStrip({ compact = false }: { compact?: boolean }) {
   return (
@@ -18,19 +12,17 @@ export function ProofStrip({ compact = false }: { compact?: boolean }) {
     >
       <Container>
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-          {items.map((item, i) => (
+          {portfolioPillars.map((item, i) => (
             <div
-              key={item.label}
+              key={item.title}
               className={`flex min-w-0 items-baseline gap-2 ${
                 i > 0 ? "md:border-l md:border-line md:pl-6" : ""
               }`}
             >
               <span className="font-display text-[11px] font-bold uppercase tracking-tight text-ink">
-                {item.label}
+                {item.title}
               </span>
-              <span className="hidden text-[11px] text-ink/40 sm:inline">
-                {item.note}
-              </span>
+              <span className="hidden text-[11px] text-ink/40 sm:inline">{item.body}</span>
             </div>
           ))}
         </div>

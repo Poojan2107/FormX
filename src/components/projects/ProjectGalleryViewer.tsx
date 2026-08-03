@@ -51,7 +51,7 @@ export function ProjectGalleryViewer({
             key={slot + i}
             type="button"
             onClick={() => setLightboxIdx(i)}
-            className="group relative aspect-[4/3] w-full overflow-hidden bg-[#0c0c0c] text-left"
+            className="group relative aspect-[16/10] w-full overflow-hidden bg-[#0c0c0c] text-left"
             aria-label={`Open full view ${i + 1}`}
           >
             <Image
@@ -60,9 +60,9 @@ export function ProjectGalleryViewer({
               fill
               unoptimized
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-contain p-2 transition-transform duration-700 group-hover:scale-[1.02] sm:p-3"
             />
-            <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/25" />
+            <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/15" />
 
             <span className="absolute left-3 top-3 bg-black/70 px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
               {String(i + 1).padStart(2, "0")}
@@ -84,7 +84,7 @@ export function ProjectGalleryViewer({
             role="dialog"
             aria-modal="true"
             aria-label={`${title} full view`}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl sm:p-8"
             onClick={() => setLightboxIdx(null)}
           >
             <button

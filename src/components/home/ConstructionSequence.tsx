@@ -26,7 +26,7 @@ const stages = [
       "Site grading interface with civil works",
     ],
     code: "IS 1892 · IS 456 · IS 2911",
-    asset: "services/infrastructure.jpg",
+    asset: "projects/brochure/brochure_p7_1.png",
   },
   {
     id: "columns",
@@ -42,7 +42,7 @@ const stages = [
       "Seismic detailing at critical splices",
     ],
     code: "IS 456 · IS 800 · IS 1893",
-    asset: "services/structural.jpg",
+    asset: "projects/brochure/brochure_p1_1.png",
   },
   {
     id: "structure",
@@ -58,7 +58,7 @@ const stages = [
       "Deflection & vibration checks",
     ],
     code: "IS 800 · IS 875 · IS 1893",
-    asset: "insights/column-splice.jpg",
+    asset: "projects/pdf_p20_1.jpeg",
   },
   {
     id: "utilities",
@@ -74,7 +74,7 @@ const stages = [
       "Utility corridor coordination",
     ],
     code: "IS 732 · NBC Part 4 · IS 2190",
-    asset: "services/mep.jpg",
+    asset: "services/mechanical.jpg",
   },
   {
     id: "envelope",
@@ -90,7 +90,7 @@ const stages = [
       "Architectural–structural edge conditions",
     ],
     code: "NBC · Manufacturer systems",
-    asset: "services/architecture.jpg",
+    asset: "projects/brochure/brochure_p3_4.png",
   },
   {
     id: "finished",
@@ -106,7 +106,7 @@ const stages = [
       "Handover coordination support",
     ],
     code: "As-built · Handover",
-    asset: "projects/pdf_p1_1.jpeg",
+    asset: "projects/brochure/brochure_p4_4.png",
   },
 ];
 
@@ -197,12 +197,12 @@ export function ConstructionSequence() {
                       alt={stage.title}
                       slot={stage.asset}
                       kind="facility"
-                      fit="cover"
+                      fit="contain"
                       aspect="auto"
                       tone="dark"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full p-3"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     {/* Engineering stamp overlay */}
                     <div className="absolute left-4 top-4 border border-x-red/60 bg-black/70 px-3 py-2 backdrop-blur-sm">
                       <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red">

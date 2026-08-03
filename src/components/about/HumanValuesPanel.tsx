@@ -29,14 +29,14 @@ export function HumanValuesPanel() {
 
       <div className="lg:col-span-7">
         <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-          Why clients choose FORMX
+          Practice pillars
         </p>
         <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-          Core human values
+          How FormX works
         </h2>
         <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-ink-muted">
-          Not a pitch deck of design features—how we work with people, tell the truth about risk, and stay
-          accountable through construction.
+          Structural Integrity, Functional Design, Technical Expertise and Collaborative Insight —
+          the pillars from our practice brochure.
         </p>
 
         <div className="mt-8 space-y-2">

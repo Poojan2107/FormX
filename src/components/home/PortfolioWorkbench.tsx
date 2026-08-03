@@ -1,14 +1,27 @@
 "use client";
 
 import { portfolioOngoing, portfolioSpecialized } from "@/data/portfolio";
+import { brochureVisuals } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 
 /** FORMX.pdf — specialized + ongoing work as engineering practice proof */
 export function PortfolioWorkbench() {
   return (
     <section className="border-y border-line bg-[#f7f7f7] py-16 md:py-20">
       <Container>
+        <Reveal className="mb-10">
+          <VisualFrame
+            slot={brochureVisuals.specializedBanner}
+            alt="Structural steel — specialized projects"
+            fit="contain"
+            aspect="cinema"
+            tone="dark"
+            caption="Specialized projects — renovation, strengthening & solar mounting"
+          />
+        </Reveal>
+
         <div className="grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
@@ -18,7 +31,7 @@ export function PortfolioWorkbench() {
               Specialized &amp; ongoing work
             </h2>
             <p className="mt-4 text-[14px] leading-[1.85] text-ink-muted">
-              Beyond greenfield packages—strengthening, solar mounting vetting and live mandates
+              Beyond greenfield packages — strengthening, solar mounting vetting and live mandates
               currently moving through the Ahmedabad studio.
             </p>
 

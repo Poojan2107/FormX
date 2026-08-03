@@ -15,7 +15,7 @@ export function About() {
           <Reveal className="lg:col-span-4">
             <Logo variant="full" className="scale-125 origin-left" />
             <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Shaping form · Defining futures
+              Where Vision Takes Form
             </p>
           </Reveal>
 

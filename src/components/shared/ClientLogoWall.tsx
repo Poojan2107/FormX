@@ -1,29 +1,33 @@
+import { clients, brochureVisuals, portfolioContactNote } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-
-const clients = [
-  { name: "Kalpataru Group", tag: "Corporate HQ" },
-  { name: "Vir Bhadra Enterprise", tag: "Manufacturing" },
-  { name: "Nutan Vidhyalaya Trust", tag: "Institutional" },
-  { name: "Shashwat Empire", tag: "Commercial" },
-  { name: "Aviniya One", tag: "High-Rise" },
-  { name: "Lavista Group", tag: "Hospitality" },
-];
+import { VisualFrame } from "@/components/ui/VisualFrame";
 
 export function ClientLogoWall() {
   return (
-    <section className="border-y border-line bg-[#0e0e0e] py-8 text-white md:py-10">
+    <section className="border-y border-line bg-[#0e0e0e] py-10 text-white md:py-14">
       <Container>
-        <Reveal className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <Reveal className="mb-6">
           <div className="flex items-center gap-3">
             <span className="h-px w-6 bg-x-red" />
             <span className="font-display text-[10px] font-bold uppercase tracking-[0.24em] text-x-red">
-              Trusted Partnerships
-            </span>
-            <span className="hidden font-display text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35 sm:inline">
-              · 15+ industrial clients
+              Who we partner with
             </span>
           </div>
+          <p className="mt-4 max-w-2xl text-[13px] leading-[1.75] text-white/55">
+            {portfolioContactNote}
+          </p>
+        </Reveal>
+
+        <Reveal className="mb-8">
+          <VisualFrame
+            slot={brochureVisuals.partnersBanner}
+            alt="FORMX partner types from brochure"
+            fit="contain"
+            aspect="cinema"
+            tone="light"
+            className="bg-white"
+          />
         </Reveal>
 
         <div className="grid grid-cols-2 border border-white/10 sm:grid-cols-3 lg:grid-cols-6">

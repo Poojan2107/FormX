@@ -1,36 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import {
+  portfolioServices,
+  portfolioServicesNote,
+  portfolioClosing,
+} from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
-/** Founder overlay: service typology — not only 10 discipline cards */
-const typologies = [
-  {
-    title: "High-Rise & Residential",
-    body: "Resilient high-rise and residential structures—safe, resource-optimized frames that support architectural vision and long-term use.",
-    href: "/services/structural-engineering",
-    tone: "dark" as const,
-  },
-  {
-    title: "Industrial Projects",
-    body: "Manufacturing facilities engineered for operational flow, heavy loads, safety and phased expansion.",
-    href: "/sectors/industrial-park",
-    tone: "light" as const,
-  },
-  {
-    title: "Institutional & Commercial",
-    body: "Schools, hospitals and office buildings designed for usability, structural integrity and statutory compliance.",
-    href: "/projects",
-    tone: "light" as const,
-  },
-  {
-    title: "Strengthening & Retrofitting",
-    body: "NDT assessment, beam/column jacketing, load reassessment, solar mounting vetting (IS 875 Part 3) and life extension of existing industrial assets.",
-    href: "/services/structural-engineering",
-    tone: "dark" as const,
-  },
-];
-
+/** Exact service typology language from FORMX.pdf */
 export function ServiceTypologies() {
   return (
     <section className="border-y border-line bg-white py-20 md:py-24">
@@ -43,13 +21,12 @@ export function ServiceTypologies() {
             Design solutions in engineering &amp; architecture
           </h2>
           <p className="mt-4 max-w-xl text-[14px] leading-[1.85] text-ink-muted">
-            We also assist with quantity estimation, construction support and coordination for seamless
-            execution.
+            {portfolioServicesNote}
           </p>
         </Reveal>
 
         <div className="mt-12 grid gap-3 sm:grid-cols-2">
-          {typologies.map((item, i) => (
+          {portfolioServices.map((item, i) => (
             <Reveal key={item.title} delay={0.04 * i}>
               <Link
                 href={item.href}
@@ -87,9 +64,7 @@ export function ServiceTypologies() {
 
         <Reveal delay={0.1}>
           <p className="mt-10 max-w-3xl text-[14px] leading-[1.85] text-ink-muted">
-            At FormX, we don&apos;t just design structures—we craft lasting solutions that reflect
-            stability, creativity and precision. Every structure has a story—and we&apos;re here to
-            engineer it right.
+            {portfolioClosing}
           </p>
         </Reveal>
       </Container>

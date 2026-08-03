@@ -9,7 +9,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contact FORMX | Project Discussion",
   description:
-    "Discuss your facility with FORMX Consultants in Ahmedabad — architecture, structure and infrastructure coordinated into construction-ready documentation.",
+    "Discuss your next project with FORMX Consultants. inquiry@formxconsultants.com · +91 81284 44585 · Ahmedabad.",
 };
 
 export default function ContactPage() {
@@ -26,15 +26,16 @@ export default function ContactPage() {
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Let&apos;s discuss your facility
+            Let&apos;s discuss your next project
           </h1>
           <p className="mt-5 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            Share facility type, location and timeline. Senior leads engage early on zoning,
-            structure and infrastructure—before corridors harden into expensive constraints.
+            We look forward to collaborating with you on your next project. Our clients range from
+            industrial houses and pharma companies to architects, contractors, and private homeowners.
           </p>
           <p className="mt-6 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink/45">
             {site.phone} · {site.email}
           </p>
+          <p className="mt-2 text-[13px] text-ink-muted">{site.addressDetail}</p>
         </Container>
       </section>
 
@@ -44,8 +45,7 @@ export default function ContactPage() {
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
         <Container className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p className="max-w-lg text-[14px] leading-[1.85] text-white/60">
-            Prefer a live briefing? Call or WhatsApp FORMX for early site zoning and structural grid
-            guidance.
+            Prefer a call or WhatsApp? Reach FORMX at {site.phone}.
           </p>
           <Link
             href="/projects"

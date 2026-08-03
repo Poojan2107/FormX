@@ -7,9 +7,9 @@ import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Industrial & Infrastructure Projects | FORMX Portfolio",
+  title: "Completed Projects | FORMX Portfolio",
   description:
-    "FORMX industrial and infrastructure project experience across commercial HQ, manufacturing, PEB warehouses and institutional campuses.",
+    "FORMX completed projects — industrial facilities, PEB warehouses, residential, commercial and institutional structures.",
 };
 
 export default function ProjectsPage() {
@@ -25,11 +25,11 @@ export default function ProjectsPage() {
               className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
-              Facilities engineered by FORMX
+              Completed projects
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              Each case documents client need, engineering thinking, coordination and execution—not
-              marketing summaries. Filter by sector or discipline to find comparable work.
+              Selected work from the FORMX brochure — industrial, residential, commercial and
+              institutional structures. Descriptions match our published portfolio.
             </p>
           </Reveal>
         </Container>
@@ -44,7 +44,7 @@ export default function ProjectsPage() {
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
         <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="max-w-lg text-[15px] leading-[1.85] text-white/65">
-            Planning a similar facility? Share location, sector and timeline with our engineering leads.
+            Planning a similar facility? Share location, sector and timeline with the FORMX studio.
           </p>
           <Link
             href="/contact"

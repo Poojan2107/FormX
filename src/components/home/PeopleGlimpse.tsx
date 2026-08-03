@@ -47,8 +47,8 @@ export function PeopleGlimpse() {
               {founder.bio}
             </p>
             <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-white/50">
-              Structural designers, architecture planning and site execution—partners who stay
-              involved from master planning through construction-stage reviews.
+              A dynamic team of enthusiastic structural engineers and designers — dedicated to
+              crafting spaces that are robust, functional and aligned with architectural vision.
             </p>
             <Link
               href="/about"

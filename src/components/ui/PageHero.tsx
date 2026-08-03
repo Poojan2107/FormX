@@ -44,16 +44,16 @@ export function PageHero({
               kind={image.kind ?? "facility"}
               tone="dark"
               aspect="auto"
-              fit="cover"
+              fit="contain"
               objectPosition="center"
               sizes="100vw"
               priority
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 h-full w-full opacity-80"
             />
           </div>
           {/* Cinematic scrim — photography readable on the right */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/35"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/50"
             aria-hidden
           />
           <div

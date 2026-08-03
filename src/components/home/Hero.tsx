@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { hero } from "@/data/site";
+import { hero, brochureVisuals } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 
+/** Brochure visuals — model + completed facilities, contained so nothing is cut */
 const heroImages = [
-  { slot: "about/studio-cover.jpg", alt: "FORMX engineering coordination" },
-  { slot: "projects/pdf_p1_1.jpeg", alt: "Completed FORMX facility" },
-  { slot: "projects/pdf_p4_1.jpeg", alt: "Industrial construction site" },
+  { slot: brochureVisuals.heroModel, alt: "FORMX structural model", fit: "contain" as const },
+  { slot: "projects/brochure/brochure_p3_2.png", alt: "G+2 Industrial Facility, Vapi", fit: "contain" as const },
+  { slot: "projects/brochure/brochure_p4_4.png", alt: "G+2C+12 Apartment, Pune", fit: "contain" as const },
+  { slot: "projects/brochure/brochure_p6_3.png", alt: "Office Building, Senegal", fit: "contain" as const },
+  { slot: "projects/brochure/brochure_p5_1.png", alt: "Industrial Shed Expansion, Valsad", fit: "contain" as const },
 ];
 
 export function Hero() {
@@ -25,7 +28,6 @@ export function Hero() {
     return () => window.clearTimeout(t);
   }, [reduce]);
 
-  // Founder: photography comes after first paint / on scroll — not on open
   useEffect(() => {
     const reveal = () => setShowPhoto(true);
     if (reduce) {
@@ -35,7 +37,7 @@ export function Hero() {
     const onScroll = () => {
       if (window.scrollY > 40) reveal();
     };
-    const delayed = window.setTimeout(reveal, 2200);
+    const delayed = window.setTimeout(reveal, 1800);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.clearTimeout(delayed);
@@ -47,7 +49,7 @@ export function Hero() {
     if (reduce || !showPhoto) return;
     const id = window.setInterval(() => {
       setImageIndex((i) => (i + 1) % heroImages.length);
-    }, 8000);
+    }, 7000);
     return () => window.clearInterval(id);
   }, [reduce, showPhoto]);
 
@@ -55,7 +57,6 @@ export function Hero() {
 
   return (
     <section className="relative isolate min-h-[92vh] overflow-hidden bg-[#0a0a0a] text-white">
-      {/* Photo plane — fades in after open / on scroll */}
       <div
         className="absolute inset-0 z-0 transition-opacity duration-[1600ms] ease-out"
         style={{ opacity: showPhoto ? 1 : 0 }}
@@ -66,26 +67,27 @@ export function Hero() {
             className="absolute inset-0 transition-opacity duration-[1400ms] ease-out"
             style={{ opacity: i === imageIndex ? 1 : 0 }}
           >
+            <div className="absolute inset-0 bg-[#0a0a0a]" />
             <AssetImage
               alt={img.alt}
               slot={img.slot}
               kind="facility"
               aspect="auto"
-              fit="cover"
+              fit={img.fit}
+              tone="dark"
               objectPosition="center"
               priority={i === 0}
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 h-full w-full p-[4%] md:p-[6%] lg:left-[38%] lg:w-[62%] lg:p-8"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/55 to-[#0a0a0a]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/88 to-[#0a0a0a]/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50" />
       </div>
 
-      {/* Quiet brand grid until photography arrives */}
       <div
         className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark transition-opacity duration-1000"
-        style={{ opacity: showPhoto ? 0.15 : 0.35 }}
+        style={{ opacity: showPhoto ? 0.12 : 0.35 }}
         aria-hidden
       />
 
@@ -178,7 +180,7 @@ export function Hero() {
         </div>
 
         {showPhoto ? (
-          <p className="absolute bottom-8 right-0 hidden font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/35 lg:block">
+          <p className="absolute bottom-8 right-0 hidden max-w-xs text-right font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/35 lg:block">
             {current.alt}
           </p>
         ) : null}

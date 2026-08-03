@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 import { cn } from "@/lib/cn";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
@@ -34,7 +34,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search client, sector or location…"
+            placeholder="Search project, sector or location…"
             className="w-full border border-line bg-white py-3 pl-10 pr-9 text-sm text-ink outline-none focus:border-x-red"
             aria-label="Search projects"
           />
@@ -76,41 +76,40 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       {filtered.length === 0 ? (
         <p className="py-16 text-center text-ink-muted">No projects match this filter.</p>
       ) : (
-        <div className="divide-y divide-line border-t border-line">
+        <div className="grid gap-8 sm:grid-cols-2">
           {filtered.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
               transitionTypes={["nav-forward"]}
-              className="group grid gap-5 py-8 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:gap-8"
+              className="group block"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#111] md:col-span-4 md:aspect-[4/3]">
-                <AssetImage
-                  alt={project.client}
-                  slot={project.assets.cover}
-                  kind="facility"
-                  fit="cover"
-                  aspect="auto"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-              <div className="flex flex-col justify-center md:col-span-7">
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-                  {project.sector} · {project.year}
-                </p>
-                <h2 className="mt-2 font-display text-xl font-extrabold uppercase tracking-tight text-ink md:text-2xl">
-                  {project.client}
-                </h2>
-                <p className="mt-1 text-[13px] text-ink-muted">
-                  {project.location}
-                  {project.area ? ` · ${project.area}` : ""}
-                </p>
-                <p className="mt-3 max-w-xl text-[14px] leading-[1.8] text-ink-muted line-clamp-2">
-                  {project.outcome}
-                </p>
-              </div>
-              <div className="hidden items-center justify-end md:col-span-1 md:flex">
-                <ArrowUpRight className="size-5 text-x-red opacity-50 transition-opacity group-hover:opacity-100" />
+              <VisualFrame
+                slot={project.assets.cover}
+                alt={project.title}
+                fit={project.assets.frame ?? "contain"}
+                aspect="landscape"
+                tone="dark"
+                zoomOnHover
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="mt-4 flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+                    {project.sector} · {project.year}
+                  </p>
+                  <h2 className="mt-1 font-display text-xl font-extrabold uppercase tracking-tight text-ink group-hover:text-x-red md:text-2xl">
+                    {project.title}
+                  </h2>
+                  <p className="mt-1 text-[13px] text-ink-muted">
+                    {project.client} · {project.location}
+                    {project.area ? ` · ${project.area}` : ""}
+                  </p>
+                  <p className="mt-3 max-w-xl text-[14px] leading-[1.8] text-ink-muted line-clamp-2">
+                    {project.description}
+                  </p>
+                </div>
+                <ArrowUpRight className="mt-1 size-5 shrink-0 text-x-red opacity-40 transition-opacity group-hover:opacity-100" />
               </div>
             </Link>
           ))}
