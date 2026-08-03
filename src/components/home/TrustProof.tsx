@@ -34,7 +34,7 @@ export function TrustProof() {
         <Reveal delay={0.12}>
           <p className="mt-10 max-w-2xl border-t border-line pt-6 text-[14px] leading-[1.8] text-ink-muted">
             IS &amp; NBC code-compliant structural engineering. Single-window coordination across
-            architecture, structure, civil and MEP—so promoters deal with one accountable practice,
+            architecture, structure and infrastructure—so promoters deal with one accountable practice,
             not a chain of disconnected consultants.
           </p>
         </Reveal>

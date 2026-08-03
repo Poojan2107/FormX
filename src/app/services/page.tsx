@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export const metadata: Metadata = {
   title: "Engineering Disciplines | FORMX Consultants",
   description:
-    "Architecture, structure, civil, MEP, fire and delivery—coordinated as construction-ready packages under one accountable practice.",
+    "Architecture, structure, infrastructure, utilities and delivery—coordinated as construction-ready packages under one accountable practice.",
 };
 
 const groups = [
@@ -22,7 +22,7 @@ const groups = [
     slugs: ["structural-engineering", "civil-engineering"],
   },
   {
-    title: "MEP & Fire",
+    title: "Utilities & Fire",
     slugs: [
       "mechanical-utility-engineering",
       "hvac-engineering",

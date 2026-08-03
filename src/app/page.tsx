@@ -2,6 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/About";
 import { TrustProof } from "@/components/home/TrustProof";
 import { HowWeThink } from "@/components/home/HowWeThink";
+import { ServiceTypologies } from "@/components/home/ServiceTypologies";
 import { ConstructionSequence } from "@/components/home/ConstructionSequence";
 import { Projects } from "@/components/home/Projects";
 import { PeopleGlimpse } from "@/components/home/PeopleGlimpse";
@@ -12,28 +13,15 @@ import { Container } from "@/components/ui/Container";
 export default function Home() {
   return (
     <>
-      {/* 01 · FORMX identity */}
       <Hero />
-
-      {/* 02 · Who we are */}
       <About />
-
-      {/* 03 · Why clients trust us */}
       <TrustProof />
-
-      {/* 04 · How we think */}
       <HowWeThink />
-
-      {/* 05 · How projects move — signature */}
+      <ServiceTypologies />
       <ConstructionSequence />
-
-      {/* 06 · Proof */}
       <Projects />
-
-      {/* 07 · People */}
       <PeopleGlimpse />
 
-      {/* 08 · Project discussion — one calm invite */}
       <section className="border-t border-line bg-white py-20 md:py-24">
         <Container>
           <div className="max-w-2xl">
@@ -45,7 +33,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
               Share facility type, location and timeline. Senior engineering leads engage early on
-              structural grids, site infrastructure and clash-free utility corridors.
+              structural grids, site infrastructure and utility corridors.
             </p>
             <Link
               href="/contact"

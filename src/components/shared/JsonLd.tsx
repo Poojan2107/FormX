@@ -59,7 +59,7 @@ export function JsonLd() {
       longitude: "72.5714",
     },
     description:
-      "Precise, coordinated architecture, structural, civil, and MEP design for industrial, commercial, and institutional projects.",
+      "Precise, coordinated architecture, structure and infrastructure design for industrial, commercial, and institutional projects.",
     knowsAbout: services.map((s) => s.title),
     openingHours: "Mo-Sa 09:00-19:00",
   });

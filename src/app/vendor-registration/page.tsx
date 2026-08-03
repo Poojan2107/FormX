@@ -59,7 +59,7 @@ export default function VendorRegistrationPage() {
       <CtaBand
         title="Ready to register as a FORMX vendor?"
         description="Complete the form above or email your capability profile."
-        primary={{ label: "Email procurement", href: "mailto:contact@formxconsultants.com" }}
+        primary={{ label: "Email procurement", href: "mailto:inquiry@formxconsultants.com" }}
         secondary={{ label: "Contact FORMX", href: "/contact" }}
       />
     </>

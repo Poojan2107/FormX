@@ -15,12 +15,13 @@ export {
 export const site = {
   name: "FormX Consultants",
   tagline: "Design | Engineering",
-  phone: "+91 79 4023 6236",
-  email: "contact@formxconsultants.com",
+  slogan: "Where Vision Takes Form",
+  phone: "+91 81284 44585",
+  email: "inquiry@formxconsultants.com",
   careerEmail: "career@formxconsultants.com",
   address: "Ahmedabad, Gujarat, India",
-  addressDetail: "Ahmedabad, Gujarat, India",
-  whatsapp: "918866136236",
+  addressDetail: "311, Addor Aspire, University Area, Ahmedabad, Gujarat 380015",
+  whatsapp: "918128444585",
   brochurePath: "/brochure/formx.pdf",
   linkedinCompany: "https://www.linkedin.com/company/formx-consultants-llp/",
   hirenLinkedin: "https://www.linkedin.com/in/hiren-j-shah/",
@@ -87,7 +88,7 @@ export const serviceNavGroups = [
     ],
   },
   {
-    title: "MEP",
+    title: "Utilities",
     items: [
       {
         label: "Mechanical Utilities",
@@ -196,15 +197,15 @@ export const careerRoles = [
 
 export const heroLines = [
   "Where Vision Takes Form",
+  "Architecture, structure & infrastructure coordinated",
   "Construction-ready GFC under one window",
-  "Architecture, structure, civil & MEP coordinated",
 ];
 
 export const hero = {
   eyebrow: "FORMX Consultants",
   title: "Where Vision Takes Form",
   slogan: "Where Vision Takes Form",
-  body: "Our team coordinates architecture, structure, civil and MEP into construction-ready documentation—with technical accountability from concept through site execution.",
+  body: "Our team coordinates architecture, structure and infrastructure into construction-ready documentation—with technical accountability from concept through site execution.",
   primaryCta: { label: "Discuss your facility", href: "/contact" },
   secondaryCta: { label: "See completed work", href: "/projects" },
   trust: [
@@ -297,7 +298,7 @@ export const about = {
   eyebrow: "Who we are",
   title: "Bridging design intent with on-site execution",
   paragraphs: [
-    "FORMX is a multidisciplinary engineering consultancy. Our team coordinates architecture, structure, civil and MEP into construction-ready documentation—with accountability from concept through site execution.",
+    "FORMX is a multidisciplinary engineering consultancy. Our team coordinates architecture, structure and infrastructure into construction-ready documentation—with accountability from concept through site execution.",
   ],
   cta: { label: "About the practice", href: "/about" },
   legacy: "Trusted consulting for complex industrial and commercial assets",
@@ -305,7 +306,7 @@ export const about = {
 
 export const aboutPage = {
   intro:
-    "FORMX coordinates architecture, structure, civil and MEP into construction-ready documentation for industrial promoters, developers and corporate clients across India.",
+    "FORMX coordinates architecture, structure and infrastructure into construction-ready documentation for industrial promoters, developers and corporate clients across India.",
   tagline: "Shaping form, defining futures",
   philosophy:
     "Engineering drawings are commitments to buildability. We measure success by the safety, schedule integrity and operational performance of the completed facility—not by the volume of sheets issued.",
@@ -314,11 +315,11 @@ export const aboutPage = {
   founderVision:
     "Hiren J. Shah built FORMX around a simple rule: stay close to the work. Desk reviews, coordination meetings, site walks and drawing markups are how decisions get made—not through remote handoffs.",
   collaboration:
-    "Architecture sets operational flow. Structure carries the loads. Civil opens the site. MEP and fire occupy reserved corridors. Delivery closes RFIs until the built facility matches the package.",
+    "Architecture sets operational flow. Structure carries the loads. Infrastructure opens the site and carries utilities. Delivery closes RFIs until the built facility matches the package.",
   studioFlow:
     "Projects move through the Ahmedabad studio as coordinated packages: concept and zoning, schematic engineering, tender and GFC issue, then continuous construction-stage support.",
   story: [
-    "Founded on the principle that engineering must serve execution, FORMX brings architectural vision, structural engineering, civil infrastructure and building utilities together under a single coordinated framework.",
+    "Founded on the principle that engineering must serve execution, FORMX brings architectural vision, structural engineering and site infrastructure together under a single coordinated framework.",
     "Our focus is continuous accountability—from early site planning and regulatory approvals to complete construction documentation and on-site engineering support.",
   ],
   principles: [
@@ -328,11 +329,25 @@ export const aboutPage = {
     },
     {
       title: "Our Mission",
-      body: "Deliver coordinated, construction-ready documentation across architecture, structure, civil and MEP—with senior accountability through site execution.",
+      body: "Deliver coordinated, construction-ready documentation across architecture, structure and infrastructure—with senior accountability through site execution.",
     },
     {
       title: "Our Values",
       body: "Buildability first. Code compliance without compromise. Transparent coordination. Partners who remain present until the facility is commissioned.",
+    },
+  ],
+  humanValues: [
+    {
+      title: "Integrity over presentation",
+      body: "We tell clients what the structure and site can safely carry—not what sounds impressive in a pitch deck.",
+    },
+    {
+      title: "People close to the work",
+      body: "Partners and leads stay in reviews, meetings and site walks. Decisions are made by engineers who own the drawings.",
+    },
+    {
+      title: "Accountability through execution",
+      body: "Our relationship does not end at GFC issue. We stay available for clarifications until the facility matches intent.",
     },
   ],
   values: [

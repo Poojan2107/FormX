@@ -11,7 +11,7 @@ const thinkingBeats = [
   },
   {
     title: "Resolve clashes on paper",
-    body: "Architecture, structure and MEP are coordinated as one package. Conflicts that would stop a site are closed in the office, not discovered during erection.",
+    body: "Architecture, structure and infrastructure are coordinated as one package. Conflicts that would stop a site are closed in the office, not discovered during erection.",
   },
   {
     title: "Stay accountable through execution",

@@ -50,7 +50,7 @@ const stages = [
     title: "Structure",
     subtitle: "Frame, floors and roofs",
     engineering:
-      "Beams, slabs, portal frames and roof systems close the primary structure. STAAD / ETABS models are reconciled with architectural clear heights and MEP service zones before steel is ordered or formwork starts.",
+      "Beams, slabs, portal frames and roof systems close the primary structure. STAAD / ETABS models are reconciled with architectural clear heights and utility service zones before steel is ordered or formwork starts.",
     owns: [
       "RCC & PEB frame analysis",
       "Floor / roof framing GFC",

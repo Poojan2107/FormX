@@ -30,10 +30,10 @@ const categoryLabels: Record<string, string> = {
   "sustainable-design": "Architecture & Planning",
   "structural-engineering": "Structure & Civil",
   "civil-engineering": "Structure & Civil",
-  "mechanical-utility-engineering": "MEP & Utilities",
-  "hvac-engineering": "MEP & Utilities",
-  "electrical-engineering": "MEP & Utilities",
-  "fire-protection-engineering": "MEP & Utilities",
+  "mechanical-utility-engineering": "Utilities",
+  "hvac-engineering": "Utilities",
+  "electrical-engineering": "Utilities",
+  "fire-protection-engineering": "Fire & Life Safety",
   "project-management": "Delivery",
 };
 

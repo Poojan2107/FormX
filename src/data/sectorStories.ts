@@ -56,7 +56,7 @@ export const sectorUniqueness: Record<
     uniqueness:
       "Semiconductor and pharma-adjacent environments demand cleanroom HVAC zoning, vibration-sensitive structure and utility purity that ordinary industrial design does not address.",
     differentiator:
-      "Air classification and vibration control reshape structural and MEP decisions early.",
+      "Air classification and vibration control reshape structural and utility decisions early.",
     systems: [
       "Cleanroom architectural envelopes",
       "HVAC zoning & pressure cascades",
@@ -130,13 +130,13 @@ export function getSectorUniqueness(slug: string) {
   return (
     sectorUniqueness[slug] ?? {
       uniqueness:
-        "This sector brings operational, code and utility constraints that generic industrial templates do not resolve. FORMX sizes architecture, structure and MEP to those constraints first.",
+        "This sector brings operational, code and utility constraints that generic industrial templates do not resolve. FORMX sizes architecture, structure and infrastructure to those constraints first.",
       differentiator:
         "Engineering decisions follow the process—not a reused shed typology.",
       systems: [
         "Sector-tuned architectural zoning",
         "Structural systems for process loads",
-        "MEP & fire coordinated early",
+        "Utilities & fire coordinated early",
         "Site infrastructure for operations",
       ],
     }

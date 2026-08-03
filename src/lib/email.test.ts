@@ -51,7 +51,7 @@ describe("sendEmail", () => {
     expect(opts.method).toBe("POST");
     expect(opts.headers.Authorization).toBe("Bearer test-key");
     const payload = JSON.parse(opts.body);
-    expect(payload.to).toEqual(["contact@formxconsultants.com"]);
+    expect(payload.to).toEqual(["inquiry@formxconsultants.com"]);
     expect(payload.reply_to).toEqual(["sender@example.com"]);
     expect(payload.subject).toBe("Hello");
     expect(payload.text).toContain("Name: Jane");

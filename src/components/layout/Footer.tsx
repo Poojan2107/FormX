@@ -2,22 +2,25 @@
 
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-import { site } from "@/data/site";
+import { nav, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
+  const practiceLinks = nav.map((item) => ({
+    label: item.label,
+    href: item.href,
+  }));
+
   return (
     <footer
       className="relative isolate overflow-hidden border-t border-white/10 bg-[#080808] text-white"
       style={{ viewTransitionName: "site-footer" }}
     >
-      {/* Engineering grid */}
       <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-25" aria-hidden />
       <div className="relative h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent" />
 
       <Container className="relative z-10">
-        {/* Headquarters identity band */}
         <div className="border-b border-white/10 py-10 md:py-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
@@ -27,9 +30,8 @@ export function Footer() {
               <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-white md:text-4xl lg:text-5xl">
                 Ahmedabad Practice
               </h2>
-              <p className="mt-3 max-w-lg text-[14px] leading-[1.8] text-white/55">
-                Multidisciplinary design &amp; engineering consultancy. Architecture, structure,
-                civil and MEP coordinated into construction-ready documentation.
+              <p className="mt-3 max-w-lg font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
+                {site.slogan}
               </p>
             </div>
             <div className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-white/40">
@@ -40,7 +42,6 @@ export function Footer() {
         </div>
 
         <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-10">
-          {/* Brand + office */}
           <div className="lg:col-span-5">
             <Logo invert variant="full" />
             <dl className="mt-8 space-y-5">
@@ -77,19 +78,12 @@ export function Footer() {
             </dl>
           </div>
 
-          {/* Practice */}
           <div className="lg:col-span-3">
             <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Practice
+              Navigate
             </p>
             <ul className="space-y-3">
-              {[
-                { label: "Architecture", href: "/services/architectural-design" },
-                { label: "Structure", href: "/services/structural-engineering" },
-                { label: "Infrastructure", href: "/services/site-infrastructure" },
-                { label: "MEP & Fire", href: "/services/electrical-engineering" },
-                { label: "Projects", href: "/projects" },
-              ].map((item) => (
+              {practiceLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -100,50 +94,71 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/career"
+                  transitionTypes={["nav-forward"]}
+                  className="text-[13px] text-white/55 transition-colors hover:text-white"
+                >
+                  Career
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Identity / discuss */}
           <div className="lg:col-span-4">
             <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Project Discussion
+              Quick actions
             </p>
-            <p className="mb-6 text-[13px] leading-[1.75] text-white/50">
-              Planning a greenfield plant or commercial asset? Senior practice leads engage early
-              on grids, corridors, and construction sequencing.
-            </p>
-            <Link
-              href="/contact"
-              transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-2 bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-x-red-hover"
-            >
-              Talk to our team
-              <ArrowUpRight className="size-4" />
-            </Link>
-            <a
-              href={site.brochurePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 block font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white/40 transition-colors hover:text-x-red"
-            >
-              Download practice brochure →
-            </a>
+            <div className="space-y-3">
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  Book Consultation
+                </span>
+                <ArrowUpRight className="size-4 text-x-red" />
+              </Link>
+              <a
+                href={site.brochurePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  Download Brochure
+                </span>
+                <ArrowUpRight className="size-4 text-x-red" />
+              </a>
+              <a
+                href={site.linkedinCompany}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
+              >
+                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
+                  LinkedIn
+                </span>
+                <ArrowUpRight className="size-4 text-x-red" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Monumental brand */}
-        <div className="border-t border-white/10 pb-8 pt-10">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <span
-              className="font-display font-black uppercase leading-none tracking-tighter text-white/[0.08]"
-              style={{ fontSize: "clamp(3.5rem, 12vw, 9rem)" }}
-            >
-              FORM<span className="text-x-red/50">×</span>
-            </span>
-            <p className="font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/25">
-              Design | Engineering · Where Vision Takes Form
-            </p>
-          </div>
+        {/* Jacobs-scale monumental wordmark */}
+        <div className="overflow-hidden border-t border-white/10 pb-4 pt-8 md:pt-10">
+          <span
+            className="block font-display font-black uppercase leading-[0.85] tracking-tighter text-white/[0.07] select-none"
+            style={{ fontSize: "clamp(5rem, 22vw, 18rem)" }}
+            aria-hidden
+          >
+            FORM<span className="text-x-red/40">×</span>
+          </span>
+          <p className="mt-2 font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/25 md:-mt-2">
+            Design | Engineering · {site.slogan}
+          </p>
         </div>
       </Container>
 

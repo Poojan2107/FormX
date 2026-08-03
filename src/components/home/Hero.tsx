@@ -18,26 +18,48 @@ export function Hero() {
   const reduce = useReducedMotion();
   const [imageIndex, setImageIndex] = useState(0);
   const [logoReady, setLogoReady] = useState(false);
+  const [showPhoto, setShowPhoto] = useState(false);
 
   useEffect(() => {
     const t = window.setTimeout(() => setLogoReady(true), reduce ? 0 : 200);
     return () => window.clearTimeout(t);
   }, [reduce]);
 
+  // Founder: photography comes after first paint / on scroll — not on open
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) {
+      setShowPhoto(true);
+      return;
+    }
+    const reveal = () => setShowPhoto(true);
+    const onScroll = () => {
+      if (window.scrollY > 40) reveal();
+    };
+    const delayed = window.setTimeout(reveal, 2200);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.clearTimeout(delayed);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [reduce]);
+
+  useEffect(() => {
+    if (reduce || !showPhoto) return;
     const id = window.setInterval(() => {
       setImageIndex((i) => (i + 1) % heroImages.length);
     }, 8000);
     return () => window.clearInterval(id);
-  }, [reduce]);
+  }, [reduce, showPhoto]);
 
   const current = heroImages[imageIndex];
 
   return (
     <section className="relative isolate min-h-[92vh] overflow-hidden bg-[#0a0a0a] text-white">
-      {/* Full-bleed photography — let it breathe */}
-      <div className="absolute inset-0 z-0">
+      {/* Photo plane — fades in after open / on scroll */}
+      <div
+        className="absolute inset-0 z-0 transition-opacity duration-[1600ms] ease-out"
+        style={{ opacity: showPhoto ? 1 : 0 }}
+      >
         {heroImages.map((img, i) => (
           <div
             key={img.slot}
@@ -60,9 +82,15 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/40" />
       </div>
 
+      {/* Quiet brand grid until photography arrives */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark transition-opacity duration-1000"
+        style={{ opacity: showPhoto ? 0.15 : 0.35 }}
+        aria-hidden
+      />
+
       <Container className="relative z-10 flex min-h-[92vh] flex-col justify-center pb-20 pt-28 md:pb-24 md:pt-32">
         <div className="max-w-4xl">
-          {/* Animated FORMX wordmark — identity, not UI chrome */}
           <motion.div
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -106,7 +134,6 @@ export function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Slogan as brand storytelling */}
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={logoReady ? { opacity: 1, y: 0 } : undefined}
@@ -150,10 +177,11 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Subtle image credit — no floating widgets */}
-        <p className="absolute bottom-8 right-0 hidden font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/35 lg:block">
-          {current.alt}
-        </p>
+        {showPhoto ? (
+          <p className="absolute bottom-8 right-0 hidden font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/35 lg:block">
+            {current.alt}
+          </p>
+        ) : null}
       </Container>
     </section>
   );

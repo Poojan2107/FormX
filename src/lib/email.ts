@@ -1,6 +1,6 @@
 const RESEND_URL = "https://api.resend.com/emails";
 
-const DEFAULT_TO = "contact@formxconsultants.com";
+const DEFAULT_TO = "inquiry@formxconsultants.com";
 
 export function esc(v: string): string {
   return v

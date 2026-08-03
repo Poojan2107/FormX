@@ -37,7 +37,7 @@ export function getProjectNarrative(project: Project) {
     engineeringThinking: project.engineeringThinking ?? project.approach,
     coordination:
       project.coordination ??
-      `Architecture, structure and MEP were coordinated as one GFC package across: ${project.services.join(", ")}.`,
+      `Architecture, structure and infrastructure were coordinated as one GFC package across: ${project.services.join(", ")}.`,
     execution:
       project.execution ??
       "Construction-stage support covered RFIs, shop drawing reviews and clarification of critical junctions until site work matched the issued drawings.",

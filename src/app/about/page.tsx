@@ -6,11 +6,13 @@ import { leadership } from "@/data/content";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
+import { HumanValuesPanel } from "@/components/about/HumanValuesPanel";
+import { BrochureCta } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
   title: "About FORMX Consultants | Multidisciplinary Engineering Consultancy, Ahmedabad",
   description:
-    "FORMX is an engineering consultancy delivering coordinated Architecture, Structure, Infrastructure and Execution support from concept to GFC in Ahmedabad, India.",
+    "FORMX is an engineering consultancy delivering coordinated Architecture, Structure and Infrastructure support from concept to GFC in Ahmedabad, India.",
 };
 
 const documentaryShots = [
@@ -25,7 +27,6 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Clean hero — no BG photo clutter */}
       <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
         <Container>
           <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.28em] text-x-red">
@@ -43,7 +44,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Sparse metrics — truthful only */}
       <section className="border-b border-line bg-[#f7f7f7] py-12">
         <Container className="grid gap-8 sm:grid-cols-3">
           {trustMetrics.map((m) => (
@@ -57,7 +57,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Company philosophy */}
       <section className="bg-white py-20 md:py-28">
         <Container>
           <Reveal>
@@ -74,7 +73,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Why FORMX exists */}
       <section className="border-y border-line bg-[#0d0d0d] py-20 text-white md:py-28">
         <Container className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
@@ -90,7 +88,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Vision / Mission / Values — editorial columns */}
       <section className="bg-white py-20 md:py-28">
         <Container>
           <Reveal>
@@ -114,9 +111,15 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Founder vision — documentary, not profile card */}
+      <section className="border-t border-line bg-[#fafafa] py-20 md:py-28">
+        <Container>
+          <HumanValuesPanel />
+          <BrochureCta className="mt-14" />
+        </Container>
+      </section>
+
       {founder ? (
-        <section className="border-t border-line bg-[#fafafa] py-20 md:py-28">
+        <section className="border-t border-line bg-white py-20 md:py-28">
           <Container>
             <Reveal>
               <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
@@ -159,7 +162,6 @@ export default function AboutPage() {
               </Reveal>
             </div>
 
-            {/* Documentary strip */}
             <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4">
               {documentaryShots.map((shot, i) => (
                 <Reveal key={shot.caption} delay={0.04 * i}>
@@ -184,8 +186,7 @@ export default function AboutPage() {
         </section>
       ) : null}
 
-      {/* Multidisciplinary collaboration */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-[#fafafa] py-20 md:py-28">
         <Container className="grid gap-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
@@ -209,7 +210,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* How projects move through the office */}
       <section className="border-y border-line bg-[#0d0d0d] py-20 text-white md:py-28">
         <Container>
           <Reveal>
@@ -222,13 +222,8 @@ export default function AboutPage() {
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-white/65">
               {aboutPage.studioFlow}
             </p>
-            <p className="mt-6 max-w-2xl text-[14px] leading-[1.85] text-white/45">
-              For the physical construction narrative—foundation through finished facility—see the
-              Building Construction Sequence on the home page. That sequence is how FORMX thinks about
-              buildability.
-            </p>
             <Link
-              href="/#projects"
+              href="/"
               className="mt-8 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
             >
               Return to headquarters →
@@ -237,7 +232,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Invitation */}
       <section className="bg-white py-20 md:py-24">
         <Container>
           <div className="max-w-2xl">
@@ -248,8 +242,8 @@ export default function AboutPage() {
               Discuss your next facility
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-              Share location, facility type and timeline. Practice leads engage early—before grids and
-              utility corridors harden into expensive constraints.
+              Share location, facility type and timeline. Practice leads engage early on zoning,
+              structure and infrastructure—before corridors harden into expensive constraints.
             </p>
             <Link
               href="/contact"

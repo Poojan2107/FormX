@@ -121,7 +121,7 @@ export function DesktopNav() {
         onMouseLeave={scheduleClose}
         onMouseEnter={cancelClose}
       >
-        {nav.map((item, i) => {
+        {nav.map((item) => {
           const expandable =
             item.label === "Services" ||
             item.label === "Projects" ||
@@ -234,7 +234,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
             Single window
           </p>
           <p className="mt-2 font-display text-lg font-bold leading-snug tracking-tight">
-            Architecture · Structure · Civil · MEP
+            Architecture · Structure · Infrastructure
           </p>
           <p className="mt-2 text-[12px] leading-relaxed text-white/60">
             Coordinated industrial design under one accountable practice.
