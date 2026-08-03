@@ -70,11 +70,11 @@ function SiteHeader({
               : "border-line/70",
           )}
         >
-          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-[4.5rem] sm:gap-4">
+          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">
             <Link
               href="/"
               transitionTypes={["nav-back"]}
-              className="relative z-10 flex shrink-0 items-center"
+              className="relative z-10 flex shrink-0 items-center scale-[1.05]"
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
@@ -85,10 +85,10 @@ function SiteHeader({
               <DesktopNav />
             </div>
 
-            <div className="relative z-10 flex items-center justify-end gap-3">
+            <div className="relative z-10 flex items-center justify-end gap-5">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="hidden h-9 items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-ink/65 transition-colors hover:text-x-red lg:flex"
+                className="hidden h-9 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink lg:flex"
                 aria-label={`Call ${site.phone}`}
               >
                 <Phone className="size-3.5 shrink-0 text-x-red" />
@@ -98,9 +98,9 @@ function SiteHeader({
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="formx-cut-sm formx-edge formx-edge-sm relative hidden h-9 items-center gap-1.5 bg-x-red px-4 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
+                className="relative hidden h-9 items-center gap-1.5 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
               >
-                Discuss Project
+                Enquire
                 <ArrowUpRight className="size-3.5" />
               </Link>
 
@@ -166,13 +166,10 @@ function SiteHeader({
                         onClick={() => setOpen(false)}
                         transitionTypes={["nav-forward"]}
                         className={cn(
-                          "flex items-baseline gap-4 border-b border-white/10 py-4 font-display text-2xl font-bold tracking-tight transition-colors",
+                          "block border-b border-white/10 py-5 font-display text-2xl font-bold tracking-tight transition-colors",
                           isActive ? "text-x-red" : "text-white hover:text-x-red",
                         )}
                       >
-                        <span className="font-display text-[11px] font-bold text-x-red/60">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
                         {item.label}
                       </Link>
                       {item.label === "Services" ? (
@@ -222,17 +219,13 @@ function SiteHeader({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <div className="mb-2 flex items-center gap-2 font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/40">
-                  <span className="size-1.5 bg-emerald-500" />
-                  Greenfield Ready
-                </div>
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
                   transitionTypes={["nav-forward"]}
                   className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white"
                 >
-                  Enquire Now <ArrowUpRight className="size-4" />
+                  Enquire <ArrowUpRight className="size-4" />
                 </Link>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}

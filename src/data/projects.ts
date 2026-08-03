@@ -9,15 +9,45 @@ export type Project = {
   year: string;
   area?: string;
   services: string[];
+  /** @deprecated prefer clientNeed — kept for migration */
   challenge: string;
+  /** @deprecated prefer engineeringThinking */
   approach: string;
+  /** @deprecated prefer completedFacility */
   outcome: string;
   highlights: string[];
+  /** Engineering case narrative (Wave 4) */
+  clientNeed?: string;
+  engineeringThinking?: string;
+  coordination?: string;
+  execution?: string;
+  completedFacility?: string;
+  lessonsLearned?: string;
+  relatedSystems?: string[];
   assets: {
     cover: string;
     gallery: string[];
   };
 };
+
+/** Normalize legacy challenge/approach/outcome into engineering narrative */
+export function getProjectNarrative(project: Project) {
+  return {
+    clientNeed: project.clientNeed ?? project.challenge,
+    engineeringThinking: project.engineeringThinking ?? project.approach,
+    coordination:
+      project.coordination ??
+      `Architecture, structure and MEP were coordinated as one GFC package across: ${project.services.join(", ")}.`,
+    execution:
+      project.execution ??
+      "Construction-stage support covered RFIs, shop drawing reviews and clarification of critical junctions until site work matched the issued drawings.",
+    completedFacility: project.completedFacility ?? project.outcome,
+    lessonsLearned:
+      project.lessonsLearned ??
+      "Early multidisciplinary coordination reduces on-site rework. Clear load paths and reserved utility corridors protect both schedule and capital.",
+    relatedSystems: project.relatedSystems ?? project.services,
+  };
+}
 
 export const projects: Project[] = [
   {

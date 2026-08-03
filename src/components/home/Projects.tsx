@@ -5,88 +5,78 @@ import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { AssetImage } from "@/components/ui/AssetImage";
 
+/** Editorial proof strip — not a masonry card grid */
 export function Projects() {
-  const featured = projects[0];
-  const secondary = projects.slice(1, 3);
-  const tertiary = projects.slice(3, 6);
+  const featured = projects.slice(0, 3);
 
   return (
-    <section id="projects" className="scroll-mt-32 border-b border-line bg-white section-y">
+    <section id="projects" className="scroll-mt-32 border-y border-line bg-white py-20 md:py-28">
       <Container>
-        <Reveal className="mb-8 flex items-end justify-between gap-6 md:mb-10">
+        <Reveal className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="mb-2.5 flex items-center gap-3">
-              <span className="h-px w-8 bg-x-red" />
-              <span className="font-display text-[11px] font-bold uppercase tracking-[0.26em] text-x-red">
-                Our Projects
-              </span>
-            </div>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
-              Featured Portfolio
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+              Proof
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
+              Facilities we have engineered
             </h2>
-            <p className="mt-2 max-w-[58ch] text-[14px] leading-relaxed text-ink-muted">
-              Coordinated GFC packages across commercial HQ, manufacturing, and institutional campuses.
+            <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-ink-muted">
+              Completed work across commercial headquarters, manufacturing plants and institutional campuses—documented as coordinated GFC packages.
             </p>
           </div>
           <Link
             href="/projects"
             transitionTypes={["nav-forward"]}
-            className="group hidden shrink-0 items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-transform hover:translate-x-1 sm:flex"
+            className="inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
           >
-            All Projects
-            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            Full project record
+            <ArrowUpRight className="size-4" />
           </Link>
         </Reveal>
 
-        {/* Editorial masonry — photography first */}
-        <div className="grid gap-2.5 lg:grid-cols-2">
-          <Reveal from="left" className="h-full">
-            <ProjectCard
-              project={featured}
-              priority
-              aspect="fill"
-              className="h-full min-h-[440px] lg:min-h-[620px]"
-            />
-          </Reveal>
-
-          <div className="grid grid-rows-2 gap-2.5">
-            {secondary.map((project, i) => (
-              <Reveal key={project.slug} delay={0.06 * (i + 1)} from="right" className="h-full">
-                <ProjectCard
-                  project={project}
-                  priority={i === 0}
-                  aspect="fill"
-                  className="h-full min-h-[210px] lg:min-h-[304px]"
-                />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-2.5 grid gap-2.5 sm:grid-cols-3">
-          {tertiary.map((project, i) => (
-            <Reveal key={project.slug} delay={0.05 * i} className="h-full">
-              <ProjectCard
-                project={project}
-                aspect="fill"
-                className="h-full min-h-[260px]"
-              />
+        <div className="space-y-0">
+          {featured.map((project, i) => (
+            <Reveal key={project.slug} delay={0.04 * i}>
+              <Link
+                href={`/projects/${project.slug}`}
+                transitionTypes={["nav-forward"]}
+                className="group grid border-t border-line py-8 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:gap-8 md:py-10"
+              >
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden bg-[#111] md:col-span-5 md:mb-0 md:aspect-[4/3]">
+                  <AssetImage
+                    alt={project.client}
+                    slot={project.assets.cover}
+                    kind="facility"
+                    fit="cover"
+                    aspect="auto"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="flex flex-col justify-center md:col-span-7">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+                    {project.sector} · {project.year}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-ink md:text-3xl">
+                    {project.client}
+                  </h3>
+                  <p className="mt-2 text-[14px] text-ink-muted">
+                    {project.location}
+                    {project.area ? ` · ${project.area}` : ""}
+                  </p>
+                  <p className="mt-4 max-w-xl text-[14px] leading-[1.8] text-ink-muted">
+                    {project.outcome}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red opacity-80 transition-opacity group-hover:opacity-100">
+                    Read engineering case
+                    <ArrowUpRight className="size-3.5" />
+                  </span>
+                </div>
+              </Link>
             </Reveal>
           ))}
         </div>
-
-        {/* Mobile CTA */}
-        <Reveal className="mt-8 sm:hidden">
-          <Link
-            href="/projects"
-            transitionTypes={["nav-forward"]}
-            className="flex w-full items-center justify-center gap-2 border border-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
-          >
-            View All Projects <ArrowUpRight className="size-4" />
-          </Link>
-        </Reveal>
       </Container>
     </section>
   );

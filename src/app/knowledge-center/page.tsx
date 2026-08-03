@@ -1,148 +1,106 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogs } from "@/data/site";
-import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
-import { CtaBand } from "@/components/shared/CtaBlocks";
-import { ProofStrip } from "@/components/shared/ProofStrip";
-import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "FORMX Engineering Journal | Technical Insights & Seismic Detailing",
+  title: "FORMX Engineering Journal | Technical Notes & Construction Lessons",
   description:
-    "Engineering technical notes, IS code compliance breakdowns, structural detailing guides, and cleanroom HVAC zoning schematics by Hiren J. Shah.",
+    "Engineering technical notes, IS code references, structural detailing and construction lessons from FORMX practice.",
 };
 
 export default function KnowledgeCenterPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Technical Publications"
-        title="FORMX Engineering Journal"
-        description="Technical notes, structural detailing guidelines, and multidisciplinary coordination insights for industrial project directors and promoters."
-        crumbs={[{ label: "Engineering Journal" }]}
-        image={{ slot: "insights/column-splice.jpg", kind: "article" }}
-      />
-
-      <ProofStrip />
-
-      <section className="bg-white py-16 md:py-24">
+      {/* Journal masthead — not Medium hero */}
+      <section className="border-b border-line bg-[#0d0d0d] pt-24 pb-14 text-white md:pt-32 md:pb-16">
         <Container>
-          {/* Author & Technical Direction Panel */}
+          <p className="font-display text-[10px] font-bold uppercase tracking-[0.32em] text-x-red">
+            FORMX Engineering Journal
+          </p>
+          <h1
+            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
+          >
+            Technical notes from practice
+          </h1>
+          <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-white/60">
+            Whitepaper-length thinking on detailing, IS codes, site observations and construction
+            lessons—written for project directors and engineering leads, not as blog content marketing.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-6 border-t border-white/10 pt-6 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/35">
+            <span>IS code references</span>
+            <span>Detailing examples</span>
+            <span>Site observations</span>
+            <span>Founder insights</span>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-16 md:py-20">
+        <Container>
           <Reveal>
-            <div className="mb-12 flex flex-col gap-6 border border-line bg-[#121212] p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8 formx-cut-x formx-edge formx-edge-x">
-              <div className="flex items-center gap-5">
-                <div className="flex size-14 shrink-0 items-center justify-center bg-x-red font-display text-lg font-black text-white shadow-lg">
-                  HJS
-                </div>
-                <div>
-                  <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.22em] text-x-red">
-                    Technical Leadership &amp; Editor
-                  </span>
-                  <h2 className="mt-1 font-display text-xl font-extrabold text-white sm:text-2xl">
-                    Engineering Notes by Hiren J. Shah
-                  </h2>
-                  <p className="text-[12px] text-white/60">
-                    Founder &amp; Managing Director · FORMX Consultants
-                  </p>
-                </div>
-              </div>
-              <a
-                href="https://www.linkedin.com/in/hiren-j-shah/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="formx-cut-sm inline-flex shrink-0 items-center gap-2 border border-white/20 bg-white/10 px-5 py-3 font-display text-[11px] font-extrabold uppercase tracking-[0.16em] text-white transition-all hover:border-x-red hover:bg-x-red"
-              >
-                LinkedIn Profile
-                <ArrowUpRight className="size-4" />
-              </a>
-            </div>
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+              Current issue notes
+            </p>
           </Reveal>
 
-          {/* Technical Articles Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Publication list — not article cards */}
+          <div className="mt-10 divide-y divide-line border-y border-line">
             {blogs.map((post, i) => (
-              <Reveal key={post.slug} delay={0.04 * (i % 3)}>
+              <Reveal key={post.slug} delay={0.03 * i}>
                 <Link
                   href={`/knowledge-center/${post.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="formx-cut-x formx-edge formx-edge-x x-hover-rail group flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-300 hover:border-x-red/50 hover:shadow-xl"
+                  className="group grid gap-4 py-8 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:gap-8"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-[#0d0d0d]">
-                    <AssetImage
-                      alt={post.title}
-                      slot={post.asset}
-                      kind="article"
-                      tone="dark"
-                      fit="cover"
-                      aspect="auto"
-                      objectPosition="center"
-                      sizes="(max-width: 1024px) 50vw, 33vw"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <span className="absolute left-3.5 top-3.5 z-10 border border-x-red/40 bg-x-red px-2.5 py-1 font-display text-[9px] font-extrabold uppercase tracking-[0.18em] text-white shadow-md">
-                      {post.category}
-                    </span>
+                  <div className="md:col-span-2">
+                    <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                      Note {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-1 text-[12px] text-ink/40">{post.date}</p>
                   </div>
-
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-2.5 flex items-center gap-2 text-[11px] font-semibold text-ink/40">
-                      <span>{post.date}</span>
-                      <span>·</span>
-                      <span className="text-x-red">{post.author}</span>
-                    </div>
-
-                    <h2 className="font-display text-lg font-extrabold uppercase leading-snug tracking-tight text-ink transition-colors group-hover:text-x-red">
+                  <div className="md:col-span-3">
+                    <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-ink/40">
+                      {post.category}
+                    </p>
+                    <p className="mt-1 text-[12px] text-ink-muted">{post.author}</p>
+                  </div>
+                  <div className="md:col-span-7">
+                    <h2 className="font-display text-xl font-extrabold uppercase leading-snug tracking-tight text-ink group-hover:text-x-red md:text-2xl">
                       {post.title}
                     </h2>
-
-                    <p className="mt-2.5 line-clamp-3 flex-1 text-[13px] leading-relaxed text-ink-muted">
+                    <p className="mt-3 max-w-xl text-[14px] leading-[1.8] text-ink-muted">
                       {post.excerpt}
                     </p>
-
-                    <div className="mt-5 border-t border-line/60 pt-4">
-                      <span className="inline-flex items-center gap-1.5 font-display text-[11px] font-extrabold uppercase tracking-[0.14em] text-x-red transition-all group-hover:translate-x-1">
-                        Read Engineering Note →
-                      </span>
-                    </div>
+                    <span className="mt-4 inline-block font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                      Open technical note →
+                    </span>
                   </div>
                 </Link>
               </Reveal>
             ))}
           </div>
 
-          {/* Newsletter Subscription Box */}
-          <div className="mt-14 border border-line bg-[#fafafa] p-6 md:p-10 formx-cut-x formx-edge formx-edge-x">
-            <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
-              <div>
-                <span className="font-display text-[10px] font-extrabold uppercase tracking-[0.22em] text-x-red">
-                  Engineering Digest
-                </span>
-                <h3 className="mt-1 font-display text-2xl font-extrabold uppercase text-ink md:text-3xl">
-                  Subscribe to Technical Delivery Notes
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  Quarterly technical briefs on industrial structural codes, cleanroom utility distribution, and statutory approval processes.
-                </p>
-              </div>
-
-              <div className="w-full">
-                <NewsletterForm />
-              </div>
+          <div className="mt-16 grid gap-8 border border-line bg-[#f7f7f7] p-8 md:grid-cols-2 md:p-10">
+            <div>
+              <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.22em] text-x-red">
+                Journal digest
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-extrabold uppercase text-ink">
+                Receive technical delivery notes
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                Occasional briefs on structural codes, utility coordination and statutory processes—no
+                marketing drip.
+              </p>
             </div>
+            <NewsletterForm />
           </div>
         </Container>
       </section>
-
-      <CtaBand
-        title="Brief FORMX on your next industrial mandate"
-        description="Consult with our engineering leads early on structural systems, civil grading, and MEP utility corridors."
-        secondary={{ label: "Explore services", href: "/services" }}
-      />
     </>
   );
 }

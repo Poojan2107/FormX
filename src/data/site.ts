@@ -1,4 +1,4 @@
-export { projects, getProject, type Project } from "./projects";
+export { projects, getProject, getProjectNarrative, type Project } from "./projects";
 export { services, getService, type Service } from "./services";
 export { sectors, getSector, type Sector } from "./sectors";
 export {
@@ -195,24 +195,31 @@ export const careerRoles = [
 ];
 
 export const heroLines = [
+  "Where Vision Takes Form",
   "Construction-ready GFC under one window",
   "Architecture, structure, civil & MEP coordinated",
-  "Buildability and code compliance first",
-  "From concept to site with continuous support",
 ];
 
 export const hero = {
   eyebrow: "FORMX Consultants",
-  title: "Precise, coordinated, construction-ready design",
-  body: "Multidisciplinary design & engineering consultancy delivering coordinated, construction-ready packages across Architecture, Structure, Infrastructure, and Execution support.",
-  primaryCta: { label: "Talk to our engineering team", href: "/contact" },
-  secondaryCta: { label: "View completed projects", href: "/projects" },
+  title: "Where Vision Takes Form",
+  slogan: "Where Vision Takes Form",
+  body: "Our team coordinates architecture, structure, civil and MEP into construction-ready documentation—with technical accountability from concept through site execution.",
+  primaryCta: { label: "Discuss your facility", href: "/contact" },
+  secondaryCta: { label: "See completed work", href: "/projects" },
   trust: [
     { label: "Coordinated", hint: "Single-window multidisciplinary alignment" },
     { label: "Buildable", hint: "Tender & GFC drawing precision" },
     { label: "Compliant", hint: "Statutory & code compliance" },
   ],
 };
+
+/** Sparse trust metrics — shown after scroll, not on first paint */
+export const trustMetrics = [
+  { value: "25+", label: "Completed Projects" },
+  { value: "15 Lakh+", label: "Sq.Ft Designed" },
+  { value: "5", label: "States Served" },
+];
 
 /** Exact FORMX by Numbers specified in client feedback document */
 export const formxNumbers = [
@@ -287,34 +294,45 @@ export const industriesServed = [
 ];
 
 export const about = {
-  eyebrow: "Our Consultancy",
+  eyebrow: "Who we are",
   title: "Bridging design intent with on-site execution",
   paragraphs: [
-    "FORMX is a multidisciplinary engineering consultancy. We deliver coordinated, construction-ready documentation across Architecture, Structure, Infrastructure, and Execution—ensuring buildability, statutory compliance, and clash-free site delivery.",
+    "FORMX is a multidisciplinary engineering consultancy. Our team coordinates architecture, structure, civil and MEP into construction-ready documentation—with accountability from concept through site execution.",
   ],
-  cta: { label: "About our practice", href: "/about" },
+  cta: { label: "About the practice", href: "/about" },
   legacy: "Trusted consulting for complex industrial and commercial assets",
 };
 
 export const aboutPage = {
   intro:
-    "FORMX Consultants is a multidisciplinary design and engineering consultancy. We partner with industrial promoters, developers, and corporate leaders to transform complex spatial requirements into buildable, code-compliant, and high-performance infrastructure.",
+    "FORMX coordinates architecture, structure, civil and MEP into construction-ready documentation for industrial promoters, developers and corporate clients across India.",
+  tagline: "Shaping form, defining futures",
+  philosophy:
+    "Engineering drawings are commitments to buildability. We measure success by the safety, schedule integrity and operational performance of the completed facility—not by the volume of sheets issued.",
+  whyExists:
+    "Too many industrial projects fail at the interface between disciplines. FORMX exists so promoters deal with one accountable practice—from early zoning and structural grids through clash-free GFC and site support.",
+  founderVision:
+    "Hiren J. Shah built FORMX around a simple rule: stay close to the work. Desk reviews, coordination meetings, site walks and drawing markups are how decisions get made—not through remote handoffs.",
+  collaboration:
+    "Architecture sets operational flow. Structure carries the loads. Civil opens the site. MEP and fire occupy reserved corridors. Delivery closes RFIs until the built facility matches the package.",
+  studioFlow:
+    "Projects move through the Ahmedabad studio as coordinated packages: concept and zoning, schematic engineering, tender and GFC issue, then continuous construction-stage support.",
   story: [
-    "Founded on the principle that engineering must serve execution, FORMX brings architectural vision, structural engineering, civil infrastructure, and building utilities together under a single coordinated framework.",
+    "Founded on the principle that engineering must serve execution, FORMX brings architectural vision, structural engineering, civil infrastructure and building utilities together under a single coordinated framework.",
     "Our focus is continuous accountability—from early site planning and regulatory approvals to complete construction documentation and on-site engineering support.",
   ],
   principles: [
     {
-      title: "Integrity in Execution",
-      body: "We believe engineering drawings are not mere proposals—they are commitments to buildability. Every detail is calculated to protect site timelines, safety, and capital investments.",
+      title: "Our Vision",
+      body: "To be the engineering practice industrial promoters trust when capital, schedule and safety cannot be left to fragmented consultants.",
     },
     {
-      title: "Multidisciplinary Alignment",
-      body: "Architecture, structural systems, and infrastructure networks are designed in lockstep. By resolving spatial and utility conflicts prior to construction, we eliminate friction on site.",
+      title: "Our Mission",
+      body: "Deliver coordinated, construction-ready documentation across architecture, structure, civil and MEP—with senior accountability through site execution.",
     },
     {
-      title: "Long-Term Client Partnership",
-      body: "Our engagement extends beyond drawing delivery. Senior leads remain actively involved throughout construction, providing site support and technical guidance until commissioning.",
+      title: "Our Values",
+      body: "Buildability first. Code compliance without compromise. Transparent coordination. Partners who remain present until the facility is commissioned.",
     },
   ],
   values: [

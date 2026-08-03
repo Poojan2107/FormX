@@ -2,24 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlog, blogs } from "@/data/site";
-import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { RelatedLinks, CtaBand } from "@/components/shared/CtaBlocks";
+import { RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ArticleJsonLd } from "@/components/shared/JsonLd";
-import { ProofStrip } from "@/components/shared/ProofStrip";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 type Props = { params: Promise<{ slug: string }> };
-
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .map((w) => w[0])
-    .filter(Boolean)
-    .slice(0, 3)
-    .join("")
-    .toUpperCase();
 
 export async function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }));
@@ -30,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlog(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | FORMX Knowledge Center`,
+    title: `${post.title} | FORMX Engineering Journal`,
     description: post.excerpt,
   };
 }
@@ -61,85 +51,112 @@ export default async function BlogDetailPage({ params }: Props) {
         url={`/knowledge-center/${post.slug}`}
         image={`https://formxconsultants.com/assets/${post.asset}`}
       />
-      <PageHero
-        eyebrow={post.category}
-        title={post.title}
-        description={`${post.date} · By ${post.author}`}
-        crumbs={[
-          { label: "Knowledge Center", href: "/knowledge-center" },
-          { label: post.title },
-        ]}
-        image={{ slot: post.asset, kind: "article" }}
-      />
 
-      <ProofStrip compact />
-
-      <section className="bg-white section-y">
+      {/* Technical note header */}
+      <section className="border-b border-line bg-white pt-24 pb-12 md:pt-28 md:pb-16">
         <Container className="max-w-3xl">
-          <Reveal>
-            {/* Main body */}
-            <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
-              {post.body.map((para) => (
-                <p key={para.slice(0, 40)}>{para}</p>
-              ))}
-            </div>
-
-            {/* Author Box */}
-            <div className="formx-cut-x formx-edge formx-edge-x mt-12 border border-line bg-[#fafafa] p-6 md:p-8">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="formx-cut-sm flex size-14 shrink-0 items-center justify-center bg-x-red font-display text-lg font-bold text-white shadow-[0_4px_16px_rgba(222,48,36,0.25)]">
-                    {initials(post.author)}
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base font-bold text-ink">
-                      {post.author}
-                    </h3>
-                    <p className="text-[12px] font-semibold text-x-red">
-                      {post.authorRole ?? "Founder & Managing Director, FormX"}
-                    </p>
-                    <p className="mt-1 text-[12px] text-ink-muted">
-                      Multidisciplinary industrial design & planning consultant.
-                    </p>
-                  </div>
-                </div>
-
-                {post.authorLinkedin ? (
-                  <a
-                    href={post.authorLinkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center gap-2 border border-line bg-white px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-ink transition-all hover:border-x-red hover:text-x-red"
-                  >
-                    <svg className="size-3.5 fill-current text-x-red" viewBox="0 0 24 24">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                    </svg>
-                    LinkedIn Profile
-                  </a>
-                ) : null}
-              </div>
-            </div>
-
-            <p className="mt-8">
-              <Link
-                href="/knowledge-center"
-                transitionTypes={["nav-back"]}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors hover:text-x-red"
-              >
-                ← Back to Knowledge Center
-              </Link>
-            </p>
-          </Reveal>
+          <Link
+            href="/knowledge-center"
+            transitionTypes={["nav-back"]}
+            className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/40 hover:text-x-red"
+          >
+            ← Engineering Journal
+          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-3 font-display text-[10px] font-bold uppercase tracking-[0.2em]">
+            <span className="text-x-red">{post.category}</span>
+            <span className="text-ink/25">·</span>
+            <span className="text-ink/40">{post.date}</span>
+            <span className="text-ink/25">·</span>
+            <span className="text-ink/40">Technical note</span>
+          </div>
+          <h1
+            className="mt-4 font-display font-black uppercase leading-[1.1] tracking-tight text-ink"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+          >
+            {post.title}
+          </h1>
+          <p className="mt-4 text-[14px] text-ink-muted">
+            {post.author} · {post.authorRole}
+          </p>
         </Container>
       </section>
 
-      <RelatedLinks title="More insights" items={related} />
-      <CtaBand
-        title="Discuss your facility brief with FORMX"
-        description="Share site constraints and capacity targets — coordinated Architecture through MEP."
-        secondary={{ label: "More insights", href: "/knowledge-center" }}
-      />
-      <StickyEnquire label="Discuss this insight with FormX" />
+      {/* Figure / detailing visual */}
+      <section className="bg-[#0d0d0d]">
+        <Container className="py-8 md:py-10">
+          <div className="relative mx-auto aspect-[21/9] max-w-4xl overflow-hidden bg-[#111]">
+            <AssetImage
+              alt={post.title}
+              slot={post.asset}
+              kind="article"
+              fit="cover"
+              aspect="auto"
+              className="absolute inset-0 h-full w-full object-cover opacity-90"
+            />
+            <div className="absolute left-4 top-4 border border-white/20 bg-black/70 px-3 py-1.5 backdrop-blur-sm">
+              <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/70">
+                Figure · Engineering reference
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Whitepaper body */}
+      <section className="bg-white py-14 md:py-20">
+        <Container className="max-w-3xl">
+          <Reveal>
+            <p className="border-l-2 border-x-red pl-5 text-[16px] leading-[1.9] text-ink-muted italic">
+              {post.excerpt}
+            </p>
+          </Reveal>
+
+          <div className="mt-12 space-y-6 text-[15px] leading-[1.9] text-ink-muted md:text-[16px]">
+            {post.body.map((para) => (
+              <p key={para.slice(0, 48)}>{para}</p>
+            ))}
+          </div>
+
+          {/* Founder / author stamp */}
+          <div className="mt-14 border-t border-line pt-8">
+            <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+              Author
+            </p>
+            <p className="mt-2 font-display text-lg font-extrabold text-ink">{post.author}</p>
+            <p className="text-[13px] text-ink-muted">{post.authorRole}</p>
+            {post.authorLinkedin ? (
+              <a
+                href={post.authorLinkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red"
+              >
+                LinkedIn →
+              </a>
+            ) : null}
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="inline-flex bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white"
+            >
+              Discuss this topic with FORMX
+            </Link>
+            <Link
+              href="/knowledge-center"
+              transitionTypes={["nav-back"]}
+              className="inline-flex items-center font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/50 hover:text-x-red"
+            >
+              More journal notes
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      <RelatedLinks title="Related notes" items={related} />
+      <StickyEnquire label="Discuss this engineering topic" />
     </>
   );
 }

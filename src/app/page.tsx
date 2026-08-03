@@ -1,59 +1,63 @@
 import { Hero } from "@/components/home/Hero";
-import { EngineeringTrustMatrix } from "@/components/home/EngineeringTrustMatrix";
-import { ConstructionSequence } from "@/components/home/ConstructionSequence";
 import { About } from "@/components/home/About";
-import { Services } from "@/components/home/Services";
+import { TrustProof } from "@/components/home/TrustProof";
+import { HowWeThink } from "@/components/home/HowWeThink";
+import { ConstructionSequence } from "@/components/home/ConstructionSequence";
 import { Projects } from "@/components/home/Projects";
-import { LeadStrip } from "@/components/shared/LeadStrip";
-import { Sectors } from "@/components/home/Sectors";
-import { Stats } from "@/components/home/Stats";
-import { Testimonials } from "@/components/home/Testimonials";
-import { CtaBand } from "@/components/shared/CtaBlocks";
+import { PeopleGlimpse } from "@/components/home/PeopleGlimpse";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Container } from "@/components/ui/Container";
 
 export default function Home() {
   return (
     <>
-      {/* 01. Hero — Confident company introduction & ambition */}
+      {/* 01 · FORMX identity */}
       <Hero />
 
-      {/* 02. About FORMX — Practice identity & multidisciplinary ethos */}
+      {/* 02 · Who we are */}
       <About />
 
-      {/* 03. Engineering Trust Matrix — Code compliance & single-window accountability */}
-      <EngineeringTrustMatrix />
+      {/* 03 · Why clients trust us */}
+      <TrustProof />
 
-      {/* 04. Featured Projects — Real industrial case studies & proof of execution */}
-      <Projects />
+      {/* 04 · How we think */}
+      <HowWeThink />
 
-      {/* 05. Integrated Practice Areas — Coordinated engineering disciplines */}
-      <Services />
-
-      {/* 06. Construction Journey — Methodological execution lifecycle */}
+      {/* 05 · How projects move — signature */}
       <ConstructionSequence />
 
-      {/* 07. Sectors Served — Specialized industrial domain expertise */}
-      <Sectors />
+      {/* 06 · Proof */}
+      <Projects />
 
-      {/* 08. Mid-Page Consultative Lead Strip */}
-      <LeadStrip
-        title="Planning a greenfield plant or commercial asset?"
-        subtitle="Our senior practice leads engage early on structural grids, site infrastructure, and clash-free utility corridors."
-      />
+      {/* 07 · People */}
+      <PeopleGlimpse />
 
-      {/* 09. Empirical Metrics & Promoter Proof */}
-      <Stats />
-
-      {/* 10. Promoter Verification & Testimonials */}
-      <Testimonials />
-
-      {/* 11. Consultative CTA */}
-      <CtaBand
-        eyebrow="Start A Project Conversation"
-        title="Let's discuss your industrial facility"
-        description="Share your facility type, location, and timeline—our senior engineering leads engage directly from concept through site execution."
-        primary={{ label: "Talk to our engineering team", href: "/contact" }}
-        secondary={{ label: "Explore practice areas", href: "/services" }}
-      />
+      {/* 08 · Project discussion — one calm invite */}
+      <section className="border-t border-line bg-white py-20 md:py-24">
+        <Container>
+          <div className="max-w-2xl">
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+              Project discussion
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+              Planning a facility?
+            </h2>
+            <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
+              Share facility type, location and timeline. Senior engineering leads engage early on
+              structural grids, site infrastructure and clash-free utility corridors.
+            </p>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="mt-8 inline-flex items-center gap-3 bg-x-red px-8 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-x-red-hover"
+            >
+              Talk to our engineering team
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

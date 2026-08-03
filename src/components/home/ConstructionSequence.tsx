@@ -1,252 +1,270 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Compass,
-  Layers,
-  Cpu,
-  ShieldCheck,
-  CheckCircle2,
-  Building2,
-  ChevronRight,
-} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
+/**
+ * Signature FORMX experience — physical building construction sequence.
+ * Foundation → Columns → Structure → Utilities → Envelope → Finished Facility
+ */
 const stages = [
   {
+    id: "foundation",
     step: "01",
-    phase: "Site & Soil Survey",
-    title: "Topographic Analysis & Civil Grading",
-    description:
-      "Site contour mapping, soil bearing capacity evaluation, and storm water runoff drainage design. Establishes the physical baseline before structural grid alignment.",
-    icon: Compass,
-    deliverables: ["Soil Test & Load Capacity Report", "Topographic Contour Vector Map", "Site Grading & Drainage Plan"],
-    code: "IS 1892 & IS 1498",
+    title: "Foundation",
+    subtitle: "Ground that carries the facility",
+    engineering:
+      "Soil bearing, pile or raft selection, equipment isolation pads and storm drainage outfalls are fixed before the first column is cast. FORMX issues foundation GAs and load schedules that contractors can excavate against.",
+    owns: [
+      "Soil & bearing capacity interpretation",
+      "Foundation GA & reinforcement detailing",
+      "Equipment pedestal & isolation strategy",
+      "Site grading interface with civil works",
+    ],
+    code: "IS 1892 · IS 456 · IS 2911",
     asset: "services/infrastructure.jpg",
-    metric: "100% Topographic Accuracy",
   },
   {
+    id: "columns",
     step: "02",
-    phase: "Architectural Masterplan",
-    title: "Operational Zoning & NBC Code Compliance",
-    description:
-      "Planning facility layouts optimized for manufacturing workflow, material logistics, emergency egress, and National Building Code (NBC) setback compliance.",
-    icon: Building2,
-    deliverables: ["Master Spatial Zoning Layout", "Statutory Approval Drawing Package", "NBC Egress & Fire Corridor Plan"],
-    code: "National Building Code (NBC 2016)",
-    asset: "services/architecture.jpg",
-    metric: "Zero Workflow Bottlenecks",
-  },
-  {
-    step: "03",
-    phase: "Structural RCC & Steel Frame",
-    title: "STAAD.Pro & ETABS Heavy Load Engineering",
-    description:
-      "Engineering RCC moment frames, wide-span PEB tapered portal frames, EOT crane gantry beams, and heavy machinery isolation foundations.",
-    icon: Layers,
-    deliverables: ["STAAD.Pro 3D Calculation Sheet", "PEB Steel Structural Framing GFC", "Foundation Equipment Isolation GA"],
-    code: "IS 456, IS 800 & IS 1893 Seismic",
+    title: "Columns",
+    subtitle: "Vertical load path established",
+    engineering:
+      "Column grids are set for crane loads, process clearances and future expansion. Reinforcement cages, splice levels and PEB base plates are coordinated so erection sequence matches the structural model.",
+    owns: [
+      "Column grid & sizing for industrial loads",
+      "RCC / steel interface at base plates",
+      "Erection sequencing notes",
+      "Seismic detailing at critical splices",
+    ],
+    code: "IS 456 · IS 800 · IS 1893",
     asset: "services/structural.jpg",
-    metric: "Seismic Zone III/IV Safe",
   },
   {
+    id: "structure",
+    step: "03",
+    title: "Structure",
+    subtitle: "Frame, floors and roofs",
+    engineering:
+      "Beams, slabs, portal frames and roof systems close the primary structure. STAAD / ETABS models are reconciled with architectural clear heights and MEP service zones before steel is ordered or formwork starts.",
+    owns: [
+      "RCC & PEB frame analysis",
+      "Floor / roof framing GFC",
+      "Crane gantry & heavy load paths",
+      "Deflection & vibration checks",
+    ],
+    code: "IS 800 · IS 875 · IS 1893",
+    asset: "insights/column-splice.jpg",
+  },
+  {
+    id: "utilities",
     step: "04",
-    phase: "MEP & Utility Routing",
-    title: "3D BIM Clash-Free Utility Trunking",
-    description:
-      "Integrating mechanical piping, HVAC cleanroom ductwork, single-line electrical transformer distribution, and high-pressure fire suppression networks.",
-    icon: Cpu,
-    deliverables: ["Electrical Transformer Single Line Diagram (SLD)", "HVAC Chilled Water Duct Matrix", "Fire Hydrant & Sprinkler Routing GA"],
-    code: "IS 732 & NBC Fire Code Part 4",
+    title: "Utilities",
+    subtitle: "Power, HVAC, fire, process",
+    engineering:
+      "Electrical SLDs, HVAC trunks, process piping and fire hydrant / sprinkler networks occupy reserved corridors. Clash detection happens against the structural frame—not after ducts are hung.",
+    owns: [
+      "HT/LT routing & transformer rooms",
+      "HVAC duct & chilled water matrix",
+      "Hydrant, pump & sprinkler coverage",
+      "Utility corridor coordination",
+    ],
+    code: "IS 732 · NBC Part 4 · IS 2190",
     asset: "services/mep.jpg",
-    metric: "Zero On-Site Rework",
   },
   {
+    id: "envelope",
     step: "05",
-    phase: "GFC & Code Certification",
-    title: "100% Construction-Ready Drawing Issue",
-    description:
-      "Consolidating all 10 engineering disciplines into coordinated, zero-clash Good-For-Construction (GFC) packages with bill of quantities (BOQ).",
-    icon: ShieldCheck,
-    deliverables: ["Coordinated Multidisciplinary GFC Drawings", "Comprehensive Tender Bill of Quantities (BOQ)", "Statutory Code Compliance Dossier"],
-    code: "Zero-Clash BIM Standard",
-    asset: "services/pmc.jpg",
-    metric: "Tender Ready Deliverables",
+    title: "Envelope",
+    subtitle: "Skin, openings, weather",
+    engineering:
+      "Facade, roofing, cladding and openings close the building physically. Waterproofing details, expansion joints and industrial door / dock interfaces are drawn for buildability—not only for elevation drawings.",
+    owns: [
+      "Roof & wall cladding detailing",
+      "Expansion & weatherproofing junctions",
+      "Dock, door & canopy interfaces",
+      "Architectural–structural edge conditions",
+    ],
+    code: "NBC · Manufacturer systems",
+    asset: "services/architecture.jpg",
   },
   {
+    id: "finished",
     step: "06",
-    phase: "Executed Industrial Facility",
-    title: "Turnkey Plant Commissioning Support",
-    description:
-      "Continuous site engineering support, technical shop drawing reviews, and quality verification ensuring completed facility matches design intent.",
-    icon: CheckCircle2,
-    deliverables: ["As-Built Engineering Drawings", "Structural Safety Certificate", "Facility Handover Documentation"],
-    code: "100% Buildability Guarantee",
+    title: "Finished Facility",
+    subtitle: "Commissioning-ready asset",
+    engineering:
+      "As-built updates, safety certificates and remaining RFIs close the loop. The completed facility should match the coordinated GFC package—with FORMX available for final verification walks.",
+    owns: [
+      "As-built drawing updates",
+      "Shop drawing clearance trail",
+      "Structural safety documentation",
+      "Handover coordination support",
+    ],
+    code: "As-built · Handover",
     asset: "projects/pdf_p1_1.jpeg",
-    metric: "25+ Facilities Commissioned",
   },
 ];
 
 export function ConstructionSequence() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const stageRefs = useRef<(HTMLElement | null)[]>([]);
   const current = stages[activeIdx];
 
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    stageRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIdx(i);
+        },
+        { rootMargin: "-35% 0px -45% 0px", threshold: 0 },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToStage = (i: number) => {
+    stageRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
-    <section className="border-y border-line bg-[#0a0a0a] py-16 text-white md:py-24">
-      <Container>
-        {/* Header */}
-        <Reveal className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <div className="mb-3 flex items-center gap-3">
-              <span className="h-px w-8 bg-x-red" />
-              <span className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                Signature Engineering Experience
-              </span>
+    <section className="relative border-y border-white/10 bg-[#050505] text-white">
+      {/* Sticky identity header */}
+      <div className="border-b border-white/10 bg-[#050505]/95 backdrop-blur-md sticky top-[4.5rem] z-20">
+        <Container className="py-5 md:py-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.28em] text-x-red">
+                Signature experience
+              </p>
+              <h2 className="mt-1 font-display text-2xl font-extrabold uppercase tracking-tight md:text-3xl lg:text-4xl">
+                The Building Construction Sequence
+              </h2>
+              <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-white/55">
+                How a FORMX facility rises—from foundation to finished plant—and what our engineers own at each stage.
+              </p>
             </div>
-            <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl lg:text-5xl leading-[1.08]">
-              The Building Construction Sequence
-            </h2>
-            <p className="mt-2.5 prose-measure text-[14px] leading-relaxed text-white/70">
-              How FORMX transforms raw land into a 100% executed, code-compliant industrial facility through a 6-stage coordinated workflow.
+            <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white/40">
+              Stage {current.step} / 06 · {current.title}
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/80 shrink-0">
-            <span>Stage {current.step} of 06</span>
-            <span className="text-x-red">•</span>
-            <span className="text-x-red">{current.phase}</span>
-          </div>
-        </Reveal>
-
-        {/* Interactive Milestone Tabs Rail */}
-        <Reveal className="mb-8 overflow-x-auto scrollbar-hide pb-2">
-          <div className="flex items-center gap-2 min-w-max">
-            {stages.map((stage, i) => {
-              const isActive = i === activeIdx;
-              const Icon = stage.icon;
-              return (
-                <button
-                  key={stage.step}
-                  type="button"
-                  onClick={() => setActiveIdx(i)}
-                  className={cn(
-                    "flex items-center gap-3 border px-4 py-3 font-display text-[11px] font-extrabold uppercase tracking-wider transition-all duration-200",
-                    isActive
-                      ? "border-x-red bg-x-red text-white shadow-[0_4px_20px_rgba(222,48,36,0.4)]"
-                      : "border-white/10 bg-white/[0.04] text-white/60 hover:border-white/30 hover:text-white",
-                  )}
-                >
-                  <span className={cn("text-xs", isActive ? "text-white" : "text-x-red")}>
-                    {stage.step}
-                  </span>
-                  <Icon className="size-3.5" />
-                  <span>{stage.phase}</span>
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
-
-        {/* Stage Content Panel Stage */}
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-center overflow-hidden border border-white/15 bg-[#121212] p-6 md:p-10 shadow-2xl formx-cut-x formx-edge formx-edge-x">
-          {/* Left Media Preview Panel */}
-          <Reveal className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-[#080808] lg:col-span-6 lg:aspect-[4/3]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.step}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="absolute inset-0"
-              >
-                <AssetImage
-                  alt={current.title}
-                  slot={current.asset}
-                  kind="facility"
-                  aspect="auto"
-                  fit="cover"
-                  tone="dark"
-                  priority
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-
-            <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
-              <span className="bg-x-red px-3 py-1 font-display text-[10px] font-extrabold uppercase tracking-widest text-white shadow-md">
-                MILESTONE {current.step}
-              </span>
-              <span className="bg-black/70 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-white/80 backdrop-blur-md">
-                {current.code}
-              </span>
-            </div>
-
-            <div className="absolute bottom-4 left-4 right-4 z-10 border border-white/15 bg-black/80 p-3.5 backdrop-blur-md">
-              <p className="font-display text-[9px] font-bold uppercase tracking-widest text-x-red">
-                Key Performance Metric
-              </p>
-              <p className="mt-0.5 font-display text-sm font-extrabold text-white">
-                {current.metric}
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Right Stage Narrative & Deliverables */}
-          <Reveal delay={0.08} className="flex flex-col justify-between lg:col-span-6">
-            <div>
-              <span className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
-                Stage {current.step} Workflow
-              </span>
-              <h3 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-white md:text-3xl lg:text-4xl leading-tight">
-                {current.title}
-              </h3>
-              <p className="mt-4 prose-measure text-[14px] leading-[1.8] text-white/75">
-                {current.description}
-              </p>
-
-              {/* GFC Deliverables List */}
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="mb-3 font-display text-[10px] font-extrabold uppercase tracking-[0.2em] text-x-red">
-                  Stage Output &amp; Deliverables:
-                </p>
-                <ul className="space-y-2.5">
-                  {current.deliverables.map((item, idx) => (
-                    <li key={item} className="flex items-center gap-3 text-[13px] font-medium text-white/90">
-                      <span className="flex size-5 items-center justify-center bg-x-red/20 font-display text-[10px] font-bold text-x-red">
-                        0{idx + 1}
-                      </span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Next Stage Navigation Button */}
-            <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+          {/* Stage rail */}
+          <div className="mt-5 flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
+            {stages.map((stage, i) => (
               <button
+                key={stage.id}
                 type="button"
-                onClick={() => setActiveIdx((i) => (i + 1) % stages.length)}
-                className="group inline-flex items-center gap-2 font-display text-[11px] font-extrabold uppercase tracking-[0.16em] text-x-red transition-all hover:text-white"
+                onClick={() => scrollToStage(i)}
+                className={cn(
+                  "shrink-0 border px-3 py-2 font-display text-[10px] font-extrabold uppercase tracking-wider transition-colors md:px-4",
+                  i === activeIdx
+                    ? "border-x-red bg-x-red text-white"
+                    : "border-white/15 bg-transparent text-white/50 hover:border-white/40 hover:text-white",
+                )}
               >
-                <span>Advance to Stage 0{((activeIdx + 1) % stages.length) + 1}</span>
-                <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
+                <span className="mr-1.5 text-white/60">{stage.step}</span>
+                {stage.title}
               </button>
+            ))}
+          </div>
+        </Container>
+      </div>
 
-              <span className="text-xs text-white/40">
-                Click tabs above to inspect any stage
-              </span>
-            </div>
-          </Reveal>
-        </div>
-      </Container>
+      {/* Vertical narrative stages */}
+      <div className="relative">
+        {stages.map((stage, i) => (
+          <article
+            key={stage.id}
+            ref={(el) => {
+              stageRefs.current[i] = el;
+            }}
+            className="border-b border-white/10 last:border-b-0"
+          >
+            <Container className="py-16 md:py-24">
+              <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 lg:items-center">
+                <Reveal className="relative lg:col-span-6">
+                  <div className="relative aspect-[16/11] overflow-hidden bg-[#111] lg:aspect-[4/3]">
+                    <AssetImage
+                      alt={stage.title}
+                      slot={stage.asset}
+                      kind="facility"
+                      fit="cover"
+                      aspect="auto"
+                      tone="dark"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    {/* Engineering stamp overlay */}
+                    <div className="absolute left-4 top-4 border border-x-red/60 bg-black/70 px-3 py-2 backdrop-blur-sm">
+                      <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red">
+                        Stage {stage.step}
+                      </p>
+                      <p className="mt-0.5 font-display text-[10px] font-bold uppercase tracking-wider text-white/80">
+                        {stage.code}
+                      </p>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p
+                        className="font-display font-black uppercase leading-none tracking-tight text-white/15"
+                        style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
+                      >
+                        {stage.title}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.06} className="lg:col-span-6">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={stage.id}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+                        {stage.subtitle}
+                      </p>
+                      <h3 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl lg:text-5xl">
+                        {stage.title}
+                      </h3>
+                      <p className="mt-5 text-[15px] leading-[1.9] text-white/70">
+                        {stage.engineering}
+                      </p>
+
+                      <div className="mt-8 border-t border-white/15 pt-6">
+                        <p className="mb-4 font-display text-[10px] font-extrabold uppercase tracking-[0.22em] text-x-red">
+                          What FORMX owns at this stage
+                        </p>
+                        <ul className="space-y-3">
+                          {stage.owns.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-3 text-[13px] font-medium text-white/85"
+                            >
+                              <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-x-red" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </Reveal>
+              </div>
+            </Container>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { MessageCircle } from "lucide-react";
 import { site } from "@/data/site";
 import { cn } from "@/lib/cn";
 
@@ -28,19 +28,25 @@ function messageForPath(path: string) {
 
 /** Detail pages that mount StickyEnquire on mobile */
 function hasStickyEnquire(path: string) {
-  return (
-    /^\/(services|projects|sectors)\/[^/]+/.test(path)
-  );
+  return /^\/(services|projects|sectors)\/[^/]+/.test(path);
 }
 
 export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
   const pathname = usePathname() || "/";
+  const [visible, setVisible] = useState(false);
   const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     messageForPath(pathname),
   )}`;
   const lift = hasStickyEnquire(pathname);
 
-  if (menuOpen) return null;
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 280);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (menuOpen || !visible) return null;
 
   return (
     <a
@@ -49,15 +55,14 @@ export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className={cn(
-        "formx-cut-sm fixed right-4 z-50 inline-flex items-center gap-2 bg-[#25D366] px-3.5 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.03] md:right-8",
-        lift
-          ? "bottom-[4.75rem] md:bottom-8"
-          : "bottom-5 md:bottom-8",
+        "fixed right-4 z-50 flex size-14 items-center justify-center rounded-full bg-x-red text-white shadow-[0_12px_32px_rgba(222,48,36,0.45)] transition-transform hover:scale-105 md:right-8",
+        lift ? "bottom-[4.75rem] md:bottom-8" : "bottom-5 md:bottom-8",
       )}
-      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+      style={{ marginBottom: "env(safe-area-inset-bottom)" }}
     >
-      <MessageCircle className="size-5 shrink-0" />
-      <span className="hidden sm:inline">WhatsApp</span>
+      <span className="font-display text-lg font-black leading-none">
+        F<span className="text-white/90">×</span>
+      </span>
     </a>
   );
 }

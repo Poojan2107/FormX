@@ -141,7 +141,7 @@ export function DesktopNav() {
                 <button
                   type="button"
                   className={cn(
-                    "relative inline-flex items-center gap-0.5 px-2 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors xl:px-2.5",
+                    "relative inline-flex items-center gap-1.5 px-2.5 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors xl:px-3",
                     highlighted
                       ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
                       : "text-ink/50 hover:text-ink",
@@ -155,9 +155,6 @@ export function DesktopNav() {
                     open(panelOpen ? null : (item.label as Panel))
                   }
                 >
-                  <span className="mr-0.5 text-[9px] font-bold text-x-red/70">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   {item.label}
                   <ChevronDown
                     className={cn(
@@ -170,7 +167,7 @@ export function DesktopNav() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "relative inline-flex items-center gap-0.5 px-2 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors xl:px-2.5",
+                    "relative inline-flex items-center gap-0.5 px-2.5 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors xl:px-3",
                     routeActive
                       ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
                       : "text-ink/50 hover:text-ink",
@@ -178,9 +175,6 @@ export function DesktopNav() {
                   aria-current={routeActive ? "page" : undefined}
                   onMouseEnter={() => setPanel(null)}
                 >
-                  <span className="mr-0.5 text-[9px] font-bold text-x-red/70">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   {item.label}
                 </Link>
               )}
