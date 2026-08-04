@@ -81,24 +81,24 @@ function SiteHeader({
               <Logo variant="full" />
             </Link>
 
-            <div className="hidden min-w-0 justify-center xl:flex">
+            <div className="hidden min-w-0 justify-center lg:flex">
               <DesktopNav />
             </div>
 
             <div className="relative z-10 flex items-center justify-end gap-5">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="hidden h-9 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink lg:flex"
+                className="hidden h-9 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink xl:flex"
                 aria-label={`Call ${site.phone}`}
               >
                 <Phone className="size-3.5 shrink-0 text-x-red" />
-                <span className="hidden xl:inline">{site.phone}</span>
+                <span>{site.phone}</span>
               </a>
 
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="relative hidden h-9 items-center gap-1.5 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover xl:inline-flex"
+                className="relative hidden h-9 items-center gap-1.5 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
@@ -106,7 +106,7 @@ function SiteHeader({
 
               <button
                 type="button"
-                className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red xl:hidden"
+                className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red lg:hidden"
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
@@ -133,7 +133,7 @@ function SiteHeader({
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-[#0a0a0a] xl:hidden"
+            className="fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-[#0a0a0a] lg:hidden"
             initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}

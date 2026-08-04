@@ -24,21 +24,21 @@ export function Hero() {
   }, [reduce]);
 
   return (
-    <section className="relative isolate min-h-[92vh] overflow-hidden bg-[#0a0a0a] text-white">
+    <section className="relative isolate flex min-h-[min(92vh,900px)] overflow-hidden bg-[#0a0a0a] text-white">
       <div
-        className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark opacity-[0.22]"
+        className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark opacity-[0.18]"
         aria-hidden
       />
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(900px 480px at 18% 35%, rgba(222,48,36,0.14), transparent 65%)",
+            "radial-gradient(900px 480px at 18% 40%, rgba(222,48,36,0.16), transparent 65%)",
         }}
         aria-hidden
       />
 
-      <Container className="relative z-10 flex min-h-[92vh] flex-col justify-center pb-20 pt-28 md:pb-24 md:pt-32">
+      <Container className="relative z-10 flex w-full flex-col justify-center py-28 md:py-32">
         <div className="max-w-3xl">
           <motion.div
             initial={reduce ? false : { opacity: 0 }}

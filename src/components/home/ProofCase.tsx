@@ -4,9 +4,9 @@ import { vapiCaseStudy } from "@/data/method";
 import { getProject } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { VisualFrame } from "@/components/ui/VisualFrame";
+import { AssetImage } from "@/components/ui/AssetImage";
 
-/** Home proof — one investigated facility, not a gallery parade */
+/** Home proof — one investigated facility, image fills the frame */
 export function ProofCase() {
   const project = getProject(vapiCaseStudy.slug);
   if (!project) return null;
@@ -14,16 +14,19 @@ export function ProofCase() {
   return (
     <section className="border-b border-line bg-[#f7f7f7] py-20 md:py-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
           <Reveal className="lg:col-span-6">
-            <VisualFrame
-              slot={project.assets.cover}
-              alt={project.title}
-              fit={project.assets.frame ?? "contain"}
-              aspect="landscape"
-              tone="dark"
-              className="border border-line"
-            />
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#111]">
+              <AssetImage
+                alt={project.title}
+                slot={project.assets.cover}
+                kind="facility"
+                fit="cover"
+                aspect="auto"
+                objectPosition="center"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
             <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
               {project.location} · {project.area} · {project.floors}
             </p>

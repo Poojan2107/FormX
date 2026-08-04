@@ -15,25 +15,24 @@ export function PeopleGlimpse() {
   return (
     <section className="bg-[#0d0d0d] py-20 text-white md:py-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 lg:items-center">
-          <Reveal className="relative lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1a1a] md:aspect-[3/4]">
-              <AssetImage
-                alt={founder.name}
-                slot={founder.asset}
-                kind="team"
-                fit="cover"
-                aspect="auto"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <p className="absolute bottom-5 left-5 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
-                Desk · Site · Review
-              </p>
-            </div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-14">
+          <Reveal className="relative min-h-[380px] overflow-hidden bg-[#1a1a1a] lg:col-span-5 lg:min-h-[520px]">
+            <AssetImage
+              alt={founder.name}
+              slot={founder.asset}
+              kind="team"
+              fit="cover"
+              aspect="auto"
+              objectPosition="center top"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+            <p className="absolute bottom-5 left-5 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
+              Desk · Site · Review
+            </p>
           </Reveal>
 
-          <Reveal delay={0.08} className="lg:col-span-7">
+          <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
               People
             </p>
@@ -43,9 +42,7 @@ export function PeopleGlimpse() {
             <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-white/50">
               {founder.name} · {founder.role} · Grade 1 (AMC / BMC)
             </p>
-            <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-white/70">
-              {founder.bio}
-            </p>
+            <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-white/70">{founder.bio}</p>
             <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-white/50">
               Load paths. Interfaces. Constructability. Site walks. Decisions stay with engineers who
               own the drawings — structural designer, architecture planning and site execution.

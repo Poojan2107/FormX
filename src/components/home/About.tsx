@@ -6,43 +6,46 @@ import { about } from "@/data/site";
 import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { VisualFrame } from "@/components/ui/VisualFrame";
+import { AssetImage } from "@/components/ui/AssetImage";
 
 /**
- * Founder: About Us AFTER hero scroll — VMS photo + copy.
- * Real brochure facility (not stock boardroom). Logo + shaping form + one paragraph.
+ * VMS-style About after hero scroll: filled photo column + logo + copy.
+ * Cover fill — never letterboxed matte that looks “placed”.
  */
 export function About() {
   return (
-    <section id="about" className="scroll-mt-32 border-b border-line bg-white py-20 md:py-28">
+    <section id="about" className="scroll-mt-32 border-b border-line bg-white py-16 md:py-24 lg:py-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
-          <Reveal className="lg:col-span-5">
-            <VisualFrame
-              slot="projects/brochure/brochure_p3_2.png"
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-14">
+          <Reveal className="relative min-h-[320px] overflow-hidden bg-[#111] sm:min-h-[400px] lg:col-span-5 lg:min-h-0">
+            <AssetImage
               alt="G+2 Industrial Facility, Vapi — FORMX completed work"
-              fit="contain"
-              aspect="portrait"
-              tone="dark"
-              className="border border-line"
+              slot="projects/brochure/brochure_p3_2.png"
+              kind="facility"
+              fit="cover"
+              aspect="auto"
+              objectPosition="center"
+              className="absolute inset-0 h-full w-full object-cover"
             />
-            <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
-              G+2 Industrial · Vapi
-            </p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+              <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">
+                G+2 Industrial · Vapi
+              </p>
+            </div>
           </Reveal>
 
-          <Reveal delay={0.06} className="lg:col-span-7">
+          <Reveal delay={0.06} className="flex flex-col justify-center lg:col-span-7">
             <Logo variant="full" className="origin-left scale-110" />
-            <p className="mt-7 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
+            <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
               Shaping form · Defining futures
             </p>
             <p className="mt-5 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-ink/35">
               About Us
             </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-ink md:text-4xl lg:text-[2.65rem]">
+            <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-ink md:text-4xl lg:text-[2.5rem]">
               Trusted structural engineering &amp; design practice
             </h2>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
+            <p className="mt-6 max-w-xl text-[16px] leading-[1.9] text-ink-muted">
               {about.paragraphs[0]}
             </p>
             <Link

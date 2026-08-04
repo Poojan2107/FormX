@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ViewTransition } from "react";
-import { Chakra_Petch, Inter } from "next/font/google";
+import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -13,7 +13,7 @@ const display = Chakra_Petch({
   weight: ["400", "500", "600", "700"],
 });
 
-const body = Inter({
+const body = IBM_Plex_Sans({
   variable: "--font-body-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
