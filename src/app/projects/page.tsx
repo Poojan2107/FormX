@@ -7,9 +7,9 @@ import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Completed Projects | FORMX Portfolio",
+  title: "Engineering Evidence | FORMX Projects",
   description:
-    "FORMX completed projects — industrial facilities, PEB warehouses, residential, commercial and institutional structures.",
+    "FORMX project case studies — industrial facilities, PEB warehouses, residential, commercial and institutional structures from the practice brochure.",
 };
 
 export default function ProjectsPage() {
@@ -19,17 +19,18 @@ export default function ProjectsPage() {
         <Container>
           <Reveal>
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Project record
+              Engineering evidence
             </p>
             <h1
               className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
-              Completed projects
+              Completed facilities
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              Selected work from the FORMX brochure — industrial, residential, commercial and
-              institutional structures. Descriptions match our published portfolio.
+              Not a gallery of pretty buildings — case records from the FORMX brochure. Open any
+              project to see what the client needed, which decisions shaped the outcome, and how the
+              facility was documented.
             </p>
           </Reveal>
         </Container>

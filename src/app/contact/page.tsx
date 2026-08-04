@@ -20,17 +20,22 @@ export default function ContactPage() {
       <section className="border-b border-line bg-white pt-24 pb-14 md:pt-32 md:pb-16">
         <Container>
           <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            Project discussion
+            Begin collaboration
           </p>
           <h1
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Let&apos;s discuss your next project
+            Let&apos;s understand your facility first
           </h1>
           <p className="mt-5 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            We look forward to collaborating with you on your next project. Our clients range from
-            industrial houses and pharma companies to architects, contractors, and private homeowners.
+            By the time you write to us, you already know how FORMX thinks: Architecture, Structure
+            and Infrastructure coordinated before issue. Share facility type, location and timeline —
+            we review constraints before we talk solutions.
+          </p>
+          <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
+            Industrial houses, pharma companies, architects, contractors and private homeowners —
+            same conversation: reduce construction uncertainty early.
           </p>
           <p className="mt-6 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink/45">
             {site.phone} · {site.email}

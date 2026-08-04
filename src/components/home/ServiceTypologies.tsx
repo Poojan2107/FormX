@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
   portfolioServices,
-  portfolioServicesNote,
   portfolioClosing,
 } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
@@ -18,10 +17,11 @@ export function ServiceTypologies() {
             Our services
           </p>
           <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-            Design solutions in engineering &amp; architecture
+            What we take on — after how we think
           </h2>
           <p className="mt-4 max-w-xl text-[14px] leading-[1.85] text-ink-muted">
-            {portfolioServicesNote}
+            Four facility typologies from the FORMX brochure. Each one still depends on Architecture,
+            Structure and Infrastructure answering together.
           </p>
         </Reveal>
 
@@ -65,6 +65,10 @@ export function ServiceTypologies() {
         <Reveal delay={0.1}>
           <p className="mt-10 max-w-3xl text-[14px] leading-[1.85] text-ink-muted">
             {portfolioClosing}
+          </p>
+          <p className="mt-4 max-w-3xl text-[13px] leading-[1.75] text-ink/45">
+            We also assist with quantity estimation, construction support, and coordination for
+            seamless execution.
           </p>
         </Reveal>
       </Container>

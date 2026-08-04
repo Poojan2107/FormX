@@ -1,0 +1,55 @@
+FORMX DESIGN BIBLE V1 — Permanent Decision Framework
+======================================================
+Locked for V3 implementation · 4 Aug 2026
+
+NORTH STAR
+  Digital headquarters of FORMX — not a marketing website.
+  Sell confidence in engineering decisions, not service catalogues.
+
+PUBLIC IA (locked)
+  Architecture · Structure · Infrastructure only.
+  MEP service URLs redirect to /services. Do not restore publicly.
+
+PRIORITY ORDER
+  Identity → People → Thinking → Process → Evidence → Projects → Conversation
+
+DESIGN RULES
+  Engineering before Interface
+  Evidence before Marketing
+  People before Departments
+  Thinking before Services
+  Projects before Claims
+  Documentation before Decoration
+  Editorial before Components
+  Trust before Conversion
+
+COPY RULES
+  Observations over claims. Consequences over adjectives.
+  Founder voice: planning before execution, coordination before construction,
+  constructability, reduced uncertainty.
+  Brochure facts stay accurate; marketing language stays out.
+
+IMAGE RULES
+  Every image must prove something. Prefer brochure/PDF/project/studio assets.
+  No decorative blueprint wallpaper. Caption when possible.
+
+CONSTRUCTION SEQUENCE (locked quality gate)
+  Rebuild as documentary "how projects move" on Home.
+  If it still feels like a template component after build → REMOVE it.
+  Keep surrounding V3 narrative either way.
+
+DEPLOY
+  Implement on main and push for Vercel.
+
+QUALITY CHECK (every page)
+  Does this build trust?
+  Does this teach something?
+  Does this show engineering?
+  Does this demonstrate experience?
+  Does this reduce uncertainty?
+  Does this feel authentic?
+  Would an industrial promoter care?
+  Would removing this improve clarity?
+
+FINAL TEST
+  If the logo disappeared, would a promoter still recognise FORMX?

@@ -1,0 +1,22 @@
+FORMX V3 — LOCKED EXECUTION DECISIONS
+=====================================
+Date: 4 Aug 2026
+
+1. Construction Sequence: rebuild as signature documentary; remove if quality gate fails
+2. Scope: Full V3 (Home → About → Services → Projects → Journal → Contact)
+3. Public IA: Architecture · Structure · Infrastructure only (MEP redirected)
+4. Assets: every appropriate brochure/PDF/studio/project asset as evidence
+5. Voice: founder observations + brochure facts
+6. Git: push to main for Vercel
+
+Narrative home order:
+  Hero (identity)
+  → Why FORMX exists (thinking)
+  → How we work / trust (people + pillars)
+  → How projects move (Construction Sequence attempt)
+  → Evidence (completed + specialized work)
+  → What we take on (service typologies — AFTER identity)
+  → Leadership
+  → Conversation
+
+Do not add cards for modernity. Prefer editorial composition.

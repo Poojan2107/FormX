@@ -38,7 +38,7 @@ export function PeopleGlimpse() {
               People
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white md:text-4xl">
-              Leadership close to the work
+              People close to the work
             </h2>
             <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-white/50">
               {founder.name} · {founder.role} · Grade 1 (AMC / BMC)
@@ -47,7 +47,8 @@ export function PeopleGlimpse() {
               {founder.bio}
             </p>
             <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-white/50">
-              Structural designer, architecture planning &amp; site execution.
+              Load paths. Interfaces. Constructability. Site walks. Decisions stay with engineers who
+              own the drawings — structural designer, architecture planning and site execution.
             </p>
             <Link
               href="/about"

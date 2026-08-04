@@ -119,7 +119,7 @@ export function DisciplineStory({ service }: { service: Service }) {
             <p className="mt-4 text-[16px] leading-[1.9] text-ink-muted">{story.siteReality}</p>
             <p className="mt-6 text-[14px] leading-[1.85] text-ink-muted">{service.summary}</p>
             <Button href="/contact" variant="primary" className="mt-8 gap-2">
-              Discuss {service.title}
+              Discuss how this discipline applies to your facility
               <ArrowUpRight className="size-4" />
             </Button>
           </Reveal>

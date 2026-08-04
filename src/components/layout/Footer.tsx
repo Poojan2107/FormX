@@ -30,7 +30,11 @@ export function Footer() {
               <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-white md:text-4xl lg:text-5xl">
                 Ahmedabad Practice
               </h2>
-              <p className="mt-3 max-w-lg font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
+              <p className="mt-3 max-w-lg text-[15px] leading-[1.8] text-white/55">
+                Architecture · Structure · Infrastructure — coordinated before issue, accountable
+                through execution.
+              </p>
+              <p className="mt-4 font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
                 {site.slogan}
               </p>
             </div>

@@ -180,15 +180,15 @@ export const aboutPage = {
   principles: [
     {
       title: "Our Vision",
-      body: "Where Vision Takes Form — structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
+      body: "Every engineering decision should reduce future construction uncertainty — structures that prioritize safety, efficiency, and alignment with architectural vision and how people use the facility.",
     },
     {
       title: "Our Mission",
-      body: "Deliver Architecture, Structure and Infrastructure with technical proficiency and practical wisdom — from concept through site execution.",
+      body: "Drawings should answer questions before construction begins. We deliver Architecture, Structure and Infrastructure with technical proficiency and practical wisdom — from concept through site execution.",
     },
     {
       title: "Our Values",
-      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes.",
+      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes — behaviours we expect in every review, not words on a wall.",
     },
   ],
   humanValues: [

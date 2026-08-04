@@ -5,10 +5,7 @@ import { trustMetrics } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
-/**
- * Founder: clean VMS-style metrics after scroll — bold numbers, white field, no clutter.
- * PDF pillars sit above as quiet practice language.
- */
+/** V3 — quiet trust: how we work + sparse metrics after scroll identity */
 export function TrustProof() {
   return (
     <section className="border-b border-line bg-white py-16 md:py-24">
@@ -20,6 +17,10 @@ export function TrustProof() {
           <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
             Technical proficiency with practical wisdom
           </h2>
+          <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+            Structural integrity, functional design, technical expertise and collaborative insight —
+            the same four pillars that guide every review inside the studio.
+          </p>
         </Reveal>
 
         <div className="mt-10 grid gap-8 border-b border-line pb-12 sm:grid-cols-2 lg:grid-cols-4">

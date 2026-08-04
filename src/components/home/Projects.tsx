@@ -18,11 +18,11 @@ export function Projects() {
               Proof
             </p>
             <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl lg:text-5xl">
-              Completed projects
+              Engineering evidence
             </h2>
             <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-ink-muted">
-              Every facility from the FORMX brochure — industrial, residential, commercial and
-              institutional — shown complete in frame.
+              Completed facilities from the FORMX brochure — industrial, residential, commercial and
+              institutional. Shown complete in frame so you can judge the work, not the crop.
             </p>
           </div>
           <Link

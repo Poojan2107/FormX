@@ -33,49 +33,49 @@ const familyBySlug: Record<string, DisciplineFamily> = {
 
 const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
   architecture: {
-    motif: "Concept · Planning · Space · Layouts",
-    lead: "Architecture at FORMX starts with how the facility will operate—then resolves statutory setbacks, clear heights and structural grids before elevations are finished for presentation.",
+    motif: "Plot → Operations → Buildable plans",
+    lead: "Architecture at FORMX is not drawing buildings for presentation. It is making future construction easier — by understanding how the facility will operate before elevations are finished.",
     thinking: [
-      "Operational zoning before cosmetic elevation work",
-      "Layouts that respect structural bays and utility risers",
-      "Statutory approval drawings that match what can be built",
-      "Design process that stays coordinated through GFC revisions",
+      "Empty plots become facilities only after operations, movement and expansion are understood",
+      "Zoning and clear heights lock before cosmetic elevation work",
+      "Layouts must respect structural bays and infrastructure routes — or Structure and Infrastructure pay for it later",
+      "Statutory drawings must match what can actually be built",
     ],
     artifacts: [
-      "Master spatial zoning",
+      "Operational zoning & master planning",
       "GA plans, sections & elevations",
       "Door / window / finish schedules",
       "Statutory submission sets",
     ],
     siteReality:
-      "On site, architectural intent must survive contractor markups and utility penetrations. We stay in the revision loop until openings, docks and finishes match the coordinated package.",
+      "On site, architectural intent must survive contractor markups and penetrations. We stay in the revision loop until openings, docks and finishes match the coordinated package — because unresolved planning questions become expensive concrete.",
   },
   structure: {
-    motif: "Frames · Loads · Steel · Reinforcement · Analysis",
-    lead: "Structural systems are sized for real industrial loads—cranes, process equipment, seismic and wind—then detailed so fabrication and reinforcement cages can be erected without guesswork.",
+    motif: "Load path · Gravity · Wind · Seismic · Connections",
+    lead: "Structural Engineering answers one question relentlessly: how does every load safely travel into the ground? Frames are sized for real industrial forces — then detailed so fabrication and cages can be erected without guesswork.",
     thinking: [
-      "Load path clarity from equipment to foundation",
-      "PEB and RCC interfaces at base plates and splices",
-      "Seismic and wind detailing at critical junctions",
-      "Value engineering that does not erase safety margins",
+      "Load path clarity from equipment and cranes to foundations",
+      "PEB and RCC interfaces at base plates and splices — where projects usually fail silently",
+      "Seismic and wind detailing at critical junctions before tender",
+      "Value engineering that protects safety margins instead of erasing them",
     ],
     artifacts: [
-      "STAAD / ETABS calculation trail",
+      "Analysis trail (STAAD / ETABS)",
       "Structural GA & reinforcement drawings",
       "Steel connection & fabrication details",
       "Foundation layouts with load schedules",
     ],
     siteReality:
-      "Construction crews need unambiguous bar schedules and connection details. We support RFIs and shop drawing reviews until the frame matches the model.",
+      "Construction crews need unambiguous bar schedules and connection details. We support RFIs and shop drawing reviews until the frame matches the model — because ambiguous structure becomes site invention.",
   },
   fire: {
     motif: "Hydrant · Pump · Sprinkler · Code · Coverage",
-    lead: "Fire protection is designed as a life-safety system with verified coverage—hydrant loops, pump rooms, sprinklers and detection—coordinated with architecture and structure before pipes are hung.",
+    lead: "Fire protection is designed as a life-safety strategy — coverage, routes and redundancy — coordinated with Architecture and Structure before pipes are hung.",
     thinking: [
       "Hazard classification drives system selection",
-      "Hydrant and sprinkler coverage without dead zones",
+      "Coverage without dead zones",
       "Pump room sizing and redundancy",
-      "NBC Part 4 and IS code alignment",
+      "Code alignment that survives inspection",
     ],
     artifacts: [
       "Fire GA & coverage plans",
@@ -84,16 +84,16 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Hydraulic calculations",
     ],
     siteReality:
-      "Authority inspections fail on incomplete coverage or uncoordinated penetrations. We keep fire routes clear of structural and utility clashes before installation.",
+      "Inspections fail on incomplete coverage or uncoordinated penetrations. Routes must stay clear of structural and utility clashes before installation.",
   },
   electrical: {
-    motif: "SLD · Transformers · Power · Routing",
-    lead: "Electrical design starts with load assessment and a clear single-line diagram—then routes HT/LT cables, trays and earthing through corridors reserved in the coordinated BIM / GA set.",
+    motif: "SLD · Distribution · Reliability",
+    lead: "Electrical planning starts with how uninterrupted industrial power must behave — load, growth, routes — then locks an SLD contractors can build.",
     thinking: [
-      "SLD that matches actual plant load growth",
-      "Transformer and panel room spatial logic",
-      "Cable tray routing free of structural clashes",
-      "Earthing and lightning protection as system, not afterthought",
+      "SLD that matches plant load growth",
+      "Panel and transformer spatial logic",
+      "Routes free of structural clashes",
+      "Earthing and LPS as system, not afterthought",
     ],
     artifacts: [
       "Single Line Diagrams (SLD)",
@@ -102,16 +102,16 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Earthing & LPS details",
     ],
     siteReality:
-      "Rework happens when trays fight ducts and beams. We coordinate electrical routes with structure and HVAC before cable is pulled.",
+      "Rework happens when trays fight beams. Routes are coordinated before cable is pulled.",
   },
   mechanical: {
-    motif: "Ducts · HVAC · Utilities · Equipment",
-    lead: "Mechanical and HVAC systems are planned as plant utilities—duct trunks, chilled water, process piping and equipment pads—sized for maintainability and clash-free installation.",
+    motif: "Environment · Process support · Maintainability",
+    lead: "Mechanical systems exist to support manufacturing environments — comfort, process and access — planned so installation does not fight Structure.",
     thinking: [
-      "Load and process demand before equipment selection",
-      "Duct and pipe trunks in reserved corridors",
-      "Equipment foundations coordinated with structure",
-      "Access and maintenance envelopes protected",
+      "Demand before equipment selection",
+      "Trunks in reserved corridors",
+      "Equipment pads coordinated with structure",
+      "Maintenance envelopes protected",
     ],
     artifacts: [
       "HVAC / utility GA layouts",
@@ -120,16 +120,16 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Technical specifications & BOQ",
     ],
     siteReality:
-      "Ceiling congestion kills schedules. We close mechanical clashes against structure and electrical trays before GFC issue.",
+      "Ceiling congestion kills schedules. Clashes close before GFC issue.",
   },
   infrastructure: {
-    motif: "Roads · Drainage · Utilities · Site networks",
-    lead: "Site infrastructure opens the plot for construction and operations—grading, roads, stormwater, water supply and external utilities—aligned with building footprints and future expansion.",
+    motif: "Roads · Drainage · Levels · Daily operations",
+    lead: "Infrastructure explains how an industrial site actually functions every day — roads, stormwater, water, grading and external utilities — systems clients rarely see until they fail.",
     thinking: [
       "Grading that drains without flooding pads",
       "Road and pavement for construction and plant traffic",
       "Storm and utility networks with clear ownership",
-      "External development coordinated with architecture",
+      "External development aligned with building footprints and expansion",
     ],
     artifacts: [
       "Site master & infrastructure layout",
@@ -138,11 +138,11 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Drainage & utility profiles",
     ],
     siteReality:
-      "Wrong levels at the plot boundary cascade into foundation and dock problems. Civil GAs are issued with building interface notes contractors can stake.",
+      "Wrong levels at the plot boundary cascade into foundation and dock problems. Civil GAs carry building interface notes contractors can stake.",
   },
   delivery: {
-    motif: "Coordination · Tender · Procurement · Site support",
-    lead: "Delivery holds Architecture, Structure and Infrastructure together — tender clarity, vendor evaluation, schedule pressure and construction-stage engineering until the facility matches intent.",
+    motif: "Interfaces · Tender clarity · Site answers",
+    lead: "Delivery holds Architecture, Structure and Infrastructure together — because projects stall when nobody owns the interface between disciplines.",
     thinking: [
       "Scope that matches what will actually be built",
       "Tender documents contractors can price without ambiguity",
@@ -156,7 +156,7 @@ const stories: Record<DisciplineFamily, Omit<ServiceStory, "family">> = {
       "Progress & closeout documentation",
     ],
     siteReality:
-      "Projects stall when nobody owns the interface. FORMX delivery keeps architecture, structure and infrastructure answering as one practice through construction.",
+      "FORMX delivery keeps Architecture, Structure and Infrastructure answering as one practice through construction — until the facility matches intent.",
   },
 };
 

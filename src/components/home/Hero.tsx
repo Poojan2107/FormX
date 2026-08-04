@@ -1,22 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { hero, brochureVisuals } from "@/data/site";
+import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { brochureVisuals } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 
-/** Brochure visuals — model + completed facilities, contained so nothing is cut */
 const heroImages = [
   { slot: brochureVisuals.heroModel, alt: "FORMX structural model", fit: "contain" as const },
   { slot: "projects/brochure/brochure_p3_2.png", alt: "G+2 Industrial Facility, Vapi", fit: "contain" as const },
-  { slot: "projects/brochure/brochure_p4_4.png", alt: "G+2C+12 Apartment, Pune", fit: "contain" as const },
-  { slot: "projects/brochure/brochure_p6_3.png", alt: "Office Building, Senegal", fit: "contain" as const },
   { slot: "projects/brochure/brochure_p5_1.png", alt: "Industrial Shed Expansion, Valsad", fit: "contain" as const },
+  { slot: "projects/brochure/brochure_p6_3.png", alt: "Office Building, Senegal", fit: "contain" as const },
 ];
 
+/** V3 hero — company identity first; publication cover, not landing-page ad */
 export function Hero() {
   const reduce = useReducedMotion();
   const [imageIndex, setImageIndex] = useState(0);
@@ -37,7 +36,7 @@ export function Hero() {
     const onScroll = () => {
       if (window.scrollY > 40) reveal();
     };
-    const delayed = window.setTimeout(reveal, 1800);
+    const delayed = window.setTimeout(reveal, 1600);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.clearTimeout(delayed);
@@ -49,7 +48,7 @@ export function Hero() {
     if (reduce || !showPhoto) return;
     const id = window.setInterval(() => {
       setImageIndex((i) => (i + 1) % heroImages.length);
-    }, 7000);
+    }, 7500);
     return () => window.clearInterval(id);
   }, [reduce, showPhoto]);
 
@@ -77,22 +76,22 @@ export function Hero() {
               tone="dark"
               objectPosition="center"
               priority={i === 0}
-              className="absolute inset-0 h-full w-full p-[4%] md:p-[6%] lg:left-[38%] lg:w-[62%] lg:p-8"
+              className="absolute inset-0 h-full w-full p-[4%] md:p-[6%] lg:left-[40%] lg:w-[60%] lg:p-10"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/88 to-[#0a0a0a]/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/45" />
       </div>
 
       <div
         className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark transition-opacity duration-1000"
-        style={{ opacity: showPhoto ? 0.12 : 0.35 }}
+        style={{ opacity: showPhoto ? 0.1 : 0.28 }}
         aria-hidden
       />
 
       <Container className="relative z-10 flex min-h-[92vh] flex-col justify-center pb-20 pt-28 md:pb-24 md:pt-32">
-        <div className="max-w-4xl">
+        <div className="max-w-3xl">
           <motion.div
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -140,7 +139,7 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={logoReady ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mb-6 font-display text-xl font-medium tracking-wide text-white/90 md:text-2xl lg:text-3xl"
+            className="mb-5 font-display text-xl font-medium tracking-wide text-white/90 md:text-2xl lg:text-3xl"
           >
             Where Vision Takes Form
           </motion.p>
@@ -149,31 +148,41 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0 }}
             animate={logoReady ? { opacity: 1 } : undefined}
             transition={{ duration: 0.6, delay: 0.85 }}
-            className="mb-10 max-w-xl text-[15px] leading-[1.85] text-white/70 md:text-[16px]"
+            className="mb-4 max-w-xl text-[15px] leading-[1.85] text-white/55 md:text-[16px]"
           >
-            {hero.body}
+            An Ahmedabad structural practice coordinating Architecture, Structure and Infrastructure
+            — so industrial and building projects reach site with fewer surprises.
+          </motion.p>
+
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={logoReady ? { opacity: 1 } : undefined}
+            transition={{ duration: 0.6, delay: 0.95 }}
+            className="mb-10 max-w-lg font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/40"
+          >
+            Shaping form · Defining futures
           </motion.p>
 
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={logoReady ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.5, delay: 1 }}
+            transition={{ duration: 0.5, delay: 1.05 }}
             className="flex flex-wrap items-center gap-4"
           >
             <Link
-              href={hero.primaryCta.href}
+              href="/contact"
               transitionTypes={["nav-forward"]}
               className="group inline-flex items-center gap-3 bg-x-red px-8 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-x-red-hover"
             >
-              {hero.primaryCta.label}
+              Understand your facility
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href={hero.secondaryCta.href}
+              href="/projects"
               transitionTypes={["nav-forward"]}
               className="inline-flex items-center gap-2.5 border border-white/25 px-8 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/90 transition-colors hover:border-white hover:text-white"
             >
-              {hero.secondaryCta.label}
+              Review completed work
               <ArrowUpRight className="size-4" />
             </Link>
           </motion.div>

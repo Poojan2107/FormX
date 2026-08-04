@@ -39,15 +39,20 @@ export default function ServicesPage() {
       <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
         <Container>
           <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            Our services
+            Engineering disciplines
           </p>
           <h1
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Design solutions in engineering &amp; architecture
+            How each discipline thinks
           </h1>
           <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
+            Not a catalogue of capabilities — Architecture, Structure and Infrastructure as
+            engineering judgement. Facility typologies from the brochure below; discipline chapters
+            teach how FORMX approaches the work.
+          </p>
+          <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
             {portfolioServicesNote}
           </p>
         </Container>

@@ -104,8 +104,8 @@ export default async function ServiceDetailPage({ params }: Props) {
       <RelatedLinks title="Related disciplines" items={others} />
 
       <CtaBand
-        title={`Engage FORMX for ${service.title.toLowerCase()}`}
-        description="Share site constraints, facility type and timeline — Architecture, Structure and Infrastructure scoped together."
+        title={`Let's discuss ${service.title.toLowerCase()} for your facility`}
+        description="Share site constraints, facility type and timeline — we review how this discipline must coordinate with Architecture, Structure and Infrastructure before drawings begin."
         secondary={{ label: "All services", href: "/services" }}
       />
       <StickyEnquire label={`Discuss ${service.title}`} />

@@ -16,9 +16,9 @@ import { VisualFrame } from "@/components/ui/VisualFrame";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "Insights | FORMX Practice Notes & Portfolio",
+  title: "Engineering Journal | FORMX Practice Notes",
   description:
-    "FORMX insights — specialized structural work, ongoing projects, and practice resources from the Ahmedabad studio.",
+    "FORMX Engineering Journal — observations from specialized structural work, live mandates and practice resources. Ahmedabad.",
 };
 
 export default function KnowledgeCenterPage() {
@@ -27,17 +27,18 @@ export default function KnowledgeCenterPage() {
       <section className="border-b border-line bg-[#0d0d0d] pt-24 pb-14 text-white md:pt-32 md:pb-16">
         <Container>
           <p className="font-display text-[10px] font-bold uppercase tracking-[0.32em] text-x-red">
-            Insights
+            Engineering Journal
           </p>
           <h1
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Practice notes from FORMX
+            Observations from the practice
           </h1>
           <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-white/60">
-            Specialized engineering, live mandates and service typologies from the brochure — written
-            for project discussions, not marketing drip.
+            Not a marketing blog — specialized engineering, live mandates and facility typologies
+            drawn from real FORMX work. Read to understand how the practice thinks before you brief a
+            project.
           </p>
         </Container>
       </section>
