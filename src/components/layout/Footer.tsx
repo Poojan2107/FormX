@@ -31,8 +31,8 @@ export function Footer() {
                 Ahmedabad Practice
               </h2>
               <p className="mt-3 max-w-lg text-[15px] leading-[1.8] text-white/55">
-                Architecture · Structure · Infrastructure — coordinated before issue, accountable
-                through execution.
+                Before Issue — Architecture · Structure · Infrastructure coordinated before drawings
+                leave the studio. Accountable through execution.
               </p>
               <p className="mt-4 font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
                 {site.slogan}

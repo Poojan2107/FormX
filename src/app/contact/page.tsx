@@ -26,12 +26,12 @@ export default function ContactPage() {
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Let&apos;s understand your facility first
+            Let&apos;s read your facility Before Issue
           </h1>
           <p className="mt-5 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            By the time you write to us, you already know how FORMX thinks: Architecture, Structure
-            and Infrastructure coordinated before issue. Share facility type, location and timeline —
-            we review constraints before we talk solutions.
+            You already know the stance: Architecture, Structure and Infrastructure answer each
+            other before drawings leave the studio. Share facility type, location and timeline — we
+            start with constraints and interfaces, not a sheet checklist.
           </p>
           <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
             Industrial houses, pharma companies, architects, contractors and private homeowners —

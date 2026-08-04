@@ -28,9 +28,14 @@ export default function ProjectsPage() {
               Completed facilities
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              Not a gallery of pretty buildings — case records from the FORMX brochure. Open any
-              project to see what the client needed, which decisions shaped the outcome, and how the
-              facility was documented.
+              Brochure facilities as engineering evidence. Start with the{" "}
+              <Link
+                href="/projects/vapi-g2-industrial"
+                className="font-semibold text-x-red underline"
+              >
+                Vapi G+2 Before Issue case study
+              </Link>{" "}
+              — then explore the full record.
             </p>
           </Reveal>
         </Container>

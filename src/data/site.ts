@@ -26,6 +26,12 @@ export {
   type NewsItem,
   type TeamMember,
 } from "./content";
+export {
+  formxMethod,
+  formxEvidence,
+  vapiCaseStudy,
+  hirenJudgement,
+} from "./method";
 
 export const site = {
   name: "FormX Consultants",

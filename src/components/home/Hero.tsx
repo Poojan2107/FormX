@@ -150,8 +150,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.85 }}
             className="mb-4 max-w-xl text-[15px] leading-[1.85] text-white/55 md:text-[16px]"
           >
-            An Ahmedabad structural practice coordinating Architecture, Structure and Infrastructure
-            — so industrial and building projects reach site with fewer surprises.
+            An Ahmedabad structural practice. We coordinate Architecture, Structure and
+            Infrastructure <span className="text-white/90">Before Issue</span> — so industrial and
+            building projects reach site with fewer surprises.
           </motion.p>
 
           <motion.p

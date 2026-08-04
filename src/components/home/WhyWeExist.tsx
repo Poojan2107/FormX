@@ -23,21 +23,21 @@ export function WhyWeExist() {
               Projects become expensive when disciplines meet too late
             </h2>
             <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              Every unresolved coordination issue eventually appears on the construction site. FORMX
-              exists so Architecture, Structure and Infrastructure are planned together — technical
-              proficiency with practical wisdom — before drawings leave the studio and long before
-              concrete is poured.
+              Every unresolved coordination issue eventually appears on the construction site. That
+              is why FORMX works <span className="font-semibold text-ink">Before Issue</span> —
+              Architecture, Structure and Infrastructure answer each other before drawings leave the
+              studio, with technical proficiency and practical wisdom.
             </p>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
               We do not measure success by sheet count. We measure it by whether the facility can be
               built, approved and operated without inventing answers on site.
             </p>
             <Link
-              href="/about"
+              href="/#before-issue"
               transitionTypes={["nav-forward"]}
               className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
             >
-              Meet the practice
+              The Before Issue method
               <ArrowUpRight className="size-4" />
             </Link>
           </Reveal>
