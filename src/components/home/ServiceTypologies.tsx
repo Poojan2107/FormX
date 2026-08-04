@@ -17,11 +17,11 @@ export function ServiceTypologies() {
             Our services
           </p>
           <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-            What we take on — after how we think
+            Design solutions in engineering &amp; architecture
           </h2>
           <p className="mt-4 max-w-xl text-[14px] leading-[1.85] text-ink-muted">
-            Four facility typologies from the FORMX brochure. Each one still depends on Architecture,
-            Structure and Infrastructure answering together.
+            Four facility typologies from the FORMX brochure — Architecture, Structure and
+            Infrastructure answering together.
           </p>
         </Reveal>
 

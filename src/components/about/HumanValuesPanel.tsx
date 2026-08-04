@@ -20,14 +20,15 @@ export function HumanValuesPanel() {
       <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="relative aspect-[4/3] overflow-hidden bg-[#111] lg:col-span-6 lg:aspect-auto lg:min-h-[480px]">
           <AssetImage
-            alt="FORMX collaboration — people close to the work"
-            slot="about/studio-cover.jpg"
-            kind="studio"
+            alt="Hiren J. Shah — Founder & Managing Partner, FORMX"
+            slot="about/hiren-j-shah.jpg"
+            kind="team"
             fit="cover"
             aspect="auto"
+            objectPosition="center top"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
               Because the best results are built by a team

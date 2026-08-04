@@ -39,18 +39,17 @@ export default function ServicesPage() {
       <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
         <Container>
           <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            Engineering disciplines
+            Our services
           </p>
           <h1
             className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            Disciplines inside Before Issue
+            Design solutions in engineering &amp; architecture
           </h1>
           <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            Architecture, Structure and Infrastructure are not a catalogue — they are the three
-            voices that must agree before FORMX issues. Facility typologies below; discipline
-            chapters teach how each one thinks.
+            Architecture, Structure and Infrastructure — the three voices that must agree before
+            FORMX issues. Facility typologies from the brochure; discipline chapters below.
           </p>
           <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
             {portfolioServicesNote}

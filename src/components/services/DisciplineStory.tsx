@@ -1,70 +1,39 @@
 import type { Service } from "@/data/services";
-import { getServiceStory, type DisciplineFamily } from "@/data/serviceStories";
+import { getServiceStory } from "@/data/serviceStories";
 import { Container } from "@/components/ui/Container";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ArrowUpRight } from "lucide-react";
-import { cn } from "@/lib/cn";
 
-const familyTone: Record<DisciplineFamily, string> = {
-  architecture: "from-[#1a1512] to-[#0c0c0c]",
-  structure: "from-[#12151a] to-[#0a0a0a]",
-  fire: "from-[#1a100f] to-[#0c0c0c]",
-  electrical: "from-[#10141a] to-[#0a0a0a]",
-  mechanical: "from-[#101816] to-[#0a0a0a]",
-  infrastructure: "from-[#141410] to-[#0a0a0a]",
-  delivery: "from-[#141414] to-[#0a0a0a]",
-};
-
+/** Images as evidence frames — not full-bleed lifestyle heroes */
 export function DisciplineStory({ service }: { service: Service }) {
   const story = getServiceStory(service);
 
   return (
     <>
-      {/* Discipline motif band */}
-      <section className={cn("bg-gradient-to-b text-white", familyTone[story.family])}>
-        <Container className="py-16 md:py-20">
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              {story.motif}
-            </p>
-            <h2 className="mt-4 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
-              {service.title}
-            </h2>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-white/70">
-              {story.lead}
-            </p>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* How this discipline thinks */}
       <section className="bg-white py-16 md:py-24">
         <Container className="grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[#111] lg:aspect-auto lg:min-h-[420px]">
-              <AssetImage
-                alt={service.title}
-                slot={service.asset}
-                kind="service"
-                fit="cover"
-                aspect="auto"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                  Engineering artifact language · {story.family}
-                </p>
-              </div>
-            </div>
+            <VisualFrame
+              slot={service.asset}
+              alt={service.title}
+              fit="contain"
+              aspect="landscape"
+              tone="dark"
+              className="border border-line"
+            />
+            <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+              {story.family} · engineering artifact
+            </p>
           </Reveal>
 
           <Reveal delay={0.06} className="lg:col-span-7">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Engineering thinking
+              How this discipline thinks
             </p>
-            <ul className="mt-6 space-y-5">
+            <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-ink-muted">{story.lead}</p>
+            <ul className="mt-8 space-y-5">
               {story.thinking.map((item, i) => (
                 <li key={item} className="border-l-2 border-x-red pl-5">
                   <span className="font-display text-[10px] font-bold text-x-red">
@@ -78,7 +47,6 @@ export function DisciplineStory({ service }: { service: Service }) {
         </Container>
       </section>
 
-      {/* Artifacts + deliverables */}
       <section className="border-y border-line bg-[#f7f7f7] py-16 md:py-20">
         <Container className="grid gap-12 md:grid-cols-2">
           <Reveal>
@@ -109,7 +77,6 @@ export function DisciplineStory({ service }: { service: Service }) {
         </Container>
       </section>
 
-      {/* Site reality */}
       <section className="bg-white py-16 md:py-20">
         <Container className="max-w-3xl">
           <Reveal>

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { VendorForm } from "@/components/forms/VendorForm";
 import { CtaBand } from "@/components/shared/CtaBlocks";
-import { ProofStrip } from "@/components/shared/ProofStrip";
 
 export const metadata: Metadata = {
   title: "Vendor Registration | Partner with FORMX Consultants",
@@ -15,21 +13,29 @@ export const metadata: Metadata = {
 export default function VendorRegistrationPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Partners"
-        title="Vendor registration"
-        description="Register your organisation to engage with FORMX on industrial project packages, supply, and specialised services."
-        crumbs={[{ label: "Vendor Registration" }]}
-        image={{ slot: "sectors/industrial-park.jpg", kind: "sector" }}
-      />
+      <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
+        <Container>
+          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+            Partners
+          </p>
+          <h1
+            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
+          >
+            Vendor registration
+          </h1>
+          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
+            Register your organisation to engage with FORMX on industrial project packages, supply,
+            and specialised services.
+          </p>
+        </Container>
+      </section>
 
-      <ProofStrip compact />
-
-      <section className="bg-white section-y">
+      <section className="bg-white py-14 md:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <Reveal>
-              <div className="formx-cut-x formx-edge formx-edge-x border border-line bg-[#fafafa] p-6 md:p-8">
+              <div className="border border-line bg-[#fafafa] p-6 md:p-8">
                 <p className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
                   Partnership criteria
                 </p>

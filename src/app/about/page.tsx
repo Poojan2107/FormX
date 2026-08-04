@@ -7,15 +7,25 @@ import { aboutPage } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Reveal } from "@/components/ui/Reveal";
-import { VisualFrame } from "@/components/ui/VisualFrame";
+import { HumanValuesPanel } from "@/components/about/HumanValuesPanel";
 import { BrochureCta } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
-  title: "About Us | Before Issue | FORMX Consultants",
+  title: "About Us | FORMX Consultants",
   description:
-    "FORMX Before Issue — how Hiren J. Shah reviews work. Architecture, Structure and Infrastructure coordinated before drawings leave the studio.",
+    "FORMX Consultants — Shaping form, defining futures. Architecture, Structure and Infrastructure. Ahmedabad.",
 };
 
+/**
+ * Founder About marks:
+ * - No BG photo on hero
+ * - Shaping form, defining futures + large heading
+ * - One paragraph
+ * - No stats strip under hero
+ * - Vision / Mission / Values after
+ * - Why choose = VMS accordion + people visual (HumanValuesPanel)
+ * - Hiren only, no practice-lead cards
+ */
 export default function AboutPage() {
   const founder = leadership.find((p) => p.featured);
 
@@ -30,49 +40,78 @@ export default function AboutPage() {
             className="mt-4 max-w-4xl font-display font-black uppercase leading-[1.02] tracking-tight text-ink"
             style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)" }}
           >
-            A practice that refuses late coordination
+            Where Vision Takes Form
           </h1>
           <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
             {aboutPage.intro}
           </p>
-          <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
-            {formxMethod.belief}
-          </p>
         </Container>
       </section>
 
-      <section className="bg-[#0d0d0d] py-20 text-white md:py-28">
+      <section className="bg-white py-16 md:py-20">
+        <Container>
+          <Reveal>
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+              Vision · Mission · Values
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
+            {aboutPage.principles.map((p, i) => (
+              <Reveal key={p.title} delay={0.05 * i}>
+                <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+                  0{i + 1}
+                </span>
+                <h2 className="mt-3 font-display text-xl font-extrabold uppercase text-ink">
+                  {p.title}
+                </h2>
+                <p className="mt-4 text-[14px] leading-[1.85] text-ink-muted">{p.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
+        <Container>
+          <HumanValuesPanel />
+          <BrochureCta className="mt-14" />
+        </Container>
+      </section>
+
+      <section className="border-b border-line bg-white py-16 md:py-20">
         <Container>
           <Reveal>
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
               {formxMethod.code}
             </p>
-            <h2 className="mt-3 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+            <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
               {formxMethod.name}
             </h2>
-            <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-white/60">
-              {formxMethod.promise}
+            <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+              {formxMethod.belief}
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-8 border-t border-white/10 pt-12 sm:grid-cols-5">
-            {formxMethod.stages.map((s, i) => (
-              <Reveal key={s.id} delay={0.04 * i}>
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+          <div className="mt-12 flex flex-wrap gap-3">
+            {formxMethod.stages.map((s) => (
+              <div
+                key={s.id}
+                className="border border-line bg-white px-5 py-4"
+              >
+                <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
                   {s.num}
                 </p>
-                <p className="mt-2 font-display text-lg font-extrabold uppercase tracking-tight">
+                <p className="mt-1 font-display text-sm font-extrabold uppercase tracking-tight text-ink">
                   {s.title}
                 </p>
-                <p className="mt-2 text-[12px] leading-[1.7] text-white/50">{s.verb}</p>
-              </Reveal>
+              </div>
             ))}
           </div>
           <Link
             href="/#before-issue"
             transitionTypes={["nav-forward"]}
-            className="mt-12 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+            className="mt-10 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
           >
-            Walk the method
+            See it on the homepage
             <ArrowRight className="size-4" />
           </Link>
         </Container>
@@ -81,7 +120,20 @@ export default function AboutPage() {
       {founder ? (
         <section className="bg-white py-20 md:py-28">
           <Container>
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+            <Reveal>
+              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+                Leadership
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+                Partners close to the work
+              </h2>
+              <p className="mt-3 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+                Led by Founder &amp; Managing Partner {founder.name} — structural designer,
+                architecture planning &amp; site execution.
+              </p>
+            </Reveal>
+
+            <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
               <Reveal className="lg:col-span-5">
                 <div className="relative aspect-[3/4] overflow-hidden bg-[#111]">
                   <AssetImage
@@ -93,23 +145,16 @@ export default function AboutPage() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
-                <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
-                  Desk · Markup · Meeting · Site
-                </p>
               </Reveal>
-              <Reveal delay={0.06} className="lg:col-span-7">
-                <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                  How judgements get made
-                </p>
-                <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+              <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
+                <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
                   {founder.name}
-                </h2>
+                </h3>
                 <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">
                   {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
                 </p>
                 <p className="mt-6 text-[15px] leading-[1.85] text-ink-muted">{founder.bio}</p>
-
-                <dl className="mt-10 space-y-8 border-t border-line pt-10">
+                <dl className="mt-8 space-y-6 border-t border-line pt-8">
                   <div>
                     <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
                       What he reviews
@@ -128,28 +173,19 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                      What he expects before issue
+                      Before issue
                     </dt>
                     <dd className="mt-2 text-[14px] leading-[1.85] text-ink-muted">
                       {hirenJudgement.expects}
                     </dd>
                   </div>
-                  <div>
-                    <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                      How success is defined
-                    </dt>
-                    <dd className="mt-2 text-[14px] leading-[1.85] text-ink-muted">
-                      {hirenJudgement.success}
-                    </dd>
-                  </div>
                 </dl>
-
                 {founder.linkedin ? (
                   <a
                     href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-10 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+                    className="mt-8 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
                   >
                     Connect on LinkedIn →
                   </a>
@@ -160,57 +196,24 @@ export default function AboutPage() {
         </section>
       ) : null}
 
-      <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            <Reveal className="lg:col-span-6">
-              <VisualFrame
-                slot="about/studio-cover.jpg"
-                alt="FORMX studio"
-                fit="cover"
-                aspect="landscape"
-                tone="dark"
-              />
-            </Reveal>
-            <Reveal delay={0.06} className="lg:col-span-6">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                People close to the work
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink">
-                One practice — not disconnected specialists
-              </h2>
-              <p className="mt-5 text-[15px] leading-[1.85] text-ink-muted">
-                {aboutPage.collaboration}
-              </p>
-              <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-                Human-centric. Integrated. Accountable through execution. The values only matter if
-                they show up in reviews before issue.
-              </p>
-              <BrochureCta className="mt-10" />
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-white py-20 md:py-24">
+      <section className="border-t border-line bg-white py-20 md:py-24">
         <Container>
           <div className="max-w-2xl">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
               Invitation
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Bring us the constraints — not a wish list of sheets
+              Discuss your next project
             </h2>
             <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-              Share location, facility type and timeline. We apply Before Issue from the first
-              conversation.
+              Share location, facility type and timeline. We look forward to collaborating.
             </p>
             <Link
               href="/contact"
               transitionTypes={["nav-forward"]}
               className="mt-8 inline-flex items-center gap-3 bg-x-red px-8 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white hover:bg-x-red-hover"
             >
-              Talk to the engineering team
+              Talk to our engineering team
               <ArrowRight className="size-4" />
             </Link>
           </div>

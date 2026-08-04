@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ArticleJsonLd } from "@/components/shared/JsonLd";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -81,24 +81,19 @@ export default async function BlogDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* Figure / detailing visual */}
-      <section className="bg-[#0d0d0d]">
-        <Container className="py-8 md:py-10">
-          <div className="relative mx-auto aspect-[21/9] max-w-4xl overflow-hidden bg-[#111]">
-            <AssetImage
-              alt={post.title}
-              slot={post.asset}
-              kind="article"
-              fit="cover"
-              aspect="auto"
-              className="absolute inset-0 h-full w-full object-cover opacity-90"
-            />
-            <div className="absolute left-4 top-4 border border-white/20 bg-black/70 px-3 py-1.5 backdrop-blur-sm">
-              <p className="font-display text-[9px] font-bold uppercase tracking-[0.2em] text-white/70">
-                Figure · Engineering reference
-              </p>
-            </div>
-          </div>
+      <section className="border-b border-line bg-white py-10 md:py-12">
+        <Container className="max-w-3xl">
+          <VisualFrame
+            slot={post.asset}
+            alt={post.title}
+            fit="contain"
+            aspect="landscape"
+            tone="dark"
+            className="border border-line"
+          />
+          <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+            Figure · Engineering reference
+          </p>
         </Container>
       </section>
 

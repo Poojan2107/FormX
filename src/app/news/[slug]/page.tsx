@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getNews, news } from "@/data/site";
-import { PageHero } from "@/components/ui/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 import { CtaBand } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ArticleJsonLd } from "@/components/shared/JsonLd";
-import { ProofStrip } from "@/components/shared/ProofStrip";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -41,51 +40,59 @@ export default async function NewsDetailPage({ params }: Props) {
         url={`/news/${item.slug}`}
         image={`https://formxconsultants.com/assets/${item.asset}`}
       />
-      <PageHero
-        eyebrow="News"
-        title={item.title}
-        description={item.date}
-        crumbs={[
-          { label: "News & Events", href: "/news" },
-          { label: item.title },
-        ]}
-        image={{ slot: item.asset, kind: "article" }}
-      />
-      <ProofStrip compact />
-      <section className="bg-white section-y">
+
+      <section className="border-b border-line bg-white pt-24 pb-14 md:pt-32 md:pb-16">
+        <Container>
+          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+            News
+          </p>
+          <h1
+            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.08] tracking-tight text-ink"
+            style={{ fontSize: "clamp(1.85rem, 4vw, 3rem)" }}
+          >
+            {item.title}
+          </h1>
+          <p className="mt-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink/40">
+            {item.date}
+          </p>
+        </Container>
+      </section>
+
+      <section className="bg-white py-12 md:py-16">
         <Container className="max-w-3xl">
           <Reveal>
-            <div className="prose-measure space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
+            <VisualFrame
+              slot={item.asset}
+              alt={item.title}
+              fit="contain"
+              aspect="landscape"
+              tone="light"
+              className="border border-line"
+            />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="mt-10 space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
               {item.body.map((p) => (
                 <p key={p.slice(0, 36)}>{p}</p>
               ))}
             </div>
-            {slug === "career-openings" ? (
-              <Link
-                href="/career"
-                transitionTypes={["nav-forward"]}
-                className="mt-8 inline-block text-sm font-semibold text-ink hover:text-x-red"
-              >
-                View careers →
-              </Link>
-            ) : null}
-            <p className="mt-10">
-              <Link
-                href="/news"
-                transitionTypes={["nav-back"]}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition-colors hover:text-x-red"
-              >
-                ← All news
-              </Link>
-            </p>
+            <Link
+              href="/knowledge-center"
+              transitionTypes={["nav-back"]}
+              className="mt-10 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+            >
+              ← Engineering Journal
+            </Link>
           </Reveal>
         </Container>
       </section>
+
       <CtaBand
-        title="Connect with FORMX on your next facility"
-        secondary={{ label: "All news", href: "/news" }}
+        title="Discuss a related facility brief"
+        description="Share location, typology and timeline with FORMX."
+        secondary={{ label: "Contact", href: "/contact" }}
       />
-      <StickyEnquire label="Talk to FormX about your facility" />
+      <StickyEnquire label="Discuss with FORMX" />
     </>
   );
 }

@@ -1,4 +1,4 @@
-﻿/** FORMX.pdf portfolio — exact brochure copy + brochure visuals */
+/** FORMX.pdf portfolio — exact brochure copy + brochure visuals */
 
 export type Project = {
   slug: string;
