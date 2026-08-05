@@ -6,19 +6,19 @@ export const portfolioIntro =
 export const portfolioPillars = [
   {
     title: "Structural Integrity",
-    body: "Design safe, reliable Structural systems",
+    body: "Safe, reliable structural systems sized for real industrial and building loads.",
   },
   {
     title: "Functional Design",
-    body: "Create spaces that meet user needs",
+    body: "Spaces that serve process, people and long-term operations — not presentation alone.",
   },
   {
     title: "Technical Expertise",
-    body: "Apply engineering principles and best practices",
+    body: "Code-aware engineering with clear load paths, interfaces and buildable detail.",
   },
   {
     title: "Collaborative Insight",
-    body: "Integrate architecture and practical feedback",
+    body: "Architecture and site feedback integrated before drawings leave the studio.",
   },
 ];
 

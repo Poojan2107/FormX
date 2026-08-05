@@ -152,15 +152,15 @@ export function Footer() {
         </div>
 
         {/* Jacobs-scale monumental wordmark */}
-        <div className="overflow-hidden border-t border-white/10 pb-4 pt-8 md:pt-10">
+        <div className="overflow-hidden border-t border-white/10 pb-6 pt-10 md:pb-8 md:pt-14">
           <span
-            className="block font-display font-black uppercase leading-[0.85] tracking-tighter text-white/[0.07] select-none"
-            style={{ fontSize: "clamp(5rem, 22vw, 18rem)" }}
+            className="block font-display font-black uppercase leading-[0.82] tracking-tighter text-white/[0.12] select-none"
+            style={{ fontSize: "clamp(4.5rem, 20vw, 16rem)" }}
             aria-hidden
           >
-            FORM<span className="text-x-red/40">×</span>
+            FORM<span className="text-x-red/50">×</span>
           </span>
-          <p className="mt-2 font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/25 md:-mt-2">
+          <p className="mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/30 md:-mt-1">
             Design | Engineering · {site.slogan}
           </p>
         </div>
