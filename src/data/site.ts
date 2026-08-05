@@ -239,13 +239,13 @@ export const whyPoints = [
   },
   {
     num: "02",
-    title: "Functional Design",
-    body: "Create spaces that meet user needs",
+    title: "Technical Expertise",
+    body: "Apply engineering principles and best practices",
   },
   {
     num: "03",
-    title: "Technical Expertise",
-    body: "Apply engineering principles and best practices",
+    title: "Functional Design",
+    body: "Create spaces that meet user needs",
   },
   {
     num: "04",

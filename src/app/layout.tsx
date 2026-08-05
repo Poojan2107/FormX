@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ViewTransition } from "react";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -8,14 +8,20 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 /**
- * Single type family matched to FormX lockup:
- * geometric sans, bold wordmark, tracked labels — Montserrat is the closest
- * free match to Form / CONSULTANTS / DESIGN | ENGINEERING.
+ * FormX type system:
+ * - Montserrat → brand / display / labels (matches lockup geometry)
+ * - Source Sans 3 → reading voice (calmer body, less shout)
  */
-const formx = Montserrat({
+const formxDisplay = Montserrat({
   variable: "--font-formx-family",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800", "900"],
+});
+
+const formxBody = Source_Sans_3({
+  variable: "--font-body-family",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const viewport: Viewport = {
@@ -30,14 +36,14 @@ export const metadata: Metadata = {
     template: "%s | FormX Consultants",
   },
   description:
-    "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure coordinated Before × Issue for industrial and building facilities across India.",
+    "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "FormX Consultants",
     title: "FormX Consultants | Where Vision Takes Form",
     description:
-      "Architecture, Structure and Infrastructure — coordinated Before × Issue. Ahmedabad, India.",
+      "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
   },
   twitter: {
     card: "summary_large_image",
@@ -53,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${formx.variable} h-full`}>
+    <html lang="en" className={`${formxDisplay.variable} ${formxBody.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-bg font-body text-ink antialiased">
         <ScrollProgress />
         <a href="#main" className="skip-link sr-only">

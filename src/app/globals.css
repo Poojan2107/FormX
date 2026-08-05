@@ -27,9 +27,9 @@
   --color-x-red-hover: var(--x-red-hover);
   --color-steel: var(--steel);
   --color-paper: var(--paper);
-  /* One FormX family — display / body / label all resolve to lockup geometry */
+  /* Brand display + calmer reading body */
   --font-display: var(--font-formx-family), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-formx-family), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body-family), var(--font-formx-family), ui-sans-serif, system-ui, sans-serif;
   --font-label: var(--font-formx-family), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -42,7 +42,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;

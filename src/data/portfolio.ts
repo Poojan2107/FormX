@@ -3,22 +3,23 @@
 export const portfolioIntro =
   "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution.";
 
+/** Exact FORMX.pdf pillar lines */
 export const portfolioPillars = [
   {
     title: "Structural Integrity",
-    body: "Safe, reliable structural systems sized for real industrial and building loads.",
-  },
-  {
-    title: "Functional Design",
-    body: "Spaces that serve process, people and long-term operations — not presentation alone.",
+    body: "Design safe, reliable Structural systems",
   },
   {
     title: "Technical Expertise",
-    body: "Code-aware engineering with clear load paths, interfaces and buildable detail.",
+    body: "Apply engineering principles and best practices",
+  },
+  {
+    title: "Functional Design",
+    body: "Create spaces that meet user needs",
   },
   {
     title: "Collaborative Insight",
-    body: "Architecture and site feedback integrated before drawings leave the studio.",
+    body: "Integrate architecture and practical feedback",
   },
 ];
 
