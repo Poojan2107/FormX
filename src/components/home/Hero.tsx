@@ -241,8 +241,8 @@ export function Hero() {
               Where Vision Takes Form
             </p>
             <p className="mt-4 max-w-[40ch] text-[15px] font-medium leading-[1.75] text-white/50 md:text-[16px]">
-              We do not issue until Architecture, Structure and Infrastructure have answered each
-              other — so the facility that gets built is the one you meant.
+              Architecture, Structure and Infrastructure held together until the facility is ready to
+              be built — then we issue.
             </p>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center md:col-span-5 md:justify-end">

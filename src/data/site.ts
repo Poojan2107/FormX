@@ -159,7 +159,7 @@ export const about = {
   eyebrow: "About Us",
   title: "Where Vision Takes Form",
   paragraphs: [
-    "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution. Reviews stay with engineers who own the sheets.",
+    "FormX is an Ahmedabad structural practice. We bring Architecture, Structure and Infrastructure into agreement before drawings leave the studio — then stay with the work until the facility stands as intended.",
   ],
   industriesLine:
     "Pharmaceuticals · Food Processing · Chemical · Textile · Engineering · Automobile · Warehouses",

@@ -41,9 +41,11 @@ function SiteHeader({
 }) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const onHome = pathname === "/";
+  const overDarkHero = onHome && !scrolled && !open;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 15);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -64,10 +66,12 @@ function SiteHeader({
       >
         <div
           className={cn(
-            "border-b transition-all duration-300",
-            scrolled
-              ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
-              : "border-transparent bg-white",
+            "border-b transition-all duration-500",
+            overDarkHero
+              ? "border-transparent bg-transparent"
+              : scrolled
+                ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
+                : "border-transparent bg-white",
           )}
         >
           <Container className="grid h-[4.25rem] grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">
@@ -78,17 +82,20 @@ function SiteHeader({
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
-              <Logo variant="full" />
+              <Logo variant="full" invert={overDarkHero} />
             </Link>
 
             <div className="hidden min-w-0 justify-center lg:flex">
-              <DesktopNav />
+              <DesktopNav onDark={overDarkHero} />
             </div>
 
             <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="hidden h-9 items-center gap-2 font-label text-[10px] text-ink/50 transition-colors hover:text-ink xl:flex"
+                className={cn(
+                  "hidden h-9 items-center gap-2 font-label text-[10px] transition-colors xl:flex",
+                  overDarkHero ? "text-white/55 hover:text-white" : "text-ink/50 hover:text-ink",
+                )}
                 aria-label={`Call ${site.phone}`}
               >
                 <Phone className="size-3.5 shrink-0 text-x-red" />
@@ -106,7 +113,12 @@ function SiteHeader({
 
               <button
                 type="button"
-                className="formx-cut-sm formx-edge formx-edge-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-x-red hover:text-x-red lg:hidden"
+                className={cn(
+                  "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
+                  overDarkHero
+                    ? "border-white/25 bg-white/5 text-white hover:border-x-red hover:text-x-red"
+                    : "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
+                )}
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
@@ -126,7 +138,12 @@ function SiteHeader({
             </div>
           </Container>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent opacity-70" />
+          <div
+            className={cn(
+              "h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent transition-opacity",
+              overDarkHero ? "opacity-40" : "opacity-70",
+            )}
+          />
         </div>
       </header>
 

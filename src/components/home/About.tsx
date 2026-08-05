@@ -16,13 +16,19 @@ const metricValues: Record<string, { value: number; suffix: string }> = {
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-28 border-b border-line bg-bg section-y">
-      <Container>
-        <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-5">
-            <div className="x-corner relative aspect-[4/5] overflow-hidden bg-[#111] formx-cut-lg">
+    <section id="about" className="relative scroll-mt-28 overflow-hidden bg-white">
+      <Container className="py-20 md:py-28 lg:py-32">
+        <Reveal>
+          <p className="font-label text-center text-[11px] tracking-[0.32em] text-x-red">
+            {about.legacy}
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid items-center gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="relative lg:col-span-6">
+            <div className="relative aspect-[5/6] overflow-hidden bg-[#0a0a0a] md:aspect-[4/5]">
               <AssetImage
-                alt="G+2 Industrial Facility, Vapi — FORM× completed work"
+                alt="G+2 Industrial Facility, Vapi — FormX completed work"
                 slot="projects/brochure/brochure_p3_2.png"
                 kind="facility"
                 fit="cover"
@@ -31,36 +37,42 @@ export function About() {
                 priority
                 className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-6 pb-6 pt-20">
-                <p className="font-label text-[10px] text-white/80">Built proof · Vapi G+2</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <p className="font-label text-[10px] tracking-[0.24em] text-white/90">
+                  Built proof · Vapi G+2 · 66,000 sq.ft.
+                </p>
               </div>
+              <span className="absolute left-5 top-5 h-6 w-6 border-l-2 border-t-2 border-x-red" aria-hidden />
+              <span className="absolute bottom-5 right-5 h-6 w-6 border-b-2 border-r-2 border-white/40" aria-hidden />
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="flex flex-col justify-end lg:col-span-7 lg:pb-2">
-            <p className="font-label text-[11px] text-x-red">Shaping form · Defining futures</p>
+          <Reveal delay={0.1} className="lg:col-span-6 lg:pl-4">
             <h2
-              className="mt-5 max-w-[12ch] font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
+              className="font-display font-black uppercase leading-[0.95] tracking-tight text-ink"
+              style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)" }}
             >
-              An Ahmedabad practice that refuses to issue early
+              An Ahmedabad practice built on judgement
             </h2>
-            <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-ink-muted">
+            <p className="mt-8 max-w-[40ch] text-[17px] font-medium leading-[1.8] text-ink-muted md:text-[18px]">
               {about.paragraphs[0]}
             </p>
-            <p className="mt-6 measure-essay font-label text-[10px] leading-relaxed text-ink/40">
+            <p className="mt-6 max-w-[42ch] font-label text-[9px] leading-relaxed tracking-[0.14em] text-ink/35">
               {about.industriesLine}
             </p>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-10">
+            <div className="mt-12 grid grid-cols-3 gap-4 border-y border-line py-8">
               {trustMetrics.map((m) => {
                 const parsed = metricValues[m.value] ?? { value: 0, suffix: m.value };
                 return (
                   <div key={m.label}>
-                    <p className="font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
+                    <p className="font-display text-3xl font-black tracking-tight text-ink md:text-4xl lg:text-5xl">
                       <AnimatedCounter value={parsed.value} suffix={parsed.suffix} />
                     </p>
-                    <p className="mt-2 font-label text-[9px] text-ink/40">{m.label}</p>
+                    <p className="mt-2 font-label text-[8px] tracking-[0.16em] text-ink/40 md:text-[9px]">
+                      {m.label}
+                    </p>
                   </div>
                 );
               })}
@@ -69,9 +81,9 @@ export function About() {
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
-              className="mt-10 inline-flex w-fit items-center gap-2 font-label text-[11px] text-x-red transition-colors hover:text-ink"
+              className="mt-8 inline-flex items-center gap-2 font-label text-[11px] tracking-[0.18em] text-x-red transition-colors hover:text-ink"
             >
-              The practice
+              Meet the practice
               <ArrowUpRight className="size-4" />
             </Link>
           </Reveal>
