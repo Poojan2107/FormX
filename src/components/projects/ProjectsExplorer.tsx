@@ -4,9 +4,10 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
-import { VisualFrame } from "@/components/ui/VisualFrame";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
+/** Jacobs-style filterable project grid — image-led, short copy */
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const [q, setQ] = useState("");
   const [sector, setSector] = useState("All");
@@ -76,7 +77,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       {filtered.length === 0 ? (
         <p className="py-16 text-center text-ink-muted">No projects match this filter.</p>
       ) : (
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project) => (
             <Link
               key={project.slug}
@@ -84,32 +85,30 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               transitionTypes={["nav-forward"]}
               className="group block"
             >
-              <VisualFrame
-                slot={project.assets.cover}
-                alt={project.title}
-                fit={project.assets.frame ?? "contain"}
-                aspect="landscape"
-                tone="dark"
-                zoomOnHover
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="mt-4 flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-                    {project.sector} · {project.year}
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#111]">
+                <AssetImage
+                  alt={project.title}
+                  slot={project.assets.cover}
+                  kind="facility"
+                  fit="cover"
+                  aspect="auto"
+                  objectPosition="center"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+                    {project.sector}
                   </p>
-                  <h2 className="mt-1 font-display text-xl font-extrabold uppercase tracking-tight text-ink group-hover:text-x-red md:text-2xl">
+                  <h2 className="mt-1 font-display text-lg font-extrabold uppercase tracking-tight text-white">
                     {project.title}
                   </h2>
-                  <p className="mt-1 text-[13px] text-ink-muted">
-                    {project.client} · {project.location}
-                    {project.area ? ` · ${project.area}` : ""}
-                  </p>
-                  <p className="mt-3 max-w-xl text-[14px] leading-[1.8] text-ink-muted line-clamp-2">
-                    {project.description}
+                  <p className="mt-1 flex items-center justify-between gap-2 text-[12px] text-white/55">
+                    <span>{project.location}</span>
+                    <ArrowUpRight className="size-3.5 opacity-50 transition-opacity group-hover:opacity-100" />
                   </p>
                 </div>
-                <ArrowUpRight className="mt-1 size-5 shrink-0 text-x-red opacity-40 transition-opacity group-hover:opacity-100" />
               </div>
             </Link>
           ))}

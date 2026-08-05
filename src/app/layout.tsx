@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | FormX Consultants",
   },
   description:
-    "FORMX Consultants — Ahmedabad industrial design & engineering. Architecture, Structure and Infrastructure coordinated as construction-ready GFC packages for industrial, commercial, and institutional facilities.",
+    "FORMX Consultants — Ahmedabad structural design & engineering. Architecture, Structure and Infrastructure coordinated Before Issue for industrial, commercial and institutional facilities across India.",
   openGraph: {
     type: "website",
     locale: "en_IN",

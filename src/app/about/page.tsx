@@ -13,7 +13,7 @@ import { BrochureCta } from "@/components/shared/CtaBlocks";
 export const metadata: Metadata = {
   title: "About Us | FORMX Consultants",
   description:
-    "FORMX Consultants — Shaping form, defining futures. Architecture, Structure and Infrastructure. Ahmedabad.",
+    "About FORMX Consultants, Ahmedabad — Founder Hiren J. Shah, Structural Engineer Grade 1. Architecture, Structure and Infrastructure coordinated Before Issue.",
 };
 
 /**
@@ -37,12 +37,12 @@ export default function AboutPage() {
             {aboutPage.tagline}
           </p>
           <h1
-            className="mt-4 max-w-4xl font-display font-black uppercase leading-[1.02] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)" }}
+            className="mt-4 max-w-[14ch] font-display font-black uppercase leading-[1.02] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
             Where Vision Takes Form
           </h1>
-          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
+          <p className="mt-8 max-w-[38ch] text-[17px] leading-[1.9] text-ink-muted">
             {aboutPage.intro}
           </p>
         </Container>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
-                <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
+                <h3 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
                   {founder.name}
                 </h3>
                 <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">

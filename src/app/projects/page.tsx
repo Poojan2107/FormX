@@ -7,11 +7,12 @@ import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Engineering Evidence | FORMX Projects",
+  title: "Projects | Engineering Evidence | FORMX Consultants",
   description:
-    "FORMX project case studies — industrial facilities, PEB warehouses, residential, commercial and institutional structures from the practice brochure.",
+    "FORMX project portfolio — industrial facilities, PEB warehouses, residential towers, corporate and institutional structures across Gujarat and India.",
 };
 
+/** Jacobs-inspired projects index — impact headline + filterable evidence */
 export default function ProjectsPage() {
   return (
     <>
@@ -19,23 +20,17 @@ export default function ProjectsPage() {
         <Container>
           <Reveal>
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Engineering evidence
+              Projects
             </p>
             <h1
-              className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
+              className="mt-4 max-w-[16ch] font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
-              Completed facilities
+              Projects that leave a legacy
             </h1>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-              Brochure facilities as engineering evidence. Start with the{" "}
-              <Link
-                href="/projects/vapi-g2-industrial"
-                className="font-semibold text-x-red underline"
-              >
-                Vapi G+2 Before Issue case study
-              </Link>{" "}
-              — then explore the full record.
+            <p className="mt-6 max-w-[42ch] text-[16px] leading-[1.9] text-ink-muted">
+              From industrial plants and PEB warehouses to corporate houses and residential
+              towers — see how FORMX brings facilities to site.
             </p>
           </Reveal>
         </Container>
@@ -49,7 +44,7 @@ export default function ProjectsPage() {
 
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
         <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-lg text-[15px] leading-[1.85] text-white/65">
+          <p className="max-w-[36ch] text-[15px] leading-[1.85] text-white/65">
             Planning a similar facility? Share location, sector and timeline with the FORMX studio.
           </p>
           <Link
