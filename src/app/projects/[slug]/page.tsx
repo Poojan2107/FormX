@@ -248,6 +248,22 @@ export default async function ProjectDetailPage({ params }: Props) {
             What was delivered
           </p>
           <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{project.description}</p>
+          {project.risk ? (
+            <div className="mt-10 border-l-2 border-x-red pl-5">
+              <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                The risk Before × Issue
+              </p>
+              <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.risk}</p>
+              {project.refused ? (
+                <>
+                  <p className="mt-5 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+                    What we refused
+                  </p>
+                  <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.refused}</p>
+                </>
+              ) : null}
+            </div>
+          ) : null}
           <div className="mt-12 grid gap-6 border-t border-line pt-10 sm:grid-cols-2">
             {scale.map((f) => (
               <div key={f.label}>
@@ -266,7 +282,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               <ul className="mt-5 space-y-3">
                 {project.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-3 text-[14px] text-ink">
-                    <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-x-red" />
+                    <span className="mt-0.5 shrink-0 font-display text-[12px] font-black text-x-red">
+                      ×
+                    </span>
                     {h}
                   </li>
                 ))}

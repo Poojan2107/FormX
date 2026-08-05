@@ -5,8 +5,9 @@ import { getProject } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { XRule } from "@/components/ui/XMotif";
 
-/** Home proof — one investigated facility, image fills the frame */
+/** Home proof — one investigated facility with refuse line */
 export function ProofCase() {
   const project = getProject(vapiCaseStudy.slug);
   if (!project) return null;
@@ -16,7 +17,7 @@ export function ProofCase() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
           <Reveal className="lg:col-span-6">
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#111]">
+            <div className="x-corner relative aspect-[16/10] overflow-hidden bg-[#111]">
               <AssetImage
                 alt={project.title}
                 slot={project.assets.cover}
@@ -34,7 +35,7 @@ export function ProofCase() {
 
           <Reveal delay={0.06} className="lg:col-span-6">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Proof · Before Issue
+              Proof · Before × Issue
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
               {project.title}
@@ -42,7 +43,10 @@ export function ProofCase() {
             <p className="mt-2 text-[13px] text-ink/50">
               {project.client} · Plastic manufacturing · Vapi
             </p>
-            <p className="mt-6 text-[15px] leading-[1.85] text-ink-muted">{vapiCaseStudy.risk}</p>
+            <XRule className="mt-6 max-w-xs" />
+            <p className="mt-6 measure-studio text-[15px] leading-[1.85] text-ink-muted">
+              {vapiCaseStudy.risk}
+            </p>
             <div className="mt-8 border-l-2 border-x-red pl-5">
               <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
                 What we refused
@@ -51,11 +55,11 @@ export function ProofCase() {
             </div>
             <ul className="mt-8 space-y-4">
               {vapiCaseStudy.decisions.slice(0, 2).map((d) => (
-                <li key={d.title}>
-                  <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink">
+                <li key={d.title} className="x-bullet text-[13px] leading-[1.75] text-ink-muted">
+                  <span className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink">
                     {d.title}
-                  </p>
-                  <p className="mt-1 text-[13px] leading-[1.75] text-ink-muted">{d.body}</p>
+                  </span>
+                  <span className="mt-1 block">{d.body}</span>
                 </li>
               ))}
             </ul>

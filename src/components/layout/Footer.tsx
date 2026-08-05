@@ -31,8 +31,8 @@ export function Footer() {
                 Ahmedabad Practice
               </h2>
               <p className="mt-3 max-w-lg text-[15px] leading-[1.8] text-white/55">
-                Before Issue — Architecture · Structure · Infrastructure coordinated before drawings
-                leave the studio. Accountable through execution.
+                Before × Issue — Architecture · Structure · Infrastructure coordinated before
+                drawings leave the studio. Accountable through execution.
               </p>
               <p className="mt-4 font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
                 {site.slogan}
@@ -151,17 +151,17 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Jacobs-scale monumental wordmark */}
+        {/* Monumental FORM× stamp */}
         <div className="overflow-hidden border-t border-white/10 pb-6 pt-10 md:pb-8 md:pt-14">
           <span
-            className="block font-display font-black uppercase leading-[0.82] tracking-tighter text-white/[0.12] select-none"
+            className="block font-display font-black uppercase leading-[0.82] tracking-tighter text-white/[0.14] select-none"
             style={{ fontSize: "clamp(4.5rem, 20vw, 16rem)" }}
             aria-hidden
           >
-            FORM<span className="text-x-red/50">×</span>
+            FORM<span className="text-x-red">×</span>
           </span>
           <p className="mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/30 md:-mt-1">
-            Design | Engineering · {site.slogan}
+            Design | Engineering · {site.slogan} · Before × Issue
           </p>
         </div>
       </Container>

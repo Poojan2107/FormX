@@ -38,9 +38,9 @@ export default function Home() {
                 {formxMethod.code}
               </p>
               <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
-                Brief FORMX on your next facility
+                Brief FORM<span className="text-x-red">×</span> on your next facility
               </h2>
-              <p className="mt-4 max-w-[36ch] text-[15px] leading-[1.85] text-white/55">
+              <p className="mt-4 measure-tight text-[15px] leading-[1.85] text-white/55">
                 Share facility type, location and timeline. Architecture, Structure and
                 Infrastructure — we start with constraints before drawings.
               </p>

@@ -45,6 +45,9 @@ export default function AboutPage() {
           <p className="mt-8 max-w-[38ch] text-[17px] leading-[1.9] text-ink-muted">
             {aboutPage.intro}
           </p>
+          <p className="mt-8 max-w-[42ch] text-[15px] leading-[1.9] text-ink/70">
+            {aboutPage.philosophy}
+          </p>
         </Container>
       </section>
 
@@ -85,7 +88,7 @@ export default function AboutPage() {
               {formxMethod.code}
             </p>
             <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              {formxMethod.name}
+              Before <span className="text-x-red">×</span> Issue
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
               {formxMethod.belief}

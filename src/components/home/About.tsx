@@ -7,16 +7,17 @@ import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { XRule } from "@/components/ui/XMotif";
 
-/** VMS-style About after scroll — filled photo + logo + one paragraph */
+/** About after scroll — filled photo + logo + studio essay */
 export function About() {
   return (
     <section id="about" className="scroll-mt-32 border-b border-line bg-white py-16 md:py-24 lg:py-28">
       <Container>
         <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="relative min-h-[360px] overflow-hidden bg-[#0e0e0e] sm:min-h-[440px] lg:col-span-5 lg:min-h-[520px]">
+          <Reveal className="x-corner relative min-h-[360px] overflow-hidden bg-[#0e0e0e] sm:min-h-[440px] lg:col-span-5 lg:min-h-[520px]">
             <AssetImage
-              alt="G+2 Industrial Facility, Vapi — FORMX completed work"
+              alt="G+2 Industrial Facility, Vapi — FORM× completed work"
               slot="projects/brochure/brochure_p3_2.png"
               kind="facility"
               fit="cover"
@@ -37,13 +38,14 @@ export function About() {
             <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
               Shaping form · Defining futures
             </p>
+            <XRule className="mt-6 max-w-xs" />
             <p className="mt-6 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-ink/35">
               About Us
             </p>
             <h2 className="mt-3 max-w-xl font-display text-[1.85rem] font-extrabold uppercase leading-[1.08] tracking-tight text-ink md:text-4xl lg:text-[2.55rem]">
               Trusted structural engineering &amp; design practice
             </h2>
-            <p className="mt-6 max-w-xl text-[16px] leading-[1.9] text-ink-muted">
+            <p className="mt-6 measure-studio text-[16px] leading-[1.9] text-ink-muted">
               {about.paragraphs[0]}
             </p>
             <Link

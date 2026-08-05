@@ -42,8 +42,8 @@ export function PeopleGlimpse() {
             <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-white/50">
               {founder.name} · {founder.role} · Grade 1 (AMC / BMC)
             </p>
-            <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-white/70">{founder.bio}</p>
-            <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-white/50">
+            <p className="mt-6 measure-studio text-[15px] leading-[1.9] text-white/70">{founder.bio}</p>
+            <p className="mt-5 measure-studio text-[14px] leading-[1.85] text-white/50">
               Load paths. Interfaces. Constructability. Site walks. Decisions stay with engineers who
               own the drawings — structural designer, architecture planning and site execution.
             </p>

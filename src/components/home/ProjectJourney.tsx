@@ -6,11 +6,13 @@ import { ArrowRight } from "lucide-react";
 import { formxMethod } from "@/data/method";
 import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { XRule } from "@/components/ui/XMotif";
 import { cn } from "@/lib/cn";
 
 /**
- * Before Issue — editorial method (not Construction Sequence tabs).
- * Vertical stage list + one filled evidence image — Jacobs restraint.
+ * Before × Issue — FormX signature IP.
+ * Drafting language, not a process widget: stages read as decisions
+ * that must close before sheets leave the studio.
  */
 export function ProjectJourney() {
   const [active, setActive] = useState(0);
@@ -27,45 +29,51 @@ export function ProjectJourney() {
             {formxMethod.code}
           </p>
           <h2
-            className="mt-3 font-display font-black uppercase leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)" }}
+            className="mt-4 font-display font-black uppercase leading-[0.98] tracking-tight"
+            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
           >
-            {formxMethod.name}
+            Before <span className="text-x-red">×</span> Issue
           </h2>
-          <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-white/55">
+          <p className="mt-6 measure-studio text-[15px] leading-[1.9] text-white/55">
             {formxMethod.belief}
           </p>
-          <p className="mt-4 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/35">
+          <XRule tone="dark" className="mt-8 max-w-md" />
+          <p className="mt-6 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white/40">
             {formxMethod.disciplines.join(" · ")}
           </p>
         </div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <ol className="space-y-0 border-l border-white/15">
+            <ol className="space-y-0">
               {formxMethod.stages.map((s, i) => (
                 <li key={s.id}>
                   <button
                     type="button"
                     onClick={() => setActive(i)}
                     className={cn(
-                      "group flex w-full items-start gap-4 border-l-2 py-4 pl-5 text-left transition-colors -ml-px",
-                      i === active
-                        ? "border-x-red text-white"
-                        : "border-transparent text-white/40 hover:text-white/70",
+                      "group flex w-full items-start gap-4 border-b border-white/10 py-5 text-left transition-colors",
+                      i === active ? "text-white" : "text-white/40 hover:text-white/70",
                     )}
                   >
                     <span
                       className={cn(
-                        "mt-0.5 font-display text-[11px] font-bold tracking-[0.16em]",
-                        i === active ? "text-x-red" : "text-white/30",
+                        "mt-0.5 font-display text-[11px] font-black tracking-[0.16em]",
+                        i === active ? "text-x-red" : "text-white/25",
                       )}
                     >
-                      {s.num}
+                      {i === active ? "×" : s.num}
                     </span>
-                    <span>
-                      <span className="block font-display text-base font-extrabold uppercase tracking-tight md:text-lg">
-                        {s.title}
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-baseline justify-between gap-3">
+                        <span className="block font-display text-base font-extrabold uppercase tracking-tight md:text-lg">
+                          {s.title}
+                        </span>
+                        {i === active ? (
+                          <span className="hidden font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red sm:inline">
+                            Active
+                          </span>
+                        ) : null}
                       </span>
                       <span className="mt-1 block text-[13px] leading-snug text-white/45 group-hover:text-white/55">
                         {s.verb}
@@ -78,7 +86,7 @@ export function ProjectJourney() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] overflow-hidden border border-white/10 bg-[#141414]">
+            <div className="x-corner relative aspect-[16/10] overflow-hidden border border-white/10 bg-[#141414]">
               <div className="absolute inset-4 md:inset-6">
                 <AssetImage
                   alt={stage.caption}
@@ -100,22 +108,32 @@ export function ProjectJourney() {
               <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-x-red">
                 {stage.num} · {stage.verb}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-extrabold uppercase leading-snug tracking-tight md:text-3xl">
+              <h3 className="mt-3 max-w-[28ch] font-display text-2xl font-extrabold uppercase leading-snug tracking-tight md:text-3xl">
                 {stage.decision}
               </h3>
-              <p className="mt-5 text-[15px] leading-[1.85] text-white/60">{stage.why}</p>
+              <p className="mt-5 measure-studio text-[15px] leading-[1.85] text-white/60">
+                {stage.why}
+              </p>
               <div className="mt-8 border-t border-white/10 pt-6">
                 <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
                   What this prevents
                 </p>
-                <p className="mt-2 text-[14px] leading-[1.75] text-white/65">{stage.prevents}</p>
+                <p className="mt-2 flex items-start text-[14px] leading-[1.75] text-white/65">
+                  <span className="mr-2 mt-0.5 text-x-red" aria-hidden>
+                    ×
+                  </span>
+                  {stage.prevents}
+                </p>
               </div>
+              <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
+                {formxMethod.stamp}
+              </p>
               <Link
                 href="/projects/vapi-g2-industrial"
                 transitionTypes={["nav-forward"]}
-                className="mt-10 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red hover:text-white"
+                className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red hover:text-white"
               >
-                See Before Issue on a real facility
+                See Before × Issue on a real facility
                 <ArrowRight className="size-4" />
               </Link>
             </div>

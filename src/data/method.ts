@@ -5,13 +5,14 @@
  */
 
 export const formxMethod = {
-  name: "Before Issue",
+  name: "Before × Issue",
   shortName: "Before Issue",
-  code: "FORMX · BI",
+  code: "FORM× · BI",
   belief:
-    "Every unresolved coordination issue eventually appears on the construction site. FORMX does not issue until Architecture, Structure and Infrastructure have answered each other.",
+    "Every unresolved coordination issue eventually appears on the construction site. FORM× does not issue until Architecture, Structure and Infrastructure have answered each other.",
   promise:
     "Drawings should answer questions before construction begins — not after fabrication has started.",
+  stamp: "Issue is a commitment — not an email.",
   disciplines: ["Architecture", "Structure", "Infrastructure"] as const,
   stages: [
     {

@@ -4,11 +4,11 @@ import { portfolioPillars } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { XRule } from "@/components/ui/XMotif";
 
 /**
- * FORMX by Numbers — website comment.docx + Hiren keep:
+ * FORM× by Numbers — Hiren keep:
  * 25+ / 15 Lakh+ / 5 States as primary (animated).
- * Jacobs-weight presentation.
  */
 const metrics = [
   { value: 25, suffix: "+", label: "Completed Projects" },
@@ -22,11 +22,12 @@ export function TrustProof() {
       <Container>
         <Reveal>
           <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            FormX by Numbers
+            Form× by Numbers
           </p>
           <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
             Proof you can measure
           </h2>
+          <XRule className="mt-6 max-w-xs" />
         </Reveal>
 
         <div className="mt-14 grid gap-12 border-b border-line pb-16 sm:grid-cols-3 sm:gap-8">

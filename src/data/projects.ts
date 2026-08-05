@@ -12,6 +12,10 @@ export type Project = {
   services: string[];
   description: string;
   highlights: string[];
+  /** Engineering risk the facility had to answer Before Issue */
+  risk?: string;
+  /** What FORM× refused — the simpler wrong answer */
+  refused?: string;
   assets: {
     cover: string;
     gallery: string[];
@@ -35,6 +39,8 @@ export function getProjectNarrative(project: Project) {
         : project.description,
     execution: project.services.join(" · "),
     completedFacility: project.description,
+    risk: project.risk ?? "",
+    refused: project.refused ?? "",
     lessonsLearned: "",
     relatedSystems: project.services,
   };
@@ -53,6 +59,9 @@ export const projects: Project[] = [
     services: ["Structural Design with machine foundation design"],
     description:
       "The plastic manufacturing plant located in Vapi features a G+2 floor design, with the first floor planned as a removable mezzanine that can be assembled or dismantled according to needs. It showcases an attractive blend of RCC and steel structures, incorporating a steel roof and cladded walls instead of the conventional terrace and side walls.",
+    risk: "Operational flexibility on the first floor — without locking the owner into a permanent RCC floor that would fight future process changes.",
+    refused:
+      "A conventional terrace-and-side-wall RCC box with a fixed first floor. Simpler to draw — harder to adapt when machines and layouts changed.",
     highlights: [
       "Removable mezzanine floor",
       "RCC and steel hybrid structure",
@@ -82,6 +91,9 @@ export const projects: Project[] = [
     services: ["Structural PEB Design"],
     description:
       "The PEB mezzanine structure, which supports the machine load above ground, has been designed using steel columns sized to fit onto the existing small RCC pedestals. Additionally, the design incorporates a double-sloped roof featuring a centrally located pipe rack with appropriate connection details. Fabrication drawings have also been supplied for each member.",
+    risk: "Machine loads above ground on steel sized to existing small RCC pedestals — without rebuilding the foundations.",
+    refused:
+      "Oversized new pedestals and a generic PEB kit that ignored the existing concrete geometry and pipe-rack interface.",
     highlights: [
       "Steel columns on existing RCC pedestals",
       "Double-sloped roof with central pipe rack",
@@ -110,6 +122,9 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "The redevelopment design for the G + 2C+12 apartments has been completed with a value engineering approach, emphasizing cost-effectiveness and maximizing parking efficiency.",
+    risk: "Redevelopment cost and parking efficiency on a tight urban plot — without erasing structural safety margins.",
+    refused:
+      "Value engineering that strips frame capacity and parking logic for a cheaper sheet that fails on site.",
     highlights: [
       "Value engineering approach",
       "Cost-effectiveness focus",
@@ -139,6 +154,9 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "The design of 7BHK bungalow has been carefully planned, considering large cutouts, architectural aesthetics, and spacious slabs covering the rooms without intermediate beams. Additionally, in certain areas, wider beams are incorporated to comply with depth restrictions.",
+    risk: "Large architectural cutouts and clear spans — without intermediate beams fighting the room volumes.",
+    refused:
+      "A dense beam grid that would have been easier to calculate and would have destroyed the architectural openness.",
     highlights: [
       "Large cutouts and architectural aesthetics",
       "Spacious slabs without intermediate beams",
@@ -167,6 +185,9 @@ export const projects: Project[] = [
     services: ["Structural Design with Report"],
     description:
       "The chemical storage and QC room for Aarti Industries has been designed to meet mechanical specifications, including the submission of all structural calculations in accordance with the latest IS codes. Additionally, the adjacent Piperack is supported by the QC building to optimize the overall design cost-effectively.",
+    risk: "Mechanical specs and IS-code proof for chemical storage — while integrating an adjacent piperack without duplicate structure cost.",
+    refused:
+      "Separate QC and piperack frames that would have been simpler to issue and more expensive to build.",
     highlights: [
       "Structural calculations to latest IS codes",
       "Piperack supported by QC building",
@@ -196,6 +217,9 @@ export const projects: Project[] = [
     services: ["Structural Design with Strengthening"],
     description:
       "An extension of the existing Peb shed has been completed by connecting it to the current structure. The existing design was reviewed in accordance with the latest IS code, and strengthening measures were proposed as needed. By integrating with the existing structure, space was conserved, resulting in a more cost-effective project overall.",
+    risk: "Extend an existing PEB without pretending the old frame already met current IS code.",
+    refused:
+      "A detached new shed that wasted space — or an unchecked connection that ignored strengthening needs.",
     highlights: [
       "Extension connected to existing PEB",
       "IS code review of existing design",
@@ -224,6 +248,9 @@ export const projects: Project[] = [
     services: ["Structural Design with Project management"],
     description:
       "This contemporary office project features a robust reinforced frame designed to support a multi-material facade of HPL wood panels and horizontal cladding. A key highlight is the engineered entrance canopy, which utilizes a hybrid column system and a reinforced concrete pedestal to provide a striking, cantilevered architectural statement.",
+    risk: "A multi-material facade and cantilevered entrance canopy — carried by a frame that can actually hold them.",
+    refused:
+      "Treating the canopy as an architectural add-on without hybrid columns and a reinforced pedestal.",
     highlights: [
       "Reinforced frame for multi-material facade",
       "HPL wood panels and horizontal cladding",
@@ -253,6 +280,9 @@ export const projects: Project[] = [
     services: ["Structural design"],
     description:
       "This project demonstrates a sophisticated blend of vernacular materiality and modern structural engineering. Our team optimized the load-bearing capacity of Compressed Stabilized Earth Block (CSEB) masonry to support a high-performance, lightweight canopy.",
+    risk: "CSEB masonry capacity for a lightweight canopy — vernacular materiality that still meets modern load demands.",
+    refused:
+      "Defaulting to concrete everywhere and discarding the earth-block intent for convenience.",
     highlights: [
       "CSEB masonry optimization",
       "Lightweight canopy support",
@@ -280,6 +310,8 @@ export const projects: Project[] = [
     services: ["Structural Design", "Architecture coordination"],
     description:
       "Corporate headquarters facility with coordinated architectural intent and structural systems — delivered as construction-ready packages.",
+    risk: "Facade and campus structure coordinated so GFC packages leave without unresolved Architecture–Structure interfaces.",
+    refused: "Pretty elevations issued ahead of a locked structural grid.",
     highlights: ["Corporate campus structure", "Facade coordination", "Construction-ready GFC"],
     assets: {
       cover: "projects/details/page_01.jpg",
@@ -302,6 +334,8 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "Commercial facility engineered for operational clarity — structure aligned to architectural planning and site execution.",
+    risk: "Operational clarity on a commercial frame — structure that matches planning before site invents answers.",
+    refused: "Disconnected consultant packages that force RFIs after fabrication starts.",
     highlights: ["Commercial structure", "Site-ready detailing"],
     assets: {
       cover: "projects/details/page_04.jpg",
@@ -323,6 +357,8 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "Institutional education facility — structural systems planned for safety, usability and long-term performance.",
+    risk: "Safe assembly spaces and long-term institutional performance — not just spanning rooms.",
+    refused: "Minimum-code framing that ignores how students and staff actually use the building.",
     highlights: ["Institutional structure", "Safe assembly spaces"],
     assets: {
       cover: "projects/details/page_06.jpg",
@@ -344,6 +380,8 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "Private residence with architectural cutouts and generous spans — structure supports intent without intermediate beams where design demands.",
+    risk: "Generous spans and cutouts — structure that protects architectural intent instead of fighting it.",
+    refused: "Beaming every bay for calculation comfort at the cost of the house.",
     highlights: ["Residential structure", "Long-span slabs"],
     assets: {
       cover: "projects/details/page_08.jpg",
@@ -383,6 +421,8 @@ export const projects: Project[] = [
     services: ["Structural Design"],
     description:
       "Multi-storey residential tower — load paths, parking efficiency and construction-ready detailing coordinated Before Issue.",
+    risk: "Load paths and parking efficiency locked together Before Issue — not after basement excavation.",
+    refused: "Frame decisions that ignore parking geometry until the contractor asks.",
     highlights: ["Multi-storey residential", "Parking & frame efficiency"],
     assets: {
       cover: "projects/details/page_11.jpg",
@@ -493,6 +533,8 @@ export const projects: Project[] = [
     services: ["Structural Design with Report"],
     description:
       "QC storage engineered to mechanical specifications with IS-code calculations and cost-effective integration.",
+    risk: "Mechanical specs met with IS-code calculations — industrial QC that proves itself on paper before site.",
+    refused: "Issuing without calculation packages that mechanical and civil can both stand behind.",
     highlights: ["Industrial QC structure", "IS-code calculations"],
     assets: {
       cover: "projects/details/page_19.jpg",

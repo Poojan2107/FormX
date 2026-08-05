@@ -381,6 +381,116 @@ body {
   background-size: 36px 36px;
 }
 
+/* ─── FORM× signature system ─────────────────────────────────────────── */
+.x-mark {
+  display: inline-block;
+  color: var(--x-red);
+  font-weight: 900;
+  line-height: 1;
+  speak: none;
+}
+
+.x-rule {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.x-rule::before,
+.x-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+  transform-origin: left center;
+}
+
+.x-rule[data-tone="dark"]::before,
+.x-rule[data-tone="dark"]::after {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.x-rule__glyph {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--x-red);
+}
+
+@keyframes x-draw-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.x-rule.in-view::before,
+.x-rule.in-view::after {
+  animation: x-draw-line 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.x-rule.in-view::after {
+  transform-origin: right center;
+  animation-delay: 0.08s;
+}
+
+.x-corner {
+  position: relative;
+}
+
+.x-corner::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  border-left: 1px solid var(--x-red);
+  border-top: 1px solid var(--x-red);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.x-corner::after {
+  content: "×";
+  pointer-events: none;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--x-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.x-corner:hover::after,
+.group:hover .x-corner::after {
+  opacity: 0.9;
+}
+
+.x-bullet::before {
+  content: "×";
+  color: var(--x-red);
+  font-weight: 900;
+  margin-right: 0.55rem;
+  font-size: 0.75em;
+}
+
+.measure-tight {
+  max-width: 38ch;
+}
+
+.measure-studio {
+  max-width: 42ch;
+}
+
 .x-border {
   position: relative;
   transition:

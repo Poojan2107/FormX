@@ -84,9 +84,9 @@ export function Hero() {
             Where Vision Takes Form
           </p>
 
-          <p className="mb-9 max-w-lg text-[15px] leading-[1.85] text-white/55 md:mb-10 md:text-[16px]">
-            Architecture, Structure and Infrastructure — coordinated Before Issue so facilities reach
-            site with fewer surprises.
+          <p className="mb-9 measure-studio text-[15px] leading-[1.85] text-white/55 md:mb-10 md:text-[16px]">
+            Architecture, Structure and Infrastructure — coordinated Before × Issue so facilities
+            reach site with fewer surprises.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 md:gap-4">

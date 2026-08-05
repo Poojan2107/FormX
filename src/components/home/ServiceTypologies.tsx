@@ -6,10 +6,10 @@ import {
 } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { XRule } from "@/components/ui/XMotif";
 
 /**
- * Founder home_comment_p5: four typology blocks (sketched as vertical columns).
- * Brochure language only — no lifestyle imagery.
+ * Four typology blocks from the FORMX brochure.
  */
 export function ServiceTypologies() {
   return (
@@ -22,9 +22,10 @@ export function ServiceTypologies() {
           <h2 className="mt-2 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
             Design solutions in engineering &amp; architecture
           </h2>
-          <p className="mt-4 max-w-xl text-[14px] leading-[1.85] text-ink-muted">
-            Four facility typologies from the FORMX brochure.
+          <p className="mt-4 measure-studio text-[14px] leading-[1.85] text-ink-muted">
+            Four facility typologies from the FORM× brochure.
           </p>
+          <XRule className="mt-5 max-w-xs" />
         </Reveal>
 
         <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -41,11 +42,11 @@ export function ServiceTypologies() {
               >
                 <div>
                   <span
-                    className={`font-display text-[10px] font-bold uppercase tracking-[0.2em] ${
+                    className={`font-display text-[10px] font-black uppercase tracking-[0.2em] ${
                       item.tone === "dark" ? "text-white/70" : "text-x-red"
                     }`}
                   >
-                    0{i + 1}
+                    × 0{i + 1}
                   </span>
                   <h3 className="mt-4 font-display text-lg font-extrabold uppercase leading-snug tracking-tight md:text-xl">
                     {item.title}
