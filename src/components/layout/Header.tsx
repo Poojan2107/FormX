@@ -64,17 +64,17 @@ function SiteHeader({
       >
         <div
           className={cn(
-            "border-b backdrop-blur-xl transition-colors duration-300",
+            "border-b transition-all duration-300",
             scrolled
-              ? "border-black/10 bg-[#f7f6f3]/98 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
-              : "border-line/70 bg-[#f7f6f3]/90",
+              ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
+              : "border-transparent bg-white",
           )}
         >
-          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">
+          <Container className="grid h-[4.25rem] grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">
             <Link
               href="/"
               transitionTypes={["nav-back"]}
-              className="relative z-10 flex shrink-0 items-center scale-[1.05]"
+              className="relative z-10 flex shrink-0 items-center"
               aria-label="FormX home"
               onClick={() => setOpen(false)}
             >
@@ -85,20 +85,20 @@ function SiteHeader({
               <DesktopNav />
             </div>
 
-            <div className="relative z-10 flex items-center justify-end gap-5">
+            <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
               <a
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className="hidden h-9 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/55 transition-colors hover:text-ink xl:flex"
+                className="hidden h-9 items-center gap-2 font-label text-[10px] text-ink/50 transition-colors hover:text-ink xl:flex"
                 aria-label={`Call ${site.phone}`}
               >
                 <Phone className="size-3.5 shrink-0 text-x-red" />
-                <span>{site.phone}</span>
+                <span className="tracking-[0.12em]">{site.phone}</span>
               </a>
 
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="relative hidden h-9 items-center gap-1.5 bg-x-red px-5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
+                className="relative hidden h-10 items-center gap-1.5 bg-x-red px-5 font-label text-[10px] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
@@ -166,7 +166,7 @@ function SiteHeader({
                         onClick={() => setOpen(false)}
                         transitionTypes={["nav-forward"]}
                         className={cn(
-                          "block border-b border-white/10 py-5 font-display text-2xl font-bold tracking-tight transition-colors",
+                          "block border-b border-white/10 py-5 font-display text-2xl font-bold uppercase tracking-tight transition-colors",
                           isActive ? "text-x-red" : "text-white hover:text-x-red",
                         )}
                       >
@@ -176,7 +176,7 @@ function SiteHeader({
                         <div className="grid grid-cols-2 gap-2 border-b border-white/10 pb-3 pl-9 pt-2">
                           {serviceNavGroups.map((group) => (
                             <div key={group.title}>
-                              <p className="mb-1.5 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red">
+                              <p className="mb-1.5 font-label text-[9px] text-x-red">
                                 {group.title}
                               </p>
                               {group.items.map((child) => (
@@ -223,7 +223,7 @@ function SiteHeader({
                   href="/contact"
                   onClick={() => setOpen(false)}
                   transitionTypes={["nav-forward"]}
-                  className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white"
+                  className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white"
                 >
                   Enquire <ArrowUpRight className="size-4" />
                 </Link>

@@ -1,35 +1,25 @@
 import type { Metadata, Viewport } from "next";
 import { ViewTransition } from "react";
-import { Syne, Source_Serif_4, DM_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
-/** Architectural display — geometric, intentional, not startup-default */
-const display = Syne({
-  variable: "--font-display-family",
+/**
+ * Single type family matched to FormX lockup:
+ * geometric sans, bold wordmark, tracked labels — Montserrat is the closest
+ * free match to Form / CONSULTANTS / DESIGN | ENGINEERING.
+ */
+const formx = Montserrat({
+  variable: "--font-formx-family",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-/** Human reading voice — essays, beliefs, judgement */
-const body = Source_Serif_4({
-  variable: "--font-body-family",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-/** Technical labels / nav / stamps */
-const label = DM_Sans({
-  variable: "--font-label-family",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a09",
+  themeColor: "#000000",
   colorScheme: "light",
 };
 
@@ -63,10 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} ${label.variable} h-full`}
-    >
+    <html lang="en" className={`${formx.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-bg font-body text-ink antialiased">
         <ScrollProgress />
         <a href="#main" className="skip-link sr-only">

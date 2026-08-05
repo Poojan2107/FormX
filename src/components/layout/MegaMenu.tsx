@@ -136,7 +136,7 @@ export function DesktopNav() {
                 <button
                   type="button"
                   className={cn(
-                    "relative inline-flex items-center gap-1.5 px-2.5 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors lg:px-3",
+                    "relative inline-flex items-center gap-1.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     highlighted
                       ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
                       : "text-ink/65 hover:text-ink",
@@ -162,7 +162,7 @@ export function DesktopNav() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "relative inline-flex items-center gap-0.5 px-2.5 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors lg:px-3",
+                    "relative inline-flex items-center gap-0.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     routeActive
                       ? "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
                       : "text-ink/65 hover:text-ink",

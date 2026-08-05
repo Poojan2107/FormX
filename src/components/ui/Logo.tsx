@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 
+/**
+ * Official FormX lockup assets:
+ * - formx-logo-solid.png — light surfaces (nav, light footer strips)
+ * - formx-logo.png — dark surfaces (FORM in near-white + red ×)
+ */
 export function Logo({
   className,
   invert = false,
@@ -10,49 +15,26 @@ export function Logo({
   invert?: boolean;
   variant?: "mark" | "full" | "lockup";
 }) {
-  if (variant === "lockup") {
-    return (
-      <span
-        className={cn("relative inline-flex items-center h-10 md:h-12 w-auto overflow-hidden", className)}
-        aria-label="FormX Consultants"
-      >
-        <Image
-          src="/formx-lockup.png"
-          alt="FormX Consultants"
-          width={220}
-          height={60}
-          className="h-full w-auto object-contain object-left"
-          priority
-        />
-      </span>
-    );
-  }
+  const src = invert ? "/formx-logo.png" : "/formx-logo-solid.png";
+  const height = variant === "mark" ? 36 : 48;
 
   return (
     <span
-      className={cn("inline-flex flex-col leading-none select-none", className)}
+      className={cn(
+        "relative inline-flex items-center overflow-hidden",
+        variant === "mark" ? "h-8 md:h-9" : "h-10 md:h-12",
+        className,
+      )}
       aria-label="FormX Consultants"
     >
-      <span className="font-display text-[1.4rem] md:text-[1.65rem] font-black tracking-[-0.03em] uppercase">
-        <span className={invert ? "text-white" : "text-ink"}>Form</span>
-        <span className="text-x-red font-black">×</span>
-      </span>
-      <span
-        className={cn(
-          "mt-0.5 font-display text-[0.6rem] font-extrabold uppercase tracking-[0.26em]",
-          invert ? "text-white/90" : "text-ink/90",
-        )}
-      >
-        Consultants
-      </span>
-      <span
-        className={cn(
-          "mt-0.5 font-display text-[0.5rem] font-bold uppercase tracking-[0.18em]",
-          invert ? "text-white/50" : "text-ink-muted/70",
-        )}
-      >
-        Design <span className="text-x-red font-bold">|</span> Engineering
-      </span>
+      <Image
+        src={src}
+        alt="FormX Consultants — Design | Engineering"
+        width={variant === "mark" ? 140 : 200}
+        height={height}
+        className="h-full w-auto object-contain object-left"
+        priority
+      />
     </span>
   );
 }
