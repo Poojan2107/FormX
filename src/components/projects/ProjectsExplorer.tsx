@@ -7,7 +7,7 @@ import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
-/** Jacobs-style filterable project grid — image-led, short copy */
+/** Editorial dossier list — filterable, not a card mosaic */
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const [q, setQ] = useState("");
   const [sector, setSector] = useState("All");
@@ -29,7 +29,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="mb-10 flex flex-col gap-5 border-b border-line pb-8 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-8 flex flex-col gap-5 border-b border-line pb-8 lg:flex-row lg:items-center lg:justify-between">
         <label className="relative block w-full max-w-md">
           <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ink/40" />
           <input
@@ -55,7 +55,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         </p>
       </div>
 
-      <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filter by sector">
+      <div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter by sector">
         {sectors.map((s) => (
           <button
             key={s}
@@ -77,38 +77,51 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       {filtered.length === 0 ? (
         <p className="py-16 text-center text-ink-muted">No projects match this filter.</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="divide-y divide-line border-y border-line">
           {filtered.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
               transitionTypes={["nav-forward"]}
-              className="group block"
+              className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-9"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#111]">
+              <div className="x-corner relative aspect-[16/10] overflow-hidden bg-[#111] md:col-span-4">
                 <AssetImage
                   alt={project.title}
                   slot={project.assets.cover}
                   kind="facility"
-                  fit="cover"
+                  fit={project.assets.frame ?? "cover"}
                   aspect="auto"
                   objectPosition="center"
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
-                    {project.sector}
+              </div>
+              <div className="md:col-span-8">
+                <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                  {project.sector}
+                </p>
+                <h2 className="mt-2 font-display text-xl font-extrabold uppercase tracking-tight text-ink md:text-2xl">
+                  {project.title}
+                </h2>
+                <p className="mt-2 text-[13px] text-ink/50">
+                  {project.location}
+                  {project.area ? ` · ${project.area}` : ""}
+                  {project.floors ? ` · ${project.floors}` : ""}
+                </p>
+                {project.risk ? (
+                  <p className="mt-4 max-w-[52ch] text-[14px] leading-[1.75] text-ink-muted">
+                    {project.risk}
                   </p>
-                  <h2 className="mt-1 font-display text-lg font-extrabold uppercase tracking-tight text-white">
-                    {project.title}
-                  </h2>
-                  <p className="mt-1 flex items-center justify-between gap-2 text-[12px] text-white/55">
-                    <span>{project.location}</span>
-                    <ArrowUpRight className="size-3.5 opacity-50 transition-opacity group-hover:opacity-100" />
+                ) : (
+                  <p className="mt-4 max-w-[52ch] text-[14px] leading-[1.75] text-ink-muted line-clamp-2">
+                    {project.description}
                   </p>
-                </div>
+                )}
+                <span className="mt-5 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                  Open dossier
+                  <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
               </div>
             </Link>
           ))}

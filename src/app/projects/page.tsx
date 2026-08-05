@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "FORMX project portfolio — industrial facilities, PEB warehouses, residential towers, corporate and institutional structures across Gujarat and India.",
 };
 
-/** Jacobs-inspired projects index — impact headline + filterable evidence */
+/** Engineering evidence index — dossier list, brochure-true */
 export default function ProjectsPage() {
   return (
     <>
@@ -20,17 +20,17 @@ export default function ProjectsPage() {
         <Container>
           <Reveal>
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Projects
+              Engineering evidence
             </p>
             <h1
-              className="mt-4 max-w-[16ch] font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
+              className="mt-4 max-w-[14ch] font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
-              Projects that leave a legacy
+              Completed facilities
             </h1>
             <p className="mt-6 max-w-[42ch] text-[16px] leading-[1.9] text-ink-muted">
-              From industrial plants and PEB warehouses to corporate houses and residential
-              towers — see how FORMX brings facilities to site.
+              Industrial plants, PEB warehouses, residential towers and institutional buildings —
+              each dossier records what had to be locked Before × Issue.
             </p>
           </Reveal>
         </Container>
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
         <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="max-w-[36ch] text-[15px] leading-[1.85] text-white/65">
-            Planning a similar facility? Share location, sector and timeline with the FORMX studio.
+            Planning a similar facility? Share location, type and timeline with the FORM× studio.
           </p>
           <Link
             href="/contact"

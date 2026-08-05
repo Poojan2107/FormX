@@ -42,10 +42,10 @@ export default function AboutPage() {
           >
             Where Vision Takes Form
           </h1>
-          <p className="mt-8 max-w-[38ch] text-[17px] leading-[1.9] text-ink-muted">
+          <p className="mt-8 max-w-[42ch] text-[17px] leading-[1.9] text-ink-muted">
             {aboutPage.intro}
           </p>
-          <p className="mt-8 max-w-[42ch] text-[15px] leading-[1.9] text-ink/70">
+          <p className="mt-6 max-w-[42ch] text-[14px] leading-[1.85] text-ink/55">
             {aboutPage.philosophy}
           </p>
         </Container>
@@ -125,14 +125,14 @@ export default function AboutPage() {
           <Container>
             <Reveal>
               <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                Leadership
+                Founder
               </p>
               <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-                Partners close to the work
+                People close to the work
               </h2>
               <p className="mt-3 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
-                Led by Founder &amp; Managing Partner {founder.name} — structural designer,
-                architecture planning &amp; site execution.
+                {founder.name} — structural designer, architecture planning and site execution.
+                Grade 1 (AMC / BMC).
               </p>
             </Reveal>
 

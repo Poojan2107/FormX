@@ -138,7 +138,7 @@ export const hero = {
   eyebrow: "FORMX Consultants",
   title: "Where Vision Takes Form",
   slogan: "Where Vision Takes Form",
-  body: "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation.",
+  body: "Architecture, Structure and Infrastructure — coordinated Before × Issue so facilities reach site with fewer surprises.",
   primaryCta: { label: "Discuss your facility", href: "/contact" },
   secondaryCta: { label: "See completed work", href: "/projects" },
   trust: [
@@ -169,12 +169,12 @@ export const about = {
 
 export const aboutPage = {
   intro:
-    "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation. We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
+    "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution. Reviews stay with engineers who own the sheets.",
   tagline: "Shaping form, defining futures",
   philosophy:
-    "At FormX, we don't just design structures — we craft lasting solutions that reflect stability, creativity, and precision. Always open to fresh ideas and complex challenges, we believe every structure has a story — and we're here to engineer it right.",
+    "Every unresolved coordination issue eventually appears on site. Before × Issue means disciplines answer each other first — sheet volume is not success.",
   whyExists:
-    "We specialize in resilient high-rise and residential design, robust industrial facilities, institutional & commercial buildings, and strengthening & retrofitting — merging technical proficiency with practical wisdom.",
+    "High-rise and residential, industrial facilities, institutional and commercial buildings, strengthening and retrofitting — always with Architecture, Structure and Infrastructure moving together.",
   founderVision:
     "Hiren J. Shah, Founder & Managing Partner — Structural Engineer, Grade 1 (AMC / BMC). Stay close to the work: desk reviews, coordination meetings, site walks and drawing markups.",
   collaboration:
@@ -182,21 +182,21 @@ export const aboutPage = {
   studioFlow:
     "Projects move through the Ahmedabad studio with Architecture, Structure and Infrastructure — from concept through site execution.",
   story: [
-    "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation.",
-    "We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
+    "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio.",
+    "We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution.",
   ],
   principles: [
     {
       title: "Our Vision",
-      body: "Every engineering decision should reduce future construction uncertainty — structures that prioritize safety, efficiency, and alignment with architectural vision and how people use the facility.",
+      body: "Every engineering decision should reduce construction uncertainty — safety, efficiency, and alignment with how the facility will actually be used.",
     },
     {
       title: "Our Mission",
-      body: "Drawings should answer questions before construction begins. We deliver Architecture, Structure and Infrastructure with technical proficiency and practical wisdom — from concept through site execution.",
+      body: "Drawings should answer questions before construction begins. Architecture, Structure and Infrastructure — from concept through site execution.",
     },
     {
       title: "Our Values",
-      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes — behaviours we expect in every review, not words on a wall.",
+      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes — behaviours in every review, not words on a wall.",
     },
   ],
   humanValues: [
