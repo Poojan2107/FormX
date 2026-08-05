@@ -67,8 +67,10 @@ function SiteHeader({
         <div
           className={cn(
             "border-b transition-all duration-500",
+            /* Black (not transparent): sticky header sits above main; transparent
+               would show body white and split the hero. Black merges with the field. */
             overDarkHero
-              ? "border-transparent bg-transparent"
+              ? "border-transparent bg-black"
               : scrolled
                 ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
                 : "border-transparent bg-white",
