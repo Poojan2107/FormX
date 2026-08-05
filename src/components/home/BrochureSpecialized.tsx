@@ -1,24 +1,22 @@
 "use client";
 
 import { Reveal } from "@/components/ui/Reveal";
-import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { brochureSpecialized } from "@/data/brochureHome";
 import { brochureVisuals } from "@/data/projects";
 
-/** Image-led specialised chapter */
 export function BrochureSpecialized() {
   return (
     <section id="specialized" className="scroll-mt-28 overflow-hidden bg-white">
       <div className="grid lg:grid-cols-12">
-        <Reveal from="left" className="relative min-h-[360px] bg-[#111] lg:col-span-7 lg:min-h-[560px]">
+        <Reveal from="left" className="bg-[#ebeae6] lg:col-span-7">
           <AssetImage
             slot={brochureVisuals.specializedBanner}
             alt="FormX specialised engineering"
             fit="contain"
-            aspect="auto"
-            tone="dark"
-            className="absolute inset-0"
+            aspect="landscape"
+            tone="light"
+            className="min-h-[320px] md:min-h-[520px]"
             sizes="(max-width: 1024px) 100vw, 58vw"
           />
         </Reveal>

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown, Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
+import { BrandMark } from "@/components/ui/BrandMark";
 import { brochureFaqs } from "@/data/brochureHome";
 import { site } from "@/data/site";
 
@@ -60,13 +60,7 @@ export function BrochureContact() {
       <Container className="relative z-10">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
           <Reveal className="lg:col-span-7">
-            <Image
-              src="/formx-logo.png"
-              alt="FormX"
-              width={180}
-              height={56}
-              className="h-9 w-auto object-contain"
-            />
+            <BrandMark tone="dark" size="lg" showSub />
             <h2
               className="mt-8 max-w-[12ch] font-display font-bold leading-[1.02] tracking-tight"
               style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)" }}

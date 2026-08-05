@@ -48,7 +48,6 @@ export function AssetImage({
 }) {
   const resolved = src ?? (slot ? `/assets/${slot}` : null);
   const [failed, setFailed] = useState(false);
-  const [loaded, setLoaded] = useState(false);
 
   const aspects: Record<string, string> = {
     landscape: "aspect-[16/10]",
@@ -58,7 +57,6 @@ export function AssetImage({
     auto: "",
   };
 
-  // Fill parents (absolute inset-0) must not also force an aspect box — that crops/blurs.
   const isFill =
     typeof className === "string" &&
     className.includes("absolute") &&
@@ -70,38 +68,23 @@ export function AssetImage({
         className={cn(
           "relative overflow-hidden",
           !isFill && "h-full w-full",
-          tone === "dark" ? "bg-[#111111]" : "bg-white",
+          tone === "dark" ? "bg-[#111111]" : "bg-[#ebeae6]",
           !isFill && aspects[aspect],
           className,
         )}
       >
-        {!loaded ? (
-          <div
-            aria-hidden
-            className="x-shimmer absolute inset-0"
-            style={{
-              background:
-                tone === "dark"
-                  ? "linear-gradient(100deg,#151515 40%,#262626 50%,#151515 60%)"
-                  : "linear-gradient(100deg,#f0f0f0 40%,#fafafa 50%,#f0f0f0 60%)",
-              backgroundSize: "200% 100%",
-            }}
-          />
-        ) : null}
         <Image
           src={resolved}
           alt={alt}
           fill
           priority={priority}
           unoptimized
-          onLoad={() => setLoaded(true)}
           sizes={sizes}
           className={cn(
-            "h-full w-full transition-opacity duration-500",
+            "h-full w-full",
             fit === "contain" ? "object-contain" : "object-cover",
             zoomOnHover &&
-              "transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03]",
-            loaded ? "opacity-100" : "opacity-0",
+              "transition-transform duration-700 ease-out group-hover:scale-[1.03]",
           )}
           style={{ objectPosition }}
           onError={() => setFailed(true)}

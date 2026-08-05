@@ -24,24 +24,24 @@ function ProjectVisual({
       className="group block"
     >
       <div
-        className={`relative overflow-hidden transition-transform duration-500 group-hover:-translate-y-1 ${
-          dark ? "bg-[#141414]" : "bg-[#ebeae6]"
-        } ${featured ? "min-h-[340px] md:min-h-[480px]" : "min-h-[260px] md:min-h-[360px]"}`}
+        className={`overflow-hidden border transition-transform duration-500 group-hover:-translate-y-1 ${
+          dark ? "border-white/10 bg-[#141414]" : "border-black/5 bg-[#ebeae6]"
+        }`}
       >
         <AssetImage
           slot={project.assets.cover}
           alt={project.title}
           fit="contain"
-          aspect="auto"
+          aspect={featured ? "wide" : "landscape"}
           tone={dark ? "dark" : "light"}
-          className="absolute inset-0"
+          className={featured ? "min-h-[300px] md:min-h-[420px]" : "min-h-[220px] md:min-h-[280px]"}
           sizes={featured ? "(max-width: 768px) 100vw, 90vw" : "(max-width: 768px) 100vw, 50vw"}
           zoomOnHover
         />
       </div>
       <div className="mt-4 flex items-start justify-between gap-3">
         <div>
-          <p className={`font-label text-[9px] tracking-[0.22em] ${dark ? "text-x-red" : "text-x-red"}`}>
+          <p className="font-label text-[9px] tracking-[0.22em] text-x-red">
             {project.location}
             {project.area ? ` · ${project.area}` : ""}
           </p>
@@ -63,16 +63,11 @@ function ProjectVisual({
   );
 }
 
-/**
- * Visual-first projects — title + meta only.
- * Each typology gets a different composition.
- */
 export function BrochureProjects() {
   const [industrial, highRise, commercial] = brochureProjectGroups;
 
   return (
     <section id="projects" className="scroll-mt-28">
-      {/* Intro band */}
       <div className="bg-[#f4f3f0] py-16 md:py-20">
         <Container>
           <Reveal>
@@ -90,7 +85,6 @@ export function BrochureProjects() {
         </Container>
       </div>
 
-      {/* Industrial — featured lead + grid */}
       <div id="industrial" className="bg-white py-16 md:py-24">
         <Container>
           <Reveal>
@@ -123,7 +117,6 @@ export function BrochureProjects() {
         </Container>
       </div>
 
-      {/* High-rise — dark immersive pair */}
       <div id="high-rise" className="bg-[#0a0a0a] py-16 text-white md:py-24">
         <Container>
           <Reveal>
@@ -150,7 +143,6 @@ export function BrochureProjects() {
         </Container>
       </div>
 
-      {/* Commercial — light magazine */}
       <div id="commercial" className="bg-[#f4f3f0] py-16 md:py-24">
         <Container>
           <Reveal>
