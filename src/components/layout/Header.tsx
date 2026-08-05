@@ -64,10 +64,10 @@ function SiteHeader({
       >
         <div
           className={cn(
-            "border-b bg-white/95 backdrop-blur-xl transition-colors duration-300",
+            "border-b backdrop-blur-xl transition-colors duration-300",
             scrolled
-              ? "border-black/10 bg-white/98 shadow-[0_8px_30px_rgba(0,0,0,0.05)]"
-              : "border-line/70",
+              ? "border-black/10 bg-[#f7f6f3]/98 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
+              : "border-line/70 bg-[#f7f6f3]/90",
           )}
         >
           <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">

@@ -11,134 +11,100 @@ import { HumanValuesPanel } from "@/components/about/HumanValuesPanel";
 import { BrochureCta } from "@/components/shared/CtaBlocks";
 
 export const metadata: Metadata = {
-  title: "About Us | FORMX Consultants",
+  title: "About Us",
   description:
-    "About FORMX Consultants, Ahmedabad — Founder Hiren J. Shah, Structural Engineer Grade 1. Architecture, Structure and Infrastructure coordinated Before Issue.",
+    "About FORM× Consultants, Ahmedabad — Founder Hiren J. Shah. Architecture, Structure and Infrastructure coordinated Before × Issue.",
 };
 
-/**
- * Founder About marks:
- * - No BG photo on hero
- * - Shaping form, defining futures + large heading
- * - One paragraph
- * - No stats strip under hero
- * - Vision / Mission / Values after
- * - Why choose = VMS accordion + people visual (HumanValuesPanel)
- * - Hiren only, no practice-lead cards
- */
 export default function AboutPage() {
   const founder = leadership.find((p) => p.featured);
 
   return (
     <>
-      <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
+      <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.28em] text-x-red">
-            {aboutPage.tagline}
-          </p>
+          <p className="font-label text-[11px] text-x-red">{aboutPage.tagline}</p>
           <h1
-            className="mt-4 max-w-[14ch] font-display font-black uppercase leading-[1.02] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+            className="mt-5 max-w-[12ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight text-ink"
+            style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
           >
             Where Vision Takes Form
           </h1>
-          <p className="mt-8 max-w-[42ch] text-[17px] leading-[1.9] text-ink-muted">
+          <p className="mt-10 measure-essay text-[20px] leading-[1.75] text-ink-muted">
             {aboutPage.intro}
           </p>
-          <p className="mt-6 max-w-[42ch] text-[14px] leading-[1.85] text-ink/55">
+          <p className="mt-6 measure-essay text-[16px] leading-[1.8] text-ink/50">
             {aboutPage.philosophy}
           </p>
         </Container>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="border-b border-line bg-bg section-y">
         <Container>
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Vision · Mission · Values
-            </p>
-          </Reveal>
+          <p className="font-label text-[11px] text-x-red">Vision · Mission · Values</p>
           <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i}>
-                <span className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
-                  0{i + 1}
-                </span>
-                <h2 className="mt-3 font-display text-xl font-extrabold uppercase text-ink">
+                <span className="font-display text-sm font-bold text-x-red">0{i + 1}</span>
+                <h2 className="mt-4 font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
                   {p.title}
                 </h2>
-                <p className="mt-4 text-[14px] leading-[1.85] text-ink-muted">{p.body}</p>
+                <p className="mt-4 text-[16px] leading-[1.8] text-ink-muted">{p.body}</p>
               </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="border-y border-line bg-[#fafafa] py-20 md:py-28">
+      <section className="border-b border-line bg-bg-muted section-y">
         <Container>
           <HumanValuesPanel />
           <BrochureCta className="mt-14" />
         </Container>
       </section>
 
-      <section className="border-b border-line bg-white py-16 md:py-20">
+      <section className="border-b border-line bg-bg section-y">
         <Container>
           <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              {formxMethod.code}
-            </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+            <p className="font-label text-[11px] text-x-red">{formxMethod.code}</p>
+            <h2
+              className="mt-4 max-w-[12ch] font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
+              style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
+            >
               Before <span className="text-x-red">×</span> Issue
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+            <p className="mt-6 measure-essay text-[17px] leading-[1.8] text-ink-muted">
               {formxMethod.belief}
             </p>
           </Reveal>
-          <div className="mt-12 flex flex-wrap gap-3">
+          <div className="mt-12 grid gap-px bg-line sm:grid-cols-5">
             {formxMethod.stages.map((s) => (
-              <div
-                key={s.id}
-                className="border border-line bg-white px-5 py-4"
-              >
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
-                  {s.num}
-                </p>
-                <p className="mt-1 font-display text-sm font-extrabold uppercase tracking-tight text-ink">
+              <div key={s.id} className="bg-bg px-5 py-6">
+                <p className="font-label text-[10px] text-x-red">{s.num}</p>
+                <p className="mt-2 font-display text-lg font-extrabold uppercase tracking-tight text-ink">
                   {s.title}
                 </p>
+                <p className="mt-2 text-[13px] leading-snug text-ink/45">{s.verb}</p>
               </div>
             ))}
           </div>
           <Link
             href="/#before-issue"
             transitionTypes={["nav-forward"]}
-            className="mt-10 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+            className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red"
           >
-            See it on the homepage
+            Experience it on the homepage
             <ArrowRight className="size-4" />
           </Link>
         </Container>
       </section>
 
       {founder ? (
-        <section className="bg-white py-20 md:py-28">
+        <section className="fx-grain border-b border-black bg-[#0a0a09] py-20 text-white md:py-28">
           <Container>
-            <Reveal>
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                Founder
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-                People close to the work
-              </h2>
-              <p className="mt-3 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
-                {founder.name} — structural designer, architecture planning and site execution.
-                Grade 1 (AMC / BMC).
-              </p>
-            </Reveal>
-
-            <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-5">
-                <div className="relative aspect-[3/4] overflow-hidden bg-[#111]">
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1a18] formx-cut-lg">
                   <AssetImage
                     alt={founder.name}
                     slot={founder.asset}
@@ -150,35 +116,35 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
-                <h3 className="font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+                <p className="font-label text-[11px] text-x-red">Founder</p>
+                <h2
+                  className="mt-4 font-display font-extrabold uppercase leading-[0.95] tracking-tight"
+                  style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)" }}
+                >
                   {founder.name}
-                </h3>
-                <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/45">
+                </h2>
+                <p className="mt-3 font-label text-[11px] text-white/40">
                   {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
                 </p>
-                <p className="mt-6 text-[15px] leading-[1.85] text-ink-muted">{founder.bio}</p>
-                <dl className="mt-8 space-y-6 border-t border-line pt-8">
+                <p className="mt-8 measure-essay text-[17px] leading-[1.8] text-white/65">
+                  {founder.bio}
+                </p>
+                <dl className="mt-10 space-y-6 border-t border-white/10 pt-8">
                   <div>
-                    <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                      What he reviews
-                    </dt>
-                    <dd className="mt-2 text-[14px] leading-[1.85] text-ink-muted">
+                    <dt className="font-label text-[10px] text-x-red">What he reviews</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
                       {hirenJudgement.reviews}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                      What he refuses
-                    </dt>
-                    <dd className="mt-2 text-[14px] leading-[1.85] text-ink-muted">
+                    <dt className="font-label text-[10px] text-x-red">What he refuses</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
                       {hirenJudgement.refuses}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-x-red">
-                      Before issue
-                    </dt>
-                    <dd className="mt-2 text-[14px] leading-[1.85] text-ink-muted">
+                    <dt className="font-label text-[10px] text-x-red">Before issue</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
                       {hirenJudgement.expects}
                     </dd>
                   </div>
@@ -188,7 +154,7 @@ export default function AboutPage() {
                     href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+                    className="mt-8 inline-flex font-label text-[11px] text-x-red hover:text-white"
                   >
                     Connect on LinkedIn →
                   </a>
@@ -199,27 +165,26 @@ export default function AboutPage() {
         </section>
       ) : null}
 
-      <section className="border-t border-line bg-white py-20 md:py-24">
+      <section className="bg-bg section-y">
         <Container>
-          <div className="max-w-2xl">
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Invitation
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Discuss your next project
-            </h2>
-            <p className="mt-4 text-[15px] leading-[1.85] text-ink-muted">
-              Share location, facility type and timeline. We look forward to collaborating.
-            </p>
-            <Link
-              href="/contact"
-              transitionTypes={["nav-forward"]}
-              className="mt-8 inline-flex items-center gap-3 bg-x-red px-8 py-4 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white hover:bg-x-red-hover"
-            >
-              Talk to our engineering team
-              <ArrowRight className="size-4" />
-            </Link>
-          </div>
+          <p className="font-label text-[11px] text-x-red">Invitation</p>
+          <h2
+            className="mt-4 max-w-[14ch] font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
+          >
+            Discuss your next facility
+          </h2>
+          <p className="mt-5 measure-studio text-[16px] leading-[1.8] text-ink-muted">
+            Share location, facility type and timeline. We look forward to the constraints.
+          </p>
+          <Link
+            href="/contact"
+            transitionTypes={["nav-forward"]}
+            className="mt-8 inline-flex items-center gap-3 bg-x-red px-8 py-4 font-label text-[11px] text-white hover:bg-x-red-hover"
+          >
+            Talk to the studio
+            <ArrowRight className="size-4" />
+          </Link>
         </Container>
       </section>
     </>

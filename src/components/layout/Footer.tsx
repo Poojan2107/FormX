@@ -14,35 +14,29 @@ export function Footer() {
 
   return (
     <footer
-      className="relative isolate overflow-hidden border-t border-white/10 bg-[#080808] text-white"
+      className="fx-grain relative isolate overflow-hidden border-t border-white/10 bg-[#0a0a09] text-white"
       style={{ viewTransitionName: "site-footer" }}
     >
-      <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-25" aria-hidden />
-      <div className="relative h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent" />
+      <div className="pointer-events-none absolute inset-0 fx-grid-dark opacity-40" aria-hidden />
 
       <Container className="relative z-10">
-        <div className="border-b border-white/10 py-10 md:py-12">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-x-red">
-                FORMX Headquarters
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-white md:text-4xl lg:text-5xl">
-                Ahmedabad Practice
-              </h2>
-              <p className="mt-3 max-w-lg text-[15px] leading-[1.8] text-white/55">
-                Before × Issue — Architecture · Structure · Infrastructure coordinated before
-                drawings leave the studio. Accountable through execution.
-              </p>
-              <p className="mt-4 font-display text-lg font-medium tracking-wide text-white/70 md:text-xl">
-                {site.slogan}
-              </p>
-            </div>
-            <div className="font-display text-[11px] font-bold uppercase tracking-[0.22em] text-white/40">
-              <p>23°01′N · 72°35′E</p>
-              <p className="mt-1 text-white/25">Gujarat Industrial Corridor · India</p>
-            </div>
-          </div>
+        <div className="border-b border-white/10 py-14 md:py-16">
+          <p className="font-label text-[10px] text-x-red">FORM× Headquarters</p>
+          <h2
+            className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-tight"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)" }}
+          >
+            Ahmedabad
+            <br />
+            Practice
+          </h2>
+          <p className="mt-6 max-w-lg text-[16px] leading-[1.8] text-white/50">
+            Before × Issue — Architecture · Structure · Infrastructure coordinated before drawings
+            leave the studio. Accountable through execution.
+          </p>
+          <p className="mt-4 font-body text-xl font-medium text-white/70 md:text-2xl">
+            {site.slogan}
+          </p>
         </div>
 
         <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-10">
@@ -50,29 +44,25 @@ export function Footer() {
             <Logo invert variant="full" />
             <dl className="mt-8 space-y-5">
               <div>
-                <dt className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-x-red">
-                  Office
-                </dt>
-                <dd className="mt-1.5 flex items-start gap-2 text-[13px] text-white/60">
+                <dt className="font-label text-[9px] text-x-red">Office</dt>
+                <dd className="mt-1.5 flex items-start gap-2 text-[14px] text-white/55">
                   <MapPin className="mt-0.5 size-3.5 shrink-0 text-x-red" />
                   {site.addressDetail}
                 </dd>
               </div>
               <div>
-                <dt className="font-display text-[9px] font-bold uppercase tracking-[0.24em] text-x-red">
-                  Inquiry
-                </dt>
+                <dt className="font-label text-[9px] text-x-red">Inquiry</dt>
                 <dd className="mt-1.5 space-y-2">
                   <a
                     href={`mailto:${site.email}`}
-                    className="flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white"
+                    className="flex items-center gap-2 text-[14px] text-white/55 hover:text-white"
                   >
                     <Mail className="size-3.5 text-x-red" />
                     {site.email}
                   </a>
                   <a
                     href={`tel:${site.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-[13px] text-white/60 transition-colors hover:text-white"
+                    className="flex items-center gap-2 text-[14px] text-white/55 hover:text-white"
                   >
                     <Phone className="size-3.5 text-x-red" />
                     {site.phone}
@@ -83,16 +73,14 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Navigate
-            </p>
+            <p className="mb-5 font-label text-[10px] text-x-red">Navigate</p>
             <ul className="space-y-3">
               {practiceLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     transitionTypes={["nav-forward"]}
-                    className="text-[13px] text-white/55 transition-colors hover:text-white"
+                    className="text-[15px] text-white/50 hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -102,7 +90,7 @@ export function Footer() {
                 <Link
                   href="/career"
                   transitionTypes={["nav-forward"]}
-                  className="text-[13px] text-white/55 transition-colors hover:text-white"
+                  className="text-[15px] text-white/50 hover:text-white"
                 >
                   Career
                 </Link>
@@ -111,77 +99,74 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <p className="mb-5 font-display text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-              Quick actions
-            </p>
+            <p className="mb-5 font-label text-[10px] text-x-red">Quick actions</p>
             <div className="space-y-3">
-              <Link
-                href="/contact"
-                transitionTypes={["nav-forward"]}
-                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
-              >
-                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
-                  Book Consultation
-                </span>
-                <ArrowUpRight className="size-4 text-x-red" />
-              </Link>
-              <a
-                href={site.brochurePath}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
-              >
-                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
-                  Download Brochure
-                </span>
-                <ArrowUpRight className="size-4 text-x-red" />
-              </a>
-              <a
-                href={site.linkedinCompany}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex w-full items-center justify-between border border-white/15 bg-white/[0.04] px-4 py-3.5 transition-all hover:border-x-red/60 hover:bg-x-red/10"
-              >
-                <span className="font-display text-[12px] font-bold uppercase tracking-[0.14em] text-white/80 group-hover:text-white">
-                  LinkedIn
-                </span>
-                <ArrowUpRight className="size-4 text-x-red" />
-              </a>
+              {[
+                { href: "/contact", label: "Book Consultation", external: false },
+                { href: site.brochurePath, label: "Download Brochure", external: true },
+                { href: site.linkedinCompany, label: "LinkedIn", external: true },
+              ].map((a) =>
+                a.external ? (
+                  <a
+                    key={a.label}
+                    href={a.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 hover:border-x-red/60"
+                  >
+                    <span className="font-label text-[11px] text-white/70 group-hover:text-white">
+                      {a.label}
+                    </span>
+                    <ArrowUpRight className="size-4 text-x-red" />
+                  </a>
+                ) : (
+                  <Link
+                    key={a.label}
+                    href={a.href}
+                    transitionTypes={["nav-forward"]}
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 hover:border-x-red/60"
+                  >
+                    <span className="font-label text-[11px] text-white/70 group-hover:text-white">
+                      {a.label}
+                    </span>
+                    <ArrowUpRight className="size-4 text-x-red" />
+                  </Link>
+                ),
+              )}
             </div>
           </div>
         </div>
 
-        {/* Monumental FORM× stamp */}
-        <div className="overflow-hidden border-t border-white/10 pb-6 pt-10 md:pb-8 md:pt-14">
+        <div className="overflow-hidden border-t border-white/10 pb-8 pt-12 md:pt-16">
           <span
-            className="block font-display font-black uppercase leading-[0.82] tracking-tighter text-white/[0.14] select-none"
-            style={{ fontSize: "clamp(4.5rem, 20vw, 16rem)" }}
+            className="block select-none font-display font-extrabold uppercase leading-[0.8] tracking-tighter text-white/[0.08]"
+            style={{ fontSize: "clamp(5rem, 22vw, 18rem)" }}
             aria-hidden
           >
-            FORM<span className="text-x-red">×</span>
+            FORM<span className="text-x-red/40">×</span>
           </span>
-          <p className="mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.28em] text-white/30 md:-mt-1">
-            Design | Engineering · {site.slogan} · Before × Issue
+          <p className="mt-2 font-label text-[10px] text-white/25">
+            Design | Engineering · {site.slogan}
           </p>
         </div>
       </Container>
 
       <div className="border-t border-white/[0.06] bg-black/40 py-4">
-        <Container className="flex flex-col items-start gap-2 text-[11px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
+        <Container className="flex flex-col items-start gap-2 text-[12px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} FormX Consultants LLP. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <a
               href={site.hirenLinkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-x-red"
+              className="hover:text-x-red"
             >
               Hiren J. Shah
             </a>
-            <Link href="/about" transitionTypes={["nav-forward"]} className="transition-colors hover:text-x-red">
+            <Link href="/about" transitionTypes={["nav-forward"]} className="hover:text-x-red">
               About
             </Link>
-            <Link href="/contact" transitionTypes={["nav-forward"]} className="transition-colors hover:text-x-red">
+            <Link href="/contact" transitionTypes={["nav-forward"]} className="hover:text-x-red">
               Contact
             </Link>
           </div>

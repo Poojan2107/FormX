@@ -3,54 +3,58 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { leadership } from "@/data/content";
+import { hirenJudgement } from "@/data/method";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
 
 export function PeopleGlimpse() {
   const founder = leadership.find((p) => p.featured);
-
   if (!founder) return null;
 
   return (
-    <section className="bg-[#0d0d0d] py-20 text-white md:py-28">
+    <section className="fx-grain border-b border-black bg-[#0a0a09] py-20 text-white md:py-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-14">
-          <Reveal className="relative min-h-[380px] overflow-hidden bg-[#1a1a1a] lg:col-span-5 lg:min-h-[520px]">
-            <AssetImage
-              alt={founder.name}
-              slot={founder.asset}
-              kind="team"
-              fit="cover"
-              aspect="auto"
-              objectPosition="center top"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-            <p className="absolute bottom-5 left-5 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
-              Desk · Site · Review
-            </p>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-5">
+            <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1a18] formx-cut-lg">
+              <AssetImage
+                alt={founder.name}
+                slot={founder.asset}
+                kind="team"
+                fit="cover"
+                aspect="auto"
+                objectPosition="center top"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
           </Reveal>
-
-          <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              People
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white md:text-4xl">
-              People close to the work
+          <Reveal delay={0.1} className="flex flex-col justify-center lg:col-span-7">
+            <p className="font-label text-[11px] text-x-red">Founder</p>
+            <h2
+              className="mt-4 font-display font-extrabold uppercase leading-[0.95] tracking-tight"
+              style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)" }}
+            >
+              {founder.name}
             </h2>
-            <p className="mt-2 font-display text-sm font-bold uppercase tracking-[0.14em] text-white/50">
-              {founder.name} · {founder.role} · Grade 1 (AMC / BMC)
+            <p className="mt-3 font-label text-[11px] text-white/40">
+              {founder.role} · Grade 1 (AMC / BMC)
             </p>
-            <p className="mt-6 measure-studio text-[15px] leading-[1.9] text-white/70">{founder.bio}</p>
-            <p className="mt-5 measure-studio text-[14px] leading-[1.85] text-white/50">
-              Load paths. Interfaces. Constructability. Site walks. Decisions stay with engineers who
-              own the drawings — structural designer, architecture planning and site execution.
-            </p>
+            <p className="mt-8 measure-essay text-[17px] leading-[1.8] text-white/65">{founder.bio}</p>
+            <dl className="mt-10 space-y-6 border-t border-white/10 pt-8">
+              <div>
+                <dt className="font-label text-[10px] text-x-red">Reviews</dt>
+                <dd className="mt-2 text-[15px] leading-[1.7] text-white/50">{hirenJudgement.reviews}</dd>
+              </div>
+              <div>
+                <dt className="font-label text-[10px] text-x-red">Refuses</dt>
+                <dd className="mt-2 text-[15px] leading-[1.7] text-white/50">{hirenJudgement.refuses}</dd>
+              </div>
+            </dl>
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
-              className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red transition-colors hover:text-white"
+              className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red hover:text-white"
             >
               About the practice
               <ArrowUpRight className="size-4" />

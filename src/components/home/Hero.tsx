@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 
 /**
- * FORM× dominant · slogan · NO background photos (Hiren).
- * No scroll chrome — brand owns the first viewport.
+ * First viewport = brand only.
+ * No photos (Hiren). FORM× is the architecture.
  */
 export function Hero() {
   const reduce = useReducedMotion();
@@ -19,90 +19,102 @@ export function Hero() {
       setReady(true);
       return;
     }
-    const t = window.setTimeout(() => setReady(true), 60);
+    const t = window.setTimeout(() => setReady(true), 40);
     return () => window.clearTimeout(t);
   }, [reduce]);
 
   return (
-    <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#0a0a0a] text-white md:min-h-[min(92vh,880px)]">
+    <section className="fx-grain relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#0a0a09] text-white">
+      <div className="pointer-events-none absolute inset-0 fx-grid-dark opacity-60" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-0 z-0 pattern-grid-dark opacity-[0.12]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute -left-1/4 top-1/3 h-[60vmax] w-[60vmax] rounded-full opacity-30"
         style={{
-          background:
-            "radial-gradient(60% 50% at 10% 40%, rgba(222,48,36,0.14), transparent 58%)",
+          background: "radial-gradient(circle, rgba(224,49,40,0.35) 0%, transparent 68%)",
         }}
         aria-hidden
       />
 
-      <Container className="relative z-10 flex flex-1 flex-col justify-center pb-20 pt-28 md:pb-24 md:pt-32">
-        <div className="max-w-4xl">
-          <div className="mb-7 md:mb-9">
-            <h1
-              className="font-display font-black uppercase leading-[0.92] tracking-[-0.04em] text-white"
-              style={{ fontSize: "clamp(3.25rem, 11vw, 7.75rem)" }}
-              aria-label="FormX Consultants"
-            >
-              {"FORM".split("").map((char, i) => (
-                <motion.span
-                  key={`f-${i}`}
-                  initial={reduce ? false : { y: "0.35em", opacity: 0 }}
-                  animate={ready ? { y: 0, opacity: 1 } : { opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-              <motion.span
-                initial={reduce ? false : { scale: 0.6, opacity: 0 }}
-                animate={ready ? { scale: 1, opacity: 1 } : { opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block text-x-red"
-              >
-                ×
-              </motion.span>
-            </h1>
-            <p className="mt-4 font-display text-[11px] font-bold uppercase tracking-[0.3em] text-white/65 md:text-[12px]">
-              Consultants · Design | Engineering
-            </p>
-          </div>
+      <Container className="relative z-10 flex flex-1 flex-col justify-center pb-16 pt-28 md:pb-20 md:pt-32">
+        <motion.p
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={ready ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.6, delay: 0.05 }}
+          className="font-label text-[11px] text-white/45"
+        >
+          Ahmedabad · India
+        </motion.p>
 
-          <p className="mb-5 font-display text-xl font-medium tracking-wide text-white md:mb-6 md:text-2xl lg:text-[1.85rem]">
+        <h1
+          className="mt-6 font-display font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-white"
+          style={{ fontSize: "clamp(4rem, 18vw, 11rem)" }}
+          aria-label="FormX Consultants"
+        >
+          {"FORM".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={reduce ? false : { y: "0.4em", opacity: 0 }}
+              animate={ready ? { y: 0, opacity: 1 } : undefined}
+              transition={{ duration: 0.55, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+          <motion.span
+            initial={reduce ? false : { scale: 0.4, opacity: 0, rotate: -30 }}
+            animate={ready ? { scale: 1, opacity: 1, rotate: 0 } : undefined}
+            transition={{ duration: 0.55, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-block text-x-red"
+          >
+            ×
+          </motion.span>
+        </h1>
+
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={ready ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-8 max-w-2xl md:mt-10"
+        >
+          <p className="font-body text-2xl font-medium leading-snug tracking-tight text-white md:text-3xl lg:text-[2.15rem]">
             Where Vision Takes Form
           </p>
-
-          <p className="mb-9 measure-studio text-[15px] leading-[1.85] text-white/55 md:mb-10 md:text-[16px]">
-            Architecture, Structure and Infrastructure — coordinated Before × Issue so facilities
-            reach site with fewer surprises.
+          <p className="mt-5 measure-studio text-[17px] leading-[1.75] text-white/55">
+            We coordinate Architecture, Structure and Infrastructure before a single sheet leaves
+            the studio — so the facility that gets built is the one you meant.
           </p>
+        </motion.div>
 
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            <Link
-              href="/contact"
-              transitionTypes={["nav-forward"]}
-              className="group inline-flex items-center gap-3 bg-x-red px-7 py-3.5 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-x-red-hover md:px-8 md:py-4"
-            >
-              Discuss your facility
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/projects"
-              transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-2.5 border border-white/25 px-7 py-3.5 font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/90 transition-colors hover:border-white hover:text-white md:px-8 md:py-4"
-            >
-              See completed work
-              <ArrowUpRight className="size-4" />
-            </Link>
-          </div>
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={ready ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.55, delay: 0.7 }}
+          className="mt-10 flex flex-wrap items-center gap-4 md:mt-12"
+        >
+          <Link
+            href="/contact"
+            transitionTypes={["nav-forward"]}
+            className="group inline-flex items-center gap-3 bg-x-red px-8 py-4 font-label text-[11px] text-white transition-colors hover:bg-x-red-hover"
+          >
+            Discuss your facility
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link
+            href="/#work"
+            className="font-label text-[11px] text-white/50 underline-offset-4 transition-colors hover:text-white hover:underline"
+          >
+            See the work
+          </Link>
+        </motion.div>
 
-          <p className="mt-14 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-white/30">
-            Architecture · Structure · Infrastructure
-          </p>
-        </div>
+        <motion.p
+          initial={reduce ? false : { opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-16 font-label text-[10px] text-white/30 md:mt-20"
+        >
+          Architecture · Structure · Infrastructure
+        </motion.p>
       </Container>
     </section>
   );

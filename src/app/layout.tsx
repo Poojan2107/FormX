@@ -1,50 +1,59 @@
 import type { Metadata, Viewport } from "next";
 import { ViewTransition } from "react";
-import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
+import { Syne, Source_Serif_4, DM_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { AppShell } from "@/components/layout/AppShell";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
-const display = Chakra_Petch({
+/** Architectural display — geometric, intentional, not startup-default */
+const display = Syne({
   variable: "--font-display-family",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const body = IBM_Plex_Sans({
+/** Human reading voice — essays, beliefs, judgement */
+const body = Source_Serif_4({
   variable: "--font-body-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
+/** Technical labels / nav / stamps */
+const label = DM_Sans({
+  variable: "--font-label-family",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const viewport: Viewport = {
-  themeColor: "#0c0c0c",
+  themeColor: "#0a0a09",
   colorScheme: "light",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://formxconsultants.com"),
   title: {
-    default: "FormX Consultants | Design | Engineering",
+    default: "FormX Consultants | Where Vision Takes Form",
     template: "%s | FormX Consultants",
   },
   description:
-    "FORMX Consultants — Ahmedabad structural design & engineering. Architecture, Structure and Infrastructure coordinated Before Issue for industrial, commercial and institutional facilities across India.",
+    "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure coordinated Before × Issue for industrial and building facilities across India.",
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "FormX Consultants",
-    title: "FormX Consultants | Design | Engineering",
+    title: "FormX Consultants | Where Vision Takes Form",
     description:
-      "Architecture, structure and infrastructure — coordinated GFC packages from concept to site support. Ahmedabad, India.",
+      "Architecture, Structure and Infrastructure — coordinated Before × Issue. Ahmedabad, India.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FormX Consultants | Design | Engineering",
+    title: "FormX Consultants | Where Vision Takes Form",
     description:
-      "Architecture, Structure and Infrastructure — construction-ready design for industrial and building projects across India.",
+      "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
   },
 };
 
@@ -54,8 +63,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="flex min-h-full flex-col font-body antialiased text-ink bg-bg">
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${label.variable} h-full`}
+    >
+      <body className="flex min-h-full flex-col bg-bg font-body text-ink antialiased">
         <ScrollProgress />
         <a href="#main" className="skip-link sr-only">
           Skip to content

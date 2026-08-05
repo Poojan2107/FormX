@@ -12,12 +12,11 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Our Services | Architecture · Structure · Infrastructure | FORMX",
+  title: "Services | Architecture · Structure · Infrastructure",
   description:
     "High-rise & residential, industrial, institutional & commercial, strengthening & retrofitting — Architecture, Structure and Infrastructure.",
 };
 
-/** Founder: Architecture · Structure · Infrastructure only (no MEP listing) */
 const groups = [
   {
     title: "Architecture",
@@ -36,112 +35,97 @@ const groups = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="border-b border-line bg-white pt-24 pb-16 md:pt-32 md:pb-20">
+      <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            Our services
-          </p>
+          <p className="font-label text-[11px] text-x-red">Services</p>
           <h1
-            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
+            className="mt-5 max-w-[14ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
           >
-            Design solutions in engineering &amp; architecture
+            Three voices. One issue.
           </h1>
-          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            Architecture, Structure and Infrastructure — the three voices that must agree before
-            FORMX issues. Facility typologies from the brochure; discipline chapters below.
+          <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-ink-muted">
+            Architecture, Structure and Infrastructure must answer each other before FORM× issues.
+            Facility typologies below — then the discipline chapters.
           </p>
-          <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
+          <p className="mt-4 measure-essay text-[15px] leading-[1.75] text-ink/45">
             {portfolioServicesNote}
           </p>
         </Container>
       </section>
 
-      <section className="bg-white py-14 md:py-16">
+      <section className="border-b border-line bg-bg section-y">
         <Container>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="divide-y divide-line border-y border-line">
             {portfolioServices.map((item, i) => (
               <Reveal key={item.title} delay={0.04 * i}>
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className={`group flex h-full flex-col justify-between p-7 transition-colors md:p-8 ${
-                    item.tone === "dark"
-                      ? "bg-x-red text-white hover:bg-x-red-hover"
-                      : "bg-[#f3e8e6] text-ink hover:bg-[#edd9d5]"
-                  }`}
+                  className="group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8"
                 >
-                  <div>
-                    <h2 className="font-display text-xl font-extrabold uppercase tracking-tight md:text-2xl">
-                      {item.title}
-                    </h2>
-                    <p
-                      className={`mt-4 text-[14px] leading-[1.8] ${
-                        item.tone === "dark" ? "text-white/85" : "text-ink-muted"
-                      }`}
-                    >
-                      {item.body}
-                    </p>
-                  </div>
-                  <span
-                    className={`mt-6 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] ${
-                      item.tone === "dark" ? "text-white" : "text-x-red"
-                    }`}
-                  >
-                    Explore
-                    <ArrowUpRight className="size-3.5" />
+                  <span className="font-display text-sm font-bold text-x-red md:col-span-1">
+                    0{i + 1}
+                  </span>
+                  <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-3xl">
+                    {item.title}
+                  </h2>
+                  <p className="text-[16px] leading-[1.75] text-ink-muted md:col-span-6">
+                    {item.body}
+                  </p>
+                  <span className="hidden justify-end md:col-span-1 md:flex">
+                    <ArrowUpRight className="size-5 text-ink/20 group-hover:text-x-red" />
                   </span>
                 </Link>
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 max-w-3xl text-[14px] leading-[1.85] text-ink-muted">
-            {portfolioClosing}
-          </p>
+          <p className="mt-10 max-w-2xl text-[15px] leading-[1.8] text-ink/50">{portfolioClosing}</p>
         </Container>
       </section>
 
-      {groups.map((group) => (
-        <section key={group.title} className="border-t border-line py-14 md:py-16">
-          <Container>
-            <Reveal>
-              <h2 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink md:text-2xl">
-                {group.title}
-              </h2>
-            </Reveal>
-            <div className="mt-8 divide-y divide-line">
-              {group.slugs.map((slug) => {
-                const service = services.find((s) => s.slug === slug);
-                if (!service) return null;
-                const story = getServiceStory(service);
-                return (
-                  <Reveal key={slug}>
-                    <Link
-                      href={`/services/${slug}`}
-                      transitionTypes={["nav-forward"]}
-                      className="group grid gap-3 py-6 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:gap-6 md:py-8"
-                    >
-                      <div className="md:col-span-4">
-                        <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-ink group-hover:text-x-red">
-                          {service.title}
-                        </h3>
-                      </div>
-                      <div className="md:col-span-7">
-                        <p className="text-[14px] leading-[1.8] text-ink-muted">
-                          {story?.lead ?? service.summary}
-                        </p>
-                      </div>
-                      <div className="flex items-center md:col-span-1 md:justify-end">
-                        <ArrowUpRight className="size-4 text-x-red opacity-40 transition-opacity group-hover:opacity-100" />
-                      </div>
-                    </Link>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </Container>
-        </section>
-      ))}
+      <section className="bg-bg-muted section-y">
+        <Container>
+          <p className="font-label text-[11px] text-x-red">Disciplines</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+            Architecture · Structure · Infrastructure
+          </h2>
+          <div className="mt-14 grid gap-12 lg:grid-cols-3">
+            {groups.map((g) => (
+              <div key={g.title}>
+                <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink">
+                  {g.title}
+                </h3>
+                <ul className="mt-6 space-y-4">
+                  {g.slugs.map((slug) => {
+                    const svc = services.find((s) => s.slug === slug);
+                    if (!svc) return null;
+                    const story = getServiceStory(svc);
+                    return (
+                      <li key={slug}>
+                        <Link
+                          href={`/services/${slug}`}
+                          transitionTypes={["nav-forward"]}
+                          className="group block"
+                        >
+                          <span className="font-display text-base font-bold uppercase tracking-tight text-ink group-hover:text-x-red">
+                            {svc.title}
+                          </span>
+                          {story?.lead ? (
+                            <span className="mt-1 block text-[13px] leading-snug text-ink/45 line-clamp-2">
+                              {story.lead}
+                            </span>
+                          ) : null}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

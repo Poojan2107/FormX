@@ -36,7 +36,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search project, sector or location…"
-            className="w-full border border-line bg-white py-3 pl-10 pr-9 text-sm text-ink outline-none focus:border-x-red"
+            className="w-full border border-line bg-bg py-3 pl-10 pr-9 font-body text-sm text-ink outline-none focus:border-x-red"
             aria-label="Search projects"
           />
           {q ? (
@@ -50,7 +50,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ) : null}
         </label>
 
-        <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink/45">
+        <p className="font-label text-[11px] text-ink/45">
           {filtered.length} of {projects.length} facilities
         </p>
       </div>
@@ -63,10 +63,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             onClick={() => setSector(s)}
             aria-pressed={sector === s}
             className={cn(
-              "px-3 py-1.5 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] transition-colors",
               sector === s
                 ? "bg-x-red text-white"
                 : "border border-line text-ink-muted hover:border-x-red/40 hover:text-ink",
+              "px-3 py-1.5 font-label text-[10px] transition-colors",
             )}
           >
             {s}

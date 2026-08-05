@@ -16,65 +16,61 @@ import { VisualFrame } from "@/components/ui/VisualFrame";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "Engineering Journal | FORMX Practice Notes",
+  title: "Insights | Practice Notes",
   description:
-    "FORMX Engineering Journal — observations from specialized structural work, live mandates and practice resources. Ahmedabad.",
+    "FORM× Engineering Journal — specialized structural work, live mandates and practice notes from Ahmedabad.",
 };
 
 export default function KnowledgeCenterPage() {
   return (
     <>
-      <section className="border-b border-line bg-[#0d0d0d] pt-24 pb-14 text-white md:pt-32 md:pb-16">
+      <section className="fx-grain border-b border-black bg-[#0a0a09] pt-28 pb-20 text-white md:pt-36 md:pb-28">
         <Container>
-          <p className="font-display text-[10px] font-bold uppercase tracking-[0.32em] text-x-red">
-            Engineering Journal
-          </p>
+          <p className="font-label text-[11px] text-x-red">Insights</p>
           <h1
-            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
+            className="mt-5 max-w-[14ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
           >
-            Observations from the practice
+            Notes from the studio
           </h1>
-          <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-white/60">
-            Not a marketing blog — specialized engineering, live mandates and facility typologies
-            drawn from real FORMX work. Read to understand how the practice thinks before you brief a
-            project.
+          <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-white/55">
+            Not a marketing blog — specialized engineering, live mandates and facility thinking from
+            real FORM× work.
           </p>
         </Container>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="border-b border-line bg-bg section-y">
         <Container>
-          <Reveal className="mb-10">
+          <Reveal className="mb-12">
             <VisualFrame
               slot={brochureVisuals.specializedBanner}
               alt="Structural steel — specialized projects"
               fit="contain"
               aspect="cinema"
               tone="dark"
+              className="formx-cut-lg"
             />
           </Reveal>
 
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Specialized projects
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Renovation, strengthening &amp; solar
-            </h2>
-          </Reveal>
+          <p className="font-label text-[11px] text-x-red">Specialized</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+            Renovation, strengthening &amp; solar
+          </h2>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <div className="mt-12 grid gap-10 md:grid-cols-2">
             {portfolioSpecialized.map((block, i) => (
               <Reveal key={block.title} delay={0.04 * i}>
-                <article className="border border-line bg-[#fafafa] p-7 md:p-8">
+                <article>
                   <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink">
                     {block.title}
                   </h3>
                   <ul className="mt-5 space-y-3">
                     {block.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-[14px] text-ink-muted">
-                        <span className="mt-1.5 size-1.5 shrink-0 rotate-45 bg-x-red" />
+                      <li key={item} className="flex items-start gap-3 text-[15px] text-ink-muted">
+                        <span className="mt-1 shrink-0 font-display text-xs font-bold text-x-red">
+                          ×
+                        </span>
                         {item}
                       </li>
                     ))}
@@ -86,24 +82,20 @@ export default function KnowledgeCenterPage() {
         </Container>
       </section>
 
-      <section className="border-y border-line bg-[#f7f7f7] py-16 md:py-20">
+      <section className="border-b border-line bg-bg-muted section-y">
         <Container>
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Ongoing
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Work in the studio now
-            </h2>
-          </Reveal>
-          <div className="mt-10 divide-y divide-line border-y border-line bg-white">
+          <p className="font-label text-[11px] text-x-red">Ongoing</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+            In the studio now
+          </h2>
+          <div className="mt-10 divide-y divide-line border-y border-line">
             {portfolioOngoing.map((item, i) => (
               <Reveal key={item.title} delay={0.03 * i}>
-                <div className="px-5 py-6 md:px-8 md:py-7">
-                  <h3 className="font-display text-sm font-extrabold uppercase tracking-tight text-ink md:text-base">
+                <div className="py-7">
+                  <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-ink md:text-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-2 max-w-3xl text-[14px] leading-[1.8] text-ink-muted">
+                  <p className="mt-2 max-w-3xl text-[15px] leading-[1.8] text-ink-muted">
                     {item.detail}
                   </p>
                 </div>
@@ -113,84 +105,61 @@ export default function KnowledgeCenterPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 md:py-20">
+      <section className="border-b border-line bg-bg section-y">
         <Container>
-          <Reveal>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Our services
-            </p>
-            <h2 className="mt-2 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-              Design solutions in engineering &amp; architecture
-            </h2>
-            <p className="mt-4 max-w-xl text-[14px] leading-[1.85] text-ink-muted">
-              {portfolioServicesNote}
-            </p>
-          </Reveal>
+          <p className="font-label text-[11px] text-x-red">Practice</p>
+          <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+            Facility typologies
+          </h2>
+          <p className="mt-4 measure-essay text-[15px] leading-[1.8] text-ink-muted">
+            {portfolioServicesNote}
+          </p>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+          <div className="mt-12 divide-y divide-line border-y border-line">
             {portfolioServices.map((item, i) => (
               <Reveal key={item.title} delay={0.04 * i}>
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className={`group flex h-full flex-col justify-between p-7 transition-colors md:p-8 ${
-                    item.tone === "dark"
-                      ? "bg-x-red text-white hover:bg-x-red-hover"
-                      : "bg-[#f3e8e6] text-ink hover:bg-[#edd9d5]"
-                  }`}
+                  className="group grid gap-3 py-8 md:grid-cols-12 md:items-baseline"
                 >
-                  <div>
-                    <h3 className="font-display text-xl font-extrabold uppercase tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p
-                      className={`mt-4 text-[14px] leading-[1.8] ${
-                        item.tone === "dark" ? "text-white/85" : "text-ink-muted"
-                      }`}
-                    >
-                      {item.body}
-                    </p>
-                  </div>
-                  <span
-                    className={`mt-6 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] ${
-                      item.tone === "dark" ? "text-white" : "text-x-red"
-                    }`}
-                  >
-                    Explore
-                    <ArrowUpRight className="size-3.5" />
+                  <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink group-hover:text-x-red md:col-span-5">
+                    {item.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.75] text-ink-muted md:col-span-6">
+                    {item.body}
+                  </p>
+                  <span className="hidden justify-end md:col-span-1 md:flex">
+                    <ArrowUpRight className="size-5 text-ink/20 group-hover:text-x-red" />
                   </span>
                 </Link>
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 max-w-3xl text-[14px] leading-[1.85] text-ink-muted">
-            {portfolioClosing}
-          </p>
+          <p className="mt-10 max-w-2xl text-[15px] leading-[1.8] text-ink/50">{portfolioClosing}</p>
         </Container>
       </section>
 
-      <section className="border-t border-line bg-[#0d0d0d] py-16 text-white md:py-20">
+      <section className="fx-grain bg-[#0a0a09] py-20 text-white md:py-24">
         <Container>
-          <Reveal className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-                Completed work
-              </p>
-              <h2 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+              <p className="font-label text-[11px] text-x-red">Completed work</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
                 From the project record
               </h2>
             </div>
             <Link
               href="/projects"
               transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+              className="inline-flex items-center gap-2 font-label text-[11px] text-x-red"
             >
               All projects
               <ArrowUpRight className="size-4" />
             </Link>
-          </Reveal>
+          </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {projects.slice(0, 4).map((project, i) => (
               <Reveal key={project.slug} delay={0.03 * i}>
                 <Link
@@ -215,13 +184,11 @@ export default function KnowledgeCenterPage() {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-8 border border-white/10 bg-white/[0.04] p-8 md:grid-cols-2 md:p-10">
+          <div className="mt-16 grid gap-8 border border-white/10 p-8 md:grid-cols-2 md:p-10">
             <div>
-              <p className="font-display text-[10px] font-extrabold uppercase tracking-[0.22em] text-x-red">
-                Stay in touch
-              </p>
+              <p className="font-label text-[10px] text-x-red">Stay in touch</p>
               <h3 className="mt-2 font-display text-2xl font-extrabold uppercase text-white">
-                Receive practice updates
+                Practice updates
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/55">
                 Occasional notes when published — no marketing drip.
