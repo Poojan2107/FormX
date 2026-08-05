@@ -10,9 +10,8 @@ import { XRule } from "@/components/ui/XMotif";
 import { cn } from "@/lib/cn";
 
 /**
- * Before × Issue — FormX signature IP.
- * Drafting language, not a process widget: stages read as decisions
- * that must close before sheets leave the studio.
+ * Before × Issue — sole dark signature on home.
+ * Decisions that must close before sheets leave the studio.
  */
 export function ProjectJourney() {
   const [active, setActive] = useState(0);
@@ -45,7 +44,7 @@ export function ProjectJourney() {
 
         <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <ol className="space-y-0">
+            <ol>
               {formxMethod.stages.map((s, i) => (
                 <li key={s.id}>
                   <button
@@ -58,22 +57,15 @@ export function ProjectJourney() {
                   >
                     <span
                       className={cn(
-                        "mt-0.5 font-display text-[11px] font-black tracking-[0.16em]",
+                        "mt-0.5 w-6 font-display text-[11px] font-black tracking-[0.16em]",
                         i === active ? "text-x-red" : "text-white/25",
                       )}
                     >
                       {i === active ? "×" : s.num}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="flex items-baseline justify-between gap-3">
-                        <span className="block font-display text-base font-extrabold uppercase tracking-tight md:text-lg">
-                          {s.title}
-                        </span>
-                        {i === active ? (
-                          <span className="hidden font-display text-[9px] font-bold uppercase tracking-[0.2em] text-x-red sm:inline">
-                            Active
-                          </span>
-                        ) : null}
+                      <span className="block font-display text-base font-extrabold uppercase tracking-tight md:text-lg">
+                        {s.title}
                       </span>
                       <span className="mt-1 block text-[13px] leading-snug text-white/45 group-hover:text-white/55">
                         {s.verb}
@@ -118,12 +110,7 @@ export function ProjectJourney() {
                 <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
                   What this prevents
                 </p>
-                <p className="mt-2 flex items-start text-[14px] leading-[1.75] text-white/65">
-                  <span className="mr-2 mt-0.5 text-x-red" aria-hidden>
-                    ×
-                  </span>
-                  {stage.prevents}
-                </p>
+                <p className="mt-2 text-[14px] leading-[1.75] text-white/65">{stage.prevents}</p>
               </div>
               <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
                 {formxMethod.stamp}
@@ -133,7 +120,7 @@ export function ProjectJourney() {
                 transitionTypes={["nav-forward"]}
                 className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red hover:text-white"
               >
-                See Before × Issue on a real facility
+                See it on a real facility
                 <ArrowRight className="size-4" />
               </Link>
             </div>

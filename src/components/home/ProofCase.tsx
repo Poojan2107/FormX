@@ -5,9 +5,8 @@ import { getProject } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { XRule } from "@/components/ui/XMotif";
 
-/** Home proof — one investigated facility with refuse line */
+/** One investigated facility — subordinate to Before × Issue, not a second signature */
 export function ProofCase() {
   const project = getProject(vapiCaseStudy.slug);
   if (!project) return null;
@@ -35,15 +34,14 @@ export function ProofCase() {
 
           <Reveal delay={0.06} className="lg:col-span-6">
             <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-              Proof · Before × Issue
+              Case · Vapi G+2
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
               {project.title}
             </h2>
             <p className="mt-2 text-[13px] text-ink/50">
-              {project.client} · Plastic manufacturing · Vapi
+              {project.client} · Plastic manufacturing
             </p>
-            <XRule className="mt-6 max-w-xs" />
             <p className="mt-6 measure-studio text-[15px] leading-[1.85] text-ink-muted">
               {vapiCaseStudy.risk}
             </p>
@@ -53,13 +51,12 @@ export function ProofCase() {
               </p>
               <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{vapiCaseStudy.rejected}</p>
             </div>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-8 space-y-3">
               {vapiCaseStudy.decisions.slice(0, 2).map((d) => (
-                <li key={d.title} className="x-bullet text-[13px] leading-[1.75] text-ink-muted">
-                  <span className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink">
+                <li key={d.title}>
+                  <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink">
                     {d.title}
-                  </span>
-                  <span className="mt-1 block">{d.body}</span>
+                  </p>
                 </li>
               ))}
             </ul>

@@ -6,11 +6,8 @@ import {
 } from "@/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { XRule } from "@/components/ui/XMotif";
 
-/**
- * Four typology blocks from the FORMX brochure.
- */
+/** Four typologies — engineering voice, no × stamps */
 export function ServiceTypologies() {
   return (
     <section className="border-y border-line bg-white py-20 md:py-24">
@@ -20,12 +17,11 @@ export function ServiceTypologies() {
             Our services
           </p>
           <h2 className="mt-2 max-w-3xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
-            Design solutions in engineering &amp; architecture
+            What we lock Before Issue
           </h2>
           <p className="mt-4 measure-studio text-[14px] leading-[1.85] text-ink-muted">
-            Four facility typologies from the FORM× brochure.
+            Four facility typologies — constraints first, sheets second.
           </p>
-          <XRule className="mt-5 max-w-xs" />
         </Reveal>
 
         <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -42,11 +38,11 @@ export function ServiceTypologies() {
               >
                 <div>
                   <span
-                    className={`font-display text-[10px] font-black uppercase tracking-[0.2em] ${
+                    className={`font-display text-[10px] font-bold uppercase tracking-[0.2em] ${
                       item.tone === "dark" ? "text-white/70" : "text-x-red"
                     }`}
                   >
-                    × 0{i + 1}
+                    0{i + 1}
                   </span>
                   <h3 className="mt-4 font-display text-lg font-extrabold uppercase leading-snug tracking-tight md:text-xl">
                     {item.title}
@@ -75,10 +71,6 @@ export function ServiceTypologies() {
         <Reveal delay={0.1}>
           <p className="mt-10 max-w-3xl text-[14px] leading-[1.85] text-ink-muted">
             {portfolioClosing}
-          </p>
-          <p className="mt-3 max-w-3xl text-[13px] leading-[1.75] text-ink/45">
-            We also assist with quantity estimation, construction support, and coordination for
-            seamless execution.
           </p>
         </Reveal>
       </Container>

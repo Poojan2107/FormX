@@ -159,8 +159,10 @@ export const about = {
   eyebrow: "About Us",
   title: "Where Vision Takes Form",
   paragraphs: [
-    "A dynamic team of enthusiastic structural engineers and designers, dedicated to crafting spaces that are not only robust and functional but also inspire creativity and innovation. We seamlessly merge technical proficiency with practical wisdom to create structures that prioritize safety, efficiency, and alignment with architectural vision and user requirements.",
+    "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution. Reviews stay with engineers who own the sheets.",
   ],
+  industriesLine:
+    "Pharmaceuticals · Food Processing · Chemical · Textile · Engineering · Automobile · Warehouses",
   cta: { label: "About Us", href: "/about" },
   legacy: "Shaping form, defining futures",
 };

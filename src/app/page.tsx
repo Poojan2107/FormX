@@ -1,7 +1,5 @@
 import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/About";
-import { TrustProof } from "@/components/home/TrustProof";
-import { IndustriesServed } from "@/components/home/IndustriesServed";
 import { ProjectJourney } from "@/components/home/ProjectJourney";
 import { ProofCase } from "@/components/home/ProofCase";
 import { Projects } from "@/components/home/Projects";
@@ -13,17 +11,14 @@ import { formxMethod, site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 
 /**
- * Home: Hiren marks + website comment.docx premium pass
- * Hero → About → Numbers → Industries → Before Issue
- * → Proof case → Projects → Services → People → Lead CTA
+ * Craft Pass 2 — compressed HQ journey
+ * Hero → About(+numbers) → Before × Issue → Proof → Projects → Services → People → CTA
  */
 export default function Home() {
   return (
     <>
       <Hero />
       <About />
-      <TrustProof />
-      <IndustriesServed />
       <ProjectJourney />
       <ProofCase />
       <Projects />

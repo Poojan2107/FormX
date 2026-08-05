@@ -2,14 +2,20 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { about } from "@/data/site";
+import { about, trustMetrics } from "@/data/site";
 import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { XRule } from "@/components/ui/XMotif";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
-/** About after scroll — filled photo + logo + studio essay */
+const metricValues: Record<string, { value: number; suffix: string }> = {
+  "25+": { value: 25, suffix: "+" },
+  "15 Lakh+": { value: 15, suffix: " Lakh+" },
+  "5": { value: 5, suffix: "" },
+};
+
+/** About + quiet metrics rail — no separate Numbers chapter */
 export function About() {
   return (
     <section id="about" className="scroll-mt-32 border-b border-line bg-white py-16 md:py-24 lg:py-28">
@@ -38,16 +44,35 @@ export function About() {
             <p className="mt-8 font-display text-[11px] font-bold uppercase tracking-[0.28em] text-x-red">
               Shaping form · Defining futures
             </p>
-            <XRule className="mt-6 max-w-xs" />
             <p className="mt-6 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-ink/35">
               About Us
             </p>
             <h2 className="mt-3 max-w-xl font-display text-[1.85rem] font-extrabold uppercase leading-[1.08] tracking-tight text-ink md:text-4xl lg:text-[2.55rem]">
-              Trusted structural engineering &amp; design practice
+              Ahmedabad structural practice
             </h2>
             <p className="mt-6 measure-studio text-[16px] leading-[1.9] text-ink-muted">
               {about.paragraphs[0]}
             </p>
+            <p className="mt-5 max-w-xl font-display text-[11px] font-bold uppercase tracking-[0.14em] text-ink/40">
+              {about.industriesLine}
+            </p>
+
+            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-line pt-8">
+              {trustMetrics.map((m) => {
+                const parsed = metricValues[m.value] ?? { value: 0, suffix: m.value };
+                return (
+                  <div key={m.label}>
+                    <p className="font-display text-2xl font-black tracking-tight text-ink md:text-3xl">
+                      <AnimatedCounter value={parsed.value} suffix={parsed.suffix} />
+                    </p>
+                    <p className="mt-2 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+                      {m.label}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
