@@ -6,79 +6,67 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { brochureServices, brochureServicesNote } from "@/data/brochureHome";
 
-/** Service typologies — white editorial, alternating rhythm, not icon cards */
+/** Stacked typology rows — not a 2×2 card grid */
 export function BrochureServices() {
   return (
-    <section id="services" className="scroll-mt-28 bg-[#f7f7f5] py-20 md:py-28">
+    <section id="services" className="scroll-mt-28 bg-white py-20 md:py-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <Reveal className="lg:col-span-4">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <Reveal>
             <p className="font-label text-[10px] tracking-[0.28em] text-x-red">Services</p>
             <h2
-              className="mt-4 font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
-              style={{ fontSize: "clamp(1.85rem, 4vw, 3rem)" }}
+              className="mt-4 max-w-[12ch] font-display font-bold leading-[1.05] tracking-tight text-ink"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             >
               What we take on
             </h2>
-            <p className="mt-5 max-w-[34ch] text-[15px] leading-[1.7] text-ink/55">
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="max-w-[36ch] text-[14px] leading-[1.7] text-ink/50 md:text-right">
               {brochureServicesNote}
             </p>
+          </Reveal>
+        </div>
+
+        <ul className="mt-14 border-t border-ink">
+          {brochureServices.map((service, i) => (
+            <Reveal key={service.title} delay={0.05 * i} from="fade">
+              <li>
+                <Link
+                  href={service.href}
+                  transitionTypes={["nav-forward"]}
+                  className="group grid gap-4 border-b border-line py-8 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:items-center md:gap-8 md:py-10 md:pl-2 md:pr-4"
+                >
+                  <span className="font-label text-[10px] tracking-[0.28em] text-x-red md:col-span-1">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-display text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-2xl lg:text-[1.65rem]">
+                    {service.title}
+                  </h3>
+                  <p className="max-w-[46ch] text-[14px] leading-[1.65] text-ink/50 md:col-span-6 md:text-[15px]">
+                    {service.body}
+                  </p>
+                  <span className="flex md:col-span-1 md:justify-end">
+                    <ArrowUpRight className="size-5 text-ink/20 transition-all group-hover:translate-x-0.5 group-hover:text-x-red" />
+                  </span>
+                </Link>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal delay={0.15}>
+          <div className="mt-10 flex justify-end">
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
-              className="mt-8 inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/70 transition-colors hover:text-x-red"
+              className="inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/50 transition-colors hover:text-x-red"
             >
               All services
               <ArrowUpRight className="size-3.5" />
             </Link>
-          </Reveal>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
-            {brochureServices.map((service, i) => (
-              <Reveal key={service.title} delay={0.08 * i}>
-                <Link
-                  href={service.href}
-                  transitionTypes={["nav-forward"]}
-                  className={`group flex h-full flex-col justify-between border p-7 transition-all duration-300 md:p-8 ${
-                    service.tone === "dark"
-                      ? "border-transparent bg-black text-white hover:bg-[#111]"
-                      : "border-line bg-white text-ink hover:border-ink/25"
-                  }`}
-                >
-                  <div>
-                    <span
-                      className={`font-label text-[10px] tracking-[0.28em] ${
-                        service.tone === "dark" ? "text-x-red" : "text-x-red"
-                      }`}
-                    >
-                      0{i + 1}
-                    </span>
-                    <h3 className="mt-4 font-display text-lg font-bold uppercase leading-tight tracking-tight md:text-xl">
-                      {service.title}
-                    </h3>
-                    <p
-                      className={`mt-4 text-[14px] leading-[1.7] md:text-[15px] ${
-                        service.tone === "dark" ? "text-white/50" : "text-ink/55"
-                      }`}
-                    >
-                      {service.body}
-                    </p>
-                  </div>
-                  <span
-                    className={`mt-8 inline-flex items-center gap-1.5 font-label text-[9px] tracking-[0.2em] transition-colors ${
-                      service.tone === "dark"
-                        ? "text-white/40 group-hover:text-x-red"
-                        : "text-ink/35 group-hover:text-x-red"
-                    }`}
-                  >
-                    Explore
-                    <ArrowUpRight className="size-3.5" />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );
