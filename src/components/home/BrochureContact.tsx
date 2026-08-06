@@ -18,37 +18,35 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const reduce = useReducedMotion();
 
   return (
-    <div className="border-b border-white/[0.09]">
+    <div className="border-b border-white/[0.08]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="group flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-x-red"
         aria-expanded={open}
       >
-        <span className="flex items-center gap-3 text-[14px] font-medium tracking-tight text-white/80 transition-colors group-hover:text-white md:text-[15px]">
-          <span className="font-display text-xs font-black text-x-red/60 group-hover:text-x-red">×</span>
+        <span className="flex items-center gap-3 text-[14px] font-medium leading-[1.5] tracking-tight text-white/75 transition-colors group-hover:text-white md:text-[15px]">
+          <span className="shrink-0 font-display text-sm font-black text-x-red/55 group-hover:text-x-red">×</span>
           {q}
         </span>
         <ChevronDown
-          className={`size-4 shrink-0 text-x-red/60 transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`size-4 shrink-0 text-x-red/50 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
         />
       </button>
       <AnimatePresence initial={false}>
-        {open ? (
+        {open && (
           <motion.div
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 pl-6 pr-8 text-[13px] leading-[1.75] text-white/38">
+            <p className="pb-6 pl-7 pr-6 text-[13px] leading-[1.8] text-white/35">
               {a}
             </p>
           </motion.div>
-        ) : null}
+        )}
       </AnimatePresence>
     </div>
   );
@@ -56,97 +54,84 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Contact + FAQ — Final Statement
-// Absolute black, FORM× as the graphic element, FormX logo, two columns
 // ─────────────────────────────────────────────────────────────────────────────
 export function BrochureContact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-28 overflow-hidden bg-black py-20 text-white md:py-28"
+      className="relative scroll-mt-28 overflow-hidden bg-black py-24 text-white md:py-32"
     >
-      {/* ── FORM× watermark — the brand IS the graphic ─────── */}
+      {/* FORM× watermark */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -bottom-6 right-0 select-none font-display font-black leading-[0.85] tracking-[-0.04em] text-white/[0.04]"
-        style={{ fontSize: "clamp(8rem, 22vw, 18rem)" }}
+        className="pointer-events-none absolute -bottom-4 -right-4 select-none font-display font-black leading-[0.82] tracking-[-0.05em] text-white/[0.038]"
+        style={{ fontSize: "clamp(7rem, 20vw, 17rem)" }}
       >
         FORM×
       </span>
 
-      {/* ── Red accent line — top left decoration ──────────── */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute left-0 top-0 h-[2px] w-16 bg-x-red"
-      />
+      {/* Red accent — top edge */}
+      <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-[3px] w-20 bg-x-red" />
 
       <Container className="relative z-10">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
 
-          {/* ── Left column ────────────────────────────────── */}
+          {/* ── Left: Contact ──────────────────────────────── */}
           <Reveal className="lg:col-span-7">
 
-            {/* FormX logo — white version, per Hiren: use logo everywhere */}
-            <div className="mb-8">
+            {/* FormX logo — white */}
+            <div className="mb-10">
               <Image
                 src="/formx-logo.png"
                 alt="FormX Consultants"
-                width={200}
-                height={85}
-                className="h-auto w-[160px] object-contain brightness-0 invert md:w-[180px]"
+                width={220}
+                height={94}
+                unoptimized
+                className="h-auto w-[175px] object-contain brightness-0 invert md:w-[200px]"
               />
             </div>
 
-            {/* Heading */}
             <h2
-              className="max-w-[14ch] font-display font-extrabold leading-[1.02] tracking-tight text-white"
-              style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)" }}
+              className="max-w-[14ch] font-display font-black leading-[1.0] tracking-[-0.04em] text-white"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
               Bring us your next facility
             </h2>
 
-            {/* Sub-copy */}
-            <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.8] text-white/42">
+            <p className="mt-6 max-w-[40ch] text-[15px] leading-[1.85] text-white/40">
               Every project begins with a conversation. Tell us what you are
               building — we will tell you what to resolve before issue.
             </p>
 
-            {/* Contact details */}
-            <dl className="mt-10 space-y-4">
+            <dl className="mt-11 space-y-5">
               <div className="flex items-start gap-4">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
-                <dd className="text-[14px] leading-[1.65] text-white/48">
+                <dd className="text-[14px] leading-[1.65] text-white/45">
                   {site.addressDetail}
                 </dd>
               </div>
               <div className="flex items-center gap-4">
                 <Mail className="size-4 shrink-0 text-x-red" />
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-[14px] text-white/48 transition-colors hover:text-white"
-                >
+                <a href={`mailto:${site.email}`} className="text-[14px] text-white/45 transition-colors hover:text-white">
                   {site.email}
                 </a>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="size-4 shrink-0 text-x-red" />
-                <a
-                  href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="text-[14px] text-white/48 transition-colors hover:text-white"
-                >
+                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-[14px] text-white/45 transition-colors hover:text-white">
                   {site.phone}
                 </a>
               </div>
             </dl>
 
-            {/* CTA */}
-            <div className="mt-10">
+            <div className="mt-11">
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
                 className="fx-btn-primary group inline-flex"
               >
                 Enquire Now
-                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
 
@@ -154,20 +139,16 @@ export function BrochureContact() {
 
           {/* ── Right: FAQ ──────────────────────────────────── */}
           <Reveal delay={0.1} className="lg:col-span-5">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="h-px w-6 bg-x-red" />
-              <p className="font-label text-[10px] tracking-[0.3em] text-white/30">
-                FAQ
-              </p>
+            <div className="mb-7 flex items-center gap-3">
+              <span className="h-px w-8 bg-x-red" />
+              <p className="font-label text-[10px] tracking-[0.32em] text-white/28">FAQ</p>
             </div>
-            <div className="border-t border-white/[0.09]">
+            <div className="border-t border-white/[0.08]">
               {brochureFaqs.map((item) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} />
               ))}
             </div>
-
-            {/* Tagline */}
-            <p className="mt-10 font-label text-[9px] tracking-[0.26em] text-white/18">
+            <p className="mt-10 font-label text-[9px] tracking-[0.28em] text-white/16">
               Where Vision Takes Form · Ahmedabad · 2025
             </p>
           </Reveal>

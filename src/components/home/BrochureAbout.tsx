@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { brochureBrand } from "@/data/brochureHome";
 import { trustMetrics } from "@/data/site";
+import Image from "next/image";
 
 /**
  * ABOUT — "Split Editorial"
- * Left: full-height facility image, image owns the frame, FormX brand overlay.
+ * Left: full-height facility image, object-cover, image owns the frame.
  * Right: editorial column with premium typography and metric rail.
  * Background: white.
  */
@@ -18,107 +18,98 @@ export function BrochureAbout() {
     <section id="about" className="scroll-mt-28 overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2">
 
-        {/* ── Left: Image Column ────────────────────────────── */}
-        <Reveal from="left" className="relative min-h-[420px] bg-[#ebeae6] lg:min-h-[680px]">
-          {/* Image fills the full column — no letterbox */}
-          <AssetImage
-            slot="projects/brochure/brochure_p3_2.png"
-            alt="FormX — industrial facility coordination"
-            fit="cover"
-            aspect="auto"
-            tone="light"
-            className="absolute inset-0 size-full"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+        {/* ── Left: Full-height image ───────────────────────── */}
+        <div className="relative min-h-[480px] overflow-hidden bg-[#1a1a1a] lg:min-h-[720px]">
+          <Image
+            src="/assets/projects/brochure/brochure_p3_4.png"
+            alt="FormX — engineering precision on site"
+            fill
+            unoptimized
             priority
+            className="object-cover object-center transition-transform duration-[2s] hover:scale-[1.03]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
 
-          {/* Gradient overlay from bottom */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+          {/* Rich gradient — image readable, brand mark prominent */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
 
-          {/* FormX brand mark in image — per Hiren: use logo everywhere possible */}
-          <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9">
-            {/* Small lockup */}
-            <div className="flex items-center gap-2">
-              <span
-                className="font-display font-black tracking-[-0.04em] text-white"
-                style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)" }}
-              >
+          {/* Formx brand overlay — bottom left */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-1">
+              <span className="font-display text-2xl font-black tracking-[-0.04em] text-white">
                 FORM<span className="text-x-red">×</span>
               </span>
-              <span className="font-label text-[8px] tracking-[0.22em] text-white/50">
-                CONSULTANTS
+              <span className="font-label text-[9px] tracking-[0.26em] text-white/50 uppercase">
+                Consultants
               </span>
             </div>
-            <p className="mt-1 font-label text-[9px] tracking-[0.24em] text-white/40">
+            <p className="font-label text-[9px] tracking-[0.22em] text-white/35">
               {brochureBrand.tagline}
             </p>
           </div>
 
-          {/* Subtle formx-cut on the right edge (desktop only) */}
+          {/* FormX-cut accent on right edge */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 hidden w-10 lg:block"
-            style={{
-              background:
-                "linear-gradient(to bottom-left, white 50%, transparent 50%)",
-            }}
+            className="pointer-events-none absolute inset-y-0 right-0 hidden w-12 lg:block"
+            style={{ background: "linear-gradient(to bottom-left, white 50%, transparent 50%)" }}
           />
-        </Reveal>
 
-        {/* ── Right: Editorial Column ───────────────────────── */}
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 md:px-12 lg:py-24 xl:px-16">
+          {/* Red accent tag — top left */}
+          <div className="absolute left-0 top-0 h-[3px] w-16 bg-x-red" aria-hidden />
+        </div>
+
+        {/* ── Right: Editorial column ───────────────────────── */}
+        <div className="flex flex-col justify-center px-8 py-20 sm:px-12 md:px-14 lg:py-28 xl:px-18">
 
           <Reveal>
-            <p className="font-label text-[10px] tracking-[0.3em] text-x-red">
+            <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
               About
             </p>
             <h2
-              className="mt-5 max-w-[16ch] font-display font-extrabold leading-[1.04] tracking-tight text-ink"
-              style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.85rem)" }}
+              className="mt-5 font-display font-black leading-[1.02] tracking-[-0.03em] text-ink"
+              style={{ fontSize: "clamp(2rem, 3.8vw, 3.25rem)" }}
             >
-              An Ahmedabad practice built on{" "}
-              <span className="relative inline-block">
+              An Ahmedabad practice<br />
+              built on{" "}
+              <span className="relative">
                 engineering judgement
-                <span
-                  aria-hidden
-                  className="absolute -bottom-1 left-0 h-[2px] w-10 bg-x-red"
-                />
+                <span aria-hidden className="absolute -bottom-1 left-0 h-[2.5px] w-12 bg-x-red" />
               </span>
             </h2>
-            <p className="mt-7 max-w-[40ch] text-[15px] leading-[1.8] text-ink/55 md:text-[16px]">
+            <p className="mt-8 max-w-[42ch] text-[15px] leading-[1.85] text-ink/52 md:text-[16px]">
               {brochureBrand.intro}
             </p>
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
-              className="group mt-8 inline-flex w-fit items-center gap-2 border-b border-x-red/60 pb-1 font-label text-[10px] tracking-[0.2em] text-x-red transition-colors hover:border-x-red"
+              className="group mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-x-red/50 pb-1.5 font-label text-[10px] tracking-[0.22em] text-x-red transition-all hover:border-x-red hover:gap-3"
             >
               Know More
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Reveal>
 
-          {/* ── Metric Rail ──────────────────────────────────── */}
-          <Reveal delay={0.1}>
-            <div className="mt-14 border-t border-line pt-8">
-              <div className="flex flex-wrap gap-x-0 gap-y-4">
+          {/* Metric rail */}
+          <Reveal delay={0.12}>
+            <div className="mt-16 border-t border-ink/[0.09] pt-10">
+              <div className="flex flex-wrap items-start gap-y-6">
                 {trustMetrics.map((m, i) => (
                   <div key={m.label} className="flex items-stretch">
-                    <div className="pr-6 md:pr-8">
+                    <div className="pr-7 md:pr-9">
                       <p
-                        className="font-display font-extrabold leading-none tracking-tight text-ink"
-                        style={{ fontSize: "clamp(1.65rem, 3vw, 2.25rem)" }}
+                        className="font-display font-black leading-none tracking-[-0.03em] text-ink"
+                        style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.5rem)" }}
                       >
                         {m.value}
                       </p>
-                      <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-ink/38">
+                      <p className="mt-2.5 text-[10px] uppercase tracking-[0.18em] text-ink/35">
                         {m.label}
                       </p>
                     </div>
-                    {/* Separator */}
                     {i < trustMetrics.length - 1 && (
-                      <div className="mr-6 flex items-center md:mr-8">
-                        <span className="font-display text-base font-black text-x-red/30">×</span>
+                      <div className="mr-7 flex items-center md:mr-9">
+                        <span className="font-display text-xl font-black text-x-red/25">×</span>
                       </div>
                     )}
                   </div>

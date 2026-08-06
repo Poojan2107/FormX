@@ -1,15 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { brochureSpecialized } from "@/data/brochureHome";
-import { brochureVisuals } from "@/data/projects";
 
 /**
  * SPECIALIZED — "Technical Depth"
- * Left: dark panel with image + SPECIALISED watermark label
- * Right: white panel with discipline accordion-style list
- * Each block: × glyph + title + bullet items
+ * Left: dark panel with real image + SPECIALISED watermark
+ * Right: white panel with discipline list
  */
 export function BrochureSpecialized() {
   return (
@@ -17,78 +15,79 @@ export function BrochureSpecialized() {
       <div className="grid lg:grid-cols-2">
 
         {/* ── Left: Dark image panel ────────────────────────── */}
-        <Reveal from="left" className="relative min-h-[400px] bg-[#0a0a0a] lg:min-h-[580px]">
-          {/* Image fills the column */}
-          <AssetImage
-            slot={brochureVisuals.specializedBanner}
-            alt="FormX specialised engineering projects"
-            fit="cover"
-            aspect="auto"
-            tone="dark"
-            className="absolute inset-0 size-full opacity-55"
+        <div className="relative min-h-[420px] overflow-hidden bg-[#0a0a0a] lg:min-h-[580px]">
+          <Image
+            src="/assets/projects/brochure/brochure_p5_1.png"
+            alt="FormX specialised engineering"
+            fill
+            unoptimized
+            className="object-cover object-center opacity-50 transition-transform duration-[2s] hover:scale-[1.03]"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
 
-          {/* Dark overlay gradient */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
+          {/* Gradient */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-transparent" />
 
-          {/* Watermark label */}
+          {/* Rotating watermark */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
           >
             <span
-              className="rotate-[-8deg] font-display font-black uppercase tracking-widest text-white/[0.06]"
-              style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}
+              className="rotate-[-10deg] font-display font-black uppercase tracking-[0.2em] text-white/[0.055]"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
               Specialised
             </span>
           </div>
 
-          {/* Bottom label */}
-          <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9">
-            <span className="font-display text-4xl font-black text-x-red/80">×</span>
-            <p className="mt-2 font-label text-[9px] tracking-[0.26em] text-white/40">
+          {/* Bottom brand */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+            <span className="font-display text-5xl font-black leading-none text-x-red/70">×</span>
+            <p className="mt-2 font-label text-[9px] tracking-[0.28em] text-white/35">
               FormX · Engineering Depth
             </p>
           </div>
-        </Reveal>
 
-        {/* ── Right: White content panel ───────────────────── */}
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 md:px-12 lg:py-20 xl:px-14">
+          {/* Red top accent */}
+          <div className="absolute left-0 top-0 h-[3px] w-16 bg-x-red" aria-hidden />
+        </div>
+
+        {/* ── Right: White content ──────────────────────────── */}
+        <div className="flex flex-col justify-center px-8 py-20 sm:px-12 md:px-14 lg:py-24 xl:px-16">
           <Reveal>
-            <p className="font-label text-[10px] tracking-[0.3em] text-x-red">
+            <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
               Specialised
             </p>
             <h2
-              className="mt-4 font-display font-extrabold leading-[1.04] tracking-tight text-ink"
-              style={{ fontSize: "clamp(1.85rem, 3.5vw, 2.75rem)" }}
+              className="mt-5 font-display font-black leading-[1.02] tracking-[-0.03em] text-ink"
+              style={{ fontSize: "clamp(2rem, 3.5vw, 2.85rem)" }}
             >
               Specialised projects
             </h2>
-            <p className="mt-4 max-w-[38ch] text-[14px] leading-[1.75] text-ink/45">
+            <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.8] text-ink/48">
               Beyond standard typologies — technical depth for renovation,
               retrofit and specialist structure engineering.
             </p>
           </Reveal>
 
-          <div className="mt-10 space-y-8">
+          <div className="mt-12 space-y-8">
             {brochureSpecialized.map((block, i) => (
               <Reveal key={block.title} delay={0.08 * i} from="fade">
-                <div className="border-l-2 border-x-red/30 pl-5 transition-all hover:border-x-red/70">
+                <div className="group cursor-default border-l-2 border-ink/[0.09] pl-6 transition-all hover:border-x-red/70">
                   <div className="flex items-center gap-3">
-                    <span className="font-display text-xl font-black text-x-red">×</span>
-                    <h3 className="font-display text-[1rem] font-bold tracking-tight text-ink md:text-[1.1rem]">
+                    <span className="font-display text-2xl font-black leading-none text-x-red transition-transform duration-300 group-hover:scale-110">×</span>
+                    <h3 className="font-display font-bold tracking-tight text-ink md:text-[1.05rem]">
                       {block.title}
                     </h3>
                   </div>
-                  <ul className="mt-3 space-y-2 pl-8">
+                  <ul className="mt-4 space-y-2.5 pl-9">
                     {block.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2 text-[13px] leading-[1.6] text-ink/48 md:text-[14px]"
+                        className="flex items-start gap-2.5 text-[13px] leading-[1.7] text-ink/45 md:text-[14px]"
                       >
-                        <span className="mt-[0.4em] size-1 shrink-0 rounded-full bg-x-red/40" />
+                        <span className="mt-[0.45em] size-1 shrink-0 rounded-full bg-x-red/40" />
                         {item}
                       </li>
                     ))}
