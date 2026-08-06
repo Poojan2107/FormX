@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import {
@@ -15,9 +16,12 @@ import { brochureBrand } from "@/data/brochureHome";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Split editorial hero — NOT a centered logo poster.
- * Left: Form× as landscape. Right: slogan + CTA.
- * White · black type · red × only.
+ * HERO CONCEPT (frozen intent): "Issued sheet"
+ * — White drawing paper, not a logo poster or SaaS split.
+ * — Official solid lockup as the stamp.
+ * — Slogan is the statement (sentence case, large).
+ * — Red exists only as × and the primary action.
+ * — No photo (Hiren). One composition. Subtle staged motion.
  */
 export function BrochureHero() {
   const reduce = useReducedMotion();
@@ -28,156 +32,197 @@ export function BrochureHero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const fadeOut = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
-  const drift = useTransform(scrollYProgress, [0, 0.55], [0, reduce ? 0 : 40]);
+  const sheetFade = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const sheetY = useTransform(scrollYProgress, [0, 0.45], [0, reduce ? 0 : 36]);
 
   useEffect(() => {
     if (reduce) {
       setReady(true);
       return;
     }
-    const t = window.setTimeout(() => setReady(true), 50);
+    const t = window.setTimeout(() => setReady(true), 80);
     return () => window.clearTimeout(t);
   }, [reduce]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden bg-white text-ink sm:min-h-[calc(100svh-4.75rem)]"
+      className="relative isolate flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden bg-[#fafaf8] text-ink sm:min-h-[calc(100svh-4.75rem)]"
     >
-      {/* Soft paper edge — right side only, so the split has depth */}
+      {/* Paper grain */}
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#f6f5f2] to-transparent"
+        className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-ink/[0.06]"
+
+      {/* Giant × — X-factor as atmosphere, not decoration chrome */}
+      <motion.span
         aria-hidden
-      />
+        initial={reduce ? false : { opacity: 0, scale: 0.92 }}
+        animate={ready ? { opacity: 0.06, scale: 1 } : undefined}
+        transition={{ duration: 1.8, delay: 0.2, ease }}
+        className="pointer-events-none absolute -right-[6%] top-[18%] select-none font-display font-black leading-none text-x-red md:top-[8%]"
+        style={{ fontSize: "clamp(18rem, 48vw, 36rem)" }}
+      >
+        ×
+      </motion.span>
+
+      {/* Registration / crop marks — issued drawing language */}
+      <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
+        <motion.span
+          initial={reduce ? false : { opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="absolute left-5 top-6 h-7 w-7 border-l border-t border-ink/20 md:left-8 md:top-8"
+        />
+        <motion.span
+          initial={reduce ? false : { opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="absolute right-5 top-6 h-7 w-7 border-r border-t border-ink/20 md:right-8 md:top-8"
+        />
+        <motion.span
+          initial={reduce ? false : { opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="absolute bottom-6 left-5 h-7 w-7 border-b border-l border-ink/20 md:bottom-8 md:left-8"
+        />
+        <motion.span
+          initial={reduce ? false : { opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="absolute bottom-6 right-5 h-7 w-7 border-b border-r border-x-red/50 md:bottom-8 md:right-8"
+        />
+      </div>
 
       <motion.div
-        style={reduce ? undefined : { opacity: fadeOut, y: drift }}
+        style={reduce ? undefined : { opacity: sheetFade, y: sheetY }}
         className="relative z-10 flex flex-1 flex-col"
       >
-        <Container className="flex flex-1 flex-col justify-center py-16 md:py-20">
-          <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-8 lg:items-center">
-            {/* LEFT — the mark owns the field */}
-            <div className="lg:col-span-7">
-              <motion.p
-                initial={reduce ? false : { opacity: 0 }}
-                animate={ready ? { opacity: 1 } : undefined}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-label text-[10px] tracking-[0.32em] text-ink/35"
-              >
-                Ahmedabad
-              </motion.p>
+        <Container className="flex flex-1 flex-col justify-center py-20 md:py-24">
+          <div className="mx-auto w-full max-w-3xl">
+            {/* Stamp — official lockup, restrained scale */}
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={ready ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 1, delay: 0.35, ease }}
+              className="flex justify-center md:justify-start"
+            >
+              <Image
+                src="/formx-logo-solid.png"
+                alt="FormX Consultants"
+                width={280}
+                height={120}
+                priority
+                className="h-auto w-[min(56vw,220px)] object-contain md:w-[240px]"
+              />
+            </motion.div>
 
-              <h1
-                className="mt-4 font-display font-black leading-[0.82] tracking-[-0.055em]"
-                style={{ fontSize: "clamp(4.75rem, 14vw, 10.5rem)" }}
-                aria-label="FormX Consultants"
+            {/* Statement — this is the hero, not the logo */}
+            <h1 className="mt-14 md:mt-16">
+              <span className="sr-only">{brochureBrand.slogan}</span>
+              <span
+                className="block overflow-hidden"
+                aria-hidden
               >
-                <span className="sr-only">FormX</span>
-                <span className="inline-flex overflow-hidden" aria-hidden>
-                  {"Form".split("").map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={reduce ? false : { y: "108%" }}
-                      animate={ready ? { y: "0%" } : undefined}
-                      transition={{ duration: 0.9, delay: 0.15 + i * 0.06, ease }}
-                      className="inline-block text-ink"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
                 <motion.span
-                  aria-hidden
-                  initial={reduce ? false : { opacity: 0, y: "30%" }}
-                  animate={ready ? { opacity: 1, y: "0%" } : undefined}
-                  transition={{ duration: 0.85, delay: 0.48, ease }}
-                  className="inline-block text-x-red"
+                  initial={reduce ? false : { y: "100%" }}
+                  animate={ready ? { y: "0%" } : undefined}
+                  transition={{ duration: 1, delay: 0.55, ease }}
+                  className="block font-display font-bold tracking-tight text-ink"
+                  style={{
+                    fontSize: "clamp(2.75rem, 7.5vw, 5.25rem)",
+                    lineHeight: 1.02,
+                  }}
                 >
-                  ×
+                  Where Vision
                 </motion.span>
-              </h1>
-
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 8 }}
-                animate={ready ? { opacity: 1, y: 0 } : undefined}
-                transition={{ duration: 0.7, delay: 0.7, ease }}
-                className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1"
-              >
-                <span className="font-label text-[11px] tracking-[0.36em] text-ink">
-                  Consultants
-                </span>
-                <span className="hidden text-ink/20 sm:inline" aria-hidden>
-                  ·
-                </span>
-                <span className="font-label text-[10px] tracking-[0.28em] text-ink/40">
-                  Design <span className="text-x-red">|</span> Engineering
-                </span>
-              </motion.div>
-            </div>
-
-            {/* RIGHT — human copy + decision */}
-            <div className="lg:col-span-5 lg:pb-3">
-              <motion.div
-                initial={reduce ? false : { opacity: 0, x: 24 }}
-                animate={ready ? { opacity: 1, x: 0 } : undefined}
-                transition={{ duration: 0.9, delay: 0.55, ease }}
-                className="max-w-md lg:ml-auto"
-              >
-                <div className="mb-6 h-px w-12 bg-x-red" aria-hidden />
-                <p
-                  className="font-display font-bold leading-[1.15] tracking-tight text-ink"
-                  style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.5rem)" }}
+              </span>
+              <span className="mt-1 block overflow-hidden" aria-hidden>
+                <motion.span
+                  initial={reduce ? false : { y: "100%" }}
+                  animate={ready ? { y: "0%" } : undefined}
+                  transition={{ duration: 1, delay: 0.72, ease }}
+                  className="block font-display font-bold tracking-tight text-ink"
+                  style={{
+                    fontSize: "clamp(2.75rem, 7.5vw, 5.25rem)",
+                    lineHeight: 1.02,
+                  }}
                 >
-                  {brochureBrand.slogan}
-                </p>
-                <p className="mt-5 text-[15px] leading-[1.75] text-ink/50 md:text-[16px]">
-                  Architecture, Structure and Infrastructure — coordinated before drawings leave
-                  the studio.
-                </p>
+                  Takes Form
+                  <span className="text-x-red">.</span>
+                </motion.span>
+              </span>
+            </h1>
 
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Link
-                    href="/contact"
-                    transitionTypes={["nav-forward"]}
-                    className="group inline-flex items-center justify-center gap-3 bg-x-red px-8 py-4 font-label text-[10px] tracking-[0.2em] text-white transition-colors hover:bg-x-red-hover"
-                  >
-                    Contact us
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                  <a
-                    href="#projects"
-                    className="inline-flex items-center justify-center px-2 py-3 font-label text-[10px] tracking-[0.2em] text-ink/40 transition-colors hover:text-ink"
-                  >
-                    View projects
-                  </a>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              initial={reduce ? false : { opacity: 0, scaleX: 0 }}
+              animate={ready ? { opacity: 1, scaleX: 1 } : undefined}
+              transition={{ duration: 0.9, delay: 1.0, ease }}
+              className="mt-10 flex origin-left items-center gap-3 md:mt-12"
+              aria-hidden
+            >
+              <span className="h-px w-10 bg-ink/15 md:w-14" />
+              <span className="font-display text-xs font-bold text-x-red">×</span>
+              <span className="h-px flex-1 max-w-[8rem] bg-ink/10" />
+            </motion.div>
+
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 10 }}
+              animate={ready ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.8, delay: 1.15, ease }}
+              className="mt-8 max-w-[38ch] text-[15px] leading-[1.75] text-ink/50 md:text-[16px]"
+            >
+              Ahmedabad · Architecture, Structure and Infrastructure — held together until the
+              facility is ready to issue.
+            </motion.p>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={ready ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.75, delay: 1.35, ease }}
+              className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
+            >
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="group inline-flex w-fit items-center justify-center gap-3 bg-x-red px-9 py-4 font-label text-[10px] tracking-[0.2em] text-white transition-colors hover:bg-x-red-hover"
+              >
+                Discuss your facility
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href="#projects"
+                className="inline-flex w-fit items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/40 transition-colors hover:text-ink"
+              >
+                See completed work
+              </a>
+            </motion.div>
           </div>
         </Container>
 
+        {/* Title block — quiet drawing footer */}
         <motion.div
-          initial={reduce ? false : { opacity: 0 }}
-          animate={ready ? { opacity: 1 } : undefined}
-          transition={{ delay: 1.2, duration: 0.7 }}
-          className="border-t border-ink/[0.06]"
+          initial={reduce ? false : { opacity: 0, y: 8 }}
+          animate={ready ? { opacity: 1, y: 0 } : undefined}
+          transition={{ delay: 1.5, duration: 0.7 }}
+          className="relative z-10 border-t border-ink/[0.07] bg-[#fafaf8]/80 backdrop-blur-[2px]"
         >
-          <Container className="flex items-center justify-between py-4">
-            <p className="hidden font-label text-[9px] tracking-[0.24em] text-ink/25 sm:block">
-              Architecture <span className="text-x-red/70">·</span> Structure{" "}
-              <span className="text-x-red/70">·</span> Infrastructure
+          <Container className="flex flex-wrap items-center justify-between gap-3 py-3.5 md:py-4">
+            <p className="font-label text-[9px] tracking-[0.22em] text-ink/30">
+              FormX Consultants
+              <span className="mx-2 text-x-red/60">×</span>
+              Design | Engineering
             </p>
             <a
               href="#about"
-              className="ml-auto inline-flex items-center gap-3 font-label text-[9px] tracking-[0.24em] text-ink/35 transition-colors hover:text-ink"
+              className="font-label text-[9px] tracking-[0.22em] text-ink/35 transition-colors hover:text-x-red"
             >
-              Enter the practice
-              <span className="h-6 w-px bg-x-red/70" aria-hidden />
+              Continue
             </a>
           </Container>
         </motion.div>
