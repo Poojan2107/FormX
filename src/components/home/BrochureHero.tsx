@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { FormxTransparentLogo } from "@/components/ui/FormxTransparentLogo";
 import { brochureBrand } from "@/data/brochureHome";
+import { trustMetrics } from "@/data/site";
 
 const smoothEase = [0.16, 1, 0.3, 1] as const;
 
@@ -84,7 +85,7 @@ export function BrochureHero() {
       <motion.span
         aria-hidden
         initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-        animate={ready ? { opacity: 0.045, scale: 1 } : undefined}
+        animate={ready ? { opacity: 0.04, scale: 1 } : undefined}
         transition={{ duration: 2.5, delay: 0.2, ease: smoothEase }}
         className="pointer-events-none absolute -right-[4%] -top-[10%] select-none font-display font-black leading-none text-x-red"
         style={{ fontSize: "clamp(22rem, 50vw, 42rem)" }}
@@ -92,16 +93,16 @@ export function BrochureHero() {
         ×
       </motion.span>
 
-      {/* Engineering crop marks with FormX diagonal cuts */}
+      {/* Engineering crop marks with clean offsets */}
       <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
         <motion.span initial={reduce ? false : { opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.1 }}
-          className="absolute left-6 top-6 block h-10 w-10 border-l-2 border-t-2 border-ink/[0.14] md:left-10 md:top-10" />
+          className="absolute left-6 top-6 block h-9 w-9 border-l-2 border-t-2 border-ink/[0.14] md:left-10 md:top-10" />
         <motion.span initial={reduce ? false : { opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.15 }}
-          className="absolute right-6 top-6 block h-10 w-10 border-r-2 border-t-2 border-ink/[0.14] md:right-10 md:top-10" />
+          className="absolute right-6 top-6 block h-9 w-9 border-r-2 border-t-2 border-ink/[0.14] md:right-10 md:top-10" />
         <motion.span initial={reduce ? false : { opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.2 }}
-          className="absolute bottom-10 left-6 block h-10 w-10 border-b-2 border-l-2 border-ink/[0.12] md:bottom-12 md:left-10" />
+          className="absolute bottom-8 left-6 block h-9 w-9 border-b-2 border-l-2 border-ink/[0.12] md:bottom-10 md:left-10" />
         <motion.span initial={reduce ? false : { opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.25 }}
-          className="absolute bottom-10 right-6 block h-10 w-10 border-b-2 border-r-2 border-x-red/60 md:bottom-12 md:right-10" />
+          className="absolute bottom-8 right-6 block h-9 w-9 border-b-2 border-r-2 border-x-red/60 md:bottom-10 md:right-10" />
       </div>
 
       {/* ═══════════════════════════════════════════════════════
@@ -112,7 +113,7 @@ export function BrochureHero() {
         style={reduce ? undefined : { opacity: sheetOpacity }}
         className="relative z-10 flex flex-1 flex-col justify-center"
       >
-        <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[57%_43%]">
+        <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[56%_44%]">
 
           {/* ── LEFT COLUMN: Tagline + Copy + CTAs ───────────────── */}
           <div className="flex flex-col justify-center px-6 py-14 md:px-10 lg:order-1 lg:py-20 lg:pl-16 lg:pr-8 xl:pl-20">
@@ -228,10 +229,10 @@ export function BrochureHero() {
             </motion.a>
           </div>
 
-          {/* ── RIGHT COLUMN: Clean Studio Logo Card ───────── */}
-          <div className="relative hidden flex-col items-center justify-center overflow-hidden border-l border-ink/[0.08] lg:order-2 lg:flex lg:p-12">
+          {/* ── RIGHT COLUMN: Clean Studio Logo Card + Trust Rail ───── */}
+          <div className="relative hidden flex-col items-center justify-center border-l border-ink/[0.08] lg:order-2 lg:flex lg:p-12">
 
-            {/* Studio Logo Card — Solid studio background for 100% clean contrast! */}
+            {/* Studio Logo Card */}
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.92, y: 24 }}
               animate={ready ? { opacity: 1, scale: 1, y: 0 } : undefined}
@@ -249,7 +250,7 @@ export function BrochureHero() {
                 style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
               />
 
-              {/* TRANSPARENT VECTOR LOGO — 100% sharp, zero clashing watermark! */}
+              {/* TRANSPARENT VECTOR LOGO */}
               <FormxTransparentLogo size="hero" align="center" />
 
               {/* Technical Registration Corner Marks */}
@@ -258,17 +259,34 @@ export function BrochureHero() {
               <span aria-hidden className="absolute left-4 top-4 block h-3.5 w-3.5 border-l-2 border-t-2 border-ink/25" />
             </motion.div>
 
-            {/* Desktop Scroll Cue */}
+            {/* Trust Proof Pills under logo card */}
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={ready ? { opacity: 1, y: 0 } : undefined}
+              transition={{ delay: 1.1, duration: 0.8, ease: smoothEase }}
+              className="mt-8 flex items-center gap-6 rounded-full border border-ink/[0.08] bg-white/70 px-6 py-2.5 backdrop-blur-sm"
+            >
+              {trustMetrics.slice(0, 2).map((m, idx) => (
+                <div key={m.label} className="flex items-center gap-2">
+                  <span className="font-display font-black text-ink text-sm">{m.value}</span>
+                  <span className="font-label text-[9px] uppercase tracking-[0.16em] text-ink/50">{m.label}</span>
+                  {idx === 0 && <span className="font-display text-x-red text-xs ml-2">×</span>}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Desktop Scroll Cue — Clean Horizontal Badge (No Overlap with Corner Marks) */}
             <motion.a
               href="#about"
               initial={reduce ? false : { opacity: 0 }}
               animate={ready ? { opacity: 1 } : undefined}
               transition={{ delay: 1.4, duration: 0.6 }}
-              className="absolute bottom-9 right-8 flex flex-col items-center gap-2 font-label text-[10px] tracking-[0.28em] uppercase text-ink/40 transition-colors hover:text-x-red"
+              className="absolute bottom-6 flex items-center gap-2 font-label text-[10px] tracking-[0.28em] uppercase text-ink/45 transition-colors hover:text-x-red"
             >
-              <span className="[writing-mode:vertical-lr]">Explore Studio Work</span>
+              <span>Explore Studio Work</span>
               <ChevronDown className="size-3.5 fx-scroll-cue" />
             </motion.a>
+
           </div>
         </div>
       </motion.div>
