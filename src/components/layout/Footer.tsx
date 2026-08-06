@@ -20,28 +20,13 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-0 fx-grid-dark opacity-40" aria-hidden />
 
       <Container className="relative z-10">
-        <div className="border-b border-white/10 py-16 md:py-20">
-          <p className="font-label text-[10px] tracking-[0.3em] text-x-red">FORMX CONSULTANTS</p>
-          <h2
-            className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-tight text-white"
-            style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}
-          >
-            Engineering
-            <br />
-            Practice
-          </h2>
-          <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-white/52 md:text-[16px]">
-            Architecture, structure, and infrastructure for facilities that need clear decisions,
-            coordinated drawings, and execution-ready documentation.
-          </p>
-          <p className="mt-4 font-body text-xl font-medium text-white/72 md:text-2xl">
-            {site.slogan}
-          </p>
-        </div>
-
         <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <Logo invert variant="full" />
+            <p className="mt-5 max-w-[36ch] text-[14px] leading-[1.8] text-white/48">
+              Architecture, structure, and infrastructure — coordinated before drawings leave the
+              studio.
+            </p>
             <dl className="mt-8 space-y-5">
               <div>
                 <dt className="font-label text-[9px] tracking-[0.2em] text-x-red">Studio Address</dt>

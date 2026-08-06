@@ -5,63 +5,64 @@ import { Container } from "@/components/ui/Container";
 import { brochurePartners, brochureContactNote } from "@/data/brochureHome";
 
 /**
- * PARTNERS — Trust types as formx-cut pills beside editorial header.
+ * PARTNERS — Editorial header + equal-height partner grid.
  */
 export function BrochurePartners() {
   return (
-    <section id="partners" className="scroll-mt-28 bg-white py-24 md:py-32">
+    <section id="partners" className="scroll-mt-28 bg-[#f7f6f2] py-24 md:py-32">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-16">
+        <div className="mb-12 grid gap-6 border-b border-ink/[0.08] pb-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-end lg:gap-14">
           <Reveal>
             <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
               Partners
             </p>
             <h2
-              className="mt-4 max-w-[15ch] font-display font-black leading-[1.05] tracking-[-0.045em] text-ink"
+              className="mt-4 font-display font-black leading-[1.05] tracking-[-0.045em] text-ink"
               style={{ fontSize: "clamp(2rem, 3.8vw, 3.15rem)" }}
             >
               Who places trust in FormX
             </h2>
-            <p className="mt-6 max-w-[44ch] text-[16px] font-medium leading-[1.9] text-ink/62">
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-[15.5px] font-medium leading-[1.9] text-ink/60 md:text-[16px] lg:pb-1">
               {brochureContactNote}
             </p>
-
-            <div className="mt-9 flex items-center gap-3">
-              <span className="h-px w-9 bg-x-red" />
-              <span className="font-label text-[9.5px] tracking-[0.22em] uppercase text-ink/42">
-                Clients · Architects · Contractors
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="grid gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
-              {brochurePartners.map((partner) => (
-                <div
-                  key={partner.name}
-                  className="fx-partner-pill group cursor-default border border-ink/[0.1] bg-[#f8f6f1] px-6 py-7 transition-all duration-300 hover:border-x-red/40 hover:bg-white hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] md:px-7"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
-                  }}
-                >
-                  <p className="max-w-[14ch] font-display text-[1.05rem] font-bold leading-[1.15] tracking-tight text-ink transition-colors group-hover:text-x-red md:text-lg">
-                    {partner.name}
-                  </p>
-                  <p className="mt-2.5 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
-                    {partner.tag}
-                  </p>
-                </div>
-              ))}
-            </div>
           </Reveal>
         </div>
 
-        <Reveal delay={0.18} from="fade">
-          <div className="mt-16 flex items-center gap-4">
-            <span className="h-px flex-1 bg-ink/[0.08]" />
-            <span className="font-display text-2xl font-black text-x-red/45">×</span>
-            <span className="h-px w-14 bg-x-red/30" />
+        <Reveal delay={0.1}>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {brochurePartners.map((partner, i) => (
+              <div
+                key={partner.name}
+                className="group flex min-h-[132px] flex-col justify-between border border-ink/[0.1] bg-white px-6 py-6 transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] md:min-h-[148px] md:px-7 md:py-7"
+                style={{
+                  clipPath:
+                    "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
+                }}
+              >
+                <div>
+                  <span className="font-label text-[9.5px] tracking-[0.24em] text-x-red/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-3 font-display text-[1.1rem] font-bold leading-[1.15] tracking-tight text-ink transition-colors group-hover:text-x-red md:text-[1.2rem]">
+                    {partner.name}
+                  </p>
+                </div>
+                <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
+                  {partner.tag}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.16} from="fade">
+          <div className="mt-12 flex items-center gap-3">
+            <span className="h-px w-9 bg-x-red" />
+            <span className="font-label text-[9.5px] tracking-[0.22em] uppercase text-ink/42">
+              Clients · Architects · Contractors
+            </span>
           </div>
         </Reveal>
       </Container>

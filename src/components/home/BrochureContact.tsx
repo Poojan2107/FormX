@@ -10,27 +10,43 @@ import { Container } from "@/components/ui/Container";
 import { brochureFaqs } from "@/data/brochureHome";
 import { site } from "@/data/site";
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function FaqItem({
+  q,
+  a,
+  index,
+}: {
+  q: string;
+  a: string;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
 
   return (
-    <div className="border-b border-ink/[0.08] last:border-b-0">
+    <div className="border-b border-ink/[0.09]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="group flex w-full items-center justify-between gap-4 py-5 text-left"
+        className="group grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 py-5 text-left md:gap-5 md:py-6"
         aria-expanded={open}
       >
-        <span className="flex items-start gap-3 text-[14.5px] font-semibold leading-[1.5] tracking-tight text-ink/78 transition-colors group-hover:text-ink md:text-[15.5px]">
-          <span className="mt-0.5 shrink-0 font-display text-sm font-black text-x-red">×</span>
+        <span className="mt-0.5 font-label text-[10px] tracking-[0.2em] text-x-red">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="text-[15px] font-semibold leading-[1.45] tracking-tight text-ink/82 transition-colors group-hover:text-ink md:text-[16px]">
           {q}
         </span>
-        <ChevronDown
-          className={`size-4 shrink-0 text-x-red/55 transition-transform duration-300 ${
-            open ? "rotate-180" : ""
+        <span
+          className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border border-ink/[0.1] transition-colors group-hover:border-x-red/40 ${
+            open ? "border-x-red/50 bg-x-red text-white" : "bg-white text-x-red"
           }`}
-        />
+        >
+          <ChevronDown
+            className={`size-3.5 transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </span>
       </button>
       <AnimatePresence initial={false}>
         {open ? (
@@ -41,7 +57,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pl-7 pr-4 text-[14px] leading-[1.85] text-ink/58">
+            <p className="pb-6 pl-10 pr-12 text-[14.5px] leading-[1.85] text-ink/58 md:pl-12 md:text-[15px]">
               {a}
             </p>
           </motion.div>
@@ -52,6 +68,38 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 }
 
 export function BrochureContact() {
+  const contactFacts = [
+    {
+      icon: MapPin,
+      label: "Studio address",
+      body: site.addressDetail,
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      body: (
+        <a
+          href={`mailto:${site.email}`}
+          className="transition-colors hover:text-x-red"
+        >
+          {site.email}
+        </a>
+      ),
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      body: (
+        <a
+          href={`tel:${site.phone.replace(/\s/g, "")}`}
+          className="transition-colors hover:text-x-red"
+        >
+          {site.phone}
+        </a>
+      ),
+    },
+  ] as const;
+
   return (
     <section
       id="contact"
@@ -67,114 +115,98 @@ export function BrochureContact() {
         }}
       />
 
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -bottom-8 -right-4 select-none font-display font-black leading-[0.8] tracking-[-0.05em] text-ink/[0.028]"
-        style={{ fontSize: "clamp(8rem, 24vw, 20rem)" }}
-      >
-        FORM×
-      </span>
-
       <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-[3px] w-24 bg-x-red" />
 
       <Container className="relative z-10">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-7">
-            <div className="mb-9">
+        <div className="grid gap-10 border-b border-ink/[0.08] pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
+          <Reveal>
+            <div className="mb-8">
               <Image
                 src="/formx-logo-solid.png"
                 alt="FormX Consultants"
                 width={220}
                 height={94}
                 priority
-                className="h-auto w-[170px] object-contain md:w-[200px]"
+                className="h-auto w-[160px] object-contain md:w-[190px]"
                 style={{ mixBlendMode: "multiply" }}
               />
             </div>
-
             <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
               Contact
             </p>
             <h2
               className="mt-4 max-w-[14ch] font-display font-black leading-[1.02] tracking-[-0.045em] text-ink"
-              style={{ fontSize: "clamp(2.15rem, 4.4vw, 3.6rem)" }}
+              style={{ fontSize: "clamp(2.15rem, 4.4vw, 3.5rem)" }}
             >
               Bring us your next facility
             </h2>
-
-            <p className="mt-6 max-w-[46ch] text-[15.5px] leading-[1.9] text-ink/60 md:text-[16.5px]">
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-[15.5px] leading-[1.9] text-ink/60 md:text-[16.5px] lg:pb-1">
               Every serious project starts with clarity. Share the facility, scale, and
               constraints, and we will help define the engineering decisions that need to be
               resolved before execution begins.
             </p>
+          </Reveal>
+        </div>
 
-            <dl className="mt-11 grid gap-3.5 sm:grid-cols-3">
-              <div className="border border-ink/[0.08] bg-white/90 p-5 transition-colors hover:border-x-red/25">
-                <MapPin className="size-4 text-x-red" />
-                <dt className="mt-3.5 font-label text-[9px] uppercase tracking-[0.2em] text-ink/38">
-                  Studio address
-                </dt>
-                <dd className="mt-2 text-[13.5px] font-medium leading-[1.7] text-ink/68">
-                  {site.addressDetail}
-                </dd>
-              </div>
-              <div className="border border-ink/[0.08] bg-white/90 p-5 transition-colors hover:border-x-red/25">
-                <Mail className="size-4 text-x-red" />
-                <dt className="mt-3.5 font-label text-[9px] uppercase tracking-[0.2em] text-ink/38">
-                  Email
-                </dt>
-                <dd className="mt-2">
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="text-[13.5px] font-medium text-ink/68 transition-colors hover:text-x-red"
-                  >
-                    {site.email}
-                  </a>
-                </dd>
-              </div>
-              <div className="border border-ink/[0.08] bg-white/90 p-5 transition-colors hover:border-x-red/25">
-                <Phone className="size-4 text-x-red" />
-                <dt className="mt-3.5 font-label text-[9px] uppercase tracking-[0.2em] text-ink/38">
-                  Phone
-                </dt>
-                <dd className="mt-2">
-                  <a
-                    href={`tel:${site.phone.replace(/\s/g, "")}`}
-                    className="text-[13.5px] font-medium text-ink/68 transition-colors hover:text-x-red"
-                  >
-                    {site.phone}
-                  </a>
-                </dd>
-              </div>
-            </dl>
+        <Reveal delay={0.1}>
+          <dl className="mt-10 grid gap-3 sm:grid-cols-3 sm:items-stretch">
+            {contactFacts.map((fact) => {
+              const Icon = fact.icon;
+              return (
+                <div
+                  key={fact.label}
+                  className="flex h-full min-h-[168px] flex-col border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/30 md:p-6"
+                >
+                  <Icon className="size-4 text-x-red" />
+                  <dt className="mt-4 font-label text-[9px] uppercase tracking-[0.2em] text-ink/40">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-2 flex-1 text-[13.5px] font-medium leading-[1.7] text-ink/68 md:text-[14px]">
+                    {fact.body}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </Reveal>
 
-            <div className="mt-10">
-              <Link
-                href="/contact"
-                transitionTypes={["nav-forward"]}
-                className="fx-btn-primary group inline-flex"
-              >
-                Enquire Now
-                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+        <div className="mt-8">
+          <Reveal delay={0.12}>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="fx-btn-primary group inline-flex"
+            >
+              Enquire Now
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid gap-8 border-t border-ink/[0.08] pt-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
+          <Reveal>
+            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+              FAQ
+            </p>
+            <h3
+              className="mt-4 max-w-[12ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
+              style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.25rem)" }}
+            >
+              Questions before issue
+            </h3>
+            <p className="mt-4 max-w-[36ch] text-[15px] leading-[1.85] text-ink/55">
+              Straight answers drawn from how FormX works with clients, architects and contractors.
+            </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="lg:col-span-5 lg:pt-4">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-x-red" />
-              <p className="font-label text-[10px] uppercase tracking-[0.28em] text-ink/42">
-                Frequently Asked Questions
-              </p>
-            </div>
-            <div className="border border-ink/[0.08] bg-white/90 px-5 py-1 shadow-[0_18px_60px_rgba(0,0,0,0.03)] md:px-7">
-              {brochureFaqs.map((item) => (
-                <FaqItem key={item.q} q={item.q} a={item.a} />
+          <Reveal delay={0.08}>
+            <div className="border-t border-ink/[0.09]">
+              {brochureFaqs.map((item, i) => (
+                <FaqItem key={item.q} q={item.q} a={item.a} index={i} />
               ))}
             </div>
-            <p className="mt-9 font-label text-[9px] uppercase tracking-[0.26em] text-ink/30">
-              Where Vision Takes Form · Design | Engineering
-            </p>
           </Reveal>
         </div>
       </Container>

@@ -190,18 +190,21 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
 
 function ResidentialPlate({ project }: { project: Project }) {
   const landscape = project.assets.orientation === "landscape";
-  const frameMode = project.assets.frame ?? "contain";
+  // Portrait plates use cover so tower imagery fills the tall frame (no letterbox).
+  const frameMode = landscape
+    ? (project.assets.frame ?? "contain")
+    : "cover";
 
   return (
     <Link
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
-      className="group block h-full"
+      className="group flex h-full"
     >
-      <div className="flex h-full flex-col border border-white/10 bg-[#101010] p-3 md:p-4">
+      <div className="flex h-full w-full flex-col border border-white/10 bg-[#101010] p-3 md:p-4">
         <div
           className={`relative overflow-hidden bg-[#0d0d0d] ${
-            landscape ? "aspect-[16/10]" : "aspect-[3/4]"
+            landscape ? "aspect-[16/10]" : "aspect-[4/5]"
           }`}
         >
           <div className="absolute inset-0 border border-white/10" />
@@ -211,8 +214,10 @@ function ResidentialPlate({ project }: { project: Project }) {
             fit={frameMode}
             aspect="auto"
             tone="dark"
-            objectPosition="center center"
-            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.02] md:p-4"
+            objectPosition={landscape ? "center center" : "center top"}
+            className={`absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.02] ${
+              landscape ? "p-3 md:p-4" : ""
+            }`}
             sizes={
               landscape
                 ? "(max-width: 1024px) 100vw, 58vw"
@@ -225,28 +230,22 @@ function ResidentialPlate({ project }: { project: Project }) {
           <p className="font-label text-[9px] uppercase tracking-[0.22em] text-x-red">
             {project.location}
           </p>
-          <div className="mt-3 flex items-start justify-between gap-4">
+          <div className="mt-3 flex items-start justify-between gap-3">
             <h3
-              className="font-display font-bold leading-[1.05] tracking-tight text-white transition-colors group-hover:text-x-red"
-              style={{
-                fontSize: landscape
-                  ? "clamp(1.4rem, 2.2vw, 1.9rem)"
-                  : "clamp(1.25rem, 1.8vw, 1.55rem)",
-              }}
+              className="font-display font-bold leading-[1.08] tracking-tight text-white transition-colors group-hover:text-x-red"
+              style={{ fontSize: "clamp(1.25rem, 1.9vw, 1.6rem)" }}
             >
               {project.title}
             </h3>
             <ArrowUpRight className="mt-1 size-3.5 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
-          <p className="mt-3 text-[13.5px] leading-[1.75] text-white/55">
+          <p className="mt-3 text-[13px] leading-[1.7] text-white/52">
             {project.services[0] ?? project.sector}
           </p>
-          {landscape ? (
-            <p className="mt-4 max-w-[48ch] text-[13px] leading-[1.8] text-white/42">
-              {project.description}
-            </p>
-          ) : null}
-          <div className="mt-auto flex items-end justify-between gap-4 pt-6">
+          <p className="mt-4 line-clamp-3 text-[13px] leading-[1.75] text-white/40">
+            {project.description}
+          </p>
+          <div className="mt-auto flex items-end justify-between gap-4 border-t border-white/10 pt-5">
             <p className="font-label text-[9px] uppercase tracking-[0.2em] text-white/38">
               {project.area ?? project.year}
             </p>
@@ -377,7 +376,7 @@ export function BrochureProjects() {
             dark
           />
 
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-7">
+          <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-7">
             {[...highRise.projects]
               .sort((a, b) => {
                 const al = a.assets.orientation === "landscape" ? 0 : 1;
@@ -390,7 +389,7 @@ export function BrochureProjects() {
                   <Reveal
                     key={project.slug}
                     delay={0.09 * i}
-                    className={landscape ? "lg:col-span-7" : "lg:col-span-5"}
+                    className={`h-full ${landscape ? "lg:col-span-7" : "lg:col-span-5"}`}
                   >
                     <ResidentialPlate project={project} />
                   </Reveal>

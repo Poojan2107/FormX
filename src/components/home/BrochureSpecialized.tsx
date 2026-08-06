@@ -5,13 +5,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { brochureSpecialized } from "@/data/brochureHome";
 
 /**
- * SPECIALIZED — Split panel: image depth + discipline lists.
+ * SPECIALIZED — Split panel: image depth + equal-height discipline columns.
  */
 export function BrochureSpecialized() {
   return (
     <section id="specialized" className="scroll-mt-28 overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2">
-        <div className="relative min-h-[440px] overflow-hidden bg-[#0a0a0a] lg:min-h-[680px]">
+        <div className="relative min-h-[440px] overflow-hidden bg-[#0a0a0a] lg:min-h-full">
           <Image
             src="/assets/projects/brochure/brochure_p5_1.png"
             alt="FormX specialised engineering"
@@ -61,23 +61,25 @@ export function BrochureSpecialized() {
             </p>
           </Reveal>
 
-          <div className="mt-11 space-y-4">
+          <div className="mt-11 grid gap-4 sm:grid-cols-2 sm:items-stretch">
             {brochureSpecialized.map((block, i) => (
-              <Reveal key={block.title} delay={0.07 * i} from="fade">
-                <div className="group border-l-2 border-ink/[0.08] bg-[#faf9f5] px-6 py-6 transition-all hover:border-x-red hover:bg-white">
-                  <div className="flex items-center gap-3">
-                    <span className="font-display text-xl font-black leading-none text-x-red">×</span>
-                    <h3 className="font-display text-[1.05rem] font-bold tracking-tight text-ink md:text-[1.1rem]">
+              <Reveal key={block.title} delay={0.07 * i} from="fade" className="h-full">
+                <div className="flex h-full flex-col border border-ink/[0.08] border-l-[3px] border-l-x-red/70 bg-[#faf9f5] px-5 py-6 transition-colors hover:border-ink/[0.12] hover:border-l-x-red hover:bg-white md:px-6">
+                  <div className="flex items-center gap-2.5">
+                    <span className="font-label text-[10px] font-bold tracking-[0.24em] text-x-red">
+                      0{i + 1}
+                    </span>
+                    <h3 className="font-display text-[1.02rem] font-bold leading-tight tracking-tight text-ink md:text-[1.08rem]">
                       {block.title}
                     </h3>
                   </div>
-                  <ul className="mt-4 space-y-2.5 pl-8">
+                  <ul className="mt-5 flex flex-1 flex-col gap-3">
                     {block.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-[13.5px] leading-[1.75] text-ink/58 md:text-[14.5px]"
+                        className="flex items-start gap-2.5 text-[13px] leading-[1.7] text-ink/58 md:text-[13.5px]"
                       >
-                        <span className="mt-[0.5em] size-1 shrink-0 rounded-full bg-x-red/50" />
+                        <span className="mt-[0.45em] size-1 shrink-0 rounded-full bg-x-red/55" />
                         {item}
                       </li>
                     ))}
