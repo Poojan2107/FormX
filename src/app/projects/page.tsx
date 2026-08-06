@@ -18,16 +18,16 @@ export default function ProjectsPage() {
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
           <Reveal>
-            <p className="font-label text-[11px] text-x-red">Engineering evidence</p>
+            <p className="eyebrow text-x-red">Engineering evidence</p>
             <h1
-              className="mt-5 max-w-[12ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight text-ink"
+              className="editorial-title mt-5 max-w-[11ch] text-ink"
               style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
             >
               Completed facilities
             </h1>
-            <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-ink-muted">
-              Each dossier records a real decision — what the site fought, what we refused, and what
-              left the studio Before × Issue.
+            <p className="editorial-deck mt-8 measure-essay">
+              Each dossier records a real decision: what the site fought, what FormX refused, and
+              what left the studio only after coordination was resolved.
             </p>
           </Reveal>
         </Container>
@@ -41,8 +41,9 @@ export default function ProjectsPage() {
 
       <section className="fx-grain border-t border-black bg-[#0a0a09] py-16 text-white">
         <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="measure-studio text-[16px] leading-[1.8] text-white/55">
-            Planning a similar facility? Bring the plot constraints — we&apos;ll start there.
+          <p className="measure-studio text-[16px] leading-[1.9] text-white/58">
+            Planning a similar facility? Bring the constraints, the operations, and the site
+            reality. That is where FormX begins.
           </p>
           <Link
             href="/contact"

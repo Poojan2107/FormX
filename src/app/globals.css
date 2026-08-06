@@ -13,6 +13,11 @@
   --steel: #1a1a1a;
   --paper: #ffffff;
   --focus: color-mix(in srgb, var(--x-red) 40%, transparent);
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 720ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -43,7 +48,8 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
@@ -91,7 +97,7 @@ body {
 .font-display {
   font-family: var(--font-display);
   font-feature-settings: "kern" on;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .font-label {
@@ -105,6 +111,42 @@ body {
 .font-body {
   font-family: var(--font-body);
   letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.editorial-title {
+  font-family: var(--font-display);
+  font-weight: 850;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.editorial-deck {
+  max-width: 44ch;
+  font-size: clamp(1.05rem, 0.98rem + 0.38vw, 1.22rem);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+}
+
+.editorial-body {
+  font-size: clamp(0.97rem, 0.94rem + 0.18vw, 1.05rem);
+  line-height: 1.9;
+  color: color-mix(in srgb, var(--ink) 74%, transparent);
+}
+
+.editorial-meta {
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 /* Atmosphere — paper grain (no stock photo required) */
@@ -295,16 +337,38 @@ body {
 .x-border {
   position: relative;
   transition:
-    border-color 0.25s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-color var(--motion-base) ease,
+    transform calc(var(--motion-base) + 60ms) var(--ease-standard);
 }
 
 .x-lift {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform calc(var(--motion-base) + 80ms) var(--ease-standard);
 }
 
 .x-lift:hover {
   transform: translateY(-4px);
+}
+
+.x-hover-rail {
+  position: relative;
+}
+
+.x-hover-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--x-red);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform var(--motion-base) var(--ease-standard);
+}
+
+.x-hover-rail:hover::before,
+.group:hover .x-hover-rail::before {
+  transform: scaleY(1);
 }
 
 @keyframes fade-up {
@@ -437,7 +501,7 @@ body {
 
 .text-lead {
   font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .prose-measure {
@@ -504,7 +568,9 @@ body {
 /* ─── Service row hover ──────────────────────────────────── */
 .fx-service-row {
   position: relative;
-  transition: background 0.25s ease;
+  transition:
+    background var(--motion-base) ease,
+    transform calc(var(--motion-base) + 40ms) var(--ease-standard);
 }
 
 .fx-service-row::before {
@@ -528,7 +594,7 @@ body {
 .fx-project-card {
   position: relative;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform calc(var(--motion-base) + 140ms) var(--ease-standard);
 }
 
 .fx-project-card:hover {
@@ -536,7 +602,7 @@ body {
 }
 
 .fx-project-card img {
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--motion-slow) var(--ease-standard);
 }
 
 .fx-project-card:hover img {
@@ -586,11 +652,14 @@ body {
   text-transform: uppercase;
   padding: 1rem 2.25rem;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
-  transition: background 0.25s ease, clip-path 0.25s ease;
+  transition:
+    background var(--motion-base) ease,
+    transform calc(var(--motion-base) + 20ms) var(--ease-standard);
 }
 
 .fx-btn-primary:hover {
   background: var(--x-red-hover);
+  transform: translateY(-1px);
 }
 
 .fx-btn-ghost {
@@ -606,12 +675,16 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 1rem 2.25rem;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition:
+    border-color var(--motion-base) ease,
+    color var(--motion-base) ease,
+    transform calc(var(--motion-base) + 20ms) var(--ease-standard);
 }
 
 .fx-btn-ghost:hover {
   border-color: var(--x-red);
   color: var(--x-red);
+  transform: translateY(-1px);
 }
 
 /* ─── Metric bar separator ───────────────────────────────── */

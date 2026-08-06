@@ -72,23 +72,23 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="bg-[#141414] py-12 text-white md:py-14">
+      <section className="bg-[#141414] py-14 text-white md:py-16">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center md:px-8">
         <div className="max-w-xl prose-measure">
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
+          <p className="eyebrow text-x-red">
             {eyebrow}
           </p>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight">
+          <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl">
             {title}
           </h2>
           {description ? (
-            <p className="mt-3 text-sm leading-relaxed text-white/60">
+            <p className="mt-4 max-w-[42ch] text-[15px] leading-[1.85] text-white/60">
               {description}
             </p>
           ) : null}
 
           {/* Quick Direct Affordance: Phone & WhatsApp */}
-          <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-white/10 pt-4 text-xs font-semibold text-white/70">
+          <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-white/10 pt-4 text-xs font-semibold text-white/70">
             <a
               href={`tel:${site.phone.replace(/\s/g, "")}`}
               className="inline-flex items-center gap-1.5 transition-colors hover:text-x-red"
@@ -109,7 +109,7 @@ export function CtaBand({
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap shrink-0">
+        <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
           <Button
             href={primary.href}
             variant="primary"
@@ -158,10 +158,10 @@ export function RelatedLinks({
     <section className="border-t border-line bg-white py-12 md:py-14">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
         <div className="mb-5 flex items-end justify-between gap-4 border-b border-line pb-3">
-          <h3 className="font-display text-lg font-bold uppercase tracking-tight text-ink md:text-xl">
+          <h3 className="font-display text-lg font-bold tracking-tight text-ink md:text-xl">
             {title}
           </h3>
-          <span className="font-display text-[10px] font-bold uppercase tracking-wider text-x-red">
+          <span className="eyebrow text-x-red">
             {count} items
           </span>
         </div>
@@ -172,26 +172,28 @@ export function RelatedLinks({
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group relative block aspect-[16/10] overflow-hidden bg-[#111]"
+                className="group relative block aspect-[16/10] overflow-hidden border border-black/10 bg-[#111] p-2.5"
               >
-                <AssetImage
-                  alt={item.title}
-                  slot={item.image}
-                  kind="facility"
-                  aspect="auto"
-                  fit="cover"
-                  tone="dark"
-                  zoomOnHover
-                  className="absolute inset-0 h-full w-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="relative h-full overflow-hidden">
+                  <AssetImage
+                    alt={item.title}
+                    slot={item.image}
+                    kind="facility"
+                    aspect="auto"
+                    fit="cover"
+                    tone="dark"
+                    zoomOnHover
+                    className="absolute inset-0 h-full w-full"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5">
                   {item.meta ? (
-                    <p className="font-display text-[9px] font-bold uppercase tracking-[0.14em] text-x-red">
+                    <p className="editorial-meta text-x-red">
                       {item.meta}
                     </p>
                   ) : null}
-                  <h4 className="mt-1 font-display text-sm font-bold uppercase leading-snug text-white transition-colors group-hover:text-x-red">
+                  <h4 className="mt-2 font-display text-base font-bold leading-snug text-white transition-colors group-hover:text-x-red">
                     {item.title}
                   </h4>
                 </div>
@@ -201,19 +203,19 @@ export function RelatedLinks({
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group flex flex-col justify-between border border-line p-4 transition-colors hover:border-x-red/40"
+                className="group x-lift flex flex-col justify-between border border-line p-5 transition-colors hover:border-x-red/40"
               >
                 <div>
                   {item.meta ? (
-                    <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-x-red">
+                    <p className="mb-2 editorial-meta text-x-red">
                       {item.meta}
                     </p>
                   ) : null}
-                  <h4 className="font-display text-base font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
+                  <h4 className="font-display text-[1.03rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
                     {item.title}
                   </h4>
                 </div>
-                <p className="mt-4 font-display text-[11px] font-bold uppercase tracking-wider text-ink/35 transition-colors group-hover:text-x-red">
+                <p className="mt-5 font-label text-[10px] text-ink/35 transition-colors group-hover:text-x-red">
                   View →
                 </p>
               </Link>

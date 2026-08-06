@@ -37,18 +37,18 @@ export default function ServicesPage() {
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Services</p>
+          <p className="eyebrow text-x-red">Services</p>
           <h1
-            className="mt-5 max-w-[14ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight text-ink"
+            className="editorial-title mt-5 max-w-[12ch] text-ink"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
           >
-            Three voices. One issue.
+            Three disciplines, resolved as one facility.
           </h1>
-          <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-ink-muted">
-            Architecture, Structure and Infrastructure must answer each other before FORM× issues.
-            Facility typologies below — then the discipline chapters.
+          <p className="editorial-deck mt-8 measure-essay">
+            FormX does not treat Architecture, Structure, and Infrastructure as parallel silos.
+            They are coordinated against the same reality before anything is issued.
           </p>
-          <p className="mt-4 measure-essay text-[15px] leading-[1.75] text-ink/45">
+          <p className="editorial-body mt-4 measure-essay">
             {portfolioServicesNote}
           </p>
         </Container>
@@ -62,15 +62,15 @@ export default function ServicesPage() {
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className="group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8"
+                  className="fx-service-row group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8 md:py-12"
                 >
-                  <span className="font-display text-sm font-bold text-x-red md:col-span-1">
+                  <span className="editorial-meta text-x-red md:col-span-1">
                     0{i + 1}
                   </span>
-                  <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-3xl">
+                  <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-3xl">
                     {item.title}
                   </h2>
-                  <p className="text-[16px] leading-[1.75] text-ink-muted md:col-span-6">
+                  <p className="text-[16px] leading-[1.85] text-ink-muted md:col-span-6">
                     {item.body}
                   </p>
                   <span className="hidden justify-end md:col-span-1 md:flex">
@@ -86,14 +86,14 @@ export default function ServicesPage() {
 
       <section className="bg-bg-muted section-y">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Disciplines</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+          <p className="eyebrow text-x-red">Disciplines</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
             Architecture · Structure · Infrastructure
           </h2>
           <div className="mt-14 grid gap-12 lg:grid-cols-3">
             {groups.map((g) => (
               <div key={g.title}>
-                <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink">
+                <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
                   {g.title}
                 </h3>
                 <ul className="mt-6 space-y-4">
@@ -106,13 +106,13 @@ export default function ServicesPage() {
                         <Link
                           href={`/services/${slug}`}
                           transitionTypes={["nav-forward"]}
-                          className="group block"
+                          className="group block border-t border-line pt-4 first:border-t-0 first:pt-0"
                         >
-                          <span className="font-display text-base font-bold uppercase tracking-tight text-ink group-hover:text-x-red">
+                          <span className="font-display text-base font-bold tracking-tight text-ink group-hover:text-x-red">
                             {svc.title}
                           </span>
                           {story?.lead ? (
-                            <span className="mt-1 block text-[13px] leading-snug text-ink/45 line-clamp-2">
+                            <span className="mt-1.5 block text-[13px] leading-[1.7] text-ink/50 line-clamp-2">
                               {story.lead}
                             </span>
                           ) : null}

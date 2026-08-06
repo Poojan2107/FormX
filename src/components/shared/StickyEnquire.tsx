@@ -31,13 +31,13 @@ export function StickyEnquire({
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="flex items-center justify-between gap-3 px-4 py-3">
-        <p className="min-w-0 flex-1 truncate text-[13px] font-semibold text-ink">
+        <p className="min-w-0 flex-1 truncate text-[13px] font-semibold tracking-[-0.01em] text-ink">
           {label}
         </p>
         <Link
           href={href}
           transitionTypes={["nav-forward"]}
-          className="formx-cut-sm formx-edge formx-edge-sm inline-flex shrink-0 items-center gap-1.5 bg-x-red px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.12em] text-white"
+          className="fx-btn-primary inline-flex shrink-0 items-center gap-1.5 px-4 py-2.5 text-[10px]"
         >
           Enquire
           <ArrowRight className="size-3.5" />

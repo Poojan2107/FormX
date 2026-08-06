@@ -23,17 +23,17 @@ export default function AboutPage() {
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="font-label text-[11px] text-x-red">{aboutPage.tagline}</p>
+          <p className="eyebrow text-x-red">{aboutPage.tagline}</p>
           <h1
-            className="mt-5 max-w-[12ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight text-ink"
-            style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
+            className="editorial-title mt-5 max-w-[11ch] text-ink sm:max-w-[12ch]"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 5.1rem)" }}
           >
-            Where Vision Takes Form
+            The studio behind drawings that hold up on site.
           </h1>
-          <p className="mt-10 measure-essay text-[20px] leading-[1.75] text-ink-muted">
+          <p className="editorial-deck mt-8 measure-essay">
             {aboutPage.intro}
           </p>
-          <p className="mt-6 measure-essay text-[16px] leading-[1.8] text-ink/50">
+          <p className="editorial-body mt-6 measure-essay">
             {aboutPage.philosophy}
           </p>
         </Container>
@@ -41,15 +41,20 @@ export default function AboutPage() {
 
       <section className="border-b border-line bg-bg section-y">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Vision · Mission · Values</p>
+          <Reveal>
+            <p className="eyebrow text-x-red">Vision · Mission · Values</p>
+            <h2 className="mt-4 max-w-[16ch] font-display text-3xl font-extrabold tracking-tight text-ink md:text-5xl">
+              A practice built on judgement, coordination, and accountability.
+            </h2>
+          </Reveal>
           <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i}>
-                <span className="font-display text-sm font-bold text-x-red">0{i + 1}</span>
-                <h2 className="mt-4 font-display text-2xl font-extrabold uppercase tracking-tight text-ink">
+                <span className="editorial-meta text-x-red">0{i + 1}</span>
+                <h2 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
                   {p.title}
                 </h2>
-                <p className="mt-4 text-[16px] leading-[1.8] text-ink-muted">{p.body}</p>
+                <p className="mt-4 text-[16px] leading-[1.9] text-ink-muted">{p.body}</p>
               </Reveal>
             ))}
           </div>
@@ -66,32 +71,34 @@ export default function AboutPage() {
       <section className="border-b border-line bg-bg section-y">
         <Container>
           <Reveal>
-            <p className="font-label text-[11px] text-x-red">{formxMethod.code}</p>
+            <p className="eyebrow text-x-red">{formxMethod.code}</p>
             <h2
-              className="mt-4 max-w-[12ch] font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
+              className="mt-4 max-w-[11ch] font-display font-extrabold leading-[0.95] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
               Before <span className="text-x-red">×</span> Issue
             </h2>
-            <p className="mt-6 measure-essay text-[17px] leading-[1.8] text-ink-muted">
+            <p className="mt-6 measure-essay text-[17px] leading-[1.9] text-ink-muted">
               {formxMethod.belief}
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-px bg-line sm:grid-cols-5">
-            {formxMethod.stages.map((s) => (
-              <div key={s.id} className="bg-bg px-5 py-6">
-                <p className="font-label text-[10px] text-x-red">{s.num}</p>
-                <p className="mt-2 font-display text-lg font-extrabold uppercase tracking-tight text-ink">
-                  {s.title}
-                </p>
-                <p className="mt-2 text-[13px] leading-snug text-ink/45">{s.verb}</p>
-              </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-5">
+            {formxMethod.stages.map((s, i) => (
+              <Reveal key={s.id} delay={0.04 * i}>
+                <div className="h-full border border-line bg-white px-5 py-6">
+                  <p className="eyebrow text-x-red">{s.num}</p>
+                  <p className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">
+                    {s.title}
+                  </p>
+                  <p className="mt-3 text-[13px] leading-[1.75] text-ink/55">{s.verb}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
           <Link
             href="/#before-issue"
             transitionTypes={["nav-forward"]}
-            className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red"
+            className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red transition-colors hover:text-ink"
           >
             Experience it on the homepage
             <ArrowRight className="size-4" />
@@ -104,7 +111,8 @@ export default function AboutPage() {
           <Container>
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-5">
-                <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1a18] formx-cut-lg">
+                <div className="relative overflow-hidden border border-white/10 bg-[#131312] p-3">
+                  <div className="relative aspect-[3/4] overflow-hidden formx-cut-lg">
                   <AssetImage
                     alt={founder.name}
                     slot={founder.asset}
@@ -114,37 +122,38 @@ export default function AboutPage() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
+                </div>
               </Reveal>
               <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
-                <p className="font-label text-[11px] text-x-red">Founder</p>
+                <p className="eyebrow text-x-red">Founder</p>
                 <h2
-                  className="mt-4 font-display font-extrabold uppercase leading-[0.95] tracking-tight"
+                  className="mt-4 font-display font-extrabold leading-[0.95] tracking-tight"
                   style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)" }}
                 >
                   {founder.name}
                 </h2>
-                <p className="mt-3 font-label text-[11px] text-white/40">
-                  {founder.role} · Structural Engineer — Grade 1 (AMC / BMC)
+                <p className="mt-3 text-[13px] uppercase tracking-[0.14em] text-white/42">
+                  {founder.role} · Structural Engineer, Grade 1 (AMC / BMC)
                 </p>
-                <p className="mt-8 measure-essay text-[17px] leading-[1.8] text-white/65">
+                <p className="mt-8 measure-essay text-[17px] leading-[1.9] text-white/68">
                   {founder.bio}
                 </p>
                 <dl className="mt-10 space-y-6 border-t border-white/10 pt-8">
                   <div>
-                    <dt className="font-label text-[10px] text-x-red">What he reviews</dt>
-                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
+                    <dt className="eyebrow text-x-red">What he reviews</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.85] text-white/54">
                       {hirenJudgement.reviews}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-label text-[10px] text-x-red">What he refuses</dt>
-                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
+                    <dt className="eyebrow text-x-red">What he refuses</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.85] text-white/54">
                       {hirenJudgement.refuses}
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-label text-[10px] text-x-red">Before issue</dt>
-                    <dd className="mt-2 text-[15px] leading-[1.75] text-white/50">
+                    <dt className="eyebrow text-x-red">Before issue</dt>
+                    <dd className="mt-2 text-[15px] leading-[1.85] text-white/54">
                       {hirenJudgement.expects}
                     </dd>
                   </div>
@@ -154,7 +163,7 @@ export default function AboutPage() {
                     href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-8 inline-flex font-label text-[11px] text-x-red hover:text-white"
+                    className="mt-8 inline-flex font-label text-[11px] text-x-red transition-colors hover:text-white"
                   >
                     Connect on LinkedIn →
                   </a>
@@ -167,20 +176,21 @@ export default function AboutPage() {
 
       <section className="bg-bg section-y">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Invitation</p>
+          <p className="eyebrow text-x-red">Invitation</p>
           <h2
-            className="mt-4 max-w-[14ch] font-display font-extrabold uppercase leading-[0.95] tracking-tight text-ink"
+            className="mt-4 max-w-[13ch] font-display font-extrabold leading-[0.95] tracking-tight text-ink"
             style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
           >
             Discuss your next facility
           </h2>
-          <p className="mt-5 measure-studio text-[16px] leading-[1.8] text-ink-muted">
-            Share location, facility type and timeline. We look forward to the constraints.
+          <p className="mt-5 measure-studio text-[16px] leading-[1.9] text-ink-muted">
+            Share the facility type, location, and constraints. We&apos;ll start with what needs to
+            be resolved before issue, not with presentation theatre.
           </p>
           <Link
             href="/contact"
             transitionTypes={["nav-forward"]}
-            className="mt-8 inline-flex items-center gap-3 bg-x-red px-8 py-4 font-label text-[11px] text-white hover:bg-x-red-hover"
+            className="fx-btn-primary mt-8 inline-flex items-center gap-3"
           >
             Talk to the studio
             <ArrowRight className="size-4" />

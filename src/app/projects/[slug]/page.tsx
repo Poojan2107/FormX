@@ -9,6 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { VisualFrame } from "@/components/ui/VisualFrame";
 import { RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
+import { Button } from "@/components/ui/Button";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -61,11 +62,11 @@ export default async function ProjectDetailPage({ params }: Props) {
               <ArrowLeft className="size-3.5" />
               Engineering evidence
             </Link>
-            <p className="mt-6 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+            <p className="mt-6 eyebrow text-x-red">
               {formxMethod.code} · Case study
             </p>
             <h1
-              className="mt-3 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight"
+              className="mt-4 max-w-3xl font-display font-black leading-[0.98] tracking-tight"
               style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
             >
               {project.title}
@@ -90,37 +91,37 @@ export default async function ProjectDetailPage({ params }: Props) {
         <section className="bg-white py-16 md:py-24">
           <Container className="mx-auto max-w-3xl">
             <Reveal>
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 What was at risk
               </p>
               <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{vapiCaseStudy.risk}</p>
             </Reveal>
 
             <Reveal className="mt-14 border-t border-line pt-10">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 What we refused
               </p>
               <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{vapiCaseStudy.rejected}</p>
             </Reveal>
 
             <Reveal className="mt-14 border-t border-line pt-10">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 Brochure record
               </p>
               <p className="mt-5 text-[15px] leading-[1.9] text-ink-muted">{project.description}</p>
             </Reveal>
 
             <Reveal className="mt-14 border-t border-line pt-10">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 Decisions mapped to Before Issue
               </p>
               <div className="mt-8 space-y-10">
                 {vapiCaseStudy.decisions.map((d) => (
                   <div key={d.title} className="border-l-2 border-x-red pl-5">
-                    <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                    <p className="editorial-meta text-x-red">
                       Stage · {d.stage}
                     </p>
-                    <h2 className="mt-2 font-display text-xl font-extrabold uppercase tracking-tight text-ink">
+                    <h2 className="mt-2 font-display text-xl font-extrabold tracking-tight text-ink">
                       {d.title}
                     </h2>
                     <p className="mt-3 text-[14px] leading-[1.85] text-ink-muted">{d.body}</p>
@@ -130,7 +131,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </Reveal>
 
             <Reveal className="mt-14 border-t border-line pt-10">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 Lesson
               </p>
               <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{vapiCaseStudy.lesson}</p>
@@ -140,10 +141,10 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         <section className="bg-[#f7f7f7] py-16 md:py-20">
           <Container>
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+            <p className="eyebrow text-x-red">
               Visual evidence · FORMX.pdf
             </p>
-            <h2 className="mt-2 font-display text-2xl font-extrabold uppercase text-ink md:text-3xl">
+            <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
               Brochure + built documentation
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -162,7 +163,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               ))}
             </div>
             <div className="mt-12 max-w-xl">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.2em] text-x-red">
+              <p className="eyebrow text-x-red">
                 Continue
               </p>
               <p className="mt-3 text-[14px] leading-[1.8] text-ink-muted">
@@ -170,18 +171,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                 sheet count.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  transitionTypes={["nav-forward"]}
-                  className="inline-flex items-center gap-2 bg-x-red px-7 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white"
-                >
+                <Button href="/contact" variant="primary">
                   Discuss your facility
                   <ArrowRight className="size-4" />
-                </Link>
+                </Button>
                 <Link
                   href="/#before-issue"
                   transitionTypes={["nav-forward"]}
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted hover:text-x-red"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-x-red"
                 >
                   Before Issue method
                 </Link>
@@ -218,11 +215,11 @@ export default async function ProjectDetailPage({ params }: Props) {
             <ArrowLeft className="size-3.5" />
             Engineering evidence
           </Link>
-          <p className="mt-6 font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+            <p className="mt-6 eyebrow text-x-red">
             {project.sector} · Brochure record
           </p>
           <h1
-            className="mt-3 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight"
+            className="mt-4 max-w-3xl font-display font-black leading-[0.98] tracking-tight"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
             {project.title}
@@ -246,19 +243,19 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <section className="bg-white py-16 md:py-24">
         <Container className="mx-auto max-w-3xl">
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+          <p className="eyebrow text-x-red">
             What was delivered
           </p>
           <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{project.description}</p>
           {project.risk ? (
             <div className="mt-10 border-l-2 border-x-red pl-5">
-              <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+              <p className="editorial-meta text-x-red">
                 The risk Before × Issue
               </p>
               <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.risk}</p>
               {project.refused ? (
                 <>
-                  <p className="mt-5 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+                  <p className="mt-5 editorial-meta text-ink/40">
                     What we refused
                   </p>
                   <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.refused}</p>
@@ -269,7 +266,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="mt-12 grid gap-6 border-t border-line pt-10 sm:grid-cols-2">
             {scale.map((f) => (
               <div key={f.label}>
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                <p className="editorial-meta text-x-red">
                   {f.label}
                 </p>
                 <p className="mt-2 text-[14px] text-ink">{f.value}</p>
@@ -278,7 +275,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
           {project.highlights.length ? (
             <div className="mt-12 border-t border-line pt-10">
-              <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
                 Engineering notes
               </p>
               <ul className="mt-5 space-y-3">
@@ -294,7 +291,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           ) : null}
           <div className="mt-12 border-t border-line pt-10">
-            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              <p className="eyebrow text-x-red">
               Project visuals
             </p>
             <p className="mt-3 max-w-[40ch] text-[14px] leading-[1.8] text-ink-muted">
@@ -325,7 +322,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <Link
             href="/contact"
             transitionTypes={["nav-forward"]}
-            className="mt-8 inline-flex bg-x-red px-7 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white"
+            className="fx-btn-primary mt-8 inline-flex"
           >
             Discuss a similar facility
           </Link>

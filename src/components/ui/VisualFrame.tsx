@@ -67,7 +67,7 @@ export function VisualFrame({
         />
       </div>
       {caption ? (
-        <figcaption className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+        <figcaption className="mt-3 editorial-meta text-ink/40">
           {caption}
         </figcaption>
       ) : null}

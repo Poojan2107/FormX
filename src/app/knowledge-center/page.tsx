@@ -26,16 +26,16 @@ export default function KnowledgeCenterPage() {
     <>
       <section className="fx-grain border-b border-black bg-[#0a0a09] pt-28 pb-20 text-white md:pt-36 md:pb-28">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Insights</p>
+          <p className="eyebrow text-x-red">Insights</p>
           <h1
-            className="mt-5 max-w-[14ch] font-display font-extrabold uppercase leading-[0.92] tracking-tight"
+            className="editorial-title mt-5 max-w-[12ch]"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
           >
             Notes from the studio
           </h1>
-          <p className="mt-8 measure-essay text-[18px] leading-[1.8] text-white/55">
-            Not a marketing blog — specialized engineering, live mandates and facility thinking from
-            real FORM× work.
+          <p className="mt-8 max-w-[44ch] text-[18px] leading-[1.9] text-white/60">
+            Not a marketing blog. This is where FormX frames specialized engineering work, ongoing
+            mandates, and facility thinking drawn from real practice.
           </p>
         </Container>
       </section>
@@ -53,8 +53,8 @@ export default function KnowledgeCenterPage() {
             />
           </Reveal>
 
-          <p className="font-label text-[11px] text-x-red">Specialized</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+          <p className="eyebrow text-x-red">Specialized</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
             Renovation, strengthening &amp; solar
           </h2>
 
@@ -62,12 +62,12 @@ export default function KnowledgeCenterPage() {
             {portfolioSpecialized.map((block, i) => (
               <Reveal key={block.title} delay={0.04 * i}>
                 <article>
-                  <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink">
+                  <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
                     {block.title}
                   </h3>
                   <ul className="mt-5 space-y-3">
                     {block.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-[15px] text-ink-muted">
+                      <li key={item} className="flex items-start gap-3 text-[15px] leading-[1.8] text-ink-muted">
                         <span className="mt-1 shrink-0 font-display text-xs font-bold text-x-red">
                           ×
                         </span>
@@ -84,15 +84,15 @@ export default function KnowledgeCenterPage() {
 
       <section className="border-b border-line bg-bg-muted section-y">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Ongoing</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+          <p className="eyebrow text-x-red">Ongoing</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
             In the studio now
           </h2>
           <div className="mt-10 divide-y divide-line border-y border-line">
             {portfolioOngoing.map((item, i) => (
               <Reveal key={item.title} delay={0.03 * i}>
                 <div className="py-7">
-                  <h3 className="font-display text-base font-extrabold uppercase tracking-tight text-ink md:text-lg">
+                  <h3 className="font-display text-base font-extrabold tracking-tight text-ink md:text-lg">
                     {item.title}
                   </h3>
                   <p className="mt-2 max-w-3xl text-[15px] leading-[1.8] text-ink-muted">
@@ -107,8 +107,8 @@ export default function KnowledgeCenterPage() {
 
       <section className="border-b border-line bg-bg section-y">
         <Container>
-          <p className="font-label text-[11px] text-x-red">Practice</p>
-          <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase tracking-tight text-ink md:text-4xl">
+          <p className="eyebrow text-x-red">Practice</p>
+          <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
             Facility typologies
           </h2>
           <p className="mt-4 measure-essay text-[15px] leading-[1.8] text-ink-muted">
@@ -121,9 +121,9 @@ export default function KnowledgeCenterPage() {
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className="group grid gap-3 py-8 md:grid-cols-12 md:items-baseline"
+                  className="fx-service-row group grid gap-3 py-8 md:grid-cols-12 md:items-baseline md:py-10"
                 >
-                  <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink group-hover:text-x-red md:col-span-5">
+                  <h3 className="font-display text-xl font-extrabold tracking-tight text-ink group-hover:text-x-red md:col-span-5">
                     {item.title}
                   </h3>
                   <p className="text-[15px] leading-[1.75] text-ink-muted md:col-span-6">
@@ -144,8 +144,8 @@ export default function KnowledgeCenterPage() {
         <Container>
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-label text-[11px] text-x-red">Completed work</p>
-              <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight md:text-4xl">
+              <p className="eyebrow text-x-red">Completed work</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-4xl">
                 From the project record
               </h2>
             </div>
@@ -175,7 +175,7 @@ export default function KnowledgeCenterPage() {
                     tone="dark"
                     zoomOnHover
                   />
-                  <h3 className="mt-3 font-display text-sm font-extrabold uppercase tracking-tight text-white group-hover:text-x-red">
+                  <h3 className="mt-3 font-display text-sm font-extrabold tracking-tight text-white group-hover:text-x-red">
                     {project.title}
                   </h3>
                   <p className="mt-1 text-[12px] text-white/45">{project.location}</p>
@@ -186,11 +186,11 @@ export default function KnowledgeCenterPage() {
 
           <div className="mt-16 grid gap-8 border border-white/10 p-8 md:grid-cols-2 md:p-10">
             <div>
-              <p className="font-label text-[10px] text-x-red">Stay in touch</p>
-              <h3 className="mt-2 font-display text-2xl font-extrabold uppercase text-white">
+              <p className="eyebrow text-x-red">Stay in touch</p>
+              <h3 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-white">
                 Practice updates
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">
+              <p className="mt-3 text-sm leading-[1.8] text-white/55">
                 Occasional notes when published — no marketing drip.
               </p>
             </div>

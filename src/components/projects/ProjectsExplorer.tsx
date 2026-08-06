@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
@@ -9,8 +10,10 @@ import { cn } from "@/lib/cn";
 
 /** Editorial dossier list — filterable, not a card mosaic */
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
+  const searchParams = useSearchParams();
+  const initialSector = searchParams.get("sector");
   const [q, setQ] = useState("");
-  const [sector, setSector] = useState("All");
+  const [sector, setSector] = useState(initialSector && initialSector.length ? initialSector : "All");
 
   const sectors = useMemo(
     () => ["All", ...Array.from(new Set(projects.map((p) => p.sector))).sort()],
@@ -83,9 +86,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               key={project.slug}
               href={`/projects/${project.slug}`}
               transitionTypes={["nav-forward"]}
-              className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-9"
+            className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-10"
             >
-              <div className="x-corner relative aspect-[16/10] overflow-hidden bg-[#111] md:col-span-4">
+              <div className="relative aspect-[16/10] overflow-hidden border border-black/8 bg-[#111] p-2.5 md:col-span-4">
+                <div className="x-corner relative h-full overflow-hidden">
                 <AssetImage
                   alt={project.title}
                   slot={project.assets.cover}
@@ -96,29 +100,30 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
                 />
+                </div>
               </div>
               <div className="md:col-span-8">
-                <p className="font-display text-[10px] font-bold uppercase tracking-[0.18em] text-x-red">
+                <p className="editorial-meta text-x-red">
                   {project.sector}
                 </p>
-                <h2 className="mt-2 font-display text-xl font-extrabold uppercase tracking-tight text-ink md:text-2xl">
+                <h2 className="mt-2 font-display text-xl font-extrabold tracking-tight text-ink md:text-[1.8rem]">
                   {project.title}
                 </h2>
-                <p className="mt-2 text-[13px] text-ink/50">
+                <p className="mt-2 text-[13px] leading-[1.7] text-ink/50">
                   {project.location}
                   {project.area ? ` · ${project.area}` : ""}
                   {project.floors ? ` · ${project.floors}` : ""}
                 </p>
                 {project.risk ? (
-                  <p className="mt-4 max-w-[52ch] text-[14px] leading-[1.75] text-ink-muted">
+                  <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.85] text-ink-muted">
                     {project.risk}
                   </p>
                 ) : (
-                  <p className="mt-4 max-w-[52ch] text-[14px] leading-[1.75] text-ink-muted line-clamp-2">
+                  <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.85] text-ink-muted line-clamp-2">
                     {project.description}
                   </p>
                 )}
-                <span className="mt-5 inline-flex items-center gap-2 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red">
+                <span className="mt-5 inline-flex items-center gap-2 font-label text-[10px] text-x-red">
                   Open dossier
                   <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>

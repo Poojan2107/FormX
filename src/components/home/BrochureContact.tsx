@@ -85,10 +85,10 @@ export function BrochureContact() {
       <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-[3px] w-24 bg-x-red" />
 
       <Container className="relative z-10">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-14">
 
           {/* ── Left: Contact Statement ───────────────────────────── */}
-          <Reveal className="lg:col-span-7">
+          <Reveal className="lg:col-span-6">
 
             {/* FormX Solid Logo */}
             <div className="mb-10">
@@ -104,35 +104,49 @@ export function BrochureContact() {
             </div>
 
             <h2
-              className="max-w-[14ch] font-display font-black leading-[1.0] tracking-[-0.04em] text-ink"
+              className="max-w-[12ch] font-display font-black leading-[0.98] tracking-[-0.04em] text-ink"
               style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
             >
               Bring us your next facility
             </h2>
 
-            <p className="mt-6 max-w-[42ch] text-[15px] leading-[1.85] text-ink/50 md:text-[16px]">
-              Every project begins with a technical conversation. Tell us what you are
-              building — we will tell you what to resolve before drawings leave the studio.
+            <p className="mt-6 max-w-[40ch] text-[15px] leading-[1.9] text-ink/54 md:text-[16px]">
+              Every serious project starts with clarity. Share the facility, scale, and
+              constraints, and we will help define the engineering decisions that need to be
+              resolved before execution begins.
             </p>
 
-            <dl className="mt-11 space-y-5">
-              <div className="flex items-start gap-4">
+            <dl className="mt-12 grid gap-4 sm:grid-cols-2">
+              <div className="border border-ink/[0.08] bg-white/70 p-5">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
-                <dd className="text-[14px] leading-[1.65] text-ink/65 font-medium">
+                <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
+                  Studio address
+                </dt>
+                <dd className="mt-2 text-[14px] font-medium leading-[1.7] text-ink/68">
                   {site.addressDetail}
                 </dd>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="border border-ink/[0.08] bg-white/70 p-5">
                 <Mail className="size-4 shrink-0 text-x-red" />
-                <a href={`mailto:${site.email}`} className="text-[14px] text-ink/65 font-medium transition-colors hover:text-x-red">
-                  {site.email}
-                </a>
+                <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
+                  Email
+                </dt>
+                <dd className="mt-2">
+                  <a href={`mailto:${site.email}`} className="text-[14px] font-medium text-ink/68 transition-colors hover:text-x-red">
+                    {site.email}
+                  </a>
+                </dd>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="border border-ink/[0.08] bg-white/70 p-5 sm:col-span-2">
                 <Phone className="size-4 shrink-0 text-x-red" />
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-[14px] text-ink/65 font-medium transition-colors hover:text-x-red">
-                  {site.phone}
-                </a>
+                <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
+                  Phone
+                </dt>
+                <dd className="mt-2">
+                  <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-[14px] font-medium text-ink/68 transition-colors hover:text-x-red">
+                    {site.phone}
+                  </a>
+                </dd>
               </div>
             </dl>
 
@@ -150,12 +164,12 @@ export function BrochureContact() {
           </Reveal>
 
           {/* ── Right: FAQ Accordion ─────────────────────────────── */}
-          <Reveal delay={0.1} className="lg:col-span-5">
+          <Reveal delay={0.1} className="lg:col-span-6">
             <div className="mb-7 flex items-center gap-3">
               <span className="h-px w-8 bg-x-red" />
               <p className="font-label text-[10px] tracking-[0.32em] text-ink/40 uppercase">Frequently Asked Questions</p>
             </div>
-            <div className="border-t border-ink/[0.09]">
+            <div className="border border-ink/[0.08] bg-white/72 px-6 md:px-8">
               {brochureFaqs.map((item) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} />
               ))}

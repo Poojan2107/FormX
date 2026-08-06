@@ -14,7 +14,7 @@ export function BrochurePartners() {
   return (
     <section id="partners" className="scroll-mt-28 bg-white py-20 md:py-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
 
           {/* ── Left: Header ─────────────────────────────────── */}
           <Reveal>
@@ -27,7 +27,7 @@ export function BrochurePartners() {
             >
               Who places trust in FormX
             </h2>
-            <p className="mt-5 max-w-[40ch] text-[15.5px] font-medium leading-[1.8] text-ink/75">
+            <p className="mt-5 max-w-[38ch] text-[15.5px] font-medium leading-[1.85] text-ink/68">
               {brochureContactNote}
             </p>
 
@@ -42,11 +42,11 @@ export function BrochurePartners() {
 
           {/* ── Right: Partner pills ─────────────────────────── */}
           <Reveal delay={0.1}>
-            <div className="flex flex-wrap gap-3.5 md:gap-4">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {brochurePartners.map((partner) => (
                 <div
                   key={partner.name}
-                  className="fx-partner-pill group cursor-default border border-ink/[0.14] bg-[#f9f8f5] px-6 py-5 transition-all hover:bg-white md:px-7 md:py-6"
+                  className="fx-partner-pill group cursor-default border border-ink/[0.12] bg-[#f9f8f5] px-6 py-5 transition-all hover:border-x-red/35 hover:bg-white md:px-7 md:py-6"
                   style={{
                     clipPath:
                       "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",

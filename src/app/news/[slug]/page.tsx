@@ -43,16 +43,16 @@ export default async function NewsDetailPage({ params }: Props) {
 
       <section className="border-b border-line bg-white pt-24 pb-14 md:pt-32 md:pb-16">
         <Container>
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+          <p className="eyebrow text-x-red">
             News
           </p>
           <h1
-            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.08] tracking-tight text-ink"
+            className="mt-4 max-w-3xl font-display font-black leading-[1.02] tracking-tight text-ink"
             style={{ fontSize: "clamp(1.85rem, 4vw, 3rem)" }}
           >
             {item.title}
           </h1>
-          <p className="mt-4 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink/40">
+          <p className="mt-4 editorial-meta text-ink/40">
             {item.date}
           </p>
         </Container>
@@ -71,7 +71,7 @@ export default async function NewsDetailPage({ params }: Props) {
             />
           </Reveal>
           <Reveal delay={0.06}>
-            <div className="mt-10 space-y-5 text-[15px] leading-[1.85] text-ink-muted md:text-[16px]">
+            <div className="mt-10 space-y-6 text-[15px] leading-[1.95] text-ink-muted md:text-[16px]">
               {item.body.map((p) => (
                 <p key={p.slice(0, 36)}>{p}</p>
               ))}
@@ -79,7 +79,7 @@ export default async function NewsDetailPage({ params }: Props) {
             <Link
               href="/knowledge-center"
               transitionTypes={["nav-back"]}
-              className="mt-10 inline-flex font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
+              className="mt-10 inline-flex font-label text-[10px] text-x-red transition-colors hover:text-ink"
             >
               ← Engineering Journal
             </Link>

@@ -169,14 +169,14 @@ export const about = {
 
 export const aboutPage = {
   intro:
-    "FORM× coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We size load paths, lock interfaces and issue packages contractors can build — then stay accountable through site execution. Reviews stay with engineers who own the sheets.",
+    "FORMX is a founder-led engineering practice that coordinates Architecture, Structure and Infrastructure before drawings leave the studio. We resolve the decisions that usually surface too late on site, then remain accountable until the facility stands as intended.",
   tagline: "Shaping form, defining futures",
   philosophy:
-    "Every unresolved coordination issue eventually appears on site. Before × Issue means disciplines answer each other first — sheet volume is not success.",
+    "Every unresolved coordination issue eventually appears on site. Before × Issue means the disciplines answer each other first, details are tested for buildability, and issue is treated as a commitment rather than a milestone.",
   whyExists:
     "High-rise and residential, industrial facilities, institutional and commercial buildings, strengthening and retrofitting — always with Architecture, Structure and Infrastructure moving together.",
   founderVision:
-    "Hiren J. Shah, Founder & Managing Partner — Structural Engineer, Grade 1 (AMC / BMC). Stay close to the work: desk reviews, coordination meetings, site walks and drawing markups.",
+    "Hiren J. Shah, Founder & Managing Partner, keeps judgement close to the work through desk reviews, coordination meetings, site walks, and markups that push each package toward clarity.",
   collaboration:
     "Structural design, architecture planning and site execution — with quantity estimation, construction support and coordination for seamless delivery. Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
   studioFlow:
@@ -188,40 +188,40 @@ export const aboutPage = {
   principles: [
     {
       title: "Our Vision",
-      body: "Every engineering decision should reduce construction uncertainty — safety, efficiency, and alignment with how the facility will actually be used.",
+      body: "Engineering should reduce uncertainty before site begins: safer structures, clearer interfaces, and decisions aligned with how the facility will actually operate.",
     },
     {
       title: "Our Mission",
-      body: "Drawings should answer questions before construction begins. Architecture, Structure and Infrastructure — from concept through site execution.",
+      body: "Deliver drawing packages that answer questions before construction begins, with Architecture, Structure and Infrastructure coordinated from concept through execution.",
     },
     {
       title: "Our Values",
-      body: "Human-centric approach. Integrated collaboration. People close to the work. Reliable outcomes — behaviours in every review, not words on a wall.",
+      body: "Human-centred judgement, integrated collaboration, people close to the work, and reliable outcomes that are visible in every review, meeting, and issued sheet.",
     },
   ],
   humanValues: [
     {
       title: "Human-centric approach",
-      body: "Every design balances how people use the facility with structural safety, process efficiency and long-term usability.",
+      body: "Every facility is judged by how people move through it, work inside it, maintain it, and depend on it over time, not only by how it looks on a sheet.",
     },
     {
       title: "Integrated collaboration",
-      body: "Architecture, Structure and Infrastructure move together from concept to site — clear coordination, not disconnected consultants.",
+      body: "Architecture, Structure and Infrastructure move together from concept to site, so the package behaves like one coordinated facility rather than a stack of disconnected consultant outputs.",
     },
     {
       title: "People close to the work",
-      body: "Partners stay in reviews, meetings and site walks. Decisions are made by engineers who own the drawings.",
+      body: "Partners stay in reviews, meetings, and site walks. Decisions remain with engineers who understand the drawings, the constraints, and the consequences of issuing too early.",
     },
     {
       title: "Reliable outcomes",
-      body: "We stay accountable through execution — clarifications, reviews and practical support until the facility matches intent.",
+      body: "We stay accountable through execution with clarifications, reviews, and practical support until the built work matches the original intent.",
     },
   ],
   collaborationPoints: [
-    "Cross-functional expertise",
-    "Clear coordination",
-    "Integrated workflows",
-    "Reliable outcomes",
+    "Founder-led technical reviews",
+    "Disciplines resolved in one room",
+    "Drawings tested for construction reality",
+    "Support that continues through execution",
   ],
   values: [
     "Human-centric approach",

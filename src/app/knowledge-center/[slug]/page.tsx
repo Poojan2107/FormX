@@ -58,11 +58,11 @@ export default async function BlogDetailPage({ params }: Props) {
           <Link
             href="/knowledge-center"
             transitionTypes={["nav-back"]}
-            className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/40 hover:text-x-red"
+            className="font-label text-[10px] text-ink/40 transition-colors hover:text-x-red"
           >
             ← Engineering Journal
           </Link>
-          <div className="mt-8 flex flex-wrap items-center gap-3 font-display text-[10px] font-bold uppercase tracking-[0.2em]">
+          <div className="mt-8 flex flex-wrap items-center gap-3 editorial-meta">
             <span className="text-x-red">{post.category}</span>
             <span className="text-ink/25">·</span>
             <span className="text-ink/40">{post.date}</span>
@@ -70,7 +70,7 @@ export default async function BlogDetailPage({ params }: Props) {
             <span className="text-ink/40">Technical note</span>
           </div>
           <h1
-            className="mt-4 font-display font-black uppercase leading-[1.1] tracking-tight text-ink"
+            className="mt-4 font-display font-black leading-[1.02] tracking-tight text-ink"
             style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
           >
             {post.title}
@@ -91,7 +91,7 @@ export default async function BlogDetailPage({ params }: Props) {
             tone="dark"
             className="border border-line"
           />
-          <p className="mt-3 font-display text-[10px] font-bold uppercase tracking-[0.18em] text-ink/40">
+          <p className="mt-3 editorial-meta text-ink/40">
             Figure · Engineering reference
           </p>
         </Container>
@@ -101,12 +101,12 @@ export default async function BlogDetailPage({ params }: Props) {
       <section className="bg-white py-14 md:py-20">
         <Container className="max-w-3xl">
           <Reveal>
-            <p className="border-l-2 border-x-red pl-5 text-[16px] leading-[1.9] text-ink-muted italic">
+            <p className="border-l-2 border-x-red pl-5 text-[17px] leading-[1.95] text-ink-muted italic">
               {post.excerpt}
             </p>
           </Reveal>
 
-          <div className="mt-12 space-y-6 text-[15px] leading-[1.9] text-ink-muted md:text-[16px]">
+          <div className="mt-12 space-y-7 text-[15px] leading-[1.95] text-ink-muted md:text-[16px]">
             {post.body.map((para) => (
               <p key={para.slice(0, 48)}>{para}</p>
             ))}
@@ -114,7 +114,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
           {/* Founder / author stamp */}
           <div className="mt-14 border-t border-line pt-8">
-            <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-x-red">
+            <p className="editorial-meta text-x-red">
               Author
             </p>
             <p className="mt-2 font-display text-lg font-extrabold text-ink">{post.author}</p>
@@ -124,7 +124,7 @@ export default async function BlogDetailPage({ params }: Props) {
                 href={post.authorLinkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red"
+                className="mt-3 inline-block font-label text-[10px] text-x-red transition-colors hover:text-ink"
               >
                 LinkedIn →
               </a>
@@ -135,14 +135,14 @@ export default async function BlogDetailPage({ params }: Props) {
             <Link
               href="/contact"
               transitionTypes={["nav-forward"]}
-              className="inline-flex bg-x-red px-6 py-3.5 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white"
+              className="fx-btn-primary inline-flex"
             >
               Discuss this topic with FORMX
             </Link>
             <Link
               href="/knowledge-center"
               transitionTypes={["nav-back"]}
-              className="inline-flex items-center font-display text-[11px] font-bold uppercase tracking-[0.16em] text-ink/50 hover:text-x-red"
+              className="inline-flex items-center font-label text-[10px] text-ink/50 transition-colors hover:text-x-red"
             >
               More journal notes
             </Link>

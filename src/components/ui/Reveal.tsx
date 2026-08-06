@@ -8,13 +8,8 @@ type RevealProps = HTMLMotionProps<"div"> & {
   delay?: number;
   className?: string;
   from?: "bottom" | "left" | "right" | "fade";
-};
-
-const variants = {
-  bottom: { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } },
-  left:   { hidden: { opacity: 0, x: -28 }, visible: { opacity: 1, x: 0 } },
-  right:  { hidden: { opacity: 0, x: 28 }, visible: { opacity: 1, x: 0 } },
-  fade:   { hidden: { opacity: 0 }, visible: { opacity: 1 } },
+  distance?: number;
+  duration?: number;
 };
 
 export function Reveal({
@@ -22,6 +17,8 @@ export function Reveal({
   delay = 0,
   className,
   from = "bottom",
+  distance = 28,
+  duration = 0.72,
   ...props
 }: RevealProps) {
   const reduce = useReducedMotion();
@@ -29,6 +26,13 @@ export function Reveal({
   if (reduce) {
     return <div className={className}>{children}</div>;
   }
+
+  const variants = {
+    bottom: { hidden: { opacity: 0, y: distance }, visible: { opacity: 1, y: 0 } },
+    left: { hidden: { opacity: 0, x: -distance }, visible: { opacity: 1, x: 0 } },
+    right: { hidden: { opacity: 0, x: distance }, visible: { opacity: 1, x: 0 } },
+    fade: { hidden: { opacity: 0 }, visible: { opacity: 1 } },
+  } as const;
 
   const v = variants[from];
 
@@ -38,7 +42,7 @@ export function Reveal({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-6% 0px" }}
-      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay }}
+      transition={{ duration, ease: [0.16, 1, 0.3, 1], delay }}
       variants={v}
       {...props}
     >

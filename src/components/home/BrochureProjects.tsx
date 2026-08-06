@@ -8,135 +8,242 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { brochureProjectGroups } from "@/data/brochureHome";
 import type { Project } from "@/data/projects";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Featured Card — Full width layout, frame-honoring image container
-// ─────────────────────────────────────────────────────────────────────────────
-function FeaturedCard({ project, dark = false }: { project: Project; dark?: boolean }) {
+function ProjectMeta({
+  project,
+  dark = false,
+}: {
+  project: Project;
+  dark?: boolean;
+}) {
+  return (
+    <div
+      className="mt-6 grid gap-3 border-t pt-4 sm:grid-cols-2"
+      style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)" }}
+    >
+      <div>
+        <p
+          className={`font-label text-[8px] uppercase tracking-[0.2em] ${
+            dark ? "text-white/32" : "text-ink/32"
+          }`}
+        >
+          Location
+        </p>
+        <p
+          className={`mt-1 text-[12px] leading-[1.6] ${
+            dark ? "text-white/72" : "text-ink/72"
+          }`}
+        >
+          {project.location}
+        </p>
+      </div>
+      <div>
+        <p
+          className={`font-label text-[8px] uppercase tracking-[0.2em] ${
+            dark ? "text-white/32" : "text-ink/32"
+          }`}
+        >
+          Scope
+        </p>
+        <p
+          className={`mt-1 text-[12px] leading-[1.6] ${
+            dark ? "text-white/72" : "text-ink/72"
+          }`}
+        >
+          {project.services[0] ?? project.sector}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SectionIntro({
+  title,
+  intro,
+  dark = false,
+}: {
+  title: string;
+  intro: string;
+  dark?: boolean;
+}) {
+  return (
+    <p
+      className={`mt-4 max-w-[62ch] text-[14px] leading-[1.85] md:text-[15px] ${
+        dark ? "text-white/45" : "text-ink/50"
+      }`}
+    >
+      {title}. {intro}
+    </p>
+  );
+}
+
+function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boolean }) {
   const frameMode = project.assets.frame ?? "cover";
 
   return (
     <Link
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
-      className="fx-project-card group block overflow-hidden rounded-sm border transition-all duration-300"
-      style={{
-        borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)",
-        backgroundColor: dark ? "#111111" : "#f4f3ef",
-      }}
+      className="group block transition-all duration-300"
     >
-      <div className="relative grid md:grid-cols-12 md:items-center">
-
-        {/* Image Frame — 7 cols */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden md:col-span-7 lg:aspect-[16/9]">
+      <div
+        className="grid gap-6 border p-3 md:grid-cols-12 md:gap-8 md:p-4"
+        style={{
+          borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)",
+          backgroundColor: dark ? "#101010" : "#f6f4ee",
+        }}
+      >
+        <div className="relative aspect-[16/10] overflow-hidden md:col-span-8 lg:aspect-[16/9]">
+          <div
+            className="absolute inset-0 border"
+            style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)" }}
+          />
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
             fit={frameMode}
             aspect="auto"
             tone={dark ? "dark" : "light"}
-            className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.03]"
+            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.02] md:p-5"
             sizes="(max-width: 768px) 100vw, 60vw"
             priority
           />
-          {/* Subtle gradient for contrast */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
         </div>
 
-        {/* Info Column — 5 cols */}
-        <div className="flex flex-col justify-between p-6 md:col-span-5 md:p-8 lg:p-10">
+        <div className="flex flex-col justify-between md:col-span-4 md:py-3 md:pr-2">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-label text-[9px] tracking-[0.26em] text-x-red uppercase">
-                {project.location}
-              </span>
-              {project.area ? (
-                <span className={`font-label text-[9px] tracking-[0.2em] ${dark ? "text-white/30" : "text-ink/30"}`}>
-                  · {project.area}
-                </span>
-              ) : null}
-            </div>
-
+            <p className="font-label text-[9px] uppercase tracking-[0.26em] text-x-red">
+              {project.area ?? project.year}
+            </p>
             <h3
               className={`mt-3 font-display font-extrabold tracking-tight transition-colors group-hover:text-x-red ${
                 dark ? "text-white" : "text-ink"
               }`}
-              style={{ fontSize: "clamp(1.35rem, 2.5vw, 2rem)" }}
+              style={{ fontSize: "clamp(1.5rem, 2.7vw, 2.2rem)" }}
             >
               {project.title}
             </h3>
-
-            <p className={`mt-3 line-clamp-2 text-[13px] leading-[1.7] ${dark ? "text-white/42" : "text-ink/48"}`}>
+            <p
+              className={`mt-4 text-[13px] leading-[1.8] ${
+                dark ? "text-white/46" : "text-ink/48"
+              }`}
+            >
               {project.description}
             </p>
+            <ProjectMeta project={project} dark={dark} />
           </div>
 
-          <div className="mt-8 flex items-center justify-between border-t pt-4" style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)" }}>
-            <span className={`font-label text-[9px] tracking-[0.2em] uppercase ${dark ? "text-white/40" : "text-ink/40"}`}>
-              {project.services[0] ?? "Structural Design"}
+          <div className="mt-7 flex items-center justify-between">
+            <span
+              className={`font-label text-[8px] uppercase tracking-[0.22em] ${
+                dark ? "text-white/32" : "text-ink/32"
+              }`}
+            >
+              View project
             </span>
-            <div className="flex size-8 items-center justify-center rounded-full bg-x-red text-white transition-transform duration-300 group-hover:translate-x-1">
+            <div className="flex size-9 items-center justify-center rounded-full border border-x-red/30 bg-x-red text-white transition-transform duration-300 group-hover:translate-x-1">
               <ArrowUpRight className="size-4" />
             </div>
           </div>
         </div>
-
       </div>
     </Link>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Grid Card — Honors project.assets.frame so buildings are never clipped
-// ─────────────────────────────────────────────────────────────────────────────
-function GridCard({ project, dark = false }: { project: Project; dark?: boolean }) {
+function GalleryPlate({ project, dark = false }: { project: Project; dark?: boolean }) {
   const frameMode = project.assets.frame ?? "cover";
 
   return (
     <Link
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
-      className="fx-project-card group flex h-full flex-col overflow-hidden rounded-sm border transition-all duration-300"
-      style={{
-        borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)",
-        backgroundColor: dark ? "#111111" : "#f7f6f2",
-      }}
+      className="group block transition-all duration-300"
     >
-      {/* Image container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#181818]">
-        <AssetImage
-          slot={project.assets.cover}
-          alt={project.title}
-          fit={frameMode}
-          aspect="landscape"
-          tone={dark ? "dark" : "light"}
-          className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.04]"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        {/* Subtle top badge */}
-        <div className="absolute left-3 top-3 z-10 rounded-xs bg-black/60 px-2.5 py-1 backdrop-blur-sm">
-          <span className="font-label text-[8px] tracking-[0.2em] text-white/80 uppercase">
-            {project.location}
-          </span>
+      <div
+        className="border p-3"
+        style={{
+          borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)",
+          backgroundColor: dark ? "#111111" : "#f7f5f0",
+        }}
+      >
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <div
+            className="absolute inset-0 border"
+            style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)" }}
+          />
+          <AssetImage
+            slot={project.assets.cover}
+            alt={project.title}
+            fit={frameMode}
+            aspect="landscape"
+            tone={dark ? "dark" : "light"}
+            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
-      </div>
-
-      {/* Caption info below */}
-      <div className="flex flex-1 flex-col justify-between p-5">
-        <div>
-          <h3
-            className={`font-display text-base font-bold tracking-tight transition-colors group-hover:text-x-red ${
-              dark ? "text-white" : "text-ink"
+        <div className="pt-5">
+          <p className="font-label text-[8px] uppercase tracking-[0.2em] text-x-red">
+            {project.location}
+          </p>
+          <div className="mt-2 flex items-start justify-between gap-4">
+            <h3
+              className={`font-display text-[1.05rem] font-bold leading-[1.05] tracking-tight transition-colors group-hover:text-x-red ${
+                dark ? "text-white" : "text-ink"
+              }`}
+            >
+              {project.title}
+            </h3>
+            <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </div>
+          <p
+            className={`mt-2 text-[12px] leading-[1.7] ${
+              dark ? "text-white/40" : "text-ink/44"
             }`}
           >
-            {project.title}
-          </h3>
-          <p className={`mt-2 text-[12px] leading-[1.65] ${dark ? "text-white/38" : "text-ink/42"}`}>
             {project.services[0] ?? project.sector}
           </p>
         </div>
+      </div>
+    </Link>
+  );
+}
 
-        <div className="mt-4 flex items-center justify-between border-t pt-3" style={{ borderColor: dark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)" }}>
-          <span className={`font-label text-[8px] tracking-[0.18em] ${dark ? "text-white/30" : "text-ink/35"}`}>
+function ResidentialPlate({ project }: { project: Project }) {
+  const frameMode = project.assets.frame ?? "cover";
+
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      transitionTypes={["nav-forward"]}
+      className="group block transition-all duration-300"
+    >
+      <div className="border border-white/10 bg-[#101010] p-3">
+        <div className="relative aspect-[3/4] overflow-hidden bg-[#0d0d0d]">
+          <div className="absolute inset-0 border border-white/10" />
+          <AssetImage
+            slot={project.assets.cover}
+            alt={project.title}
+            fit={frameMode}
+            aspect="portrait"
+            tone="dark"
+            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-black via-black/42 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6">
+            <p className="font-label text-[8px] uppercase tracking-[0.22em] text-x-red">
+              {project.location}
+            </p>
+            <h3 className="mt-2 font-display text-[1.65rem] font-bold leading-[0.98] tracking-tight text-white transition-colors group-hover:text-x-red">
+              {project.title}
+            </h3>
+            <p className="mt-2 max-w-[28ch] text-[12px] leading-[1.7] text-white/44">
+              {project.services[0] ?? project.sector}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between px-2 pb-1 pt-5">
+          <span className="font-label text-[8px] uppercase tracking-[0.2em] text-white/34">
             {project.area ?? project.year}
           </span>
           <ArrowUpRight className="size-3.5 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -146,85 +253,48 @@ function GridCard({ project, dark = false }: { project: Project; dark?: boolean 
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Tall Card — 3:4 portrait for high-rise buildings
-// ─────────────────────────────────────────────────────────────────────────────
-function TallCard({ project }: { project: Project }) {
-  const frameMode = project.assets.frame ?? "cover";
-
-  return (
-    <Link
-      href={`/projects/${project.slug}`}
-      transitionTypes={["nav-forward"]}
-      className="fx-project-card group block overflow-hidden rounded-sm border border-white/10 bg-[#121212] transition-all duration-300"
-    >
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#0d0d0d]">
-        <AssetImage
-          slot={project.assets.cover}
-          alt={project.title}
-          fit={frameMode}
-          aspect="portrait"
-          tone="dark"
-          className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.04]"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        {/* Gradient */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-        {/* Caption */}
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <p className="font-label text-[8px] tracking-[0.24em] text-x-red uppercase">
-            {project.location} {project.area ? `· ${project.area}` : ""}
-          </p>
-          <h3 className="mt-1.5 font-display text-xl font-bold tracking-tight text-white transition-colors group-hover:text-x-red">
-            {project.title}
-          </h3>
-          <p className="mt-2 text-[12px] leading-[1.65] text-white/40">
-            {project.services[0] ?? project.sector}
-          </p>
-        </div>
-
-        {/* Hover arrow */}
-        <div className="absolute right-4 top-4 flex size-8 items-center justify-center bg-black/60 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-          <ArrowUpRight className="size-3.5 text-white" />
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Sector Header
-// ─────────────────────────────────────────────────────────────────────────────
 function SectorHeader({
   number,
   title,
   count,
+  intro,
   dark = false,
 }: {
   number: string;
   title: string;
   count: number;
+  intro: string;
   dark?: boolean;
 }) {
   return (
     <Reveal>
       <div
-        className="mb-10 flex items-end justify-between gap-4 border-b pb-5"
+        className="mb-12 border-b pb-6"
         style={{ borderColor: dark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.08)" }}
       >
-        <div className="flex items-center gap-4">
-          <span className="font-display text-2xl font-black text-x-red">{number}</span>
-          <h3
-            className={`font-display font-extrabold tracking-tight ${dark ? "text-white" : "text-ink"}`}
-            style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.25rem)" }}
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="flex items-center gap-4">
+              <span className="font-display text-2xl font-black text-x-red">{number}</span>
+              <h3
+                className={`font-display font-extrabold tracking-tight ${
+                  dark ? "text-white" : "text-ink"
+                }`}
+                style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.25rem)" }}
+              >
+                {title}
+              </h3>
+            </div>
+            <SectionIntro title={title} intro={intro} dark={dark} />
+          </div>
+          <span
+            className={`font-label text-[9px] tracking-[0.24em] md:pb-1 ${
+              dark ? "text-white/30" : "text-ink/35"
+            }`}
           >
-            {title}
-          </h3>
+            {String(count).padStart(2, "0")} facilities
+          </span>
         </div>
-        <span className={`font-label text-[9px] tracking-[0.24em] ${dark ? "text-white/30" : "text-ink/35"}`}>
-          {String(count).padStart(2, "0")} facilities
-        </span>
       </div>
     </Reveal>
   );
@@ -253,7 +323,8 @@ export function BrochureProjects() {
               Completed work
             </h2>
             <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.8] text-ink/48">
-              Brochure-first project selection, using PDF-origin imagery and real facility records.
+              Real facilities from the brochure, framed to stay visible instead of being cropped
+              into generic cards.
             </p>
           </Reveal>
         </Container>
@@ -266,20 +337,19 @@ export function BrochureProjects() {
             number="×01"
             title="Industrial Facilities"
             count={industrial.projects.length}
+            intro={industrial.intro}
           />
 
-          {/* Feature card */}
           <Reveal>
-            <div className="mb-8">
-              <FeaturedCard project={industrial.projects[0]} />
+            <div className="mb-10">
+              <FeaturedPlate project={industrial.projects[0]} />
             </div>
           </Reveal>
 
-          {/* Grid — 3-up */}
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {industrial.projects.slice(1).map((project, i) => (
               <Reveal key={project.slug} delay={0.08 * i}>
-                <GridCard project={project} />
+                <GalleryPlate project={project} />
               </Reveal>
             ))}
           </div>
@@ -293,14 +363,14 @@ export function BrochureProjects() {
             number="×02"
             title="High-Rise & Residential"
             count={highRise.projects.length}
+            intro={highRise.intro}
             dark
           />
 
-          {/* Tall portrait cards — 2 col */}
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             {highRise.projects.map((project, i) => (
               <Reveal key={project.slug} delay={0.1 * i}>
-                <TallCard project={project} />
+                <ResidentialPlate project={project} />
               </Reveal>
             ))}
           </div>
@@ -314,13 +384,13 @@ export function BrochureProjects() {
             number="×03"
             title="Institutional & Commercial"
             count={commercial.projects.length}
+            intro={commercial.intro}
           />
 
-          {/* 2-col cards */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             {commercial.projects.map((project, i) => (
               <Reveal key={project.slug} delay={0.1 * i}>
-                <GridCard project={project} />
+                <GalleryPlate project={project} />
               </Reveal>
             ))}
           </div>

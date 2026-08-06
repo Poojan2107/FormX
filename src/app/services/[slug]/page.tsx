@@ -81,19 +81,19 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section className="border-b border-line bg-white pt-24 pb-12 md:pt-28 md:pb-16">
         <Container>
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
+          <p className="eyebrow text-x-red">
             {cat}
           </p>
           <h1
-            className="mt-3 max-w-4xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
+            className="mt-4 max-w-4xl font-display font-black leading-[0.98] tracking-tight text-ink"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
             {service.title}
           </h1>
-          <p className="mt-2 font-display text-[12px] font-bold uppercase tracking-[0.2em] text-ink/40">
+          <p className="mt-3 editorial-meta text-ink/40">
             {story.motif}
           </p>
-          <p className="mt-5 max-w-2xl text-[15px] leading-[1.85] text-ink-muted">
+          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
             {service.short}
           </p>
         </Container>
@@ -104,8 +104,8 @@ export default async function ServiceDetailPage({ params }: Props) {
       <RelatedLinks title="Related disciplines" items={others} />
 
       <CtaBand
-        title={`Let's discuss ${service.title.toLowerCase()} for your facility`}
-        description="Share site constraints, facility type and timeline — we review how this discipline must coordinate with Architecture, Structure and Infrastructure before drawings begin."
+        title={`Discuss ${service.title.toLowerCase()} before issue`}
+        description="Share site constraints, facility type, and timeline. We review how this discipline needs to coordinate with Architecture, Structure, and Infrastructure before drawings begin."
         secondary={{ label: "All services", href: "/services" }}
       />
       <StickyEnquire label={`Discuss ${service.title}`} />

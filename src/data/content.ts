@@ -13,7 +13,7 @@ export const leadership: TeamMember[] = [
   {
     name: "Hiren J. Shah",
     role: "Founder & Managing Partner",
-    bio: "Founder & Managing Partner of FORMX Consultants LLP. Structural Engineer — Grade 1 (AMC / BMC). Leading structural design focused on industrial, commercial and building projects — architecture planning and site execution.",
+    bio: "Founder & Managing Partner of FormX Consultants LLP. Structural Engineer, Grade 1 (AMC / BMC). He leads structural judgement across industrial, commercial, and building work with a practice built on coordination, constructability, and staying close to execution.",
     asset: "team/hiren-j-shah.jpg",
     linkedin: "https://www.linkedin.com/in/hiren-j-shah/",
     featured: true,
