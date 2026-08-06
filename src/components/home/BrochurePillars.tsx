@@ -5,90 +5,83 @@ import { Container } from "@/components/ui/Container";
 import { brochurePillars } from "@/data/brochureHome";
 
 /**
- * PILLARS — "The Manifesto"
- * Visual DNA: GIANT ghost numbers on the left, editorial headline on right.
- * Each pillar is a full-width band with dramatic number presence.
- * Completely distinct from Services (grid tiles) and Pipeline (timeline).
+ * PILLARS — Editorial manifesto bands with giant ghost numbers.
  */
 export function BrochurePillars() {
   return (
     <section
       id="pillars"
-      className="relative scroll-mt-28 overflow-hidden bg-[#0a0a0a] py-20 text-white md:py-28"
+      className="relative scroll-mt-28 overflow-hidden bg-[#0a0a0a] py-24 text-white md:py-32"
     >
       <Container className="relative z-10">
-
-        {/* Section label */}
-        <Reveal>
-          <p className="font-label text-[10.5px] tracking-[0.35em] uppercase text-x-red">
-            The FormX Way
-          </p>
-          <h2
-            className="mt-4 font-display font-black leading-[1.01] tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(2.25rem, 5vw, 4.25rem)" }}
-          >
-            Four pillars of FormX
-          </h2>
-        </Reveal>
-
+        <div className="grid gap-6 border-b border-white/[0.08] pb-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+          <Reveal>
+            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+              The FormX Way
+            </p>
+            <h2
+              className="mt-4 font-display font-black leading-[1.02] tracking-[-0.045em] text-white"
+              style={{ fontSize: "clamp(2.1rem, 4.4vw, 3.6rem)" }}
+            >
+              Four pillars of FormX
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-[15px] font-medium leading-[1.85] text-white/55 md:text-[16px] lg:pb-1">
+              How we think before we draw — judgement, coordination and accountability held
+              through issue.
+            </p>
+          </Reveal>
+        </div>
       </Container>
 
-      {/* Full-bleed pillar bands */}
-      <ol className="mt-12 border-t border-white/[0.08]">
+      <ol className="mt-4">
         {brochurePillars.map((pillar, i) => (
-          <Reveal key={pillar.title} delay={0.07 * i} from="fade">
-            <li className="group relative cursor-default overflow-hidden border-b border-white/[0.08] transition-colors hover:bg-white/[0.03]">
+          <Reveal key={pillar.title} delay={0.06 * i} from="fade">
+            <li className="group relative cursor-default overflow-hidden border-b border-white/[0.07] transition-colors hover:bg-white/[0.025]">
               <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                <div className="grid items-center gap-6 py-8 md:grid-cols-[120px_28px_minmax(260px,360px)_1fr] md:py-10 lg:grid-cols-[180px_36px_360px_1fr] xl:py-11">
-
-                  {/* GIANT ghost number */}
+                <div className="grid items-center gap-5 py-9 md:grid-cols-[140px_28px_minmax(240px,340px)_minmax(0,1fr)] md:gap-6 md:py-11 lg:grid-cols-[168px_32px_360px_1fr]">
                   <div aria-hidden className="flex items-center">
                     <span
-                      className="select-none font-display font-black leading-none text-white/[0.08] transition-all duration-700 group-hover:text-white/[0.16]"
-                      style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}
+                      className="select-none font-display font-black leading-none text-white/[0.07] transition-all duration-700 group-hover:text-white/[0.14]"
+                      style={{ fontSize: "clamp(4.25rem, 8.5vw, 7.5rem)" }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  {/* × glyph */}
                   <div className="flex items-center">
                     <span
-                      className="font-display font-black leading-none text-x-red/60 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
-                      style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+                      className="font-display font-black leading-none text-x-red/55 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
+                      style={{ fontSize: "clamp(1.4rem, 2.6vw, 2.2rem)" }}
                     >
                       ×
                     </span>
                   </div>
 
-                  {/* Title + body */}
-                  <div className="flex min-h-[72px] items-center">
+                  <div className="flex min-h-[64px] items-center">
                     <h3
-                      className="font-display font-bold leading-[1.05] tracking-[-0.02em] text-white transition-colors group-hover:text-x-red"
-                      style={{ fontSize: "clamp(1.2rem, 2vw, 1.7rem)" }}
+                      className="font-display font-bold leading-[1.08] tracking-[-0.02em] text-white transition-colors group-hover:text-x-red"
+                      style={{ fontSize: "clamp(1.2rem, 1.9vw, 1.65rem)" }}
                     >
                       {pillar.title}
                     </h3>
                   </div>
-                  <div className="flex items-center">
-                    <p className="max-w-[48ch] text-[14px] leading-[1.85] text-white/72 transition-colors group-hover:text-white/90 md:text-[15px]">
+
+                  <div className="flex items-center md:justify-between md:gap-8">
+                    <p className="max-w-[48ch] text-[14.5px] leading-[1.85] text-white/68 transition-colors group-hover:text-white/88 md:text-[15.5px]">
                       {pillar.body}
                     </p>
-                  </div>
-
-                  {/* Hover arrow indicator */}
-                  <div className="hidden items-center md:flex">
                     <span
-                      className="font-label text-[11px] tracking-[0.2em] text-x-red/0 transition-all duration-300 group-hover:text-x-red"
+                      aria-hidden
+                      className="hidden shrink-0 font-label text-[12px] tracking-[0.18em] text-x-red/0 transition-all duration-300 group-hover:text-x-red lg:block"
                     >
                       ↗
                     </span>
                   </div>
-
                 </div>
               </div>
 
-              {/* Red left-edge bar on hover */}
               <span
                 aria-hidden
                 className="absolute left-0 top-0 h-full w-[3px] origin-bottom scale-y-0 bg-x-red transition-transform duration-500 group-hover:scale-y-100"
@@ -98,16 +91,15 @@ export function BrochurePillars() {
         ))}
       </ol>
 
-      {/* Footer strip */}
-      <Reveal delay={0.3} from="fade">
+      <Reveal delay={0.28} from="fade">
         <Container className="relative z-10">
-          <div className="mt-12 flex items-center justify-between">
-            <p className="font-label text-[9.5px] tracking-[0.3em] uppercase text-white/30">
+          <div className="mt-12 flex items-center justify-between gap-6">
+            <p className="font-label text-[9.5px] tracking-[0.28em] uppercase text-white/28">
               FormX Consultants · Design | Engineering
             </p>
             <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-white/[0.08]" />
-              <span className="font-display text-sm font-black text-x-red/40">×</span>
+              <span className="h-px w-10 bg-white/[0.1]" />
+              <span className="font-display text-sm font-black text-x-red/45">×</span>
             </div>
           </div>
         </Container>

@@ -21,6 +21,8 @@ export type Project = {
     gallery: string[];
     /** Prefer contain so architecture owns the frame without harsh crop */
     frame?: "contain" | "cover";
+    /** Homepage plate orientation when image aspect differs by project */
+    orientation?: "landscape" | "portrait";
   };
 };
 
@@ -140,6 +142,7 @@ export const projects: Project[] = [
         "projects/pdf_p15_1.jpeg",
       ],
       frame: "contain",
+      orientation: "portrait",
     },
   },
   {
@@ -171,6 +174,7 @@ export const projects: Project[] = [
         "projects/pdf_p9_1.jpeg",
       ],
       frame: "contain",
+      orientation: "landscape",
     },
   },
   {
