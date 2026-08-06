@@ -191,12 +191,6 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
 }
 
 function ResidentialPlate({ project }: { project: Project }) {
-  const landscape = project.assets.orientation === "landscape";
-  // Portrait plates use cover so tower imagery fills the tall frame (no letterbox).
-  const frameMode = landscape
-    ? (project.assets.frame ?? "contain")
-    : "cover";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -204,27 +198,17 @@ function ResidentialPlate({ project }: { project: Project }) {
       className="group flex h-full"
     >
       <div className="flex h-full w-full flex-col border border-white/10 bg-[#101010] p-3 md:p-4">
-        <div
-          className={`relative overflow-hidden bg-[#0d0d0d] ${
-            landscape ? "aspect-[16/10]" : "aspect-[4/5]"
-          }`}
-        >
+        <div className="relative aspect-[16/10] overflow-hidden bg-[#0d0d0d]">
           <div className="absolute inset-0 border border-white/10" />
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
-            fit={frameMode}
+            fit="cover"
             aspect="auto"
             tone="dark"
-            objectPosition={landscape ? "center center" : "center top"}
-            className={`absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.02] ${
-              landscape ? "p-3 md:p-4" : ""
-            }`}
-            sizes={
-              landscape
-                ? "(max-width: 1024px) 100vw, 58vw"
-                : "(max-width: 1024px) 100vw, 40vw"
-            }
+            objectPosition="center center"
+            className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.02]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
 
@@ -244,16 +228,18 @@ function ResidentialPlate({ project }: { project: Project }) {
           <p className="mt-3 text-[13px] leading-[1.7] text-white/52">
             {project.services[0] ?? project.sector}
           </p>
-          <p className="mt-4 line-clamp-3 min-h-[3.9em] text-[13px] leading-[1.75] text-white/40">
+          <p className="mt-4 line-clamp-3 text-[13px] leading-[1.75] text-white/40">
             {project.description}
           </p>
-          <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-4">
-            <p className="font-label text-[9px] uppercase tracking-[0.2em] text-white/38">
-              {project.area ?? project.year}
-            </p>
-            <p className="font-label text-[9px] uppercase tracking-[0.18em] text-white/28">
-              {project.floors ?? "—"}
-            </p>
+          <div className="mt-auto pt-6">
+            <div className="flex items-center justify-between gap-4 border-t border-white/10 pt-4">
+              <p className="font-label text-[9px] uppercase tracking-[0.2em] text-white/38">
+                {project.area ?? project.year}
+              </p>
+              <p className="font-label text-[9px] uppercase tracking-[0.18em] text-white/28">
+                {project.floors ?? "—"}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -376,25 +362,12 @@ export function BrochureProjects() {
             dark
           />
 
-          <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-7">
-            {[...highRise.projects]
-              .sort((a, b) => {
-                const al = a.assets.orientation === "landscape" ? 0 : 1;
-                const bl = b.assets.orientation === "landscape" ? 0 : 1;
-                return al - bl;
-              })
-              .map((project, i) => {
-                const landscape = project.assets.orientation === "landscape";
-                return (
-                  <Reveal
-                    key={project.slug}
-                    delay={0.09 * i}
-                    className={`h-full ${landscape ? "lg:col-span-7" : "lg:col-span-5"}`}
-                  >
-                    <ResidentialPlate project={project} />
-                  </Reveal>
-                );
-              })}
+          <div className="grid items-stretch gap-6 md:grid-cols-2 md:gap-7">
+            {highRise.projects.map((project, i) => (
+              <Reveal key={project.slug} delay={0.09 * i} className="h-full">
+                <ResidentialPlate project={project} />
+              </Reveal>
+            ))}
           </div>
         </Container>
       </div>
