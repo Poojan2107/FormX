@@ -204,6 +204,8 @@ export default async function ProjectDetailPage({ params }: Props) {
     { label: "Sector", value: project.sector },
   ].filter((f) => f.value);
 
+  const brochureVisuals = project.assets.gallery.length ? project.assets.gallery : [project.assets.cover];
+
   return (
     <>
       <section className="border-b border-line bg-[#0a0a0a] text-white">
@@ -233,7 +235,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               slot={project.assets.cover}
               alt={project.title}
               fit={project.assets.frame ?? "contain"}
-              aspect="wide"
+              aspect="cinema"
               tone="dark"
               priority
               className="border border-white/10"
@@ -291,6 +293,28 @@ export default async function ProjectDetailPage({ params }: Props) {
               </ul>
             </div>
           ) : null}
+          <div className="mt-12 border-t border-line pt-10">
+            <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+              Project visuals
+            </p>
+            <p className="mt-3 max-w-[40ch] text-[14px] leading-[1.8] text-ink-muted">
+              Brochure and PDF-origin images for this facility, as shared in FormX material.
+            </p>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              {brochureVisuals.map((slot, i) => (
+                <Reveal key={slot} delay={0.05 * i}>
+                  <VisualFrame
+                    slot={slot}
+                    alt={`${project.title} visual ${i + 1}`}
+                    fit="contain"
+                    aspect={i === 0 ? "wide" : "landscape"}
+                    tone="light"
+                    className="border border-line"
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
           <p className="mt-12 text-[14px] leading-[1.85] text-ink-muted">
             For the full Before Issue investigation, see the{" "}
             <Link href="/projects/vapi-g2-industrial" className="font-semibold text-x-red underline">

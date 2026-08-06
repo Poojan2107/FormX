@@ -65,7 +65,7 @@ function FeaturedCard({ project, dark = false }: { project: Project; dark?: bool
               {project.title}
             </h3>
 
-            <p className={`mt-3 line-clamp-3 text-[13px] leading-[1.75] ${dark ? "text-white/45" : "text-ink/50"}`}>
+            <p className={`mt-3 line-clamp-2 text-[13px] leading-[1.7] ${dark ? "text-white/42" : "text-ink/48"}`}>
               {project.description}
             </p>
           </div>
@@ -130,8 +130,8 @@ function GridCard({ project, dark = false }: { project: Project; dark?: boolean 
           >
             {project.title}
           </h3>
-          <p className={`mt-2 line-clamp-2 text-[12px] leading-[1.65] ${dark ? "text-white/40" : "text-ink/48"}`}>
-            {project.description}
+          <p className={`mt-2 text-[12px] leading-[1.65] ${dark ? "text-white/38" : "text-ink/42"}`}>
+            {project.services[0] ?? project.sector}
           </p>
         </div>
 
@@ -179,8 +179,8 @@ function TallCard({ project }: { project: Project }) {
           <h3 className="mt-1.5 font-display text-xl font-bold tracking-tight text-white transition-colors group-hover:text-x-red">
             {project.title}
           </h3>
-          <p className="mt-2 line-clamp-2 text-[12px] leading-[1.65] text-white/45">
-            {project.description}
+          <p className="mt-2 text-[12px] leading-[1.65] text-white/40">
+            {project.services[0] ?? project.sector}
           </p>
         </div>
 
@@ -244,7 +244,7 @@ export function BrochureProjects() {
         <Container>
           <Reveal>
             <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
-              Projects Showcase
+              Projects
             </p>
             <h2
               className="mt-4 max-w-[18ch] font-display font-black leading-[1.0] tracking-[-0.04em] text-ink"
@@ -252,9 +252,8 @@ export function BrochureProjects() {
             >
               Completed work
             </h2>
-            <p className="mt-5 max-w-[46ch] text-[15px] leading-[1.8] text-ink/48">
-              Facilities delivered across industrial, residential and institutional typologies —
-              each documented from structural brief to site completion.
+            <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.8] text-ink/48">
+              Brochure-first project selection, using PDF-origin imagery and real facility records.
             </p>
           </Reveal>
         </Container>

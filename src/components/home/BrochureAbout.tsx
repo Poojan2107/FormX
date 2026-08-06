@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { brochureBrand } from "@/data/brochureHome";
 import { trustMetrics } from "@/data/site";
-import Image from "next/image";
+import { VisualFrame } from "@/components/ui/VisualFrame";
 
 /**
  * ABOUT — "Split Editorial"
@@ -18,46 +18,20 @@ export function BrochureAbout() {
     <section id="about" className="scroll-mt-28 overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2">
 
-        {/* ── Left: Full-height image ───────────────────────── */}
-        <div className="relative min-h-[480px] overflow-hidden bg-[#1a1a1a] lg:min-h-[720px]">
-          <Image
-            src="/assets/projects/brochure/brochure_p3_4.png"
-            alt="FormX — engineering precision on site"
-            fill
-            unoptimized
+        {/* ── Left: Brochure facility image ─────────────────────── */}
+        <Reveal from="left" className="bg-[#efede8] lg:min-h-[720px]">
+          <VisualFrame
+            slot="projects/brochure/brochure_p3_4.png"
+            alt="FormX industrial facility"
+            fit="contain"
+            tone="light"
+            aspect="auto"
             priority
-            className="object-cover object-center transition-transform duration-[2s] hover:scale-[1.03]"
             sizes="(max-width: 1024px) 100vw, 50vw"
+            className="h-full min-h-[420px] border-r border-line lg:min-h-[720px]"
+            imgClassName="p-10 md:p-14"
           />
-
-          {/* Rich gradient */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
-
-          {/* FormX brand overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-            <div className="flex items-center gap-3 mb-1.5">
-              <span className="font-display text-2xl font-black tracking-[-0.04em] text-white">
-                FORM<span className="text-x-red">×</span>
-              </span>
-              <span className="font-label text-[9.5px] tracking-[0.26em] text-white/60 uppercase">
-                Consultants
-              </span>
-            </div>
-            <p className="font-label text-[9.5px] tracking-[0.22em] text-white/45">
-              {brochureBrand.tagline}
-            </p>
-          </div>
-
-          {/* FormX-cut accent on right edge */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 hidden w-12 lg:block"
-            style={{ background: "linear-gradient(to bottom-left, white 50%, transparent 50%)" }}
-          />
-
-          {/* Red accent tag */}
-          <div className="absolute left-0 top-0 h-[3px] w-16 bg-x-red" aria-hidden />
-        </div>
+        </Reveal>
 
         {/* ── Right: Editorial column ───────────────────────── */}
         <div className="flex flex-col justify-center px-8 py-20 sm:px-12 md:px-14 lg:py-28 xl:px-18">
@@ -70,14 +44,15 @@ export function BrochureAbout() {
               className="mt-5 font-display font-black leading-[1.04] tracking-[-0.03em] text-ink"
               style={{ fontSize: "clamp(2rem, 3.8vw, 3.25rem)" }}
             >
-              A structural engineering firm<br />
+              A structural engineering firm
+              <br />
               built on{" "}
               <span className="relative">
                 engineering judgement
                 <span aria-hidden className="absolute -bottom-1 left-0 h-[2.5px] w-12 bg-x-red" />
               </span>
             </h2>
-            <p className="mt-7 max-w-[44ch] text-[15.5px] font-medium leading-[1.85] text-ink/75 md:text-[16.5px]">
+            <p className="mt-7 max-w-[42ch] text-[15.5px] font-medium leading-[1.85] text-ink/70 md:text-[16.5px]">
               {brochureBrand.intro}
             </p>
             <Link
