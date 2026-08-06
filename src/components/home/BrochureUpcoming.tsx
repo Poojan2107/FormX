@@ -52,9 +52,9 @@ export function BrochureUpcoming() {
                     aria-hidden
                     className="absolute -left-[5px] top-1/2 -translate-y-1/2"
                   >
-                    <div className="size-3.5 rounded-full border-2 border-x-red/55 bg-[#080808] transition-all duration-300 group-hover:scale-125 group-hover:border-x-red" />
+                    <div className="size-3 rotate-45 border-2 border-x-red/55 bg-[#080808] transition-all duration-300 group-hover:scale-125 group-hover:border-x-red" />
                     {i === 0 ? (
-                      <div className="absolute inset-[5px] rounded-full bg-x-red animate-pulse" />
+                      <div className="absolute inset-[6px] rotate-45 bg-x-red animate-pulse" />
                     ) : null}
                   </div>
 

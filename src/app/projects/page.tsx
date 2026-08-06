@@ -66,7 +66,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
           <Link
             href="/contact"
             transitionTypes={["nav-forward"]}
-            className="inline-flex items-center gap-2 bg-x-red px-7 py-3.5 font-label text-[11px] text-white hover:bg-x-red-hover"
+            className="formx-cut inline-flex items-center gap-2 bg-x-red px-7 py-3.5 font-label text-[11px] text-white hover:bg-x-red-hover"
           >
             Discuss project
             <ArrowUpRight className="size-4" />

@@ -708,6 +708,22 @@ body {
   animation: scroll-bounce 2s ease-in-out infinite;
 }
 
+@keyframes scroll-line-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.72);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.fx-scroll-line {
+  animation: scroll-line-pulse 2.2s ease-in-out infinite;
+}
+
 /* ─── Draw line extend (for red rule under headings) ─────── */
 @keyframes draw-x {
   from { transform: scaleX(0); opacity: 0; }

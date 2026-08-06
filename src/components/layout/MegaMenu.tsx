@@ -132,8 +132,8 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                     "relative inline-flex items-center gap-1.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     highlighted
                       ? onDark
-                        ? "text-white shadow-[inset_0_-2px_0_0_var(--x-red)]"
-                        : "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
+                        ? "text-white after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
+                        : "text-ink after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
                       : onDark
                         ? "text-white/60 hover:text-white"
                         : "text-ink/65 hover:text-ink",
@@ -162,8 +162,8 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                     "relative inline-flex items-center gap-0.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     routeActive
                       ? onDark
-                        ? "text-white shadow-[inset_0_-2px_0_0_var(--x-red)]"
-                        : "text-ink shadow-[inset_0_-2px_0_0_var(--x-red)]"
+                        ? "text-white after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
+                        : "text-ink after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
                       : onDark
                         ? "text-white/60 hover:text-white"
                         : "text-ink/65 hover:text-ink",

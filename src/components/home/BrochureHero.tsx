@@ -210,11 +210,20 @@ export function BrochureHero() {
           </div>
 
           <div className="relative hidden flex-col items-center justify-center border-l border-ink/[0.07] lg:order-2 lg:flex lg:p-12 xl:p-14">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-8 opacity-[0.045]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+                backgroundSize: "28px 28px",
+              }}
+            />
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.92, y: 24 }}
               animate={ready ? { opacity: 1, scale: 1, y: 0 } : undefined}
               transition={{ duration: 1.25, delay: 0.3, ease: smoothEase }}
-              className="relative z-10 flex flex-col items-center justify-center border border-ink/[0.1] bg-white p-12 shadow-[0_24px_80px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-x-red/40 hover:shadow-[0_28px_90px_rgba(0,0,0,0.08)] md:p-14 lg:p-16"
+              className="relative z-10 flex flex-col items-center justify-center border border-ink/[0.1] bg-white/95 p-12 shadow-[0_24px_80px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-x-red/40 hover:shadow-[0_28px_90px_rgba(0,0,0,0.08)] md:p-14 lg:p-16"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)",
@@ -222,10 +231,22 @@ export function BrochureHero() {
             >
               <span
                 aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.035]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+                  backgroundSize: "18px 18px",
+                }}
+              />
+              <span
+                aria-hidden
                 className="absolute right-0 top-0 h-6 w-6 bg-x-red"
                 style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
               />
               <FormxTransparentLogo size="hero" align="center" />
+              <p className="relative z-10 mt-6 font-label text-[9px] tracking-[0.28em] text-ink/35">
+                FORMX · AHMEDABAD
+              </p>
               <span
                 aria-hidden
                 className="absolute bottom-4 left-4 block h-3.5 w-3.5 border-b-2 border-l-2 border-ink/20"
@@ -245,13 +266,19 @@ export function BrochureHero() {
 
       <motion.a
         href="#about"
-        initial={reduce ? false : { opacity: 0 }}
-        animate={ready ? { opacity: 1 } : undefined}
+        initial={reduce ? false : { opacity: 0, y: 8 }}
+        animate={ready ? { opacity: 1, y: 0 } : undefined}
         transition={{ delay: 1.35, duration: 0.6 }}
-        className="relative z-10 mb-8 ml-6 inline-flex items-center gap-2.5 font-label text-[10px] uppercase tracking-[0.26em] text-ink/42 transition-colors hover:text-x-red md:ml-10 lg:ml-16 xl:ml-20"
+        className="relative z-10 mb-8 ml-6 inline-flex flex-col items-start gap-3 md:ml-10 lg:ml-16 xl:ml-20"
       >
-        Explore the studio
-        <ChevronDown className="size-3.5 fx-scroll-cue" />
+        <span className="inline-flex items-center gap-2.5 font-label text-[10px] uppercase tracking-[0.26em] text-ink/48 transition-colors hover:text-x-red">
+          Explore the studio
+          <ChevronDown className="size-3.5 fx-scroll-cue text-x-red" />
+        </span>
+        <span
+          aria-hidden
+          className="ml-0.5 block h-10 w-px origin-top bg-gradient-to-b from-x-red/70 to-transparent fx-scroll-line"
+        />
       </motion.a>
     </section>
   );

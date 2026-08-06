@@ -107,7 +107,7 @@ function SiteHeader({
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
-                className="relative hidden h-10 items-center gap-1.5 bg-x-red px-5 font-label text-[10px] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
+                className="formx-cut-sm relative hidden h-10 items-center gap-1.5 bg-x-red px-5 font-label text-[10px] tracking-[0.16em] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
               >
                 Enquire
                 <ArrowUpRight className="size-3.5" />
@@ -150,13 +150,13 @@ function SiteHeader({
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-[#0a0a0a] lg:hidden"
+            className="fx-grain fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-[#0a0a0a] lg:hidden"
             initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-20" aria-hidden />
+            <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-25" aria-hidden />
             <div
               className="pointer-events-none absolute inset-0"
               style={{
@@ -240,7 +240,7 @@ function SiteHeader({
                   href="/contact"
                   onClick={() => setOpen(false)}
                   transitionTypes={["nav-forward"]}
-                  className="flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white"
+                  className="formx-cut flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white"
                 >
                   Enquire <ArrowUpRight className="size-4" />
                 </Link>

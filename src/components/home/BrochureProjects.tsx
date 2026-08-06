@@ -120,7 +120,9 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
             >
               View project
             </span>
-            <div className="flex size-9 items-center justify-center rounded-full bg-x-red text-white transition-transform duration-300 group-hover:translate-x-1">
+            <div
+              className="formx-cut-sm flex size-9 items-center justify-center bg-x-red text-white transition-transform duration-300 group-hover:translate-x-1"
+            >
               <ArrowUpRight className="size-4" />
             </div>
           </div>
@@ -336,8 +338,8 @@ export function BrochureProjects() {
             </Reveal>
             <Reveal delay={0.08}>
               <p className="text-[15.5px] leading-[1.9] text-ink/58 md:text-[16px] lg:pb-1">
-                Real facilities from the brochure, framed to stay visible instead of being cropped
-                into generic cards.
+                Industrial plants, high-rise residential, and institutional buildings — facilities
+                coordinated and documented by FormX.
               </p>
             </Reveal>
           </div>

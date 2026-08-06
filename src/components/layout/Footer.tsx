@@ -7,10 +7,15 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
-  const practiceLinks = nav.map((item) => ({
-    label: item.label,
-    href: item.href,
-  }));
+  const practiceLinks = [
+    ...nav.map((item) => ({ label: item.label, href: item.href })),
+    { label: "Career", href: "/career" },
+  ];
+
+  const legalLinks = [
+    { label: "Terms of Use", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+  ];
 
   return (
     <footer
@@ -20,12 +25,15 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-0 fx-grid-dark opacity-40" aria-hidden />
 
       <Container className="relative z-10">
-        <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Logo invert variant="full" />
             <p className="mt-5 max-w-[36ch] text-[14px] leading-[1.8] text-white/48">
               Architecture, structure, and infrastructure — coordinated before drawings leave the
               studio.
+            </p>
+            <p className="mt-3 font-label text-[10px] tracking-[0.2em] text-white/28">
+              Where vision takes form
             </p>
             <dl className="mt-8 space-y-5">
               <div>
@@ -71,15 +79,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/career"
-                  transitionTypes={["nav-forward"]}
-                  className="text-[15px] text-white/50 transition-colors hover:text-white"
-                >
-                  Career
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -97,7 +96,7 @@ export function Footer() {
                     href={a.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
+                    className="group formx-cut-sm flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] tracking-[0.16em] text-white/70 group-hover:text-white">
                       {a.label}
@@ -109,7 +108,7 @@ export function Footer() {
                     key={a.label}
                     href={a.href}
                     transitionTypes={["nav-forward"]}
-                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
+                    className="group formx-cut-sm flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] tracking-[0.16em] text-white/70 group-hover:text-white">
                       {a.label}
@@ -137,9 +136,19 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-white/[0.06] bg-black/40 py-4">
-        <Container className="flex flex-col items-start gap-2 text-[12px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
+        <Container className="flex flex-col gap-3 text-[12px] text-white/30 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} FormX Consultants LLP. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                transitionTypes={["nav-forward"]}
+                className="hover:text-x-red"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href={site.hirenLinkedin}
               target="_blank"
@@ -148,9 +157,6 @@ export function Footer() {
             >
               Hiren J. Shah
             </a>
-            <Link href="/about" transitionTypes={["nav-forward"]} className="hover:text-x-red">
-              About
-            </Link>
             <Link href="/contact" transitionTypes={["nav-forward"]} className="hover:text-x-red">
               Contact
             </Link>

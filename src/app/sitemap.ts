@@ -24,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/knowledge-center",
     "/career",
     "/contact",
+    "/terms",
+    "/privacy",
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: now,

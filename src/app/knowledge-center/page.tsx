@@ -33,8 +33,8 @@ export default function KnowledgeCenterPage() {
             Notes from the studio
           </h1>
           <p className="mt-8 max-w-[48ch] text-[17px] leading-[1.9] text-white/60 md:text-[18px]">
-            Not a marketing blog. Specialized engineering work, ongoing mandates, and facility
-            thinking drawn from the FormX brochure.
+            Specialized engineering work, ongoing mandates, and facility thinking from the FormX
+            practice — renovation, strengthening, and delivery notes.
           </p>
         </Container>
       </section>

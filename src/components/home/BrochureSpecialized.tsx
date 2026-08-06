@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { brochureSpecialized } from "@/data/brochureHome";
 
@@ -79,7 +81,7 @@ export function BrochureSpecialized() {
                         key={item}
                         className="flex items-start gap-2.5 text-[13px] leading-[1.7] text-ink/58 md:text-[13.5px]"
                       >
-                        <span className="mt-[0.45em] size-1 shrink-0 rounded-full bg-x-red/55" />
+                        <span className="mt-[0.45em] size-1.5 shrink-0 rotate-45 bg-x-red/55" />
                         {item}
                       </li>
                     ))}
@@ -88,6 +90,17 @@ export function BrochureSpecialized() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.2}>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="fx-btn-primary group mt-10 inline-flex"
+            >
+              Discuss specialised scope
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>

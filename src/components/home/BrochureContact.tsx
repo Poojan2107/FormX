@@ -37,9 +37,13 @@ function FaqItem({
           {q}
         </span>
         <span
-          className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border border-ink/[0.1] transition-colors group-hover:border-x-red/40 ${
-            open ? "border-x-red/50 bg-x-red text-white" : "bg-white text-x-red"
+          className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border transition-colors group-hover:border-x-red/40 ${
+            open ? "border-x-red/50 bg-x-red text-white" : "border-ink/[0.1] bg-white text-x-red"
           }`}
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+          }}
         >
           <ChevronDown
             className={`size-3.5 transition-transform duration-300 ${
