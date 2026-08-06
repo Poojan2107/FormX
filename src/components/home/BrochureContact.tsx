@@ -27,23 +27,19 @@ function FaqItem({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="group grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 py-5 text-left md:gap-5 md:py-6"
+        className="group grid w-full grid-cols-[2rem_1fr_auto] items-center gap-3 py-5 text-left md:gap-4 md:py-5"
         aria-expanded={open}
       >
-        <span className="mt-0.5 font-label text-[10px] tracking-[0.2em] text-x-red">
+        <span className="font-label text-[10px] tracking-[0.2em] text-x-red">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span className="text-[15px] font-semibold leading-[1.45] tracking-tight text-ink/82 transition-colors group-hover:text-ink md:text-[16px]">
           {q}
         </span>
         <span
-          className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border transition-colors group-hover:border-x-red/40 ${
+          className={`flex size-7 shrink-0 items-center justify-center border transition-colors group-hover:border-x-red/40 ${
             open ? "border-x-red/50 bg-x-red text-white" : "border-ink/[0.1] bg-white text-x-red"
           }`}
-          style={{
-            clipPath:
-              "polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
-          }}
         >
           <ChevronDown
             className={`size-3.5 transition-transform duration-300 ${
@@ -61,7 +57,7 @@ function FaqItem({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pl-10 pr-12 text-[14.5px] leading-[1.85] text-ink/58 md:pl-12 md:text-[15px]">
+            <p className="pb-5 pl-[calc(2rem+0.75rem)] pr-12 text-[14.5px] leading-[1.85] text-ink/58 md:pl-[calc(2rem+1rem)] md:text-[15px]">
               {a}
             </p>
           </motion.div>
@@ -181,14 +177,7 @@ export function BrochureContact() {
           </Reveal>
         </div>
 
-        <div
-          aria-hidden
-          className="mt-16 flex items-center gap-4"
-        >
-          <span className="h-px flex-1 bg-ink/[0.1]" />
-          <span className="font-display text-sm font-black text-x-red/50">×</span>
-          <span className="h-px flex-1 bg-ink/[0.1]" />
-        </div>
+        <div aria-hidden className="mt-14 h-px w-full bg-ink/[0.08]" />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <Reveal>
@@ -196,10 +185,10 @@ export function BrochureContact() {
               FAQ
             </p>
             <h3
-              className="mt-4 max-w-[12ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
+              className="mt-4 max-w-[14ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
               style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.25rem)" }}
             >
-              Questions before issue
+              Common questions
             </h3>
             <p className="mt-4 max-w-[36ch] text-[15px] leading-[1.85] text-ink/55">
               Straight answers drawn from how FormX works with clients, architects and contractors.

@@ -1,110 +1,108 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
+import { Container } from "@/components/ui/Container";
 import { brochureBrand } from "@/data/brochureHome";
 import { trustMetrics } from "@/data/site";
-import { AssetImage } from "@/components/ui/AssetImage";
 
 /**
- * ABOUT — Split editorial: image owns the left frame;
- * right column fills its width with a compact title + readable body.
+ * ABOUT — Cream band: copy + aligned metrics left, structural photo right.
  */
 export function BrochureAbout() {
   return (
-    <section id="about" className="scroll-mt-28 overflow-hidden bg-white">
-      <div className="grid lg:grid-cols-2">
-        <Reveal from="left" className="relative min-h-[440px] overflow-hidden bg-[#ece9e2] lg:min-h-[760px]">
-          <AssetImage
-            slot="about/home-about.jpg"
-            alt="FormX studio — coordination before issue"
-            fit="cover"
-            kind="studio"
-            tone="light"
-            aspect="auto"
-            priority
-            objectPosition="center center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="absolute inset-0 h-full w-full"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-black/35 lg:via-transparent lg:to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9 lg:p-10">
-            <p className="font-label text-[10px] tracking-[0.28em] uppercase text-white/70">
-              Studio · Practice
-            </p>
-            <p className="mt-2 max-w-[22ch] font-display text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
-              Judgement stays close to the work
-            </p>
-          </div>
-          <span aria-hidden className="absolute left-0 top-0 h-[3px] w-20 bg-x-red" />
-        </Reveal>
+    <section
+      id="about"
+      className="scroll-mt-28 overflow-hidden border-y border-ink/[0.06] bg-[#fafaf8]"
+    >
+      <Container className="py-16 md:py-20 lg:py-24">
+        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
+          <div className="flex flex-col justify-center lg:col-span-5">
+            <Reveal>
+              <p className="font-label text-[10px] uppercase tracking-[0.32em] text-x-red sm:text-[10.5px]">
+                About FormX
+              </p>
+              <h2
+                className="mt-4 font-display font-black leading-[1.1] tracking-[-0.035em] text-ink"
+                style={{ fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)" }}
+              >
+                A structural engineering firm built on engineering judgement
+              </h2>
+              <p className="mt-6 text-[15px] leading-[1.85] text-ink/60 sm:text-[15.5px] md:text-[16px]">
+                {brochureBrand.intro}
+              </p>
+              <Link
+                href="/about"
+                transitionTypes={["nav-forward"]}
+                className="group mt-8 inline-flex w-fit items-center gap-2 font-label text-[10px] tracking-[0.22em] text-x-red transition-colors hover:text-ink sm:text-[10.5px]"
+              >
+                Know More
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Reveal>
 
-        <div className="relative flex flex-col justify-center px-8 py-16 sm:px-12 md:px-14 lg:px-12 lg:py-24 xl:px-16">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute right-8 top-10 hidden font-display text-[7rem] font-black leading-none text-ink/[0.03] xl:block"
-          >
-            ×
-          </span>
-
-          <Reveal>
-            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
-              About FormX
-            </p>
-            <h2
-              className="mt-5 max-w-[20ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
-              style={{ fontSize: "clamp(1.9rem, 3.1vw, 2.85rem)" }}
-            >
-              A structural engineering firm built on{" "}
-              <span className="relative inline">
-                engineering judgement
-                <span
-                  aria-hidden
-                  className="absolute -bottom-1 left-0 h-[2.5px] w-[3.25rem] bg-x-red"
-                />
-              </span>
-            </h2>
-            <p className="mt-7 max-w-[50ch] text-[16px] font-medium leading-[1.9] text-ink/66 md:text-[17px]">
-              {brochureBrand.intro}
-            </p>
-            <Link
-              href="/about"
-              transitionTypes={["nav-forward"]}
-              className="group mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-x-red/55 pb-1.5 font-label text-[10.5px] tracking-[0.22em] text-x-red transition-colors hover:border-x-red"
-            >
-              Know More
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <div className="mt-14 border-t border-ink/[0.09] pt-9">
-              <div className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+            <Reveal delay={0.1}>
+              <dl className="mt-12 flex w-full border-t border-ink/[0.08] pt-8">
                 {trustMetrics.map((m, i) => (
-                  <div key={m.label} className="relative">
-                    <p
-                      className="font-display font-black leading-none tracking-[-0.035em] text-ink"
-                      style={{ fontSize: "clamp(1.85rem, 3vw, 2.5rem)" }}
-                    >
-                      {m.value}
-                    </p>
-                    <span aria-hidden className="mt-3 block h-[2px] w-8 bg-x-red" />
-                    <p className="mt-3 max-w-[12ch] font-label text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/48">
+                  <div
+                    key={m.label}
+                    className={`flex min-w-0 flex-1 flex-col ${
+                      i === 0
+                        ? "pr-4 sm:pr-5"
+                        : i === trustMetrics.length - 1
+                          ? "border-l border-ink/[0.08] pl-4 sm:pl-5"
+                          : "border-l border-ink/[0.08] px-4 sm:px-5"
+                    }`}
+                  >
+                    <dt className="sr-only">{m.label}</dt>
+                    <dd className="flex h-10 items-end sm:h-11">
+                      <span className="font-display text-[1.25rem] font-black leading-none tracking-[-0.03em] text-ink whitespace-nowrap sm:text-[1.45rem]">
+                        {m.value}
+                      </span>
+                    </dd>
+                    <span aria-hidden className="mt-3 block h-[2px] w-6 bg-x-red" />
+                    <p className="mt-3 min-h-[2.4em] font-label text-[8px] uppercase leading-[1.3] tracking-[0.11em] text-ink/45 sm:text-[9px]">
                       {m.label}
                     </p>
-                    {i < trustMetrics.length - 1 ? (
-                      <span className="absolute -right-3 top-1 hidden font-display text-lg font-black text-x-red/25 sm:block">
-                        ×
-                      </span>
-                    ) : null}
                   </div>
                 ))}
+              </dl>
+            </Reveal>
+          </div>
+
+          <Reveal from="right" className="lg:col-span-7" delay={0.06}>
+            <div className="formx-cut relative aspect-[4/3] overflow-hidden bg-[#111] lg:aspect-auto lg:h-full lg:min-h-[480px]">
+              <Image
+                src="/assets/services/structural-02.jpg"
+                alt="Structural steel frame — FormX engineering"
+                fill
+                priority
+                unoptimized
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"
+              />
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
+                <p className="font-label text-[10px] uppercase tracking-[0.28em] text-white/75">
+                  Studio · Practice
+                </p>
+                <p className="mt-2 max-w-[22ch] font-display text-lg font-extrabold leading-snug tracking-tight text-white sm:text-xl">
+                  Judgement stays close to the work
+                </p>
               </div>
+              <span
+                aria-hidden
+                className="absolute left-0 top-0 z-10 h-[3px] w-16 bg-x-red sm:w-20"
+              />
             </div>
           </Reveal>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

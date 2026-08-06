@@ -228,7 +228,7 @@ function ResidentialPlate({ project }: { project: Project }) {
           />
         </div>
 
-        <div className="flex flex-1 flex-col border-x border-b border-white/10 bg-[#0d0d0d] px-5 pb-5 pt-5 md:px-6">
+        <div className="flex flex-1 flex-col bg-[#0d0d0d] px-5 pb-5 pt-5 md:px-6">
           <p className="font-label text-[9px] uppercase tracking-[0.22em] text-x-red">
             {project.location}
           </p>
@@ -244,18 +244,16 @@ function ResidentialPlate({ project }: { project: Project }) {
           <p className="mt-3 text-[13px] leading-[1.7] text-white/52">
             {project.services[0] ?? project.sector}
           </p>
-          <p className="mt-4 line-clamp-3 text-[13px] leading-[1.75] text-white/40">
+          <p className="mt-4 line-clamp-3 min-h-[3.9em] text-[13px] leading-[1.75] text-white/40">
             {project.description}
           </p>
-          <div className="mt-auto flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+          <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-4">
             <p className="font-label text-[9px] uppercase tracking-[0.2em] text-white/38">
               {project.area ?? project.year}
             </p>
-            {project.floors ? (
-              <p className="font-label text-[9px] uppercase tracking-[0.18em] text-white/28">
-                {project.floors}
-              </p>
-            ) : null}
+            <p className="font-label text-[9px] uppercase tracking-[0.18em] text-white/28">
+              {project.floors ?? "—"}
+            </p>
           </div>
         </div>
       </div>

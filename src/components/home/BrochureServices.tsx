@@ -7,93 +7,87 @@ import { Container } from "@/components/ui/Container";
 import { brochureServices, brochureServicesNote } from "@/data/brochureHome";
 
 /**
- * SERVICES — Capability grid: 2×2 tiles with formx-cut corners.
+ * SERVICES — Equal 2×2 capability tiles. Same border + height on every card.
  */
 export function BrochureServices() {
   return (
-    <section id="services" className="scroll-mt-28 bg-[#f7f6f2] py-24 md:py-32">
+    <section id="services" className="scroll-mt-28 bg-[#f7f6f2] py-20 md:py-28">
       <Container>
-        <div className="mb-12 grid gap-6 border-b border-ink/[0.08] pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
+        <div className="mb-10 grid gap-5 border-b border-ink/[0.08] pb-8 lg:mb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-12 lg:pb-10">
           <Reveal>
-            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+            <p className="font-label text-[10.5px] uppercase tracking-[0.32em] text-x-red">
               Services
             </p>
             <h2
               className="mt-4 font-display font-black leading-[1.02] tracking-[-0.045em] text-ink"
-              style={{ fontSize: "clamp(2.1rem, 4.2vw, 3.5rem)" }}
+              style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             >
               What we take on
             </h2>
           </Reveal>
-          <Reveal delay={0.08}>
-            <p className="text-[15px] font-medium leading-[1.9] text-ink/60 md:text-[16px] lg:pb-1">
+          <Reveal delay={0.06}>
+            <p className="text-[15px] leading-[1.85] text-ink/58 md:text-[16px]">
               {brochureServicesNote}
             </p>
           </Reveal>
         </div>
 
-        <div className="grid gap-px bg-ink/[0.09] sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           {brochureServices.map((service, i) => (
-            <Reveal key={service.title} delay={0.06 * i} from="fade">
+            <Reveal key={service.title} delay={0.05 * i} from="fade" className="h-full">
               <Link
                 href={service.href}
                 transitionTypes={["nav-forward"]}
-                className="group relative flex min-h-[260px] flex-col overflow-hidden bg-[#f7f6f2] p-8 transition-colors duration-300 hover:bg-white md:min-h-[300px] md:p-10 lg:p-12"
+                className="group relative flex h-full min-h-[240px] flex-col overflow-hidden border border-ink/[0.08] bg-white p-7 transition-colors duration-300 hover:border-x-red/35 hover:bg-[#fafaf8] md:min-h-[280px] md:p-9"
               >
                 <span
                   aria-hidden
-                  className="absolute right-0 top-0 block h-11 w-11 origin-top-right scale-50 bg-x-red opacity-40 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+                  className="absolute right-0 top-0 block h-9 w-9 origin-top-right scale-50 bg-x-red opacity-35 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
                   style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
                 />
 
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -right-3 -top-2 select-none font-display font-black leading-none text-ink/[0.045] transition-opacity duration-300 group-hover:text-ink/[0.08]"
-                  style={{ fontSize: "clamp(5.5rem, 11vw, 10rem)" }}
+                  className="pointer-events-none absolute -right-2 top-2 select-none font-display text-[5.5rem] font-black leading-none text-ink/[0.04] md:text-[7rem]"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
                 <div className="relative z-10 flex flex-1 flex-col">
                   <span className="font-label text-[10px] font-bold tracking-[0.28em] text-x-red">
-                    0{i + 1}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
 
                   <h3
-                    className="mt-5 max-w-[16ch] font-display font-bold leading-[1.08] tracking-[-0.03em] text-ink transition-colors group-hover:text-x-red"
-                    style={{ fontSize: "clamp(1.28rem, 1.9vw, 1.75rem)" }}
+                    className="mt-4 max-w-[16ch] font-display font-bold leading-[1.1] tracking-[-0.03em] text-ink transition-colors group-hover:text-x-red"
+                    style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.6rem)" }}
                   >
                     {service.title}
                   </h3>
 
-                  <p className="mt-5 max-w-[36ch] flex-1 text-[14.5px] font-medium leading-[1.85] text-ink/62 md:text-[15.5px]">
+                  <p className="mt-4 max-w-[36ch] flex-1 text-[14px] leading-[1.8] text-ink/58 md:text-[14.5px]">
                     {service.body}
                   </p>
 
-                  <div className="mt-8 flex items-center gap-2 font-label text-[10px] font-bold uppercase tracking-[0.2em] text-ink/35 transition-colors duration-300 group-hover:text-x-red">
+                  <div className="mt-6 flex items-center gap-2 font-label text-[10px] font-bold uppercase tracking-[0.2em] text-ink/40 transition-colors duration-300 group-hover:text-x-red">
                     <span>Explore</span>
                     <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
-
-                <span
-                  aria-hidden
-                  className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-x-red transition-transform duration-500 group-hover:scale-x-100"
-                />
               </Link>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={0.22} from="fade">
-          <div className="mt-11 flex flex-wrap items-center justify-between gap-4">
-            <p className="font-label text-[9.5px] tracking-[0.24em] uppercase text-ink/38">
+        <Reveal delay={0.18} from="fade">
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
+            <p className="font-label text-[9.5px] uppercase tracking-[0.24em] text-ink/38">
               Architecture · Structure · Infrastructure
             </p>
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
-              className="fx-btn-ghost group"
+              className="group inline-flex items-center gap-2 font-label text-[10.5px] tracking-[0.2em] text-x-red transition-colors hover:text-ink"
             >
               All Services
               <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

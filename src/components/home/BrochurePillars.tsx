@@ -102,7 +102,7 @@ export function BrochurePillars() {
               transitionTypes={["nav-forward"]}
               className="group inline-flex items-center gap-2 font-label text-[10.5px] tracking-[0.2em] text-x-red transition-colors hover:text-white"
             >
-              Discuss your project
+              Discuss your facility
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

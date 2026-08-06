@@ -25,17 +25,17 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-0 fx-grid-dark opacity-40" aria-hidden />
 
       <Container className="relative z-10">
-        <div className="grid gap-12 py-14 md:py-16 lg:grid-cols-12 lg:gap-10">
+        <div className="grid gap-10 py-12 md:py-14 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <Logo invert variant="full" />
-            <p className="mt-5 max-w-[36ch] text-[14px] leading-[1.8] text-white/48">
+            <p className="mt-4 max-w-[36ch] text-[14px] leading-[1.8] text-white/48">
               Architecture, structure, and infrastructure — coordinated before drawings leave the
               studio.
             </p>
             <p className="mt-3 font-label text-[10px] tracking-[0.2em] text-white/28">
               Where vision takes form
             </p>
-            <dl className="mt-8 space-y-5">
+            <dl className="mt-7 space-y-4">
               <div>
                 <dt className="font-label text-[9px] tracking-[0.2em] text-x-red">Studio Address</dt>
                 <dd className="mt-2 flex items-start gap-2 text-[14px] leading-[1.7] text-white/58">
@@ -66,8 +66,8 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="mb-5 font-label text-[10px] tracking-[0.25em] text-x-red">Navigate</p>
-            <ul className="space-y-3.5">
+            <p className="mb-4 font-label text-[10px] tracking-[0.25em] text-x-red">Navigate</p>
+            <ul className="space-y-3">
               {practiceLinks.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -83,8 +83,8 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <p className="mb-5 font-label text-[10px] tracking-[0.25em] text-x-red">Quick actions</p>
-            <div className="space-y-3">
+            <p className="mb-4 font-label text-[10px] tracking-[0.25em] text-x-red">Quick actions</p>
+            <div className="space-y-2.5">
               {[
                 { href: "/contact", label: "Book Consultation", external: false },
                 { href: site.brochurePath, label: "Download Brochure", external: true },
@@ -96,7 +96,7 @@ export function Footer() {
                     href={a.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group formx-cut-sm flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] tracking-[0.16em] text-white/70 group-hover:text-white">
                       {a.label}
@@ -108,7 +108,7 @@ export function Footer() {
                     key={a.label}
                     href={a.href}
                     transitionTypes={["nav-forward"]}
-                    className="group formx-cut-sm flex w-full items-center justify-between border border-white/15 px-4 py-4 transition-colors hover:border-x-red/60"
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] tracking-[0.16em] text-white/70 group-hover:text-white">
                       {a.label}
