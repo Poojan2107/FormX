@@ -23,7 +23,7 @@ export function BrochureUpcoming() {
         {/* Header */}
         <div className="grid gap-6 md:grid-cols-2 md:items-start">
           <Reveal>
-            <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
+            <p className="font-label text-[10.5px] tracking-[0.35em] uppercase text-x-red">
               Currently Active
             </p>
             <h2
@@ -34,7 +34,7 @@ export function BrochureUpcoming() {
             </h2>
           </Reveal>
           <Reveal delay={0.07}>
-            <p className="max-w-[36ch] text-[13px] leading-[1.8] text-white/28 md:mt-16 md:text-right md:text-[14px]">
+            <p className="max-w-[38ch] text-[14px] leading-[1.8] text-white/55 md:mt-16 md:text-right md:text-[15px]">
               Currently in active engineering — from design through site support.
             </p>
           </Reveal>
@@ -74,31 +74,31 @@ export function BrochureUpcoming() {
                   {/* Connector line to content */}
                   <div
                     aria-hidden
-                    className="absolute left-[calc(0px-0.5px)] top-1/2 h-[1px] w-8 -translate-y-1/2 bg-x-red/20 md:w-10"
+                    className="absolute left-[calc(0px-0.5px)] top-1/2 h-[1px] w-8 -translate-y-1/2 bg-x-red/30 md:w-10"
                   />
 
                   {/* Project number + label */}
                   <div className="flex flex-col justify-center">
-                    <span className="font-label text-[10px] tracking-[0.3em] text-x-red/55">
+                    <span className="font-label text-[10.5px] tracking-[0.3em] font-bold text-x-red">
                       ×{String(i + 1).padStart(2, "0")}
                     </span>
                     <h3
-                      className="mt-2 font-display font-bold tracking-[-0.02em] text-white/90 transition-colors group-hover:text-white"
-                      style={{ fontSize: "clamp(1rem, 1.8vw, 1.35rem)" }}
+                      className="mt-2 font-display font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-x-red"
+                      style={{ fontSize: "clamp(1.05rem, 1.8vw, 1.4rem)" }}
                     >
                       {project.title}
                     </h3>
                   </div>
 
                   {/* Project description */}
-                  <p className="mt-3 text-[13px] leading-[1.78] text-white/30 transition-colors group-hover:text-white/45 md:mt-0 md:text-[14px]">
+                  <p className="mt-3 text-[14px] leading-[1.78] text-white/70 transition-colors group-hover:text-white md:mt-0 md:text-[14.5px]">
                     {project.detail}
                   </p>
 
                   {/* Bottom separator */}
                   <div
                     aria-hidden
-                    className="absolute bottom-0 right-0 h-px w-[calc(100%)] bg-white/[0.045]"
+                    className="absolute bottom-0 right-0 h-px w-[calc(100%)] bg-white/[0.06]"
                   />
                 </div>
               </Reveal>
@@ -110,9 +110,9 @@ export function BrochureUpcoming() {
             <div className="relative mt-2 pl-8 md:pl-10">
               <div
                 aria-hidden
-                className="absolute -left-[3px] top-1/2 size-2 -translate-y-1/2 rounded-full bg-white/10"
+                className="absolute -left-[3px] top-1/2 size-2 -translate-y-1/2 rounded-full bg-white/20"
               />
-              <p className="font-label text-[9px] tracking-[0.3em] text-white/14">
+              <p className="font-label text-[9.5px] tracking-[0.3em] uppercase text-white/30">
                 More projects in progress · Not listed until construction start
               </p>
             </div>
