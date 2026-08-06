@@ -22,11 +22,11 @@ function messageForPath(path: string) {
   return `Hello FormX — I would like to discuss a project.`;
 }
 
-/** Detail pages that mount StickyEnquire on mobile */
 function hasStickyEnquire(path: string) {
   return /^\/(services|projects)\/[^/]+/.test(path);
 }
 
+/** Post-scroll WhatsApp — red circular, quiet shadow (founder rule) */
 export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
   const pathname = usePathname() || "/";
   const [visible, setVisible] = useState(false);
@@ -51,13 +51,14 @@ export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className={cn(
-        "fixed right-4 z-50 flex size-12 items-center justify-center rounded-full bg-x-red text-white shadow-[0_12px_32px_rgba(222,48,36,0.45)] transition-transform hover:scale-105 md:right-8 md:size-14",
-        lift ? "bottom-[5.25rem] md:bottom-8" : "bottom-5 md:bottom-8",
+        "fixed right-4 z-50 flex size-11 items-center justify-center rounded-full bg-x-red text-white transition-opacity hover:opacity-90 md:right-7 md:size-12",
+        "shadow-[0_8px_24px_rgba(0,0,0,0.28)]",
+        lift ? "bottom-[4.75rem] md:bottom-7" : "bottom-5 md:bottom-7",
       )}
       style={{ marginBottom: "env(safe-area-inset-bottom)" }}
     >
-      <span className="font-display text-base font-black leading-none md:text-lg">
-        F<span className="text-white/90">×</span>
+      <span className="font-display text-[13px] font-black leading-none tracking-tight md:text-sm">
+        F<span className="text-white/85">×</span>
       </span>
     </a>
   );

@@ -239,11 +239,7 @@ export default function KnowledgeCenterPage() {
               </Link>
               <Link
                 href="/brochure/formx.pdf"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-3.5 font-label text-[10px] tracking-[0.18em] text-white/75 transition-colors hover:border-x-red hover:text-x-red"
-                style={{
-                  clipPath:
-                    "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
-                }}
+                className="inline-flex items-center justify-center gap-2 border border-white/15 px-6 py-3.5 font-label text-[10px] tracking-[0.18em] text-white/70 transition-colors hover:border-x-red hover:text-x-red"
               >
                 Download brochure
               </Link>
