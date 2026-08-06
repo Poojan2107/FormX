@@ -21,17 +21,17 @@ export function Footer() {
 
       <Container className="relative z-10">
         <div className="border-b border-white/10 py-14 md:py-16">
-          <p className="font-label text-[10px] text-x-red">FORM× Headquarters</p>
+          <p className="font-label text-[10px] tracking-[0.3em] text-x-red">FORM× STUDIO</p>
           <h2
-            className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)" }}
+            className="mt-4 font-display font-extrabold uppercase leading-[0.92] tracking-tight text-white"
+            style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}
           >
-            Ahmedabad
+            Engineering
             <br />
             Practice
           </h2>
-          <p className="mt-6 max-w-lg text-[16px] leading-[1.8] text-white/50">
-            Architecture · Structure · Infrastructure — construction-ready design from Ahmedabad.
+          <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-white/50 md:text-[16px]">
+            Architecture · Structure · Infrastructure — construction-ready engineering design.
             Where Vision Takes Form.
           </p>
           <p className="mt-4 font-body text-xl font-medium text-white/70 md:text-2xl">
@@ -44,14 +44,14 @@ export function Footer() {
             <Logo invert variant="full" />
             <dl className="mt-8 space-y-5">
               <div>
-                <dt className="font-label text-[9px] text-x-red">Office</dt>
+                <dt className="font-label text-[9px] tracking-[0.2em] text-x-red">Studio Address</dt>
                 <dd className="mt-1.5 flex items-start gap-2 text-[14px] text-white/55">
                   <MapPin className="mt-0.5 size-3.5 shrink-0 text-x-red" />
                   {site.addressDetail}
                 </dd>
               </div>
               <div>
-                <dt className="font-label text-[9px] text-x-red">Inquiry</dt>
+                <dt className="font-label text-[9px] tracking-[0.2em] text-x-red">Inquiries</dt>
                 <dd className="mt-1.5 space-y-2">
                   <a
                     href={`mailto:${site.email}`}
@@ -73,7 +73,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="mb-5 font-label text-[10px] text-x-red">Navigate</p>
+            <p className="mb-5 font-label text-[10px] tracking-[0.25em] text-x-red">Navigate</p>
             <ul className="space-y-3">
               {practiceLinks.map((item) => (
                 <li key={item.href}>
@@ -99,7 +99,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <p className="mb-5 font-label text-[10px] text-x-red">Quick actions</p>
+            <p className="mb-5 font-label text-[10px] tracking-[0.25em] text-x-red">Quick actions</p>
             <div className="space-y-3">
               {[
                 { href: "/contact", label: "Book Consultation", external: false },
@@ -112,7 +112,7 @@ export function Footer() {
                     href={a.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 hover:border-x-red/60"
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] text-white/70 group-hover:text-white">
                       {a.label}
@@ -124,7 +124,7 @@ export function Footer() {
                     key={a.label}
                     href={a.href}
                     transitionTypes={["nav-forward"]}
-                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 hover:border-x-red/60"
+                    className="group flex w-full items-center justify-between border border-white/15 px-4 py-3.5 transition-colors hover:border-x-red/60"
                   >
                     <span className="font-label text-[11px] text-white/70 group-hover:text-white">
                       {a.label}

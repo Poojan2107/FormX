@@ -35,7 +35,7 @@ export function BrochurePillars() {
               <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
                 <div className="flex items-stretch gap-0 py-8 md:py-10 lg:gap-8 xl:py-11">
 
-                  {/* GIANT ghost number — visual anchor */}
+                  {/* GIANT ghost number */}
                   <div
                     aria-hidden
                     className="flex w-28 shrink-0 items-center md:w-40 lg:w-52"
@@ -48,7 +48,7 @@ export function BrochurePillars() {
                     </span>
                   </div>
 
-                  {/* × glyph — red accent */}
+                  {/* × glyph */}
                   <div className="flex items-center pr-6 md:pr-8">
                     <span
                       className="font-display font-black leading-none text-x-red/50 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
@@ -97,8 +97,8 @@ export function BrochurePillars() {
       <Reveal delay={0.3} from="fade">
         <Container className="relative z-10">
           <div className="mt-12 flex items-center justify-between">
-            <p className="font-label text-[9px] tracking-[0.3em] text-white/14">
-              FormX Consultants · Ahmedabad
+            <p className="font-label text-[9px] tracking-[0.3em] text-white/20 uppercase">
+              FormX Consultants · Design | Engineering
             </p>
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-white/[0.07]" />

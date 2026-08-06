@@ -30,10 +30,10 @@ export function BrochureAbout() {
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
 
-          {/* Rich gradient — image readable, brand mark prominent */}
+          {/* Rich gradient */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
 
-          {/* Formx brand overlay — bottom left */}
+          {/* Formx brand overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
             <div className="flex items-center gap-3 mb-1">
               <span className="font-display text-2xl font-black tracking-[-0.04em] text-white">
@@ -55,7 +55,7 @@ export function BrochureAbout() {
             style={{ background: "linear-gradient(to bottom-left, white 50%, transparent 50%)" }}
           />
 
-          {/* Red accent tag — top left */}
+          {/* Red accent tag */}
           <div className="absolute left-0 top-0 h-[3px] w-16 bg-x-red" aria-hidden />
         </div>
 
@@ -64,13 +64,13 @@ export function BrochureAbout() {
 
           <Reveal>
             <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
-              About
+              About FormX
             </p>
             <h2
               className="mt-5 font-display font-black leading-[1.02] tracking-[-0.03em] text-ink"
               style={{ fontSize: "clamp(2rem, 3.8vw, 3.25rem)" }}
             >
-              An Ahmedabad practice<br />
+              A structural engineering practice<br />
               built on{" "}
               <span className="relative">
                 engineering judgement

@@ -45,7 +45,7 @@ export function WhyWeExist() {
           <Reveal delay={0.08} className="lg:col-span-5">
             <VisualFrame
               slot="about/studio-cover.jpg"
-              alt="FORMX Ahmedabad practice — people close to the work"
+              alt="FORMX Studio — people close to the work"
               fit="cover"
               aspect="portrait"
               tone="dark"

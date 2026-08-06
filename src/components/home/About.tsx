@@ -53,7 +53,7 @@ export function About() {
               className="font-display font-black uppercase leading-[0.95] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)" }}
             >
-              An Ahmedabad practice built on judgement
+              An engineering practice built on judgement
             </h2>
             <p className="mt-8 max-w-[40ch] text-[17px] font-medium leading-[1.8] text-ink-muted md:text-[18px]">
               {about.paragraphs[0]}

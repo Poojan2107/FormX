@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Careers at FORMX | Join the Ahmedabad practice",
+  title: "Careers at FORMX | Join the Studio",
   description:
     "Join FORMX Consultants in Ahmedabad. Share your portfolio with career@formxconsultants.com.",
 };

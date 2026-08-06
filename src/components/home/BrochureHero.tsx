@@ -10,7 +10,6 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Container } from "@/components/ui/Container";
 import { brochureBrand } from "@/data/brochureHome";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -25,7 +24,6 @@ const TICKER_ITEMS = [
   "Infrastructure",
 ];
 
-// Words split so FORM is last and gets the × treatment
 const TAGLINE_LINES = [["WHERE", "VISION"], ["TAKES", "FORM"]];
 
 export function BrochureHero() {
@@ -76,7 +74,7 @@ export function BrochureHero() {
 
       {/* ═══════════════════════════════════════════════════════
           TWO-COLUMN LAYOUT: both logo + tagline visible at once
-          Left: tagline + CTAs (60%)  |  Right: logo + atmosphere (40%)
+          Left: tagline + CTAs (58%)  |  Right: logo + atmosphere (42%)
          ═══════════════════════════════════════════════════════ */}
       <motion.div
         style={reduce ? undefined : { opacity: sheetOpacity }}
@@ -142,9 +140,9 @@ export function BrochureHero() {
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.8, delay: 0.85, ease }}
-              className="mt-6 max-w-[42ch] text-[15px] leading-[1.82] text-ink/48 md:text-[16px]"
+              className="mt-6 max-w-[44ch] text-[15px] leading-[1.82] text-ink/48 md:text-[16px]"
             >
-              Coordinated before drawings leave the studio. Ahmedabad.
+              Architecture, Structure and Infrastructure — engineered together before drawings leave the studio.
             </motion.p>
 
             {/* CTAs */}
@@ -212,9 +210,9 @@ export function BrochureHero() {
               initial={reduce ? false : { opacity: 0 }}
               animate={ready ? { opacity: 1 } : undefined}
               transition={{ delay: 1.1, duration: 0.7 }}
-              className="relative z-10 mt-6 font-label text-[9px] tracking-[0.3em] text-ink/25"
+              className="relative z-10 mt-6 font-label text-[9px] tracking-[0.3em] text-ink/25 uppercase"
             >
-              Design | Engineering · Ahmedabad
+              Design | Engineering Studio
             </motion.p>
 
             {/* Registration corners inside right panel */}
