@@ -187,7 +187,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             transitionTypes={["nav-forward"]}
             className="fx-btn-primary inline-flex shrink-0"
           >
-            Enquire Now
+            Discuss your facility
             <ArrowRight className="size-4" />
           </Link>
         </Container>

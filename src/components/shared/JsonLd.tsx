@@ -93,7 +93,7 @@ export function FaqJsonLd() {
   });
 }
 
-/** BreadcrumbList markup — rendered from the visible PageHero trail. */
+/** BreadcrumbList markup — for structured data on interior pages. */
 export function BreadcrumbJsonLd({
   items,
 }: {

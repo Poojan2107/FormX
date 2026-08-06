@@ -274,7 +274,7 @@ export default function AboutPage() {
                 transitionTypes={["nav-forward"]}
                 className="fx-btn-primary inline-flex items-center gap-3"
               >
-                Enquire Now
+                Discuss your facility
                 <ArrowRight className="size-4" />
               </Link>
               <Link

@@ -98,7 +98,7 @@ export const brochureFaqs = [
   },
   {
     q: "Do you support projects during construction?",
-    a: "Yes. We assist with quantity estimation, construction support, and coordination for seamless execution.",
+    a: "Yes. We stay with quantity estimation, clarifications and coordination until the built facility matches what was locked Before Issue.",
   },
   {
     q: "Who do you work with?",

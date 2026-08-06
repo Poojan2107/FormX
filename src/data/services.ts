@@ -1,4 +1,4 @@
-ï»¿export type Service = {
+export type Service = {
   slug: string;
   title: string;
   short: string;
@@ -16,9 +16,9 @@ export const services: Service[] = [
     slug: "architectural-design",
     title: "Architectural Drawings",
     short:
-      "Precise, coordinated, and construction-ready architectural drawings that bridge design intent with on-site execution.",
+      "Construction-ready architectural drawings — operations and buildability locked before elevations are finished.",
     summary:
-      "At FORMX Consultants, we develop precise, coordinated, and construction-ready architectural drawings that bridge design intent with on-site execution. Our drawings are prepared with a strong emphasis on functionality, buildability, regulatory compliance, and seamless coordination across all engineering disciplines, ensuring efficient project delivery from concept to completion.",
+      "FORMX prepares architectural drawings so the facility can be built and operated as intended. Layouts respect structural bays and infrastructure routes; statutory sets match what leaves the studio — coordinated with Structure and Infrastructure Before Issue.",
     highlights: [
       "Architectural planning & layout development",
       "Industrial, commercial & institutional building design",
@@ -34,10 +34,10 @@ export const services: Service[] = [
       "Tender Drawings & Good for Construction (GFC) Packages",
     ],
     process: [
-      "Understanding project requirements, operational needs, and site constraints.",
-      "Developing efficient architectural layouts and design concepts.",
-      "Preparing coordinated construction drawings integrated with structural and utility disciplines.",
-      "Providing continuous design support during construction through revisions and technical clarifications.",
+      "Understand operations, movement and site constraints before planning layouts.",
+      "Lock zoning and clear heights with Structure and Infrastructure.",
+      "Issue coordinated GA, sections and statutory sets that can be built.",
+      "Stay in the revision loop through construction clarifications.",
     ],
     relatedSectors: ["industrial-park", "food-processing", "data-center"],
     asset: "services/architecture.jpg",
@@ -47,9 +47,9 @@ export const services: Service[] = [
     slug: "site-infrastructure",
     title: "Site Infrastructure",
     short:
-      "Integrated site infrastructure designs that ensure efficient connectivity, safe movement, and reliable utility networks.",
+      "Site infrastructure that answers circulation, drainage and utilities before the facility is issued.",
     summary:
-      "We deliver integrated site infrastructure designs that ensure efficient connectivity, safe movement, and reliable utility networks across industrial, commercial, and institutional developments. Our solutions are developed to optimize site functionality while meeting statutory requirements, operational demands, and future expansion needs.",
+      "FORMX designs site infrastructure so roads, stormwater, water supply and external works serve real operations — coordinated with Architecture and Structure, sized for statutory requirements and future expansion.",
     highlights: [
       "Site planning & infrastructure layout",
       "Internal roads & pavement design",
@@ -65,10 +65,10 @@ export const services: Service[] = [
       "External Development (ED) & GFC Drawing Packages",
     ],
     process: [
-      "Study site conditions, topography, and project requirements.",
-      "Develop optimized infrastructure layouts for circulation and utilities.",
-      "Coordinate with architectural, structural, utilities, and landscape disciplines.",
-      "Deliver construction-ready drawings with ongoing technical support during execution.",
+      "Read topography, access and operational demands first.",
+      "Lay out circulation and utilities against the architectural grid.",
+      "Coordinate with Architecture and Structure before issue.",
+      "Support execution with construction-ready packages and clarifications.",
     ],
     relatedSectors: ["industrial-park", "renewable-energy", "food-processing"],
     asset: "services/site.jpg",
@@ -78,9 +78,9 @@ export const services: Service[] = [
     slug: "sustainable-design",
     title: "Sustainable & Energy Efficient Design",
     short:
-      "Practical strategies that improve energy efficiency without compromising functionality or project budget.",
+      "Practical efficiency strategies that remain buildable within Architecture, Structure and Infrastructure.",
     summary:
-      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities â€” then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure and infrastructure.",
+      "FORMX evaluates climate and site conditions, then integrates energy and water strategies that Architecture and Structure can actually carry — without decorative afterthoughts after tender.",
     highlights: [
       "Climate Responsive Design",
       "Passive Cooling & Daylighting Strategies",
@@ -96,22 +96,26 @@ export const services: Service[] = [
       "Integrated Sustainability Design Documentation",
     ],
     process: [
-      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities.",
-      "Develop practical strategies that improve energy efficiency without compromising functionality or project budget.",
-      "Coordinate architecture, structure and infrastructure to seamlessly integrate sustainable design solutions.",
-      "Deliver technically coordinated documentation that supports long-term performance, operational efficiency, and future-ready infrastructure.",
+      "Evaluate climate, site and operational requirements.",
+      "Propose strategies that protect function and budget.",
+      "Coordinate Architecture, Structure and Infrastructure so measures are buildable.",
+      "Issue documentation that supports long-term performance without inventing answers on site.",
     ],
     relatedSectors: ["renewable-energy", "industrial-park", "data-center"],
     asset: "services/sustainable.jpg",
-    gallery: ["services/sustainable.jpg", "services/sustainable-02.jpg", "services/sustainable-03.jpg"],
+    gallery: [
+      "services/sustainable.jpg",
+      "services/sustainable-02.jpg",
+      "services/sustainable-03.jpg",
+    ],
   },
   {
     slug: "structural-engineering",
     title: "Structural Engineering",
     short:
-      "Safe, efficient, and buildable structural systems for strength, stability, and long-term performance.",
+      "Structural systems sized for real loads — detailed so fabrication and cages can be erected without guesswork.",
     summary:
-      "Designing safe, efficient, and buildable structural systems that ensure strength, stability, and long-term performance across industrial, commercial, institutional, and residential projects.",
+      "FORMX designs RCC and steel frames for industrial, commercial, institutional and residential work. Load paths, PEB/RCC interfaces, seismic and wind detailing are closed with Architecture and Infrastructure before issue.",
     highlights: [
       "RCC & Steel Structural Design",
       "Industrial & Commercial Structures",
@@ -129,22 +133,26 @@ export const services: Service[] = [
       "BOQ & Material Quantification",
     ],
     process: [
-      "Understand project requirements, loading criteria, and applicable design standards.",
-      "Develop optimized structural systems focused on safety, efficiency, and constructability.",
-      "Coordinate with architecture, utilities and infrastructure disciplines for seamless project integration.",
-      "Deliver complete design documentation with construction-stage engineering support.",
+      "Establish loading criteria and applicable codes with the facility brief.",
+      "Size systems for safety, efficiency and constructability.",
+      "Hold Architecture, Structure and Infrastructure in agreement before drawings leave the studio.",
+      "Support fabrication and site with unambiguous details and RFI answers.",
     ],
     relatedSectors: ["renewable-energy", "industrial-park", "food-processing"],
     asset: "services/structural.jpg",
-    gallery: ["services/structural.jpg", "services/structural-02.jpg", "services/structural-03.jpg"],
+    gallery: [
+      "services/structural.jpg",
+      "services/structural-02.jpg",
+      "services/structural-03.jpg",
+    ],
   },
   {
     slug: "civil-engineering",
     title: "Civil Engineering",
     short:
-      "Practical civil solutions that prioritize functionality, durability, constructability, and compliance.",
+      "Civil works that set levels, roads and drainage so the site can actually receive the facility.",
     summary:
-      "Delivering practical and technically sound civil engineering solutions that establish a strong foundation for successful project execution. Our designs prioritize functionality, durability, constructability, and compliance across industrial, commercial, institutional, and infrastructure developments.",
+      "FORMX delivers grading, roads, drainage and external civil layouts focused on constructability and compliance — coordinated with Architecture and Structure so site reality does not fight the issued set.",
     highlights: [
       "Site Development & Grading",
       "Roads & Pavement Design",
@@ -162,10 +170,10 @@ export const services: Service[] = [
       "Construction Details & Specifications",
     ],
     process: [
-      "Assess site conditions, project requirements, and applicable engineering standards.",
-      "Develop optimized civil infrastructure layouts focused on safety, efficiency, and long-term performance.",
-      "Coordinate seamlessly with architecture, structure and infrastructure for integrated project delivery.",
-      "Deliver construction-ready documentation with engineering support throughout execution.",
+      "Assess site conditions and applicable civil standards.",
+      "Develop layouts for safety, efficiency and long-term performance.",
+      "Hold Architecture, Structure and Infrastructure in agreement before drawings leave the studio.",
+      "Deliver construction-ready documentation with engineering support through execution.",
     ],
     relatedSectors: ["industrial-park", "renewable-energy", "wind-blade"],
     asset: "services/civil.jpg",
@@ -175,9 +183,9 @@ export const services: Service[] = [
     slug: "mechanical-utility-engineering",
     title: "Mechanical Utility Engineering",
     short:
-      "Reliable mechanical utility systems for seamless plant operations and long-term operational reliability.",
+      "Mechanical utility systems for reliable plant operations (not a primary public offering).",
     summary:
-      "Designing reliable and efficient mechanical utility systems that ensure seamless plant operations, optimized performance, and long-term operational reliability for industrial and commercial developments.",
+      "Mechanical utility planning for industrial and commercial facilities. Public FormX scope centres on Architecture, Structure and Infrastructure; this record is retained for legacy URLs only.",
     highlights: [
       "Utility System Planning",
       "HVAC & Ventilation Coordination",
@@ -195,10 +203,10 @@ export const services: Service[] = [
       "Utility BOQ & Technical Specifications",
     ],
     process: [
-      "Evaluate utility requirements, process needs, and project-specific operational demands.",
-      "Develop optimized mechanical utility systems focused on efficiency, maintainability, and constructability.",
-      "Coordinate mechanical services with architectural, structural, civil, and electrical disciplines to eliminate clashes and improve execution.",
-      "Deliver fully coordinated construction-ready documentation with technical support throughout project implementation.",
+      "Evaluate utility and process demands.",
+      "Develop systems for efficiency, maintainability and constructability.",
+      "Coordinate with Architecture and Structure before issue.",
+      "Deliver construction-ready documentation with technical support.",
     ],
     relatedSectors: ["battery", "solar-cell", "food-processing"],
     asset: "services/mechanical.jpg",
@@ -208,9 +216,9 @@ export const services: Service[] = [
     slug: "hvac-engineering",
     title: "HVAC & Refrigeration Engineering",
     short:
-      "Efficient HVAC and refrigeration for indoor comfort, process cooling, and operational performance.",
+      "HVAC and refrigeration for comfort and process cooling (not a primary public offering).",
     summary:
-      "Designing efficient, reliable, and energy-conscious HVAC and refrigeration systems that provide optimal indoor comfort, process cooling, and operational performance for industrial, commercial, and institutional facilities.",
+      "HVAC and refrigeration design for industrial, commercial and institutional facilities. Public FormX scope centres on Architecture, Structure and Infrastructure; this record is retained for legacy URLs only.",
     highlights: [
       "HVAC System Design",
       "Ventilation & Air Distribution",
@@ -228,10 +236,10 @@ export const services: Service[] = [
       "BOQ & Technical Specifications",
     ],
     process: [
-      "Assess project requirements, occupancy, process needs, and environmental conditions.",
-      "Develop optimized HVAC and refrigeration systems focused on comfort, efficiency, reliability, and sustainability.",
-      "Coordinate with architectural, structural, electrical, and mechanical disciplines for seamless system integration.",
-      "Deliver construction-ready documentation with technical support through installation, commissioning, and project execution.",
+      "Assess occupancy, process and environmental conditions.",
+      "Develop systems for comfort, efficiency and reliability.",
+      "Coordinate with Architecture and Structure before issue.",
+      "Deliver construction-ready documentation through commissioning.",
     ],
     relatedSectors: ["food-processing", "semiconductor", "data-center"],
     asset: "services/hvac.jpg",
@@ -241,9 +249,9 @@ export const services: Service[] = [
     slug: "electrical-engineering",
     title: "Electrical Engineering",
     short:
-      "Safe, reliable electrical systems for uninterrupted power distribution and long-term performance.",
+      "Electrical power distribution design (not a primary public offering).",
     summary:
-      "Designing safe, reliable, and energy-efficient electrical systems that ensure uninterrupted power distribution, operational safety, and long-term performance for industrial, commercial, institutional, and infrastructure projects.",
+      "Electrical systems for industrial, commercial and institutional projects. Public FormX scope centres on Architecture, Structure and Infrastructure; this record is retained for legacy URLs only.",
     highlights: [
       "Power Distribution Systems",
       "HT & LT Electrical Design",
@@ -261,10 +269,10 @@ export const services: Service[] = [
       "BOQ & Technical Specifications",
     ],
     process: [
-      "Assess project load requirements, operational needs, and applicable electrical standards.",
-      "Develop optimized electrical systems focused on safety, reliability, energy efficiency, and future scalability.",
-      "Coordinate with architectural, structural, civil, mechanical, and utility disciplines to ensure seamless system integration.",
-      "Deliver fully coordinated construction-ready documentation with engineering support throughout project execution.",
+      "Assess loads and applicable electrical standards.",
+      "Develop systems for safety, reliability and scalability.",
+      "Coordinate with Architecture and Structure before issue.",
+      "Deliver construction-ready documentation through execution.",
     ],
     relatedSectors: ["renewable-energy", "data-center", "ev-electronics"],
     asset: "services/electrical.jpg",
@@ -274,9 +282,9 @@ export const services: Service[] = [
     slug: "fire-protection-engineering",
     title: "Fire Protection Engineering",
     short:
-      "Comprehensive fire protection that safeguards people, assets, and infrastructure to code.",
+      "Fire protection design to code (not a primary public offering).",
     summary:
-      "Designing comprehensive fire protection systems that safeguard people, assets, and infrastructure while ensuring full compliance with national and international fire safety standards.",
+      "Fire protection systems for life safety and asset protection. Public FormX scope centres on Architecture, Structure and Infrastructure; this record is retained for legacy URLs only.",
     highlights: [
       "Fire Water Supply Systems",
       "Hydrant & Hose Reel Networks",
@@ -294,10 +302,10 @@ export const services: Service[] = [
       "BOQ & Technical Specifications",
     ],
     process: [
-      "Assess project risks, occupancy requirements, and applicable fire safety codes.",
-      "Develop reliable fire protection systems that ensure rapid detection, suppression, and emergency response.",
-      "Coordinate seamlessly with architecture, structure, civil and electrical disciplines for fully integrated fire protection solutions.",
-      "Deliver construction-ready documentation with technical support through installation, testing, and commissioning.",
+      "Assess risks, occupancy and applicable fire codes.",
+      "Develop detection and suppression strategies.",
+      "Coordinate Architecture, Structure and Infrastructure so fire protection is part of the issued set — not an afterthought.",
+      "Deliver construction-ready documentation through testing and commissioning.",
     ],
     relatedSectors: ["battery", "data-center", "food-processing"],
     asset: "services/fire.jpg",
@@ -307,9 +315,9 @@ export const services: Service[] = [
     slug: "project-management",
     title: "Project Management & Procurement",
     short:
-      "Structured coordination, technical oversight, and procurement support from planning to execution.",
+      "Coordination and procurement oversight so issued packages stay accountable through execution.",
     summary:
-      "Managing projects from planning to execution through structured coordination, technical oversight, and strategic procurement support to ensure timely delivery, cost efficiency, and quality compliance.",
+      "FORMX manages planning-to-execution coordination for Architecture, Structure and Infrastructure packages — tender support, vendor review and progress oversight until the facility matches what was locked Before Issue.",
     highlights: [
       "Project Planning & Coordination",
       "Design & Construction Management",
@@ -327,10 +335,10 @@ export const services: Service[] = [
       "Project Closeout Documentation",
     ],
     process: [
-      "Define project objectives, timelines, budgets, and execution strategies aligned with client requirements.",
-      "Coordinate multidisciplinary teams, consultants, contractors, and suppliers to maintain seamless project delivery.",
-      "Support procurement through technical evaluations, tender management, vendor selection, and contract coordination.",
-      "Monitor progress, quality, cost, and project risks to ensure successful completion within scope, schedule, and budget.",
+      "Define objectives, timelines and execution strategy with the client brief.",
+      "Keep Architecture, Structure and Infrastructure aligned through issue and site support.",
+      "Support procurement through technical evaluation and tender coordination.",
+      "Monitor progress, quality and risk until closeout.",
     ],
     relatedSectors: ["industrial-park", "renewable-energy", "food-processing"],
     asset: "services/pm.jpg",

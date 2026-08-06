@@ -51,7 +51,7 @@ export const portfolioServices = [
 ];
 
 export const portfolioServicesNote =
-  "We also assist with quantity estimation, construction support, and coordination for seamless execution.";
+  "We also assist with quantity estimation, construction support, and coordination through execution.";
 
 export const portfolioClosing =
   "Every facility brings its own constraints. FormX engineers them before issue — then stands with execution until the work matches intent.";

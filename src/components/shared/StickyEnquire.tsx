@@ -39,7 +39,7 @@ export function StickyEnquire({
           transitionTypes={["nav-forward"]}
           className="inline-flex shrink-0 items-center gap-1.5 bg-x-red px-4 py-2.5 font-label text-[10px] tracking-[0.16em] text-white transition-colors hover:bg-x-red-hover"
         >
-          Enquire
+          Discuss
           <ArrowRight className="size-3.5" />
         </Link>
       </div>

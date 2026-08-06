@@ -108,7 +108,7 @@ function SiteHeader({
                 transitionTypes={["nav-forward"]}
                 className="formx-cut-sm relative hidden h-10 items-center gap-1.5 bg-x-red px-5 font-label text-[10px] tracking-[0.18em] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
               >
-                Enquire
+                Discuss
                 <ArrowUpRight className="size-3.5" />
               </Link>
 
@@ -241,7 +241,7 @@ function SiteHeader({
                   transitionTypes={["nav-forward"]}
                   className="formx-cut flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white"
                 >
-                  Enquire <ArrowUpRight className="size-4" />
+                  Discuss your facility <ArrowUpRight className="size-4" />
                 </Link>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}

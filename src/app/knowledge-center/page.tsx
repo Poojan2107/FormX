@@ -234,7 +234,7 @@ export default function KnowledgeCenterPage() {
                 transitionTypes={["nav-forward"]}
                 className="fx-btn-primary inline-flex justify-center"
               >
-                Enquire Now
+                Discuss your facility
                 <ArrowRight className="size-3.5" />
               </Link>
               <Link
