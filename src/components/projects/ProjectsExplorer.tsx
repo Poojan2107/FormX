@@ -2,16 +2,19 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
 /** Editorial dossier list — filterable, not a card mosaic */
-export function ProjectsExplorer({ projects }: { projects: Project[] }) {
-  const searchParams = useSearchParams();
-  const initialSector = searchParams.get("sector");
+export function ProjectsExplorer({
+  projects,
+  initialSector = "All",
+}: {
+  projects: Project[];
+  initialSector?: string;
+}) {
   const [q, setQ] = useState("");
   const [sector, setSector] = useState(initialSector && initialSector.length ? initialSector : "All");
 
@@ -86,20 +89,20 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               key={project.slug}
               href={`/projects/${project.slug}`}
               transitionTypes={["nav-forward"]}
-            className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-10"
+              className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-10"
             >
               <div className="relative aspect-[16/10] overflow-hidden border border-black/8 bg-[#111] p-2.5 md:col-span-4">
                 <div className="x-corner relative h-full overflow-hidden">
-                <AssetImage
-                  alt={project.title}
-                  slot={project.assets.cover}
-                  kind="facility"
-                  fit={project.assets.frame ?? "cover"}
-                  aspect="auto"
-                  objectPosition="center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
-                />
+                  <AssetImage
+                    alt={project.title}
+                    slot={project.assets.cover}
+                    kind="facility"
+                    fit={project.assets.frame ?? "cover"}
+                    aspect="auto"
+                    objectPosition="center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
                 </div>
               </div>
               <div className="md:col-span-8">

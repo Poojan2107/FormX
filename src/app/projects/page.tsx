@@ -12,7 +12,14 @@ export const metadata: Metadata = {
     "FORM× project portfolio — industrial facilities, PEB warehouses, residential towers, corporate and institutional structures.",
 };
 
-export default function ProjectsPage() {
+type ProjectsPageProps = {
+  searchParams?: Promise<{ sector?: string }>;
+};
+
+export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  const params = searchParams ? await searchParams : undefined;
+  const initialSector = params?.sector;
+
   return (
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
@@ -35,7 +42,7 @@ export default function ProjectsPage() {
 
       <section className="bg-bg py-14 md:py-20">
         <Container>
-          <ProjectsExplorer projects={projects} />
+          <ProjectsExplorer projects={projects} initialSector={initialSector} />
         </Container>
       </section>
 
