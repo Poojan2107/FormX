@@ -132,8 +132,8 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                     "relative inline-flex items-center gap-1.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     highlighted
                       ? onDark
-                        ? "text-white after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
-                        : "text-ink after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
+                        ? "text-white after:absolute after:inset-x-3 after:bottom-0.5 after:h-[2px] after:bg-x-red"
+                        : "text-ink after:absolute after:inset-x-3 after:bottom-0.5 after:h-[2px] after:bg-x-red"
                       : onDark
                         ? "text-white/60 hover:text-white"
                         : "text-ink/65 hover:text-ink",
@@ -148,6 +148,12 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                   }
                 >
                   {item.label}
+                  {routeActive ? (
+                    <span
+                      aria-hidden
+                      className="absolute bottom-0 left-1/2 size-1 -translate-x-1/2 translate-y-[3px] rotate-45 bg-x-red"
+                    />
+                  ) : null}
                   <ChevronDown
                     className={cn(
                       "size-3 opacity-40 transition-transform duration-200",
@@ -162,8 +168,8 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                     "relative inline-flex items-center gap-0.5 px-2.5 py-2 font-label text-[10px] tracking-[0.16em] transition-colors lg:px-3",
                     routeActive
                       ? onDark
-                        ? "text-white after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
-                        : "text-ink after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:bg-x-red"
+                        ? "text-white after:absolute after:inset-x-3 after:bottom-0.5 after:h-[2px] after:bg-x-red"
+                        : "text-ink after:absolute after:inset-x-3 after:bottom-0.5 after:h-[2px] after:bg-x-red"
                       : onDark
                         ? "text-white/60 hover:text-white"
                         : "text-ink/65 hover:text-ink",
@@ -172,6 +178,12 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
                   onMouseEnter={() => setPanel(null)}
                 >
                   {item.label}
+                  {routeActive ? (
+                    <span
+                      aria-hidden
+                      className="absolute bottom-0 left-1/2 size-1 -translate-x-1/2 translate-y-[3px] rotate-45 bg-x-red"
+                    />
+                  ) : null}
                 </Link>
               )}
             </div>

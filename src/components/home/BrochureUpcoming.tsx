@@ -11,7 +11,7 @@ export function BrochureUpcoming() {
   return (
     <section
       id="upcoming"
-      className="relative scroll-mt-28 overflow-hidden bg-[#080808] py-24 text-white md:py-32"
+      className="relative scroll-mt-28 overflow-hidden border-t border-white/[0.06] bg-[#111110] py-24 text-white md:py-32"
     >
       <span aria-hidden className="absolute left-0 top-0 h-[3px] w-24 bg-x-red/75" />
 
@@ -52,7 +52,7 @@ export function BrochureUpcoming() {
                     aria-hidden
                     className="absolute -left-[5px] top-1/2 -translate-y-1/2"
                   >
-                    <div className="size-3 rotate-45 border-2 border-x-red/55 bg-[#080808] transition-all duration-300 group-hover:scale-125 group-hover:border-x-red" />
+                    <div className="size-3 rotate-45 border-2 border-x-red/55 bg-[#111110] transition-all duration-300 group-hover:scale-125 group-hover:border-x-red" />
                     {i === 0 ? (
                       <div className="absolute inset-[6px] rotate-45 bg-x-red animate-pulse" />
                     ) : null}
@@ -60,7 +60,7 @@ export function BrochureUpcoming() {
 
                   <div
                     aria-hidden
-                    className="absolute left-0 top-1/2 h-px w-8 -translate-y-1/2 bg-x-red/25 md:w-10"
+                    className="absolute left-0 top-1/2 h-px w-10 -translate-y-1/2 bg-gradient-to-r from-x-red/40 to-transparent md:w-14"
                   />
 
                   <div>

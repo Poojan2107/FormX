@@ -19,7 +19,7 @@ export function BrochureSpecialized() {
             alt="FormX specialised engineering"
             fill
             unoptimized
-            className="object-cover object-center opacity-55 transition-transform duration-[2.2s] hover:scale-[1.03]"
+            className="object-cover object-center opacity-70 transition-transform duration-[2.2s] hover:scale-[1.03]"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/75 via-black/35 to-transparent" />
@@ -92,14 +92,24 @@ export function BrochureSpecialized() {
           </div>
 
           <Reveal delay={0.2}>
-            <Link
-              href="/contact"
-              transitionTypes={["nav-forward"]}
-              className="fx-btn-primary group mt-10 inline-flex"
-            >
-              Discuss specialised scope
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="fx-btn-primary group inline-flex"
+              >
+                Discuss specialised scope
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/projects"
+                transitionTypes={["nav-forward"]}
+                className="group inline-flex items-center gap-2 font-label text-[10.5px] tracking-[0.2em] text-ink/55 transition-colors hover:text-x-red"
+              >
+                See relevant projects
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </Reveal>
         </div>
       </div>

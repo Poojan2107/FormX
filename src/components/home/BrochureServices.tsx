@@ -42,7 +42,7 @@ export function BrochureServices() {
               >
                 <span
                   aria-hidden
-                  className="absolute right-0 top-0 block h-11 w-11 origin-top-right scale-0 bg-x-red transition-transform duration-300 group-hover:scale-100"
+                  className="absolute right-0 top-0 block h-11 w-11 origin-top-right scale-50 bg-x-red opacity-40 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
                   style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
                 />
 
@@ -93,7 +93,7 @@ export function BrochureServices() {
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
-              className="group inline-flex items-center gap-2 border-b border-transparent pb-0.5 font-label text-[10.5px] tracking-[0.2em] text-ink/55 transition-colors hover:border-x-red hover:text-x-red"
+              className="fx-btn-ghost group"
             >
               All Services
               <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

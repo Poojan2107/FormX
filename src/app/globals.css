@@ -590,6 +590,10 @@ body {
   transform: scaleY(1);
 }
 
+.fx-service-row:hover {
+  background: rgba(224, 49, 40, 0.04);
+}
+
 /* ─── Project card hover ─────────────────────────────────── */
 .fx-project-card {
   position: relative;

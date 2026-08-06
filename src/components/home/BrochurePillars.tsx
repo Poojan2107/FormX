@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { brochurePillars } from "@/data/brochureHome";
@@ -72,12 +74,10 @@ export function BrochurePillars() {
                     <p className="max-w-[48ch] text-[14.5px] leading-[1.85] text-white/68 transition-colors group-hover:text-white/88 md:text-[15.5px]">
                       {pillar.body}
                     </p>
-                    <span
+                    <ArrowUpRight
                       aria-hidden
-                      className="hidden shrink-0 font-label text-[12px] tracking-[0.18em] text-x-red/0 transition-all duration-300 group-hover:text-x-red lg:block"
-                    >
-                      ↗
-                    </span>
+                      className="hidden size-4 shrink-0 text-x-red opacity-0 transition-all duration-300 group-hover:opacity-100 lg:block"
+                    />
                   </div>
                 </div>
               </div>
@@ -93,14 +93,18 @@ export function BrochurePillars() {
 
       <Reveal delay={0.28} from="fade">
         <Container className="relative z-10">
-          <div className="mt-12 flex items-center justify-between gap-6">
+          <div className="mt-12 flex flex-wrap items-center justify-between gap-6">
             <p className="font-label text-[9.5px] tracking-[0.28em] uppercase text-white/28">
               FormX Consultants · Design | Engineering
             </p>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-white/[0.1]" />
-              <span className="font-display text-sm font-black text-x-red/45">×</span>
-            </div>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="group inline-flex items-center gap-2 font-label text-[10.5px] tracking-[0.2em] text-x-red transition-colors hover:text-white"
+            >
+              Discuss your project
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </Container>
       </Reveal>

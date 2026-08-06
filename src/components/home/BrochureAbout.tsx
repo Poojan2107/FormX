@@ -70,7 +70,7 @@ export function BrochureAbout() {
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
-              className="group mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-x-red/55 pb-1.5 font-label text-[10.5px] tracking-[0.22em] text-x-red transition-all hover:border-x-red hover:gap-3.5"
+              className="group mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-x-red/55 pb-1.5 font-label text-[10.5px] tracking-[0.22em] text-x-red transition-colors hover:border-x-red"
             >
               Know More
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
@@ -88,6 +88,7 @@ export function BrochureAbout() {
                     >
                       {m.value}
                     </p>
+                    <span aria-hidden className="mt-3 block h-[2px] w-8 bg-x-red" />
                     <p className="mt-3 max-w-[12ch] font-label text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/48">
                       {m.label}
                     </p>

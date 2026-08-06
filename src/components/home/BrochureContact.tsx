@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
+import { FormxTransparentLogo } from "@/components/ui/FormxTransparentLogo";
 import { brochureFaqs } from "@/data/brochureHome";
 import { site } from "@/data/site";
 
@@ -125,15 +125,7 @@ export function BrochureContact() {
         <div className="grid gap-10 border-b border-ink/[0.08] pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
           <Reveal>
             <div className="mb-8">
-              <Image
-                src="/formx-logo-solid.png"
-                alt="FormX Consultants"
-                width={220}
-                height={94}
-                priority
-                className="h-auto w-[160px] object-contain md:w-[190px]"
-                style={{ mixBlendMode: "multiply" }}
-              />
+              <FormxTransparentLogo size="md" align="left" />
             </div>
             <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
               Contact
@@ -161,7 +153,7 @@ export function BrochureContact() {
               return (
                 <div
                   key={fact.label}
-                  className="flex h-full min-h-[168px] flex-col border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/30 md:p-6"
+                  className="flex h-full min-h-[130px] flex-col border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/30 md:p-6"
                 >
                   <Icon className="size-4 text-x-red" />
                   <dt className="mt-4 font-label text-[9px] uppercase tracking-[0.2em] text-ink/40">
@@ -189,7 +181,16 @@ export function BrochureContact() {
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-8 border-t border-ink/[0.08] pt-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
+        <div
+          aria-hidden
+          className="mt-16 flex items-center gap-4"
+        >
+          <span className="h-px flex-1 bg-ink/[0.1]" />
+          <span className="font-display text-sm font-black text-x-red/50">×</span>
+          <span className="h-px flex-1 bg-ink/[0.1]" />
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <Reveal>
             <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
               FAQ

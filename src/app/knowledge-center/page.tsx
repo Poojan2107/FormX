@@ -60,8 +60,8 @@ export default function KnowledgeCenterPage() {
           <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
             {portfolioSpecialized.map((block, i) => (
               <Reveal key={block.title} delay={0.04 * i} className="h-full">
-                <article className="flex h-full flex-col border border-line bg-white px-6 py-7">
-                  <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
+                <article className="group flex h-full flex-col border border-line bg-white px-6 py-7 transition-all duration-300 hover:border-x-red/35 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)]">
+                  <h3 className="font-display text-xl font-extrabold tracking-tight text-ink transition-colors group-hover:text-x-red">
                     {block.title}
                   </h3>
                   <ul className="mt-5 flex flex-1 flex-col gap-3">
@@ -74,6 +74,10 @@ export default function KnowledgeCenterPage() {
                       </li>
                     ))}
                   </ul>
+                  <span
+                    aria-hidden
+                    className="mt-6 block h-[2px] w-0 bg-x-red transition-all duration-300 group-hover:w-10"
+                  />
                 </article>
               </Reveal>
             ))}
@@ -90,13 +94,21 @@ export default function KnowledgeCenterPage() {
           <div className="mt-10 divide-y divide-line border-y border-line">
             {portfolioOngoing.map((item, i) => (
               <Reveal key={item.title} delay={0.03 * i}>
-                <div className="py-7">
-                  <h3 className="font-display text-base font-extrabold tracking-tight text-ink md:text-lg">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 max-w-3xl text-[15px] leading-[1.8] text-ink-muted">
-                    {item.detail}
-                  </p>
+                <div className="flex gap-4 py-7">
+                  <span className="relative mt-2 flex size-3 shrink-0 items-center justify-center">
+                    <span className="size-2.5 rotate-45 border border-x-red/50 bg-transparent" />
+                    {i === 0 ? (
+                      <span className="absolute inset-[3px] rotate-45 bg-x-red animate-pulse" />
+                    ) : null}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base font-extrabold tracking-tight text-ink md:text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 max-w-3xl text-[15px] leading-[1.8] text-ink-muted">
+                      {item.detail}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}

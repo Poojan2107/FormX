@@ -62,7 +62,7 @@ export default function AboutPage() {
           <div className="mt-12 grid items-stretch gap-6 md:grid-cols-3 md:gap-5">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i} className="h-full">
-                <div className="flex h-full flex-col border border-line bg-white px-6 py-7">
+                <div className="x-corner group flex h-full flex-col border border-line bg-white px-6 py-7">
                   <span className="editorial-meta text-x-red">0{i + 1}</span>
                   <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
                     {p.title}
@@ -100,7 +100,7 @@ export default function AboutPage() {
               </p>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-5 md:items-stretch">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:items-stretch lg:grid-cols-5">
             {formxMethod.stages.map((s, i) => (
               <Reveal key={s.id} delay={0.04 * i} className="h-full">
                 <div className="flex h-full flex-col border border-line bg-white px-5 py-6">

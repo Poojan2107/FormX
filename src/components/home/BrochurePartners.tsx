@@ -35,10 +35,10 @@ export function BrochurePartners() {
             {brochurePartners.map((partner, i) => (
               <div
                 key={partner.name}
-                className="group flex min-h-[132px] flex-col justify-between border border-ink/[0.1] bg-white px-6 py-6 transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] md:min-h-[148px] md:px-7 md:py-7"
+                className="group relative flex min-h-[132px] flex-col justify-between overflow-hidden border border-ink/[0.1] bg-white px-6 py-6 transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] md:min-h-[148px] md:px-7 md:py-7"
                 style={{
                   clipPath:
-                    "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
+                    "polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%)",
                 }}
               >
                 <div>
@@ -52,6 +52,10 @@ export function BrochurePartners() {
                 <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
                   {partner.tag}
                 </p>
+                <span
+                  aria-hidden
+                  className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-x-red transition-transform duration-300 group-hover:scale-x-100"
+                />
               </div>
             ))}
           </div>

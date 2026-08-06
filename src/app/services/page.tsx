@@ -66,7 +66,7 @@ export default function ServicesPage() {
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className="fx-service-row group grid gap-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8 md:py-12"
+                  className="fx-service-row group grid gap-4 px-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8 md:px-5 md:py-12"
                 >
                   <span className="editorial-meta text-x-red md:col-span-1">
                     0{i + 1}
@@ -78,7 +78,7 @@ export default function ServicesPage() {
                     {item.body}
                   </p>
                   <span className="hidden justify-end md:col-span-1 md:flex">
-                    <ArrowUpRight className="size-5 text-ink/20 group-hover:text-x-red" />
+                    <ArrowUpRight className="size-5 text-ink/20 transition-colors group-hover:text-x-red" />
                   </span>
                 </Link>
               </Reveal>
@@ -94,13 +94,16 @@ export default function ServicesPage() {
           <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
             Architecture · Structure · Infrastructure
           </h2>
-          <div className="mt-14 grid gap-12 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-5">
             {groups.map((g) => (
-              <div key={g.title}>
+              <div
+                key={g.title}
+                className="border border-line bg-white p-6 md:p-7"
+              >
                 <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
                   {g.title}
                 </h3>
-                <ul className="mt-6 space-y-4">
+                <ul className="mt-6 space-y-1">
                   {g.slugs.map((slug) => {
                     const svc = services.find((s) => s.slug === slug);
                     if (!svc) return null;
@@ -110,10 +113,13 @@ export default function ServicesPage() {
                         <Link
                           href={`/services/${slug}`}
                           transitionTypes={["nav-forward"]}
-                          className="group block border-t border-line pt-4 first:border-t-0 first:pt-0"
+                          className="group block border-t border-line px-3 py-4 transition-colors first:border-t-0 hover:bg-[#faf9f5]"
                         >
-                          <span className="font-display text-base font-bold tracking-tight text-ink group-hover:text-x-red">
-                            {svc.title}
+                          <span className="flex items-center justify-between gap-3">
+                            <span className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                              {svc.title}
+                            </span>
+                            <ArrowUpRight className="size-3.5 shrink-0 text-ink/20 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
                           </span>
                           {story?.lead ? (
                             <span className="mt-1.5 block text-[13px] leading-[1.7] text-ink/50 line-clamp-2">
