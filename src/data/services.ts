@@ -16,9 +16,9 @@ export const services: Service[] = [
     slug: "architectural-design",
     title: "Architectural Drawings",
     short:
-      "Construction-ready architectural drawings — operations and buildability locked before elevations are finished.",
+      "Construction-ready architectural drawings â€” operations and buildability locked before elevations are finished.",
     summary:
-      "FORMX prepares architectural drawings so the facility can be built and operated as intended. Layouts respect structural bays and infrastructure routes; statutory sets match what leaves the studio — coordinated with Structure and Infrastructure Before Issue.",
+      "FORMX prepares architectural drawings so the facility can be built and operated as intended. Layouts respect structural bays and infrastructure routes; statutory sets match what leaves the studio â€” coordinated with Structure and Infrastructure Before Issue.",
     highlights: [
       "Architectural planning & layout development",
       "Industrial, commercial & institutional building design",
@@ -49,7 +49,7 @@ export const services: Service[] = [
     short:
       "Site infrastructure that answers circulation, drainage and utilities before the facility is issued.",
     summary:
-      "FORMX designs site infrastructure so roads, stormwater, water supply and external works serve real operations — coordinated with Architecture and Structure, sized for statutory requirements and future expansion.",
+      "FORMX designs site infrastructure so roads, stormwater, water supply and external works serve real operations â€” coordinated with Architecture and Structure, sized for statutory requirements and future expansion.",
     highlights: [
       "Site planning & infrastructure layout",
       "Internal roads & pavement design",
@@ -80,7 +80,7 @@ export const services: Service[] = [
     short:
       "Practical efficiency strategies that remain buildable within Architecture, Structure and Infrastructure.",
     summary:
-      "FORMX evaluates climate and site conditions, then integrates energy and water strategies that Architecture and Structure can actually carry — without decorative afterthoughts after tender.",
+      "FORMX evaluates climate and site conditions, then integrates energy and water strategies that Architecture and Structure can actually carry â€” without decorative afterthoughts after tender.",
     highlights: [
       "Climate Responsive Design",
       "Passive Cooling & Daylighting Strategies",
@@ -113,7 +113,7 @@ export const services: Service[] = [
     slug: "structural-engineering",
     title: "Structural Engineering",
     short:
-      "Structural systems sized for real loads — detailed so fabrication and cages can be erected without guesswork.",
+      "Structural systems sized for real loads â€” detailed so fabrication and cages can be erected without guesswork.",
     summary:
       "FORMX designs RCC and steel frames for industrial, commercial, institutional and residential work. Load paths, PEB/RCC interfaces, seismic and wind detailing are closed with Architecture and Infrastructure before issue.",
     highlights: [
@@ -152,7 +152,7 @@ export const services: Service[] = [
     short:
       "Civil works that set levels, roads and drainage so the site can actually receive the facility.",
     summary:
-      "FORMX delivers grading, roads, drainage and external civil layouts focused on constructability and compliance — coordinated with Architecture and Structure so site reality does not fight the issued set.",
+      "FORMX delivers grading, roads, drainage and external civil layouts focused on constructability and compliance â€” coordinated with Architecture and Structure so site reality does not fight the issued set.",
     highlights: [
       "Site Development & Grading",
       "Roads & Pavement Design",
@@ -304,7 +304,7 @@ export const services: Service[] = [
     process: [
       "Assess risks, occupancy and applicable fire codes.",
       "Develop detection and suppression strategies.",
-      "Coordinate Architecture, Structure and Infrastructure so fire protection is part of the issued set — not an afterthought.",
+      "Coordinate Architecture, Structure and Infrastructure so fire protection is part of the issued set â€” not an afterthought.",
       "Deliver construction-ready documentation through testing and commissioning.",
     ],
     relatedSectors: ["battery", "data-center", "food-processing"],
@@ -317,7 +317,7 @@ export const services: Service[] = [
     short:
       "Coordination and procurement oversight so issued packages stay accountable through execution.",
     summary:
-      "FORMX manages planning-to-execution coordination for Architecture, Structure and Infrastructure packages — tender support, vendor review and progress oversight until the facility matches what was locked Before Issue.",
+      "FORMX manages planning-to-execution coordination for Architecture, Structure and Infrastructure packages â€” tender support, vendor review and progress oversight until the facility matches what was locked Before Issue.",
     highlights: [
       "Project Planning & Coordination",
       "Design & Construction Management",
