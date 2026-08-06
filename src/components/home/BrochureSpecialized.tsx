@@ -15,7 +15,7 @@ export function BrochureSpecialized() {
       <div className="grid lg:grid-cols-2">
         <div className="relative min-h-[440px] overflow-hidden bg-[#0a0a0a] lg:min-h-full">
           <Image
-            src="/assets/projects/brochure/brochure_p5_1.png"
+            src="/assets/projects/brochure/brochure_p7_1.png"
             alt="FormX specialised engineering"
             fill
             unoptimized

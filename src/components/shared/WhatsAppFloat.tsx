@@ -51,12 +51,12 @@ export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className={cn(
-        "fixed right-4 z-50 flex size-14 items-center justify-center rounded-full bg-x-red text-white shadow-[0_12px_32px_rgba(222,48,36,0.45)] transition-transform hover:scale-105 md:right-8",
-        lift ? "bottom-[4.75rem] md:bottom-8" : "bottom-5 md:bottom-8",
+        "fixed right-4 z-50 flex size-12 items-center justify-center rounded-full bg-x-red text-white shadow-[0_12px_32px_rgba(222,48,36,0.45)] transition-transform hover:scale-105 md:right-8 md:size-14",
+        lift ? "bottom-[5.25rem] md:bottom-8" : "bottom-5 md:bottom-8",
       )}
       style={{ marginBottom: "env(safe-area-inset-bottom)" }}
     >
-      <span className="font-display text-lg font-black leading-none">
+      <span className="font-display text-base font-black leading-none md:text-lg">
         F<span className="text-white/90">×</span>
       </span>
     </a>

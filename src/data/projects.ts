@@ -73,7 +73,6 @@ export const projects: Project[] = [
     assets: {
       cover: "projects/brochure/brochure_p3_2.png",
       gallery: [
-        "projects/brochure/brochure_p3_1.png",
         "projects/brochure/brochure_p3_2.png",
         "projects/pdf_p20_1.jpeg",
         "projects/pdf_p21_1.jpeg",
@@ -104,7 +103,6 @@ export const projects: Project[] = [
     assets: {
       cover: "projects/brochure/brochure_p3_4.png",
       gallery: [
-        "projects/brochure/brochure_p3_3.png",
         "projects/brochure/brochure_p3_4.png",
         "projects/peb-warehouse.jpg",
         "projects/peb-warehouse-gallery.jpg",
@@ -135,7 +133,6 @@ export const projects: Project[] = [
     assets: {
       cover: "projects/brochure/brochure_p4_4.png",
       gallery: [
-        "projects/brochure/brochure_p4_1.png",
         "projects/brochure/brochure_p4_4.png",
         "projects/pdf_p13_1.jpeg",
         "projects/pdf_p14_1.jpeg",
@@ -169,7 +166,6 @@ export const projects: Project[] = [
       cover: "projects/brochure/brochure_p4_2.png",
       gallery: [
         "projects/brochure/brochure_p4_2.png",
-        "projects/brochure/brochure_p4_3.png",
         "projects/jignesh-patel-bungalow.jpg",
         "projects/pdf_p9_1.jpeg",
       ],
@@ -200,7 +196,6 @@ export const projects: Project[] = [
     assets: {
       cover: "projects/brochure/brochure_p5_3.png",
       gallery: [
-        "projects/brochure/brochure_p5_2.png",
         "projects/brochure/brochure_p5_3.png",
         "projects/qc-storage-room.jpg",
         "projects/qc-storage-room-gallery.jpg",
@@ -263,9 +258,7 @@ export const projects: Project[] = [
     assets: {
       cover: "projects/brochure/brochure_p6_3.png",
       gallery: [
-        "projects/brochure/brochure_p6_2.png",
         "projects/brochure/brochure_p6_3.png",
-        "projects/brochure/brochure_p6_4.png",
         "projects/pdf_p1_1.jpeg",
         "projects/pdf_p2_1.jpeg",
       ],
@@ -296,7 +289,6 @@ export const projects: Project[] = [
       cover: "projects/brochure/brochure_p6_5.png",
       gallery: [
         "projects/brochure/brochure_p6_5.png",
-        "projects/brochure/brochure_p6_1.png",
         "projects/nutan-vidhyalaya.jpg",
         "projects/pdf_p6_1.jpeg",
       ],
@@ -585,11 +577,11 @@ export const projects: Project[] = [
 /** Full-bleed atmosphere visuals from FORMX.pdf (non-project pages) */
 export const brochureVisuals = {
   heroModel: "projects/brochure/brochure_p1_1.png",
-  pillars: "projects/brochure/brochure_p1_2.png",
+  pillars: "projects/brochure/brochure_p1_1.png",
   specializedBanner: "projects/brochure/brochure_p7_1.png",
   partnersBanner: "projects/brochure/brochure_p9_1.png",
   contactFacade: "projects/brochure/brochure_p10_1.png",
-  logoMark: "projects/brochure/brochure_p1_7.png",
+  logoMark: "projects/brochure/brochure_p1_1.png",
 };
 
 export const partnerTypes = [

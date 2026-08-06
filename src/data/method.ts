@@ -60,7 +60,7 @@ export const formxMethod = {
       why: "Packages leave with clear scopes, interfaces and details contractors can price and erect. Volume of sheets is not the measure of care.",
       prevents: "RFIs that restart design after fabrication has begun.",
       disciplines: "Architecture · Structure · Infrastructure",
-      slot: "projects/brochure/brochure_p1_2.png",
+      slot: "projects/brochure/brochure_p1_1.png",
       caption: "Issue is a promise",
     },
     {
@@ -142,8 +142,8 @@ export const vapiCaseStudy = {
       fit: "contain" as const,
     },
     {
-      slot: "projects/brochure/brochure_p3_1.png",
-      caption: "Brochure record — hybrid RCC & steel industrial form",
+      slot: "projects/brochure/brochure_p3_4.png",
+      caption: "PEB warehouse record — Kheda · machine loads on existing pedestals",
       fit: "contain" as const,
     },
     {

@@ -17,9 +17,10 @@ export function BrochureAbout() {
       <div className="grid lg:grid-cols-2">
         <Reveal from="left" className="relative min-h-[440px] overflow-hidden bg-[#ece9e2] lg:min-h-[760px]">
           <AssetImage
-            slot="projects/brochure/brochure_p3_4.png"
-            alt="FormX industrial facility"
+            slot="about/home-about.jpg"
+            alt="FormX studio — coordination before issue"
             fit="cover"
+            kind="studio"
             tone="light"
             aspect="auto"
             priority
@@ -27,13 +28,13 @@ export function BrochureAbout() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="absolute inset-0 h-full w-full"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent lg:bg-gradient-to-r lg:from-black/25 lg:via-transparent lg:to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-black/35 lg:via-transparent lg:to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9 lg:p-10">
             <p className="font-label text-[10px] tracking-[0.28em] uppercase text-white/70">
-              Studio · Built work
+              Studio · Practice
             </p>
             <p className="mt-2 max-w-[22ch] font-display text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
-              Facilities sized for operations
+              Judgement stays close to the work
             </p>
           </div>
           <span aria-hidden className="absolute left-0 top-0 h-[3px] w-20 bg-x-red" />
