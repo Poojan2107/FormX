@@ -4,11 +4,10 @@ import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { getService, services, brochureProjects } from "@/data/site";
 import { getServiceStory } from "@/data/serviceStories";
+import { Container } from "@/components/ui/Container";
 import { DisciplineStory } from "@/components/services/DisciplineStory";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
-import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -93,7 +92,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 {story.motif}
               </p>
             </div>
-            <p className="max-w-xl text-[16px] leading-[1.9] text-white/55 lg:pb-1">
+            <p className="fx-read text-[16px] text-white/55 lg:pb-1">
               {story.lead || service.short}
             </p>
           </div>
@@ -152,25 +151,24 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="border-b border-line bg-[#f7f6f2] py-14 md:py-16">
+      <section className="border-b border-ink/[0.08] bg-white py-14 md:py-16">
         <Container>
           <p className="eyebrow text-x-red">Related disciplines</p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 divide-y divide-ink/[0.08] border-y border-ink/[0.08]">
             {others.map((s) => (
-              <Reveal key={s.slug}>
-                <Link
-                  href={`/services/${s.slug}`}
-                  transitionTypes={["nav-forward"]}
-                  className="group flex h-full flex-col border border-ink/[0.08] bg-white px-5 py-5 transition-colors hover:border-x-red/40"
-                >
-                  <span className="font-display text-[15px] font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
-                    {s.title}
-                  </span>
-                  <span className="mt-3 inline-flex items-center gap-1 font-label text-[9px] tracking-[0.16em] text-ink/35 group-hover:text-x-red">
-                    Open <ArrowRight className="size-3" />
-                  </span>
-                </Link>
-              </Reveal>
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                transitionTypes={["nav-forward"]}
+                className="group flex items-center justify-between gap-4 py-5"
+              >
+                <span className="font-display text-[15px] font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                  {s.title}
+                </span>
+                <span className="inline-flex items-center gap-1 font-label text-[9px] tracking-[0.16em] text-ink/30 group-hover:text-x-red">
+                  Open <ArrowRight className="size-3" />
+                </span>
+              </Link>
             ))}
           </div>
         </Container>

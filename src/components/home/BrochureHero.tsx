@@ -58,7 +58,7 @@ export function BrochureHero() {
         }}
       />
 
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-6 py-16 md:px-10 lg:px-16 xl:px-20">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-5 py-12 sm:px-6 sm:py-16 md:px-10 lg:px-16 xl:px-20">
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 8 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
@@ -69,7 +69,7 @@ export function BrochureHero() {
         </motion.p>
 
         {/* Brand = hero landscape */}
-        <h1 className="mt-8 max-w-[18ch]" aria-label="FormX Consultants">
+        <h1 className="mt-6 max-w-[18ch] sm:mt-8" aria-label="FormX Consultants">
           <span className="sr-only">FormX Consultants — {brochureBrand.slogan}</span>
           <div className="overflow-hidden" aria-hidden>
             <motion.span
@@ -77,7 +77,7 @@ export function BrochureHero() {
               animate={ready ? { y: "0%" } : undefined}
               transition={{ duration: 1.05, delay: 0.18, ease }}
               className="block font-display font-black leading-[0.88] tracking-[-0.055em] text-ink"
-              style={{ fontSize: "clamp(3.4rem, 12vw, 9.5rem)" }}
+              style={{ fontSize: "clamp(2.85rem, 14vw, 9.5rem)" }}
             >
               Form<span className="text-x-red">X</span>
             </motion.span>
@@ -86,7 +86,7 @@ export function BrochureHero() {
             initial={reduce ? false : { opacity: 0 }}
             animate={ready ? { opacity: 1 } : undefined}
             transition={{ duration: 0.8, delay: 0.55, ease }}
-            className="mt-4 block font-display text-[11px] font-extrabold uppercase tracking-[0.42em] text-ink/55 md:text-[13px] md:tracking-[0.48em]"
+            className="mt-3 block font-display text-[10px] font-extrabold uppercase tracking-[0.4em] text-ink/55 sm:mt-4 sm:text-[11px] md:text-[13px] md:tracking-[0.48em]"
             aria-hidden
           >
             Consultants
@@ -97,7 +97,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.65, ease }}
-          className="mt-8 max-w-[28ch] font-display text-[1.35rem] font-bold leading-[1.25] tracking-tight text-ink md:text-[1.65rem]"
+          className="mt-6 max-w-[28ch] font-display text-[1.2rem] font-bold leading-[1.25] tracking-tight text-ink sm:mt-8 sm:text-[1.35rem] md:text-[1.65rem]"
         >
           {brochureBrand.slogan}
           <span className="text-x-red">×</span>
@@ -107,7 +107,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.78, ease }}
-          className="fx-read mt-5 text-[15.5px] text-ink/58 md:text-[16.5px]"
+          className="fx-read mt-4 text-[15px] text-ink/58 sm:mt-5 sm:text-[15.5px] md:text-[16.5px]"
         >
           Architecture, Structure and Infrastructure engineered together before drawings leave the
           studio.
@@ -117,7 +117,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.7, delay: 0.92, ease }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+          className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center"
         >
           <Link
             href="/contact"

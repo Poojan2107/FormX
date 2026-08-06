@@ -85,7 +85,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   {project.client} · {project.location}
                 </p>
               </div>
-              <p className="text-[15px] leading-[1.9] text-white/55 lg:pb-1">
+              <p className="fx-read text-[15px] text-white/55 lg:pb-1">
                 Full Before × Issue investigation — the decisions that locked Architecture and
                 Structure before drawings left the studio.
               </p>
@@ -121,7 +121,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div>
                 <Reveal>
                   <p className="eyebrow text-x-red">Brochure record</p>
-                  <p className="mt-5 text-[16.5px] leading-[1.9] text-ink/62">
+                  <p className="fx-read-wide mt-5 text-[16.5px] text-ink/62">
                     {project.description}
                   </p>
                 </Reveal>
@@ -129,13 +129,13 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <div className="mt-12 space-y-0 divide-y divide-ink/[0.08] border-y border-ink/[0.08]">
                   <Reveal className="py-8">
                     <p className="eyebrow text-x-red">The risk Before × Issue</p>
-                    <p className="mt-4 text-[15px] leading-[1.9] text-ink/58">
+                    <p className="fx-read-wide mt-4 text-[15px] text-ink/58">
                       {vapiCaseStudy.risk}
                     </p>
                   </Reveal>
                   <Reveal className="py-8">
                     <p className="eyebrow text-x-red">What we refused</p>
-                    <p className="mt-4 text-[15px] leading-[1.9] text-ink/58">
+                    <p className="fx-read-wide mt-4 text-[15px] text-ink/58">
                       {vapiCaseStudy.rejected}
                     </p>
                   </Reveal>
@@ -165,7 +165,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
                 <Reveal className="mt-14 border-t border-ink/[0.08] pt-10">
                   <p className="eyebrow text-x-red">Lesson</p>
-                  <p className="mt-5 text-[16px] leading-[1.9] text-ink/62">
+                  <p className="fx-read-wide mt-5 text-[16px] text-ink/62">
                     {vapiCaseStudy.lesson}
                   </p>
                 </Reveal>
@@ -314,7 +314,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {project.client} · {project.location}
               </p>
             </div>
-            <p className="text-[15px] leading-[1.9] text-white/55 lg:pb-1">
+            <p className="fx-read text-[15px] text-white/55 lg:pb-1">
               Brochure record — coordinated Architecture, Structure and Infrastructure before
               issue.
             </p>
@@ -347,20 +347,20 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
             <div>
               <p className="eyebrow text-x-red">What was delivered</p>
-              <p className="mt-5 text-[16.5px] leading-[1.9] text-ink/62">{project.description}</p>
+              <p className="fx-read-wide mt-5 text-[16.5px] text-ink/62">{project.description}</p>
 
               {project.risk || project.refused ? (
                 <div className="mt-12 space-y-0 divide-y divide-ink/[0.08] border-y border-ink/[0.08]">
                   {project.risk ? (
                     <div className="py-8">
                       <p className="eyebrow text-x-red">The risk Before × Issue</p>
-                      <p className="mt-4 text-[15px] leading-[1.9] text-ink/58">{project.risk}</p>
+                      <p className="fx-read-wide mt-4 text-[15px] text-ink/58">{project.risk}</p>
                     </div>
                   ) : null}
                   {project.refused ? (
                     <div className="py-8">
                       <p className="eyebrow text-x-red">What we refused</p>
-                      <p className="mt-4 text-[15px] leading-[1.9] text-ink/58">{project.refused}</p>
+                      <p className="fx-read-wide mt-4 text-[15px] text-ink/58">{project.refused}</p>
                     </div>
                   ) : null}
                 </div>
