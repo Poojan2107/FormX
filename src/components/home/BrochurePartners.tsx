@@ -4,36 +4,75 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { brochurePartners, brochureContactNote } from "@/data/brochureHome";
 
-/** Partners as a quiet word-index — no fake logos */
+/**
+ * PARTNERS — "Who Places Trust in FormX"
+ * Pure white background — breathing space before the dark Contact finale.
+ * Left: editorial header + note paragraph.
+ * Right: partner types as premium formx-cut pills.
+ */
 export function BrochurePartners() {
   return (
-    <section id="partners" className="scroll-mt-28 bg-[#f4f3f0] py-20 md:py-28">
+    <section id="partners" className="scroll-mt-28 bg-white py-20 md:py-28">
       <Container>
-        <Reveal>
-          <p className="font-label text-[10px] tracking-[0.28em] text-x-red">Partners</p>
-          <h2
-            className="mt-4 max-w-[14ch] font-display font-bold leading-[1.05] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.15rem)" }}
-          >
-            Who we partner with
-          </h2>
-          <p className="mt-5 max-w-[44ch] text-[15px] leading-[1.7] text-ink/50">
-            {brochureContactNote}
-          </p>
-        </Reveal>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
 
-        <ul className="mt-14 flex flex-wrap gap-3 md:gap-4">
-          {brochurePartners.map((partner, i) => (
-            <Reveal key={partner.name} delay={0.04 * i} from="fade">
-              <li className="group border border-ink/10 bg-white px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-x-red/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] md:px-8 md:py-6">
-                <p className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:text-lg">
-                  {partner.name}
-                </p>
-                <p className="mt-1 text-[12px] text-ink/40">{partner.tag}</p>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
+          {/* ── Left: Header ─────────────────────────────────── */}
+          <Reveal>
+            <p className="font-label text-[10px] tracking-[0.3em] text-x-red">
+              Partners
+            </p>
+            <h2
+              className="mt-4 max-w-[16ch] font-display font-extrabold leading-[1.04] tracking-tight text-ink"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.15rem)" }}
+            >
+              Who places trust in FormX
+            </h2>
+            <p className="mt-5 max-w-[38ch] text-[15px] leading-[1.8] text-ink/48">
+              {brochureContactNote}
+            </p>
+
+            {/* Red accent line */}
+            <div className="mt-8 flex items-center gap-3">
+              <span className="h-px w-8 bg-x-red" />
+              <span className="font-label text-[9px] tracking-[0.24em] text-ink/30">
+                Clients · Architects · Contractors
+              </span>
+            </div>
+          </Reveal>
+
+          {/* ── Right: Partner pills ─────────────────────────── */}
+          <Reveal delay={0.1}>
+            <div className="flex flex-wrap gap-3 md:gap-4">
+              {brochurePartners.map((partner, i) => (
+                <div
+                  key={partner.name}
+                  className="fx-partner-pill group cursor-default border border-ink/[0.12] bg-[#f9f8f5] px-6 py-5 md:px-7 md:py-6"
+                  style={{
+                    clipPath:
+                      "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
+                  }}
+                >
+                  <p className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:text-lg">
+                    {partner.name}
+                  </p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-ink/35">
+                    {partner.tag}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+        </div>
+
+        {/* ── Red × separator before contact ───────────────────── */}
+        <Reveal delay={0.2} from="fade">
+          <div className="mt-16 flex items-center gap-4">
+            <span className="h-px flex-1 bg-ink/[0.08]" />
+            <span className="font-display font-black text-x-red/40 text-2xl">×</span>
+            <span className="h-px w-12 bg-x-red/25" />
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

@@ -1,0 +1,663 @@
+================================================================================
+FORMX CONSULTANTS WEBSITE
+POST–CLIENT REVIEW IMPLEMENTATION LOG
+================================================================================
+
+Document purpose
+----------------
+This file records, in full detail, everything that was done to the FormX website
+AFTER the client / founder reviewed an earlier build and marked up feedback on:
+
+  • Home page comments.pdf
+  • ABOUT US COMMENTS.pdf
+  • FORMX.pdf (company brochure — authoritative copy & project list)
+
+Date of this implementation cycle: 3 August 2026
+Repository: https://github.com/Poojan2107/FormX.git
+Branch pushed: main
+Final send-out commit: 0d69923
+  message: fix(review): close founder comment marks for client send-out
+
+Related commits in this cycle (newest first):
+  0d69923  fix(review): close founder comment marks for client send-out
+  46433b5  fix(comms): complete remaining founder comment marks exactly
+  bd2950a  feat(site): client-preview ready from FORMX.pdf and founder feedback
+  e8ef6e5  feat(portfolio): sync FORMX.pdf brochure into site proof
+  da0ee64  fix(data): restore proper em dashes after bulk copy edits
+  b4044b1  fix(comms): complete founder feedback sweep and trust polish
+  8e91707  fix(comms): apply remaining founder contact and language marks
+  f2be198  feat(comms): redesign site as FORMX headquarters narrative
+
+Annotation assets used during implementation (local, not committed):
+  .planning/home_comment_p1.png … home_comment_p9.png
+  .planning/about_comment_p1.png … about_comment_p6.png
+  ABOUT US COMMENTS.pdf
+  Home page comments.pdf
+  FORMX.pdf
+
+External reference the founder pointed at for LIMITED inspiration only:
+  https://www.vmsconsultants.com/
+  (Used only where annotations said “Ref VMS” / “make like this” /
+   “Like this” — NOT a full VMS clone.)
+
+
+================================================================================
+1. WHAT THE CLIENT HAD REVIEWED (PRE-CHANGE STATE)
+================================================================================
+
+Before this cycle, the site still read as a polished marketing/template product,
+not as the digital headquarters of a structural / industrial engineering practice.
+
+Homepage journey they saw (approximate):
+  Hero (busy)
+    → About / trust matrix style blocks
+    → Projects
+    → Services (10 coordinated disciplines framing)
+    → Construction Sequence (6-stage interactive “signature” engine)
+    → Sectors grid
+    → Lead / CTA strip
+    → Large stats / “FORMX by Numbers”
+    → Testimonials / client feedback
+    → Footer
+
+Problems the founder marked (themes across PDFs):
+  • Too much marketing language and template UI (cards, pills, numbered nav).
+  • Hero clutter: CAD overlay toggle, rotating marketing headlines, project
+    slide card, stats visible immediately on open.
+  • Wrong contact / GREENFIELD label in header.
+  • Sectors in primary navigation.
+  • MEP listed everywhere; public story should be Architecture · Structure · Infra.
+  • Dummy / invented content (fake blogs, news, career roles, client logos,
+    practice-lead cards).
+  • About page: photo background, crumbs, stats bar, methodology card stacks,
+    design-feature “Why Choose” cards instead of human values.
+  • Construction Sequence section crossed out entirely on home.
+  • Featured Portfolio grid of non-brochure / wrong framing crossed out.
+  • Testimonials + dark “Track Record of Industrial Scale” stats crossed out.
+  • Footer copy and mega wordmark not matching brochure / Jacobs-scale ask.
+  • Need exact brochure language and real completed projects from FORMX.pdf.
+
+
+================================================================================
+2. NORTH STAR USED DURING IMPLEMENTATION
+================================================================================
+
+Every page was judged against:
+
+  “If I am planning a ₹50–₹500 crore industrial project, why should I trust
+   FORMX over another consultant?”
+
+Rules applied:
+  • Communication over decorative UI.
+  • Exact brochure language where available (FORMX.pdf).
+  • No dummy content on public pages.
+  • Crossed-out sections must be removed (not “improved in place”).
+  • Checked items must be kept.
+  • VMS inspiration only where annotated.
+  • Public service framing = Architecture · Structure · Infrastructure only
+    (founder: “Remove MEP from everywhere” / “only Add Structure Architecture
+    & Infra”).
+
+
+================================================================================
+3. SOURCE MATERIALS → IMPLEMENTATION RULES
+================================================================================
+
+3.1 FORMX.pdf (brochure)
+------------------------
+Treated as source of truth for:
+  • Slogan: “Where Vision Takes Form”
+  • About / practice intro paragraphs (technical proficiency + practical wisdom)
+  • Four service typologies with exact descriptions:
+      1. High-Rise Structures & Residential
+      2. Industrial Projects
+      3. Institutional & Commercial
+      4. Strengthening & Retrofitting
+  • Closing line about quantity estimation, construction support, coordination
+  • Brand statement: “At FormX, we don't just design structures…”
+  • Completed projects list (8 brochure projects) with exact descriptions
+  • Specialized / ongoing work lists
+  • Partner types (not fake logos)
+  • Contact: inquiry@formxconsultants.com, +91 81284 44585,
+    311, Addor Aspire, University Area, Ahmedabad
+  • Hiren J. Shah — Founder & Managing Partner, Structural Engineer Grade 1
+    (AMC / BMC)
+  • Practice pillars: Structural Integrity, Functional Design, Technical
+    Expertise, Collaborative Insight
+
+Brochure images were extracted into:
+  public/assets/projects/brochure/brochure_p*.png
+Brochure PDF served at:
+  public/brochure/formx.pdf
+
+3.2 Home page comments.pdf (page-by-page marks → actions)
+---------------------------------------------------------
+
+HOME p1 — Hero / Header
+  MARKED:
+    • Add “Home” idea / calm nav; check About, Services, Projects, Insights
+    • Cross out “04 SECTORS” from nav
+    • Cross out GREENFIELD indicator
+    • Update phone (portfolio number +91 81284 44585 used)
+    • Cross out CAD overlay / small marketing eyebrow / hero stats bar on open
+    • “Remove background images instead. It should come, in next scroll.”
+    • Animated FormX logo / wordmark; “Where vision takes form”; Ref VMS
+    • WhatsApp: circular red logo (not green chat bubble styling)
+  IMPLEMENTED:
+    • Nav: About Us, Services, Projects, Insights (no Sectors; no 01/02 numbers)
+    • No GREENFIELD chip
+    • Phone + Enquire in header
+    • Hero rebuilt: animated FORM× wordmark, “Consultants · Design | Engineering”,
+      slogan “Where Vision Takes Form”, brochure body copy, two CTAs
+    • Photography reveals after scroll / short delay (not hard marketing overlay
+      stack on first paint)
+    • Hero imagery from brochure assets with contain framing
+    • WhatsApp float: red circular F× mark; appears after scroll (~280px)
+
+HOME p2 — About + stats
+  MARKED:
+    • Add About Us paragraph BEFORE empirical evidence block
+    • Cross out “EMPIRICAL EVIDENCE OVER MARKETING” framing
+    • Keep: 25+ Completed Projects, 15 Lakh+ Sq.Ft Designed, 5 States Served
+    • Keep: Seismic & Wind code / construction-ready style chips
+    • Cross out: 15+ Industrial Clients, 10+ Steel, 10+ Warehouses, etc.
+    • Logo + “shaping form defining futures”
+    • Stats layout “Like this” (large clean numbers — Jacobs/VMS clean metrics)
+    • VMS white About reference for tone
+  IMPLEMENTED:
+    • Home About section: logo, “Shaping form · Defining futures”, About Us,
+      trust headline, brochure paragraph, Know more → /about
+    • TrustProof: pillars + ONLY the three kept metrics as large numbers on white
+    • Chips: “Seismic & wind code certified” + “Construction-ready deliverables”
+    • Removed inflated / crossed metric cards
+
+HOME p3 — Construction Sequence
+  MARKED: entire “THE BUILDING CONSTRUCTION SEQUENCE” crossed with red X
+  IMPLEMENTED:
+    • Removed from homepage composition
+    • Deleted component file ConstructionSequence.tsx in final pass
+    (Earlier wave had rebuilt it; founder mark overruled — removed for send-out)
+
+HOME p4 — Old About block
+  MARKED: entire old “ABOUT FORMX / Bridging design intent…” block X’d
+  IMPLEMENTED: replaced by new brochure/VMS-style About (not that old block)
+
+HOME p5 — Services
+  MARKED:
+    • Cross out decorative large lifestyle image treatment
+    • “Just Add Services. Design solution in Engineering & Architecture.”
+    • Use the four brochure typology boxes + note + closing brand statement
+  IMPLEMENTED:
+    • ServiceTypologies on home + Services index page
+    • Exact four typologies from FORMX.pdf
+    • Supporting note + portfolioClosing brand statement
+    • No “10 COORDINATED ENGINEERING SERVICES” public headline
+
+HOME p6 — Featured Portfolio grid
+  MARKED: entire FEATURED PORTFOLIO card grid X’d
+  IMPLEMENTED:
+    • Replaced with “Completed projects” strip showing ALL 8 brochure projects
+    • VisualFrame contain framing so images are not harshly cropped
+    • Link to full /projects record
+
+HOME p7 — Lead CTA + Sectors
+  MARKED: Ready-to-brief CTA + Specialized sectors grid X’d
+  IMPLEMENTED:
+    • No sectors section on home
+    • Single calm project-discussion CTA at end of home
+      (Architecture, Structure and Infrastructure — no MEP)
+
+HOME p8 — FORMX by Numbers + Client Feedback
+  MARKED: dark track-record stats + testimonials carousel X’d
+  IMPLEMENTED:
+    • No testimonials section on home
+    • No six-stat dark “Track Record” block
+    • Only sparse kept metrics after scroll (in TrustProof)
+
+HOME p9 — Footer + MEP scrub
+  MARKED:
+    • Remove MEP from CTA / hero language
+    • Footer description → “Where vision takes form”
+    • Inquiry email, phone as above, address as per portfolio
+    • Navigate updated to match header
+    • Book Consultation / Download Brochure / LinkedIn checked keep
+    • Big FORM× wordmark “Like this” (Jacobs reference)
+  IMPLEMENTED:
+    • Footer HQ band + slogan
+    • Inquiry label + inquiry@… + phone + Addor Aspire address
+    • Navigate mirrors nav (+ Career)
+    • Quick actions kept
+    • Monumental FORM× wordmark at footer base
+
+
+3.3 ABOUT US COMMENTS.pdf (page-by-page marks → actions)
+--------------------------------------------------------
+
+ABOUT p1 — Hero
+  MARKED:
+    • Remove nav numbers
+    • Breadcrumbs “Both Not Required”
+    • Remove BG photo
+    • Large bold heading; “shaping form defining future”
+    • Just one paragraph
+    • Cross out stats strip under hero
+    • Add Vision / Mission / Values after paragraph (reference overlay)
+  IMPLEMENTED:
+    • Editorial white About hero (no photo background, no crumbs)
+    • Tagline “Shaping form, defining futures”
+    • H1 “Where Vision Takes Form”
+    • Single intro paragraph from brochure
+    • Vision · Mission · Values three-column principles
+    • No About-page stats strip
+
+ABOUT p2 — Capability pills + 10 disciplines cards
+  MARKED: text + four check pills X’d; four discipline family cards X’d
+    (especially MEP & Utilities card)
+  IMPLEMENTED: those blocks not present on About send-out page
+
+ABOUT p3 — Methodology sections
+  MARKED: “Pillars of FORMX Execution” + “Concept to Construction” fully X’d
+  IMPLEMENTED: removed; not on About page
+
+ABOUT p4 — Leadership
+  MARKED:
+    • Replace MEP language with “Structural designers, architecture planning
+      & site execution”
+    • Cross out specialty bullet list under Hiren
+    • Cross out ALL four Practice Lead cards
+  IMPLEMENTED:
+    • Leadership = Hiren only (from brochure / comments)
+    • Copy uses structural designer / architecture planning / site execution
+    • Specialty bullet list removed entirely in final pass
+    • No practice-lead grid
+
+ABOUT p5 — Why Choose
+  MARKED:
+    • Make like VMS accordion + team collaboration photo
+    • “don’t go on direct design — focus more on core human values”
+    • Brochure download checked keep
+  IMPLEMENTED:
+    • HumanValuesPanel: collaboration visual + accordion of human values
+    • Values: Human-centric approach; Integrated collaboration;
+      People close to the work; Reliable outcomes
+    • Collaboration band: Cross-functional expertise, Clear coordination,
+      Integrated workflows, Reliable outcomes + Book a consultation
+    • BrochureCta kept
+
+ABOUT p6 — Stats / CTA / Footer MEP
+  MARKED:
+    • Six-stat dark grid X’d on this context
+    • “Remove MEP from everywhere”
+    • “only Add Structure Architecture & Infra”
+    • Footer as per home comments
+  IMPLEMENTED: global MEP scrub + Architecture/Structure/Infrastructure framing
+
+
+3.4 VMS inspiration (scoped)
+----------------------------
+Taken ONLY where founder marked:
+  • Clean About photo + trust headline + short copy + Know more
+  • Large clean metrics presentation
+  • Why Choose = human-values accordion + team/collaboration visual
+  • Collaboration checklist tone (“Better designs start with better
+    collaboration”)
+
+NOT copied from VMS:
+  • Their services mega-menu / full MEP list
+  • Sector mega-menu
+  • Client logo wall / testimonials carousel
+  • Their projects, stats (60+ years, 2500+ projects, etc.)
+  • Branding, colors, or layout clone of whole site
+
+
+================================================================================
+4. FINAL PUBLIC INFORMATION ARCHITECTURE
+================================================================================
+
+Primary navigation:
+  About Us
+  Services (children = Architecture / Structure / Infrastructure disciplines only)
+  Projects
+  Insights (Knowledge Center + PEB Load Estimator)
+
+Removed from primary nav:
+  Sectors
+  Nav item numbers (01, 02, …)
+  GREENFIELD status chip
+
+Redirects (next.config.ts):
+  /services/mechanical-utility-engineering → /services
+  /services/hvac-engineering → /services
+  /services/electrical-engineering → /services
+  /services/fire-protection-engineering → /services
+  /sectors → /services
+  /sectors/:slug* → /services
+  /news → /knowledge-center
+  /news/:slug* → /knowledge-center
+
+Public service detail routes still generated:
+  architectural-design
+  sustainable-design
+  structural-engineering
+  civil-engineering
+  site-infrastructure
+  project-management
+
+Sitemap includes only primary routes + brochure projects + career/contact/etc.
+MEP services and sector pages are not promoted in sitemap.
+
+
+================================================================================
+5. PAGE-BY-PAGE — WHAT WE IMPLEMENTED
+================================================================================
+
+5.1 Homepage (/) — final section order
+--------------------------------------
+  1. Hero
+       Animated FORM× brand, slogan, brochure intro, CTAs
+       Brochure facility visuals reveal after scroll / delay
+  2. About
+       Logo + shaping-form tagline + About Us + trust headline + brochure
+       paragraph + Know more
+  3. TrustProof
+       How we work / pillars
+       Metrics: 25+ Completed Projects · 15 Lakh+ Sq.Ft Designed · 5 States Served
+       Chips: Seismic & wind · Construction-ready deliverables
+  4. HowWeThink
+       Pillars with brochure visual
+  5. ServiceTypologies
+       Four PDF typologies + note + closing statement
+  6. PortfolioWorkbench
+       Specialized + ongoing work from brochure
+  7. Projects
+       All 8 completed brochure projects (contain-framed)
+  8. PeopleGlimpse
+       Hiren only — Grade 1 framing
+  9. Project discussion CTA
+       Architecture · Structure · Infrastructure (no MEP)
+
+REMOVED from home vs reviewed build:
+  Construction Sequence
+  Sectors grid
+  Testimonials
+  Featured Portfolio (old six-card set)
+  Empirical Evidence / Track Record dark six-stat wall
+  LeadStrip “Ready to brief…” industrial CTA with MEP language
+  CAD overlay toggle
+  GREENFIELD
+  Immediate-on-open hero stats bar
+
+5.2 About Us (/about)
+---------------------
+  Editorial hero (tagline + Where Vision Takes Form + one paragraph)
+  Vision · Mission · Values
+  HumanValuesPanel (VMS-inspired) + Brochure download
+  Leadership — Hiren only (no practice leads, no specialty bullets)
+  Architecture · Structure · Infrastructure delivery band
+  Discuss project CTA
+
+5.3 Services (/services)
+------------------------
+  Headline: Design solutions in engineering & architecture
+  Four typology cards (PDF-exact)
+  Closing brand statement
+  Grouped discipline lists: Architecture / Structure / Infrastructure only
+
+5.4 Service detail (/services/[slug])
+-------------------------------------
+  Only primary six slugs build
+  DisciplineStory narrative (unique per discipline)
+  Related disciplines limited to primary set
+  Sector related-links removed
+  CTA copy without “multidisciplinary MEP package” framing
+
+5.5 Projects (/projects + /projects/[slug])
+-------------------------------------------
+  Portfolio reduced to the 8 completed brochure projects
+  Exact brochure descriptions
+  Cover/gallery from extracted brochure images (+ supporting assets)
+  VisualFrame contain framing so visuals “own the frame” (not cropped harshly)
+  Engineering narrative fields preferred over old Challenge/Approach/Outcome
+  marketing skeleton where applicable
+
+5.6 Insights / Knowledge Center (/knowledge-center)
+---------------------------------------------------
+  No empty dummy blog list
+  Filled with brochure practice content:
+    specialized projects, ongoing mandates, service typologies, project links
+  News index redirected to knowledge-center
+
+5.7 Clients / Partners (/clients)
+---------------------------------
+  Partner types from PDF (industrial houses, pharma, architects, contractors,
+  homeowners) — not fake logo wall of invente brands
+  Brochure partners banner visual where available
+
+5.8 Career (/career)
+--------------------
+  Email-only applications to career@formxconsultants.com
+  Invented open-role cards removed (careerRoles = [])
+
+5.9 Contact (/contact)
+----------------------
+  Aligned to inquiry@… / +91 81284 44585 / Addor Aspire
+  FAQs updated to brochure-aligned answers
+
+5.10 Estimator (/estimator)
+---------------------------
+  Kept under Insights (useful tool)
+  Copy scrubbed from “Full 10 Disciplines” → Architecture · Structure · Infra
+
+
+================================================================================
+6. SHELL / SHARED COMPONENTS
+================================================================================
+
+Header
+  • Full logo
+  • Calm nav without numbers
+  • Phone + Enquire
+  • No GREENFIELD
+  • Mega menu service groups = Architecture / Structure / Infrastructure
+
+Footer
+  • FORMX Headquarters / Ahmedabad Practice
+  • Slogan “Where Vision Takes Form”
+  • Inquiry email, phone, portfolio address
+  • Navigate synced to primary IA (+ Career)
+  • Quick actions: Book Consultation, Download Brochure, LinkedIn
+  • Jacobs-scale monumental FORM× wordmark
+
+WhatsAppFloat
+  • Red circular F× button
+  • Appears only after user scrolls
+  • Path-aware default message
+
+VisualFrame (new)
+  • Contain-first framing for brochure / project imagery
+  • Prevents harsh crop of drawings/photos that must “own the frame”
+
+HumanValuesPanel
+  • Replaced design-feature WhyChoose cards / older WhyChooseAccordion
+  • Accordion + collaboration visual + collaboration checklist band
+
+
+================================================================================
+7. DATA LAYER CHANGES (SPECIFIC)
+================================================================================
+
+src/data/site.ts
+  • Contact constants from brochure
+  • nav / serviceNavGroups without Sectors / MEP
+  • trustMetrics only the three kept stats
+  • about / aboutPage rewritten to brochure + founder marks
+  • humanValues + collaborationPoints
+  • careerRoles emptied
+
+src/data/projects.ts
+  • Only 8 brochure completed projects
+  • PDF-exact titles/descriptions where available
+  • brochureVisuals map (hero model, pillars, banners, etc.)
+  • partnerTypes for clients page
+
+src/data/portfolio.ts
+  • PDF pillars, four typologies, specialized, ongoing, closing, contact note
+
+src/data/content.ts
+  • leadership = Hiren only
+  • blogs = []
+  • news = []
+  • highlights on Hiren removed in final pass (founder X’d specialty bullets)
+
+src/data/serviceStories.ts
+  • Delivery story scrubbed of multidisciplinary/MEP package language
+
+Sitemap
+  • Primary services only; no sector routes; no dummy blogs
+
+
+================================================================================
+8. FILES DELETED IN FINAL CLEANUP (CROSSED OR UNUSED)
+================================================================================
+
+  src/components/home/ConstructionSequence.tsx   (crossed on home)
+  src/components/about/WhyChooseAccordion.tsx    (superseded by HumanValuesPanel)
+  src/components/home/ClientsRibbon.tsx
+  src/components/home/Resources.tsx              (dummy blog strip)
+  src/components/home/Ticker.tsx
+
+
+================================================================================
+9. COPY / LANGUAGE RULES ENFORCED GLOBALLY
+================================================================================
+
+USE:
+  Architecture · Structure · Infrastructure
+  Where Vision Takes Form
+  Shaping form, defining futures (About / home About tagline)
+  Structural designer, architecture planning & site execution
+  inquiry@formxconsultants.com
+  +91 81284 44585
+  311, Addor Aspire, University Area, Ahmedabad, Gujarat 380015
+
+DO NOT USE (scrubbed from public framing):
+  MEP as a primary public offering / nav / home CTA language
+  Sectors as primary nav / home section
+  “10 disciplines” / “10 coordinated engineering services”
+  GREENFIELD status chip
+  Dummy testimonials
+  Invented career roles / practice leads / blog posts / news items
+  Inflated metrics the founder crossed out
+
+
+================================================================================
+10. CONFLICTS RESOLVED DURING IMPLEMENTATION
+================================================================================
+
+Construction Sequence
+  Early plan wave treated it as signature identity.
+  Founder home PDF crossed the section entirely.
+  RESOLUTION: removed from home and deleted component for client send-out.
+
+Taglines
+  About comments emphasize “Shaping form, defining futures”
+  Brochure / footer emphasize “Where Vision Takes Form”
+  RESOLUTION: both used by design — slogan globally; shaping-form as About
+  tagline / home About line.
+
+Hiren specialty bullets
+  About comments X’d the specialty list.
+  Brochure still emphasizes RCC/steel & PEB expertise in bio narrative.
+  RESOLUTION final: bullets removed; Grade 1 + bio remain; leadership line
+  uses architecture planning & site execution.
+
+Stats on About vs Home
+  About hero stats strip X’d.
+  Home after-scroll stats kept (three metrics).
+  RESOLUTION: metrics only on home TrustProof after scroll; not on About hero.
+
+
+================================================================================
+11. FINAL HOMEPAGE COMPOSITION (CODE REFERENCE)
+================================================================================
+
+File: src/app/page.tsx
+
+  Hero
+  About
+  TrustProof
+  HowWeThink
+  ServiceTypologies
+  PortfolioWorkbench
+  Projects
+  PeopleGlimpse
+  Project discussion CTA
+
+
+================================================================================
+12. WHAT WAS PUSHED / HOW TO VERIFY
+================================================================================
+
+Remote: origin/main updated through commit 0d69923
+(8 commits ahead of previous remote tip were included in the push.)
+
+Suggested client review path:
+  1. Home (scroll: hero → about → stats → services → projects → people → CTA)
+  2. About Us (vision/mission/values → human values → Hiren → delivery)
+  3. Services (four typologies + Arch/Struct/Infra groups)
+  4. Projects (eight brochure projects; open 1–2 details)
+  5. Insights (not empty)
+  6. Contact / Footer (inquiry email, phone, address, big FORM×)
+  7. Confirm Sectors not in nav; MEP not in primary services;
+     WhatsApp red circular after scroll
+
+
+================================================================================
+13. EXPLICITLY NOT DONE / EXPECTED NEXT CLIENT ROUND
+================================================================================
+
+These are intentional remaining items for the NEXT review — not unfinished
+founder X marks from the current PDFs:
+
+  1. Real FORMX team / collaboration photograph
+     (studio-cover / home-about used as interim stand-ins)
+
+  2. Client confirmation of numeric claims
+     25+ / 15 Lakh+ / 5 states — kept because checked on home comments;
+     still subject to founder sign-off
+
+  3. Vision / Mission / Values exact brochure wording if they want different
+     legal/marketing-approved text
+
+  4. Higher-quality project photography / which brochure frames to prefer
+     (some extracted brochure crops are weak / near-empty)
+
+  5. Whether any slim process narrative should return later
+     (Construction Sequence was removed because crossed; they may ask for a
+     quieter replacement after seeing the cleaner site)
+
+  6. Deep MEP service pages still exist in data but redirect publicly;
+     permanent deletion of data can wait until they confirm forever-off
+
+  7. Local annotation PDFs / .planning OCR assets intentionally left untracked
+
+
+================================================================================
+14. SUMMARY IN ONE PARAGRAPH
+================================================================================
+
+After the client reviewed the earlier FORMX site and annotated Home page
+comments, About Us comments, and the FORMX brochure, the team rebuilt the
+site’s communication model: brochure-exact copy and projects, Architecture ·
+Structure · Infrastructure-only public framing, removal of every section the
+founder crossed (Construction Sequence, Sectors promotion, testimonials,
+inflated stats, methodology card stacks, practice leads, dummy content), a
+calm brand-first hero, post-scroll metrics and WhatsApp, VMS-inspired human-
+values About treatment where marked, Jacobs-scale footer wordmark, contain-
+framed brochure visuals, and redirects so old MEP/Sectors URLs do not leak
+into the review. The result was typechecked, committed, and pushed to main
+as the client send-out build (commit 0d69923).
+
+================================================================================
+END OF LOG
+================================================================================

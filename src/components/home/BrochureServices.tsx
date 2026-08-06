@@ -6,67 +6,102 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
 import { brochureServices, brochureServicesNote } from "@/data/brochureHome";
 
-/** Stacked typology rows — not a 2×2 card grid */
+/**
+ * SERVICES — "Service Manifest"
+ * Warm off-white background. Number-backed rows with red left-border on hover.
+ * Each row gets a large ghost number behind the title for visual depth.
+ */
 export function BrochureServices() {
   return (
-    <section id="services" className="scroll-mt-28 bg-white py-20 md:py-28">
+    <section id="services" className="scroll-mt-28 bg-[#f7f6f2] py-20 md:py-28">
       <Container>
+
+        {/* ── Header ───────────────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
-            <p className="font-label text-[10px] tracking-[0.28em] text-x-red">Services</p>
+            <p className="font-label text-[10px] tracking-[0.3em] text-x-red">
+              Services
+            </p>
             <h2
-              className="mt-4 max-w-[12ch] font-display font-bold leading-[1.05] tracking-tight text-ink"
+              className="mt-4 max-w-[14ch] font-display font-extrabold leading-[1.04] tracking-tight text-ink"
               style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             >
-              What we take on
+              What we
+              <br />
+              take on
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="max-w-[36ch] text-[14px] leading-[1.7] text-ink/50 md:text-right">
+            <p className="max-w-[36ch] text-[14px] leading-[1.75] text-ink/45 md:text-right md:text-[15px]">
               {brochureServicesNote}
             </p>
           </Reveal>
         </div>
 
-        <ul className="mt-14 border-t border-ink">
+        {/* ── Service rows ─────────────────────────────────────── */}
+        <div className="mt-12 border-t border-ink/[0.1]">
           {brochureServices.map((service, i) => (
             <Reveal key={service.title} delay={0.05 * i} from="fade">
-              <li>
-                <Link
-                  href={service.href}
-                  transitionTypes={["nav-forward"]}
-                  className="group grid gap-4 border-b border-line py-8 transition-colors hover:bg-[#fafafa] md:grid-cols-12 md:items-center md:gap-8 md:py-10 md:pl-2 md:pr-4"
+              <Link
+                href={service.href}
+                transitionTypes={["nav-forward"]}
+                className="fx-service-row group relative flex items-stretch border-b border-ink/[0.08] transition-colors hover:bg-white/70"
+              >
+                {/* Ghost number — depth layer */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none font-display font-black leading-none text-ink/[0.04] transition-opacity duration-300 group-hover:opacity-100"
+                  style={{ fontSize: "clamp(4rem, 8vw, 7rem)" }}
                 >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="relative grid w-full gap-4 py-8 pl-6 pr-4 md:grid-cols-12 md:items-center md:gap-8 md:py-10 md:pl-10">
+                  {/* Index */}
                   <span className="font-label text-[10px] tracking-[0.28em] text-x-red md:col-span-1">
                     0{i + 1}
                   </span>
-                  <h3 className="font-display text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-2xl lg:text-[1.65rem]">
+
+                  {/* Title */}
+                  <h3
+                    className="font-display font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4"
+                    style={{ fontSize: "clamp(1.05rem, 2vw, 1.45rem)" }}
+                  >
                     {service.title}
                   </h3>
-                  <p className="max-w-[46ch] text-[14px] leading-[1.65] text-ink/50 md:col-span-6 md:text-[15px]">
+
+                  {/* Body */}
+                  <p className="max-w-[50ch] text-[14px] leading-[1.7] text-ink/45 md:col-span-6 md:text-[15px]">
                     {service.body}
                   </p>
-                  <span className="flex md:col-span-1 md:justify-end">
-                    <ArrowUpRight className="size-5 text-ink/20 transition-all group-hover:translate-x-0.5 group-hover:text-x-red" />
+
+                  {/* Arrow */}
+                  <span className="flex items-center md:col-span-1 md:justify-end">
+                    <ArrowUpRight className="size-5 text-ink/18 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
                   </span>
-                </Link>
-              </li>
+                </div>
+              </Link>
             </Reveal>
           ))}
-        </ul>
+        </div>
 
-        <Reveal delay={0.15}>
-          <div className="mt-10 flex justify-end">
+        {/* ── Footer link ───────────────────────────────────────── */}
+        <Reveal delay={0.18} from="fade">
+          <div className="mt-10 flex items-center justify-between">
+            <p className="font-label text-[9px] tracking-[0.22em] text-ink/25">
+              FormX · Architecture · Structure · Infrastructure
+            </p>
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/50 transition-colors hover:text-x-red"
+              className="group inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/45 transition-colors hover:text-x-red"
             >
-              All services
-              <ArrowUpRight className="size-3.5" />
+              All Services
+              <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
         </Reveal>
+
       </Container>
     </section>
   );

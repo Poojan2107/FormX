@@ -443,3 +443,244 @@ body {
 .prose-measure {
   max-width: 62ch;
 }
+
+/* ─── Ticker strip ──────────────────────────────────────── */
+@keyframes ticker-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-left 28s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Word / clip reveal ────────────────────────────────── */
+.word-reveal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-reveal-inner {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.word-reveal-inner.revealed {
+  transform: translateY(0);
+}
+
+/* ─── FormX section rhythm identities ──────────────────── */
+.fx-section-white   { background: #ffffff; }
+.fx-section-paper   { background: #f7f6f2; }
+.fx-section-offwhite { background: #f4f3f0; }
+.fx-section-dark    { background: #0a0a0a; color: #ffffff; }
+.fx-section-black   { background: #000000; color: #ffffff; }
+.fx-section-void    { background: #080808; color: #ffffff; }
+
+/* ─── Premium image frame ────────────────────────────────── */
+.fx-image-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.fx-image-frame::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0,0,0,0.05);
+  z-index: 2;
+}
+
+/* ─── Service row hover ──────────────────────────────────── */
+.fx-service-row {
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+.fx-service-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--x-red);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-service-row:hover::before {
+  transform: scaleY(1);
+}
+
+/* ─── Project card hover ─────────────────────────────────── */
+.fx-project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-project-card:hover {
+  transform: translateY(-4px);
+}
+
+.fx-project-card img {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-project-card:hover img {
+  transform: scale(1.04);
+}
+
+/* ─── Pillar row ─────────────────────────────────────────── */
+.fx-pillar-row {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.3s ease;
+}
+
+.fx-pillar-row:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.fx-pillar-row:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+/* ─── Partner pill ───────────────────────────────────────── */
+.fx-partner-pill {
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-partner-pill:hover {
+  border-color: var(--x-red);
+  color: var(--x-red);
+  transform: translateY(-2px);
+}
+
+/* ─── formx-cut applied to buttons ──────────────────────── */
+.fx-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--x-red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.25rem;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  transition: background 0.25s ease, clip-path 0.25s ease;
+}
+
+.fx-btn-primary:hover {
+  background: var(--x-red-hover);
+}
+
+.fx-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(10,10,10,0.2);
+  color: rgba(10,10,10,0.55);
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.25rem;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.fx-btn-ghost:hover {
+  border-color: var(--x-red);
+  color: var(--x-red);
+}
+
+/* ─── Metric bar separator ───────────────────────────────── */
+.fx-metric-x::after {
+  content: "×";
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--x-red);
+  opacity: 0.6;
+  margin-inline: 1rem;
+}
+
+/* ─── Scroll cue bounce ──────────────────────────────────── */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(7px); opacity: 1; }
+}
+
+.fx-scroll-cue {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ─── Draw line extend (for red rule under headings) ─────── */
+@keyframes draw-x {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+.fx-draw-line {
+  transform-origin: left center;
+  animation: draw-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Upcoming pipeline row ─────────────────────────────── */
+.fx-pipeline-row {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.25s ease, padding-left 0.3s ease;
+  cursor: default;
+}
+
+.fx-pipeline-row:hover {
+  background: rgba(255,255,255,0.025);
+  padding-left: 0.75rem;
+}
+
+/* ─── Fade-in-up for scroll reveal ──────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fx-fade-up {
+  animation: fade-in-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Red accent underline draw ─────────────────────────── */
+.fx-accent-line {
+  position: relative;
+  display: inline-block;
+}
+
+.fx-accent-line::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--x-red);
+}
+
