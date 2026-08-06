@@ -68,16 +68,16 @@ export function BrochureHero() {
           Architecture · Structure · Infrastructure
         </motion.p>
 
-        {/* Brand = hero landscape — no max-w on h1 (ch would use body size and clip FormX) */}
+        {/* Brand = hero landscape. Do not put max-w-[Nch] on this h1 — ch uses body size and clips FormX. */}
         <h1 className="mt-6 sm:mt-8" aria-label="FormX Consultants">
           <span className="sr-only">FormX Consultants — {brochureBrand.slogan}</span>
-          <div className="overflow-x-clip overflow-y-hidden" aria-hidden>
+          <div className="overflow-hidden" aria-hidden>
             <motion.span
               initial={reduce ? false : { y: "105%" }}
               animate={ready ? { y: "0%" } : undefined}
               transition={{ duration: 1.05, delay: 0.18, ease }}
-              className="block w-max max-w-full font-display font-black leading-[0.88] tracking-[-0.055em] text-ink"
-              style={{ fontSize: "clamp(2.75rem, 12vw, 9.5rem)" }}
+              className="block font-display font-black leading-[0.88] tracking-[-0.055em] text-ink"
+              style={{ fontSize: "clamp(2.85rem, 14vw, 9.5rem)" }}
             >
               Form<span className="text-x-red">X</span>
             </motion.span>
@@ -97,7 +97,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.65, ease }}
-          className="mt-6 max-w-[22rem] font-display text-[1.2rem] font-bold leading-[1.25] tracking-tight text-ink sm:mt-8 sm:text-[1.35rem] md:text-[1.65rem]"
+          className="mt-6 max-w-[28ch] font-display text-[1.2rem] font-bold leading-[1.25] tracking-tight text-ink sm:mt-8 sm:text-[1.35rem] md:text-[1.65rem]"
         >
           {brochureBrand.slogan}
           <span className="text-x-red">×</span>
@@ -107,7 +107,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.78, ease }}
-          className="fx-read mt-4 max-w-[36rem] text-[15px] text-ink/58 sm:mt-5 sm:text-[15.5px] md:text-[16.5px]"
+          className="fx-read mt-4 text-[15px] text-ink/58 sm:mt-5 sm:text-[15.5px] md:text-[16.5px]"
         >
           Architecture, Structure and Infrastructure engineered together before drawings leave the
           studio.
