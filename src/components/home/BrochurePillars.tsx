@@ -25,7 +25,8 @@ export function BrochurePillars() {
               className="mt-4 font-display font-black leading-[1.02] tracking-[-0.045em] text-white"
               style={{ fontSize: "clamp(2.1rem, 4.4vw, 3.6rem)" }}
             >
-              Four pillars of FormX
+              Four pillars of Form
+              <span className="text-x-red">X</span>
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
@@ -95,7 +96,9 @@ export function BrochurePillars() {
         <Container className="relative z-10">
           <div className="mt-12 flex flex-wrap items-center justify-between gap-6">
             <p className="font-label text-[9.5px] tracking-[0.28em] uppercase text-white/28">
-              FormX Consultants · Design | Engineering
+              Form
+              <span className="text-x-red/70">X</span>
+              {" "}Consultants · Design | Engineering
             </p>
             <Link
               href="/contact"

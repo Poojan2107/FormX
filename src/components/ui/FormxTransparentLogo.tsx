@@ -52,9 +52,17 @@ export function FormxTransparentLogo({
         className,
       )}
     >
-      {/* Brand wordmark: Form + X */}
-      <div className={cn("font-display font-black leading-none tracking-[-0.04em]", textColor, sizeClasses.title)}>
-        Form<span className={cn("text-x-red inline-block font-black ml-0.5", sizeClasses.x)}>X</span>
+      {/* Brand wordmark: Form + red X */}
+      <div
+        className={cn(
+          "font-display font-black leading-none tracking-[-0.04em]",
+          sizeClasses.title,
+        )}
+      >
+        <span className={textColor}>Form</span>
+        <span className={cn("ml-0.5 inline-block font-black text-x-red", sizeClasses.x)}>
+          X
+        </span>
       </div>
 
       {/* CONSULTANTS */}

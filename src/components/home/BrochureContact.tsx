@@ -191,7 +191,9 @@ export function BrochureContact() {
               Common questions
             </h3>
             <p className="mt-4 max-w-[36ch] text-[15px] leading-[1.85] text-ink/55">
-              Straight answers drawn from how FormX works with clients, architects and contractors.
+              Straight answers drawn from how Form
+              <span className="text-x-red">X</span> works with clients, architects and
+              contractors.
             </p>
           </Reveal>
 
