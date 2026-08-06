@@ -5,105 +5,108 @@ import { Container } from "@/components/ui/Container";
 import { brochurePillars } from "@/data/brochureHome";
 
 /**
- * PILLARS — "The Four Principles"
- * Dark editorial manifesto. Horizontal numbered rows — not a card grid.
+ * PILLARS — "The Manifesto"
+ * Visual DNA: GIANT ghost numbers on the left, editorial headline on right.
+ * Each pillar is a full-width band with dramatic number presence.
+ * Completely distinct from Services (grid tiles) and Pipeline (timeline).
  */
 export function BrochurePillars() {
   return (
     <section
       id="pillars"
-      className="relative scroll-mt-28 overflow-hidden bg-[#0a0a0a] py-24 text-white md:py-32"
+      className="relative scroll-mt-28 overflow-hidden bg-[#0a0a0a] py-20 text-white md:py-28"
     >
-      {/* Ghost × watermark */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-4 bottom-0 translate-y-[20%] select-none font-display font-black leading-none text-white/[0.028]"
-        style={{ fontSize: "clamp(24rem, 55vw, 44rem)" }}
-      >
-        ×
-      </span>
-
       <Container className="relative z-10">
 
-        {/* Section header */}
+        {/* Section label */}
         <Reveal>
           <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
             The FormX Way
           </p>
-          <div className="mt-5 flex items-end justify-between gap-6">
-            <h2
-              className="font-display font-black leading-[1.01] tracking-[-0.04em] text-white"
-              style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)" }}
-            >
-              Four pillars<br />of the practice
-            </h2>
-            <span
-              aria-hidden
-              className="hidden shrink-0 font-display font-black text-white/[0.06] md:block"
-              style={{ fontSize: "clamp(3rem, 5vw, 4rem)" }}
-            >
-              ×
-            </span>
-          </div>
-        </Reveal>
-
-        {/* Divider */}
-        <div className="mt-14 h-px w-full bg-white/[0.07]" />
-
-        {/* Pillar rows */}
-        <ol>
-          {brochurePillars.map((pillar, i) => (
-            <Reveal key={pillar.title} delay={0.06 * i} from="fade">
-              <li className="fx-pillar-row group grid cursor-default py-10 md:grid-cols-12 md:items-start md:gap-x-8 md:py-11">
-
-                {/* Index + × */}
-                <div className="mb-4 flex items-center gap-4 md:col-span-2 md:mb-0 md:pt-1">
-                  <span
-                    className="font-display font-black leading-none text-x-red/60 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
-                    style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)" }}
-                  >
-                    ×
-                  </span>
-                  <span className="font-label text-[10px] tracking-[0.3em] text-white/18">
-                    0{i + 1}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="mb-3 font-display font-bold tracking-tight text-white/90 transition-colors group-hover:text-x-red md:col-span-4 md:mb-0"
-                  style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)" }}
-                >
-                  {pillar.title}
-                </h3>
-
-                {/* Body */}
-                <p className="max-w-[48ch] text-[14px] leading-[1.8] text-white/38 transition-colors group-hover:text-white/55 md:col-span-5 md:text-[15px]">
-                  {pillar.body}
-                </p>
-
-                {/* Arrow */}
-                <div className="hidden md:col-span-1 md:flex md:items-start md:justify-end md:pt-1">
-                  <span className="text-[10px] text-white/10 transition-colors group-hover:text-x-red/40">↗</span>
-                </div>
-
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-
-        {/* Bottom accent */}
-        <Reveal delay={0.3} from="fade">
-          <div className="mt-2 flex items-center gap-4 border-t border-white/[0.07] pt-8">
-            <span className="h-px flex-1 bg-white/[0.05]" />
-            <span className="font-label text-[9px] tracking-[0.3em] text-white/18">
-              FormX Consultants · Ahmedabad
-            </span>
-            <span className="h-px w-10 bg-x-red/25" />
-          </div>
         </Reveal>
 
       </Container>
+
+      {/* Full-bleed pillar bands */}
+      <ol className="mt-10">
+        {brochurePillars.map((pillar, i) => (
+          <Reveal key={pillar.title} delay={0.07 * i} from="fade">
+            <li className="group relative cursor-default overflow-hidden border-b border-white/[0.06] transition-colors hover:bg-white/[0.03]">
+              <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+                <div className="flex items-stretch gap-0 py-8 md:py-10 lg:gap-8 xl:py-11">
+
+                  {/* GIANT ghost number — visual anchor */}
+                  <div
+                    aria-hidden
+                    className="flex w-28 shrink-0 items-center md:w-40 lg:w-52"
+                  >
+                    <span
+                      className="select-none font-display font-black leading-none text-white/[0.06] transition-all duration-700 group-hover:text-white/[0.11]"
+                      style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* × glyph — red accent */}
+                  <div className="flex items-center pr-6 md:pr-8">
+                    <span
+                      className="font-display font-black leading-none text-x-red/50 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
+                      style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+                    >
+                      ×
+                    </span>
+                  </div>
+
+                  {/* Title + body */}
+                  <div className="flex flex-1 flex-col justify-center gap-3 lg:flex-row lg:items-center lg:gap-16">
+                    <h3
+                      className="font-display font-bold tracking-[-0.02em] text-white/90 transition-colors group-hover:text-white lg:w-72 lg:shrink-0"
+                      style={{ fontSize: "clamp(1.15rem, 2vw, 1.65rem)" }}
+                    >
+                      {pillar.title}
+                    </h3>
+                    <p className="max-w-[56ch] text-[13px] leading-[1.8] text-white/32 transition-colors group-hover:text-white/50 md:text-[14px]">
+                      {pillar.body}
+                    </p>
+                  </div>
+
+                  {/* Hover arrow indicator */}
+                  <div className="hidden items-center md:flex">
+                    <span
+                      className="font-label text-[10px] tracking-[0.2em] text-x-red/0 transition-all duration-300 group-hover:text-x-red/50"
+                    >
+                      ↗
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Red left-edge bar on hover */}
+              <span
+                aria-hidden
+                className="absolute left-0 top-0 h-full w-[3px] origin-bottom scale-y-0 bg-x-red transition-transform duration-500 group-hover:scale-y-100"
+              />
+            </li>
+          </Reveal>
+        ))}
+      </ol>
+
+      {/* Footer strip */}
+      <Reveal delay={0.3} from="fade">
+        <Container className="relative z-10">
+          <div className="mt-12 flex items-center justify-between">
+            <p className="font-label text-[9px] tracking-[0.3em] text-white/14">
+              FormX Consultants · Ahmedabad
+            </p>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-white/[0.07]" />
+              <span className="font-display text-sm font-black text-x-red/30">×</span>
+            </div>
+          </div>
+        </Container>
+      </Reveal>
     </section>
   );
 }

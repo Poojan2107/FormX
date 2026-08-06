@@ -7,8 +7,11 @@ import { Container } from "@/components/ui/Container";
 import { brochureServices, brochureServicesNote } from "@/data/brochureHome";
 
 /**
- * SERVICES — "Service Manifest"
- * Warm off-white. Number-backed rows — red left border on hover.
+ * SERVICES — "Capability Grid"
+ * Visual DNA: 2×2 tile grid. Each tile has a huge ghost number, title,
+ * short description, and formx-cut corner on hover.
+ * Warm cream background — completely distinct from Pillars (dark editorial bands)
+ * and Pipeline (vertical timeline).
  */
 export function BrochureServices() {
   return (
@@ -16,73 +19,92 @@ export function BrochureServices() {
       <Container>
 
         {/* Header */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="mb-14 grid gap-8 md:grid-cols-2 md:items-end">
           <Reveal>
             <p className="font-label text-[10px] tracking-[0.35em] text-x-red">Services</p>
             <h2
               className="mt-5 font-display font-black leading-[1.0] tracking-[-0.04em] text-ink"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
             >
               What we<br />take on
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="max-w-[36ch] text-[14px] leading-[1.8] text-ink/42 md:text-right md:text-[15px]">
+            <p className="max-w-[36ch] text-[14px] leading-[1.82] text-ink/40 md:text-right md:text-[15px]">
               {brochureServicesNote}
             </p>
           </Reveal>
         </div>
 
-        {/* Rows */}
-        <div className="mt-14 border-t border-ink/[0.09]">
+        {/* 2×2 TILE GRID — completely different from text rows */}
+        <div className="grid gap-px bg-ink/[0.08] sm:grid-cols-2 lg:grid-cols-2">
           {brochureServices.map((service, i) => (
-            <Reveal key={service.title} delay={0.05 * i} from="fade">
+            <Reveal key={service.title} delay={0.07 * i} from="fade">
               <Link
                 href={service.href}
                 transitionTypes={["nav-forward"]}
-                className="fx-service-row group relative flex items-stretch border-b border-ink/[0.07] transition-colors hover:bg-white/75"
+                className="group relative block overflow-hidden bg-[#f7f6f2] p-8 transition-colors hover:bg-white md:p-10 lg:p-12"
               >
-                {/* Ghost number */}
+                {/* FormX-cut corner — top right on hover */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 select-none font-display font-black leading-none text-ink/[0.035] transition-opacity duration-300 group-hover:text-ink/[0.065]"
-                  style={{ fontSize: "clamp(5rem, 10vw, 9rem)" }}
+                  className="absolute right-0 top-0 block h-10 w-10 origin-top-right scale-0 bg-x-red transition-transform duration-300 group-hover:scale-100"
+                  style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
+                />
+
+                {/* Ghost number — absolute large behind content */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-4 -top-3 select-none font-display font-black leading-none text-ink/[0.05] transition-opacity duration-300 group-hover:text-ink/[0.09]"
+                  style={{ fontSize: "clamp(6rem, 12vw, 11rem)" }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <div className="relative grid w-full gap-3 py-9 pl-7 pr-5 md:grid-cols-12 md:items-center md:gap-8 md:py-10 md:pl-12">
-                  <span className="font-label text-[10px] tracking-[0.3em] text-x-red md:col-span-1">
+                {/* Content */}
+                <div className="relative z-10">
+                  <span className="font-label text-[10px] tracking-[0.3em] text-x-red/60">
                     0{i + 1}
                   </span>
+
                   <h3
-                    className="font-display font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4"
-                    style={{ fontSize: "clamp(1.05rem, 1.8vw, 1.45rem)" }}
+                    className="mt-4 font-display font-bold tracking-[-0.02em] text-ink transition-colors group-hover:text-x-red"
+                    style={{ fontSize: "clamp(1.15rem, 2vw, 1.5rem)" }}
                   >
                     {service.title}
                   </h3>
-                  <p className="max-w-[52ch] text-[13px] leading-[1.75] text-ink/42 md:col-span-6 md:text-[14px]">
+
+                  <p className="mt-4 text-[13px] leading-[1.8] text-ink/40 md:text-[14px]">
                     {service.body}
                   </p>
-                  <span className="flex items-center md:col-span-1 md:justify-end">
-                    <ArrowUpRight className="size-5 text-ink/15 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
-                  </span>
+
+                  {/* Arrow */}
+                  <div className="mt-7 flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-x-red/0 transition-all duration-300 group-hover:text-x-red">
+                    <span>Explore</span>
+                    <ArrowUpRight className="size-3.5" />
+                  </div>
                 </div>
+
+                {/* Bottom red border — slides up on hover */}
+                <span
+                  aria-hidden
+                  className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-x-red transition-transform duration-500 group-hover:scale-x-100"
+                />
               </Link>
             </Reveal>
           ))}
         </div>
 
-        {/* Footer link */}
-        <Reveal delay={0.2} from="fade">
+        {/* Footer */}
+        <Reveal delay={0.25} from="fade">
           <div className="mt-10 flex items-center justify-between">
             <p className="font-label text-[9px] tracking-[0.24em] text-ink/22">
-              FormX · Architecture · Structure · Infrastructure
+              Architecture · Structure · Infrastructure
             </p>
             <Link
               href="/services"
               transitionTypes={["nav-forward"]}
-              className="group inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-ink/40 transition-colors hover:text-x-red"
+              className="group inline-flex items-center gap-2 font-label text-[10px] tracking-[0.22em] text-ink/40 transition-colors hover:text-x-red"
             >
               All Services
               <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
