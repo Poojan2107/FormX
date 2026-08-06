@@ -42,7 +42,9 @@ function SiteHeader({
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const onHome = pathname === "/";
-  const overDarkHero = onHome && !scrolled && !open;
+  /* White-first brand: home hero is paper white — never merge into black */
+  const overDarkHero = false;
+  const overHomeHero = onHome && !scrolled && !open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -67,10 +69,8 @@ function SiteHeader({
         <div
           className={cn(
             "border-b transition-all duration-500",
-            /* Black (not transparent): sticky header sits above main; transparent
-               would show body white and split the hero. Black merges with the field. */
-            overDarkHero
-              ? "border-transparent bg-black"
+            overHomeHero
+              ? "border-transparent bg-white"
               : scrolled
                 ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
                 : "border-transparent bg-white",
@@ -96,7 +96,7 @@ function SiteHeader({
                 href={`tel:${site.phone.replace(/\s/g, "")}`}
                 className={cn(
                   "hidden h-9 items-center gap-2 font-label text-[10px] transition-colors xl:flex",
-                  overDarkHero ? "text-white/55 hover:text-white" : "text-ink/50 hover:text-ink",
+                  "text-ink/50 hover:text-ink",
                 )}
                 aria-label={`Call ${site.phone}`}
               >
@@ -117,9 +117,7 @@ function SiteHeader({
                 type="button"
                 className={cn(
                   "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
-                  overDarkHero
-                    ? "border-white/25 bg-white/5 text-white hover:border-x-red hover:text-x-red"
-                    : "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
+                  "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
                 )}
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
@@ -143,7 +141,7 @@ function SiteHeader({
           <div
             className={cn(
               "h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent transition-opacity",
-              overDarkHero ? "opacity-40" : "opacity-70",
+              overHomeHero ? "opacity-35" : "opacity-55",
             )}
           />
         </div>
