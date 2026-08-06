@@ -196,23 +196,6 @@ body {
   max-width: 48ch;
 }
 
-/* Reading voice — Source Sans body, calmer than display Montserrat */
-.fx-read {
-  font-family: var(--font-body);
-  font-weight: 400;
-  letter-spacing: -0.011em;
-  line-height: 1.9;
-  max-width: 46ch;
-}
-
-.fx-read-wide {
-  font-family: var(--font-body);
-  font-weight: 400;
-  letter-spacing: -0.011em;
-  line-height: 1.9;
-  max-width: 58ch;
-}
-
 /* FORM× cut language */
 :root {
   --formx-cut: 22px;

@@ -73,7 +73,7 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Practice", href: "/knowledge-center" },
+  { label: "Insights", href: "/knowledge-center" },
 ];
 
 /** Mobile mega-menu — Architecture · Structure · Infrastructure only (no MEP) */
@@ -105,11 +105,11 @@ export const serviceNavGroups = [
 export const faqs = [
   {
     q: "What does FormX Consultants deliver?",
-    a: "Architecture, Structure and Infrastructure for high-rise & residential, industrial, institutional & commercial, and strengthening & retrofitting — plus quantity estimation and construction support until the facility matches intent.",
+    a: "Structural engineering and design solutions across high-rise & residential, industrial projects, institutional & commercial buildings, and strengthening & retrofitting—plus quantity estimation, construction support, and coordination for seamless execution.",
   },
   {
     q: "Who do you work with?",
-    a: "Industrial houses and pharma companies, architects, contractors, and private homeowners.",
+    a: "Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
   },
   {
     q: "How can we start a project discussion?",
@@ -172,7 +172,7 @@ export const aboutPage = {
   founderVision:
     "Hiren J. Shah, Founder & Managing Partner, keeps judgement close to the work through desk reviews, coordination meetings, site walks, and markups that push each package toward clarity.",
   collaboration:
-    "Architecture planning, structural design and site infrastructure — with quantity estimation and construction support until the work matches intent. Clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
+    "Structural design, architecture planning and site execution — with quantity estimation, construction support and coordination for seamless delivery. Our clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
   studioFlow:
     "Projects move through the Ahmedabad studio with Architecture, Structure and Infrastructure — from concept through site execution.",
   story: [

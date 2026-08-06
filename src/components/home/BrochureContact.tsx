@@ -1,20 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { Container } from "@/components/ui/Container";
+import { FormxTransparentLogo } from "@/components/ui/FormxTransparentLogo";
 import { brochureFaqs } from "@/data/brochureHome";
 import { site } from "@/data/site";
 
-function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
+function FaqItem({
+  q,
+  a,
+  index,
+}: {
+  q: string;
+  a: string;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
 
   return (
-    <div className="border-b border-ink/[0.08]">
+    <div className="border-b border-ink/[0.09]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -24,14 +33,24 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
         <span className="mt-0.5 font-label text-[10px] tracking-[0.2em] text-x-red">
           {String(index + 1).padStart(2, "0")}
         </span>
-        <span className="text-[15px] font-medium leading-[1.45] text-ink/80 transition-colors group-hover:text-ink md:text-[16px]">
+        <span className="text-[15px] font-semibold leading-[1.45] tracking-tight text-ink/82 transition-colors group-hover:text-ink md:text-[16px]">
           {q}
         </span>
-        <ChevronDown
-          className={`mt-1 size-4 shrink-0 text-ink/30 transition-transform duration-300 ${
-            open ? "rotate-180 text-x-red" : ""
+        <span
+          className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border transition-colors group-hover:border-x-red/40 ${
+            open ? "border-x-red/50 bg-x-red text-white" : "border-ink/[0.1] bg-white text-x-red"
           }`}
-        />
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%)",
+          }}
+        >
+          <ChevronDown
+            className={`size-3.5 transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </span>
       </button>
       <AnimatePresence initial={false}>
         {open ? (
@@ -39,10 +58,10 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 pl-10 pr-8 text-[14.5px] leading-[1.85] text-ink/55 md:pl-12">
+            <p className="pb-6 pl-10 pr-12 text-[14.5px] leading-[1.85] text-ink/58 md:pl-12 md:text-[15px]">
               {a}
             </p>
           </motion.div>
@@ -52,85 +71,143 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   );
 }
 
-/**
- * CONTACT — Invitation + facts strip + FAQ. No icon card trio.
- */
 export function BrochureContact() {
+  const contactFacts = [
+    {
+      icon: MapPin,
+      label: "Studio address",
+      body: site.addressDetail,
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      body: (
+        <a
+          href={`mailto:${site.email}`}
+          className="transition-colors hover:text-x-red"
+        >
+          {site.email}
+        </a>
+      ),
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      body: (
+        <a
+          href={`tel:${site.phone.replace(/\s/g, "")}`}
+          className="transition-colors hover:text-x-red"
+        >
+          {site.phone}
+        </a>
+      ),
+    },
+  ] as const;
+
   return (
-    <section id="contact" className="scroll-mt-28 border-t border-ink/[0.06] bg-[#fafaf8] py-24 md:py-32">
-      <Container>
+    <section
+      id="contact"
+      className="relative scroll-mt-28 overflow-hidden bg-[#fafaf8] py-24 text-ink md:py-32"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.03] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundSize: "180px",
+        }}
+      />
+
+      <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-[3px] w-24 bg-x-red" />
+
+      <Container className="relative z-10">
         <div className="grid gap-10 border-b border-ink/[0.08] pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-16">
           <Reveal>
-            <p className="eyebrow text-x-red">Contact</p>
+            <div className="mb-8">
+              <FormxTransparentLogo size="md" align="left" />
+            </div>
+            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+              Contact
+            </p>
             <h2
-              className="mt-4 max-w-[14ch] font-display font-black leading-[0.98] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.1rem, 4.2vw, 3.4rem)" }}
+              className="mt-4 max-w-[14ch] font-display font-black leading-[1.02] tracking-[-0.045em] text-ink"
+              style={{ fontSize: "clamp(2.15rem, 4.4vw, 3.5rem)" }}
             >
               Bring us your next facility
             </h2>
           </Reveal>
-          <Reveal delay={0.06}>
-            <p className="fx-read text-[15.5px] text-ink/55 md:text-[16px] lg:pb-1">
-              Share the facility, scale and constraints. FormX starts with the decisions that must
-              be resolved before issue.
+          <Reveal delay={0.08}>
+            <p className="text-[15.5px] leading-[1.9] text-ink/60 md:text-[16.5px] lg:pb-1">
+              Every serious project starts with clarity. Share the facility, scale, and
+              constraints, and we will help define the engineering decisions that need to be
+              resolved before execution begins.
             </p>
           </Reveal>
         </div>
 
-        <Reveal delay={0.08}>
-          <dl className="mt-10 grid gap-8 border-b border-ink/[0.08] pb-10 sm:grid-cols-3">
-            <div>
-              <dt className="font-label text-[9px] tracking-[0.2em] text-ink/35">Studio</dt>
-              <dd className="mt-2 text-[14px] leading-[1.75] text-ink/65">{site.addressDetail}</dd>
-            </div>
-            <div>
-              <dt className="font-label text-[9px] tracking-[0.2em] text-ink/35">Email</dt>
-              <dd className="mt-2">
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-[14px] text-ink/65 transition-colors hover:text-x-red"
+        <Reveal delay={0.1}>
+          <dl className="mt-10 grid gap-3 sm:grid-cols-3 sm:items-stretch">
+            {contactFacts.map((fact) => {
+              const Icon = fact.icon;
+              return (
+                <div
+                  key={fact.label}
+                  className="flex h-full min-h-[130px] flex-col border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/30 md:p-6"
                 >
-                  {site.email}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-label text-[9px] tracking-[0.2em] text-ink/35">Phone</dt>
-              <dd className="mt-2">
-                <a
-                  href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="text-[14px] text-ink/65 transition-colors hover:text-x-red"
-                >
-                  {site.phone}
-                </a>
-              </dd>
-            </div>
+                  <Icon className="size-4 text-x-red" />
+                  <dt className="mt-4 font-label text-[9px] uppercase tracking-[0.2em] text-ink/40">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-2 flex-1 text-[13.5px] font-medium leading-[1.7] text-ink/68 md:text-[14px]">
+                    {fact.body}
+                  </dd>
+                </div>
+              );
+            })}
           </dl>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <Link
-            href="/contact"
-            transitionTypes={["nav-forward"]}
-            className="fx-btn-primary group mt-10 inline-flex"
-          >
-            Discuss your facility
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </Reveal>
+        <div className="mt-8">
+          <Reveal delay={0.12}>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="fx-btn-primary group inline-flex"
+            >
+              Enquire Now
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
+        </div>
 
-        <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <div
+          aria-hidden
+          className="mt-16 flex items-center gap-4"
+        >
+          <span className="h-px flex-1 bg-ink/[0.1]" />
+          <span className="font-display text-sm font-black text-x-red/50">×</span>
+          <span className="h-px flex-1 bg-ink/[0.1]" />
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <Reveal>
-            <p className="eyebrow text-x-red">FAQ</p>
+            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+              FAQ
+            </p>
             <h3
-              className="mt-4 max-w-[12ch] font-display font-extrabold leading-[1.05] tracking-tight text-ink"
-              style={{ fontSize: "clamp(1.5rem, 2.6vw, 2.1rem)" }}
+              className="mt-4 max-w-[12ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
+              style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.25rem)" }}
             >
               Questions before issue
             </h3>
+            <p className="mt-4 max-w-[36ch] text-[15px] leading-[1.85] text-ink/55">
+              Straight answers drawn from how FormX works with clients, architects and contractors.
+            </p>
           </Reveal>
-          <Reveal delay={0.06}>
-            <div className="border-t border-ink/[0.08]">
+
+          <Reveal delay={0.08}>
+            <div className="border-t border-ink/[0.09]">
               {brochureFaqs.map((item, i) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} index={i} />
               ))}

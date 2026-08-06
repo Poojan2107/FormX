@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-/** Mobile conversion bar — dark studio strip, not frosted SaaS chrome */
+/** Sticky enquire strip for offering / case pages — mobile conversion bar */
 export function StickyEnquire({
   label = "Discuss this with FormX",
   href = "/contact",
@@ -25,21 +25,21 @@ export function StickyEnquire({
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#0a0a09] transition-transform duration-300 md:hidden",
+        "fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur-md transition-transform duration-300 md:hidden",
         show ? "translate-y-0" : "translate-y-full",
       )}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <div className="flex items-center justify-between gap-4 px-4 py-3.5">
-        <p className="min-w-0 flex-1 truncate font-label text-[10px] tracking-[0.14em] text-white/55">
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <p className="min-w-0 flex-1 truncate text-[13px] font-semibold tracking-[-0.01em] text-ink">
           {label}
         </p>
         <Link
           href={href}
           transitionTypes={["nav-forward"]}
-          className="inline-flex shrink-0 items-center gap-1.5 bg-x-red px-4 py-2.5 font-label text-[10px] tracking-[0.16em] text-white transition-colors hover:bg-x-red-hover"
+          className="fx-btn-primary inline-flex shrink-0 items-center gap-1.5 px-4 py-2.5 text-[10px]"
         >
-          Discuss
+          Enquire
           <ArrowRight className="size-3.5" />
         </Link>
       </div>

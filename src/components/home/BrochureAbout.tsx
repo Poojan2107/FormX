@@ -2,99 +2,106 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { brochureBrand } from "@/data/brochureHome";
 import { trustMetrics } from "@/data/site";
 import { AssetImage } from "@/components/ui/AssetImage";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
 /**
- * ABOUT — First human contact after the no-photo hero.
- * Authored beat: photo settles into the crop.
+ * ABOUT — Split editorial: image owns the left frame;
+ * right column fills its width with a compact title + readable body.
  */
 export function BrochureAbout() {
-  const reduce = useReducedMotion();
-
   return (
     <section id="about" className="scroll-mt-28 overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2">
-        <div className="relative min-h-[420px] overflow-hidden bg-[#111] lg:min-h-[720px]">
-          <motion.div
-            className="absolute inset-0"
-            initial={reduce ? false : { scale: 1.08, opacity: 0.7 }}
-            whileInView={reduce ? undefined : { scale: 1, opacity: 1 }}
-            viewport={{ once: true, margin: "-8% 0px" }}
-            transition={{ duration: 1.35, ease }}
-          >
-            <AssetImage
-              slot="about/home-about.jpg"
-              alt="FormX studio — coordination before issue"
-              fit="cover"
-              kind="studio"
-              tone="dark"
-              aspect="auto"
-              priority
-              objectPosition="center center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="absolute inset-0 h-full w-full"
-            />
-          </motion.div>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 p-8 md:p-10"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.35, ease }}
-          >
-            <p className="font-label text-[10px] tracking-[0.24em] text-x-red">Studio · Ahmedabad</p>
-            <p className="mt-2 max-w-[20ch] font-display text-xl font-extrabold leading-tight tracking-tight text-white md:text-2xl">
+        <Reveal from="left" className="relative min-h-[440px] overflow-hidden bg-[#ece9e2] lg:min-h-[760px]">
+          <AssetImage
+            slot="about/home-about.jpg"
+            alt="FormX studio — coordination before issue"
+            fit="cover"
+            kind="studio"
+            tone="light"
+            aspect="auto"
+            priority
+            objectPosition="center center"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="absolute inset-0 h-full w-full"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-black/35 lg:via-transparent lg:to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9 lg:p-10">
+            <p className="font-label text-[10px] tracking-[0.28em] uppercase text-white/70">
+              Studio · Practice
+            </p>
+            <p className="mt-2 max-w-[22ch] font-display text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
               Judgement stays close to the work
             </p>
-          </motion.div>
-        </div>
+          </div>
+          <span aria-hidden className="absolute left-0 top-0 h-[3px] w-20 bg-x-red" />
+        </Reveal>
 
-        <div className="flex flex-col justify-center px-8 py-16 sm:px-12 md:px-14 lg:py-24 xl:px-16">
+        <div className="relative flex flex-col justify-center px-8 py-16 sm:px-12 md:px-14 lg:px-12 lg:py-24 xl:px-16">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute right-8 top-10 hidden font-display text-[7rem] font-black leading-none text-ink/[0.03] xl:block"
+          >
+            ×
+          </span>
+
           <Reveal>
-            <p className="eyebrow text-x-red">About FormX</p>
+            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+              About FormX
+            </p>
             <h2
-              className="mt-5 max-w-[18ch] font-display font-black leading-[1.02] tracking-tight text-ink"
-              style={{ fontSize: "clamp(1.85rem, 3vw, 2.75rem)" }}
+              className="mt-5 max-w-[20ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
+              style={{ fontSize: "clamp(1.9rem, 3.1vw, 2.85rem)" }}
             >
-              A practice built on engineering judgement
+              A structural engineering firm built on{" "}
+              <span className="relative inline">
+                engineering judgement
+                <span
+                  aria-hidden
+                  className="absolute -bottom-1 left-0 h-[2.5px] w-[3.25rem] bg-x-red"
+                />
+              </span>
             </h2>
-            <p className="fx-read mt-7 text-[16.5px] text-ink/62 md:text-[17.5px]">
+            <p className="mt-7 max-w-[50ch] text-[16px] font-medium leading-[1.9] text-ink/66 md:text-[17px]">
               {brochureBrand.intro}
             </p>
             <Link
               href="/about"
               transitionTypes={["nav-forward"]}
-              className="group mt-9 inline-flex items-center gap-2 font-label text-[10px] tracking-[0.2em] text-x-red transition-colors hover:text-ink"
+              className="group mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-x-red/55 pb-1.5 font-label text-[10.5px] tracking-[0.22em] text-x-red transition-colors hover:border-x-red"
             >
-              Know the studio
+              Know More
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <dl className="mt-14 grid gap-8 border-t border-ink/[0.08] pt-9 sm:grid-cols-3">
-              {trustMetrics.map((m) => (
-                <div key={m.label}>
-                  <dt className="sr-only">{m.label}</dt>
-                  <dd
-                    className="font-display font-black leading-none tracking-tight text-ink"
-                    style={{ fontSize: "clamp(1.75rem, 2.8vw, 2.35rem)" }}
-                  >
-                    {m.value}
-                  </dd>
-                  <p className="mt-3 max-w-[12ch] font-label text-[9px] tracking-[0.16em] text-ink/40">
-                    {m.label}
-                  </p>
-                </div>
-              ))}
-            </dl>
+          <Reveal delay={0.12}>
+            <div className="mt-14 border-t border-ink/[0.09] pt-9">
+              <div className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+                {trustMetrics.map((m, i) => (
+                  <div key={m.label} className="relative">
+                    <p
+                      className="font-display font-black leading-none tracking-[-0.035em] text-ink"
+                      style={{ fontSize: "clamp(1.85rem, 3vw, 2.5rem)" }}
+                    >
+                      {m.value}
+                    </p>
+                    <span aria-hidden className="mt-3 block h-[2px] w-8 bg-x-red" />
+                    <p className="mt-3 max-w-[12ch] font-label text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/48">
+                      {m.label}
+                    </p>
+                    {i < trustMetrics.length - 1 ? (
+                      <span className="absolute -right-3 top-1 hidden font-display text-lg font-black text-x-red/25 sm:block">
+                        ×
+                      </span>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>
