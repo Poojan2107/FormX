@@ -73,7 +73,7 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Insights", href: "/knowledge-center" },
+  { label: "Practice", href: "/knowledge-center" },
 ];
 
 /** Mobile mega-menu — Architecture · Structure · Infrastructure only (no MEP) */

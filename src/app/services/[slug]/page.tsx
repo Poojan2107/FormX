@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getService, services } from "@/data/site";
+import { ArrowRight } from "lucide-react";
+import { getService, services, brochureProjects } from "@/data/site";
 import { getServiceStory } from "@/data/serviceStories";
 import { DisciplineStory } from "@/components/services/DisciplineStory";
-import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 
 type Props = { params: Promise<{ slug: string }> };
 
-/** Public service IA — Architecture · Structure · Infrastructure only */
 const PRIMARY_SERVICE_SLUGS = [
   "architectural-design",
   "sustainable-design",
@@ -54,7 +55,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   const story = getServiceStory(service);
-  const cat = categoryLabels[slug] ?? "Engineering Practice";
+  const cat = categoryLabels[slug] ?? "Practice";
 
   const others = services
     .filter(
@@ -62,13 +63,9 @@ export default async function ServiceDetailPage({ params }: Props) {
         s.slug !== slug &&
         PRIMARY_SERVICE_SLUGS.includes(s.slug as (typeof PRIMARY_SERVICE_SLUGS)[number]),
     )
-    .slice(0, 3)
-    .map((s) => ({
-      href: `/services/${s.slug}`,
-      title: s.title,
-      meta: "Discipline",
-      image: s.asset,
-    }));
+    .slice(0, 4);
+
+  const evidence = brochureProjects.slice(0, 3);
 
   return (
     <>
@@ -79,39 +76,125 @@ export default async function ServiceDetailPage({ params }: Props) {
         image={`https://formxconsultants.com/assets/${service.asset}`}
       />
 
-      <section className="border-b border-line bg-white pt-28 pb-14 md:pt-32 md:pb-18">
+      <section className="fx-grain border-b border-black bg-[#0a0a09] pt-28 pb-16 text-white md:pt-36 md:pb-20">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-end lg:gap-14">
             <div>
-              <p className="eyebrow text-x-red">{cat}</p>
+              <p className="eyebrow text-x-red">
+                {cat} · FORM×
+              </p>
               <h1
-                className="mt-4 max-w-[16ch] font-display font-black leading-[0.98] tracking-tight text-ink"
-                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+                className="mt-5 max-w-[14ch] font-display font-black leading-[0.96] tracking-tight"
+                style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
               >
                 {service.title}
               </h1>
-              <p className="mt-3 editorial-meta text-ink/40">{story.motif}</p>
+              <p className="mt-4 font-label text-[10px] tracking-[0.22em] text-white/35">
+                {story.motif}
+              </p>
             </div>
-            <p className="max-w-2xl text-[16px] leading-[1.9] text-ink-muted lg:pb-1">
+            <p className="max-w-xl text-[16px] leading-[1.9] text-white/55 lg:pb-1">
               {story.lead || service.short}
             </p>
+          </div>
+          <div className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 pt-6">
+            <span className="font-label text-[9px] tracking-[0.22em] text-x-red">
+              Architecture
+            </span>
+            <span className="text-white/20">×</span>
+            <span className="font-label text-[9px] tracking-[0.22em] text-x-red">Structure</span>
+            <span className="text-white/20">×</span>
+            <span className="font-label text-[9px] tracking-[0.22em] text-x-red">
+              Infrastructure
+            </span>
           </div>
         </Container>
       </section>
 
       <DisciplineStory service={service} />
 
-      <RelatedLinks
-        title="Related disciplines"
-        items={others}
-        viewAllHref="/services"
-      />
+      <section className="border-b border-line bg-white py-16 md:py-20">
+        <Container>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow text-x-red">Evidence</p>
+              <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
+                Facilities from the brochure
+              </h2>
+            </div>
+            <Link
+              href="/projects"
+              transitionTypes={["nav-forward"]}
+              className="font-label text-[10px] tracking-[0.18em] text-x-red hover:text-ink"
+            >
+              All projects →
+            </Link>
+          </div>
+          <ul className="divide-y divide-ink/[0.08] border-y border-ink/[0.08]">
+            {evidence.map((p, i) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/projects/${p.slug}`}
+                  transitionTypes={["nav-forward"]}
+                  className="group grid gap-2 py-5 sm:grid-cols-[3rem_1fr_auto] sm:items-baseline sm:gap-6"
+                >
+                  <span className="font-label text-[10px] tracking-[0.16em] text-x-red">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-lg font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                    {p.title}
+                  </span>
+                  <span className="text-[13px] text-ink/45">{p.location}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
-      <CtaBand
-        title={`Discuss ${service.title.toLowerCase()} before issue`}
-        description="Share site constraints, facility type, and timeline. We review how this discipline needs to coordinate with Architecture, Structure, and Infrastructure before drawings begin."
-        secondary={{ label: "All services", href: "/services" }}
-      />
+      <section className="border-b border-line bg-[#f7f6f2] py-14 md:py-16">
+        <Container>
+          <p className="eyebrow text-x-red">Related disciplines</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {others.map((s) => (
+              <Reveal key={s.slug}>
+                <Link
+                  href={`/services/${s.slug}`}
+                  transitionTypes={["nav-forward"]}
+                  className="group flex h-full flex-col border border-ink/[0.08] bg-white px-5 py-5 transition-colors hover:border-x-red/40"
+                >
+                  <span className="font-display text-[15px] font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                    {s.title}
+                  </span>
+                  <span className="mt-3 inline-flex items-center gap-1 font-label text-[9px] tracking-[0.16em] text-ink/35 group-hover:text-x-red">
+                    Open <ArrowRight className="size-3" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="fx-grain bg-[#0a0a09] py-16 text-white md:py-20">
+        <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="eyebrow text-x-red">Before issue</p>
+            <h2 className="mt-3 max-w-[22ch] font-display text-2xl font-extrabold tracking-tight md:text-3xl">
+              Discuss {service.title.toLowerCase()} against your facility constraints.
+            </h2>
+          </div>
+          <Link
+            href="/contact"
+            transitionTypes={["nav-forward"]}
+            className="fx-btn-primary inline-flex shrink-0"
+          >
+            Enquire Now
+            <ArrowRight className="size-4" />
+          </Link>
+        </Container>
+      </section>
+
       <StickyEnquire label={`Discuss ${service.title}`} />
     </>
   );
