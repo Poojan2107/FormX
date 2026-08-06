@@ -16,76 +16,77 @@ export const metadata: Metadata = {
     "FORMX clients range from industrial houses and pharma companies to architects, contractors, and private homeowners.",
 };
 
-/** Editorial partners page — brochure partner types, no fake logos */
+/** Brochure partner types only — no fake logo wall */
 export default function ClientsPage() {
   return (
     <>
-      <section className="fx-grain border-b border-line bg-bg pt-28 pb-16 md:pt-36 md:pb-20">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
+      <section className="fx-grain border-b border-black bg-[#0a0a09] text-white">
+        <Container className="pb-14 pt-28 md:pb-20 md:pt-36">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
             <div>
               <p className="eyebrow text-x-red">Partners</p>
               <h1
-                className="editorial-title mt-5 max-w-[14ch] text-ink"
+                className="mt-5 max-w-[14ch] font-display font-black leading-[0.96] tracking-tight"
                 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.25rem)" }}
               >
                 Who places trust in FormX
               </h1>
             </div>
-            <p className="text-[16px] leading-[1.9] text-ink/62 md:text-[17px]">
+            <p className="text-[15.5px] leading-[1.9] text-white/55 md:text-[16.5px] lg:pb-1">
               {portfolioContactNote}
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="bg-[#f7f6f2] py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <Container>
           <Reveal>
-            <VisualFrame
-              slot={brochureVisuals.partnersBanner}
-              alt="FORMX partner types from brochure"
-              fit="contain"
-              aspect="cinema"
-              tone="light"
-              className="border border-line bg-white"
-            />
+            <div className="formx-cut-lg overflow-hidden border border-ink/[0.08] bg-[#fafaf8] p-3">
+              <VisualFrame
+                slot={brochureVisuals.partnersBanner}
+                alt="FORMX partner types from brochure"
+                fit="contain"
+                aspect="cinema"
+                tone="light"
+              />
+            </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 divide-y divide-ink/[0.08] border-y border-ink/[0.08]">
             {partnerTypes.map((client, i) => (
-              <Reveal key={client.name} delay={0.04 * i}>
-                <div
-                  className="flex min-h-[132px] flex-col justify-between border border-ink/[0.1] bg-white px-6 py-6 md:min-h-[148px] md:px-7 md:py-7"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
-                  }}
-                >
-                  <div>
-                    <span className="font-label text-[9.5px] tracking-[0.24em] text-x-red/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="mt-3 font-display text-[1.1rem] font-bold leading-[1.15] tracking-tight text-ink md:text-[1.2rem]">
-                      {client.name}
-                    </p>
-                  </div>
-                  <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
+              <Reveal key={client.name} delay={0.03 * i}>
+                <div className="grid gap-3 py-7 md:grid-cols-12 md:items-baseline md:gap-8 md:py-8">
+                  <span className="font-label text-[10px] tracking-[0.24em] text-x-red md:col-span-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-display text-xl font-extrabold tracking-tight text-ink md:col-span-5 md:text-2xl">
+                    {client.name}
+                  </p>
+                  <p className="font-label text-[10px] tracking-[0.16em] text-ink/40 md:col-span-6">
                     {client.tag}
                   </p>
                 </div>
               </Reveal>
             ))}
           </div>
+        </Container>
+      </section>
 
-          <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-ink/[0.08] pt-10">
-            <p className="font-label text-[9.5px] tracking-[0.22em] uppercase text-ink/40">
-              Clients · Architects · Contractors
-            </p>
+      <section className="fx-grain border-t border-black bg-[#0a0a09] py-16 text-white md:py-20">
+        <Container>
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <p className="eyebrow text-x-red">Continue</p>
+              <p className="mt-4 text-[16px] leading-[1.9] text-white/58">
+                Clients · Architects · Contractors — bring the facility constraints. FormX starts
+                Before Issue.
+              </p>
+            </div>
             <Link
               href="/contact"
               transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-2 font-label text-[11px] tracking-[0.16em] text-x-red transition-colors hover:text-ink"
+              className="fx-btn-primary shrink-0"
             >
               Discuss a facility
               <ArrowRight className="size-3.5" />

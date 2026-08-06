@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
       { source: "/news", destination: "/knowledge-center", permanent: false },
       { source: "/news/:slug*", destination: "/knowledge-center", permanent: false },
       { source: "/estimator", destination: "/services", permanent: false },
+      {
+        source: "/vendor-registration",
+        destination: "/clients",
+        permanent: false,
+      },
     ];
   },
   async headers() {
