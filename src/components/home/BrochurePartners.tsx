@@ -14,7 +14,7 @@ export function BrochurePartners() {
   return (
     <section id="partners" className="scroll-mt-28 bg-white py-20 md:py-28">
       <Container>
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
 
           {/* ── Left: Header ─────────────────────────────────── */}
           <Reveal>
@@ -22,12 +22,12 @@ export function BrochurePartners() {
               Partners
             </p>
             <h2
-              className="mt-4 max-w-[16ch] font-display font-black leading-[1.04] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
+              className="mt-4 max-w-[11ch] font-display font-black leading-[0.98] tracking-[-0.05em] text-ink"
+              style={{ fontSize: "clamp(2.2rem, 4.6vw, 3.75rem)" }}
             >
               Who places trust in FormX
             </h2>
-            <p className="mt-5 max-w-[38ch] text-[15.5px] font-medium leading-[1.85] text-ink/68">
+            <p className="mt-5 max-w-[36ch] text-[16px] font-medium leading-[1.9] text-ink/64">
               {brochureContactNote}
             </p>
 
@@ -46,16 +46,16 @@ export function BrochurePartners() {
               {brochurePartners.map((partner) => (
                 <div
                   key={partner.name}
-                  className="fx-partner-pill group cursor-default border border-ink/[0.12] bg-[#f9f8f5] px-6 py-5 transition-all hover:border-x-red/35 hover:bg-white md:px-7 md:py-6"
+                  className="fx-partner-pill group cursor-default border border-ink/[0.12] bg-[#f8f6f1] px-6 py-6 transition-all hover:border-x-red/35 hover:bg-white md:px-7 md:py-7"
                   style={{
                     clipPath:
                       "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
                   }}
                 >
-                  <p className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red md:text-lg">
+                  <p className="max-w-[12ch] font-display text-base font-bold leading-[1.1] tracking-tight text-ink transition-colors group-hover:text-x-red md:text-lg">
                     {partner.name}
                   </p>
-                  <p className="mt-1 font-label text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                  <p className="mt-2 font-label text-[10px] uppercase tracking-[0.16em] text-ink/46">
                     {partner.tag}
                   </p>
                 </div>

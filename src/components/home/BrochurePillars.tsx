@@ -39,13 +39,10 @@ export function BrochurePillars() {
           <Reveal key={pillar.title} delay={0.07 * i} from="fade">
             <li className="group relative cursor-default overflow-hidden border-b border-white/[0.08] transition-colors hover:bg-white/[0.03]">
               <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                <div className="flex items-stretch gap-0 py-8 md:py-10 lg:gap-8 xl:py-11">
+                <div className="grid items-center gap-6 py-8 md:grid-cols-[120px_28px_minmax(260px,360px)_1fr] md:py-10 lg:grid-cols-[180px_36px_360px_1fr] xl:py-11">
 
                   {/* GIANT ghost number */}
-                  <div
-                    aria-hidden
-                    className="flex w-28 shrink-0 items-center md:w-40 lg:w-52"
-                  >
+                  <div aria-hidden className="flex items-center">
                     <span
                       className="select-none font-display font-black leading-none text-white/[0.08] transition-all duration-700 group-hover:text-white/[0.16]"
                       style={{ fontSize: "clamp(4.5rem, 9vw, 8.5rem)" }}
@@ -55,7 +52,7 @@ export function BrochurePillars() {
                   </div>
 
                   {/* × glyph */}
-                  <div className="flex items-center pr-6 md:pr-8">
+                  <div className="flex items-center">
                     <span
                       className="font-display font-black leading-none text-x-red/60 transition-all duration-500 group-hover:scale-110 group-hover:text-x-red"
                       style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
@@ -65,14 +62,16 @@ export function BrochurePillars() {
                   </div>
 
                   {/* Title + body */}
-                  <div className="flex flex-1 flex-col justify-center gap-3 lg:flex-row lg:items-center lg:gap-16">
+                  <div className="flex min-h-[72px] items-center">
                     <h3
-                      className="font-display font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-x-red lg:w-72 lg:shrink-0"
+                      className="font-display font-bold leading-[1.05] tracking-[-0.02em] text-white transition-colors group-hover:text-x-red"
                       style={{ fontSize: "clamp(1.2rem, 2vw, 1.7rem)" }}
                     >
                       {pillar.title}
                     </h3>
-                    <p className="max-w-[56ch] text-[14px] leading-[1.8] text-white/70 transition-colors group-hover:text-white/90 md:text-[15px]">
+                  </div>
+                  <div className="flex items-center">
+                    <p className="max-w-[48ch] text-[14px] leading-[1.85] text-white/72 transition-colors group-hover:text-white/90 md:text-[15px]">
                       {pillar.body}
                     </p>
                   </div>

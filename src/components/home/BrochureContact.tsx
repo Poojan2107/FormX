@@ -85,10 +85,10 @@ export function BrochureContact() {
       <span aria-hidden className="pointer-events-none absolute left-0 top-0 h-[3px] w-24 bg-x-red" />
 
       <Container className="relative z-10">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-14">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
 
           {/* ── Left: Contact Statement ───────────────────────────── */}
-          <Reveal className="lg:col-span-6">
+          <Reveal className="lg:col-span-7">
 
             {/* FormX Solid Logo */}
             <div className="mb-10">
@@ -104,20 +104,20 @@ export function BrochureContact() {
             </div>
 
             <h2
-              className="max-w-[12ch] font-display font-black leading-[0.98] tracking-[-0.04em] text-ink"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+              className="max-w-[10ch] font-display font-black leading-[0.95] tracking-[-0.05em] text-ink"
+              style={{ fontSize: "clamp(2.35rem, 5vw, 4rem)" }}
             >
               Bring us your next facility
             </h2>
 
-            <p className="mt-6 max-w-[40ch] text-[15px] leading-[1.9] text-ink/54 md:text-[16px]">
+            <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.9] text-ink/56 md:text-[16px]">
               Every serious project starts with clarity. Share the facility, scale, and
               constraints, and we will help define the engineering decisions that need to be
               resolved before execution begins.
             </p>
 
-            <dl className="mt-12 grid gap-4 sm:grid-cols-2">
-              <div className="border border-ink/[0.08] bg-white/70 p-5">
+            <dl className="mt-10 grid gap-3 md:grid-cols-3">
+              <div className="border border-ink/[0.08] bg-white/80 p-5">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
                 <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
                   Studio address
@@ -126,7 +126,7 @@ export function BrochureContact() {
                   {site.addressDetail}
                 </dd>
               </div>
-              <div className="border border-ink/[0.08] bg-white/70 p-5">
+              <div className="border border-ink/[0.08] bg-white/80 p-5">
                 <Mail className="size-4 shrink-0 text-x-red" />
                 <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
                   Email
@@ -137,7 +137,7 @@ export function BrochureContact() {
                   </a>
                 </dd>
               </div>
-              <div className="border border-ink/[0.08] bg-white/70 p-5 sm:col-span-2">
+              <div className="border border-ink/[0.08] bg-white/80 p-5">
                 <Phone className="size-4 shrink-0 text-x-red" />
                 <dt className="mt-3 font-label text-[9px] uppercase tracking-[0.22em] text-ink/35">
                   Phone
@@ -150,7 +150,7 @@ export function BrochureContact() {
               </div>
             </dl>
 
-            <div className="mt-11">
+            <div className="mt-9">
               <Link
                 href="/contact"
                 transitionTypes={["nav-forward"]}
@@ -164,12 +164,12 @@ export function BrochureContact() {
           </Reveal>
 
           {/* ── Right: FAQ Accordion ─────────────────────────────── */}
-          <Reveal delay={0.1} className="lg:col-span-6">
-            <div className="mb-7 flex items-center gap-3">
+          <Reveal delay={0.1} className="lg:col-span-5 lg:pt-8">
+            <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-x-red" />
               <p className="font-label text-[10px] tracking-[0.32em] text-ink/40 uppercase">Frequently Asked Questions</p>
             </div>
-            <div className="border border-ink/[0.08] bg-white/72 px-6 md:px-8">
+            <div className="border border-ink/[0.08] bg-white/82 px-5 py-1 shadow-[0_18px_60px_rgba(0,0,0,0.03)] md:px-7">
               {brochureFaqs.map((item) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} />
               ))}

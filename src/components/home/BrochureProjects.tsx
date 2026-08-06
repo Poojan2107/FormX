@@ -67,7 +67,7 @@ function SectionIntro({
 }) {
   return (
     <p
-      className={`mt-4 max-w-[62ch] text-[14px] leading-[1.85] md:text-[15px] ${
+      className={`mt-4 max-w-[56ch] text-[14px] leading-[1.85] md:text-[15px] ${
         dark ? "text-white/45" : "text-ink/50"
       }`}
     >
@@ -209,44 +209,44 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
 }
 
 function ResidentialPlate({ project }: { project: Project }) {
-  const frameMode = project.assets.frame ?? "cover";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
       transitionTypes={["nav-forward"]}
       className="group block transition-all duration-300"
     >
-      <div className="border border-white/10 bg-[#101010] p-3">
-        <div className="relative aspect-[3/4] overflow-hidden bg-[#0d0d0d]">
+      <div className="border border-white/10 bg-[#101010] p-3 md:p-4">
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#0d0d0d]">
           <div className="absolute inset-0 border border-white/10" />
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
-            fit={frameMode}
-            aspect="portrait"
+            fit="cover"
+            aspect="auto"
             tone="dark"
-            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.03]"
+            objectPosition="center center"
+            className="absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[56%] bg-gradient-to-t from-black via-black/42 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <p className="font-label text-[8px] uppercase tracking-[0.22em] text-x-red">
-              {project.location}
-            </p>
-            <h3 className="mt-2 font-display text-[1.65rem] font-bold leading-[0.98] tracking-tight text-white transition-colors group-hover:text-x-red">
+        </div>
+        <div className="border-x border-b border-white/10 bg-[#0d0d0d] px-5 pb-5 pt-4">
+          <p className="font-label text-[8px] uppercase tracking-[0.22em] text-x-red">
+            {project.location}
+          </p>
+          <div className="mt-2 flex items-start justify-between gap-4">
+            <h3 className="max-w-[12ch] font-display text-[1.55rem] font-bold leading-[1] tracking-tight text-white transition-colors group-hover:text-x-red">
               {project.title}
             </h3>
-            <p className="mt-2 max-w-[28ch] text-[12px] leading-[1.7] text-white/44">
-              {project.services[0] ?? project.sector}
-            </p>
+            <ArrowUpRight className="mt-1 size-3.5 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
+          <p className="mt-2 max-w-[28ch] text-[12px] leading-[1.7] text-white/46">
+            {project.services[0] ?? project.sector}
+          </p>
         </div>
-        <div className="flex items-center justify-between px-2 pb-1 pt-5">
+        <div className="flex items-center justify-between px-1 pb-1 pt-4">
           <span className="font-label text-[8px] uppercase tracking-[0.2em] text-white/34">
             {project.area ?? project.year}
           </span>
-          <ArrowUpRight className="size-3.5 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
       </div>
     </Link>
@@ -269,11 +269,11 @@ function SectorHeader({
   return (
     <Reveal>
       <div
-        className="mb-12 border-b pb-6"
+        className="mb-10 border-b pb-6"
         style={{ borderColor: dark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.08)" }}
       >
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div className="flex items-center gap-4">
               <span className="font-display text-2xl font-black text-x-red">{number}</span>
               <h3
@@ -285,15 +285,15 @@ function SectorHeader({
                 {title}
               </h3>
             </div>
-            <SectionIntro title={title} intro={intro} dark={dark} />
+            <span
+              className={`font-label text-[9px] tracking-[0.24em] md:pb-1 ${
+                dark ? "text-white/30" : "text-ink/35"
+              }`}
+            >
+              {String(count).padStart(2, "0")} facilities
+            </span>
           </div>
-          <span
-            className={`font-label text-[9px] tracking-[0.24em] md:pb-1 ${
-              dark ? "text-white/30" : "text-ink/35"
-            }`}
-          >
-            {String(count).padStart(2, "0")} facilities
-          </span>
+          <SectionIntro title={title} intro={intro} dark={dark} />
         </div>
       </div>
     </Reveal>
@@ -312,17 +312,17 @@ export function BrochureProjects() {
       {/* Section intro header */}
       <div className="bg-white py-16 md:py-24">
         <Container>
-          <Reveal>
+          <Reveal className="max-w-[44rem]">
             <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
               Projects
             </p>
             <h2
-              className="mt-4 max-w-[18ch] font-display font-black leading-[1.0] tracking-[-0.04em] text-ink"
+              className="mt-4 max-w-[12ch] font-display font-black leading-[0.96] tracking-[-0.05em] text-ink"
               style={{ fontSize: "clamp(2.5rem, 5vw, 4.25rem)" }}
             >
               Completed work
             </h2>
-            <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.8] text-ink/48">
+            <p className="mt-5 max-w-[38ch] text-[16px] leading-[1.9] text-ink/56">
               Real facilities from the brochure, framed to stay visible instead of being cropped
               into generic cards.
             </p>

@@ -19,31 +19,31 @@ export function BrochureServices() {
       <Container>
 
         {/* Header */}
-        <div className="mb-14 grid gap-8 md:grid-cols-2 md:items-end">
-          <Reveal>
+        <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-7">
             <p className="font-label text-[10.5px] tracking-[0.35em] uppercase text-x-red">Services</p>
             <h2
-              className="mt-5 font-display font-black leading-[1.0] tracking-[-0.04em] text-ink"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+              className="mt-4 max-w-[8ch] font-display font-black leading-[0.96] tracking-[-0.05em] text-ink"
+              style={{ fontSize: "clamp(2.35rem, 5vw, 4.25rem)" }}
             >
               What we<br />take on
             </h2>
           </Reveal>
-          <Reveal delay={0.08}>
-            <p className="max-w-[38ch] text-[15px] font-medium leading-[1.82] text-ink/70 md:text-right md:text-[16px]">
+          <Reveal delay={0.08} className="lg:col-span-5 lg:justify-self-end">
+            <p className="max-w-[40ch] text-[15px] font-medium leading-[1.9] text-ink/62 lg:text-left md:text-[16px]">
               {brochureServicesNote}
             </p>
           </Reveal>
         </div>
 
         {/* 2×2 TILE GRID */}
-        <div className="grid gap-px bg-ink/[0.08] sm:grid-cols-2 lg:grid-cols-2">
+        <div className="grid gap-px bg-ink/[0.08] sm:grid-cols-2">
           {brochureServices.map((service, i) => (
             <Reveal key={service.title} delay={0.07 * i} from="fade">
               <Link
                 href={service.href}
                 transitionTypes={["nav-forward"]}
-                className="group relative block overflow-hidden bg-[#f7f6f2] p-8 transition-colors hover:bg-white md:p-10 lg:p-12"
+                className="group relative block overflow-hidden bg-[#f7f6f2] p-8 transition-colors hover:bg-white md:min-h-[280px] md:p-10 lg:p-12"
               >
                 {/* FormX-cut corner */}
                 <span
@@ -63,23 +63,23 @@ export function BrochureServices() {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <span className="font-label text-[10.5px] tracking-[0.3em] font-bold text-x-red">
+                  <span className="font-label text-[10px] tracking-[0.28em] font-bold text-x-red">
                     0{i + 1}
                   </span>
 
                   <h3
-                    className="mt-4 font-display font-bold tracking-[-0.02em] text-ink transition-colors group-hover:text-x-red"
-                    style={{ fontSize: "clamp(1.2rem, 2vw, 1.55rem)" }}
+                    className="mt-4 max-w-[13ch] font-display font-bold leading-[1.04] tracking-[-0.03em] text-ink transition-colors group-hover:text-x-red"
+                    style={{ fontSize: "clamp(1.22rem, 1.9vw, 1.7rem)" }}
                   >
                     {service.title}
                   </h3>
 
-                  <p className="mt-4 text-[14px] font-medium leading-[1.8] text-ink/75 md:text-[15px]">
+                  <p className="mt-5 max-w-[34ch] text-[14px] font-medium leading-[1.9] text-ink/68 md:text-[15px]">
                     {service.body}
                   </p>
 
                   {/* Arrow */}
-                  <div className="mt-7 flex items-center gap-2 font-label text-[10.5px] font-bold tracking-[0.22em] text-x-red/0 transition-all duration-300 group-hover:text-x-red uppercase">
+                  <div className="mt-8 flex items-center gap-2 font-label text-[10px] font-bold tracking-[0.22em] text-x-red/0 transition-all duration-300 group-hover:text-x-red uppercase">
                     <span>Explore</span>
                     <ArrowUpRight className="size-3.5" />
                   </div>

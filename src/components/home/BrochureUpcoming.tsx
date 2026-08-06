@@ -21,20 +21,20 @@ export function BrochureUpcoming() {
 
       <Container>
         {/* Header */}
-        <div className="grid gap-6 md:grid-cols-2 md:items-start">
-          <Reveal>
+        <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-7">
             <p className="font-label text-[10.5px] tracking-[0.35em] uppercase text-x-red">
               Currently Active
             </p>
             <h2
-              className="mt-5 font-display font-black leading-[1.0] tracking-[-0.04em] text-white"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
+              className="mt-4 max-w-[9ch] font-display font-black leading-[0.97] tracking-[-0.04em] text-white"
+              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
             >
               Live Pipeline
             </h2>
           </Reveal>
-          <Reveal delay={0.07}>
-            <p className="max-w-[38ch] text-[14px] leading-[1.8] text-white/55 md:mt-16 md:text-right md:text-[15px]">
+          <Reveal delay={0.07} className="lg:col-span-5 lg:justify-self-end">
+            <p className="max-w-[38ch] text-[15px] leading-[1.9] text-white/58 lg:text-left md:text-[16px]">
               Currently in active engineering — from design through site support.
             </p>
           </Reveal>
@@ -91,7 +91,7 @@ export function BrochureUpcoming() {
                   </div>
 
                   {/* Project description */}
-                  <p className="mt-3 text-[14px] leading-[1.78] text-white/70 transition-colors group-hover:text-white md:mt-0 md:text-[14.5px]">
+                  <p className="mt-3 text-[14px] leading-[1.82] text-white/72 transition-colors group-hover:text-white md:mt-0 md:text-[15px]">
                     {project.detail}
                   </p>
 

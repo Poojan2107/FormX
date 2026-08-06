@@ -15,13 +15,13 @@ export function BrochureSpecialized() {
       <div className="grid lg:grid-cols-2">
 
         {/* ── Left: Dark image panel ────────────────────────── */}
-        <div className="relative min-h-[420px] overflow-hidden bg-[#0a0a0a] lg:min-h-[580px]">
+        <div className="relative min-h-[420px] overflow-hidden bg-[#0a0a0a] lg:min-h-[620px]">
           <Image
             src="/assets/projects/brochure/brochure_p5_1.png"
             alt="FormX specialised engineering"
             fill
             unoptimized
-            className="object-cover object-center opacity-50 transition-transform duration-[2s] hover:scale-[1.03]"
+            className="object-cover object-center opacity-58 transition-transform duration-[2s] hover:scale-[1.03]"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
 
@@ -54,38 +54,38 @@ export function BrochureSpecialized() {
         </div>
 
         {/* ── Right: White content ──────────────────────────── */}
-        <div className="flex flex-col justify-center px-8 py-20 sm:px-12 md:px-14 lg:py-24 xl:px-16">
+        <div className="flex flex-col justify-center px-8 py-18 sm:px-12 md:px-14 lg:py-24 xl:px-16">
           <Reveal>
             <p className="font-label text-[10px] tracking-[0.35em] text-x-red">
               Specialised
             </p>
             <h2
-              className="mt-5 font-display font-black leading-[1.02] tracking-[-0.03em] text-ink"
-              style={{ fontSize: "clamp(2rem, 3.5vw, 2.85rem)" }}
+              className="mt-4 max-w-[11ch] font-display font-black leading-[0.98] tracking-[-0.04em] text-ink"
+              style={{ fontSize: "clamp(2.1rem, 3.8vw, 3.1rem)" }}
             >
               Specialised projects
             </h2>
-            <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.8] text-ink/48">
+            <p className="mt-5 max-w-[38ch] text-[16px] leading-[1.9] text-ink/56">
               Beyond standard typologies — technical depth for renovation,
               retrofit and specialist structure engineering.
             </p>
           </Reveal>
 
-          <div className="mt-12 space-y-8">
+          <div className="mt-12 space-y-6">
             {brochureSpecialized.map((block, i) => (
               <Reveal key={block.title} delay={0.08 * i} from="fade">
-                <div className="group cursor-default border-l-2 border-ink/[0.09] pl-6 transition-all hover:border-x-red/70">
+                <div className="group cursor-default border border-ink/[0.08] bg-[#faf9f5] px-6 py-6 transition-all hover:border-x-red/35 hover:bg-white">
                   <div className="flex items-center gap-3">
                     <span className="font-display text-2xl font-black leading-none text-x-red transition-transform duration-300 group-hover:scale-110">×</span>
                     <h3 className="font-display font-bold tracking-tight text-ink md:text-[1.05rem]">
                       {block.title}
                     </h3>
                   </div>
-                  <ul className="mt-4 space-y-2.5 pl-9">
+                  <ul className="mt-4 space-y-3 pl-9">
                     {block.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2.5 text-[13px] leading-[1.7] text-ink/45 md:text-[14px]"
+                        className="flex items-start gap-2.5 text-[13px] leading-[1.75] text-ink/52 md:text-[14px]"
                       >
                         <span className="mt-[0.45em] size-1 shrink-0 rounded-full bg-x-red/40" />
                         {item}
