@@ -25,7 +25,7 @@ export function BrochurePillars() {
             </h2>
           </Reveal>
           <Reveal delay={0.06}>
-            <p className="text-[15px] leading-[1.9] text-ink/55 md:text-[16px] lg:pb-1">
+            <p className="fx-read text-[15px] text-ink/55 md:text-[16px] lg:pb-1">
               How we think before we draw — judgement, coordination and accountability held through
               issue.
             </p>
@@ -42,7 +42,7 @@ export function BrochurePillars() {
                 <h3 className="font-display text-xl font-extrabold tracking-tight text-ink md:text-[1.35rem]">
                   {pillar.title}
                 </h3>
-                <p className="text-[15px] leading-[1.85] text-ink/58">{pillar.body}</p>
+                <p className="fx-read-wide text-[15px] text-ink/58">{pillar.body}</p>
               </li>
             </Reveal>
           ))}

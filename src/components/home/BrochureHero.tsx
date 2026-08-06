@@ -30,10 +30,14 @@ export function BrochureHero() {
       className="relative isolate flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden bg-[#fafaf8] sm:min-h-[calc(100svh-4.75rem)]"
       aria-label="FormX Consultants — Where Vision Takes Form"
     >
-      {/* Red rail — same language as the FormX navbar */}
-      <span
+      {/* Red rail — draws on load */}
+      <motion.span
         aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 top-0 z-20 w-[3px] bg-x-red"
+        className="pointer-events-none absolute bottom-0 left-0 z-20 w-[3px] origin-top bg-x-red"
+        initial={reduce ? false : { scaleY: 0 }}
+        animate={ready ? { scaleY: 1 } : undefined}
+        transition={{ duration: 1.1, delay: 0.05, ease }}
+        style={{ top: 0 }}
       />
 
       <div
@@ -103,7 +107,7 @@ export function BrochureHero() {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.78, ease }}
-          className="mt-5 max-w-[42ch] text-[15.5px] leading-[1.85] text-ink/58 md:text-[16.5px]"
+          className="fx-read mt-5 text-[15.5px] text-ink/58 md:text-[16.5px]"
         >
           Architecture, Structure and Infrastructure engineered together before drawings leave the
           studio.

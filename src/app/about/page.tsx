@@ -52,10 +52,10 @@ export default function AboutPage() {
             >
               The studio behind drawings that hold up on site.
             </h1>
-            <p className="mt-7 max-w-[44ch] text-[16px] leading-[1.9] text-ink/65 md:text-[17px]">
+            <p className="fx-read mt-7 text-[16px] text-ink/65 md:text-[17px]">
               {aboutPage.intro}
             </p>
-            <p className="mt-5 max-w-[44ch] text-[15px] leading-[1.9] text-ink/50">
+            <p className="fx-read mt-5 text-[15px] text-ink/50">
               {aboutPage.philosophy}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ink/[0.08] pt-6">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                 Before <span className="text-x-red">×</span> Issue
               </h2>
             </div>
-            <p className="text-[16px] leading-[1.9] text-white/55">{formxMethod.belief}</p>
+            <p className="fx-read-wide text-[16px] text-white/55">{formxMethod.belief}</p>
           </div>
           <div className="mt-12 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
             {formxMethod.stages.map((s, i) => (

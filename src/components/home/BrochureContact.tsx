@@ -70,7 +70,7 @@ export function BrochureContact() {
             </h2>
           </Reveal>
           <Reveal delay={0.06}>
-            <p className="text-[15.5px] leading-[1.9] text-ink/55 md:text-[16px] lg:pb-1">
+            <p className="fx-read text-[15.5px] text-ink/55 md:text-[16px] lg:pb-1">
               Share the facility, scale and constraints. FormX starts with the decisions that must
               be resolved before issue.
             </p>

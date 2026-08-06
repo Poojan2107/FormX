@@ -17,8 +17,8 @@ export function Reveal({
   delay = 0,
   className,
   from = "bottom",
-  distance = 28,
-  duration = 0.72,
+  distance = 16,
+  duration = 0.65,
   ...props
 }: RevealProps) {
   const reduce = useReducedMotion();
