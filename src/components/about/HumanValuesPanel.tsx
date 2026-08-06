@@ -2,14 +2,13 @@ import { aboutPage } from "@/data/site";
 import { AssetImage } from "@/components/ui/AssetImage";
 
 /**
- * Studio evidence band — photo + collaboration points.
- * Founder portrait lives only in the dedicated Hiren chapter below.
+ * Studio evidence — dominant photo + compact collaboration list.
  */
 export function StudioEvidence() {
   return (
-    <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
-      <div className="relative overflow-hidden border border-ink/[0.08] bg-[#111] p-3 lg:col-span-7">
-        <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[420px]">
+    <div className="grid gap-5 lg:grid-cols-12 lg:items-stretch lg:gap-6">
+      <div className="relative overflow-hidden bg-[#0d0d0d] lg:col-span-8">
+        <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[480px]">
           <AssetImage
             alt="FormX studio — coordination before issue"
             slot="about/studio-cover.jpg"
@@ -19,35 +18,37 @@ export function StudioEvidence() {
             objectPosition="center"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <p className="font-label text-[10px] uppercase tracking-[0.28em] text-x-red">
               Studio practice
             </p>
-            <p className="mt-2 max-w-md font-display text-xl font-extrabold leading-snug tracking-tight text-white md:text-2xl">
+            <p className="mt-2 max-w-[22ch] font-display text-2xl font-extrabold leading-[1.1] tracking-tight text-white md:text-[1.75rem]">
               Reviews, coordination, and issue — held in one room.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col justify-center border border-ink/[0.08] bg-white p-6 md:p-8 lg:col-span-5">
+      <div className="flex flex-col bg-[#111111] p-6 text-white md:p-7 lg:col-span-4">
         <p className="font-label text-[10px] uppercase tracking-[0.28em] text-x-red">
           How the studio works
         </p>
         <h2
-          className="mt-3 font-display font-extrabold tracking-tight text-ink"
-          style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)" }}
+          className="mt-3 font-display font-extrabold tracking-tight"
+          style={{ fontSize: "clamp(1.35rem, 2vw, 1.65rem)" }}
         >
           Coordination that survives construction
         </h2>
-        <ul className="mt-8 flex flex-1 flex-col gap-0 border-t border-ink/[0.08]">
-          {aboutPage.collaborationPoints.map((point) => (
+        <ul className="mt-8 flex flex-1 flex-col">
+          {aboutPage.collaborationPoints.map((point, i) => (
             <li
               key={point}
-              className="flex items-start gap-3 border-b border-ink/[0.08] py-4 text-[14.5px] font-medium leading-[1.55] text-ink/78"
+              className="flex items-start gap-3 border-t border-white/10 py-4 text-[14px] leading-[1.55] text-white/70"
             >
-              <span aria-hidden className="mt-[0.55em] size-1.5 shrink-0 rotate-45 bg-x-red" />
+              <span className="mt-0.5 font-label text-[10px] tracking-[0.18em] text-x-red">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               {point}
             </li>
           ))}
@@ -57,5 +58,5 @@ export function StudioEvidence() {
   );
 }
 
-/** @deprecated Use StudioEvidence — kept as alias during About rebuild. */
+/** @deprecated Use StudioEvidence */
 export const HumanValuesPanel = StudioEvidence;
