@@ -23,37 +23,49 @@ export default function AboutPage() {
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="eyebrow text-x-red">{aboutPage.tagline}</p>
-          <h1
-            className="editorial-title mt-5 max-w-[11ch] text-ink sm:max-w-[12ch]"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 5.1rem)" }}
-          >
-            The studio behind drawings that hold up on site.
-          </h1>
-          <p className="editorial-deck mt-8 measure-essay">
-            {aboutPage.intro}
-          </p>
-          <p className="editorial-body mt-6 measure-essay">
-            {aboutPage.philosophy}
-          </p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">{aboutPage.tagline}</p>
+              <h1
+                className="editorial-title mt-5 max-w-[18ch] text-ink"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+              >
+                The studio behind drawings that hold up on site.
+              </h1>
+            </div>
+            <div>
+              <p className="editorial-deck measure-essay">{aboutPage.intro}</p>
+              <p className="editorial-body mt-5 measure-essay">{aboutPage.philosophy}</p>
+            </div>
+          </div>
         </Container>
       </section>
 
       <section className="border-b border-line bg-bg section-y">
         <Container>
           <Reveal>
-            <p className="eyebrow text-x-red">Vision · Mission · Values</p>
-            <h2 className="mt-4 max-w-[16ch] font-display text-3xl font-extrabold tracking-tight text-ink md:text-5xl">
-              A practice built on judgement, coordination, and accountability.
-            </h2>
+            <div className="grid gap-6 border-b border-line pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-12">
+              <div>
+                <p className="eyebrow text-x-red">Vision · Mission · Values</p>
+                <h2
+                  className="mt-4 max-w-[18ch] font-display font-extrabold tracking-tight text-ink"
+                  style={{ fontSize: "clamp(1.85rem, 3.5vw, 3rem)" }}
+                >
+                  A practice built on judgement, coordination, and accountability.
+                </h2>
+              </div>
+              <p className="text-[15.5px] leading-[1.9] text-ink-muted lg:pb-1">
+                Three principles that govern how FormX reads a facility before anything is issued.
+              </p>
+            </div>
           </Reveal>
-          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
+          <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
             {aboutPage.principles.map((p, i) => (
               <Reveal key={p.title} delay={0.05 * i}>
                 <span className="editorial-meta text-x-red">0{i + 1}</span>
-                <h2 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
+                <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
                   {p.title}
-                </h2>
+                </h3>
                 <p className="mt-4 text-[16px] leading-[1.9] text-ink-muted">{p.body}</p>
               </Reveal>
             ))}
@@ -71,36 +83,40 @@ export default function AboutPage() {
       <section className="border-b border-line bg-bg section-y">
         <Container>
           <Reveal>
-            <p className="eyebrow text-x-red">{formxMethod.code}</p>
-            <h2
-              className="mt-4 max-w-[11ch] font-display font-extrabold leading-[0.95] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
-            >
-              Before <span className="text-x-red">×</span> Issue
-            </h2>
-            <p className="mt-6 measure-essay text-[17px] leading-[1.9] text-ink-muted">
-              {formxMethod.belief}
-            </p>
+            <div className="grid gap-6 border-b border-line pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end lg:gap-12">
+              <div>
+                <p className="eyebrow text-x-red">{formxMethod.code}</p>
+                <h2
+                  className="mt-4 max-w-[14ch] font-display font-extrabold leading-[0.98] tracking-tight text-ink"
+                  style={{ fontSize: "clamp(2.1rem, 4.5vw, 3.5rem)" }}
+                >
+                  Before <span className="text-x-red">×</span> Issue
+                </h2>
+              </div>
+              <p className="text-[16px] leading-[1.9] text-ink-muted lg:pb-1">
+                {formxMethod.belief}
+              </p>
+            </div>
           </Reveal>
-          <div className="mt-12 grid gap-4 md:grid-cols-5">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-5 md:items-stretch">
             {formxMethod.stages.map((s, i) => (
-              <Reveal key={s.id} delay={0.04 * i}>
-                <div className="h-full border border-line bg-white px-5 py-6">
+              <Reveal key={s.id} delay={0.04 * i} className="h-full">
+                <div className="flex h-full flex-col border border-line bg-white px-5 py-6">
                   <p className="eyebrow text-x-red">{s.num}</p>
                   <p className="mt-3 font-display text-lg font-extrabold tracking-tight text-ink">
                     {s.title}
                   </p>
-                  <p className="mt-3 text-[13px] leading-[1.75] text-ink/55">{s.verb}</p>
+                  <p className="mt-3 flex-1 text-[13px] leading-[1.75] text-ink/55">{s.verb}</p>
                 </div>
               </Reveal>
             ))}
           </div>
           <Link
-            href="/#before-issue"
+            href="/#pillars"
             transitionTypes={["nav-forward"]}
             className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red transition-colors hover:text-ink"
           >
-            Experience it on the homepage
+            See the FormX way on the homepage
             <ArrowRight className="size-4" />
           </Link>
         </Container>
@@ -113,21 +129,21 @@ export default function AboutPage() {
               <Reveal className="lg:col-span-5">
                 <div className="relative overflow-hidden border border-white/10 bg-[#131312] p-3">
                   <div className="relative aspect-[3/4] overflow-hidden formx-cut-lg">
-                  <AssetImage
-                    alt={founder.name}
-                    slot={founder.asset}
-                    kind="team"
-                    fit="cover"
-                    aspect="auto"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
+                    <AssetImage
+                      alt={founder.name}
+                      slot={founder.asset}
+                      kind="team"
+                      fit="cover"
+                      aspect="auto"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
               </Reveal>
               <Reveal delay={0.08} className="flex flex-col justify-center lg:col-span-7">
                 <p className="eyebrow text-x-red">Founder</p>
                 <h2
-                  className="mt-4 font-display font-extrabold leading-[0.95] tracking-tight"
+                  className="mt-4 font-display font-extrabold leading-[0.98] tracking-tight"
                   style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)" }}
                 >
                   {founder.name}
@@ -176,25 +192,31 @@ export default function AboutPage() {
 
       <section className="bg-bg section-y">
         <Container>
-          <p className="eyebrow text-x-red">Invitation</p>
-          <h2
-            className="mt-4 max-w-[13ch] font-display font-extrabold leading-[0.95] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
-          >
-            Discuss your next facility
-          </h2>
-          <p className="mt-5 measure-studio text-[16px] leading-[1.9] text-ink-muted">
-            Share the facility type, location, and constraints. We&apos;ll start with what needs to
-            be resolved before issue, not with presentation theatre.
-          </p>
-          <Link
-            href="/contact"
-            transitionTypes={["nav-forward"]}
-            className="fx-btn-primary mt-8 inline-flex items-center gap-3"
-          >
-            Talk to the studio
-            <ArrowRight className="size-4" />
-          </Link>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">Invitation</p>
+              <h2
+                className="mt-4 max-w-[14ch] font-display font-extrabold leading-[0.98] tracking-tight text-ink"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.15rem)" }}
+              >
+                Discuss your next facility
+              </h2>
+            </div>
+            <div>
+              <p className="text-[16px] leading-[1.9] text-ink-muted">
+                Share the facility type, location, and constraints. We&apos;ll start with what needs
+                to be resolved before issue, not with presentation theatre.
+              </p>
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="fx-btn-primary mt-8 inline-flex items-center gap-3"
+              >
+                Enquire Now
+                <ArrowRight className="size-4" />
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
     </>

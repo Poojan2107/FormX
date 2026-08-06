@@ -2,97 +2,69 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Plus, Minus, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { faqs } from "@/data/site";
+import { brochureFaqs } from "@/data/brochureHome";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/cn";
 
 export function Faqs() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState<number | null>(0);
   const reduce = useReducedMotion();
 
   return (
-    <section className="border-y border-line bg-white section-y">
+    <section className="border-y border-line bg-[#fafaf8] section-y">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          {/* VMS-style: left title stays while accordion scrolls */}
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <Reveal className="lg:sticky lg:top-36 lg:self-start">
-            <SectionHeading
-              eyebrow="FAQs"
-              title="Answers before the first workshop"
-              description="What project teams usually ask when evaluating FORMX."
-            />
-            <div className="formx-cut-x formx-edge formx-edge-x mt-8 hidden border border-line bg-white p-6 lg:block">
-              <p className="font-display text-base font-bold text-ink">
-                Still deciding?
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                Share your facility type and timeline — a senior lead will
-                respond with next steps.
-              </p>
-              <Button href="/contact" variant="primary" className="mt-5">
-                Ask FormX
-                <ArrowRight className="size-4" />
-              </Button>
-            </div>
+            <p className="eyebrow text-x-red">FAQ</p>
+            <h2
+              className="mt-4 max-w-[12ch] font-display font-extrabold leading-[1.05] tracking-tight text-ink"
+              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
+            >
+              Questions before issue
+            </h2>
+            <p className="mt-5 max-w-[36ch] text-[15px] leading-[1.85] text-ink/55">
+              Straight answers drawn from how FormX works with clients, architects and contractors.
+            </p>
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="mt-8 inline-flex items-center gap-2 font-label text-[11px] tracking-[0.16em] text-x-red transition-colors hover:text-ink"
+            >
+              Ask FormX
+              <ArrowRight className="size-3.5" />
+            </Link>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="formx-cut-x formx-edge formx-edge-x overflow-hidden border border-line bg-white">
-              {faqs.map((faq, i) => {
+            <div className="border-t border-ink/[0.09]">
+              {brochureFaqs.map((faq, i) => {
                 const isOpen = open === i;
                 return (
-                  <div
-                    key={faq.q}
-                    className={cn(
-                      "border-b border-line last:border-b-0 transition-colors",
-                      isOpen && "bg-white",
-                    )}
-                  >
+                  <div key={faq.q} className="border-b border-ink/[0.09]">
                     <button
                       type="button"
-                      className={cn(
-                        "flex w-full items-start gap-4 px-5 py-5 text-left transition-colors md:gap-5 md:px-6 md:py-6",
-                        isOpen && "border-l-2 border-l-x-red",
-                      )}
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="group grid w-full grid-cols-[auto_1fr_auto] items-start gap-4 py-5 text-left md:gap-5 md:py-6"
                       aria-expanded={isOpen}
-                      onClick={() => setOpen(isOpen ? -1 : i)}
                     >
-                      <span
-                        className={cn(
-                          "mt-0.5 font-display text-[12px] font-bold tabular-nums tracking-wide",
-                          isOpen ? "text-x-red" : "text-ink/30",
-                        )}
-                      >
+                      <span className="mt-0.5 font-label text-[10px] tracking-[0.2em] text-x-red">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="min-w-0 flex-1">
-                        <span
-                          className={cn(
-                            "block font-display text-[15px] font-bold leading-snug tracking-tight md:text-lg",
-                            isOpen ? "text-ink" : "text-ink",
-                          )}
-                        >
-                          {faq.q}
-                        </span>
+                      <span className="text-[15px] font-semibold leading-[1.45] tracking-tight text-ink/82 transition-colors group-hover:text-ink md:text-[16px]">
+                        {faq.q}
                       </span>
                       <span
-                        className={cn(
-                          "mt-0.5 inline-flex size-8 shrink-0 items-center justify-center border transition-all duration-200",
-                          isOpen
-                            ? "border-x-red bg-x-red text-white"
-                            : "border-line text-ink-muted hover:border-x-red hover:text-x-red",
-                        )}
+                        className={`mt-0.5 flex size-7 shrink-0 items-center justify-center border border-ink/[0.1] transition-colors ${
+                          isOpen ? "border-x-red/50 bg-x-red text-white" : "bg-white text-x-red"
+                        }`}
                       >
-                        {isOpen ? (
-                          <Minus className="size-4" />
-                        ) : (
-                          <Plus className="size-4" />
-                        )}
+                        <ChevronDown
+                          className={`size-3.5 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                        />
                       </span>
                     </button>
                     <AnimatePresence initial={false}>
@@ -100,14 +72,11 @@ export function Faqs() {
                         <motion.div
                           initial={reduce ? false : { height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
-                          exit={reduce ? undefined : { height: 0, opacity: 0 }}
-                          transition={{
-                            duration: 0.3,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="border-l-2 border-l-x-red pb-6 pl-5 pr-6 text-[14px] leading-[1.8] text-ink-muted md:pl-[3.25rem] md:pr-12 md:text-[15px]">
+                          <p className="pb-6 pl-10 pr-12 text-[14.5px] leading-[1.85] text-ink/58 md:pl-12 md:text-[15px]">
                             {faq.a}
                           </p>
                         </motion.div>
@@ -117,13 +86,6 @@ export function Faqs() {
                 );
               })}
             </div>
-
-            <p className="mt-6 text-center text-sm text-ink-muted lg:hidden">
-              Still have a question?{" "}
-              <Link href="/contact" transitionTypes={["nav-forward"]} className="font-semibold text-x-red">
-                Contact FormX →
-              </Link>
-            </p>
           </Reveal>
         </div>
       </Container>

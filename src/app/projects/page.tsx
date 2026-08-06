@@ -4,7 +4,6 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
-import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Projects | Engineering Evidence",
@@ -24,27 +23,31 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <Reveal>
-            <p className="eyebrow text-x-red">Engineering evidence</p>
-            <h1
-              className="editorial-title mt-5 max-w-[11ch] text-ink"
-              style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
-            >
-              Completed facilities
-            </h1>
-            <p className="editorial-deck mt-8 measure-essay">
-              Each dossier records a real decision: what the site fought, what FormX refused, and
-              what left the studio only after coordination was resolved.
-            </p>
-            <Link
-              href="/projects/vapi-g2-industrial"
-              transitionTypes={["nav-forward"]}
-              className="mt-8 inline-flex items-center gap-2 font-label text-[10px] text-x-red transition-colors hover:text-ink"
-            >
-              Read the Before Issue case study
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </Reveal>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">Engineering evidence</p>
+              <h1
+                className="editorial-title mt-5 max-w-[16ch] text-ink"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+              >
+                Completed facilities
+              </h1>
+            </div>
+            <div>
+              <p className="editorial-deck measure-essay">
+                Each dossier records a real decision: what the site fought, what FormX refused, and
+                what left the studio only after coordination was resolved.
+              </p>
+              <Link
+                href="/projects/vapi-g2-industrial"
+                transitionTypes={["nav-forward"]}
+                className="mt-6 inline-flex items-center gap-2 font-label text-[10px] text-x-red transition-colors hover:text-ink"
+              >
+                Read the Before Issue case study
+                <ArrowRight className="size-3.5" />
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
 

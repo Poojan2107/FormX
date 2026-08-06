@@ -17,30 +17,30 @@ export default function ContactPage() {
     <>
       <FaqJsonLd />
 
-      <section className="border-b border-line bg-white pt-24 pb-14 md:pt-32 md:pb-16">
+      <section className="fx-grain border-b border-line bg-[#fafaf8] pt-28 pb-16 md:pt-36 md:pb-20">
         <Container>
-          <p className="font-display text-[11px] font-extrabold uppercase tracking-[0.26em] text-x-red">
-            Begin collaboration
-          </p>
-          <h1
-            className="mt-4 max-w-3xl font-display font-black uppercase leading-[1.05] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
-          >
-            Let&apos;s read your facility Before Issue
-          </h1>
-          <p className="mt-5 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            You already know the stance: Architecture, Structure and Infrastructure answer each
-            other before drawings leave the studio. Share facility type, location and timeline — we
-            start with constraints and interfaces, not a sheet checklist.
-          </p>
-          <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-ink-muted">
-            Industrial houses, pharma companies, architects, contractors and private homeowners —
-            same conversation: reduce construction uncertainty early.
-          </p>
-          <p className="mt-6 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-ink/45">
-            {site.phone} · {site.email}
-          </p>
-          <p className="mt-2 text-[13px] text-ink-muted">{site.addressDetail}</p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">Contact</p>
+              <h1
+                className="editorial-title mt-5 max-w-[16ch] text-ink"
+                style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.25rem)" }}
+              >
+                Let&apos;s read your facility Before Issue
+              </h1>
+            </div>
+            <div>
+              <p className="text-[16px] leading-[1.9] text-ink/62 md:text-[17px]">
+                Architecture, Structure and Infrastructure answer each other before drawings leave
+                the studio. Share facility type, location and timeline — we start with constraints
+                and interfaces, not a sheet checklist.
+              </p>
+              <p className="mt-5 font-label text-[11px] tracking-[0.14em] text-ink/45">
+                {site.phone} · {site.email}
+              </p>
+              <p className="mt-2 text-[13px] text-ink/50">{site.addressDetail}</p>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -55,7 +55,7 @@ export default function ContactPage() {
           <Link
             href="/projects"
             transitionTypes={["nav-forward"]}
-            className="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-x-red"
+            className="font-label text-[11px] tracking-[0.16em] text-x-red transition-colors hover:text-white"
           >
             View project record →
           </Link>

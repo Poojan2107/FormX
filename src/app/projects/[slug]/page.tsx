@@ -182,7 +182,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <ArrowRight className="size-4" />
                 </Button>
                 <Link
-                  href="/#before-issue"
+                  href="/#pillars"
                   transitionTypes={["nav-forward"]}
                   className="inline-flex items-center gap-2 text-[13px] font-semibold text-ink-muted transition-colors hover:text-x-red"
                 >

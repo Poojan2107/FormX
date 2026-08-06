@@ -33,7 +33,7 @@ export function WhyWeExist() {
               built, approved and operated without inventing answers on site.
             </p>
             <Link
-              href="/#before-issue"
+              href="/#pillars"
               transitionTypes={["nav-forward"]}
               className="mt-8 inline-flex items-center gap-2 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-x-red"
             >

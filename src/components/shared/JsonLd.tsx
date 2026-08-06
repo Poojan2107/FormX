@@ -1,4 +1,5 @@
-import { faqs, site, services } from "@/data/site";
+import { site, services } from "@/data/site";
+import { brochureFaqs } from "@/data/brochureHome";
 
 const SITE_URL = "https://formxconsultants.com";
 
@@ -70,7 +71,7 @@ export function FaqJsonLd() {
   return ld({
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    mainEntity: brochureFaqs.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: {

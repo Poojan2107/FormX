@@ -37,20 +37,24 @@ export default function ServicesPage() {
     <>
       <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
-          <p className="eyebrow text-x-red">Services</p>
-          <h1
-            className="editorial-title mt-5 max-w-[12ch] text-ink"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
-          >
-            Three disciplines, resolved as one facility.
-          </h1>
-          <p className="editorial-deck mt-8 measure-essay">
-            FormX does not treat Architecture, Structure, and Infrastructure as parallel silos.
-            They are coordinated against the same reality before anything is issued.
-          </p>
-          <p className="editorial-body mt-4 measure-essay">
-            {portfolioServicesNote}
-          </p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">Services</p>
+              <h1
+                className="editorial-title mt-5 max-w-[18ch] text-ink"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+              >
+                Three disciplines, resolved as one facility.
+              </h1>
+            </div>
+            <div>
+              <p className="editorial-deck measure-essay">
+                FormX does not treat Architecture, Structure, and Infrastructure as parallel silos.
+                They are coordinated against the same reality before anything is issued.
+              </p>
+              <p className="editorial-body mt-4 measure-essay">{portfolioServicesNote}</p>
+            </div>
+          </div>
         </Container>
       </section>
 

@@ -22,15 +22,15 @@ import { cn } from "@/lib/cn";
 
 const SERVICE_OPTIONS = [
   "Architectural Drawings",
-  "Site Infrastructure",
   "Structural Engineering",
   "Civil Engineering",
-  "Mechanical Utilities",
-  "HVAC & Refrigeration",
-  "Electrical Engineering",
-  "Fire Protection",
+  "Site Infrastructure",
   "Sustainable Design",
   "Project Management",
+  "Industrial Facilities",
+  "High-Rise & Residential",
+  "Institutional & Commercial",
+  "Strengthening & Retrofitting",
 ];
 
 type Errors = ContactErrors;
@@ -126,7 +126,7 @@ export function Contact() {
             <SectionHeading
               eyebrow="Send a message"
               title="Brief FORMX on your facility"
-              description="Share requirements, location, and timeline. Our engineering leads respond within 24 hours."
+              description="Share facility type, location, and constraints. FormX starts with what must be resolved before issue."
             />
 
             {sent ? (
@@ -307,18 +307,18 @@ export function Contact() {
               {[
                 {
                   icon: Clock,
-                  title: "24-hour response SLA",
-                  body: "Engineering leads acknowledge briefs within one business day.",
+                  title: "Clear first response",
+                  body: "Share facility type, location and constraints — we reply with what needs resolving before issue.",
                 },
                 {
                   icon: ShieldCheck,
-                  title: "IS & NBC compliant",
-                  body: "Structural and statutory packages aligned to Indian codes.",
+                  title: "IS & NBC aligned",
+                  body: "Structural and statutory packages coordinated to Indian codes before drawings leave the studio.",
                 },
                 {
                   icon: Layers,
                   title: "Architecture · Structure · Infrastructure",
-                  body: "Coordinated construction-ready documentation delivered as one accountable package.",
+                  body: "One accountable window from concept through construction-ready documentation.",
                 },
               ].map((item) => (
                 <div
