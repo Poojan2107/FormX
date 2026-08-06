@@ -7,7 +7,7 @@ import { formxMethod, vapiCaseStudy } from "@/data/method";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { VisualFrame } from "@/components/ui/VisualFrame";
-import { RelatedLinks } from "@/components/shared/CtaBlocks";
+import { RelatedFacilities } from "@/components/projects/RelatedFacilities";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { Button } from "@/components/ui/Button";
 
@@ -47,14 +47,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     { label: "Status", value: project.year },
   ].filter((item) => item.value);
 
-  const relatedItems = brochureProjects
-    .filter((p) => p.slug !== slug)
-    .slice(0, 3)
-    .map((p) => ({
-      href: `/projects/${p.slug}`,
-      title: p.title,
-      meta: `${p.location}${p.area ? ` · ${p.area}` : ""}`,
-    }));
+  const relatedProjects = brochureProjects.filter((p) => p.slug !== slug).slice(0, 3);
 
   if (isVapi) {
     return (
@@ -194,7 +187,10 @@ export default async function ProjectDetailPage({ params }: Props) {
           </Container>
         </section>
 
-        <RelatedLinks title="More facilities from the brochure" items={relatedItems} />
+        <RelatedFacilities
+          title="More facilities from the brochure"
+          projects={relatedProjects}
+        />
         <StickyEnquire label="Discuss a similar facility" />
       </>
     );
@@ -208,7 +204,15 @@ export default async function ProjectDetailPage({ params }: Props) {
     { label: "Sector", value: project.sector },
   ].filter((f) => f.value);
 
-  const brochureVisuals = project.assets.gallery.length ? project.assets.gallery : [project.assets.cover];
+  const brochureVisuals = project.assets.gallery.length
+    ? project.assets.gallery
+    : [project.assets.cover];
+
+  const landscape = project.assets.orientation === "landscape";
+  const portrait = project.assets.orientation === "portrait";
+  const heroAspect = landscape ? "cinema" : portrait ? "portrait" : "cinema";
+  const heroFit =
+    portrait ? "cover" : (project.assets.frame ?? "contain");
 
   return (
     <>
@@ -238,8 +242,8 @@ export default async function ProjectDetailPage({ params }: Props) {
             <VisualFrame
               slot={project.assets.cover}
               alt={project.title}
-              fit={project.assets.frame ?? "contain"}
-              aspect="cinema"
+              fit={heroFit}
+              aspect={heroAspect}
               tone="dark"
               priority
               className="border border-white/10"
@@ -263,17 +267,21 @@ export default async function ProjectDetailPage({ params }: Props) {
           </p>
           <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{project.description}</p>
           {project.risk || project.refused ? (
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="mt-10 grid items-stretch gap-6 md:grid-cols-2">
               {project.risk ? (
-                <div className="border border-line bg-[#faf9f5] p-6">
+                <div className="flex h-full flex-col border border-line bg-[#faf9f5] p-6">
                   <p className="editorial-meta text-x-red">The risk Before × Issue</p>
-                  <p className="mt-3 text-[14px] leading-[1.85] text-ink-muted">{project.risk}</p>
+                  <p className="mt-3 flex-1 text-[14px] leading-[1.85] text-ink-muted">
+                    {project.risk}
+                  </p>
                 </div>
               ) : null}
               {project.refused ? (
-                <div className="border border-line bg-white p-6">
+                <div className="flex h-full flex-col border border-line bg-white p-6">
                   <p className="editorial-meta text-ink/40">What we refused</p>
-                  <p className="mt-3 text-[14px] leading-[1.85] text-ink-muted">{project.refused}</p>
+                  <p className="mt-3 flex-1 text-[14px] leading-[1.85] text-ink-muted">
+                    {project.refused}
+                  </p>
                 </div>
               ) : null}
             </div>
@@ -344,7 +352,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <RelatedLinks title="Related facilities" items={relatedItems} />
+      <RelatedFacilities title="Related facilities" projects={relatedProjects} />
       <StickyEnquire label="Discuss this project type" />
     </>
   );

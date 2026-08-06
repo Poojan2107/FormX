@@ -101,7 +101,11 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <DisciplineStory service={service} />
 
-      <RelatedLinks title="Related disciplines" items={others} />
+      <RelatedLinks
+        title="Related disciplines"
+        items={others}
+        viewAllHref="/services"
+      />
 
       <CtaBand
         title={`Discuss ${service.title.toLowerCase()} before issue`}

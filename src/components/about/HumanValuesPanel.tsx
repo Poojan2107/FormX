@@ -115,7 +115,7 @@ export function HumanValuesPanel() {
           transitionTypes={["nav-forward"]}
           className="fx-btn-primary mt-8 inline-flex items-center gap-2"
         >
-          Book a consultation
+          Enquire Now
           <ArrowRight className="size-4" />
         </Link>
       </div>

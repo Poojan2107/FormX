@@ -59,14 +59,16 @@ export default function AboutPage() {
               </p>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          <div className="mt-12 grid items-stretch gap-6 md:grid-cols-3 md:gap-5">
             {aboutPage.principles.map((p, i) => (
-              <Reveal key={p.title} delay={0.05 * i}>
-                <span className="editorial-meta text-x-red">0{i + 1}</span>
-                <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
-                  {p.title}
-                </h3>
-                <p className="mt-4 text-[16px] leading-[1.9] text-ink-muted">{p.body}</p>
+              <Reveal key={p.title} delay={0.05 * i} className="h-full">
+                <div className="flex h-full flex-col border border-line bg-white px-6 py-7">
+                  <span className="editorial-meta text-x-red">0{i + 1}</span>
+                  <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink">
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 flex-1 text-[15.5px] leading-[1.9] text-ink-muted">{p.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>

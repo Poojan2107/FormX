@@ -13,7 +13,6 @@ import {
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { VisualFrame } from "@/components/ui/VisualFrame";
-import { NewsletterForm } from "@/components/shared/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Insights | Practice Notes",
@@ -58,14 +57,14 @@ export default function KnowledgeCenterPage() {
             Renovation, strengthening &amp; solar
           </h2>
 
-          <div className="mt-12 grid gap-10 md:grid-cols-2">
+          <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
             {portfolioSpecialized.map((block, i) => (
-              <Reveal key={block.title} delay={0.04 * i}>
-                <article>
+              <Reveal key={block.title} delay={0.04 * i} className="h-full">
+                <article className="flex h-full flex-col border border-line bg-white px-6 py-7">
                   <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
                     {block.title}
                   </h3>
-                  <ul className="mt-5 space-y-3">
+                  <ul className="mt-5 flex flex-1 flex-col gap-3">
                     {block.items.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-[15px] leading-[1.8] text-ink-muted">
                         <span className="mt-1 shrink-0 font-display text-xs font-bold text-x-red">
@@ -159,42 +158,62 @@ export default function KnowledgeCenterPage() {
             </Link>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {brochureProjects.slice(0, 4).map((project, i) => (
-              <Reveal key={project.slug} delay={0.03 * i}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  transitionTypes={["nav-forward"]}
-                  className="group block"
-                >
-                  <VisualFrame
-                    slot={project.assets.cover}
-                    alt={project.title}
-                    fit="contain"
-                    aspect="landscape"
-                    tone="dark"
-                    zoomOnHover
-                  />
-                  <h3 className="mt-3 font-display text-sm font-extrabold tracking-tight text-white group-hover:text-x-red">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-[12px] text-white/45">{project.location}</p>
-                </Link>
-              </Reveal>
-            ))}
+          <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {brochureProjects.slice(0, 4).map((project, i) => {
+              const landscape = project.assets.orientation === "landscape";
+              const portrait = project.assets.orientation === "portrait";
+              return (
+                <Reveal key={project.slug} delay={0.03 * i} className="h-full">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    transitionTypes={["nav-forward"]}
+                    className="group flex h-full flex-col"
+                  >
+                    <VisualFrame
+                      slot={project.assets.cover}
+                      alt={project.title}
+                      fit={portrait ? "cover" : "contain"}
+                      aspect={landscape ? "landscape" : portrait ? "portrait" : "landscape"}
+                      tone="dark"
+                      zoomOnHover
+                    />
+                    <h3 className="mt-3 font-display text-sm font-extrabold tracking-tight text-white group-hover:text-x-red">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 text-[12px] text-white/45">{project.location}</p>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
 
-          <div className="mt-16 grid gap-8 border border-white/10 p-8 md:grid-cols-2 md:p-10">
+          <div className="mt-16 grid gap-8 border border-white/10 p-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:p-10">
             <div>
-              <p className="eyebrow text-x-red">Stay in touch</p>
+              <p className="eyebrow text-x-red">Next step</p>
               <h3 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-white">
-                Practice updates
+                Bring us your next facility
               </h3>
               <p className="mt-3 text-sm leading-[1.8] text-white/55">
-                Occasional notes when published — no marketing drip.
+                Share site constraints and facility type. We start with what must be resolved before
+                issue.
               </p>
             </div>
-            <NewsletterForm />
+            <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="inline-flex items-center justify-center gap-2 bg-x-red px-6 py-3.5 font-label text-[10px] tracking-[0.18em] text-white transition-colors hover:bg-x-red-hover"
+              >
+                Enquire Now
+                <ArrowUpRight className="size-3.5" />
+              </Link>
+              <Link
+                href="/brochure/formx.pdf"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-3.5 font-label text-[10px] tracking-[0.18em] text-white/80 transition-colors hover:border-x-red hover:text-x-red"
+              >
+                Download brochure
+              </Link>
+            </div>
           </div>
         </Container>
       </section>

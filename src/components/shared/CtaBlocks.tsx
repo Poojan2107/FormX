@@ -101,9 +101,9 @@ export function CtaBand({
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-x-red"
             >
-              <MessageSquare className="size-3.5 text-emerald-400" />
+              <MessageSquare className="size-3.5 text-x-red" />
               <span>WhatsApp Direct</span>
             </a>
           </div>
@@ -138,9 +138,11 @@ export function CtaBand({
 export function RelatedLinks({
   title,
   items,
+  viewAllHref,
 }: {
   title: string;
   items: { href: string; title: string; meta?: string; image?: string }[];
+  viewAllHref?: string;
 }) {
   if (!items.length) return null;
 
@@ -152,29 +154,38 @@ export function RelatedLinks({
         ? "sm:grid-cols-2"
         : "sm:grid-cols-2 lg:grid-cols-3";
 
-  const hasImages = items.some((i) => i.image);
+  const hasImages = items.every((i) => i.image);
 
   return (
-    <section className="border-t border-line bg-white py-12 md:py-14">
+    <section className="border-t border-line bg-[#f7f6f2] py-14 md:py-18">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
-        <div className="mb-5 flex items-end justify-between gap-4 border-b border-line pb-3">
-          <h3 className="font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+        <div className="mb-8 flex items-end justify-between gap-4 border-b border-ink/[0.08] pb-5">
+          <h3 className="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
             {title}
           </h3>
-          <span className="eyebrow text-x-red">
-            {count} items
-          </span>
+          {viewAllHref ? (
+            <Link
+              href={viewAllHref}
+              transitionTypes={["nav-forward"]}
+              className="inline-flex items-center gap-1.5 font-label text-[10px] tracking-[0.18em] text-x-red"
+            >
+              View all
+              <ArrowRight className="size-3.5" />
+            </Link>
+          ) : (
+            <span className="eyebrow text-x-red">{count} items</span>
+          )}
         </div>
-        <div className={cn("grid gap-2.5", gridCols)}>
+        <div className={cn("grid items-stretch gap-4", gridCols)}>
           {items.map((item) =>
             hasImages && item.image ? (
               <Link
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group relative block aspect-[16/10] overflow-hidden border border-black/10 bg-[#111] p-2.5"
+                className="group flex h-full flex-col overflow-hidden border border-ink/[0.08] bg-white"
               >
-                <div className="relative h-full overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#111]">
                   <AssetImage
                     alt={item.title}
                     slot={item.image}
@@ -185,17 +196,17 @@ export function RelatedLinks({
                     zoomOnHover
                     className="absolute inset-0 h-full w-full"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="flex flex-1 flex-col p-5">
                   {item.meta ? (
-                    <p className="editorial-meta text-x-red">
-                      {item.meta}
-                    </p>
+                    <p className="editorial-meta text-x-red">{item.meta}</p>
                   ) : null}
-                  <h4 className="mt-2 font-display text-base font-bold leading-snug text-white transition-colors group-hover:text-x-red">
+                  <h4 className="mt-2 font-display text-[1.05rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
                     {item.title}
                   </h4>
+                  <p className="mt-auto pt-5 font-label text-[10px] text-ink/35 transition-colors group-hover:text-x-red">
+                    Explore →
+                  </p>
                 </div>
               </Link>
             ) : (
@@ -203,15 +214,13 @@ export function RelatedLinks({
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group x-lift flex flex-col justify-between border border-line p-5 transition-colors hover:border-x-red/40"
+                className="group flex h-full min-h-[140px] flex-col justify-between border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/40"
               >
                 <div>
                   {item.meta ? (
-                    <p className="mb-2 editorial-meta text-x-red">
-                      {item.meta}
-                    </p>
+                    <p className="mb-2 editorial-meta text-x-red">{item.meta}</p>
                   ) : null}
-                  <h4 className="font-display text-[1.03rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
+                  <h4 className="font-display text-[1.05rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
                     {item.title}
                   </h4>
                 </div>
