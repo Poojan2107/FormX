@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
@@ -36,6 +36,14 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
               Each dossier records a real decision: what the site fought, what FormX refused, and
               what left the studio only after coordination was resolved.
             </p>
+            <Link
+              href="/projects/vapi-g2-industrial"
+              transitionTypes={["nav-forward"]}
+              className="mt-8 inline-flex items-center gap-2 font-label text-[10px] text-x-red transition-colors hover:text-ink"
+            >
+              Read the Before Issue case study
+              <ArrowRight className="size-3.5" />
+            </Link>
           </Reveal>
         </Container>
       </section>

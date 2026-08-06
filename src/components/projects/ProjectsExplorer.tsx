@@ -42,7 +42,7 @@ export function ProjectsExplorer({
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search project, sector or location…"
-            className="w-full border border-line bg-bg py-3 pl-10 pr-9 font-body text-sm text-ink outline-none focus:border-x-red"
+            className="w-full border border-line bg-[#faf9f5] py-3 pl-10 pr-9 font-body text-sm text-ink outline-none transition-colors focus:border-x-red"
             aria-label="Search projects"
           />
           {q ? (
@@ -72,7 +72,7 @@ export function ProjectsExplorer({
               sector === s
                 ? "bg-x-red text-white"
                 : "border border-line text-ink-muted hover:border-x-red/40 hover:text-ink",
-              "px-3 py-1.5 font-label text-[10px] transition-colors",
+              "px-3.5 py-2 font-label text-[10px] transition-colors",
             )}
           >
             {s}
@@ -126,10 +126,15 @@ export function ProjectsExplorer({
                     {project.description}
                   </p>
                 )}
-                <span className="mt-5 inline-flex items-center gap-2 font-label text-[10px] text-x-red">
-                  Open dossier
-                  <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+                  <span className="font-label text-[10px] text-ink/35">
+                    {project.services[0] ?? "Engineering scope"}
+                  </span>
+                  <span className="inline-flex items-center gap-2 font-label text-[10px] text-x-red">
+                    Open dossier
+                    <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
               </div>
             </Link>
           ))}

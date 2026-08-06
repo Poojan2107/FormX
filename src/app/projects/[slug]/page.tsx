@@ -39,6 +39,12 @@ export default async function ProjectDetailPage({ params }: Props) {
   if (!project) notFound();
 
   const isVapi = slug === vapiCaseStudy.slug;
+  const factRows = [
+    { label: "Client", value: project.client },
+    { label: "Location", value: project.location },
+    { label: "Scope", value: project.services.join(" · ") },
+    { label: "Status", value: project.year },
+  ].filter((item) => item.value);
 
   const relatedItems = projects
     .filter((p) => p.slug !== slug)
@@ -238,6 +244,14 @@ export default async function ProjectDetailPage({ params }: Props) {
               className="border border-white/10"
             />
           </Reveal>
+          <div className="mt-8 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-2 lg:grid-cols-4">
+            {factRows.map((item) => (
+              <div key={item.label}>
+                <p className="editorial-meta text-white/35">{item.label}</p>
+                <p className="mt-2 text-[14px] leading-[1.7] text-white/78">{item.value}</p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
 
@@ -247,19 +261,19 @@ export default async function ProjectDetailPage({ params }: Props) {
             What was delivered
           </p>
           <p className="mt-5 text-[16px] leading-[1.9] text-ink-muted">{project.description}</p>
-          {project.risk ? (
-            <div className="mt-10 border-l-2 border-x-red pl-5">
-              <p className="editorial-meta text-x-red">
-                The risk Before × Issue
-              </p>
-              <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.risk}</p>
+          {project.risk || project.refused ? (
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {project.risk ? (
+                <div className="border border-line bg-[#faf9f5] p-6">
+                  <p className="editorial-meta text-x-red">The risk Before × Issue</p>
+                  <p className="mt-3 text-[14px] leading-[1.85] text-ink-muted">{project.risk}</p>
+                </div>
+              ) : null}
               {project.refused ? (
-                <>
-                  <p className="mt-5 editorial-meta text-ink/40">
-                    What we refused
-                  </p>
-                  <p className="mt-2 text-[14px] leading-[1.8] text-ink-muted">{project.refused}</p>
-                </>
+                <div className="border border-line bg-white p-6">
+                  <p className="editorial-meta text-ink/40">What we refused</p>
+                  <p className="mt-3 text-[14px] leading-[1.85] text-ink-muted">{project.refused}</p>
+                </div>
               ) : null}
             </div>
           ) : null}
@@ -291,7 +305,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           ) : null}
           <div className="mt-12 border-t border-line pt-10">
-              <p className="eyebrow text-x-red">
+            <p className="eyebrow text-x-red">
               Project visuals
             </p>
             <p className="mt-3 max-w-[40ch] text-[14px] leading-[1.8] text-ink-muted">
