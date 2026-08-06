@@ -4,6 +4,7 @@ import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
+import { projectFrameFit, projectObjectPosition } from "@/lib/projectFrame";
 
 /**
  * Related brochure facilities — equal-height plates with orientation
@@ -50,11 +51,7 @@ export function RelatedFacilities({
           {projects.map((project) => {
             const landscape = project.assets.orientation === "landscape";
             const portrait = project.assets.orientation === "portrait";
-            const frame = landscape
-              ? (project.assets.frame ?? "contain")
-              : portrait
-                ? "cover"
-                : (project.assets.frame ?? "contain");
+            const frame = projectFrameFit(project);
 
             return (
               <Link
@@ -76,10 +73,10 @@ export function RelatedFacilities({
                     fit={frame}
                     aspect="auto"
                     tone="light"
-                    objectPosition={portrait ? "center top" : "center center"}
+                    objectPosition={projectObjectPosition(project)}
                     className={cn(
                       "absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.02]",
-                      landscape || !portrait ? "p-3" : "",
+                      frame === "contain" ? "p-3" : "",
                     )}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />

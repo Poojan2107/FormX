@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
+import { projectFrameFit, projectObjectPosition } from "@/lib/projectFrame";
 
 type ProjectCardProps = {
   project: Project;
@@ -18,6 +19,8 @@ export function ProjectCard({
   className,
 }: ProjectCardProps) {
   const formattedYear = project.year.replace("-", "–");
+  const fit = projectFrameFit(project);
+  const objectPosition = projectObjectPosition(project);
 
   return (
     <Link
@@ -35,15 +38,17 @@ export function ProjectCard({
         kind="facility"
         tone="dark"
         aspect="auto"
-        fit="cover"
-        objectPosition="center top"
+        fit={fit}
+        objectPosition={objectPosition}
         priority={priority}
         zoomOnHover
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
-        className="absolute inset-0 h-full w-full"
+        className={cn(
+          "absolute inset-0 h-full w-full",
+          fit === "contain" && "p-3",
+        )}
       />
 
-      {/* Soft bottom gradient only — architecture stays sharp */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
       <span className="absolute left-3 top-3 z-10 max-w-[80%] truncate bg-x-red px-2 py-1 font-display text-[8px] font-bold uppercase tracking-[0.12em] text-white sm:text-[9px]">
@@ -62,11 +67,11 @@ export function ProjectCard({
               <span>{formattedYear}</span>
             </p>
             <h3 className="truncate font-display text-[15px] font-bold uppercase leading-snug tracking-tight text-white transition-colors group-hover:text-x-red sm:text-[17px]">
-              {project.client}
+              {project.title}
             </h3>
-            <p className="mt-0.5 truncate text-[12px] text-white/55">{project.title}</p>
+            <p className="mt-0.5 truncate text-[12px] text-white/55">{project.client}</p>
           </div>
-          <span className="flex size-9 shrink-0 items-center justify-center border border-white/25 bg-white/10 transition-colors group-hover:border-x-red group-hover:bg-x-red">
+          <span className="formx-cut-sm flex size-9 shrink-0 items-center justify-center border border-white/25 bg-white/10 transition-colors group-hover:border-x-red group-hover:bg-x-red">
             <ArrowUpRight className="size-4 text-white" />
           </span>
         </div>

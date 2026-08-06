@@ -44,12 +44,21 @@ export const metadata: Metadata = {
     title: "FormX Consultants | Where Vision Takes Form",
     description:
       "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
+    images: [
+      {
+        url: "/formx-logo-solid.png",
+        width: 1200,
+        height: 630,
+        alt: "FormX Consultants",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "FormX Consultants | Where Vision Takes Form",
     description:
       "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
+    images: ["/formx-logo-solid.png"],
   },
 };
 

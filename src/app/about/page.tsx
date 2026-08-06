@@ -114,11 +114,11 @@ export default function AboutPage() {
             ))}
           </div>
           <Link
-            href="/#pillars"
+            href="/#before-issue"
             transitionTypes={["nav-forward"]}
             className="mt-10 inline-flex items-center gap-2 font-label text-[11px] text-x-red transition-colors hover:text-ink"
           >
-            See the FormX way on the homepage
+            See Before × Issue on the homepage
             <ArrowRight className="size-4" />
           </Link>
         </Container>

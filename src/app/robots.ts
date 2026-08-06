@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/estimator"],
       },
     ],
     sitemap: "https://formxconsultants.com/sitemap.xml",

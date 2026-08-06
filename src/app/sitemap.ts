@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { brochureProjects, services, blogs, news } from "@/data/site";
+import { brochureProjects, services, blogs } from "@/data/site";
 
 const BASE_URL = "https://formxconsultants.com";
 
@@ -56,12 +56,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const newsRoutes: MetadataRoute.Sitemap = news.map((n) => ({
-    url: `${BASE_URL}/news/${n.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes, ...newsRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes];
 }

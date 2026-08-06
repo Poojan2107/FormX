@@ -13,10 +13,6 @@ function messageForPath(path: string) {
   if (path.startsWith("/projects/")) {
     return `Hello FormX — I'd like to discuss a project similar to this case study.`;
   }
-  if (path.startsWith("/sectors/")) {
-    const slug = path.split("/")[2]?.replace(/-/g, " ") || "this sector";
-    return `Hello FormX — I'm planning a facility in ${slug}.`;
-  }
   if (path.startsWith("/career")) {
     return `Hello FormX — I'm interested in career opportunities.`;
   }
@@ -28,7 +24,7 @@ function messageForPath(path: string) {
 
 /** Detail pages that mount StickyEnquire on mobile */
 function hasStickyEnquire(path: string) {
-  return /^\/(services|projects|sectors)\/[^/]+/.test(path);
+  return /^\/(services|projects)\/[^/]+/.test(path);
 }
 
 export function WhatsAppFloat({ menuOpen = false }: { menuOpen?: boolean }) {

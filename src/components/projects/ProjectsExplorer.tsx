@@ -6,6 +6,7 @@ import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
+import { projectFrameFit, projectObjectPosition } from "@/lib/projectFrame";
 
 /** Editorial dossier list — filterable, not a card mosaic */
 export function ProjectsExplorer({
@@ -97,9 +98,9 @@ export function ProjectsExplorer({
                     alt={project.title}
                     slot={project.assets.cover}
                     kind="facility"
-                    fit={project.assets.frame ?? "cover"}
+                    fit={projectFrameFit(project)}
                     aspect="auto"
-                    objectPosition="center"
+                    objectPosition={projectObjectPosition(project)}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
                   />
