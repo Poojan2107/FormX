@@ -44,17 +44,17 @@ export function BrochureHero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(circle 800px at 20% 20%, rgba(255,255,255,1) 0%, rgba(250,250,248,0.95) 55%, rgba(243,241,234,0.9) 100%)",
+            "radial-gradient(circle 850px at 20% 20%, rgba(255,255,255,1) 0%, rgba(250,250,248,0.95) 55%, rgba(243,241,234,0.9) 100%)",
         }}
       />
 
-      {/* Ambient Red × Studio Glow */}
+      {/* Ambient Red × Studio Glow — Shifted top-right */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 z-0 h-[650px] w-[650px] opacity-80"
+        className="pointer-events-none absolute right-0 top-0 z-0 h-[650px] w-[650px] opacity-70"
         style={{
           background:
-            "radial-gradient(circle 380px at 75% 35%, rgba(235, 45, 45, 0.055), transparent 70%)",
+            "radial-gradient(circle 380px at 85% 25%, rgba(235, 45, 45, 0.05), transparent 70%)",
         }}
       />
 
@@ -80,6 +80,18 @@ export function BrochureHero() {
         }}
       />
 
+      {/* Giant Background × Watermark — Positioned top-right so it doesn't clash behind logo */}
+      <motion.span
+        aria-hidden
+        initial={reduce ? false : { opacity: 0, scale: 0.8 }}
+        animate={ready ? { opacity: 0.045, scale: 1 } : undefined}
+        transition={{ duration: 2.5, delay: 0.2, ease: smoothEase }}
+        className="pointer-events-none absolute -right-[4%] -top-[10%] select-none font-display font-black leading-none text-x-red"
+        style={{ fontSize: "clamp(22rem, 50vw, 42rem)" }}
+      >
+        ×
+      </motion.span>
+
       {/* Engineering crop marks with FormX diagonal cuts */}
       <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
         <motion.span initial={reduce ? false : { opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.5, delay: 0.1 }}
@@ -94,7 +106,7 @@ export function BrochureHero() {
 
       {/* ═══════════════════════════════════════════════════════
           HERO CONTENT: Split Two-Column Layout
-          Left: Tagline + CTAs  |  Right: Transparent Vector Logo Frame
+          Left: Tagline + CTAs  |  Right: Transparent Vector Logo Card
          ═══════════════════════════════════════════════════════ */}
       <motion.div
         style={reduce ? undefined : { opacity: sheetOpacity }}
@@ -118,7 +130,7 @@ export function BrochureHero() {
               </p>
             </motion.div>
 
-            {/* Tagline — Sized with margin so NO text clips */}
+            {/* Tagline Header — Sized with margin so NO text clips */}
             <h1 className="mt-5 space-y-1" aria-label={brochureBrand.slogan}>
               <span className="sr-only">{brochureBrand.slogan}</span>
               
@@ -216,46 +228,34 @@ export function BrochureHero() {
             </motion.a>
           </div>
 
-          {/* ── RIGHT COLUMN: Studio Transparent Logo Frame ───────── */}
+          {/* ── RIGHT COLUMN: Clean Studio Logo Card ───────── */}
           <div className="relative hidden flex-col items-center justify-center overflow-hidden border-l border-ink/[0.08] lg:order-2 lg:flex lg:p-12">
 
-            {/* Giant Atmospheric × */}
-            <motion.span
-              aria-hidden
-              initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-              animate={ready ? { opacity: 0.08, scale: 1 } : undefined}
-              transition={{ duration: 2.5, delay: 0.2, ease: smoothEase }}
-              className="pointer-events-none absolute select-none font-display font-black leading-none text-x-red"
-              style={{ fontSize: "clamp(20rem, 44vw, 38rem)" }}
-            >
-              ×
-            </motion.span>
-
-            {/* FormX Studio Frame — With FormX Diagonal Cut Accent & Zero White Box! */}
+            {/* Studio Logo Card — Solid studio background for 100% clean contrast! */}
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.92, y: 24 }}
               animate={ready ? { opacity: 1, scale: 1, y: 0 } : undefined}
               transition={{ duration: 1.25, delay: 0.3, ease: smoothEase }}
-              className="relative z-10 flex flex-col items-center justify-center rounded-xs border border-ink/[0.1] bg-white/40 p-12 backdrop-blur-md shadow-sm transition-all duration-500 hover:border-x-red/40 hover:bg-white/60 hover:shadow-lg"
+              className="relative z-10 flex flex-col items-center justify-center rounded-xs border border-ink/[0.12] bg-white p-12 shadow-md transition-all duration-500 hover:border-x-red/50 hover:shadow-xl md:p-14 lg:p-16"
               style={{
                 clipPath:
                   "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)",
               }}
             >
-              {/* FormX Signature Cut Edge Highlight */}
+              {/* FormX Signature Cut Corner Accent */}
               <span
                 aria-hidden
                 className="absolute right-0 top-0 h-6 w-6 bg-x-red"
                 style={{ clipPath: "polygon(100% 0, 0 0, 100% 100%)" }}
               />
 
-              {/* TRANSPARENT VECTOR LOGO — 100% clean, zero white box! */}
-              <FormxTransparentLogo size="hero" />
+              {/* TRANSPARENT VECTOR LOGO — 100% sharp, zero clashing watermark! */}
+              <FormxTransparentLogo size="hero" align="center" />
 
-              {/* Registration Corner Marks inside frame */}
-              <span aria-hidden className="absolute bottom-4 left-4 block h-3 w-3 border-b border-l border-ink/30" />
-              <span aria-hidden className="absolute bottom-4 right-4 block h-3 w-3 border-b border-r border-x-red/60" />
-              <span aria-hidden className="absolute left-4 top-4 block h-3 w-3 border-l border-t border-ink/30" />
+              {/* Technical Registration Corner Marks */}
+              <span aria-hidden className="absolute bottom-4 left-4 block h-3.5 w-3.5 border-b-2 border-l-2 border-ink/25" />
+              <span aria-hidden className="absolute bottom-4 right-4 block h-3.5 w-3.5 border-b-2 border-r-2 border-x-red/70" />
+              <span aria-hidden className="absolute left-4 top-4 block h-3.5 w-3.5 border-l-2 border-t-2 border-ink/25" />
             </motion.div>
 
             {/* Desktop Scroll Cue */}
