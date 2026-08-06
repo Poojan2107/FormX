@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Contact } from "@/components/home/Contact";
 import { Faqs } from "@/components/home/Faqs";
 import { FaqJsonLd } from "@/components/shared/JsonLd";
@@ -17,28 +18,49 @@ export default function ContactPage() {
     <>
       <FaqJsonLd />
 
-      <section className="fx-grain border-b border-line bg-[#fafaf8] pt-28 pb-16 md:pt-36 md:pb-20">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+      <section className="fx-grain border-b border-black bg-[#0a0a09] text-white">
+        <Container className="pb-14 pt-28 md:pb-20 md:pt-36">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
             <div>
               <p className="eyebrow text-x-red">Contact</p>
               <h1
-                className="editorial-title mt-5 max-w-[16ch] text-ink"
+                className="mt-5 max-w-[14ch] font-display font-black leading-[0.96] tracking-tight"
                 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.25rem)" }}
               >
-                Let&apos;s read your facility Before Issue
+                Read your facility Before Issue
               </h1>
             </div>
-            <div>
-              <p className="text-[16px] leading-[1.9] text-ink/62 md:text-[17px]">
+            <div className="lg:pb-1">
+              <p className="text-[15.5px] leading-[1.9] text-white/55 md:text-[16.5px]">
                 Architecture, Structure and Infrastructure answer each other before drawings leave
-                the studio. Share facility type, location and timeline — we start with constraints
-                and interfaces, not a sheet checklist.
+                the studio. Share facility type, location and timeline — we start with constraints,
+                not a sheet checklist.
               </p>
-              <p className="mt-5 font-label text-[11px] tracking-[0.14em] text-ink/45">
-                {site.phone} · {site.email}
-              </p>
-              <p className="mt-2 text-[13px] text-ink/50">{site.addressDetail}</p>
+              <dl className="mt-8 grid gap-5 border-t border-white/10 pt-6 sm:grid-cols-2">
+                <div>
+                  <dt className="font-label text-[9px] tracking-[0.2em] text-white/35">Phone</dt>
+                  <dd className="mt-2">
+                    <a
+                      href={`tel:${site.phone.replace(/\s/g, "")}`}
+                      className="text-[14px] text-white/75 transition-colors hover:text-x-red"
+                    >
+                      {site.phone}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-label text-[9px] tracking-[0.2em] text-white/35">Email</dt>
+                  <dd className="mt-2">
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="text-[14px] text-white/75 transition-colors hover:text-x-red"
+                    >
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+              <p className="mt-5 text-[13px] leading-[1.7] text-white/40">{site.addressDetail}</p>
             </div>
           </div>
         </Container>
@@ -47,17 +69,18 @@ export default function ContactPage() {
       <Contact />
       <Faqs />
 
-      <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
-        <Container className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-lg text-[14px] leading-[1.85] text-white/60">
+      <section className="fx-grain border-t border-black bg-[#0a0a09] py-14 text-white">
+        <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-lg text-[14px] leading-[1.85] text-white/55">
             Prefer a call or WhatsApp? Reach FORMX at {site.phone}.
           </p>
           <Link
             href="/projects"
             transitionTypes={["nav-forward"]}
-            className="font-label text-[11px] tracking-[0.16em] text-x-red transition-colors hover:text-white"
+            className="group inline-flex items-center gap-2 font-label text-[10px] tracking-[0.18em] text-x-red transition-colors hover:text-white"
           >
-            View project record →
+            Engineering evidence
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
         </Container>
       </section>
