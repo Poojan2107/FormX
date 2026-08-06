@@ -245,7 +245,7 @@ export const projects: Project[] = [
     sector: "Commercial & Institutional",
     title: "Office Building",
     client: "Office Building",
-    location: "Senegal, South Africa",
+    location: "Senegal",
     year: "Completed",
     area: "4,000 sq. ft.",
     floors: "G + 1",

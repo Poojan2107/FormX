@@ -34,7 +34,7 @@ export default function EstimatorPage() {
 
       <CtaBand
         title="Brief FORMX on your proposed facility"
-        description="Our structural leads conduct detailed STAAD.Pro load path modeling, foundation engineering, and zero-clash BIM coordination."
+        description="Share facility area, crane loads and framing intent. FormX will size the structural decisions that need resolving before issue."
         secondary={{ label: "Explore services", href: "/services" }}
       />
     </>

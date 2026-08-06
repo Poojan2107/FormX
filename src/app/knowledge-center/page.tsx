@@ -8,7 +8,7 @@ import {
   portfolioSpecialized,
   portfolioOngoing,
   brochureVisuals,
-  projects,
+  brochureProjects,
 } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -28,14 +28,14 @@ export default function KnowledgeCenterPage() {
         <Container>
           <p className="eyebrow text-x-red">Insights</p>
           <h1
-            className="editorial-title mt-5 max-w-[12ch]"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 5rem)" }}
+            className="editorial-title mt-5 max-w-[16ch]"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
           >
             Notes from the studio
           </h1>
-          <p className="mt-8 max-w-[44ch] text-[18px] leading-[1.9] text-white/60">
-            Not a marketing blog. This is where FormX frames specialized engineering work, ongoing
-            mandates, and facility thinking drawn from real practice.
+          <p className="mt-8 max-w-[48ch] text-[17px] leading-[1.9] text-white/60 md:text-[18px]">
+            Not a marketing blog. Specialized engineering work, ongoing mandates, and facility
+            thinking drawn from the FormX brochure.
           </p>
         </Container>
       </section>
@@ -160,7 +160,7 @@ export default function KnowledgeCenterPage() {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {projects.slice(0, 4).map((project, i) => (
+            {brochureProjects.slice(0, 4).map((project, i) => (
               <Reveal key={project.slug} delay={0.03 * i}>
                 <Link
                   href={`/projects/${project.slug}`}

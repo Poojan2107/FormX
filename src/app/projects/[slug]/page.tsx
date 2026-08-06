@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { getProject, projects } from "@/data/site";
+import { getProject, brochureProjects } from "@/data/site";
 import { formxMethod, vapiCaseStudy } from "@/data/method";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return brochureProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -37,6 +37,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+  if (!brochureProjects.some((p) => p.slug === slug)) notFound();
 
   const isVapi = slug === vapiCaseStudy.slug;
   const factRows = [
@@ -46,7 +47,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     { label: "Status", value: project.year },
   ].filter((item) => item.value);
 
-  const relatedItems = projects
+  const relatedItems = brochureProjects
     .filter((p) => p.slug !== slug)
     .slice(0, 3)
     .map((p) => ({

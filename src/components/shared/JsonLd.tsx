@@ -1,4 +1,4 @@
-import { site, services } from "@/data/site";
+import { site } from "@/data/site";
 import { brochureFaqs } from "@/data/brochureHome";
 
 const SITE_URL = "https://formxconsultants.com";
@@ -61,7 +61,18 @@ export function JsonLd() {
     },
     description:
       "Precise, coordinated architecture, structure and infrastructure design for industrial, commercial, and institutional projects.",
-    knowsAbout: services.map((s) => s.title),
+    knowsAbout: [
+      "Architectural Drawings",
+      "Structural Engineering",
+      "Civil Engineering",
+      "Site Infrastructure",
+      "Sustainable Design",
+      "Project Management",
+      "Industrial Facilities",
+      "High-Rise & Residential",
+      "Institutional & Commercial",
+      "Strengthening & Retrofitting",
+    ],
     openingHours: "Mo-Sa 09:00-19:00",
   });
 }

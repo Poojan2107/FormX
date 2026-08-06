@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { projects, services, blogs, news } from "@/data/site";
+import { brochureProjects, services, blogs, news } from "@/data/site";
 
 const BASE_URL = "https://formxconsultants.com";
 
@@ -24,8 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/knowledge-center",
     "/career",
     "/contact",
-    "/vendor-registration",
-    "/estimator",
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: now,
@@ -42,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     }));
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
+  const projectRoutes: MetadataRoute.Sitemap = brochureProjects.map((p) => ({
     url: `${BASE_URL}/projects/${p.slug}`,
     lastModified: now,
     changeFrequency: "monthly",

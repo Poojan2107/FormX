@@ -7,14 +7,12 @@ import { usePathname } from "next/navigation";
 import {
   ArrowRight,
   ChevronDown,
-  Newspaper,
-  BookOpen,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   nav,
   serviceNavGroups,
-  projects,
+  brochureProjects,
   services,
   site,
 } from "@/data/site";
@@ -23,7 +21,7 @@ import { Button } from "@/components/ui/Button";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
 
-type Panel = "Services" | "Projects" | "Insights" | null;
+type Panel = "Services" | "Projects" | null;
 
 export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
   const [panel, setPanel] = useState<Panel>(null);
@@ -98,9 +96,6 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
               {panel === "Projects" ? (
                 <ProjectsMega onNavigate={() => setPanel(null)} />
               ) : null}
-              {panel === "Insights" ? (
-                <InsightsMega onNavigate={() => setPanel(null)} />
-              ) : null}
             </Container>
           </motion.div>
         </>
@@ -119,9 +114,7 @@ export function DesktopNav({ onDark = false }: { onDark?: boolean }) {
       >
         {nav.map((item) => {
           const expandable =
-            item.label === "Services" ||
-            item.label === "Projects" ||
-            item.label === "Insights";
+            item.label === "Services" || item.label === "Projects";
           const panelOpen = panel === item.label;
           const routeActive =
             item.label === "Insights"
@@ -259,7 +252,7 @@ function ServicesMega({ onNavigate }: { onNavigate: () => void }) {
 }
 
 function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
-  const featured = projects.slice(0, 3);
+  const featured = brochureProjects.slice(0, 3);
   return (
     <div>
       <div className="mb-5 flex items-end justify-between gap-4">
@@ -314,74 +307,6 @@ function ProjectsMega({ onNavigate }: { onNavigate: () => void }) {
             </div>
           </Link>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function InsightsMega({ onNavigate }: { onNavigate: () => void }) {
-  return (
-    <div className="grid gap-4 md:grid-cols-[1.15fr_1fr_0.95fr]">
-      <Link
-        href="/knowledge-center"
-        onClick={onNavigate}
-        transitionTypes={["nav-forward"]}
-        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
-      >
-        <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
-        <BookOpen className="size-5 text-x-red" />
-        <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
-          Insights
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Specialized work, ongoing projects and service typologies from the practice brochure.
-        </p>
-        <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
-          Open insights
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-        </span>
-      </Link>
-
-      <Link
-        href="/estimator"
-        onClick={onNavigate}
-        transitionTypes={["nav-forward"]}
-        className="formx-cut-x formx-edge formx-edge-x group relative overflow-hidden border border-line p-6 transition-colors hover:border-x-red/40"
-      >
-        <span className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-x-red transition-transform group-hover:scale-y-100" />
-        <Newspaper className="size-5 text-x-red" />
-        <p className="mt-4 font-display text-xl font-bold text-ink group-hover:text-x-red">
-          PEB Load Estimator
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Early tonnage and framing guidance for warehouse discussions.
-        </p>
-        <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-ink">
-          Open estimator
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-        </span>
-      </Link>
-
-      <div className="formx-cut-x formx-edge formx-edge-x flex flex-col justify-between bg-[#1a1a1a] p-6 text-white">
-        <div>
-          <p className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
-            Talk to FormX
-          </p>
-          <p className="mt-3 font-display text-lg font-bold tracking-tight">
-            Architecture · Structure · Infrastructure
-          </p>
-          <p className="mt-2 text-sm text-white/50">{site.phone}</p>
-        </div>
-        <Button
-          href="/contact"
-          variant="primary"
-          className="mt-6 w-full"
-          onClick={onNavigate}
-          transitionTypes={["nav-forward"]}
-        >
-          Enquire
-          <ArrowRight className="size-4" />
-        </Button>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { projects } from "@/data/site";
+import { brochureProjects } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 
@@ -53,7 +53,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
 
       <section className="bg-bg py-14 md:py-20">
         <Container>
-          <ProjectsExplorer projects={projects} initialSector={initialSector} />
+          <ProjectsExplorer projects={brochureProjects} initialSector={initialSector} />
         </Container>
       </section>
 

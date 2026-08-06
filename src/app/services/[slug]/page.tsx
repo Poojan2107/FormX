@@ -79,23 +79,23 @@ export default async function ServiceDetailPage({ params }: Props) {
         image={`https://formxconsultants.com/assets/${service.asset}`}
       />
 
-      <section className="border-b border-line bg-white pt-24 pb-12 md:pt-28 md:pb-16">
+      <section className="border-b border-line bg-white pt-28 pb-14 md:pt-32 md:pb-18">
         <Container>
-          <p className="eyebrow text-x-red">
-            {cat}
-          </p>
-          <h1
-            className="mt-4 max-w-4xl font-display font-black leading-[0.98] tracking-tight text-ink"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
-          >
-            {service.title}
-          </h1>
-          <p className="mt-3 editorial-meta text-ink/40">
-            {story.motif}
-          </p>
-          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-ink-muted">
-            {service.short}
-          </p>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
+            <div>
+              <p className="eyebrow text-x-red">{cat}</p>
+              <h1
+                className="mt-4 max-w-[16ch] font-display font-black leading-[0.98] tracking-tight text-ink"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+              >
+                {service.title}
+              </h1>
+              <p className="mt-3 editorial-meta text-ink/40">{story.motif}</p>
+            </div>
+            <p className="max-w-2xl text-[16px] leading-[1.9] text-ink-muted lg:pb-1">
+              {story.lead || service.short}
+            </p>
+          </div>
         </Container>
       </section>
 

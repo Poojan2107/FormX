@@ -16,6 +16,7 @@ export {
   partnerTypes,
   partnerTypes as clients,
 } from "./projects";
+export { brochureProjects } from "./brochureHome";
 export {
   blogs,
   getBlog,
@@ -72,14 +73,7 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Projects", href: "/projects" },
-  {
-    label: "Insights",
-    href: "/knowledge-center",
-    children: [
-      { label: "Insights", href: "/knowledge-center" },
-      { label: "PEB Load Estimator", href: "/estimator" },
-    ],
-  },
+  { label: "Insights", href: "/knowledge-center" },
 ];
 
 /** Mobile mega-menu — Architecture · Structure · Infrastructure only (no MEP) */

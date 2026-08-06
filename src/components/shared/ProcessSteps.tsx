@@ -16,7 +16,7 @@ const defaultSteps: ProcessStep[] = [
   {
     num: "02",
     title: "Schematic Engineering",
-    body: "Multi-discipline 3D BIM coordination aligning RCC/steel frames with HVAC, piping, and electrical risers.",
+    body: "Architecture, Structure and Infrastructure coordinated against the same facility reality before issue.",
   },
   {
     num: "03",

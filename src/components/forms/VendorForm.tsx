@@ -10,12 +10,9 @@ const VENDOR_CATEGORIES = [
   "Architectural Work",
   "Structural Steel",
   "RCC & Civil Works",
-  "HVAC Systems",
-  "Electrical & Automation",
-  "Fire Protection",
-  "Utility Piping",
-  "Instrumentation & Controls",
+  "PEB & Fabrication",
   "Project Management / Site QC",
+  "Quantity Survey / Estimation",
 ];
 
 export function VendorForm() {

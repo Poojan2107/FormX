@@ -299,7 +299,7 @@ export function StructuralEstimator() {
               <ul className="space-y-1.5 text-[11px] text-white/75">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="size-3.5 text-x-red shrink-0" />
-                  <span>3D BIM Zero-Clash Coordination</span>
+                  <span>IS-code load path coordination</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="size-3.5 text-x-red shrink-0" />
