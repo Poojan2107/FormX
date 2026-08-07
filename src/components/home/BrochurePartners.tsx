@@ -37,26 +37,26 @@ export function BrochurePartners() {
             {brochurePartners.map((partner, i) => (
               <div
                 key={partner.name}
-                className="group relative flex min-h-[132px] flex-col justify-between overflow-hidden border border-ink/[0.1] bg-white px-6 py-6 transition-all duration-300 hover:border-x-red/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.04)] md:min-h-[148px] md:px-7 md:py-7"
+                className="formx-card x-corner-glow group relative flex min-h-[132px] flex-col justify-between overflow-hidden p-6 transition-all duration-400 md:min-h-[148px] md:p-7"
                 style={{
                   clipPath:
                     "polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%)",
                 }}
               >
                 <div>
-                  <span className="font-label text-[9.5px] tracking-[0.24em] text-x-red/70">
+                  <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-x-red font-semibold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="mt-3 font-display text-[1.1rem] font-bold leading-[1.15] tracking-tight text-ink transition-colors group-hover:text-x-red md:text-[1.2rem]">
+                  <p className="mt-3 font-display text-[1.1rem] font-bold leading-[1.15] tracking-tight text-ink transition-colors duration-300 group-hover:text-x-red md:text-[1.2rem]">
                     {partner.name}
                   </p>
                 </div>
-                <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
+                <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/50 font-medium">
                   {partner.tag}
                 </p>
                 <span
                   aria-hidden
-                  className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-x-red transition-transform duration-300 group-hover:scale-x-100"
+                  className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 bg-x-red shadow-[0_0_10px_rgba(224,49,40,0.8)] transition-transform duration-400 group-hover:scale-x-100"
                 />
               </div>
             ))}

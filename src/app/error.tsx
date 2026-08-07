@@ -48,7 +48,7 @@ export default function Error({
           <button
             type="button"
             onClick={() => unstable_retry()}
-            className="bg-x-red inline-flex items-center gap-2 px-6 py-3 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_24px_rgba(222,48,36,0.4)] transition-colors hover:bg-x-red-hover"
+            className="inline-flex items-center gap-2 border-[1.5px] border-x-red bg-x-red px-6 py-3 font-display text-[12px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_24px_rgba(222,48,36,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red"
           >
             Try again
           </button>

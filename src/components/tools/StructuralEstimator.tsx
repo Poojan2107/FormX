@@ -315,7 +315,7 @@ export function StructuralEstimator() {
             {/* CTA Button */}
             <Link
               href={`/contact?area=${areaSqFt}&crane=${craneCapacity}&type=${structureType}`}
-              className="formx-cut-sm group flex w-full items-center justify-center gap-2 bg-x-red py-4 text-center font-display text-[11px] font-extrabold uppercase tracking-[0.18em] text-white shadow-lg transition-all hover:bg-x-red-hover"
+              className="formx-cut-sm group flex w-full items-center justify-center gap-2 border-[1.5px] border-x-red bg-x-red py-4 text-center font-display text-[11px] font-extrabold uppercase tracking-[0.18em] text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red"
             >
               <span>Request Verified STAAD.Pro Calculation</span>
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

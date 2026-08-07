@@ -22,8 +22,8 @@ export function BrochureHero() {
 
   useEffect(() => {
     if (reduce) {
-      setReady(true);
-      return;
+      const t = window.setTimeout(() => setReady(true), 0);
+      return () => window.clearTimeout(t);
     }
     const t = window.setTimeout(() => setReady(true), 60);
     return () => window.clearTimeout(t);
@@ -121,12 +121,17 @@ export function BrochureHero() {
               initial={reduce ? false : { opacity: 0, y: 10 }}
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.7, delay: 0.15, ease: smoothEase }}
-              className="flex items-center gap-3"
+              className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2"
             >
-              <span className="h-[2px] w-6 bg-x-red" />
-              <p className="font-label text-[11px] font-bold uppercase tracking-[0.32em] text-x-red">
-                Architecture · Structure · Infrastructure
-              </p>
+              <div className="flex min-w-0 items-center gap-3">
+                <span className="h-[2px] w-6 shrink-0 bg-x-red" />
+                <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.22em] text-x-red sm:text-[11px] sm:tracking-[0.32em]">
+                  Architecture · Structure · Infrastructure
+                </p>
+              </div>
+              <span className="hidden font-label text-[10px] font-bold tracking-[0.24em] text-ink/35 sm:inline-block">
+                [FORMX.01]
+              </span>
             </motion.div>
 
             <h1 className="mt-6 space-y-0.5" aria-label={brochureBrand.slogan}>

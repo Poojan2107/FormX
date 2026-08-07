@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { brochureProjectGroups } from "@/data/brochureHome";
 import type { Project } from "@/data/projects";
+import { cn } from "@/lib/cn";
 
 function ProjectMeta({
   project,
@@ -57,8 +58,6 @@ function ProjectMeta({
 }
 
 function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boolean }) {
-  const frameMode = project.assets.frame ?? "cover";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -66,24 +65,26 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
       className="group block"
     >
       <div
-        className="grid gap-6 border p-3 transition-shadow duration-500 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)] md:grid-cols-12 md:gap-8 md:p-4"
+        className={cn(
+          "formx-cut x-corner-glow grid gap-6 border p-3.5 transition-all duration-500 md:grid-cols-12 md:gap-8 md:p-5",
+          dark ? "formx-card-dark" : "formx-card",
+        )}
         style={{
-          borderColor: dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)",
-          backgroundColor: dark ? "#101010" : "#f6f4ee",
+          backgroundColor: dark ? "#101010" : "#ffffff",
         }}
       >
-        <div className="relative aspect-[16/10] overflow-hidden md:col-span-8 lg:aspect-[16/9]">
+        <div className="relative aspect-[16/10] overflow-hidden md:col-span-8 lg:aspect-[16/9] formx-cut-sm">
           <div
-            className="absolute inset-0 border"
+            className="absolute inset-0 border z-10 pointer-events-none"
             style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)" }}
           />
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
-            fit={frameMode}
+            fit="cover"
             aspect="auto"
             tone={dark ? "dark" : "light"}
-            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.02] md:p-5"
+            className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, 60vw"
             priority
           />
@@ -91,11 +92,11 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
 
         <div className="flex flex-col justify-between md:col-span-4 md:py-2 md:pr-2">
           <div>
-            <p className="font-label text-[9.5px] uppercase tracking-[0.24em] text-x-red">
+            <p className="font-label text-[9.5px] uppercase tracking-[0.24em] text-x-red font-bold">
               {project.area ?? project.year}
             </p>
             <h3
-              className={`mt-3 font-display font-extrabold tracking-tight transition-colors group-hover:text-x-red ${
+              className={`mt-3 font-display font-extrabold tracking-tight transition-colors duration-300 group-hover:text-x-red ${
                 dark ? "text-white" : "text-ink"
               }`}
               style={{ fontSize: "clamp(1.45rem, 2.5vw, 2.05rem)" }}
@@ -104,7 +105,7 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
             </h3>
             <p
               className={`mt-4 text-[14px] leading-[1.8] ${
-                dark ? "text-white/55" : "text-ink/58"
+                dark ? "text-white/65" : "text-ink/68"
               }`}
             >
               {project.description}
@@ -121,7 +122,7 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
               View project
             </span>
             <div
-              className="formx-cut-sm flex size-9 items-center justify-center bg-x-red text-white transition-transform duration-300 group-hover:translate-x-1"
+              className="formx-cut-sm group flex size-9 items-center justify-center border-[1.5px] border-x-red bg-x-red text-white transition-all duration-300 group-hover:translate-x-1 group-hover:bg-white group-hover:text-x-red group-hover:shadow-md"
             >
               <ArrowUpRight className="size-4" />
             </div>
@@ -133,8 +134,6 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
 }
 
 function GalleryPlate({ project, dark = false }: { project: Project; dark?: boolean }) {
-  const frameMode = project.assets.frame ?? "cover";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -142,32 +141,29 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
       className="group block h-full"
     >
       <div
-        className="flex h-full flex-col border p-3 transition-shadow duration-500 group-hover:shadow-[0_16px_48px_rgba(0,0,0,0.05)]"
+        className="flex h-full flex-col border overflow-hidden transition-shadow duration-500 group-hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] bg-white"
         style={{
           borderColor: dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)",
-          backgroundColor: dark ? "#111111" : "#f7f5f0",
+          backgroundColor: dark ? "#111111" : "#ffffff",
         }}
       >
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <div
-            className="absolute inset-0 border"
-            style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)" }}
-          />
+        {/* 100% Full-Bleed Card Image Showcase (Zero Side/Top/Bottom Gaps) */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-ink">
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
-            fit={frameMode}
-            aspect="landscape"
+            fit="cover"
+            aspect="auto"
             tone={dark ? "dark" : "light"}
-            className="absolute inset-0 size-full p-3 transition-transform duration-700 group-hover:scale-[1.03]"
+            className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
-        <div className="flex flex-1 flex-col pt-5 pb-1">
-          <p className="font-label text-[9px] uppercase tracking-[0.2em] text-x-red">
+        <div className="flex flex-1 flex-col p-5">
+          <p className="font-label text-[9px] font-bold uppercase tracking-[0.2em] text-x-red">
             {project.location}
           </p>
-          <div className="mt-2.5 flex items-start justify-between gap-3">
+          <div className="mt-2 flex items-start justify-between gap-3">
             <h3
               className={`font-display text-[1.08rem] font-bold leading-[1.12] tracking-tight transition-colors group-hover:text-x-red ${
                 dark ? "text-white" : "text-ink"
@@ -175,11 +171,11 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
             >
               {project.title}
             </h3>
-            <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
           <p
             className={`mt-2.5 text-[13px] leading-[1.7] ${
-              dark ? "text-white/48" : "text-ink/52"
+              dark ? "text-white/60" : "text-ink/60"
             }`}
           >
             {project.services[0] ?? project.sector}
@@ -310,9 +306,14 @@ export function BrochureProjects() {
         <Container>
           <div className="mb-14 grid gap-6 border-b border-ink/[0.08] pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-end lg:gap-14">
             <Reveal>
-              <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
-                Projects
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+                  Projects
+                </p>
+                <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-ink/35">
+                  [FORMX.05]
+                </span>
+              </div>
               <h2
                 className="mt-4 font-display font-black leading-[1.02] tracking-[-0.045em] text-ink"
                 style={{ fontSize: "clamp(2.15rem, 4.4vw, 3.6rem)" }}

@@ -27,6 +27,10 @@ const formxBody = Source_Sans_3({
 export const viewport: Viewport = {
   themeColor: "#000000",
   colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -69,14 +73,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${formxDisplay.variable} ${formxBody.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-bg font-body text-ink antialiased">
+      <body className="flex min-h-dvh flex-col overflow-x-clip bg-bg font-body text-ink antialiased">
         <ScrollProgress />
         <a href="#main" className="skip-link sr-only">
           Skip to content
         </a>
         <JsonLd />
         <AppShell>
-          <main id="main" className="flex-1 pb-20 md:pb-0">
+          <main id="main" className="min-w-0 flex-1 pb-[max(5rem,env(safe-area-inset-bottom))] md:pb-0">
             <ViewTransition
               enter={{
                 "nav-forward": "nav-forward",

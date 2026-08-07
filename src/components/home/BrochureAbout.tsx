@@ -21,9 +21,14 @@ export function BrochureAbout() {
         <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
           <div className="flex flex-col justify-center lg:col-span-5">
             <Reveal>
-              <p className="font-label text-[10px] uppercase tracking-[0.32em] text-x-red sm:text-[10.5px]">
-                About FormX
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="font-label text-[10px] uppercase tracking-[0.32em] text-x-red sm:text-[10.5px]">
+                  About FormX
+                </p>
+                <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-ink/35">
+                  [FORMX.02]
+                </span>
+              </div>
               <h2
                 className="mt-4 font-display font-black leading-[1.1] tracking-[-0.035em] text-ink"
                 style={{ fontSize: "clamp(1.7rem, 2.5vw, 2.4rem)" }}
@@ -73,31 +78,31 @@ export function BrochureAbout() {
           </div>
 
           <Reveal from="right" className="lg:col-span-7" delay={0.06}>
-            <div className="formx-cut relative aspect-[4/3] overflow-hidden bg-[#111] lg:aspect-auto lg:h-full lg:min-h-[480px]">
+            <div className="formx-cut x-corner-glow group relative aspect-[4/3] overflow-hidden bg-[#111] border border-ink/10 transition-all duration-500 hover:border-x-red/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] lg:aspect-auto lg:h-full lg:min-h-[480px]">
               <Image
                 src="/assets/services/structural-02.jpg"
                 alt="Structural steel frame — FormX engineering"
                 fill
                 priority
                 unoptimized
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 58vw"
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-90"
               />
               <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
-                <p className="font-label text-[10px] uppercase tracking-[0.28em] text-white/75">
+                <p className="font-label text-[10px] uppercase tracking-[0.28em] text-x-red font-semibold">
                   Studio · Practice
                 </p>
-                <p className="mt-2 max-w-[22ch] font-display text-lg font-extrabold leading-snug tracking-tight text-white sm:text-xl">
+                <p className="mt-2 max-w-[24ch] font-display text-lg font-extrabold leading-snug tracking-tight text-white sm:text-xl">
                   Judgement stays close to the work
                 </p>
               </div>
               <span
                 aria-hidden
-                className="absolute left-0 top-0 z-10 h-[3px] w-16 bg-x-red sm:w-20"
+                className="absolute left-0 top-0 z-10 h-[3px] w-16 bg-x-red transition-all duration-500 group-hover:w-28 sm:w-20"
               />
             </div>
           </Reveal>

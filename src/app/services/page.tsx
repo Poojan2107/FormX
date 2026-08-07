@@ -35,102 +35,120 @@ const groups = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="fx-grain border-b border-line bg-bg pt-28 pb-20 md:pt-36 md:pb-28">
+      <section className="fx-grain border-b border-line bg-white pt-28 pb-20 md:pt-36 md:pb-28">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
             <div>
-              <p className="eyebrow text-x-red">Services</p>
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-x-red" />
+                <p className="font-label text-[10.5px] font-bold uppercase tracking-[0.22em] text-x-red">
+                  [FORMX.SERVICES] · PRACTICE SCOPE
+                </p>
+              </div>
               <h1
-                className="editorial-title mt-5 max-w-[18ch] text-ink"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)" }}
+                className="mt-4 font-display font-black leading-[0.98] tracking-tight text-ink"
+                style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.2rem)" }}
               >
                 Three disciplines, resolved as one facility.
               </h1>
             </div>
-            <div>
-              <p className="editorial-deck measure-essay">
+            <div className="border-l-2 border-x-red/60 pl-5">
+              <p className="editorial-deck text-ink-muted">
                 FormX does not treat Architecture, Structure, and Infrastructure as parallel silos.
                 They are coordinated against the same reality before anything is issued.
               </p>
-              <p className="editorial-body mt-4 measure-essay">{portfolioServicesNote}</p>
+              <p className="mt-3 text-[14px] leading-relaxed text-ink/60">{portfolioServicesNote}</p>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="border-b border-line bg-bg section-y">
+      <section className="border-b border-line bg-surface-muted/50 py-16 md:py-24">
         <Container>
-          <div className="divide-y divide-line border-y border-line">
+          <div className="divide-y divide-line border-y border-line bg-white shadow-sm">
             {portfolioServices.map((item, i) => (
               <Reveal key={item.title} delay={0.04 * i}>
                 <Link
                   href={item.href}
                   transitionTypes={["nav-forward"]}
-                  className="fx-service-row group grid gap-4 px-4 py-10 md:grid-cols-12 md:items-baseline md:gap-8 md:px-5 md:py-12"
+                  className="fx-service-row group grid gap-4 px-6 py-10 transition-all hover:bg-surface-muted/40 md:grid-cols-12 md:items-baseline md:gap-8 md:px-8 md:py-12"
                 >
-                  <span className="editorial-meta text-x-red md:col-span-1">
+                  <span className="font-label text-[11px] font-bold text-x-red md:col-span-1">
                     0{i + 1}
                   </span>
                   <h2 className="font-display text-2xl font-extrabold tracking-tight text-ink transition-colors group-hover:text-x-red md:col-span-4 md:text-3xl">
                     {item.title}
                   </h2>
-                  <p className="text-[16px] leading-[1.85] text-ink-muted md:col-span-6">
+                  <p className="text-[15.5px] leading-[1.85] text-ink-muted md:col-span-6">
                     {item.body}
                   </p>
                   <span className="hidden justify-end md:col-span-1 md:flex">
-                    <ArrowUpRight className="size-5 text-ink/20 transition-colors group-hover:text-x-red" />
+                    <div className="flex size-9 items-center justify-center border border-line bg-surface-muted text-ink transition-all group-hover:border-x-red group-hover:bg-x-red group-hover:text-white">
+                      <ArrowUpRight className="size-4" />
+                    </div>
                   </span>
                 </Link>
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 max-w-2xl text-[15px] leading-[1.8] text-ink/50">{portfolioClosing}</p>
+          <p className="mt-10 max-w-2xl text-[14.5px] leading-[1.8] text-ink/60">{portfolioClosing}</p>
         </Container>
       </section>
 
-      <section className="bg-bg-muted section-y">
+      <section className="bg-white py-16 md:py-24">
         <Container>
-          <p className="eyebrow text-x-red">Disciplines</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
+          <div className="flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-x-red" />
+            <p className="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+              [FORMX.DISCIPLINES]
+            </p>
+          </div>
+          <h2 className="mt-2 font-display text-3xl font-black tracking-tight text-ink md:text-4xl">
             Architecture · Structure · Infrastructure
           </h2>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-5">
-            {groups.map((g) => (
+          <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:gap-6">
+            {groups.map((g, groupIdx) => (
               <div
                 key={g.title}
-                className="border border-line bg-white p-6 md:p-7"
+                className="formx-card formx-cut-sm flex flex-col justify-between border border-line bg-surface-muted/50 p-6 md:p-7 shadow-sm transition-all hover:border-x-red/30 hover:bg-white"
               >
-                <h3 className="font-display text-xl font-extrabold tracking-tight text-ink">
-                  {g.title}
-                </h3>
-                <ul className="mt-6 space-y-1">
-                  {g.slugs.map((slug) => {
-                    const svc = services.find((s) => s.slug === slug);
-                    if (!svc) return null;
-                    const story = getServiceStory(svc);
-                    return (
-                      <li key={slug}>
-                        <Link
-                          href={`/services/${slug}`}
-                          transitionTypes={["nav-forward"]}
-                          className="group block border-t border-line px-3 py-4 transition-colors first:border-t-0 hover:bg-[#faf9f5]"
-                        >
-                          <span className="flex items-center justify-between gap-3">
-                            <span className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
-                              {svc.title}
+                <div>
+                  <div className="mb-4 flex items-center justify-between border-b border-line/60 pb-3">
+                    <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+                      {g.title}
+                    </h3>
+                    <span className="font-label text-[9.5px] font-bold text-x-red">0{groupIdx + 1}</span>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {g.slugs.map((slug) => {
+                      const svc = services.find((s) => s.slug === slug);
+                      if (!svc) return null;
+                      const story = getServiceStory(svc);
+                      return (
+                        <li key={slug}>
+                          <Link
+                            href={`/services/${slug}`}
+                            transitionTypes={["nav-forward"]}
+                            className="group block border border-line/60 bg-white p-4 rounded-md transition-all hover:border-x-red/40 hover:shadow-sm"
+                          >
+                            <span className="flex items-center justify-between gap-3">
+                              <span className="font-display text-base font-bold tracking-tight text-ink transition-colors group-hover:text-x-red">
+                                {svc.title}
+                              </span>
+                              <ArrowUpRight className="size-4 shrink-0 text-ink/30 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
                             </span>
-                            <ArrowUpRight className="size-3.5 shrink-0 text-ink/20 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-x-red" />
-                          </span>
-                          {story?.lead ? (
-                            <span className="mt-1.5 block text-[13px] leading-[1.7] text-ink/50 line-clamp-2">
-                              {story.lead}
-                            </span>
-                          ) : null}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+                            {story?.lead ? (
+                              <span className="mt-2 block text-[13px] leading-[1.7] text-ink/60 line-clamp-2">
+                                {story.lead}
+                              </span>
+                            ) : null}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

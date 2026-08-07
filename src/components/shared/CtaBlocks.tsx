@@ -157,56 +157,75 @@ export function RelatedLinks({
   const hasImages = items.every((i) => i.image);
 
   return (
-    <section className="border-t border-line bg-[#f7f6f2] py-14 md:py-18">
+    <section className="border-t border-line bg-surface-muted/50 py-16 md:py-20">
       <div className="mx-auto w-full max-w-[1180px] px-5 md:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4 border-b border-ink/[0.08] pb-5">
-          <h3 className="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
-            {title}
-          </h3>
+        <div className="mb-8 flex items-end justify-between gap-4 border-b border-line pb-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="size-1.5 rounded-full bg-x-red" />
+              <p className="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+                [FORMX ARCHIVE]
+              </p>
+            </div>
+            <h3 className="mt-1 font-display text-xl font-black tracking-tight text-ink md:text-2xl">
+              {title}
+            </h3>
+          </div>
           {viewAllHref ? (
             <Link
               href={viewAllHref}
               transitionTypes={["nav-forward"]}
-              className="inline-flex items-center gap-1.5 font-label text-[10px] tracking-[0.18em] text-x-red"
+              className="formx-cut-sm flex items-center gap-2 border border-line bg-white px-4 py-2 text-[11.5px] font-bold text-ink/80 transition-all hover:border-x-red hover:bg-x-red hover:text-white"
             >
               View all
               <ArrowRight className="size-3.5" />
             </Link>
           ) : (
-            <span className="eyebrow text-x-red">{count} items</span>
+            <span className="font-label text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+              {count} Records
+            </span>
           )}
         </div>
-        <div className={cn("grid items-stretch gap-4", gridCols)}>
-          {items.map((item) =>
+
+        <div className={cn("grid items-stretch gap-5", gridCols)}>
+          {items.map((item, idx) =>
             hasImages && item.image ? (
               <Link
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group flex h-full flex-col overflow-hidden border border-ink/[0.08] bg-white"
+                className="group flex h-full flex-col overflow-hidden border border-line bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#111]">
+                {/* 100% Full-Bleed Image Showcase (No Side/Top/Bottom Gaps) */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-white">
                   <AssetImage
                     alt={item.title}
                     slot={item.image}
                     kind="facility"
                     aspect="auto"
-                    fit="cover"
-                    tone="dark"
+                    fit="contain"
+                    tone="light"
                     zoomOnHover
                     className="absolute inset-0 h-full w-full"
                   />
+                  <div className="absolute left-3 top-3 flex items-center gap-1.5 border border-line/60 bg-white/90 px-2.5 py-1 font-label text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink shadow-sm">
+                    <span className="text-x-red">0{idx + 1}</span>
+                    <span>{item.meta || "DISCIPLINE"}</span>
+                  </div>
+
+                  <div className="absolute right-3 top-3 flex size-8 items-center justify-center border border-line/60 bg-white text-ink opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bg-x-red group-hover:text-white group-hover:border-x-red">
+                    <ArrowRight className="size-3.5" />
+                  </div>
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  {item.meta ? (
-                    <p className="editorial-meta text-x-red">{item.meta}</p>
-                  ) : null}
-                  <h4 className="mt-2 font-display text-[1.05rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
+
+                <div className="flex flex-1 flex-col justify-between p-5 bg-white">
+                  <h4 className="font-display text-[16px] font-bold leading-snug text-ink transition-colors duration-300 group-hover:text-x-red">
                     {item.title}
                   </h4>
-                  <p className="mt-auto pt-5 font-label text-[10px] text-ink/35 transition-colors group-hover:text-x-red">
-                    Explore →
-                  </p>
+                  <div className="mt-4 flex items-center gap-1.5 font-label text-[10.5px] font-bold uppercase tracking-[0.18em] text-x-red">
+                    <span>Explore Scope</span>
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
               </Link>
             ) : (
@@ -214,19 +233,23 @@ export function RelatedLinks({
                 key={item.href + item.title}
                 href={item.href}
                 transitionTypes={["nav-forward"]}
-                className="group flex h-full min-h-[140px] flex-col justify-between border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/40"
+                className="formx-card formx-cut-sm group flex h-full min-h-[150px] flex-col justify-between border border-line bg-white p-5 shadow-sm transition-all duration-300 hover:border-x-red/40 hover:shadow-lg hover:-translate-y-0.5"
               >
                 <div>
-                  {item.meta ? (
-                    <p className="mb-2 editorial-meta text-x-red">{item.meta}</p>
-                  ) : null}
-                  <h4 className="font-display text-[1.05rem] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
+                  <div className="mb-2 flex items-center gap-1.5">
+                    <span className="size-1 rounded-full bg-x-red" />
+                    <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.18em] text-x-red">
+                      {item.meta || `0${idx + 1}`}
+                    </p>
+                  </div>
+                  <h4 className="font-display text-[15px] font-bold leading-snug text-ink transition-colors group-hover:text-x-red">
                     {item.title}
                   </h4>
                 </div>
-                <p className="mt-5 font-label text-[10px] text-ink/35 transition-colors group-hover:text-x-red">
-                  View →
-                </p>
+                <div className="mt-4 flex items-center gap-1.5 font-label text-[10px] font-bold uppercase tracking-[0.16em] text-x-red">
+                  <span>View Details</span>
+                  <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
+                </div>
               </Link>
             ),
           )}

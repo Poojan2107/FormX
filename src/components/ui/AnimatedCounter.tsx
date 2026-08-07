@@ -20,8 +20,8 @@ export function AnimatedCounter({
 
   useEffect(() => {
     if (reduce) {
-      setDisplay(value);
-      return;
+      const t = window.setTimeout(() => setDisplay(value), 0);
+      return () => window.clearTimeout(t);
     }
     const el = ref.current;
     if (!el) return;

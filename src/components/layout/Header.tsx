@@ -39,118 +39,124 @@ function SiteHeader({
   open: boolean;
   setOpen: (v: boolean | ((p: boolean) => boolean)) => void;
 }) {
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const onHome = pathname === "/";
-  /* White-first brand: home hero is paper white — never merge into black */
   const overDarkHero = false;
-  const overHomeHero = onHome && !scrolled && !open;
+
+  // Close mobile drawer on navigation so scroll never stays locked.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname, setOpen]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const root = document.documentElement;
+    const scrollbarGap = open ? window.innerWidth - root.clientWidth : 0;
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
+    if (open) {
+      root.classList.add("scroll-locked");
+      document.body.classList.add("scroll-locked");
+      if (scrollbarGap > 0) {
+        document.body.style.paddingRight = `${scrollbarGap}px`;
+      }
+    } else {
+      root.classList.remove("scroll-locked");
+      document.body.classList.remove("scroll-locked");
+      document.body.style.paddingRight = "";
       document.body.style.overflow = "";
+      root.style.overflow = "";
+    }
+
+    window.dispatchEvent(
+      new CustomEvent("formx:scroll-lock", { detail: { locked: open } }),
+    );
+
+    return () => {
+      root.classList.remove("scroll-locked");
+      document.body.classList.remove("scroll-locked");
+      document.body.style.paddingRight = "";
+      document.body.style.overflow = "";
+      root.style.overflow = "";
+      window.dispatchEvent(
+        new CustomEvent("formx:scroll-lock", { detail: { locked: false } }),
+      );
     };
   }, [open]);
 
   return (
     <>
       <header
-        className="sticky top-0 z-50"
-        style={{ ["--header-offset" as string]: "4.5rem" }}
+        className="relative z-50 w-full border-b border-line/80 bg-white"
+        style={{ ["--header-offset" as string]: "4.75rem" }}
       >
-        <div
-          className={cn(
-            "border-b transition-all duration-500",
-            overHomeHero
-              ? "border-transparent bg-white"
-              : scrolled
-                ? "border-black/8 bg-white/95 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md"
-                : "border-transparent bg-white",
-          )}
-        >
-          <Container className="grid h-[4.25rem] grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[4.75rem] sm:gap-6">
-            <Link
-              href="/"
-              transitionTypes={["nav-back"]}
-              className="relative z-10 flex shrink-0 items-center"
-              aria-label="FormX home"
-              onClick={() => setOpen(false)}
+        <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
+
+        <Container className="grid h-[4.5rem] grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[5.25rem] sm:gap-6">
+          <Link
+            href="/"
+            transitionTypes={["nav-back"]}
+            className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
+            aria-label="FormX home"
+            onClick={() => setOpen(false)}
+          >
+            <Logo variant="full" className="h-11 sm:h-13 md:h-14" invert={overDarkHero} />
+          </Link>
+
+          <div className="hidden min-w-0 justify-center lg:flex">
+            <DesktopNav onDark={overDarkHero} />
+          </div>
+
+          <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
+            <a
+              href={`tel:${site.phone.replace(/\s/g, "")}`}
+              className={cn(
+                "hidden h-9 items-center gap-2 font-label text-[10px] tracking-[0.14em] transition-colors xl:flex",
+                "text-ink/60 hover:text-x-red",
+              )}
+              aria-label={`Call ${site.phone}`}
             >
-              <Logo variant="full" invert={overDarkHero} />
+              <Phone className="size-3.5 shrink-0 text-x-red" />
+              <span>{site.phone}</span>
+            </a>
+
+            <Link
+              href="/contact"
+              transitionTypes={["nav-forward"]}
+              className="formx-cut-sm relative hidden h-10 items-center gap-1.5 border-[1.5px] border-x-red bg-x-red px-6 font-label text-[10.5px] tracking-[0.18em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red hover:shadow-[0_10px_28px_-12px_rgba(224,49,40,0.35)] lg:inline-flex"
+            >
+              Enquire
+              <ArrowUpRight className="size-3.5" />
             </Link>
 
-            <div className="hidden min-w-0 justify-center lg:flex">
-              <DesktopNav onDark={overDarkHero} />
-            </div>
-
-            <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
-              <a
-                href={`tel:${site.phone.replace(/\s/g, "")}`}
-                className={cn(
-                  "hidden h-9 items-center gap-2 font-label text-[10px] transition-colors xl:flex",
-                  "text-ink/50 hover:text-ink",
-                )}
-                aria-label={`Call ${site.phone}`}
-              >
-                <Phone className="size-3.5 shrink-0 text-x-red" />
-                <span className="tracking-[0.12em]">{site.phone}</span>
-              </a>
-
-              <Link
-                href="/contact"
-                transitionTypes={["nav-forward"]}
-                className="formx-cut-sm relative hidden h-10 items-center gap-1.5 bg-x-red px-5 font-label text-[10px] tracking-[0.16em] text-white transition-colors hover:bg-x-red-hover lg:inline-flex"
-              >
-                Enquire
-                <ArrowUpRight className="size-3.5" />
-              </Link>
-
-              <button
-                type="button"
-                className={cn(
-                  "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
-                  "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
-                )}
-                aria-label={open ? "Close menu" : "Open menu"}
-                aria-expanded={open}
-                onClick={() => setOpen((v) => !v)}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={open ? "x" : "menu"}
-                    initial={{ opacity: 0, rotate: open ? -45 : 45 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    {open ? <X className="size-5" /> : <Menu className="size-5" />}
-                  </motion.div>
-                </AnimatePresence>
-              </button>
-            </div>
-          </Container>
-
-          <div
-            className={cn(
-              "h-px w-full bg-gradient-to-r from-transparent via-x-red to-transparent transition-opacity",
-              overHomeHero ? "opacity-35" : "opacity-55",
-            )}
-          />
-        </div>
+            <button
+              type="button"
+              className={cn(
+                "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
+                "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
+              )}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={open ? "x" : "menu"}
+                  initial={{ opacity: 0, rotate: open ? -45 : 45 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  {open ? <X className="size-5" /> : <Menu className="size-5" />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
+          </div>
+        </Container>
       </header>
 
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fx-grain fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-[#0a0a0a] lg:hidden"
+            className="fx-grain fixed inset-0 z-[55] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a] lg:hidden"
+            style={{ WebkitOverflowScrolling: "touch" }}
             initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
@@ -240,7 +246,7 @@ function SiteHeader({
                   href="/contact"
                   onClick={() => setOpen(false)}
                   transitionTypes={["nav-forward"]}
-                  className="formx-cut flex w-full items-center justify-center gap-2 bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white"
+                  className="formx-cut flex w-full items-center justify-center gap-2 border-[1.5px] border-x-red bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white transition-all duration-300 hover:bg-white hover:text-x-red"
                 >
                   Enquire <ArrowUpRight className="size-4" />
                 </Link>

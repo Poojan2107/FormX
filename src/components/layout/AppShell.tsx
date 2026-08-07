@@ -1,6 +1,7 @@
 "use client";
 
 import { MobileChrome, useMenuOpen } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
 
 function WhatsAppGate() {
@@ -8,12 +9,15 @@ function WhatsAppGate() {
   return <WhatsAppFloat menuOpen={menuOpen} />;
 }
 
-/** Client shell: shared menu state for header + WhatsApp */
+/** Client shell: shared menu state for header + WhatsApp + smooth scroll */
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <MobileChrome>
-      {children}
-      <WhatsAppGate />
-    </MobileChrome>
+    <SmoothScroll>
+      <MobileChrome>
+        {children}
+        <WhatsAppGate />
+      </MobileChrome>
+    </SmoothScroll>
   );
 }
+

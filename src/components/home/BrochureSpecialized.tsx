@@ -39,25 +39,25 @@ export function BrochureSpecialized() {
         <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-5">
           {brochureSpecialized.map((block, i) => (
             <Reveal key={block.title} delay={0.05 * i} from="fade" className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden border border-ink/[0.08] bg-white transition-colors hover:border-x-red/35">
+              <article className="formx-card x-corner-glow formx-cut-sm group relative flex h-full flex-col overflow-hidden transition-all duration-400">
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-x-red transition-transform duration-500 group-hover:scale-y-100"
+                  className="absolute left-0 top-0 h-full w-[4px] origin-top scale-y-0 bg-x-red shadow-[0_0_12px_rgba(224,49,40,0.8)] transition-transform duration-500 group-hover:scale-y-100"
                 />
 
                 <div className="relative flex flex-1 flex-col p-6 sm:p-7 md:p-8">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <span className="font-label text-[10px] tracking-[0.24em] text-x-red">
+                      <span className="font-label text-[10px] font-bold tracking-[0.24em] text-x-red">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="mt-2.5 max-w-[16ch] font-display text-lg font-extrabold tracking-tight text-ink md:text-xl">
+                      <h3 className="mt-2.5 max-w-[16ch] font-display text-lg font-extrabold tracking-tight text-ink transition-colors duration-300 group-hover:text-x-red md:text-xl">
                         {block.title}
                       </h3>
                     </div>
                     <span
                       aria-hidden
-                      className="select-none font-display text-[3.25rem] font-black leading-none text-ink/[0.05] transition-colors group-hover:text-x-red/15 md:text-[3.75rem]"
+                      className="select-none font-display text-[3.25rem] font-black leading-none text-ink/[0.05] transition-all duration-500 group-hover:text-x-red/20 group-hover:scale-110 md:text-[3.75rem]"
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -67,11 +67,11 @@ export function BrochureSpecialized() {
                     {block.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 text-[14px] leading-[1.7] text-ink/62"
+                        className="flex items-start gap-3 text-[14px] leading-[1.7] text-ink/68 transition-colors group-hover:text-ink/90"
                       >
                         <span
                           aria-hidden
-                          className="mt-[0.55em] size-1.5 shrink-0 rotate-45 bg-x-red"
+                          className="mt-[0.55em] size-1.5 shrink-0 rotate-45 bg-x-red shadow-[0_0_6px_rgba(224,49,40,0.5)] transition-transform group-hover:scale-125"
                         />
                         {item}
                       </li>

@@ -1,4 +1,4 @@
-﻿export type Service = {
+export type Service = {
   slug: string;
   title: string;
   short: string;
@@ -31,6 +31,7 @@ export const services: Service[] = [
       "Floor Plans, Elevations & Sections",
       "Roof Plans & Architectural Details",
       "Door, Window & Finish Schedules",
+      "Building Code & Statutory Approval Packages",
       "Tender Drawings & Good for Construction (GFC) Packages",
     ],
     process: [
@@ -62,6 +63,7 @@ export const services: Service[] = [
       "Road & Pavement Drawings",
       "Stormwater Drainage Plans & Profiles",
       "Water Supply & Utility Network Drawings",
+      "Earthwork & Boundary Grading Specifications",
       "External Development (ED) & GFC Drawing Packages",
     ],
     process: [
@@ -80,7 +82,7 @@ export const services: Service[] = [
     short:
       "Practical strategies that improve energy efficiency without compromising functionality or project budget.",
     summary:
-      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities — then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure and infrastructure.",
+      "Evaluate climate, site conditions, and project requirements to identify sustainable design opportunities, then develop practical strategies that improve energy efficiency without compromising functionality or project budget, coordinated across architecture, structure, and infrastructure.",
     highlights: [
       "Climate Responsive Design",
       "Passive Cooling & Daylighting Strategies",
@@ -92,7 +94,8 @@ export const services: Service[] = [
       "Sustainable Design Recommendations",
       "Energy & Daylight Planning Inputs",
       "Building Envelope Design Guidelines",
-      "Water Efficiency Planning",
+      "Water Efficiency & Conservation Plans",
+      "Renewable Energy Integration Layouts",
       "Integrated Sustainability Design Documentation",
     ],
     process: [

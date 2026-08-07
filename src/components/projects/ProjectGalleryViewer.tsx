@@ -29,6 +29,14 @@ export function ProjectGalleryViewer({
     if (lightboxIdx === null) return;
     triggerRef.current = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
+
+    const root = document.documentElement;
+    root.classList.add("scroll-locked");
+    document.body.classList.add("scroll-locked");
+    window.dispatchEvent(
+      new CustomEvent("formx:scroll-lock", { detail: { locked: true } }),
+    );
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightboxIdx(null);
       else if (e.key === "ArrowLeft")
@@ -39,6 +47,11 @@ export function ProjectGalleryViewer({
     window.addEventListener("keydown", onKey);
     return () => {
       window.removeEventListener("keydown", onKey);
+      root.classList.remove("scroll-locked");
+      document.body.classList.remove("scroll-locked");
+      window.dispatchEvent(
+        new CustomEvent("formx:scroll-lock", { detail: { locked: false } }),
+      );
       triggerRef.current?.focus();
     };
   }, [lightboxIdx, count]);

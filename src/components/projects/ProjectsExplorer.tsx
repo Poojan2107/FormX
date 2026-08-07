@@ -6,7 +6,7 @@ import { ArrowUpRight, Search, X } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { cn } from "@/lib/cn";
-import { projectFrameFit, projectObjectPosition } from "@/lib/projectFrame";
+import { projectObjectPosition } from "@/lib/projectFrame";
 
 /** Editorial dossier list — filterable, not a card mosaic */
 export function ProjectsExplorer({
@@ -85,55 +85,63 @@ export function ProjectsExplorer({
         <p className="py-16 text-center text-ink-muted">No projects match this filter.</p>
       ) : (
         <div className="divide-y divide-line border-y border-line">
-          {filtered.map((project) => (
+          {filtered.map((project, i) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
               transitionTypes={["nav-forward"]}
-              className="group grid gap-6 py-8 transition-colors md:grid-cols-12 md:items-center md:gap-10 md:py-10"
+              className="group grid gap-6 py-8 transition-all duration-300 hover:bg-surface-muted/30 md:grid-cols-12 md:items-center md:gap-10 md:py-10 md:px-4"
             >
-              <div className="relative aspect-[16/10] overflow-hidden border border-black/8 bg-[#111] p-2.5 md:col-span-4">
-                <div className="x-corner relative h-full overflow-hidden">
+              <div className="md:col-span-5">
+                <div className="formx-card formx-cut-sm relative aspect-[16/10] overflow-hidden border border-line bg-white shadow-sm transition-all duration-500 group-hover:shadow-lg group-hover:border-x-red/40">
                   <AssetImage
                     alt={project.title}
                     slot={project.assets.cover}
                     kind="facility"
-                    fit={projectFrameFit(project)}
-                    aspect="auto"
+                    fit="cover"
+                    aspect="landscape"
+                    tone="light"
                     objectPosition={projectObjectPosition(project)}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
+                  <div className="absolute bottom-0 inset-x-0 flex items-center justify-between border-t border-line/80 bg-white/90 backdrop-blur-sm px-3.5 py-2 font-label text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink/70">
+                    <span className="text-x-red">[DOSSIER 0{i + 1}]</span>
+                    <span>{project.location}</span>
+                  </div>
                 </div>
               </div>
-              <div className="md:col-span-8">
-                <p className="editorial-meta text-x-red">
-                  {project.sector}
-                </p>
-                <h2 className="mt-2 font-display text-xl font-extrabold tracking-tight text-ink md:text-[1.8rem]">
+              <div className="md:col-span-7">
+                <div className="flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-x-red" />
+                  <p className="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+                    {project.sector}
+                  </p>
+                </div>
+                <h2 className="mt-2.5 font-display text-xl font-black tracking-tight text-ink transition-colors group-hover:text-x-red md:text-2xl">
                   {project.title}
                 </h2>
-                <p className="mt-2 text-[13px] leading-[1.7] text-ink/50">
-                  {project.location}
+                <p className="mt-2 font-label text-[11px] font-bold uppercase tracking-[0.14em] text-ink/50">
+                  {project.client} · {project.location}
                   {project.area ? ` · ${project.area}` : ""}
                   {project.floors ? ` · ${project.floors}` : ""}
                 </p>
                 {project.risk ? (
-                  <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.85] text-ink-muted">
+                  <p className="mt-3.5 max-w-[54ch] text-[14.5px] leading-[1.8] text-ink/75">
                     {project.risk}
                   </p>
                 ) : (
-                  <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.85] text-ink-muted line-clamp-2">
+                  <p className="mt-3.5 max-w-[54ch] text-[14.5px] leading-[1.8] text-ink/75 line-clamp-2">
                     {project.description}
                   </p>
                 )}
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-                  <span className="font-label text-[10px] text-ink/35">
-                    {project.services[0] ?? "Engineering scope"}
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-4">
+                  <span className="font-label text-[10px] font-bold uppercase tracking-[0.14em] text-ink/40">
+                    {project.services[0] ?? "Engineering Scope"}
                   </span>
-                  <span className="inline-flex items-center gap-2 font-label text-[10px] text-x-red">
-                    Open dossier
-                    <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span className="inline-flex items-center gap-2 font-label text-[11px] font-bold uppercase tracking-[0.16em] text-x-red transition-all group-hover:translate-x-1">
+                    Open Engineering Dossier
+                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </div>

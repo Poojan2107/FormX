@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 import { getService, services } from "@/data/site";
 import { getServiceStory } from "@/data/serviceStories";
 import { DisciplineStory } from "@/components/services/DisciplineStory";
@@ -7,6 +8,7 @@ import { CtaBand, RelatedLinks } from "@/components/shared/CtaBlocks";
 import { StickyEnquire } from "@/components/shared/StickyEnquire";
 import { ServiceJsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -45,6 +47,42 @@ const categoryLabels: Record<string, string> = {
   "project-management": "Infrastructure",
 };
 
+/**
+ * Architecture (sustainable) is the reference: square card, image edge-to-edge, no gaps.
+ * Each page picks its own asset + focal point so cover fills that square without empty bars.
+ */
+const heroArtifact: Record<
+  string,
+  {
+    /** Override asset when the default file’s ratio fights a square frame */
+    asset?: string;
+    /** object-position — keep the subject in frame */
+    position: string;
+  }
+> = {
+  "architectural-design": {
+    position: "center 20%",
+  },
+  "sustainable-design": {
+    position: "center center",
+  },
+  // Default structural.jpg is landscape — use square gallery shot so the card matches Architecture
+  "structural-engineering": {
+    asset: "services/structural-03.jpg",
+    position: "center center",
+  },
+  "civil-engineering": {
+    position: "center center",
+  },
+  "site-infrastructure": {
+    position: "center center",
+  },
+  // Tall portrait — square cover crops only red floor top/bottom; people stay fully visible
+  "project-management": {
+    position: "center 42%",
+  },
+};
+
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
   if (!PRIMARY_SERVICE_SLUGS.includes(slug as (typeof PRIMARY_SERVICE_SLUGS)[number])) {
@@ -55,6 +93,8 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   const story = getServiceStory(service);
   const cat = categoryLabels[slug] ?? "Engineering Practice";
+  const artifact = heroArtifact[slug] ?? { position: "center center" };
+  const heroSrc = artifact.asset ?? service.asset;
 
   const others = services
     .filter(
@@ -67,7 +107,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       href: `/services/${s.slug}`,
       title: s.title,
       meta: "Discipline",
-      image: s.asset,
+      image: heroArtifact[s.slug]?.asset ?? s.asset,
     }));
 
   return (
@@ -76,25 +116,77 @@ export default async function ServiceDetailPage({ params }: Props) {
         name={service.title}
         description={service.short}
         url={`/services/${service.slug}`}
-        image={`https://formxconsultants.com/assets/${service.asset}`}
+        image={`https://formxconsultants.com/assets/${heroSrc}`}
       />
 
-      <section className="border-b border-line bg-white pt-28 pb-14 md:pt-32 md:pb-18">
+      <section className="border-b border-line bg-white pt-8 pb-14 md:pt-12 md:pb-16">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-14">
-            <div>
-              <p className="eyebrow text-x-red">{cat}</p>
+          <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12 xl:gap-14">
+            <div className="min-w-0 lg:col-span-7">
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-x-red" />
+                <p className="font-label text-[11px] font-bold uppercase tracking-[0.22em] text-x-red">
+                  [FORMX.PRACTICE] · {cat}
+                </p>
+              </div>
+
               <h1
-                className="mt-4 max-w-[16ch] font-display font-black leading-[0.98] tracking-tight text-ink"
-                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+                className="mt-4 font-display font-black leading-[0.94] tracking-tight text-ink"
+                style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
               >
                 {service.title}
               </h1>
-              <p className="mt-3 editorial-meta text-ink/40">{story.motif}</p>
+
+              <p className="mt-6 max-w-2xl font-display text-xl font-bold leading-relaxed text-ink/80 md:text-2xl">
+                {story.lead || service.short}
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button href="/contact" variant="primary" className="gap-2 shadow-md">
+                  Discuss this discipline
+                  <ArrowUpRight className="size-4" />
+                </Button>
+                <Button href="/services" variant="secondary">
+                  All services
+                </Button>
+              </div>
             </div>
-            <p className="max-w-2xl text-[16px] leading-[1.9] text-ink-muted lg:pb-1">
-              {story.lead || service.short}
+
+            {/* Same square artifact card as Architecture — filled edge-to-edge, no gaps */}
+            <div className="min-w-0 lg:col-span-5">
+              <figure className="overflow-hidden border border-line bg-white shadow-xl leading-none">
+                <div className="relative aspect-square w-full overflow-hidden bg-white">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/assets/${heroSrc}`}
+                    alt={service.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{ objectPosition: artifact.position }}
+                  />
+                </div>
+                <figcaption className="flex items-center justify-between border-t border-line bg-surface-muted/60 px-4 py-2.5 font-label text-[9.5px] font-bold uppercase tracking-[0.16em] text-ink/60">
+                  <span className="text-x-red">[FORMX.ARTIFACT]</span>
+                  <span>{story.family}</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div className="mt-12 border-t border-line pt-8 md:mt-14">
+            <p className="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-x-red">
+              CORE PRACTICE CAPABILITIES
             </p>
+            <div className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+              {service.highlights.map((highlight) => (
+                <div
+                  key={highlight}
+                  className="flex items-start gap-2.5 font-display text-[14.5px] font-bold text-ink"
+                >
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-x-red" />
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </Container>
       </section>

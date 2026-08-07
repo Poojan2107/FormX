@@ -6,14 +6,16 @@ const base =
   "formx-cut-sm inline-flex items-center justify-center gap-2 rounded-none px-6 py-3.5 font-label text-[11px] tracking-[0.18em] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-x-red";
 
 const variants = {
-  primary: "bg-x-red text-white hover:bg-x-red-hover",
-  secondary: "bg-[#1a1a1a] text-white hover:bg-[#2a2a2a]",
+  primary:
+    "border-[1.5px] border-x-red bg-x-red text-white shadow-none hover:-translate-y-0.5 hover:bg-white hover:text-x-red hover:shadow-[0_12px_36px_-16px_rgba(224,49,40,0.35)]",
+  secondary:
+    "border-[1.5px] border-[#0a0a0a] bg-[#0a0a0a] text-white shadow-none hover:-translate-y-0.5 hover:border-x-red hover:bg-white hover:text-x-red hover:shadow-[0_12px_36px_-16px_rgba(224,49,40,0.28)]",
   outline:
-    "border border-black/20 bg-transparent text-ink hover:border-x-red hover:text-x-red",
+    "border-[1.5px] border-black/20 bg-transparent text-ink hover:-translate-y-0.5 hover:border-x-red hover:bg-white hover:text-x-red",
   ghost:
-    "bg-transparent text-ink border border-black/15 hover:border-x-red hover:text-x-red",
+    "border-[1.5px] border-black/15 bg-transparent text-ink hover:-translate-y-0.5 hover:border-x-red hover:bg-white hover:text-x-red",
   "ghost-light":
-    "bg-transparent text-white border border-white/35 hover:border-x-red hover:text-x-red",
+    "border-[1.5px] border-white/35 bg-transparent text-white hover:-translate-y-0.5 hover:border-x-red hover:bg-white hover:text-x-red",
 } as const;
 
 type Variant = keyof typeof variants;

@@ -4,7 +4,7 @@ import type { Project } from "@/data/projects";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/cn";
-import { projectFrameFit, projectObjectPosition } from "@/lib/projectFrame";
+import { projectObjectPosition } from "@/lib/projectFrame";
 
 /**
  * Related brochure facilities — equal-height plates with orientation
@@ -40,7 +40,7 @@ export function RelatedFacilities({
 
         <div
           className={cn(
-            "grid items-stretch gap-5",
+            "grid items-stretch gap-6",
             projects.length === 1
               ? "max-w-xl"
               : projects.length === 2
@@ -48,59 +48,49 @@ export function RelatedFacilities({
                 : "md:grid-cols-3",
           )}
         >
-          {projects.map((project) => {
-            const landscape = project.assets.orientation === "landscape";
-            const portrait = project.assets.orientation === "portrait";
-            const frame = projectFrameFit(project);
-
-            return (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                transitionTypes={["nav-forward"]}
-                className="group flex h-full flex-col border border-ink/[0.08] bg-white p-3 transition-shadow hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)]"
-              >
-                <div
-                  className={cn(
-                    "relative overflow-hidden bg-[#ece9e2]",
-                    landscape ? "aspect-[16/10]" : portrait ? "aspect-[3/4]" : "aspect-[4/3]",
-                  )}
-                >
-                  <div className="absolute inset-0 border border-ink/[0.06]" />
-                  <AssetImage
-                    slot={project.assets.cover}
-                    alt={project.title}
-                    fit={frame}
-                    aspect="auto"
-                    tone="light"
-                    objectPosition={projectObjectPosition(project)}
-                    className={cn(
-                      "absolute inset-0 size-full transition-transform duration-700 group-hover:scale-[1.02]",
-                      frame === "contain" ? "p-3" : "",
-                    )}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+          {projects.map((project, idx) => (
+            <Link
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              transitionTypes={["nav-forward"]}
+              className="group formx-card formx-cut-sm flex h-full flex-col border border-line bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-x-red/40 hover:-translate-y-1.5"
+            >
+              {/* 100% Full-Bleed Display Image */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+                <AssetImage
+                  slot={project.assets.cover}
+                  alt={project.title}
+                  fit="cover"
+                  aspect="auto"
+                  tone="light"
+                  objectPosition={projectObjectPosition(project)}
+                  className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute bottom-0 inset-x-0 flex items-center justify-between border-t border-line/80 bg-white/90 backdrop-blur-sm px-3 py-1.5 font-label text-[9px] font-bold uppercase tracking-[0.16em] text-ink/70">
+                  <span className="text-x-red">[FACILITY 0{idx + 1}]</span>
+                  <span>{project.location}</span>
                 </div>
-                <div className="flex flex-1 flex-col px-2 pb-2 pt-4">
-                  <p className="font-label text-[9px] uppercase tracking-[0.2em] text-x-red">
-                    {project.location}
-                  </p>
-                  <div className="mt-2 flex items-start justify-between gap-3">
-                    <h4 className="font-display text-[1.05rem] font-bold leading-[1.15] tracking-tight text-ink transition-colors group-hover:text-x-red">
-                      {project.title}
-                    </h4>
-                    <ArrowUpRight className="mt-0.5 size-3.5 shrink-0 text-x-red" />
-                  </div>
-                  <p className="mt-2 text-[12.5px] leading-[1.65] text-ink/50">
-                    {project.services[0] ?? project.sector}
-                  </p>
-                  <p className="mt-auto pt-4 font-label text-[9px] uppercase tracking-[0.18em] text-ink/35">
-                    {project.area ?? project.year}
-                  </p>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.2em] text-x-red">
+                  {project.sector}
+                </p>
+                <div className="mt-2 flex items-start justify-between gap-3">
+                  <h4 className="font-display text-[1.1rem] font-bold leading-[1.2] tracking-tight text-ink transition-colors group-hover:text-x-red">
+                    {project.title}
+                  </h4>
+                  <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
-              </Link>
-            );
-          })}
+                <p className="mt-2 text-[13px] leading-[1.65] text-ink/60">
+                  {project.services[0] ?? project.sector}
+                </p>
+                <p className="mt-auto pt-4 border-t border-line/50 font-label text-[9.5px] font-bold uppercase tracking-[0.18em] text-ink/40">
+                  {project.area ?? project.year}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </Container>
     </section>

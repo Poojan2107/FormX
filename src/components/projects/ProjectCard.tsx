@@ -43,10 +43,7 @@ export function ProjectCard({
         priority={priority}
         zoomOnHover
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
-        className={cn(
-          "absolute inset-0 h-full w-full",
-          fit === "contain" && "p-3",
-        )}
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />

@@ -47,20 +47,20 @@ export function BrochureUpcoming() {
           <div>
             {brochureOngoing.map((project, i) => (
               <Reveal key={project.title} delay={0.07 * i} from="fade">
-                <div className="group relative cursor-default py-8 pl-8 md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] md:items-center md:gap-12 md:py-10 md:pl-12">
+                <div className="group relative cursor-default py-8 pl-8 transition-all duration-300 hover:bg-white/[0.02] md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] md:items-center md:gap-12 md:py-10 md:pl-12">
                   <div
                     aria-hidden
-                    className="absolute -left-[5px] top-1/2 -translate-y-1/2"
+                    className="absolute -left-[5px] top-1/2 -translate-y-1/2 z-10"
                   >
-                    <div className="size-3 rotate-45 border-2 border-x-red/55 bg-[#111110] transition-all duration-300 group-hover:scale-125 group-hover:border-x-red" />
+                    <div className="size-3.5 rotate-45 border-2 border-x-red/60 bg-[#111110] transition-all duration-400 group-hover:scale-130 group-hover:border-x-red group-hover:bg-x-red/20 shadow-[0_0_10px_rgba(224,49,40,0.5)]" />
                     {i === 0 ? (
-                      <div className="absolute inset-[6px] rotate-45 bg-x-red animate-pulse" />
+                      <div className="absolute inset-[4px] rotate-45 bg-x-red x-pulse-dot" />
                     ) : null}
                   </div>
 
                   <div
                     aria-hidden
-                    className="absolute left-0 top-1/2 h-px w-10 -translate-y-1/2 bg-gradient-to-r from-x-red/40 to-transparent md:w-14"
+                    className="absolute left-0 top-1/2 h-px w-10 -translate-y-1/2 bg-gradient-to-r from-x-red to-transparent md:w-14 transition-all duration-300 group-hover:w-16"
                   />
 
                   <div>
@@ -68,14 +68,14 @@ export function BrochureUpcoming() {
                       ×{String(i + 1).padStart(2, "0")}
                     </span>
                     <h3
-                      className="mt-2.5 font-display font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-x-red"
+                      className="mt-2.5 font-display font-bold tracking-[-0.02em] text-white transition-colors duration-300 group-hover:text-x-red"
                       style={{ fontSize: "clamp(1.1rem, 1.85vw, 1.45rem)" }}
                     >
                       {project.title}
                     </h3>
                   </div>
 
-                  <p className="mt-3 text-[14.5px] leading-[1.85] text-white/65 transition-colors group-hover:text-white/88 md:mt-0 md:text-[15.5px]">
+                  <p className="mt-3 text-[14.5px] leading-[1.85] text-white/65 transition-colors group-hover:text-white/95 md:mt-0 md:text-[15.5px]">
                     {project.detail}
                   </p>
 

@@ -142,12 +142,22 @@ export const hero = {
   ],
 };
 
-/** Sparse delivery metrics from founder review comments */
+/** Sparse delivery metrics from founder review comments (home) */
 export const trustMetrics = [
   { value: "25+", label: "Completed Projects" },
   { value: "15 Lakh+", label: "Sq.Ft Designed" },
   { value: "5", label: "States Served" },
 ];
+
+/** FORMX by Numbers — About page proof band */
+export const aboutNumbers = [
+  { value: 25, suffix: "+", label: "Completed Projects" },
+  { value: 15, suffix: " Lakh+", label: "Sq.Ft Designed" },
+  { value: 15, suffix: "+", label: "Industrial Clients" },
+  { value: 10, suffix: "+", label: "Steel Structures" },
+  { value: 10, suffix: "+", label: "Warehouses" },
+  { value: 5, suffix: "", label: "States Served" },
+] as const;
 
 export const about = {
   eyebrow: "About Us",
@@ -195,20 +205,20 @@ export const aboutPage = {
   ],
   humanValues: [
     {
-      title: "Human-centric approach",
-      body: "Every facility is judged by how people move through it, work inside it, maintain it, and depend on it over time, not only by how it looks on a sheet.",
+      title: "Integrated Design Approach",
+      body: "Architecture, Structure and Infrastructure move together from concept to site — one coordinated facility, not disconnected consultant outputs.",
     },
     {
-      title: "Integrated collaboration",
-      body: "Architecture, Structure and Infrastructure move together from concept to site, so the package behaves like one coordinated facility rather than a stack of disconnected consultant outputs.",
+      title: "Experience Across Industries",
+      body: "Pharma, food, chemical, textile, engineering, automobile and warehouses — practical judgement shaped by facilities that must operate day after day.",
     },
     {
-      title: "People close to the work",
-      body: "Partners stay in reviews, meetings, and site walks. Decisions remain with engineers who understand the drawings, the constraints, and the consequences of issuing too early.",
+      title: "Practical & Scalable Solutions",
+      body: "Designs sized for how the facility will expand, change process, and stay buildable — not only for how it looks on a sheet.",
     },
     {
-      title: "Reliable outcomes",
-      body: "We stay accountable through execution with clarifications, reviews, and practical support until the built work matches the original intent.",
+      title: "People Close to the Work",
+      body: "Partners stay in reviews, meetings, and site walks. Decisions remain with engineers who understand the drawings and the cost of issuing too early.",
     },
   ],
   collaborationPoints: [

@@ -149,13 +149,13 @@ export function BrochureContact() {
               return (
                 <div
                   key={fact.label}
-                  className="flex h-full min-h-[130px] flex-col border border-ink/[0.08] bg-white p-5 transition-colors hover:border-x-red/30 md:p-6"
+                  className="formx-card x-corner-glow formx-cut-sm flex h-full min-h-[130px] flex-col p-5 transition-all duration-400 md:p-6"
                 >
-                  <Icon className="size-4 text-x-red" />
-                  <dt className="mt-4 font-label text-[9px] uppercase tracking-[0.2em] text-ink/40">
+                  <Icon className="size-4.5 text-x-red" />
+                  <dt className="mt-4 font-label text-[9px] font-bold uppercase tracking-[0.2em] text-ink/40">
                     {fact.label}
                   </dt>
-                  <dd className="mt-2 flex-1 text-[13.5px] font-medium leading-[1.7] text-ink/68 md:text-[14px]">
+                  <dd className="mt-2 flex-1 text-[13.5px] font-medium leading-[1.7] text-ink/75 md:text-[14px]">
                     {fact.body}
                   </dd>
                 </div>
