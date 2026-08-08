@@ -126,15 +126,17 @@ export function ProjectsExplorer({
                   {project.area ? ` · ${project.area}` : ""}
                   {project.floors ? ` · ${project.floors}` : ""}
                 </p>
+                <p className="mt-3.5 max-w-[56ch] text-[14.5px] leading-[1.8] text-ink/75 line-clamp-3">
+                  {project.description}
+                </p>
                 {project.risk ? (
-                  <p className="mt-3.5 max-w-[54ch] text-[14.5px] leading-[1.8] text-ink/75">
-                    {project.risk}
-                  </p>
-                ) : (
-                  <p className="mt-3.5 max-w-[54ch] text-[14.5px] leading-[1.8] text-ink/75 line-clamp-2">
-                    {project.description}
-                  </p>
-                )}
+                  <div className="mt-3 flex items-start gap-2.5 border-l-2 border-x-red bg-x-red/[0.04] p-2.5 text-[12.5px] leading-[1.65] text-ink/80">
+                    <span className="font-label text-[9px] font-bold uppercase tracking-[0.16em] text-x-red">
+                      Risk Answered:
+                    </span>
+                    <span className="flex-1">{project.risk}</span>
+                  </div>
+                ) : null}
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-4">
                   <span className="font-label text-[10px] font-bold uppercase tracking-[0.14em] text-ink/40">
                     {project.services[0] ?? "Engineering Scope"}

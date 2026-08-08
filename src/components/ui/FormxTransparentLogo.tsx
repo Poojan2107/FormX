@@ -14,8 +14,8 @@ export function FormxTransparentLogo({
   align?: "left" | "center";
 }) {
   const textColor = dark ? "text-white" : "text-[#0c0c0c]";
-  const subColor = dark ? "text-white/80" : "text-ink/80";
-  const labelColor = dark ? "text-white/55" : "text-ink/55";
+  const subColor = dark ? "text-white font-extrabold" : "text-ink font-extrabold";
+  const labelColor = dark ? "text-white/80 font-bold" : "text-ink/80 font-bold";
 
   const sizeClasses = {
     sm: {

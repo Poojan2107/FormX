@@ -18,9 +18,14 @@ export function BrochureUpcoming() {
       <Container>
         <div className="grid gap-6 border-b border-white/[0.09] pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-end lg:gap-14">
           <Reveal>
-            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
-              Currently Active
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+                Currently Active
+              </p>
+              <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-white/35">
+                [FORMX.07]
+              </span>
+            </div>
             <h2
               className="mt-4 font-display font-black leading-[1.02] tracking-[-0.045em] text-white"
               style={{ fontSize: "clamp(2.1rem, 4.2vw, 3.5rem)" }}

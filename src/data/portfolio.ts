@@ -26,25 +26,25 @@ export const portfolioPillars = [
 export const portfolioServices = [
   {
     title: "High-Rise Structures & Residential",
-    body: "Parking geometry, transfer floors and seismic/wind load paths locked with the architectural grid before GFC — so value engineering cannot erase the frame later.",
+    body: "We specialize in resilient high-rise and residential design, delivering safe, innovative, and resource-optimized structures that elevate the urban experience.",
     href: "/projects?sector=High-Rise%20Structures%20%26%20Residential",
     tone: "dark" as const,
   },
   {
     title: "Industrial Projects",
-    body: "Process clearances, crane loads, machine foundations and PEB/RCC interfaces answered before issue — facilities sized for operations, not presentation.",
+    body: "Crafting robust and efficient manufacturing facilities customized to your unique operational requirements, prioritizing safety and sustainability at every stage.",
     href: "/projects?sector=Industrial%20Projects",
     tone: "light" as const,
   },
   {
     title: "Institutional & Commercial",
-    body: "Assembly loads, facade interfaces and long-span usability coordinated so schools, offices and campuses leave the studio buildable.",
+    body: "Facilities such as schools, hospitals, and office buildings designed to optimize usability and structural integrity while maintaining aesthetic appeal.",
     href: "/projects?sector=Commercial%20%26%20Institutional",
     tone: "light" as const,
   },
   {
     title: "Strengthening & Retrofitting",
-    body: "Existing frames reviewed to current codes; strengthening proposed only where capacity and new use demand it — not blanket reinforcement.",
+    body: "Revitalize current structures to fulfill new functional needs, strengthen them with cutting-edge standards, and prolong their lifespan using inventive reinforcement methods and materials.",
     href: "/services/structural-engineering",
     tone: "dark" as const,
   },
@@ -52,6 +52,9 @@ export const portfolioServices = [
 
 export const portfolioServicesNote =
   "We also assist with quantity estimation, construction support, and coordination for seamless execution.";
+
+export const portfolioBrochureClosing =
+  "At FormX, we don't just design structures — we craft lasting solutions that reflect stability, creativity, and precision. Always open to fresh ideas and complex challenges, we believe every structure has a story — and we're here to engineer it right.";
 
 export const portfolioClosing =
   "Every facility brings its own constraints. FormX engineers them before issue — then stands with execution until the work matches intent.";

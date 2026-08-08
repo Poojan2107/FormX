@@ -73,7 +73,7 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
           backgroundColor: dark ? "#101010" : "#ffffff",
         }}
       >
-        <div className="relative aspect-[16/10] overflow-hidden md:col-span-8 lg:aspect-[16/9] formx-cut-sm">
+        <div className="relative min-h-[280px] w-full overflow-hidden formx-cut-sm md:col-span-7 md:min-h-[360px] lg:col-span-7 lg:min-h-[400px]">
           <div
             className="absolute inset-0 border z-10 pointer-events-none"
             style={{ borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.07)" }}
@@ -88,13 +88,22 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
             sizes="(max-width: 768px) 100vw, 60vw"
             priority
           />
+          <span className="absolute left-3 top-3 z-20 bg-x-red px-2.5 py-1 font-label text-[9px] font-bold uppercase tracking-[0.16em] text-white shadow-md">
+            {project.sector}
+          </span>
         </div>
 
-        <div className="flex flex-col justify-between md:col-span-4 md:py-2 md:pr-2">
+        <div className="flex flex-col justify-between md:col-span-5 md:py-1 md:pr-2 lg:col-span-5">
           <div>
-            <p className="font-label text-[9.5px] uppercase tracking-[0.24em] text-x-red font-bold">
-              {project.area ?? project.year}
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="font-label text-[9.5px] uppercase tracking-[0.24em] text-x-red font-bold">
+                {project.area ?? project.year}
+              </p>
+              <span className="font-label text-[9px] font-bold uppercase tracking-[0.14em] text-ink/40">
+                {project.location}
+              </span>
+            </div>
+
             <h3
               className={`mt-3 font-display font-extrabold tracking-tight transition-colors duration-300 group-hover:text-x-red ${
                 dark ? "text-white" : "text-ink"
@@ -103,6 +112,7 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
             >
               {project.title}
             </h3>
+
             <p
               className={`mt-4 text-[14px] leading-[1.8] ${
                 dark ? "text-white/65" : "text-ink/68"
@@ -110,13 +120,14 @@ function FeaturedPlate({ project, dark = false }: { project: Project; dark?: boo
             >
               {project.description}
             </p>
+
             <ProjectMeta project={project} dark={dark} />
           </div>
 
-          <div className="mt-8 flex items-center justify-between">
+          <div className="mt-8 flex items-center justify-between border-t border-ink/[0.08] pt-4">
             <span
-              className={`font-label text-[9px] uppercase tracking-[0.22em] ${
-                dark ? "text-white/40" : "text-ink/40"
+              className={`font-label text-[9.5px] font-bold uppercase tracking-[0.22em] ${
+                dark ? "text-white/40" : "text-ink/50"
               }`}
             >
               View project
@@ -147,8 +158,8 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
           backgroundColor: dark ? "#111111" : "#ffffff",
         }}
       >
-        {/* 100% Full-Bleed Card Image Showcase (Zero Side/Top/Bottom Gaps) */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+        {/* 100% Full-Bleed Card Image Showcase */}
+        <div className={`relative aspect-[16/10] overflow-hidden ${dark ? "bg-ink" : "bg-white"}`}>
           <AssetImage
             slot={project.assets.cover}
             alt={project.title}
@@ -174,11 +185,18 @@ function GalleryPlate({ project, dark = false }: { project: Project; dark?: bool
             <ArrowUpRight className="mt-0.5 size-4 shrink-0 text-x-red transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
           <p
-            className={`mt-2.5 text-[13px] leading-[1.7] ${
-              dark ? "text-white/60" : "text-ink/60"
+            className={`mt-2.5 font-label text-[9.5px] font-bold uppercase tracking-[0.16em] ${
+              dark ? "text-x-red/80" : "text-x-red"
             }`}
           >
             {project.services[0] ?? project.sector}
+          </p>
+          <p
+            className={`mt-2.5 line-clamp-2 text-[13px] leading-[1.7] ${
+              dark ? "text-white/60" : "text-ink/65"
+            }`}
+          >
+            {project.description}
           </p>
         </div>
       </div>

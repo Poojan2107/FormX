@@ -103,7 +103,7 @@ export function BrochureContact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-28 overflow-hidden bg-[#fafaf8] py-24 text-ink md:py-32"
+      className="relative scroll-mt-28 overflow-hidden bg-[#fafaf8] py-16 text-ink md:py-24"
     >
       <div
         aria-hidden
@@ -123,9 +123,14 @@ export function BrochureContact() {
             <div className="mb-8">
               <FormxTransparentLogo size="md" align="left" />
             </div>
-            <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
-              Contact
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="font-label text-[10.5px] tracking-[0.32em] uppercase text-x-red">
+                Contact
+              </p>
+              <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-ink/35">
+                [FORMX.09]
+              </span>
+            </div>
             <h2
               className="mt-4 max-w-[14ch] font-display font-black leading-[1.02] tracking-[-0.045em] text-ink"
               style={{ fontSize: "clamp(2.15rem, 4.4vw, 3.5rem)" }}

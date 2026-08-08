@@ -329,43 +329,76 @@ export default async function ProjectDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white py-14 md:py-20">
         <Container className="mx-auto max-w-5xl">
-          <div className={project.highlights.length ? "grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-16" : ""}>
-            {/* Left column — title, description, risk/refused */}
-            <div>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-14">
+            {/* Left column — Description, Deliverables, Risk & Refused */}
+            <div className="space-y-8">
               <Reveal>
                 <div className="flex items-center gap-2">
                   <span className="size-2 rounded-full bg-x-red" />
                   <p className="font-label text-[10.5px] font-bold uppercase tracking-[0.22em] text-x-red">
-                    [FORMX.SCOPE] · ENGINEERING DELIVERABLES
+                    [FORMX.DOSSIER] · BROCHURE EXECUTIVE OVERVIEW
                   </p>
                 </div>
                 <h2 className="mt-3 font-display text-2xl font-black tracking-tight text-ink md:text-3xl">
-                  What was delivered
+                  Engineering Scope & Execution
                 </h2>
-                <p className="mt-5 font-display text-[16px] font-bold leading-[1.9] text-ink/75">{project.description}</p>
+                
+                {/* Styled Lead Summary Box — Non-dense, highly legible typography */}
+                <div className="mt-5 formx-cut-sm border-l-4 border-x-red border-y border-r border-line/70 bg-[#faf9f6] p-6 shadow-sm md:p-7">
+                  <p className="font-display text-[15.5px] font-bold leading-[1.85] text-ink/85 md:text-[16.5px]">
+                    {project.description}
+                  </p>
+                </div>
               </Reveal>
 
+              {/* Deliverable Scope Pills */}
+              <Reveal delay={0.06}>
+                <div>
+                  <p className="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-ink/50 mb-3">
+                    Engineered Deliverables
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.services.map((svc) => (
+                      <span
+                        key={svc}
+                        className="inline-flex items-center gap-1.5 border border-x-red/25 bg-x-red/[0.04] px-3.5 py-1.5 font-label text-[10px] font-bold uppercase tracking-[0.16em] text-x-red shadow-2xs"
+                      >
+                        <span className="size-1.5 rounded-full bg-x-red" />
+                        {svc}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* Risk & Refusal Architectural Callout Cards */}
               {project.risk || project.refused ? (
-                <Reveal className="mt-8">
-                  <div className="grid items-stretch gap-4 sm:grid-cols-2">
+                <Reveal delay={0.1}>
+                  <div className="grid items-stretch gap-4 sm:grid-cols-2 pt-2">
                     {project.risk ? (
-                      <div className="group relative border-l-[3px] border-x-red bg-[#fdf9f9] p-5 formx-cut-sm border border-line/50 transition-all hover:border-x-red/40 hover:shadow-sm">
-                        <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.2em] text-x-red">
-                          The risk before × issue
-                        </p>
-                        <p className="mt-3 font-display text-[13.5px] font-bold leading-[1.85] text-ink/80">
+                      <div className="group relative formx-cut-sm border-l-[3px] border-x-red border border-line/60 bg-[#fdf8f8] p-5.5 shadow-2xs transition-all hover:border-x-red hover:shadow-md">
+                        <div className="flex items-center gap-2">
+                          <span className="size-1.5 rounded-full bg-x-red" />
+                          <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.2em] text-x-red">
+                            Risk Before Issue
+                          </p>
+                        </div>
+                        <p className="mt-3 text-[13.5px] font-medium leading-[1.8] text-ink/80">
                           {project.risk}
                         </p>
                       </div>
                     ) : null}
                     {project.refused ? (
-                      <div className="group relative border-l-[3px] border-ink/20 bg-[#f8f7f3] p-5 formx-cut-sm border border-line/50 transition-all hover:border-ink/40 hover:shadow-sm">
-                        <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.2em] text-ink/50">
-                          What we refused to build
-                        </p>
-                        <p className="mt-3 font-display text-[13.5px] font-bold leading-[1.85] text-ink/80">
+                      <div className="group relative formx-cut-sm border-l-[3px] border-ink/30 border border-line/60 bg-[#f8f7f3] p-5.5 shadow-2xs transition-all hover:border-ink/60 hover:shadow-md">
+                        <div className="flex items-center gap-2">
+                          <span className="size-1.5 rounded-full bg-ink/40" />
+                          <p className="font-label text-[9.5px] font-bold uppercase tracking-[0.2em] text-ink/60">
+                            What FormX Refused
+                          </p>
+                        </div>
+                        <p className="mt-3 text-[13.5px] font-medium leading-[1.8] text-ink/80">
                           {project.refused}
                         </p>
                       </div>
@@ -375,29 +408,44 @@ export default async function ProjectDetailPage({ params }: Props) {
               ) : null}
             </div>
 
-            {/* Right column — engineering highlights (fills the gap) */}
-            {project.highlights.length ? (
-              <Reveal className="lg:pt-1" delay={0.08}>
-                <div className="lg:sticky lg:top-28">
-                  <div className="flex items-center gap-2">
-                    <span className="size-2 rounded-full bg-x-red" />
-                    <p className="font-label text-[10.5px] font-bold uppercase tracking-[0.22em] text-x-red">
-                      [ENGINEERING HIGHLIGHTS]
-                    </p>
+            {/* Right column — Engineering Highlights Sidebar */}
+            <div>
+              <Reveal delay={0.08} className="lg:sticky lg:top-28">
+                <div className="formx-cut-sm border border-line bg-[#fafaf8] p-6 shadow-sm md:p-7">
+                  <div className="flex items-center justify-between border-b border-line pb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="size-2 rounded-full bg-x-red" />
+                      <p className="font-label text-[10.5px] font-bold uppercase tracking-[0.22em] text-x-red">
+                        Key Highlights
+                      </p>
+                    </div>
+                    <span className="font-label text-[9.5px] font-bold text-ink/40">
+                      [FORMX.PDF]
+                    </span>
                   </div>
-                  <ul className="mt-5 space-y-3">
+
+                  <ul className="mt-5 space-y-3.5">
                     {project.highlights.map((h, idx) => (
-                      <li key={h} className="flex items-start gap-3 border-b border-line/40 pb-3 last:border-0 last:pb-0">
-                        <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-x-red text-white text-[9px] font-bold font-label">
+                      <li key={h} className="flex items-start gap-3 border-b border-line/40 pb-3.5 last:border-0 last:pb-0">
+                        <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-x-red text-white text-[9.5px] font-bold font-label shadow-2xs">
                           {String(idx + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-display text-[14px] font-bold leading-[1.65] text-ink/85">{h}</span>
+                        <span className="font-display text-[14px] font-bold leading-[1.65] text-ink/85">
+                          {h}
+                        </span>
                       </li>
                     ))}
                   </ul>
+
+                  <div className="mt-6 border-t border-line pt-4">
+                    <div className="flex items-center justify-between text-[11px] font-label font-bold uppercase tracking-[0.16em] text-ink/60">
+                      <span>Status</span>
+                      <span className="text-x-red">{project.year}</span>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
-            ) : null}
+            </div>
           </div>
         </Container>
       </section>

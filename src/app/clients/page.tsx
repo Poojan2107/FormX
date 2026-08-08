@@ -9,6 +9,7 @@ import {
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { VisualFrame } from "@/components/ui/VisualFrame";
+import { PartnerTypesBanner } from "@/components/shared/PartnerTypesBanner";
 
 export const metadata: Metadata = {
   title: "Who We Partner With | FORMX Consultants",
@@ -41,41 +42,8 @@ export default function ClientsPage() {
 
       <section className="bg-[#f7f6f2] py-16 md:py-24">
         <Container>
-          <Reveal>
-            <VisualFrame
-              slot={brochureVisuals.partnersBanner}
-              alt="FORMX partner types from brochure"
-              fit="contain"
-              aspect="cinema"
-              tone="light"
-              className="border border-line bg-white"
-            />
-          </Reveal>
-
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {partnerTypes.map((client, i) => (
-              <Reveal key={client.name} delay={0.04 * i}>
-                <div
-                  className="flex min-h-[132px] flex-col justify-between border border-ink/[0.1] bg-white px-6 py-6 md:min-h-[148px] md:px-7 md:py-7"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)",
-                  }}
-                >
-                  <div>
-                    <span className="font-label text-[9.5px] tracking-[0.24em] text-x-red/70">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="mt-3 font-display text-[1.1rem] font-bold leading-[1.15] tracking-tight text-ink md:text-[1.2rem]">
-                      {client.name}
-                    </p>
-                  </div>
-                  <p className="mt-4 font-label text-[10px] uppercase tracking-[0.16em] text-ink/45">
-                    {client.tag}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mb-4">
+            <PartnerTypesBanner showHeading={true} />
           </div>
 
           <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-ink/[0.08] pt-10">

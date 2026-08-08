@@ -13,14 +13,19 @@ export function BrochureSpecialized() {
   return (
     <section
       id="specialized"
-      className="scroll-mt-28 border-y border-ink/[0.06] bg-[#f4f3f0] py-20 md:py-28"
+      className="scroll-mt-28 border-b border-ink/[0.06] bg-[#f4f3f0] pt-6 pb-16 md:pt-10 md:pb-24"
     >
       <Container>
         <div className="grid gap-5 border-b border-ink/[0.08] pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-end lg:gap-12">
           <Reveal>
-            <p className="font-label text-[10px] uppercase tracking-[0.32em] text-x-red sm:text-[10.5px]">
-              Specialised
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="font-label text-[10px] uppercase tracking-[0.32em] text-x-red sm:text-[10.5px]">
+                Specialised
+              </p>
+              <span className="font-label text-[9.5px] font-bold tracking-[0.24em] text-ink/35">
+                [FORMX.06]
+              </span>
+            </div>
             <h2
               className="mt-4 max-w-[14ch] font-display font-black leading-[1.05] tracking-[-0.04em] text-ink"
               style={{ fontSize: "clamp(1.85rem, 3vw, 2.75rem)" }}
