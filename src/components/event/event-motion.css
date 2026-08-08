@@ -1,0 +1,68 @@
+/* Event one-pager — construction sheet motion */
+
+@keyframes event-draw-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes event-pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes event-scan {
+  0% { transform: translateY(-30%); opacity: 0; }
+  20% { opacity: 0.85; }
+  80% { opacity: 0.85; }
+  100% { transform: translateY(130%); opacity: 0; }
+}
+
+@keyframes event-grid-drift {
+  from { background-position: 0 0; }
+  to { background-position: 64px 64px; }
+}
+
+@keyframes event-blink {
+  0%, 40% { opacity: 1; }
+  45%, 90% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+@keyframes event-dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes event-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.event-grid-drift { animation: event-grid-drift 32s linear infinite; }
+.event-scan-line { animation: event-scan 5s ease-in-out infinite; }
+.event-pulse-ring { animation: event-pulse-ring 3s ease-out infinite; }
+.event-status-blink { animation: event-blink 2s step-end infinite; }
+.event-draw-line {
+  transform-origin: left center;
+  animation: event-draw-line 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.event-marquee {
+  animation: event-marquee 32s linear infinite;
+}
+
+.event-sheet-edge {
+  box-shadow:
+    inset 0 0 0 1px rgba(10, 10, 10, 0.08),
+    inset 0 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-grid-drift,
+  .event-scan-line,
+  .event-pulse-ring,
+  .event-status-blink,
+  .event-draw-line,
+  .event-marquee {
+    animation: none !important;
+  }
+}

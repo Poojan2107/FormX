@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { brochureProjects, services, blogs } from "@/data/site";
+import { isEventMode } from "@/config/siteMode";
 
 const BASE_URL = "https://formxconsultants.com";
 
@@ -14,6 +15,17 @@ const PRIMARY_SERVICE_SLUGS = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  if (isEventMode()) {
+    return [
+      {
+        url: BASE_URL,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 1.0,
+      },
+    ];
+  }
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",

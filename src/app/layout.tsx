@@ -33,21 +33,31 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+import { isEventMode } from "@/config/siteMode";
+
+const eventMeta = isEventMode();
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://formxconsultants.com"),
   title: {
-    default: "FormX Consultants | Where Vision Takes Form",
+    default: eventMeta
+      ? "FormX Consultants | Website Taking Form"
+      : "FormX Consultants | Where Vision Takes Form",
     template: "%s | FormX Consultants",
   },
-  description:
-    "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
+  description: eventMeta
+    ? "FormX Consultants — Where Vision Takes Form. Website taking form. Launching soon. Architecture, Structure and Infrastructure from Ahmedabad."
+    : "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
   openGraph: {
     type: "website",
     locale: "en_IN",
     siteName: "FormX Consultants",
-    title: "FormX Consultants | Where Vision Takes Form",
-    description:
-      "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
+    title: eventMeta
+      ? "FormX Consultants | Website Taking Form"
+      : "FormX Consultants | Where Vision Takes Form",
+    description: eventMeta
+      ? "Where Vision Takes Form. Website taking form. Launching soon."
+      : "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
     images: [
       {
         url: "/formx-logo-solid.png",
@@ -59,9 +69,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FormX Consultants | Where Vision Takes Form",
-    description:
-      "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
+    title: eventMeta
+      ? "FormX Consultants | Website Taking Form"
+      : "FormX Consultants | Where Vision Takes Form",
+    description: eventMeta
+      ? "Where Vision Takes Form. Website taking form. Launching soon."
+      : "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
     images: ["/formx-logo-solid.png"],
   },
 };
@@ -71,9 +84,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const eventMode = isEventMode();
+
   return (
     <html lang="en" className={`${formxDisplay.variable} ${formxBody.variable} h-full`}>
-      <body className="flex min-h-dvh flex-col overflow-x-clip bg-bg font-body text-ink antialiased">
+      <body
+        className={`flex min-h-dvh flex-col overflow-x-clip bg-bg antialiased ${
+          eventMode ? "font-display text-ink" : "font-body text-ink"
+        }`}
+      >
         <ScrollProgress />
         <a href="#main" className="skip-link sr-only">
           Skip to content

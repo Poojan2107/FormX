@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { BrandMark } from "@/components/ui/BrandMark";
 import { cn } from "@/lib/cn";
 
 /**
- * Official lockup on light surfaces (formx-logo-solid.png).
- * On dark surfaces use BrandMark — public/formx-logo.png is a broken asset
- * (15k canvas, essentially only a red ×).
+ * Official FormX lockup.
+ * - Light surfaces: cropped transparent ink lockup
+ * - Dark surfaces: white + red X variant (no plate)
  */
 export function Logo({
   className,
@@ -16,31 +15,23 @@ export function Logo({
   invert?: boolean;
   variant?: "mark" | "full" | "lockup";
 }) {
-  if (invert) {
-    return (
-      <BrandMark
-        tone="dark"
-        size={variant === "mark" ? "sm" : "md"}
-        showSub={variant !== "mark"}
-        className={className}
-      />
-    );
-  }
+  const mark = variant === "mark";
+  const src = invert ? "/formx-logo-nav-on-dark.png" : "/formx-logo-nav.png";
 
   return (
     <span
       className={cn(
-        "relative inline-flex items-center overflow-hidden",
-        variant === "mark" ? "h-8 md:h-9" : "h-10 md:h-12",
+        "relative inline-flex items-center",
+        mark ? "h-8 md:h-9" : "h-10 md:h-12",
         className,
       )}
       aria-label="FormX Consultants"
     >
       <Image
-        src="/formx-logo-solid.png"
+        src={src}
         alt="FormX Consultants — Design | Engineering"
-        width={variant === "mark" ? 140 : 200}
-        height={variant === "mark" ? 36 : 48}
+        width={mark ? 150 : 200}
+        height={mark ? 73 : 97}
         className="h-full w-auto object-contain object-left"
         priority
       />

@@ -12,10 +12,18 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, serviceNavGroups, site } from "@/data/site";
+import { isEventMode } from "@/config/siteMode";
 import { DesktopNav } from "@/components/layout/MegaMenu";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
+
+const eventNav = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Partners", href: "#partners" },
+  { label: "Contact", href: "#contact" },
+] as const;
 
 const MenuOpenCtx = createContext(false);
 export function useMenuOpen() {
@@ -41,6 +49,7 @@ function SiteHeader({
 }) {
   const pathname = usePathname();
   const overDarkHero = false;
+  const eventMode = isEventMode();
 
   // Close mobile drawer on navigation so scroll never stays locked.
   useEffect(() => {
@@ -84,32 +93,59 @@ function SiteHeader({
   return (
     <>
       <header
-        className="relative z-50 w-full border-b border-line/80 bg-white"
+        className={cn(
+          "z-50 w-full border-b",
+          eventMode
+            ? "sticky top-0 border-white/10 bg-[#111110]/95 backdrop-blur-md"
+            : "relative border-line/80 bg-white",
+        )}
         style={{ ["--header-offset" as string]: "4.75rem" }}
       >
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
-        <Container className="grid h-[4.5rem] grid-cols-[auto_1fr_auto] items-center gap-4 sm:h-[5.25rem] sm:gap-6">
+        <Container className="grid h-[4.5rem] grid-cols-[auto_1fr_auto] items-center gap-5 sm:h-[5.25rem] sm:gap-8">
           <Link
             href="/"
             transitionTypes={["nav-back"]}
-            className="relative z-10 flex shrink-0 items-center transition-transform duration-300 hover:scale-[1.02]"
+            className="relative z-10 flex shrink-0 items-center transition-opacity duration-300 hover:opacity-90"
             aria-label="FormX home"
             onClick={() => setOpen(false)}
           >
-            <Logo variant="full" className="h-11 sm:h-13 md:h-14" invert={overDarkHero} />
+            <Logo
+              variant="full"
+              className={cn(
+                eventMode || overDarkHero
+                  ? "h-10 sm:h-11 md:h-12"
+                  : "h-11 sm:h-13 md:h-14",
+              )}
+              invert={eventMode || overDarkHero}
+            />
           </Link>
 
           <div className="hidden min-w-0 justify-center lg:flex">
-            <DesktopNav onDark={overDarkHero} />
+            {eventMode ? (
+              <nav className="flex items-center gap-8 xl:gap-10" aria-label="Page sections">
+                {eventNav.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="font-label text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 transition-colors duration-200 hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            ) : (
+              <DesktopNav onDark={overDarkHero} />
+            )}
           </div>
 
           <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
             <a
               href={`tel:${site.phone.replace(/\s/g, "")}`}
               className={cn(
-                "hidden h-9 items-center gap-2 font-label text-[10px] tracking-[0.14em] transition-colors xl:flex",
-                "text-ink/60 hover:text-x-red",
+                "hidden h-9 items-center gap-2.5 font-label text-[10.5px] tracking-[0.14em] transition-colors xl:flex",
+                eventMode ? "text-white/55 hover:text-white" : "text-ink/60 hover:text-x-red",
               )}
               aria-label={`Call ${site.phone}`}
             >
@@ -117,20 +153,32 @@ function SiteHeader({
               <span>{site.phone}</span>
             </a>
 
-            <Link
-              href="/contact"
-              transitionTypes={["nav-forward"]}
-              className="formx-cut-sm relative hidden h-10 items-center gap-1.5 border-[1.5px] border-x-red bg-x-red px-6 font-label text-[10.5px] tracking-[0.18em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red hover:shadow-[0_10px_28px_-12px_rgba(224,49,40,0.35)] lg:inline-flex"
-            >
-              Enquire
-              <ArrowUpRight className="size-3.5" />
-            </Link>
+            {eventMode ? (
+              <a
+                href="#contact"
+                className="formx-cut-sm relative hidden h-10 items-center gap-1.5 border-[1.5px] border-x-red bg-x-red px-6 font-label text-[10.5px] tracking-[0.18em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red hover:shadow-[0_10px_28px_-12px_rgba(224,49,40,0.35)] lg:inline-flex"
+              >
+                Enquire
+                <ArrowUpRight className="size-3.5" />
+              </a>
+            ) : (
+              <Link
+                href="/contact"
+                transitionTypes={["nav-forward"]}
+                className="formx-cut-sm relative hidden h-10 items-center gap-1.5 border-[1.5px] border-x-red bg-x-red px-6 font-label text-[10.5px] tracking-[0.18em] text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-x-red hover:shadow-[0_10px_28px_-12px_rgba(224,49,40,0.35)] lg:inline-flex"
+              >
+                Enquire
+                <ArrowUpRight className="size-3.5" />
+              </Link>
+            )}
 
             <button
               type="button"
               className={cn(
                 "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
-                "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
+                eventMode
+                  ? "border-white/20 bg-transparent text-white hover:border-x-red hover:text-x-red"
+                  : "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
               )}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
@@ -174,66 +222,83 @@ function SiteHeader({
 
             <div className="relative flex min-h-full flex-col px-6 pb-12 pt-[88px]">
               <nav className="flex flex-col" aria-label="Mobile navigation">
-                {nav.map((item, i) => {
-                  const isActive =
-                    pathname === item.href || pathname.startsWith(item.href + "/");
-                  return (
-                    <motion.div
-                      key={item.label}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        transitionTypes={["nav-forward"]}
-                        className={cn(
-                          "block border-b border-white/10 py-5 font-display text-2xl font-bold uppercase tracking-tight transition-colors",
-                          isActive ? "text-x-red" : "text-white hover:text-x-red",
-                        )}
+                {eventMode
+                  ? eventNav.map((item, i) => (
+                      <motion.div
+                        key={item.label}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        {item.label}
-                      </Link>
-                      {item.label === "Services" ? (
-                        <div className="grid grid-cols-2 gap-2 border-b border-white/10 pb-3 pl-9 pt-2">
-                          {serviceNavGroups.map((group) => (
-                            <div key={group.title}>
-                              <p className="mb-1.5 font-label text-[9px] text-x-red">
-                                {group.title}
-                              </p>
-                              {group.items.map((child) => (
+                        <a
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className="block border-b border-white/10 py-5 font-display text-2xl font-bold uppercase tracking-tight text-white transition-colors hover:text-x-red"
+                        >
+                          {item.label}
+                        </a>
+                      </motion.div>
+                    ))
+                  : nav.map((item, i) => {
+                      const isActive =
+                        pathname === item.href || pathname.startsWith(item.href + "/");
+                      return (
+                        <motion.div
+                          key={item.label}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.05 * i, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <Link
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            transitionTypes={["nav-forward"]}
+                            className={cn(
+                              "block border-b border-white/10 py-5 font-display text-2xl font-bold uppercase tracking-tight transition-colors",
+                              isActive ? "text-x-red" : "text-white hover:text-x-red",
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                          {item.label === "Services" ? (
+                            <div className="grid grid-cols-2 gap-2 border-b border-white/10 pb-3 pl-9 pt-2">
+                              {serviceNavGroups.map((group) => (
+                                <div key={group.title}>
+                                  <p className="mb-1.5 font-label text-[9px] text-x-red">
+                                    {group.title}
+                                  </p>
+                                  {group.items.map((child) => (
+                                    <Link
+                                      key={child.href}
+                                      href={child.href}
+                                      onClick={() => setOpen(false)}
+                                      transitionTypes={["nav-forward"]}
+                                      className="block py-1 text-[12px] text-white/50 hover:text-x-red"
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                          ) : item.children ? (
+                            <div className="border-b border-white/10 pb-3 pl-9 pt-1">
+                              {item.children.map((child) => (
                                 <Link
                                   key={child.href}
                                   href={child.href}
                                   onClick={() => setOpen(false)}
                                   transitionTypes={["nav-forward"]}
-                                  className="block py-1 text-[12px] text-white/50 hover:text-x-red"
+                                  className="block py-1.5 text-[13px] text-white/50 hover:text-x-red"
                                 >
                                   {child.label}
                                 </Link>
                               ))}
                             </div>
-                          ))}
-                        </div>
-                      ) : item.children ? (
-                        <div className="border-b border-white/10 pb-3 pl-9 pt-1">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => setOpen(false)}
-                              transitionTypes={["nav-forward"]}
-                              className="block py-1.5 text-[13px] text-white/50 hover:text-x-red"
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      ) : null}
-                    </motion.div>
-                  );
-                })}
+                          ) : null}
+                        </motion.div>
+                      );
+                    })}
               </nav>
 
               <motion.div
@@ -242,14 +307,24 @@ function SiteHeader({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  transitionTypes={["nav-forward"]}
-                  className="formx-cut flex w-full items-center justify-center gap-2 border-[1.5px] border-x-red bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white transition-all duration-300 hover:bg-white hover:text-x-red"
-                >
-                  Enquire <ArrowUpRight className="size-4" />
-                </Link>
+                {eventMode ? (
+                  <a
+                    href="#contact"
+                    onClick={() => setOpen(false)}
+                    className="formx-cut flex w-full items-center justify-center gap-2 border-[1.5px] border-x-red bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white transition-all duration-300 hover:bg-white hover:text-x-red"
+                  >
+                    Enquire <ArrowUpRight className="size-4" />
+                  </a>
+                ) : (
+                  <Link
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                    transitionTypes={["nav-forward"]}
+                    className="formx-cut flex w-full items-center justify-center gap-2 border-[1.5px] border-x-red bg-x-red px-6 py-4 font-label text-[11px] tracking-[0.18em] text-white transition-all duration-300 hover:bg-white hover:text-x-red"
+                  >
+                    Enquire <ArrowUpRight className="size-4" />
+                  </Link>
+                )}
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
                   className="flex w-full items-center justify-center gap-2 border border-white/20 py-4 text-[12px] font-semibold text-white/70"
