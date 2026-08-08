@@ -44,6 +44,7 @@ export const eventStats = [
   { value: "25+", label: "Completed Projects" },
   { value: "15 Lakh+", label: "Sq.Ft Designed" },
   { value: "5", label: "States Served" },
+  { value: "3", label: "Countries Served" },
 ] as const;
 
 export const eventServices = [

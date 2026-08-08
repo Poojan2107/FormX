@@ -48,31 +48,34 @@ function StatBlock({
   return (
     <motion.div
       ref={ref}
-      initial={reduce ? false : { opacity: 0, y: 40 }}
+      initial={reduce ? false : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={reduce ? undefined : { y: -4 }}
-      className={`group relative flex min-h-[220px] flex-col justify-end overflow-hidden border-b border-white/10 bg-white/[0.02] px-6 py-10 transition-all duration-300 hover:border-x-red/40 hover:bg-white/[0.04] md:min-h-[280px] md:border-b-0 md:px-10 ${
-        index > 0 ? "border-t border-white/10 md:border-t-0 md:border-l" : ""
-      }`}
+      className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden border border-white/10 bg-[#121211] p-7 md:p-8 transition-all duration-300 hover:border-x-red/50 hover:bg-[#181817] hover:shadow-[0_12px_32px_-12px_rgba(224,49,40,0.2)]"
     >
-      <span aria-hidden className="pointer-events-none absolute left-3 top-3 font-label text-[10px] text-x-red/60 select-none">+</span>
-      <span aria-hidden className="pointer-events-none absolute right-3 top-3 font-label text-[10px] text-x-red/60 select-none">+</span>
-      <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-x-red/0 to-transparent transition-all duration-300 group-hover:via-x-red" />
+      <span aria-hidden className="pointer-events-none absolute left-3 top-3 font-label text-[10px] text-x-red/50 select-none">+</span>
+      <span aria-hidden className="pointer-events-none absolute right-3 top-3 font-label text-[10px] text-x-red/50 select-none">+</span>
+      
+      {/* Background Watermark Number — safely positioned to avoid cut-off */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-2 -top-6 font-display text-[clamp(5rem,12vw,9rem)] font-black leading-none text-white/[0.04] transition-colors group-hover:text-white/[0.08]"
+        className="pointer-events-none absolute right-4 top-4 font-display text-4xl font-black text-white/[0.05] transition-colors group-hover:text-white/[0.1]"
       >
         0{index + 1}
       </span>
-      <p className="relative font-display text-[clamp(3.5rem,8vw,6rem)] font-black leading-none tracking-tight text-white tabular-nums">
-        {prefix}
-        <span className="text-x-red drop-shadow-[0_0_20px_rgba(224,49,40,0.35)]">{activeDisplay}</span>
-        {suffix}
-      </p>
-      <span className="relative mt-5 h-[3px] w-12 bg-x-red transition-all duration-300 group-hover:w-20" aria-hidden />
-      <p className="relative mt-4 font-label text-[12px] font-bold uppercase tracking-[0.28em] text-white/50 transition-colors group-hover:text-white/80 md:text-[13px]">
+
+      <div>
+        <p className="relative font-display text-[clamp(2.5rem,4.5vw,4.25rem)] font-black leading-none tracking-tight text-white tabular-nums">
+          {prefix}
+          <span className="text-x-red drop-shadow-[0_0_24px_rgba(224,49,40,0.4)]">{activeDisplay}</span>
+          <span className="text-white ml-1 text-[0.7em] font-extrabold">{suffix}</span>
+        </p>
+        <span className="relative mt-4 block h-[3px] w-10 bg-x-red transition-all duration-300 group-hover:w-16" aria-hidden />
+      </div>
+
+      <p className="relative mt-6 font-label text-[11.5px] font-black uppercase tracking-[0.26em] text-white/60 transition-colors group-hover:text-white md:text-[12.5px]">
         {label}
       </p>
     </motion.div>
@@ -81,13 +84,8 @@ function StatBlock({
 
 export function EventStats() {
   return (
-    <section id="stats" className="scroll-mt-[5.75rem] bg-[#0a0a09]">
-      <div className="border-b border-white/10 px-6 py-5 md:px-10">
-        <p className="font-label text-[11px] font-bold uppercase tracking-[0.32em] text-x-red">
-          Spec 02 · Evidence
-        </p>
-      </div>
-      <div className="mx-auto grid max-w-[1400px] md:grid-cols-3">
+    <section id="stats" className="scroll-mt-[5.75rem] bg-[#0a0a09] py-12 md:py-16">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 sm:px-6 md:px-8">
         {eventStats.map((stat, i) => (
           <StatBlock key={stat.label} value={stat.value} label={stat.label} index={i} />
         ))}

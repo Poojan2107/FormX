@@ -9,6 +9,7 @@ import { FormxTransparentLogo } from "@/components/ui/FormxTransparentLogo";
 
 export function Footer() {
   const eventMode = isEventMode();
+  if (eventMode) return null;
 
   const practiceLinks = [
     ...nav.map((item) => ({ label: item.label, href: item.href })),

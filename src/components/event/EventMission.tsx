@@ -11,11 +11,6 @@ export function EventMission() {
   return (
     <section id="mission" className="scroll-mt-[5.75rem] bg-white">
       <Container className="py-20 md:py-28">
-        <div className="mb-6 flex items-center gap-3 font-label text-[11px] font-bold uppercase tracking-[0.32em] text-x-red">
-          <span className="h-px w-8 bg-x-red" />
-          <span>OUR MISSION & VALUES</span>
-        </div>
-
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -23,16 +18,13 @@ export function EventMission() {
             viewport={{ once: true }}
             className="lg:col-span-5"
           >
-            <h2 className="font-display text-[clamp(2.5rem,5vw,4.25rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-ink">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-ink select-none">
               Trusted
               <br />
               technical
               <br />
               <span className="text-x-red">partner</span>
             </h2>
-            <p className="mt-6 font-label text-[10.5px] uppercase tracking-[0.24em] text-ink/45">
-              Engineering & Architecture · Ahmedabad
-            </p>
           </motion.div>
 
           <motion.div
@@ -83,10 +75,7 @@ export function EventMission() {
                 }`}
               >
                 <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-x-red/0 to-transparent transition-all duration-300 group-hover:via-x-red" />
-                <div className="flex items-center justify-between">
-                  <span className="font-label text-[10px] font-bold tracking-[0.24em] text-x-red">
-                    V{String(i + 1).padStart(2, "0")}
-                  </span>
+                <div className="flex items-center justify-end">
                   <EventIconFrame
                     size="md"
                     className="text-x-red transition-transform duration-300 group-hover:scale-105"

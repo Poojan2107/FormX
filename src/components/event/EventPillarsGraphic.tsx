@@ -29,20 +29,22 @@ export function EventPillarsGraphic({
         <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-4">
           
           {/* LEFT SIDE CALLOUTS */}
-          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-14 lg:space-y-0 lg:text-right">
+          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-10 lg:space-y-0 lg:text-right">
             {/* Top Left: Structural Integrity */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end"
+              className="flex flex-col items-center lg:items-end justify-center min-h-[140px]"
             >
-              <span className="mb-4 h-[2.5px] w-16 bg-x-red" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-bold tracking-[-0.01em] text-ink">
-                {p0?.title ?? "Structural Integrity"}
+              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+                Structural
+                <br />
+                Integrity
               </h3>
-              <p className="mt-2 text-center text-[14px] leading-relaxed text-ink/75 lg:max-w-[280px] lg:text-right">
+              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-right">
                 {p0?.description ?? "Design safe, reliable Structural systems"}
               </p>
             </motion.div>
@@ -53,13 +55,15 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end"
+              className="flex flex-col items-center lg:items-end justify-center min-h-[140px]"
             >
-              <span className="mb-4 h-[2.5px] w-16 bg-x-red" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-bold tracking-[-0.01em] text-ink">
-                {p2?.title ?? "Technical Expertise"}
+              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+                Technical
+                <br />
+                Expertise
               </h3>
-              <p className="mt-2 text-center lg:text-right text-[14px] leading-relaxed text-ink/75 lg:max-w-[280px]">
+              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-right">
                 {p2?.description ?? "Apply engineering principles and best practices"}
               </p>
             </motion.div>
@@ -180,20 +184,22 @@ export function EventPillarsGraphic({
           </motion.div>
 
           {/* RIGHT SIDE CALLOUTS */}
-          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-14 lg:space-y-0 lg:text-left">
+          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-10 lg:space-y-0 lg:text-left">
             {/* Top Right: Functional Design */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start"
+              className="flex flex-col items-center lg:items-start justify-center min-h-[140px]"
             >
-              <span className="mb-4 h-[2.5px] w-16 bg-x-red" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-bold tracking-[-0.01em] text-ink">
-                {p1?.title ?? "Functional Design"}
+              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+                Functional
+                <br />
+                Design
               </h3>
-              <p className="mt-2 text-center lg:text-left text-[14px] leading-relaxed text-ink/75 lg:max-w-[280px]">
+              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-left">
                 {p1?.description ?? "Create spaces that meet user needs"}
               </p>
             </motion.div>
@@ -204,13 +210,15 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start"
+              className="flex flex-col items-center lg:items-start justify-center min-h-[140px]"
             >
-              <span className="mb-4 h-[2.5px] w-16 bg-x-red" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-bold tracking-[-0.01em] text-ink">
-                {p3?.title ?? "Collaborative Insight"}
+              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+                Collaborative
+                <br />
+                Insight
               </h3>
-              <p className="mt-2 text-center lg:text-left text-[14px] leading-relaxed text-ink/75 lg:max-w-[280px]">
+              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-left">
                 {p3?.description ?? "Integrate architecture and practical feedback"}
               </p>
             </motion.div>

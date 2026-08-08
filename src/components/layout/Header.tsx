@@ -103,6 +103,17 @@ function SiteHeader({
       >
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
+        {eventMode ? (
+          <div className="border-b border-white/10 bg-[#090908] py-2 text-center">
+            <div className="mx-auto flex items-center justify-center gap-2 px-4">
+              <span className="size-2 rounded-full bg-x-red animate-pulse" />
+              <p className="font-label text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+                Website Taking Form. Launching Soon.
+              </p>
+            </div>
+          </div>
+        ) : null}
+
         <Container className="grid h-[4.5rem] grid-cols-[auto_1fr_auto] items-center gap-5 sm:h-[5.25rem] sm:gap-8">
           <Link
             href="/"
@@ -129,7 +140,7 @@ function SiteHeader({
                   <a
                     key={item.href}
                     href={item.href}
-                    className="font-label text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 transition-colors duration-200 hover:text-white"
+                    className="font-label text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.22em] text-white/70 transition-colors duration-200 hover:text-white"
                   >
                     {item.label}
                   </a>

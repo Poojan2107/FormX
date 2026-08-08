@@ -1,177 +1,166 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { eventCta } from "@/data/eventLanding";
 import { site } from "@/data/site";
+import { Logo } from "@/components/ui/Logo";
 
 export function EventCta() {
-  const reduce = useReducedMotion();
-
   return (
-    <section
-      id="contact"
-      className="fx-grain relative scroll-mt-[5.75rem] overflow-hidden bg-[#0a0a09] text-white"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 45% at 80% 20%, rgba(224,49,40,0.25), transparent 55%)",
-        }}
-      />
-      {!reduce ? (
-        <div
-          aria-hidden
-          className="event-scan-line pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent via-x-red/15 to-transparent"
-        />
-      ) : null}
+    <footer id="contact" className="scroll-mt-[5.75rem] border-t border-white/10 bg-[#0e0e0d] py-16 text-white md:py-24">
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 md:px-12">
+        {/* 4-Column Balanced Footer Grid */}
+        <div className="grid gap-10 border-b border-white/10 pb-16 lg:grid-cols-12 lg:gap-12">
+          
+          {/* Column 1: Brand Logo & Tagline */}
+          <div className="flex flex-col gap-6 lg:col-span-4">
+            <Logo variant="full" invert className="h-11 sm:h-13 w-auto" />
 
-      <div className="relative mx-auto max-w-[1400px]">
-        {/* Top CTA split section */}
-        <div className="grid items-center gap-12 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="mb-8 inline-flex items-center gap-2.5 border border-x-red/40 px-3 py-1.5">
-                <span
-                  className={`size-2 rounded-full bg-x-red ${reduce ? "" : "event-status-blink"}`}
-                  aria-hidden
-                />
-                <span className="font-label text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-                  Spec 06 · Issue for construction
-                </span>
-              </div>
-
-              <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white">
-                Let’s shape
-                <br />
-                your next
-                <br />
-                <span className="text-x-red">facility</span>
-              </h2>
-
-              <p className="mt-8 max-w-lg font-display text-[clamp(1.05rem,2vw,1.3rem)] leading-relaxed text-white/60">
-                {eventCta.brochureNote}
+            <div className="max-w-sm space-y-3">
+              <p className="font-body text-[14.5px] sm:text-[15.5px] leading-relaxed text-white/80">
+                Architecture, structure, and infrastructure — coordinated before drawings leave the studio.
               </p>
-
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <motion.a
-                  href={site.brochurePath}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={reduce ? undefined : { y: -3, scale: 1.02 }}
-                  className="formx-cut-sm inline-flex items-center gap-2 border-[1.5px] border-x-red bg-x-red px-10 py-4 font-label text-[13px] font-bold uppercase tracking-[0.18em] text-white shadow-[0_10px_28px_-8px_rgba(224,49,40,0.5)] transition-all duration-300 hover:bg-white hover:text-x-red hover:shadow-[0_14px_36px_-8px_rgba(224,49,40,0.6)]"
-                >
-                  Download Brochure
-                  <ArrowUpRight className="size-4" />
-                </motion.a>
-                <motion.a
-                  href={site.linkedinCompany}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={reduce ? undefined : { y: -3 }}
-                  className="formx-cut-sm inline-flex items-center gap-2 border-[1.5px] border-white/25 bg-transparent px-10 py-4 font-label text-[13px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-x-red hover:bg-white/5 hover:text-x-red"
-                >
-                  LinkedIn
-                  <ArrowUpRight className="size-4" />
-                </motion.a>
-              </div>
-            </motion.div>
+              <p className="font-label text-[11.5px] font-extrabold uppercase tracking-[0.24em] text-white/50">
+                WHERE VISION TAKES FORM
+              </p>
+            </div>
           </div>
 
-          {/* Right CAD spec badge card */}
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative border border-white/15 bg-white/[0.03] p-8 backdrop-blur-xs md:p-10"
-            >
-              <span aria-hidden className="absolute left-2.5 top-2.5 size-3 border-l-2 border-t-2 border-x-red" />
-              <span aria-hidden className="absolute right-2.5 top-2.5 size-3 border-r-2 border-t-2 border-x-red" />
-              <span aria-hidden className="absolute bottom-2.5 left-2.5 size-3 border-b-2 border-l-2 border-x-red" />
-              <span aria-hidden className="absolute bottom-2.5 right-2.5 size-3 border-b-2 border-r-2 border-x-red" />
+          {/* Column 2: Studio Address & Inquiries */}
+          <div className="flex flex-col gap-6 lg:col-span-3">
+            {/* Studio Address */}
+            <div className="space-y-2">
+              <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
+                STUDIO ADDRESS
+              </p>
+              <div className="flex items-start gap-2.5 text-[14px] sm:text-[15px] font-medium text-white/90">
+                <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
+                <span>{site.addressDetail}</span>
+              </div>
+            </div>
 
-              <p className="font-label text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-                FormX Digital HQ
+            {/* Inquiries */}
+            <div className="space-y-2">
+              <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
+                INQUIRIES
               </p>
-              <p className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-white">
-                Where Vision Takes <span className="text-x-red">Form</span>
-              </p>
-              <div className="mt-6 space-y-3 border-t border-white/10 pt-6 font-label text-[10.5px] uppercase tracking-[0.2em] text-white/50">
-                <p className="flex justify-between">
-                  <span>Location</span>
-                  <span className="text-white">Ahmedabad, IN</span>
-                </p>
-                <p className="flex justify-between">
-                  <span>Status</span>
-                  <span className="text-x-red">Taking Form</span>
-                </p>
-                <p className="flex justify-between">
-                  <span>Services</span>
-                  <span className="text-white">Arch · Struct · Infra</span>
+              <div className="space-y-2 text-[14px] sm:text-[15px] font-medium">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="flex items-center gap-2.5 text-white/90 transition-colors hover:text-x-red"
+                >
+                  <Mail className="size-4 shrink-0 text-x-red" />
+                  <span>{site.email}</span>
+                </a>
+                <a
+                  href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  className="flex items-center gap-2.5 text-white/90 transition-colors hover:text-x-red"
+                >
+                  <Phone className="size-4 shrink-0 text-x-red" />
+                  <span>{site.phone}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 3: Navigate (Active Page Sections) */}
+          <div className="flex flex-col gap-5 lg:col-span-2">
+            <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
+              NAVIGATE
+            </p>
+            <nav className="flex flex-col gap-3.5 font-display text-[15px] sm:text-[16px] font-bold text-white/90">
+              <a href="#about" className="transition-colors hover:text-x-red">
+                About Us
+              </a>
+              <a href="#services" className="transition-colors hover:text-x-red">
+                What We Do
+              </a>
+              <a href="#mission" className="transition-colors hover:text-x-red">
+                Mission & Values
+              </a>
+              <a href="#partners" className="transition-colors hover:text-x-red">
+                Who We Partner With
+              </a>
+            </nav>
+          </div>
+
+          {/* Column 4: Quick Actions */}
+          <div className="flex flex-col gap-5 lg:col-span-3">
+            <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
+              QUICK ACTIONS
+            </p>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href={`mailto:${site.email}?subject=Consultation%20Inquiry`}
+                className="group flex items-center justify-between border border-white/20 bg-white/[0.03] px-5 py-4 font-label text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] text-white transition-all hover:border-x-red hover:bg-x-red/10"
+              >
+                <span>BOOK CONSULTATION</span>
+                <ArrowUpRight className="size-4 text-x-red transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+
+              <a
+                href={site.brochurePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between border border-white/20 bg-white/[0.03] px-5 py-4 font-label text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] text-white transition-all hover:border-x-red hover:bg-x-red/10"
+              >
+                <span>DOWNLOAD BROCHURE</span>
+                <ArrowUpRight className="size-4 text-x-red transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+
+              <a
+                href={site.linkedinCompany}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between border border-white/20 bg-white/[0.03] px-5 py-4 font-label text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] text-white transition-all hover:border-x-red hover:bg-x-red/10"
+              >
+                <span>LINKEDIN</span>
+                <ArrowUpRight className="size-4 text-x-red transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Giant Horizontal FormX Logo Display Banner */}
+        <div className="relative overflow-hidden pt-16 pb-8 border-t border-white/10 mt-16">
+          <div className="flex flex-col items-center justify-center">
+            <div className="relative w-full max-w-7xl select-none py-6 flex justify-center">
+              <Image
+                src="/formx-logo-nav-on-dark.png"
+                alt="FormX Consultants"
+                width={1400}
+                height={450}
+                className="h-36 sm:h-52 md:h-72 lg:h-96 w-full max-w-5xl object-contain object-center mx-auto"
+                priority
+              />
+            </div>
+
+            <div className="mt-8 flex w-full flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
+              <div className="flex items-center gap-3">
+                <span className="size-2.5 rounded-full bg-x-red animate-pulse" />
+                <p className="font-label text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.32em] text-x-red">
+                  Architecture · Structure · Infrastructure
                 </p>
               </div>
-            </motion.div>
+              <span className="font-label text-[11px] font-bold tracking-[0.22em] text-white/40 uppercase">
+                EST. AHMEDABAD
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom 3-column contact details strip */}
-        <div className="grid border-t border-white/15 bg-white/[0.02] md:grid-cols-3">
-          {[
-            {
-              icon: MapPin,
-              label: "Studio",
-              body: site.addressDetail,
-              href: undefined as string | undefined,
-            },
-            {
-              icon: Mail,
-              label: "Email",
-              body: site.email,
-              href: `mailto:${site.email}`,
-            },
-            {
-              icon: Phone,
-              label: "Phone",
-              body: site.phone,
-              href: `tel:${site.phone.replace(/\s/g, "")}`,
-            },
-          ].map((item, i) => (
-            <div
-              key={item.label}
-              className={`group relative flex flex-1 flex-col justify-center gap-3 px-6 py-10 transition-all duration-300 hover:bg-white/[0.04] md:px-10 ${
-                i > 0 ? "border-t border-white/10 md:border-t-0 md:border-l" : ""
-              }`}
-            >
-              <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-x-red/0 to-transparent transition-all duration-300 group-hover:via-x-red" />
-              <div className="flex items-center gap-3">
-                <item.icon className="size-4 text-x-red transition-transform duration-300 group-hover:scale-110" />
-                <p className="font-label text-[10px] font-bold uppercase tracking-[0.28em] text-x-red">
-                  {item.label}
-                </p>
-              </div>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  className="font-display text-[clamp(1.05rem,2vw,1.35rem)] font-medium text-white/80 transition-colors group-hover:text-white"
-                >
-                  {item.body}
-                </a>
-              ) : (
-                <p className="font-display text-[clamp(1.05rem,2vw,1.35rem)] font-medium leading-snug text-white/80 transition-colors group-hover:text-white">
-                  {item.body}
-                </p>
-              )}
-            </div>
-          ))}
+        {/* Bottom Copyright Bar */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between font-label text-[12px] text-white/50 uppercase tracking-widest font-semibold">
+          <p>© {new Date().getFullYear()} FormX Consultants LLP. All rights reserved.</p>
+          <p>Ahmedabad, Gujarat, India</p>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
+
+
+
+
