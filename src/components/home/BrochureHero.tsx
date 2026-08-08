@@ -119,9 +119,9 @@ export function BrochureHero() {
         style={reduce ? undefined : { opacity: sheetOpacity }}
         className="relative z-10 flex flex-1 flex-col justify-center"
       >
-        <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[1.18fr_0.82fr] xl:grid-cols-[1.22fr_0.78fr]">
-          <div className="flex flex-col justify-center px-6 py-5 md:px-10 lg:order-1 lg:py-6 lg:pl-12 lg:pr-8 xl:pl-20 xl:pr-12">
-            <div className="w-full max-w-[600px] xl:max-w-[660px]">
+        <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[1.12fr_0.88fr] xl:grid-cols-[1.15fr_0.85fr]">
+          <div className="flex flex-col justify-center px-6 py-5 md:px-10 lg:order-1 lg:py-6 lg:pl-12 lg:pr-8 xl:pl-16 xl:pr-10">
+            <div className="w-full max-w-[660px] xl:max-w-[720px]">
               {/* Category Tag Header */}
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 10 }}
@@ -138,8 +138,8 @@ export function BrochureHero() {
                 </span>
               </motion.div>
 
-              {/* 4-Line Editorial Headline with Red FORM × */}
-              <h1 className="mt-3.5 space-y-0.5" aria-label={brochureBrand.slogan}>
+              {/* 2-Line High-Impact Headline with Red FORM × */}
+              <h1 className="mt-4 space-y-1" aria-label={brochureBrand.slogan}>
                 <span className="sr-only">{brochureBrand.slogan}</span>
                 
                 <div className="overflow-hidden py-0.5" aria-hidden>
@@ -148,9 +148,9 @@ export function BrochureHero() {
                     animate={ready ? { y: "0%" } : undefined}
                     transition={{ duration: 1, delay: 0.2, ease: smoothEase }}
                     className="block font-display font-black tracking-[-0.045em] text-ink"
-                    style={{ fontSize: "clamp(2.3rem, 4.8vw, 4.75rem)", lineHeight: 0.98 }}
+                    style={{ fontSize: "clamp(2.5rem, 5.2vw, 5.2rem)", lineHeight: 0.98 }}
                   >
-                    WHERE
+                    WHERE VISION
                   </motion.span>
                 </div>
 
@@ -158,35 +158,11 @@ export function BrochureHero() {
                   <motion.span
                     initial={reduce ? false : { y: "110%" }}
                     animate={ready ? { y: "0%" } : undefined}
-                    transition={{ duration: 1, delay: 0.28, ease: smoothEase }}
+                    transition={{ duration: 1, delay: 0.32, ease: smoothEase }}
                     className="block font-display font-black tracking-[-0.045em] text-ink"
-                    style={{ fontSize: "clamp(2.3rem, 4.8vw, 4.75rem)", lineHeight: 0.98 }}
+                    style={{ fontSize: "clamp(2.5rem, 5.2vw, 5.2rem)", lineHeight: 0.98 }}
                   >
-                    VISION
-                  </motion.span>
-                </div>
-
-                <div className="overflow-hidden py-0.5" aria-hidden>
-                  <motion.span
-                    initial={reduce ? false : { y: "110%" }}
-                    animate={ready ? { y: "0%" } : undefined}
-                    transition={{ duration: 1, delay: 0.36, ease: smoothEase }}
-                    className="block font-display font-black tracking-[-0.045em] text-ink"
-                    style={{ fontSize: "clamp(2.3rem, 4.8vw, 4.75rem)", lineHeight: 0.98 }}
-                  >
-                    TAKES
-                  </motion.span>
-                </div>
-
-                <div className="overflow-hidden py-0.5" aria-hidden>
-                  <motion.span
-                    initial={reduce ? false : { y: "110%" }}
-                    animate={ready ? { y: "0%" } : undefined}
-                    transition={{ duration: 1, delay: 0.44, ease: smoothEase }}
-                    className="block font-display font-black tracking-[-0.045em] text-x-red"
-                    style={{ fontSize: "clamp(2.3rem, 4.8vw, 4.75rem)", lineHeight: 0.98 }}
-                  >
-                    FORM<span className="inline-block text-x-red ml-1">×</span>
+                    TAKES <span className="text-x-red">FORM<span className="inline-block text-x-red ml-1">×</span></span>
                   </motion.span>
                 </div>
               </h1>
@@ -195,10 +171,10 @@ export function BrochureHero() {
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 12 }}
                 animate={ready ? { opacity: 1, y: 0 } : undefined}
-                transition={{ duration: 0.85, delay: 0.65, ease: smoothEase }}
-                className="mt-4 w-full border-l-2 border-x-red pl-4 py-0.5"
+                transition={{ duration: 0.85, delay: 0.55, ease: smoothEase }}
+                className="mt-4.5 w-full border-l-2 border-x-red pl-4 py-0.5"
               >
-                <p className="font-display text-[14.5px] font-medium leading-[1.8] text-ink/80 md:text-[16px]">
+                <p className="font-display text-[15px] font-medium leading-[1.8] text-ink/80 md:text-[16.5px]">
                   Architecture, Structure and Infrastructure engineered together before drawings leave the studio.
                 </p>
               </motion.div>
@@ -207,18 +183,18 @@ export function BrochureHero() {
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 12 }}
                 animate={ready ? { opacity: 1, y: 0 } : undefined}
-                transition={{ duration: 0.8, delay: 0.78, ease: smoothEase }}
-                className="mt-4.5 w-full formx-cut-sm border border-line/80 bg-[#faf3f2]/50 p-3.5 shadow-2xs"
+                transition={{ duration: 0.8, delay: 0.68, ease: smoothEase }}
+                className="mt-5 w-full formx-cut-sm border border-line/80 bg-[#faf3f2]/50 p-4 shadow-2xs"
               >
                 <div className="grid grid-cols-3 divide-x divide-ink/[0.1]">
-                  <div className="pr-3">
+                  <div className="pr-4">
                     <div className="flex items-center gap-1.5">
-                      <Building2 className="size-3.5 text-x-red" />
-                      <span className="font-display text-lg font-black text-x-red md:text-xl">
+                      <Building2 className="size-4 text-x-red" />
+                      <span className="font-display text-xl font-black text-x-red md:text-2xl">
                         200+
                       </span>
                     </div>
-                    <p className="mt-1 font-label text-[8px] font-bold uppercase tracking-[0.16em] text-ink/80">
+                    <p className="mt-1 font-label text-[8.5px] font-bold uppercase tracking-[0.16em] text-ink/80">
                       Projects Engineered
                     </p>
                     <p className="mt-0.5 font-label text-[7.5px] tracking-[0.1em] text-ink/45">
@@ -226,14 +202,14 @@ export function BrochureHero() {
                     </p>
                   </div>
 
-                  <div className="px-3">
+                  <div className="px-4">
                     <div className="flex items-center gap-1.5">
-                      <Users className="size-3.5 text-x-red" />
-                      <span className="font-display text-lg font-black text-ink md:text-xl">
+                      <Users className="size-4 text-x-red" />
+                      <span className="font-display text-xl font-black text-ink md:text-2xl">
                         15+ YRS
                       </span>
                     </div>
-                    <p className="mt-1 font-label text-[8px] font-bold uppercase tracking-[0.16em] text-ink/80">
+                    <p className="mt-1 font-label text-[8.5px] font-bold uppercase tracking-[0.16em] text-ink/80">
                       Practice Excellence
                     </p>
                     <p className="mt-0.5 font-label text-[7.5px] tracking-[0.1em] text-ink/45">
@@ -241,14 +217,14 @@ export function BrochureHero() {
                     </p>
                   </div>
 
-                  <div className="pl-3">
+                  <div className="pl-4">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck className="size-3.5 text-x-red" />
-                      <span className="font-display text-lg font-black text-x-red md:text-xl">
+                      <ShieldCheck className="size-4 text-x-red" />
+                      <span className="font-display text-xl font-black text-x-red md:text-2xl">
                         100%
                       </span>
                     </div>
-                    <p className="mt-1 font-label text-[8px] font-bold uppercase tracking-[0.16em] text-ink/80">
+                    <p className="mt-1 font-label text-[8.5px] font-bold uppercase tracking-[0.16em] text-ink/80">
                       Safety Record
                     </p>
                     <p className="mt-0.5 font-label text-[7.5px] tracking-[0.1em] text-ink/45">
@@ -262,13 +238,13 @@ export function BrochureHero() {
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 14 }}
                 animate={ready ? { opacity: 1, y: 0 } : undefined}
-                transition={{ duration: 0.8, delay: 0.92, ease: smoothEase }}
-                className="mt-4.5 flex flex-col gap-3 sm:flex-row sm:items-center"
+                transition={{ duration: 0.8, delay: 0.82, ease: smoothEase }}
+                className="mt-5 flex flex-col gap-3.5 sm:flex-row sm:items-center"
               >
                 <Link
                   href="/contact"
                   transitionTypes={["nav-forward"]}
-                  className="fx-btn-primary group relative overflow-hidden px-7 py-3.5 text-[10.5px] font-bold uppercase tracking-[0.2em] text-white shadow-md transition-all hover:shadow-xl"
+                  className="fx-btn-primary group relative overflow-hidden px-8 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-md transition-all hover:shadow-xl"
                   style={{
                     clipPath:
                       "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%)",
@@ -279,7 +255,7 @@ export function BrochureHero() {
                 </Link>
                 <a
                   href="#projects"
-                  className="fx-btn-ghost px-7 py-3.5 text-[10.5px] font-bold uppercase tracking-[0.2em] transition-all hover:border-x-red hover:text-x-red"
+                  className="fx-btn-ghost px-8 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] transition-all hover:border-x-red hover:text-x-red"
                   style={{
                     clipPath:
                       "polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%)",
@@ -303,18 +279,6 @@ export function BrochureHero() {
                 backgroundSize: "28px 28px",
               }}
             />
-
-            {/* Middle Space CAD Registration Target Crosshair */}
-            <div className="absolute -left-12 top-1/2 hidden -translate-y-1/2 select-none items-center gap-2 xl:flex">
-              <div className="relative flex size-6 items-center justify-center">
-                <span className="absolute h-full w-[1px] bg-x-red/40" />
-                <span className="absolute h-[1px] w-full bg-x-red/40" />
-                <span className="size-1.5 rounded-full bg-x-red" />
-              </div>
-              <span className="font-label text-[8.5px] font-bold uppercase tracking-[0.22em] text-ink/35">
-                PRECISION BEFORE EXECUTION
-              </span>
-            </div>
 
             <HeroRightShowcase reduce={reduce} ready={ready} />
           </div>
