@@ -10,10 +10,10 @@ export function EventCta() {
     <footer id="contact" className="scroll-mt-[5.75rem] border-t border-white/10 bg-[#090908] py-16 text-white md:py-24">
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 md:px-12">
         {/* 3-Column Balanced Footer Grid (NAVIGATE column removed as requested) */}
-        <div className="grid gap-10 border-b border-white/10 pb-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-12 lg:gap-12">
           
           {/* Column 1: Brand Logo & Tagline */}
-          <div className="flex flex-col gap-6 lg:col-span-5">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:col-span-5">
             <Logo variant="full" invert className="h-11 sm:h-13 w-auto" />
 
             <div className="max-w-md space-y-3">
@@ -27,34 +27,34 @@ export function EventCta() {
           </div>
 
           {/* Column 2: Studio Address & Inquiries */}
-          <div className="flex flex-col gap-6 lg:col-span-4">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:col-span-4">
             {/* Studio Address */}
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col items-center lg:items-start">
               <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
                 STUDIO ADDRESS
               </p>
-              <div className="flex items-start gap-2.5 text-[14.5px] sm:text-[15.5px] font-medium text-white/90">
+              <div className="flex items-start justify-center lg:justify-start gap-2.5 text-[14.5px] sm:text-[15.5px] font-medium text-white/90">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
                 <span>{site.addressDetail}</span>
               </div>
             </div>
 
             {/* Inquiries */}
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col items-center lg:items-start">
               <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
                 INQUIRIES
               </p>
-              <div className="space-y-2 text-[14.5px] sm:text-[15.5px] font-medium">
+              <div className="space-y-2 text-[14.5px] sm:text-[15.5px] font-medium flex flex-col items-center lg:items-start">
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex items-center gap-2.5 text-white/90 transition-colors hover:text-x-red"
+                  className="flex items-center justify-center lg:justify-start gap-2.5 text-white/90 transition-colors hover:text-x-red"
                 >
                   <Mail className="size-4 shrink-0 text-x-red" />
                   <span>{site.email}</span>
                 </a>
                 <a
                   href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2.5 text-white/90 transition-colors hover:text-x-red"
+                  className="flex items-center justify-center lg:justify-start gap-2.5 text-white/90 transition-colors hover:text-x-red"
                 >
                   <Phone className="size-4 shrink-0 text-x-red" />
                   <span>{site.phone}</span>
@@ -64,12 +64,12 @@ export function EventCta() {
           </div>
 
           {/* Column 4: Quick Actions */}
-          <div className="flex flex-col gap-5 lg:col-span-3">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-5 lg:col-span-3">
             <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
               QUICK ACTIONS
             </p>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 w-full max-w-sm sm:max-w-none">
               <a
                 href="#contact"
                 className="group flex items-center justify-between border border-white/20 bg-white/[0.03] px-5 py-4 font-label text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] text-white transition-all hover:border-x-red hover:bg-x-red/10"
@@ -103,25 +103,25 @@ export function EventCta() {
         </div>
 
         {/* Giant Horizontal Official Client FormX Logo Display Banner */}
-        <div className="relative overflow-hidden pt-12 pb-8 mt-10">
+        <div className="relative overflow-hidden pt-10 pb-6 mt-8">
           <div className="flex flex-col items-center justify-center">
             
             {/* Strictly Official Client Logo Image File */}
-            <div className="relative w-full max-w-6xl mx-auto select-none py-6 flex justify-center">
+            <div className="relative w-full max-w-6xl mx-auto select-none py-4 flex justify-center">
               <Image
                 src="/formx-logo-hd-on-dark.png"
                 alt="FormX Consultants"
                 width={2800}
                 height={1244}
-                className="h-44 sm:h-60 md:h-80 lg:h-[24rem] w-full max-w-5xl object-contain object-center mx-auto"
+                className="h-36 sm:h-60 md:h-80 lg:h-[24rem] w-full max-w-5xl object-contain object-center mx-auto"
                 priority
               />
             </div>
 
-            <div className="mt-8 flex w-full flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
-              <div className="flex items-center gap-3">
+            <div className="mt-6 flex w-full flex-wrap items-center justify-center sm:justify-between gap-3 pt-4 border-t border-white/10 text-center sm:text-left">
+              <div className="flex items-center gap-3 justify-center">
                 <span className="size-2.5 rounded-full bg-x-red animate-pulse" />
-                <p className="font-label text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.32em] text-x-red">
+                <p className="font-label text-[11.5px] sm:text-[13px] font-extrabold uppercase tracking-[0.28em] sm:tracking-[0.32em] text-x-red">
                   Architecture · Structure · Infrastructure
                 </p>
               </div>
@@ -133,7 +133,7 @@ export function EventCta() {
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between font-label text-[12px] text-white/50 uppercase tracking-widest font-semibold">
+        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between font-label text-[11.5px] sm:text-[12px] text-white/50 uppercase tracking-widest font-semibold text-center sm:text-left pb-[max(1rem,env(safe-area-inset-bottom))]">
           <p>© {new Date().getFullYear()} FormX Consultants LLP. All rights reserved.</p>
           <p>Ahmedabad, Gujarat, India</p>
         </div>

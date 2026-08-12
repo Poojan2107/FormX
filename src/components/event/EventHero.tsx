@@ -81,18 +81,18 @@ export function EventHero() {
             <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-x-red" />
           </div>
 
-          {/* RIGHT 50%: Tagline WHERE VISION TAKES FORM (Left-aligned from center divider line) */}
-          <div className="flex flex-col justify-center items-center md:items-start md:pl-4 lg:pl-8 w-full">
+          {/* RIGHT 50%: Tagline WHERE VISION TAKES FORM (Left-aligned/staggered like desktop layout) */}
+          <div className="flex flex-col justify-center items-center md:items-start md:pl-4 lg:pl-8 w-full mt-2 md:mt-0">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease }}
-              className="font-display text-[clamp(3.2rem,6.8vw,7.6rem)] xl:text-[8.4rem] 2xl:text-[9.2rem] font-black uppercase leading-[0.82] tracking-[-0.03em] text-ink select-none flex flex-col text-center md:text-left w-full"
+              className="font-display text-[clamp(3.6rem,13.5vw,7.6rem)] xl:text-[8.4rem] 2xl:text-[9.2rem] font-black uppercase leading-[0.82] tracking-[-0.03em] text-ink select-none flex flex-col text-left w-fit mx-auto md:mx-0 md:w-full"
             >
               <span className="block whitespace-nowrap">WHERE</span>
-              <span className="block whitespace-nowrap pl-3 md:pl-[1.2ch]">VISION</span>
+              <span className="block whitespace-nowrap pl-[1.2ch]">VISION</span>
               <span className="block whitespace-nowrap">TAKES</span>
-              <span className="block whitespace-nowrap pl-3 md:pl-[1.2ch] text-x-red">FORM</span>
+              <span className="block whitespace-nowrap pl-[1.2ch] text-x-red">FORM</span>
             </motion.h1>
           </div>
 

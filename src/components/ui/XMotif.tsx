@@ -67,3 +67,24 @@ export function SectionMark({
     </p>
   );
 }
+
+/** FormX signature cut-edge X logo emblem */
+export function FormxLogoCutX({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center justify-center select-none text-x-red",
+        className,
+      )}
+      aria-hidden="true"
+    >
+      <svg
+        viewBox="0 0 32 32"
+        fill="currentColor"
+        className="size-full text-x-red drop-shadow-[0_0_10px_rgba(224,49,40,0.5)]"
+      >
+        <polygon points="4,2 10,2 16,11 22,2 28,2 19,16 28,30 22,30 16,21 10,30 4,30 13,16" />
+      </svg>
+    </span>
+  );
+}

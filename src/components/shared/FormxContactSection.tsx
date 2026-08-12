@@ -86,20 +86,20 @@ export function FormxContactSection() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
           
           {/* LEFT COLUMN: Title, Subtitle & Architectural Visual */}
-          <div className="flex flex-col h-full justify-between">
+          <div className="flex flex-col h-full justify-between text-center lg:text-left">
             <div>
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
                 <span className="h-[2px] w-6 bg-x-red" />
                 <span className="font-label text-[11px] font-bold uppercase tracking-[0.24em] text-x-red">
                   INQUIRIES & COLLABORATION
                 </span>
               </div>
 
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-black uppercase tracking-tight text-ink leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-black uppercase tracking-tight text-ink leading-tight text-center lg:text-left">
                 Connect With FormX
               </h2>
 
-              <p className="mt-4 font-body text-[15px] sm:text-[16.5px] font-medium leading-relaxed text-ink/75 max-w-xl">
+              <p className="mt-4 font-body text-[15px] sm:text-[16.5px] font-medium leading-relaxed text-ink/75 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
                 Connect with us for enquiries, collaboration, or general information. We will reach out and guide you through the next steps.
               </p>
 
@@ -128,10 +128,10 @@ export function FormxContactSection() {
 
             {/* BOTTOM LEFT: Address Block */}
             <div className="mt-10 pt-8 border-t border-line/80">
-              <h3 className="font-display text-base font-bold underline tracking-wide text-ink underline-offset-4">
+              <h3 className="font-display text-base font-bold underline tracking-wide text-ink underline-offset-4 text-center lg:text-left">
                 Address:
               </h3>
-              <div className="mt-3 flex items-start gap-2.5 font-body text-[14.5px] sm:text-[15.5px] font-medium text-ink/85 max-w-lg leading-relaxed">
+              <div className="mt-3 flex items-start justify-center lg:justify-start gap-2.5 font-body text-[14.5px] sm:text-[15.5px] font-medium text-ink/85 max-w-lg mx-auto lg:mx-0 leading-relaxed text-left">
                 <MapPin className="mt-1 size-4.5 shrink-0 text-x-red" />
                 <span>
                   — {site.addressDetail}
@@ -141,15 +141,15 @@ export function FormxContactSection() {
           </div>
 
           {/* RIGHT COLUMN: Form & Contact Info */}
-          <div className="flex flex-col h-full justify-between border-t lg:border-t-0 lg:border-l border-line/80 pt-10 lg:pt-0 lg:pl-12">
+          <div className="flex flex-col h-full justify-between border-t lg:border-t-0 lg:border-l border-line/80 pt-10 lg:pt-0 lg:pl-12 text-center lg:text-left">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center lg:justify-start gap-2">
                 <span className="font-display text-xl sm:text-2xl font-bold text-ink">
                   — Start The Conversation
                 </span>
               </div>
 
-              <p className="mt-2 font-body text-[14.5px] sm:text-[15.5px] text-ink/70 leading-relaxed">
+              <p className="mt-2 font-body text-[14.5px] sm:text-[15.5px] text-ink/70 leading-relaxed text-center lg:text-left">
                 Fill the form for project discussions, collaborations, or general enquiries.
               </p>
 

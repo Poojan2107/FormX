@@ -99,7 +99,7 @@ export default function RootLayout({
         </a>
         <JsonLd />
         <AppShell>
-          <main id="main" className="min-w-0 flex-1 pb-[max(5rem,env(safe-area-inset-bottom))] md:pb-0">
+          <main id="main" className="min-w-0 flex-1">
             <ViewTransition
               enter={{
                 "nav-forward": "nav-forward",

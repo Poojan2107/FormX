@@ -48,8 +48,8 @@ export function EventPartners() {
                   className="group relative flex flex-col items-center justify-center border-2 border-ink/15 bg-white p-7 sm:p-9 text-center transition-all duration-300 hover:border-x-red hover:shadow-[0_16px_36px_-12px_rgba(224,49,40,0.2)] hover:-translate-y-1"
                 >
                   {/* Vector Icon in Black */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-ink/10 bg-[#f8f6f0] text-ink transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/10 group-hover:scale-110">
-                    <EventIconFrame size="lg" className="text-ink [&_svg]:size-10">
+                  <div className="flex h-20 w-20 sm:h-22 sm:w-22 items-center justify-center rounded-xl border border-ink/10 bg-[#f8f6f0] text-ink transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/10 group-hover:scale-110">
+                    <EventIconFrame size="lg" className="text-ink [&_svg]:size-12 sm:[&_svg]:size-14">
                       <Icon className="text-ink" />
                     </EventIconFrame>
                   </div>
@@ -81,8 +81,8 @@ export function EventPartners() {
                   className="group relative flex flex-col items-center justify-center border-2 border-ink/15 bg-white p-7 sm:p-9 text-center transition-all duration-300 hover:border-x-red hover:shadow-[0_16px_36px_-12px_rgba(224,49,40,0.2)] hover:-translate-y-1"
                 >
                   {/* Vector Icon in Black */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-ink/10 bg-[#f8f6f0] text-ink transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/10 group-hover:scale-110">
-                    <EventIconFrame size="lg" className="text-ink [&_svg]:size-10">
+                  <div className="flex h-20 w-20 sm:h-22 sm:w-22 items-center justify-center rounded-xl border border-ink/10 bg-[#f8f6f0] text-ink transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/10 group-hover:scale-110">
+                    <EventIconFrame size="lg" className="text-ink [&_svg]:size-12 sm:[&_svg]:size-14">
                       <Icon className="text-ink" />
                     </EventIconFrame>
                   </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FormxContactSection } from "@/components/shared/FormxContactSection";
 import { Faqs } from "@/components/home/Faqs";
 import { FaqJsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
@@ -44,7 +43,26 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <FormxContactSection />
+      <section className="bg-[#f4f2ec] py-16 text-center border-b border-line">
+        <Container className="max-w-3xl">
+          <h2 className="font-display text-3xl sm:text-4xl font-black uppercase tracking-tight text-ink">
+            Ready To Start The Conversation?
+          </h2>
+          <p className="mt-3 font-body text-[15.5px] text-ink/75 leading-relaxed">
+            Book a structural engineering or architectural consultation directly with FormX Consultants.
+          </p>
+          <div className="mt-8">
+            <button
+              type="button"
+              data-open-consultation="true"
+              className="formx-cut-sm group inline-flex items-center gap-2 border-[1.5px] border-ink bg-[#1a1918] px-9 py-4 font-label text-[12px] font-bold uppercase tracking-[0.2em] text-white shadow-md transition-all duration-300 hover:bg-x-red hover:border-x-red cursor-pointer"
+            >
+              Book Consultation Now →
+            </button>
+          </div>
+        </Container>
+      </section>
+
       <Faqs />
 
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">

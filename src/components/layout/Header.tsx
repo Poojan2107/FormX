@@ -16,6 +16,7 @@ import { isEventMode } from "@/config/siteMode";
 import { DesktopNav } from "@/components/layout/MegaMenu";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
+import { FormxLogoCutX } from "@/components/ui/XMotif";
 import { cn } from "@/lib/cn";
 
 const eventNav = [
@@ -104,13 +105,11 @@ function SiteHeader({
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
         {eventMode ? (
-          <div className="border-b border-white/10 bg-[#090908] py-2.5 text-center">
+          <div className="border-b border-white/10 bg-[#090908] py-2 text-center">
             <div className="mx-auto flex items-center justify-center gap-2.5 px-4">
-              <span className="font-display font-black text-x-red text-sm sm:text-base leading-none select-none">
-                ×
-              </span>
-              <p className="font-label text-[12.5px] sm:text-[13.5px] font-black uppercase tracking-[0.24em] text-x-red">
-                Website Taking Form. Launching Soon.
+              <FormxLogoCutX className="size-3.5 sm:size-4 text-x-red" />
+              <p className="font-label text-[12px] sm:text-[13.5px] font-black uppercase tracking-[0.22em] sm:tracking-[0.24em] text-x-red text-center">
+                Website Taking Form.<br className="sm:hidden" /> Launching Soon.
               </p>
             </div>
           </div>

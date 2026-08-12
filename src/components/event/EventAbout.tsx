@@ -50,7 +50,7 @@ export function EventAbout() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex h-full flex-col justify-center"
+              className="flex h-full flex-col justify-center items-center lg:items-start text-center lg:text-left"
             >
               <h2 className="font-display text-[clamp(3.25rem,6.5vw,5.25rem)] font-black uppercase leading-[0.9] tracking-[-0.035em] text-ink select-none">
                 Who
