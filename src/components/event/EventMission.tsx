@@ -20,12 +20,10 @@ export function EventMission() {
             viewport={{ once: true }}
             className="flex flex-col justify-center lg:col-span-5 xl:col-span-4 text-center lg:text-left w-full"
           >
-            <h2 className="font-display text-[clamp(2.75rem,5.5vw,5rem)] font-black uppercase leading-[0.92] tracking-[-0.03em] text-ink select-none">
-              Trusted
-              <br />
-              technical
-              <br />
-              <span className="text-x-red">partner</span>
+            <h2 className="font-display text-[clamp(2.2rem,4.2vw,4.6rem)] xl:text-[5rem] font-black uppercase leading-[0.9] tracking-tight text-ink select-none break-normal hyphens-none">
+              <span className="block whitespace-nowrap">Trusted</span>
+              <span className="block whitespace-nowrap">Technical</span>
+              <span className="block whitespace-nowrap text-x-red">Partner</span>
             </h2>
           </motion.div>
 

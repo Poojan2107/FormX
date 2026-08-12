@@ -77,7 +77,7 @@ export function EventAbout() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 0.65 }}
-              className="py-12 font-display text-[clamp(1.2rem,2.2vw,1.65rem)] font-medium leading-[1.7] text-ink lg:py-0"
+              className="py-12 font-display text-[clamp(1.15rem,2.2vw,1.65rem)] font-medium leading-[1.7] text-ink text-center lg:text-left mx-auto max-w-3xl lg:py-0"
             >
               {eventAbout.body}
             </motion.p>
