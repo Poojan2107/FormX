@@ -78,6 +78,7 @@ export function AssetImage({
           alt={alt}
           fill
           priority={priority}
+          decoding={priority ? "sync" : "async"}
           unoptimized
           sizes={sizes}
           className={cn(

@@ -46,7 +46,7 @@ export function BrochureCta({
         </div>
       </div>
       <Button
-        href="/brochure/formx.pdf"
+        href={site.brochurePath}
         variant={invert ? "primary" : "secondary"}
         className="w-full shrink-0 sm:w-auto"
         transitionTypes={["nav-forward"]}

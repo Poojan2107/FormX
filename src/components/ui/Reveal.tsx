@@ -43,6 +43,7 @@ export function Reveal({
       whileInView="visible"
       viewport={{ once: true, margin: "-6% 0px" }}
       transition={{ duration, ease: [0.16, 1, 0.3, 1], delay }}
+      style={{ willChange: "transform, opacity", ...props.style }}
       variants={v}
       {...props}
     >

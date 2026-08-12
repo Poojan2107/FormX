@@ -115,7 +115,7 @@ export function PageHero({
           </p>
         ) : null}
 
-        <h1 className="max-w-4xl font-display text-3xl font-extrabold uppercase leading-[1.06] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.6rem]">
+        <h1 className="max-w-4xl font-display text-2xl xs:text-3xl font-extrabold uppercase leading-[1.06] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.6rem]">
           {title}
         </h1>
 

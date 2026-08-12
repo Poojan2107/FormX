@@ -10,7 +10,7 @@ export function EventHero() {
 
   return (
     <section
-      className="relative flex min-h-[calc(100vh-5.25rem)] items-center justify-center overflow-hidden bg-[#f4f2ec] text-ink py-12 md:py-16 lg:py-20"
+      className="relative flex min-h-[calc(100dvh-5.25rem)] items-center justify-center overflow-hidden bg-[#f4f2ec] text-ink py-10 sm:py-14 md:py-16 lg:py-20"
       aria-label="FormX Consultants — Where Vision Takes Form"
     >
       {/* Background structural grid & subtle ambient lighting */}
@@ -33,20 +33,20 @@ export function EventHero() {
       />
 
       {/* Main hero composition */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 sm:px-8 md:px-12 lg:px-16">
-        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-8 lg:gap-16">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16">
+        <div className="grid items-center gap-8 md:grid-cols-12 md:gap-8 lg:gap-16">
           {/* Big and bold typography */}
           <div className="md:col-span-7 lg:col-span-7 flex flex-col justify-center">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8, ease }}
-              className="font-display text-[clamp(3.25rem,7vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-ink select-none flex flex-col"
+              className="font-display text-[clamp(2.2rem,6.8vw,6.5rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-ink select-none flex flex-col"
             >
               <span>WHERE</span>
-              <span className="pl-10 sm:pl-16 md:pl-20">VISION</span>
+              <span className="pl-4 sm:pl-16 md:pl-20">VISION</span>
               <span>TAKES</span>
-              <span className="pl-10 sm:pl-16 md:pl-20 text-x-red">FORM</span>
+              <span className="pl-4 sm:pl-16 md:pl-20 text-x-red">FORM</span>
             </motion.h1>
           </div>
 

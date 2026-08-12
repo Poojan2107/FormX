@@ -31,16 +31,16 @@ export function FormxTransparentLogo({
       tag: "text-[8.5px] tracking-[0.28em]",
     },
     lg: {
-      title: "text-4xl md:text-5xl",
-      x: "text-4xl md:text-5xl",
-      sub: "text-[12px] tracking-[0.36em]",
-      tag: "text-[9.5px] tracking-[0.3em]",
+      title: "text-3xl sm:text-4xl md:text-5xl",
+      x: "text-3xl sm:text-4xl md:text-5xl",
+      sub: "text-[11px] sm:text-[12px] tracking-[0.28em] sm:tracking-[0.36em]",
+      tag: "text-[8.5px] sm:text-[9.5px] tracking-[0.24em] sm:tracking-[0.3em]",
     },
     hero: {
-      title: "text-5xl md:text-6xl lg:text-7xl",
-      x: "text-5xl md:text-6xl lg:text-7xl",
-      sub: "text-[13px] md:text-[15px] tracking-[0.4em]",
-      tag: "text-[10px] md:text-[11.5px] tracking-[0.32em]",
+      title: "text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
+      x: "text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
+      sub: "text-[11px] sm:text-[13px] md:text-[15px] tracking-[0.3em] sm:tracking-[0.4em]",
+      tag: "text-[9px] sm:text-[10px] md:text-[11.5px] tracking-[0.24em] sm:tracking-[0.32em]",
     },
   }[size];
 

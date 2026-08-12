@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
+  site,
   portfolioServices,
   portfolioServicesNote,
   portfolioClosing,
@@ -264,7 +265,7 @@ export default function KnowledgeCenterPage() {
                 <ArrowUpRight className="size-3.5" />
               </Link>
               <Link
-                href="/brochure/formx.pdf"
+                href={site.brochurePath}
                 className="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-3.5 font-label text-[10px] tracking-[0.18em] text-white/80 transition-colors hover:border-x-red hover:text-x-red"
               >
                 Download brochure

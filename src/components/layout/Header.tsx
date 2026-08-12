@@ -186,7 +186,7 @@ function SiteHeader({
             <button
               type="button"
               className={cn(
-                "formx-cut-sm relative z-[60] inline-flex size-9 shrink-0 items-center justify-center border transition-colors lg:hidden",
+                "formx-cut-sm relative z-[60] inline-flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center border transition-colors lg:hidden",
                 eventMode
                   ? "border-white/20 bg-transparent text-white hover:border-x-red hover:text-x-red"
                   : "border-line bg-white text-ink hover:border-x-red hover:text-x-red",
@@ -214,7 +214,7 @@ function SiteHeader({
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fx-grain fixed inset-0 z-[55] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a] lg:hidden"
+            className="fx-grain fixed inset-0 h-dvh min-h-dvh w-screen z-[55] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a] lg:hidden"
             style={{ WebkitOverflowScrolling: "touch" }}
             initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
@@ -231,7 +231,7 @@ function SiteHeader({
               aria-hidden
             />
 
-            <div className="relative flex min-h-full flex-col px-6 pb-12 pt-[88px]">
+            <div className="relative flex min-h-full flex-col px-5 sm:px-6 pb-[max(3rem,env(safe-area-inset-bottom))] pt-[max(5.5rem,env(safe-area-inset-top))]">
               <nav className="flex flex-col" aria-label="Mobile navigation">
                 {eventMode
                   ? eventNav.map((item, i) => (

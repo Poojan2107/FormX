@@ -45,6 +45,17 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   hanging-punctuation: first last;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -55,10 +66,52 @@ body {
   line-height: 1.72;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: clip;
   overflow-wrap: break-word;
+  word-break: break-word;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+}
+
+/* Lenis smooth scroll engine CSS optimization */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* GPU hardware compositing layer promotion */
+.gpu-layer,
+.formx-card,
+.formx-card-dark,
+.fx-project-card,
+.fx-btn-primary,
+.fx-btn-dark,
+.fx-btn-ghost {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* CSS rendering containment for grid subtrees */
+.contain-paint {
+  contain: paint layout;
 }
 
 /* Mobile menu / modal scroll lock — keep drawer scrollable */

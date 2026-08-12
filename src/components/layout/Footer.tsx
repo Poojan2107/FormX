@@ -118,7 +118,7 @@ export function Footer() {
               <span
                 className="block w-full whitespace-nowrap font-black tracking-[-0.05em] text-white/[0.08] transition-colors hover:text-white/[0.13]"
                 style={{
-                  fontSize: "clamp(5.2rem, 19.5vw, 17.5rem)",
+                  fontSize: "clamp(3.2rem, 18.5vw, 17.5rem)",
                   lineHeight: 0.9,
                 }}
                 aria-hidden

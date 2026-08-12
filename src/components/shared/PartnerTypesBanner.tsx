@@ -270,22 +270,22 @@ export function PartnerTypesBanner({
             {PARTNER_TYPES.map((partner) => (
               <div
                 key={partner.id}
-                className="group relative flex flex-col items-center justify-between rounded-xl border border-ink/20 bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-x-red hover:shadow-lg md:p-6"
+                className="group relative flex flex-col items-center justify-between rounded-xl border border-ink/20 bg-white p-3.5 sm:p-5 md:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-x-red hover:shadow-lg"
               >
                 {/* Icon Container */}
-                <div className="flex h-16 w-full items-center justify-center">
+                <div className="flex h-14 sm:h-16 w-full items-center justify-center">
                   {partner.icon}
                 </div>
 
                 {/* Title */}
-                <div className="mt-4 flex flex-1 items-center justify-center">
-                  <span className="font-display text-[13px] font-black leading-snug tracking-tight text-x-red transition-colors group-hover:text-ink md:text-[14px]">
+                <div className="mt-3 flex flex-1 items-center justify-center">
+                  <span className="font-display text-[11.5px] xs:text-[12.5px] sm:text-[13px] font-black leading-snug tracking-tight text-x-red transition-colors group-hover:text-ink md:text-[14px]">
                     {partner.title}
                   </span>
                 </div>
 
                 {/* Subtitle / Tag */}
-                <span className="mt-2 text-[10.5px] font-medium tracking-wide text-ink/50 transition-colors group-hover:text-ink/75">
+                <span className="mt-1.5 text-[10px] sm:text-[10.5px] font-medium tracking-wide text-ink/50 transition-colors group-hover:text-ink/75">
                   {partner.subtitle}
                 </span>
 
