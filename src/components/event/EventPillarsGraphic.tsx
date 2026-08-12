@@ -12,7 +12,7 @@ type Pillar = {
 function RedMaskIcon({ src }: { src: string }) {
   return (
     <span
-      className="mb-2.5 size-11 sm:size-12 bg-x-red shrink-0 transition-transform duration-300 hover:scale-110"
+      className="mb-3 size-14 sm:size-16 bg-x-red shrink-0 transition-transform duration-300 hover:scale-110"
       style={{
         WebkitMaskImage: `url(${src})`,
         maskImage: `url(${src})`,
@@ -58,13 +58,13 @@ export function EventPillarsGraphic({
               className="flex flex-col items-center lg:items-end justify-center"
             >
               <RedMaskIcon src="/assets/icons/pillar-structural-integrity.png" />
-              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+              <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Structural
                 <br />
                 Integrity
               </h3>
-              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-right">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-right">
                 {p0?.description ?? "Design safe, reliable Structural systems"}
               </p>
             </motion.div>
@@ -78,13 +78,13 @@ export function EventPillarsGraphic({
               className="flex flex-col items-center lg:items-end justify-center"
             >
               <RedMaskIcon src="/assets/icons/pillar-technical-expertise.png" />
-              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+              <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Technical
                 <br />
                 Expertise
               </h3>
-              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-right">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-right">
                 {p2?.description ?? "Apply engineering principles and best practices"}
               </p>
             </motion.div>
@@ -173,13 +173,13 @@ export function EventPillarsGraphic({
               className="flex flex-col items-center lg:items-start justify-center"
             >
               <RedMaskIcon src="/assets/icons/pillar-functional-design.png" />
-              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+              <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Functional
                 <br />
                 Design
               </h3>
-              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-left">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-left">
                 {p1?.description ?? "Create spaces that meet user needs"}
               </p>
             </motion.div>
@@ -193,13 +193,13 @@ export function EventPillarsGraphic({
               className="flex flex-col items-center lg:items-start justify-center"
             >
               <RedMaskIcon src="/assets/icons/pillar-collaborative-insight.png" />
-              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+              <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Collaborative
                 <br />
                 Insight
               </h3>
-              <p className="mt-2.5 text-center font-body text-[14px] sm:text-[14.5px] font-medium leading-relaxed text-ink/75 max-w-[280px] lg:text-left">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-left">
                 {p3?.description ?? "Integrate architecture and practical feedback"}
               </p>
             </motion.div>
