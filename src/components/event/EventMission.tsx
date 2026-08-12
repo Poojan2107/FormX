@@ -59,7 +59,9 @@ export function EventMission() {
         <div className="mx-auto grid max-w-[1400px] sm:grid-cols-2 lg:grid-cols-4">
           {eventMission.values.map((value, i) => {
             const Icon = valueIcons[value.id];
-            const parts = value.title.split(new RegExp(`(${value.accent})`, "i"));
+            const firstLine = value.accent;
+            const secondLine = value.title.replace(new RegExp(`^${value.accent}\\s*`, "i"), "");
+
             return (
               <motion.div
                 key={value.id}
@@ -68,34 +70,29 @@ export function EventMission() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={reduce ? undefined : { y: -4 }}
-                className={`group relative flex flex-col gap-6 px-6 py-12 transition-all duration-300 hover:bg-white/[0.04] md:px-8 ${
+                className={`group relative flex flex-col justify-between gap-8 px-6 py-12 transition-all duration-300 hover:bg-white/[0.04] md:px-8 ${
                   i > 0 ? "border-t border-white/10 sm:border-t-0 lg:border-l" : ""
                 } ${i === 1 ? "sm:border-l" : ""} ${i === 2 ? "sm:border-t lg:border-t-0" : ""} ${
                   i === 3 ? "sm:border-l sm:border-t lg:border-t-0" : ""
                 }`}
               >
                 <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-x-red/0 to-transparent transition-all duration-300 group-hover:via-x-red" />
+                
+                {/* Larger, high-clarity Red Icon */}
                 <div className="flex items-center justify-end">
                   <EventIconFrame
-                    size="md"
-                    className="text-x-red transition-transform duration-300 group-hover:scale-105"
+                    size="lg"
+                    className="h-12 w-12 text-x-red transition-transform duration-300 group-hover:scale-110 [&_svg]:size-11"
                   >
                     <Icon />
                   </EventIconFrame>
                 </div>
-                <p className="font-display text-[clamp(1.1rem,1.8vw,1.35rem)] font-bold uppercase leading-snug tracking-[0.06em]">
-                  {parts.map((part, pi) =>
-                    part.toLowerCase() === value.accent.toLowerCase() ? (
-                      <span key={pi} className="text-x-red">
-                        {part}
-                      </span>
-                    ) : (
-                      <span key={pi} className="text-white">
-                        {part}
-                      </span>
-                    ),
-                  )}
-                </p>
+
+                {/* 2-Line Title: Line 1 RED, Line 2 WHITE */}
+                <h3 className="font-display text-[clamp(1.25rem,2vw,1.6rem)] font-black uppercase leading-[1.05] tracking-[0.05em]">
+                  <span className="block text-x-red">{firstLine}</span>
+                  <span className="block text-white">{secondLine}</span>
+                </h3>
               </motion.div>
             );
           })}

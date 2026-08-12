@@ -9,7 +9,7 @@ export function FormxTransparentLogo({
   align = "left",
 }: {
   className?: string;
-  size?: "sm" | "md" | "lg" | "hero";
+  size?: "sm" | "md" | "lg" | "hero" | "display";
   dark?: boolean;
   align?: "left" | "center";
 }) {
@@ -41,6 +41,12 @@ export function FormxTransparentLogo({
       x: "text-4xl sm:text-5xl md:text-6xl lg:text-7xl",
       sub: "text-[11px] sm:text-[13px] md:text-[15px] tracking-[0.3em] sm:tracking-[0.4em]",
       tag: "text-[9px] sm:text-[10px] md:text-[11.5px] tracking-[0.24em] sm:tracking-[0.32em]",
+    },
+    display: {
+      title: "text-6xl sm:text-7xl md:text-8xl lg:text-9xl",
+      x: "text-6xl sm:text-7xl md:text-8xl lg:text-9xl",
+      sub: "text-[14px] sm:text-[18px] md:text-[22px] tracking-[0.35em] sm:tracking-[0.45em]",
+      tag: "text-[11px] sm:text-[14px] md:text-[16px] tracking-[0.28em] sm:tracking-[0.36em]",
     },
   }[size];
 

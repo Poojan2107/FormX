@@ -20,34 +20,67 @@ export function EventPartners() {
           <div className="h-[1.5px] w-full flex-1 bg-x-red/40" />
         </div>
 
-        {/* Spacious Partner Card Grid */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 sm:gap-5">
-          {eventPartners.map((partner, i) => {
-            const Icon = partnerIcons[partner.id];
+        {/* Beautifully Composited 2-Tier Partner Card Grid (4 Cards Top, 3 Cards Bottom) */}
+        <div className="space-y-6">
+          {/* Top Row: 4 Cards */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+            {eventPartners.slice(0, 4).map((partner, i) => {
+              const Icon = partnerIcons[partner.id];
 
-            return (
-              <motion.div
-                key={partner.id}
-                initial={reduce ? false : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.5 }}
-                className="group flex flex-col items-center justify-center border border-ink/12 bg-white/70 px-4 py-8 text-center transition-all duration-300 hover:border-x-red hover:bg-white hover:shadow-[0_10px_28px_-10px_rgba(224,49,40,0.15)]"
-              >
-                {/* Vector Icon */}
-                <div className="flex h-14 w-14 items-center justify-center text-ink transition-transform duration-300 group-hover:scale-110">
-                  <EventIconFrame size="lg">
-                    <Icon className="text-ink" />
-                  </EventIconFrame>
-                </div>
+              return (
+                <motion.div
+                  key={partner.id}
+                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.5 }}
+                  className="group flex flex-col items-center justify-center border border-ink/15 bg-white/80 px-5 py-10 text-center transition-all duration-300 hover:border-x-red hover:bg-white hover:shadow-[0_12px_32px_-10px_rgba(224,49,40,0.2)]"
+                >
+                  {/* Vector Icon */}
+                  <div className="flex h-16 w-16 items-center justify-center text-ink transition-transform duration-300 group-hover:scale-110">
+                    <EventIconFrame size="lg">
+                      <Icon className="text-ink" />
+                    </EventIconFrame>
+                  </div>
 
-                {/* Red Partner Title */}
-                <h3 className="mt-4 font-display text-[13px] sm:text-[14px] font-black uppercase leading-snug tracking-[0.04em] text-x-red">
-                  {partner.label}
-                </h3>
-              </motion.div>
-            );
-          })}
+                  {/* Red Partner Title */}
+                  <h3 className="mt-5 font-display text-[14.5px] sm:text-[16px] font-black uppercase leading-snug tracking-[0.04em] text-x-red">
+                    {partner.label}
+                  </h3>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Row: 3 Centered Cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 max-w-5xl mx-auto">
+            {eventPartners.slice(4, 7).map((partner, i) => {
+              const Icon = partnerIcons[partner.id];
+
+              return (
+                <motion.div
+                  key={partner.id}
+                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i + 4) * 0.06, duration: 0.5 }}
+                  className="group flex flex-col items-center justify-center border border-ink/15 bg-white/80 px-5 py-10 text-center transition-all duration-300 hover:border-x-red hover:bg-white hover:shadow-[0_12px_32px_-10px_rgba(224,49,40,0.2)]"
+                >
+                  {/* Vector Icon */}
+                  <div className="flex h-16 w-16 items-center justify-center text-ink transition-transform duration-300 group-hover:scale-110">
+                    <EventIconFrame size="lg">
+                      <Icon className="text-ink" />
+                    </EventIconFrame>
+                  </div>
+
+                  {/* Red Partner Title */}
+                  <h3 className="mt-5 font-display text-[14.5px] sm:text-[16px] font-black uppercase leading-snug tracking-[0.04em] text-x-red">
+                    {partner.label}
+                  </h3>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
       </div>

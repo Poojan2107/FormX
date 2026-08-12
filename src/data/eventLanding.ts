@@ -97,7 +97,7 @@ export const eventMission = {
     { id: "young", title: "Young Minds", accent: "Young" },
     { id: "practical", title: "Practical Solutions", accent: "Practical" },
     { id: "partnerships", title: "Long-term Partnerships", accent: "Long-term" },
-    { id: "excellence", title: "Committed to Excellence", accent: "Excellence" },
+    { id: "excellence", title: "Focused on Excellence", accent: "Focused on" },
   ],
 } as const;
 

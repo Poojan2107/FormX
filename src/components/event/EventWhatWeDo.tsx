@@ -36,20 +36,20 @@ export function EventWhatWeDo() {
               >
                 <div>
                   {/* Icon */}
-                  <div className="flex h-14 w-14 items-center justify-center text-ink transition-transform duration-300 group-hover:scale-110">
-                    <EventIconFrame size="lg">
+                  <div className="flex h-16 w-16 items-center justify-center text-ink transition-transform duration-300 group-hover:scale-110">
+                    <EventIconFrame size="lg" className="[&_svg]:size-12">
                       <Icon />
                     </EventIconFrame>
                   </div>
 
                   {/* Red Title */}
-                  <h3 className="mt-5 font-display text-[14px] sm:text-[15px] font-black uppercase leading-tight tracking-[0.04em] text-x-red">
+                  <h3 className="mt-6 font-display text-[16px] sm:text-[17.5px] font-black uppercase leading-tight tracking-[0.04em] text-x-red">
                     {service.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="mt-4 font-body text-[13px] font-medium leading-relaxed text-ink/75">
+                <p className="mt-4 font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80">
                   {service.description}
                 </p>
               </motion.div>

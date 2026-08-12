@@ -9,6 +9,25 @@ type Pillar = {
   description: string;
 };
 
+function RedMaskIcon({ src }: { src: string }) {
+  return (
+    <span
+      className="mb-2.5 size-11 sm:size-12 bg-x-red shrink-0 transition-transform duration-300 hover:scale-110"
+      style={{
+        WebkitMaskImage: `url(${src})`,
+        maskImage: `url(${src})`,
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+      }}
+      aria-hidden
+    />
+  );
+}
+
 export function EventPillarsGraphic({
   pillars,
   className,
@@ -26,19 +45,20 @@ export function EventPillarsGraphic({
   return (
     <div className={cn("relative w-full overflow-hidden bg-[#f4f2ec] py-16 md:py-24", className)}>
       <div className="relative mx-auto max-w-6xl px-4">
-        <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-4">
+        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-4">
           
-          {/* LEFT SIDE CALLOUTS */}
-          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-10 lg:space-y-0 lg:text-right">
+          {/* LEFT SIDE CALLOUTS (Vertically aligned to match pillar top & bottom height ratio) */}
+          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-6 lg:text-right">
             {/* Top Left: Structural Integrity */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end justify-center min-h-[140px]"
+              className="flex flex-col items-center lg:items-end justify-center"
             >
-              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <RedMaskIcon src="/assets/icons/pillar-structural-integrity.png" />
+              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
               <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Structural
                 <br />
@@ -55,9 +75,10 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end justify-center min-h-[140px]"
+              className="flex flex-col items-center lg:items-end justify-center"
             >
-              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <RedMaskIcon src="/assets/icons/pillar-technical-expertise.png" />
+              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
               <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Technical
                 <br />
@@ -69,7 +90,7 @@ export function EventPillarsGraphic({
             </motion.div>
           </div>
 
-          {/* CENTER: THE 4-PILLAR CLASSICAL TEMPLE GRAPHIC */}
+          {/* CENTER: THE CLEAN 4-PILLAR ARCHITECTURAL TEMPLE GRAPHIC */}
           <motion.div
             initial={reduce ? false : { opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -84,16 +105,6 @@ export function EventPillarsGraphic({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <defs>
-                  {/* Black PNG icons → white on red columns */}
-                  <filter id="fxIconWhite" colorInterpolationFilters="sRGB">
-                    <feColorMatrix
-                      type="matrix"
-                      values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0"
-                    />
-                  </filter>
-                </defs>
-
                 {/* Triangular Roof Pediment */}
                 <polygon points="200,28 380,95 20,95" fill="#e03128" />
                 {/* Roof Ridge & Trim */}
@@ -107,14 +118,6 @@ export function EventPillarsGraphic({
                   <rect x="44" y="138" width="52" height="210" fill="#3f0b09" />
                   <line x1="52" y1="138" x2="52" y2="348" stroke="#2b0706" strokeWidth="2" />
                   <line x1="88" y1="138" x2="88" y2="348" stroke="#2b0706" strokeWidth="2" />
-                  <image
-                    href="/assets/icons/pillar-structural-integrity.png"
-                    x="52"
-                    y="210"
-                    width="36"
-                    height="36"
-                    filter="url(#fxIconWhite)"
-                  />
                   <rect x="40" y="348" width="60" height="8" fill="#520e0b" />
                   <rect x="35" y="356" width="70" height="12" fill="#3f0b09" rx="1" />
                 </g>
@@ -126,14 +129,6 @@ export function EventPillarsGraphic({
                   <rect x="134" y="138" width="52" height="210" fill="#781411" />
                   <line x1="142" y1="138" x2="142" y2="348" stroke="#5a0f0d" strokeWidth="2" />
                   <line x1="178" y1="138" x2="178" y2="348" stroke="#5a0f0d" strokeWidth="2" />
-                  <image
-                    href="/assets/icons/pillar-functional-design.png"
-                    x="142"
-                    y="210"
-                    width="36"
-                    height="36"
-                    filter="url(#fxIconWhite)"
-                  />
                   <rect x="130" y="348" width="60" height="8" fill="#8e1914" />
                   <rect x="125" y="356" width="70" height="12" fill="#781411" rx="1" />
                 </g>
@@ -145,14 +140,6 @@ export function EventPillarsGraphic({
                   <rect x="224" y="138" width="52" height="210" fill="#b8221b" />
                   <line x1="232" y1="138" x2="232" y2="348" stroke="#921a15" strokeWidth="2" />
                   <line x1="268" y1="138" x2="268" y2="348" stroke="#921a15" strokeWidth="2" />
-                  <image
-                    href="/assets/icons/pillar-technical-expertise.png"
-                    x="232"
-                    y="210"
-                    width="36"
-                    height="36"
-                    filter="url(#fxIconWhite)"
-                  />
                   <rect x="220" y="348" width="60" height="8" fill="#ce2820" />
                   <rect x="215" y="356" width="70" height="12" fill="#b8221b" rx="1" />
                 </g>
@@ -164,14 +151,6 @@ export function EventPillarsGraphic({
                   <rect x="314" y="138" width="52" height="210" fill="#e03128" />
                   <line x1="322" y1="138" x2="322" y2="348" stroke="#b8231c" strokeWidth="2" />
                   <line x1="358" y1="138" x2="358" y2="348" stroke="#b8231c" strokeWidth="2" />
-                  <image
-                    href="/assets/icons/pillar-collaborative-insight.png"
-                    x="322"
-                    y="210"
-                    width="36"
-                    height="36"
-                    filter="url(#fxIconWhite)"
-                  />
                   <rect x="310" y="348" width="60" height="8" fill="#eb4138" />
                   <rect x="305" y="356" width="70" height="12" fill="#e03128" rx="1" />
                 </g>
@@ -183,17 +162,18 @@ export function EventPillarsGraphic({
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE CALLOUTS */}
-          <div className="flex flex-col justify-around space-y-10 lg:col-span-4 lg:py-10 lg:space-y-0 lg:text-left">
+          {/* RIGHT SIDE CALLOUTS (Vertically aligned to match pillar top & bottom height ratio) */}
+          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-6 lg:text-left">
             {/* Top Right: Functional Design */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start justify-center min-h-[140px]"
+              className="flex flex-col items-center lg:items-start justify-center"
             >
-              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <RedMaskIcon src="/assets/icons/pillar-functional-design.png" />
+              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
               <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Functional
                 <br />
@@ -210,9 +190,10 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start justify-center min-h-[140px]"
+              className="flex flex-col items-center lg:items-start justify-center"
             >
-              <span className="mb-3.5 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
+              <RedMaskIcon src="/assets/icons/pillar-collaborative-insight.png" />
+              <span className="mb-3 h-[3.5px] w-24 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
               <h3 className="font-display text-[clamp(1.35rem,2.2vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Collaborative
                 <br />
