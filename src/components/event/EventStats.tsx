@@ -53,7 +53,7 @@ function StatBlock({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={reduce ? undefined : { y: -4 }}
-      className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden border border-white/10 bg-[#121211] p-7 md:p-8 transition-all duration-300 hover:border-x-red/50 hover:bg-[#181817] hover:shadow-[0_12px_32px_-12px_rgba(224,49,40,0.2)]"
+      className="group relative flex min-h-[220px] flex-col justify-between items-center sm:items-start text-center sm:text-left overflow-hidden border border-white/10 bg-[#121211] p-7 md:p-8 transition-all duration-300 hover:border-x-red/50 hover:bg-[#181817] hover:shadow-[0_12px_32px_-12px_rgba(224,49,40,0.2)]"
     >
       <span aria-hidden className="pointer-events-none absolute left-3 top-3 font-label text-[10px] text-x-red/50 select-none">+</span>
       <span aria-hidden className="pointer-events-none absolute right-3 top-3 font-label text-[10px] text-x-red/50 select-none">+</span>
@@ -66,7 +66,7 @@ function StatBlock({
         0{index + 1}
       </span>
 
-      <div>
+      <div className="flex flex-col items-center sm:items-start">
         <p className="relative font-display text-[clamp(2.5rem,4.5vw,4.25rem)] font-black leading-none tracking-tight text-white tabular-nums">
           {prefix}
           <span className="text-x-red drop-shadow-[0_0_24px_rgba(224,49,40,0.4)]">{activeDisplay}</span>
@@ -75,7 +75,7 @@ function StatBlock({
         <span className="relative mt-4 block h-[3px] w-10 bg-x-red transition-all duration-300 group-hover:w-16" aria-hidden />
       </div>
 
-      <p className="relative mt-6 font-label text-[11.5px] font-black uppercase tracking-[0.26em] text-white/60 transition-colors group-hover:text-white md:text-[12.5px]">
+      <p className="relative mt-6 font-label text-[11.5px] font-black uppercase tracking-[0.26em] text-white/60 transition-colors group-hover:text-white md:text-[12.5px] text-center sm:text-left">
         {label}
       </p>
     </motion.div>

@@ -105,12 +105,17 @@ function SiteHeader({
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
         {eventMode ? (
-          <div className="border-b border-white/10 bg-[#090908] py-2 text-center">
-            <div className="mx-auto flex items-center justify-center gap-2.5 px-4">
-              <FormxLogoCutX className="size-3.5 sm:size-4 text-x-red" />
-              <p className="font-label text-[12px] sm:text-[13.5px] font-black uppercase tracking-[0.22em] sm:tracking-[0.24em] text-x-red text-center">
-                Website Taking Form.<br className="sm:hidden" /> Launching Soon.
-              </p>
+          <div className="border-b border-white/10 bg-[#090908] py-2.5 text-center">
+            <div className="mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 px-4">
+              <div className="flex items-center justify-center gap-2">
+                <FormxLogoCutX className="size-3.5 sm:size-4 text-x-red" />
+                <span className="font-label text-[12px] sm:text-[13.5px] font-black uppercase tracking-[0.22em] sm:tracking-[0.24em] text-x-red">
+                  Website Taking Form.
+                </span>
+              </div>
+              <span className="font-label text-[12px] sm:text-[13.5px] font-black uppercase tracking-[0.22em] sm:tracking-[0.24em] text-x-red">
+                Launching Soon.
+              </span>
             </div>
           </div>
         ) : null}

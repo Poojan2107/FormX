@@ -43,7 +43,7 @@ export function EventWhatWeDo() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.5 }}
-                className="group relative flex flex-col justify-start border-2 border-ink/15 bg-white p-6 sm:p-7 text-left transition-all duration-300 hover:-translate-y-1 hover:border-x-red hover:shadow-[0_16px_36px_-12px_rgba(224,49,40,0.2)]"
+                className="group relative flex flex-col items-center sm:items-start justify-start border-2 border-ink/15 bg-white p-6 sm:p-7 text-center sm:text-left transition-all duration-300 hover:-translate-y-1 hover:border-x-red hover:shadow-[0_16px_36px_-12px_rgba(224,49,40,0.2)]"
               >
                 {/* Icon Stamp Frame in Black */}
                 <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-lg border border-ink/10 bg-[#f8f6f0] text-ink transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/5 group-hover:scale-105">
@@ -53,12 +53,12 @@ export function EventWhatWeDo() {
                 </div>
 
                 {/* FormX Red Service Title */}
-                <h3 className="mt-5 font-display text-[16.5px] sm:text-[18px] font-black uppercase leading-tight tracking-tight text-x-red">
+                <h3 className="mt-5 font-display text-[16.5px] sm:text-[18px] font-black uppercase leading-tight tracking-tight text-x-red text-center sm:text-left">
                   {service.title}
                 </h3>
 
                 {/* Direct Description Paragraph */}
-                <p className="mt-2.5 font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80">
+                <p className="mt-2.5 font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 text-center sm:text-left">
                   {service.description}
                 </p>
 
