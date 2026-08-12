@@ -28,16 +28,24 @@ export function EventHero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 25% 35%, rgba(224,49,40,0.09), transparent 65%), radial-gradient(ellipse 40% 50% at 85% 80%, rgba(224,49,40,0.04), transparent 55%)",
+            "radial-gradient(ellipse 60% 50% at 20% 35%, rgba(224,49,40,0.09), transparent 65%), radial-gradient(ellipse 40% 50% at 85% 80%, rgba(224,49,40,0.04), transparent 55%)",
         }}
       />
+
+      {/* CAD Corner Framing Markers */}
+      <span aria-hidden className="absolute top-4 left-6 text-x-red/40 font-mono text-[11px] tracking-widest select-none hidden sm:block">
+        + 01 // STUDIO HERO
+      </span>
+      <span aria-hidden className="absolute top-4 right-6 text-x-red/40 font-mono text-[11px] tracking-widest select-none hidden sm:block">
+        FORMX CONSULTANTS +
+      </span>
 
       {/* Main hero composition: Logo (Left) | Red Divider Line (Center) | Tagline (Right) */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="grid items-center gap-8 md:grid-cols-12 md:gap-6 lg:gap-10">
           
-          {/* LEFT: Official Original FormX Logo Image */}
-          <div className="flex items-center justify-center md:col-span-5 md:justify-start">
+          {/* LEFT: Official Original FormX Logo Image + Studio Badge */}
+          <div className="flex flex-col items-center md:items-start justify-center md:col-span-5">
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -54,6 +62,18 @@ export function EventHero() {
                 unoptimized
               />
             </motion.div>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.7, ease }}
+              className="mt-6 flex items-center gap-3"
+            >
+              <span className="h-0.5 w-10 bg-x-red" />
+              <span className="font-label text-[11.5px] sm:text-[12.5px] font-extrabold uppercase tracking-[0.26em] text-ink/75">
+                Architecture · Structure · Infrastructure
+              </span>
+            </motion.div>
           </div>
 
           {/* CENTER: Creative FormX Red Divider Line (Desktop Vertical, Mobile Horizontal) */}
@@ -62,36 +82,45 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, scaleY: 0 }}
               animate={{ opacity: 1, scaleY: 1 }}
               transition={{ delay: 0.2, duration: 0.9, ease }}
-              className="relative flex flex-col items-center justify-center h-full min-h-[300px] w-full"
+              className="relative flex flex-col items-center justify-center h-full min-h-[320px] w-full"
             >
-              <div className="w-[2px] flex-1 bg-gradient-to-b from-transparent via-x-red to-x-red" />
-              <span className="my-3.5 font-display font-black text-x-red text-2xl select-none drop-shadow-[0_0_12px_rgba(224,49,40,0.4)]">
+              <div className="w-[2.5px] flex-1 bg-gradient-to-b from-transparent via-x-red to-x-red" />
+              <span className="my-4 font-display font-black text-x-red text-2xl select-none drop-shadow-[0_0_14px_rgba(224,49,40,0.45)]">
                 ×
               </span>
-              <div className="w-[2px] flex-1 bg-gradient-to-t from-transparent via-x-red to-x-red" />
+              <div className="w-[2.5px] flex-1 bg-gradient-to-t from-transparent via-x-red to-x-red" />
             </motion.div>
           </div>
 
           {/* Mobile Center Horizontal Divider Line */}
-          <div className="flex md:hidden items-center justify-center gap-3 my-4 w-full">
+          <div className="flex md:hidden items-center justify-center gap-3 my-6 w-full">
             <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-x-red" />
             <span className="font-display font-black text-x-red text-xl">×</span>
             <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-x-red" />
           </div>
 
-          {/* RIGHT: Tagline WHERE VISION TAKES FORM */}
+          {/* RIGHT: Tagline WHERE VISION TAKES FORM + Supporting Sub-caption */}
           <div className="md:col-span-6 flex flex-col justify-center">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease }}
-              className="font-display text-[clamp(2.4rem,5.8vw,5.6rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] text-ink select-none flex flex-col"
+              className="font-display text-[clamp(2.5rem,6vw,5.8rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col"
             >
               <span>WHERE</span>
-              <span className="pl-4 sm:pl-12 md:pl-16">VISION</span>
+              <span className="pl-4 sm:pl-10 md:pl-14">VISION</span>
               <span>TAKES</span>
-              <span className="pl-4 sm:pl-12 md:pl-16 text-x-red">FORM</span>
+              <span className="pl-4 sm:pl-10 md:pl-14 text-x-red">FORM</span>
             </motion.h1>
+
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7, ease }}
+              className="mt-6 font-body text-[14.5px] sm:text-[16px] font-medium leading-relaxed text-ink/75 max-w-lg"
+            >
+              Practical engineering and coordinated design for industrial, residential, and commercial facilities across India and abroad.
+            </motion.p>
           </div>
 
         </div>

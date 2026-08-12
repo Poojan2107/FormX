@@ -9,15 +9,15 @@ export function EventCta() {
   return (
     <footer id="contact" className="scroll-mt-[5.75rem] border-t border-white/10 bg-[#090908] py-16 text-white md:py-24">
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 md:px-12">
-        {/* 4-Column Balanced Footer Grid */}
+        {/* 3-Column Balanced Footer Grid (NAVIGATE column removed as requested) */}
         <div className="grid gap-10 border-b border-white/10 pb-16 lg:grid-cols-12 lg:gap-12">
           
           {/* Column 1: Brand Logo & Tagline */}
-          <div className="flex flex-col gap-6 lg:col-span-4">
+          <div className="flex flex-col gap-6 lg:col-span-5">
             <Logo variant="full" invert className="h-11 sm:h-13 w-auto" />
 
-            <div className="max-w-sm space-y-3">
-              <p className="font-body text-[14.5px] sm:text-[15.5px] leading-relaxed text-white/80">
+            <div className="max-w-md space-y-3">
+              <p className="font-body text-[15px] sm:text-[16px] leading-relaxed text-white/80">
                 Architecture, structure, and infrastructure — coordinated before drawings leave the studio.
               </p>
               <p className="font-label text-[11.5px] font-extrabold uppercase tracking-[0.24em] text-white/50">
@@ -27,13 +27,13 @@ export function EventCta() {
           </div>
 
           {/* Column 2: Studio Address & Inquiries */}
-          <div className="flex flex-col gap-6 lg:col-span-3">
+          <div className="flex flex-col gap-6 lg:col-span-4">
             {/* Studio Address */}
             <div className="space-y-2">
               <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
                 STUDIO ADDRESS
               </p>
-              <div className="flex items-start gap-2.5 text-[14px] sm:text-[15px] font-medium text-white/90">
+              <div className="flex items-start gap-2.5 text-[14.5px] sm:text-[15.5px] font-medium text-white/90">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-x-red" />
                 <span>{site.addressDetail}</span>
               </div>
@@ -44,7 +44,7 @@ export function EventCta() {
               <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
                 INQUIRIES
               </p>
-              <div className="space-y-2 text-[14px] sm:text-[15px] font-medium">
+              <div className="space-y-2 text-[14.5px] sm:text-[15.5px] font-medium">
                 <a
                   href={`mailto:${site.email}`}
                   className="flex items-center gap-2.5 text-white/90 transition-colors hover:text-x-red"
@@ -61,27 +61,6 @@ export function EventCta() {
                 </a>
               </div>
             </div>
-          </div>
-
-          {/* Column 3: Navigate (Active Page Sections) */}
-          <div className="flex flex-col gap-5 lg:col-span-2">
-            <p className="font-label text-[11px] font-black uppercase tracking-[0.28em] text-x-red">
-              NAVIGATE
-            </p>
-            <nav className="flex flex-col gap-3.5 font-display text-[15px] sm:text-[16px] font-bold text-white/90">
-              <a href="#about" className="transition-colors hover:text-x-red">
-                About Us
-              </a>
-              <a href="#services" className="transition-colors hover:text-x-red">
-                What We Do
-              </a>
-              <a href="#mission" className="transition-colors hover:text-x-red">
-                Mission & Values
-              </a>
-              <a href="#partners" className="transition-colors hover:text-x-red">
-                Who We Partner With
-              </a>
-            </nav>
           </div>
 
           {/* Column 4: Quick Actions */}
