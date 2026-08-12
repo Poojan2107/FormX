@@ -38,16 +38,42 @@
   to { transform: translateX(-50%); }
 }
 
-.event-grid-drift { animation: event-grid-drift 32s linear infinite; }
-.event-scan-line { animation: event-scan 5s ease-in-out infinite; }
-.event-pulse-ring { animation: event-pulse-ring 3s ease-out infinite; }
+.event-grid-drift {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  animation: event-grid-drift 32s linear infinite;
+}
+.event-scan-line {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  animation: event-scan 5s ease-in-out infinite;
+}
+.event-pulse-ring {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  animation: event-pulse-ring 3s ease-out infinite;
+}
 .event-status-blink { animation: event-blink 2s step-end infinite; }
 .event-draw-line {
+  will-change: transform;
+  transform: translateZ(0);
   transform-origin: left center;
   animation: event-draw-line 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .event-marquee {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   animation: event-marquee 32s linear infinite;
+}
+
+/* GPU hardware compositing layer promotion */
+.event-gpu-layer {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: content;
 }
 
 .event-sheet-edge {

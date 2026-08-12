@@ -97,7 +97,19 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* GPU hardware compositing layer promotion */
+/* GPU hardware compositing layer promotion & 120fps smoothness */
+.gpu-layer,
+[data-framer-name] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize rendering for images */
+img,
+svg {
+  content-visibility: auto;
+}
 .gpu-layer,
 .formx-card,
 .formx-card-dark,

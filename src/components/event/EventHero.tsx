@@ -70,6 +70,7 @@ export function EventHero() {
                 height={1244}
                 className="h-auto w-full object-contain filter drop-shadow-xs"
                 priority
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 60vw, 720px"
               />
             </motion.div>
           </div>
