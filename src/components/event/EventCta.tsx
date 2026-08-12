@@ -102,21 +102,45 @@ export function EventCta() {
 
         </div>
 
-        {/* Giant Horizontal Official FormX Client Logo Display Banner */}
+        {/* GIANT Master Architectural Vector FormX Logo Display Banner (Razor-Sharp Vector, Zero White Border on X) */}
         <div className="relative overflow-hidden pt-12 pb-8 mt-10">
           <div className="flex flex-col items-center justify-center">
             
-            {/* GIANT Official Client Logo Image Asset */}
-            <div className="relative w-full max-w-6xl mx-auto select-none py-6 flex justify-center">
-              <Image
-                src="/formx-logo-nav-on-dark.png"
-                alt="FormX Consultants"
-                width={1400}
-                height={450}
-                className="h-44 sm:h-60 md:h-80 lg:h-[26rem] w-full max-w-5xl object-contain object-center mx-auto"
-                priority
-                unoptimized
-              />
+            {/* GIANT Architectural Vector Logo Lockup */}
+            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center select-none py-6">
+              {/* Line 1: Form + Architectural Cut Red X */}
+              <div className="flex items-center justify-center tracking-[-0.045em]">
+                <span className="font-display text-[clamp(4.5rem,13vw,11.5rem)] font-black text-white leading-none">
+                  Form
+                </span>
+                <svg
+                  viewBox="0 0 100 100"
+                  className="h-[clamp(4.2rem,12vw,10.5rem)] w-auto text-[#e03128] inline-block ml-1 -mb-1 filter drop-shadow-[0_0_24px_rgba(224,49,40,0.3)]"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {/* Main diagonal stroke (Top-Left to Bottom-Right) */}
+                  <polygon points="12,12 30,12 88,88 70,88" />
+                  
+                  {/* Secondary diagonal stroke (Bottom-Left to center) */}
+                  <polygon points="12,88 30,88 47,62 30,62" />
+                  
+                  {/* Secondary diagonal stroke (Center to Top-Right with architectural diagonal cut gap) */}
+                  <polygon points="56,48 73,48 88,25 71,25" />
+                </svg>
+              </div>
+
+              {/* Line 2: CONSULTANTS */}
+              <div className="mt-1 sm:mt-2 font-display text-[clamp(1.7rem,4.6vw,4rem)] font-black uppercase tracking-[0.32em] text-white leading-none">
+                CONSULTANTS
+              </div>
+
+              {/* Line 3: DESIGN | ENGINEERING */}
+              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-4 sm:gap-6 font-label text-[clamp(1rem,2.6vw,2.3rem)] font-black uppercase tracking-[0.42em] text-white/90">
+                <span>DESIGN</span>
+                <span className="text-[#e03128] font-black">|</span>
+                <span>ENGINEERING</span>
+              </div>
             </div>
 
             <div className="mt-8 flex w-full flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
