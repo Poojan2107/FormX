@@ -16,7 +16,7 @@ function resolveTo(): string {
 }
 
 function resolveFrom(): string {
-  return process.env.RESEND_FROM_EMAIL || `FormX Consultants <${resolveTo()}>`;
+  return process.env.RESEND_FROM_EMAIL || "FormX Consultants <onboarding@resend.dev>";
 }
 
 function shell(title: string, rows: { label: string; value: string }[]): string {
