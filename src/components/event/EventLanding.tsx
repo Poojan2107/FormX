@@ -4,6 +4,7 @@ import { EventStats } from "@/components/event/EventStats";
 import { EventWhatWeDo } from "@/components/event/EventWhatWeDo";
 import { EventMission } from "@/components/event/EventMission";
 import { EventPartners } from "@/components/event/EventPartners";
+import { FormxContactSection } from "@/components/shared/FormxContactSection";
 import { EventCta } from "@/components/event/EventCta";
 import "./event-motion.css";
 
@@ -20,6 +21,7 @@ export function EventLanding() {
       <EventWhatWeDo />
       <EventMission />
       <EventPartners />
+      <FormxContactSection />
       <EventCta />
     </>
   );

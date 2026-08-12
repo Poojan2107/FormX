@@ -71,7 +71,7 @@ export function EventCta() {
 
             <div className="flex flex-col gap-3">
               <a
-                href={`mailto:${site.email}?subject=Consultation%20Inquiry`}
+                href="#contact"
                 className="group flex items-center justify-between border border-white/20 bg-white/[0.03] px-5 py-4 font-label text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] text-white transition-all hover:border-x-red hover:bg-x-red/10"
               >
                 <span>BOOK CONSULTATION</span>
@@ -109,13 +109,12 @@ export function EventCta() {
             {/* Strictly Official Client Logo Image File */}
             <div className="relative w-full max-w-6xl mx-auto select-none py-6 flex justify-center">
               <Image
-                src="/formx-logo-nav-on-dark.png"
+                src="/formx-logo-hd-on-dark.png"
                 alt="FormX Consultants"
-                width={1400}
-                height={450}
+                width={2800}
+                height={1244}
                 className="h-44 sm:h-60 md:h-80 lg:h-[24rem] w-full max-w-5xl object-contain object-center mx-auto"
                 priority
-                unoptimized
               />
             </div>
 

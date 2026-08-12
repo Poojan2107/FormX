@@ -9,7 +9,7 @@ export function Logo({
   invert?: boolean;
   variant?: "mark" | "full" | "lockup";
 }) {
-  const src = invert ? "/formx-logo-nav-on-dark.png" : "/formx-logo-nav.png";
+  const src = invert ? "/formx-logo-hd-on-dark.png" : "/formx-logo-hd.png";
 
   return (
     <span
@@ -22,11 +22,10 @@ export function Logo({
       <Image
         src={src}
         alt="FormX Consultants — Design | Engineering"
-        width={320}
-        height={140}
+        width={700}
+        height={311}
         className="h-full w-auto object-contain object-left"
         priority
-        unoptimized
       />
     </span>
   );

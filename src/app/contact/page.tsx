@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Contact } from "@/components/home/Contact";
+import { FormxContactSection } from "@/components/shared/FormxContactSection";
 import { Faqs } from "@/components/home/Faqs";
 import { FaqJsonLd } from "@/components/shared/JsonLd";
 import { Container } from "@/components/ui/Container";
@@ -44,7 +44,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <Contact />
+      <FormxContactSection />
       <Faqs />
 
       <section className="border-t border-line bg-[#0d0d0d] py-14 text-white">
