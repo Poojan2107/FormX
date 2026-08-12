@@ -44,8 +44,8 @@ export function EventPillarsGraphic({
 
   return (
     <div className={cn("relative w-full overflow-hidden bg-[#f4f2ec] py-16 md:py-24", className)}>
-      <div className="relative mx-auto max-w-6xl px-4">
-        <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-4">
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-8 md:px-12">
+        <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-4">
           
           {/* LEFT SIDE CALLOUTS (Vertically aligned flush to match pillar top & bottom height ratio) */}
           <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-0 h-full lg:text-right">
@@ -59,12 +59,12 @@ export function EventPillarsGraphic({
             >
               <RedMaskIcon src="/assets/icons/pillar-structural-integrity.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+              <h3 className="font-display text-[clamp(1.45rem,2.4vw,1.95rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Structural
                 <br />
                 Integrity
               </h3>
-              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-right">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[300px] lg:text-right">
                 {p0?.description ?? "Design safe, reliable Structural systems"}
               </p>
             </motion.div>
@@ -79,18 +79,18 @@ export function EventPillarsGraphic({
             >
               <RedMaskIcon src="/assets/icons/pillar-technical-expertise.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
+              <h3 className="font-display text-[clamp(1.45rem,2.4vw,1.95rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-right">
                 Technical
                 <br />
                 Expertise
               </h3>
-              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-right">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[300px] lg:text-right">
                 {p2?.description ?? "Apply engineering principles and best practices"}
               </p>
             </motion.div>
           </div>
 
-          {/* CENTER: THE CLEAN 4-PILLAR ARCHITECTURAL TEMPLE GRAPHIC */}
+          {/* CENTER: THE EXPANDED 4-PILLAR ARCHITECTURAL TEMPLE GRAPHIC */}
           <motion.div
             initial={reduce ? false : { opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -98,15 +98,15 @@ export function EventPillarsGraphic({
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center lg:col-span-4 lg:py-0 h-full"
           >
-            <div className="relative w-full max-w-[360px] md:max-w-[420px] lg:max-w-[450px]">
+            <div className="relative w-full max-w-[420px] md:max-w-[500px] lg:max-w-[560px]">
               <svg
-                viewBox="0 28 400 370"
-                className="h-auto w-full filter drop-shadow-sm"
+                viewBox="0 18 400 382"
+                className="h-auto w-full filter drop-shadow-md"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Triangular Roof Pediment */}
-                <polygon points="200,28 380,95 20,95" fill="#e03128" />
+                {/* Triangular Roof Pediment (Apex at Y=18) */}
+                <polygon points="200,18 380,95 20,95" fill="#e03128" />
                 {/* Roof Ridge & Trim */}
                 <path d="M20 95 H380 V110 H20 Z" fill="#c42820" />
                 <path d="M25 110 H375 V118 H25 Z" fill="#9a1f1a" />
@@ -155,9 +155,9 @@ export function EventPillarsGraphic({
                   <rect x="305" y="356" width="70" height="12" fill="#e03128" rx="1" />
                 </g>
 
-                {/* Bottom Foundation Base Slabs */}
+                {/* Bottom Foundation Base Slabs (Base at Y=400) */}
                 <path d="M15 368 H385 V382 H15 Z" fill="#b8221b" />
-                <path d="M10 382 H390 V398 H10 Z" fill="#781411" />
+                <path d="M10 382 H390 V400 H10 Z" fill="#781411" />
               </svg>
             </div>
           </motion.div>
@@ -174,12 +174,12 @@ export function EventPillarsGraphic({
             >
               <RedMaskIcon src="/assets/icons/pillar-functional-design.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+              <h3 className="font-display text-[clamp(1.45rem,2.4vw,1.95rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Functional
                 <br />
                 Design
               </h3>
-              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-left">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[300px] lg:text-left">
                 {p1?.description ?? "Create spaces that meet user needs"}
               </p>
             </motion.div>
@@ -194,12 +194,12 @@ export function EventPillarsGraphic({
             >
               <RedMaskIcon src="/assets/icons/pillar-collaborative-insight.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
-              <h3 className="font-display text-[clamp(1.4rem,2.3vw,1.85rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
+              <h3 className="font-display text-[clamp(1.45rem,2.4vw,1.95rem)] font-black uppercase leading-[1.05] tracking-[-0.025em] text-ink text-center lg:text-left">
                 Collaborative
                 <br />
                 Insight
               </h3>
-              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[290px] lg:text-left">
+              <p className="mt-3 text-center font-body text-[14.5px] sm:text-[15.5px] font-medium leading-relaxed text-ink/80 max-w-[300px] lg:text-left">
                 {p3?.description ?? "Integrate architecture and practical feedback"}
               </p>
             </motion.div>

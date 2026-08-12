@@ -32,17 +32,36 @@ export function EventHero() {
         }}
       />
 
-      {/* Main hero composition: Logo (Left) | Red Divider Line (Center) | Tagline (Right) */}
+      {/* DEAD CENTER (50%) RED VERTICAL DIVIDER LINE (Desktop Only) */}
+      <div
+        aria-hidden
+        className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[75%] max-h-[360px] w-8 flex-col items-center justify-center z-20 pointer-events-none"
+      >
+        <motion.div
+          initial={reduce ? false : { opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 1, scaleY: 1 }}
+          transition={{ delay: 0.2, duration: 0.9, ease }}
+          className="relative flex flex-col items-center justify-center h-full w-full"
+        >
+          <div className="w-[2.5px] flex-1 bg-gradient-to-b from-transparent via-x-red to-x-red" />
+          <span className="my-3 font-display font-black text-x-red text-2xl select-none drop-shadow-[0_0_14px_rgba(224,49,40,0.45)]">
+            ×
+          </span>
+          <div className="w-[2.5px] flex-1 bg-gradient-to-t from-transparent via-x-red to-x-red" />
+        </motion.div>
+      </div>
+
+      {/* Main hero composition: 50% Left (Logo) | 50% Right (Tagline) */}
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8 md:px-12 lg:px-16">
-        <div className="grid items-center gap-8 md:grid-cols-12 md:gap-6 lg:gap-10">
+        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
           
-          {/* LEFT: Official Original FormX Logo Artwork (Pure artwork, no sub-line badges) */}
-          <div className="flex items-center justify-center md:col-span-5 md:justify-start">
+          {/* LEFT 50%: FormX Logo Artwork (Right-aligned toward center divider line) */}
+          <div className="flex items-center justify-center md:justify-end md:pr-8 lg:pr-14">
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.8, ease }}
-              className="w-full max-w-[480px] lg:max-w-[560px]"
+              className="w-full max-w-[460px] lg:max-w-[540px]"
             >
               <Image
                 src="/formx-logo-nav.png"
@@ -56,22 +75,6 @@ export function EventHero() {
             </motion.div>
           </div>
 
-          {/* CENTER: Creative FormX Red Divider Line (Desktop Vertical, Mobile Horizontal) */}
-          <div className="hidden md:flex md:col-span-1 items-center justify-center h-full py-2">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, scaleY: 0 }}
-              animate={{ opacity: 1, scaleY: 1 }}
-              transition={{ delay: 0.2, duration: 0.9, ease }}
-              className="relative flex flex-col items-center justify-center h-full min-h-[300px] w-full"
-            >
-              <div className="w-[2.5px] flex-1 bg-gradient-to-b from-transparent via-x-red to-x-red" />
-              <span className="my-4 font-display font-black text-x-red text-2xl select-none drop-shadow-[0_0_14px_rgba(224,49,40,0.45)]">
-                ×
-              </span>
-              <div className="w-[2.5px] flex-1 bg-gradient-to-t from-transparent via-x-red to-x-red" />
-            </motion.div>
-          </div>
-
           {/* Mobile Center Horizontal Divider Line */}
           <div className="flex md:hidden items-center justify-center gap-3 my-6 w-full">
             <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-x-red" />
@@ -79,25 +82,25 @@ export function EventHero() {
             <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-x-red" />
           </div>
 
-          {/* RIGHT: Tagline WHERE VISION TAKES FORM + Supporting Sub-caption */}
-          <div className="md:col-span-6 flex flex-col justify-center">
+          {/* RIGHT 50%: Tagline WHERE VISION TAKES FORM (Left-aligned from center divider line) */}
+          <div className="flex flex-col justify-center items-center md:items-start md:pl-8 lg:pl-14">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease }}
-              className="font-display text-[clamp(2.6rem,6.4vw,6rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col"
+              className="font-display text-[clamp(2.5rem,5.2vw,5.5rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col text-center md:text-left"
             >
               <span>WHERE</span>
-              <span className="pl-4 sm:pl-10 md:pl-14">VISION</span>
+              <span className="pl-4 sm:pl-10 md:pl-12">VISION</span>
               <span>TAKES</span>
-              <span className="pl-4 sm:pl-10 md:pl-14 text-x-red">FORM</span>
+              <span className="pl-4 sm:pl-10 md:pl-12 text-x-red">FORM</span>
             </motion.h1>
 
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease }}
-              className="mt-6 font-body text-[15px] sm:text-[17px] font-medium leading-relaxed text-ink/80 max-w-xl"
+              className="mt-6 font-body text-[15px] sm:text-[16.5px] font-medium leading-relaxed text-ink/80 max-w-md lg:max-w-lg text-center md:text-left"
             >
               Practical engineering and coordinated design for industrial, residential, and commercial facilities across India and abroad.
             </motion.p>
