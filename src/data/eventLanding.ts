@@ -4,7 +4,7 @@ export const eventHero = {
   line1: "WHERE VISION TAKES FORM",
   /** Brand line under the H1 — not the website-status message */
   line2: "SHAPING FORM. DEFINING FUTURE.",
-  body: "Practical engineering and coordinated design for industrial and building facilities across India.",
+  body: "Practical engineering and coordinated design for industrial , residential and commercial facilities across india and abroad",
 } as const;
 
 /** Status strip — lives below the fold, not in the hero */

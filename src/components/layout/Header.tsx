@@ -21,7 +21,7 @@ import { cn } from "@/lib/cn";
 const eventNav = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Partners", href: "#partners" },
+  { label: "Who We Partner With", href: "#partners" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
@@ -96,7 +96,7 @@ function SiteHeader({
         className={cn(
           "z-50 w-full border-b",
           eventMode
-            ? "sticky top-0 border-white/10 bg-[#111110]/95 backdrop-blur-md"
+            ? "sticky top-0 border-white/10 bg-[#090908] backdrop-blur-md"
             : "relative border-line/80 bg-white",
         )}
         style={{ ["--header-offset" as string]: "4.75rem" }}
@@ -104,10 +104,12 @@ function SiteHeader({
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
         {eventMode ? (
-          <div className="border-b border-white/10 bg-[#090908] py-2 text-center">
-            <div className="mx-auto flex items-center justify-center gap-2 px-4">
-              <span className="size-2 rounded-full bg-x-red animate-pulse" />
-              <p className="font-label text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-[0.24em] text-x-red">
+          <div className="border-b border-white/10 bg-[#090908] py-2.5 text-center">
+            <div className="mx-auto flex items-center justify-center gap-2.5 px-4">
+              <span className="font-display font-black text-x-red text-sm sm:text-base leading-none select-none">
+                ×
+              </span>
+              <p className="font-label text-[12.5px] sm:text-[13.5px] font-black uppercase tracking-[0.24em] text-x-red">
                 Website Taking Form. Launching Soon.
               </p>
             </div>
@@ -152,18 +154,6 @@ function SiteHeader({
           </div>
 
           <div className="relative z-10 flex items-center justify-end gap-4 sm:gap-5">
-            <a
-              href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className={cn(
-                "hidden h-9 items-center gap-2.5 font-label text-[10.5px] tracking-[0.14em] transition-colors xl:flex",
-                eventMode ? "text-white/55 hover:text-white" : "text-ink/60 hover:text-x-red",
-              )}
-              aria-label={`Call ${site.phone}`}
-            >
-              <Phone className="size-3.5 shrink-0 text-x-red" />
-              <span>{site.phone}</span>
-            </a>
-
             {eventMode ? (
               <a
                 href="#contact"
