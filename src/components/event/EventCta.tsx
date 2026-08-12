@@ -102,22 +102,36 @@ export function EventCta() {
 
         </div>
 
-        {/* Giant Horizontal Official FormX Logo Display Banner (Image Asset Only, No Top Border Lines) */}
-        <div className="relative overflow-hidden pt-8 pb-4 mt-8">
+        {/* Giant Horizontal Official FormX Vector Logo Display Banner (GIANT Size, Razor-Sharp, Zero White Border on X) */}
+        <div className="relative overflow-hidden pt-12 pb-8 mt-10">
           <div className="flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-5xl select-none py-4 flex justify-center">
-              <Image
-                src="/formx-logo-nav-on-dark.png"
-                alt="FormX Consultants"
-                width={1000}
-                height={320}
-                className="h-28 sm:h-36 md:h-48 lg:h-56 w-auto object-contain object-center mx-auto filter drop-shadow-md"
-                priority
-                unoptimized
-              />
+            
+            {/* GIANT Razor-Sharp Brand Vector Lockup */}
+            <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center select-none py-6">
+              {/* Line 1: FormX */}
+              <div className="flex items-baseline justify-center tracking-[-0.045em]">
+                <span className="font-display text-[clamp(4.5rem,12vw,10.5rem)] font-black text-white leading-none">
+                  Form
+                </span>
+                <span className="font-display text-[clamp(4.5rem,12vw,10.5rem)] font-black text-[#e03128] leading-none">
+                  X
+                </span>
+              </div>
+
+              {/* Line 2: CONSULTANTS */}
+              <div className="mt-1 sm:mt-2 font-display text-[clamp(1.6rem,4.4vw,3.8rem)] font-black uppercase tracking-[0.32em] text-white leading-none">
+                CONSULTANTS
+              </div>
+
+              {/* Line 3: DESIGN | ENGINEERING */}
+              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-4 sm:gap-6 font-label text-[clamp(0.95rem,2.5vw,2.2rem)] font-black uppercase tracking-[0.42em] text-white/90">
+                <span>DESIGN</span>
+                <span className="text-[#e03128] font-black">|</span>
+                <span>ENGINEERING</span>
+              </div>
             </div>
 
-            <div className="mt-4 flex w-full flex-wrap items-center justify-between gap-4 pt-3">
+            <div className="mt-8 flex w-full flex-wrap items-center justify-between gap-4 pt-4">
               <div className="flex items-center gap-3">
                 <span className="size-2.5 rounded-full bg-x-red animate-pulse" />
                 <p className="font-label text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.32em] text-x-red">
