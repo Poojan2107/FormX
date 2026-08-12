@@ -83,12 +83,12 @@ export function EventHero() {
           </div>
 
           {/* RIGHT 50%: Tagline WHERE VISION TAKES FORM (Left-aligned from center divider line) */}
-          <div className="flex flex-col justify-center items-center md:items-start md:pl-8 lg:pl-14">
+          <div className="flex flex-col justify-center items-center md:items-start md:pl-6 lg:pl-10">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease }}
-              className="font-display text-[clamp(2.5rem,5.2vw,5.5rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col text-center md:text-left"
+              className="font-display text-[clamp(3rem,6vw,6.2rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col text-center md:text-left"
             >
               <span>WHERE</span>
               <span className="pl-4 sm:pl-10 md:pl-12">VISION</span>
@@ -100,7 +100,7 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease }}
-              className="mt-6 font-body text-[15px] sm:text-[16.5px] font-medium leading-relaxed text-ink/80 max-w-md lg:max-w-lg text-center md:text-left"
+              className="mt-6 font-body text-[16px] sm:text-[17.5px] font-medium leading-relaxed text-ink/80 max-w-xl text-center md:text-left"
             >
               Practical engineering and coordinated design for industrial, residential, and commercial facilities across India and abroad.
             </motion.p>

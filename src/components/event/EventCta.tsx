@@ -102,25 +102,22 @@ export function EventCta() {
 
         </div>
 
-        {/* Giant Horizontal Official FormX Logo Display Banner (Razor-Sharp Vector Rendering, No White Halo Borders) */}
-        <div className="relative overflow-hidden pt-12 pb-6 border-t border-white/10 mt-12">
+        {/* Giant Horizontal Official FormX Logo Display Banner (Image Asset Only, No Top Border Lines) */}
+        <div className="relative overflow-hidden pt-8 pb-4 mt-8">
           <div className="flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-5xl select-none py-6 flex flex-col items-center justify-center text-center">
-              <div className="flex items-baseline justify-center tracking-[-0.045em] font-display text-[clamp(3.8rem,9vw,7.5rem)] font-black leading-none">
-                <span className="text-white">Form</span>
-                <span className="text-[#e03128] drop-shadow-[0_0_24px_rgba(224,49,40,0.35)]">X</span>
-              </div>
-              <div className="mt-2 font-display text-[clamp(1.25rem,3.2vw,2.6rem)] font-black uppercase tracking-[0.26em] text-white leading-tight">
-                CONSULTANTS
-              </div>
-              <div className="mt-3 flex items-center justify-center gap-3 sm:gap-4 font-label text-[clamp(0.75rem,1.8vw,1.35rem)] font-extrabold uppercase tracking-[0.36em] text-white/80">
-                <span>DESIGN</span>
-                <span className="text-x-red font-black">|</span>
-                <span>ENGINEERING</span>
-              </div>
+            <div className="relative w-full max-w-5xl select-none py-4 flex justify-center">
+              <Image
+                src="/formx-logo-nav-on-dark.png"
+                alt="FormX Consultants"
+                width={1000}
+                height={320}
+                className="h-28 sm:h-36 md:h-48 lg:h-56 w-auto object-contain object-center mx-auto filter drop-shadow-md"
+                priority
+                unoptimized
+              />
             </div>
 
-            <div className="mt-6 flex w-full flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
+            <div className="mt-4 flex w-full flex-wrap items-center justify-between gap-4 pt-3">
               <div className="flex items-center gap-3">
                 <span className="size-2.5 rounded-full bg-x-red animate-pulse" />
                 <p className="font-label text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.32em] text-x-red">
