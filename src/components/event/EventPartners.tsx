@@ -55,14 +55,14 @@ export function EventPartners() {
                   transition={{ delay: i * 0.06, duration: 0.5 }}
                   className="group relative flex flex-col items-center justify-center border border-white/15 bg-white/[0.04] p-7 sm:p-9 text-center backdrop-blur-xs transition-all duration-300 hover:border-x-red hover:bg-x-red/[0.09] hover:shadow-[0_16px_36px_-10px_rgba(224,49,40,0.35)] hover:-translate-y-1"
                 >
-                  {/* Vector Icon */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-x-red transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
-                    <EventIconFrame size="lg" className="text-x-red [&_svg]:size-10">
-                      <Icon className="text-x-red" />
+                  {/* Vector Icon in Pure Bright White */}
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] text-white transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
+                    <EventIconFrame size="lg" className="text-white [&_svg]:size-10">
+                      <Icon className="text-white" />
                     </EventIconFrame>
                   </div>
 
-                  {/* Partner Title */}
+                  {/* Partner Title in Pure Bright White */}
                   <h3 className="mt-5 font-display text-[15.5px] sm:text-[17px] font-black uppercase leading-snug tracking-[0.05em] text-white transition-colors duration-300 group-hover:text-x-red">
                     {partner.label}
                   </h3>
@@ -88,14 +88,14 @@ export function EventPartners() {
                   transition={{ delay: (i + 4) * 0.06, duration: 0.5 }}
                   className="group relative flex flex-col items-center justify-center border border-white/15 bg-white/[0.04] p-7 sm:p-9 text-center backdrop-blur-xs transition-all duration-300 hover:border-x-red hover:bg-x-red/[0.09] hover:shadow-[0_16px_36px_-10px_rgba(224,49,40,0.35)] hover:-translate-y-1"
                 >
-                  {/* Vector Icon */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-x-red transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
-                    <EventIconFrame size="lg" className="text-x-red [&_svg]:size-10">
-                      <Icon className="text-x-red" />
+                  {/* Vector Icon in Pure Bright White */}
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] text-white transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
+                    <EventIconFrame size="lg" className="text-white [&_svg]:size-10">
+                      <Icon className="text-white" />
                     </EventIconFrame>
                   </div>
 
-                  {/* Partner Title */}
+                  {/* Partner Title in Pure Bright White */}
                   <h3 className="mt-5 font-display text-[15.5px] sm:text-[17px] font-black uppercase leading-snug tracking-[0.05em] text-white transition-colors duration-300 group-hover:text-x-red">
                     {partner.label}
                   </h3>
