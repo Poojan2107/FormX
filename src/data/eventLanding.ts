@@ -75,8 +75,8 @@ export const eventServices = [
   },
   {
     id: "audits",
-    title: "Structural Audits & Retrofit Solutions",
-    description: "Assessment, strengthening and retrofit solutions for existing structures.",
+    title: "Structural Audits & Retrofitting Solutions",
+    description: "Assessment, strengthening and retrofitting solutions for existing structures.",
   },
   {
     id: "construction",
