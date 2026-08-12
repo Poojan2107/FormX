@@ -13,27 +13,27 @@ export function EventMission() {
       {/* Full-width wide container filling horizontal gaps on left and right */}
       <div className="mx-auto w-full max-w-[1760px] px-5 sm:px-8 md:px-12 lg:px-16 py-16 md:py-24">
         <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12 w-full">
-          {/* Left Title — Fills left side area */}
+          {/* Left Title — Ample column width so TECHNICAL fits with generous breathing room */}
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center lg:col-span-5 xl:col-span-4 text-center lg:text-left w-full"
+            className="flex flex-col justify-center lg:col-span-6 xl:col-span-5 text-center lg:text-left w-full"
           >
-            <h2 className="font-display text-[clamp(2.2rem,4.2vw,4.6rem)] xl:text-[5rem] font-black uppercase leading-[0.9] tracking-tight text-ink select-none break-normal hyphens-none">
+            <h2 className="font-display text-[clamp(2rem,3.6vw,4.2rem)] xl:text-[4.6rem] font-black uppercase leading-[0.9] tracking-tight text-ink select-none">
               <span className="block whitespace-nowrap">Trusted</span>
               <span className="block whitespace-nowrap">Technical</span>
               <span className="block whitespace-nowrap text-x-red">Partner</span>
             </h2>
           </motion.div>
 
-          {/* Right Card — Stretches horizontally to fill right side gap */}
+          {/* Right Card — Stretches horizontally across right side */}
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="relative lg:col-span-7 xl:col-span-8 w-full flex items-center"
+            className="relative lg:col-span-6 xl:col-span-7 w-full flex items-center"
           >
             <div className="relative w-full border-l-4 border-x-red bg-[#f7f6f2] p-8 sm:p-10 md:p-14 lg:p-16 shadow-xs border-y border-r border-ink/15 text-center lg:text-left">
               {/* Corner CAD Ticks */}
