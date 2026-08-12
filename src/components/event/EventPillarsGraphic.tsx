@@ -111,46 +111,58 @@ export function EventPillarsGraphic({
                 <path d="M20 95 H380 V110 H20 Z" fill="#c42820" />
                 <path d="M25 110 H375 V118 H25 Z" fill="#9a1f1a" />
 
-                {/* Pillar 1 (AXIS A - Darkest Burgundy) */}
+                {/* Pillar 1 (AXIS A - Structural Integrity) */}
                 <g>
                   <rect x="35" y="118" width="70" height="12" fill="#3f0b09" rx="1" />
                   <rect x="40" y="130" width="60" height="8" fill="#520e0b" />
                   <rect x="44" y="138" width="52" height="210" fill="#3f0b09" />
                   <line x1="52" y1="138" x2="52" y2="348" stroke="#2b0706" strokeWidth="2" />
                   <line x1="88" y1="138" x2="88" y2="348" stroke="#2b0706" strokeWidth="2" />
+                  {/* Embedded Icon Badge Plate */}
+                  <circle cx="70" cy="243" r="21" fill="#fdfbf7" stroke="#e03128" strokeWidth="2" />
+                  <image href="/assets/icons/pillar-structural-integrity.png" x="55" y="228" width="30" height="30" />
                   <rect x="40" y="348" width="60" height="8" fill="#520e0b" />
                   <rect x="35" y="356" width="70" height="12" fill="#3f0b09" rx="1" />
                 </g>
 
-                {/* Pillar 2 (AXIS B - Medium Burgundy) */}
+                {/* Pillar 2 (AXIS B - Technical Expertise) */}
                 <g>
                   <rect x="125" y="118" width="70" height="12" fill="#781411" rx="1" />
                   <rect x="130" y="130" width="60" height="8" fill="#8e1914" />
                   <rect x="134" y="138" width="52" height="210" fill="#781411" />
                   <line x1="142" y1="138" x2="142" y2="348" stroke="#5a0f0d" strokeWidth="2" />
                   <line x1="178" y1="138" x2="178" y2="348" stroke="#5a0f0d" strokeWidth="2" />
+                  {/* Embedded Icon Badge Plate */}
+                  <circle cx="160" cy="243" r="21" fill="#fdfbf7" stroke="#e03128" strokeWidth="2" />
+                  <image href="/assets/icons/pillar-technical-expertise.png" x="145" y="228" width="30" height="30" />
                   <rect x="130" y="348" width="60" height="8" fill="#8e1914" />
                   <rect x="125" y="356" width="70" height="12" fill="#781411" rx="1" />
                 </g>
 
-                {/* Pillar 3 (AXIS C - Medium Red) */}
+                {/* Pillar 3 (AXIS C - Functional Design) */}
                 <g>
                   <rect x="215" y="118" width="70" height="12" fill="#b8221b" rx="1" />
                   <rect x="220" y="130" width="60" height="8" fill="#ce2820" />
                   <rect x="224" y="138" width="52" height="210" fill="#b8221b" />
                   <line x1="232" y1="138" x2="232" y2="348" stroke="#921a15" strokeWidth="2" />
                   <line x1="268" y1="138" x2="268" y2="348" stroke="#921a15" strokeWidth="2" />
+                  {/* Embedded Icon Badge Plate */}
+                  <circle cx="250" cy="243" r="21" fill="#fdfbf7" stroke="#e03128" strokeWidth="2" />
+                  <image href="/assets/icons/pillar-functional-design.png" x="235" y="228" width="30" height="30" />
                   <rect x="220" y="348" width="60" height="8" fill="#ce2820" />
                   <rect x="215" y="356" width="70" height="12" fill="#b8221b" rx="1" />
                 </g>
 
-                {/* Pillar 4 (AXIS D - Bright Vivid Red) */}
+                {/* Pillar 4 (AXIS D - Collaborative Insight) */}
                 <g>
                   <rect x="305" y="118" width="70" height="12" fill="#e03128" rx="1" />
                   <rect x="310" y="130" width="60" height="8" fill="#eb4138" />
                   <rect x="314" y="138" width="52" height="210" fill="#e03128" />
                   <line x1="322" y1="138" x2="322" y2="348" stroke="#b8231c" strokeWidth="2" />
                   <line x1="358" y1="138" x2="358" y2="348" stroke="#b8231c" strokeWidth="2" />
+                  {/* Embedded Icon Badge Plate */}
+                  <circle cx="340" cy="243" r="21" fill="#fdfbf7" stroke="#e03128" strokeWidth="2" />
+                  <image href="/assets/icons/pillar-collaborative-insight.png" x="325" y="228" width="30" height="30" />
                   <rect x="310" y="348" width="60" height="8" fill="#eb4138" />
                   <rect x="305" y="356" width="70" height="12" fill="#e03128" rx="1" />
                 </g>

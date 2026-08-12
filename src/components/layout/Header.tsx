@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -106,10 +107,17 @@ function SiteHeader({
 
         {eventMode ? (
           <div className="border-b border-white/10 bg-[#090908] py-2.5 text-center overflow-hidden">
-            <div className="mx-auto flex items-center justify-center gap-2 px-3 text-center">
-              <FormxLogoCutX className="size-3.5 sm:size-4 text-x-red shrink-0" />
+            <div className="mx-auto flex items-center justify-center gap-2.5 px-3 text-center">
+              <Image
+                src="/formx-logo-hd-on-dark.png"
+                alt="FormX Consultants Logo"
+                width={140}
+                height={50}
+                className="h-5 sm:h-6.5 w-auto object-contain shrink-0"
+                priority
+              />
               <p className="font-label text-[10.5px] min-[360px]:text-[11.5px] sm:text-[13.5px] font-black uppercase tracking-[0.16em] sm:tracking-[0.24em] text-x-red text-center whitespace-nowrap">
-                Website Taking Form. Launching Soon.
+                WEBSITE IS TAKING FORM, LAUNCHING SOON.
               </p>
             </div>
           </div>
