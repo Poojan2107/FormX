@@ -47,15 +47,15 @@ export function EventPillarsGraphic({
       <div className="relative mx-auto max-w-6xl px-4">
         <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-4">
           
-          {/* LEFT SIDE CALLOUTS (Vertically aligned to match pillar top & bottom height ratio) */}
-          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-6 lg:text-right">
+          {/* LEFT SIDE CALLOUTS (Vertically aligned flush to match pillar top & bottom height ratio) */}
+          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-0 h-full lg:text-right">
             {/* Top Left: Structural Integrity */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end justify-center"
+              className="flex flex-col items-center lg:items-end justify-start"
             >
               <RedMaskIcon src="/assets/icons/pillar-structural-integrity.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
@@ -75,7 +75,7 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-end justify-center"
+              className="flex flex-col items-center lg:items-end justify-end"
             >
               <RedMaskIcon src="/assets/icons/pillar-technical-expertise.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
@@ -96,11 +96,11 @@ export function EventPillarsGraphic({
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center lg:col-span-4"
+            className="flex items-center justify-center lg:col-span-4 lg:py-0 h-full"
           >
-            <div className="relative w-full max-w-[340px] md:max-w-[380px]">
+            <div className="relative w-full max-w-[360px] md:max-w-[420px] lg:max-w-[450px]">
               <svg
-                viewBox="0 0 400 420"
+                viewBox="0 28 400 370"
                 className="h-auto w-full filter drop-shadow-sm"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,15 +162,15 @@ export function EventPillarsGraphic({
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE CALLOUTS (Vertically aligned to match pillar top & bottom height ratio) */}
-          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-6 lg:text-left">
+          {/* RIGHT SIDE CALLOUTS (Vertically aligned flush to match pillar top & bottom height ratio) */}
+          <div className="flex flex-col justify-between space-y-12 lg:col-span-4 lg:space-y-0 lg:py-0 h-full lg:text-left">
             {/* Top Right: Functional Design */}
             <motion.div
               initial={reduce ? false : { opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start justify-center"
+              className="flex flex-col items-center lg:items-start justify-start"
             >
               <RedMaskIcon src="/assets/icons/pillar-functional-design.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />
@@ -190,7 +190,7 @@ export function EventPillarsGraphic({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex flex-col items-center lg:items-start justify-center"
+              className="flex flex-col items-center lg:items-start justify-end"
             >
               <RedMaskIcon src="/assets/icons/pillar-collaborative-insight.png" />
               <span className="mb-3.5 h-[3.5px] w-28 rounded-full bg-x-red shadow-[0_2px_8px_rgba(224,49,40,0.35)]" />

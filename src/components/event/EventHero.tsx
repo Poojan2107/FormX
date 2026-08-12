@@ -32,16 +32,8 @@ export function EventHero() {
         }}
       />
 
-      {/* CAD Corner Framing Markers */}
-      <span aria-hidden className="absolute top-4 left-6 text-x-red/40 font-mono text-[11px] tracking-widest select-none hidden sm:block">
-        + 01 // STUDIO HERO
-      </span>
-      <span aria-hidden className="absolute top-4 right-6 text-x-red/40 font-mono text-[11px] tracking-widest select-none hidden sm:block">
-        FORMX CONSULTANTS +
-      </span>
-
       {/* Main hero composition: Logo (Left) | Red Divider Line (Center) | Tagline (Right) */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="grid items-center gap-8 md:grid-cols-12 md:gap-6 lg:gap-10">
           
           {/* LEFT: Official Original FormX Logo Image + Studio Badge */}
@@ -50,13 +42,13 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.8, ease }}
-              className="w-full max-w-[460px] lg:max-w-[540px]"
+              className="w-full max-w-[540px] lg:max-w-[620px]"
             >
               <Image
                 src="/formx-logo-nav.png"
                 alt="FormX Consultants Logo"
-                width={720}
-                height={320}
+                width={840}
+                height={360}
                 className="h-auto w-full object-contain filter drop-shadow-xs"
                 priority
                 unoptimized
@@ -70,7 +62,7 @@ export function EventHero() {
               className="mt-6 flex items-center gap-3"
             >
               <span className="h-0.5 w-10 bg-x-red" />
-              <span className="font-label text-[11.5px] sm:text-[12.5px] font-extrabold uppercase tracking-[0.26em] text-ink/75">
+              <span className="font-label text-[12px] sm:text-[13.5px] font-extrabold uppercase tracking-[0.26em] text-ink/75">
                 Architecture · Structure · Infrastructure
               </span>
             </motion.div>
@@ -82,7 +74,7 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, scaleY: 0 }}
               animate={{ opacity: 1, scaleY: 1 }}
               transition={{ delay: 0.2, duration: 0.9, ease }}
-              className="relative flex flex-col items-center justify-center h-full min-h-[320px] w-full"
+              className="relative flex flex-col items-center justify-center h-full min-h-[340px] w-full"
             >
               <div className="w-[2.5px] flex-1 bg-gradient-to-b from-transparent via-x-red to-x-red" />
               <span className="my-4 font-display font-black text-x-red text-2xl select-none drop-shadow-[0_0_14px_rgba(224,49,40,0.45)]">
@@ -105,7 +97,7 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease }}
-              className="font-display text-[clamp(2.5rem,6vw,5.8rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col"
+              className="font-display text-[clamp(2.8rem,6.8vw,6.4rem)] font-black uppercase leading-[0.88] tracking-[-0.045em] text-ink select-none flex flex-col"
             >
               <span>WHERE</span>
               <span className="pl-4 sm:pl-10 md:pl-14">VISION</span>
@@ -117,7 +109,7 @@ export function EventHero() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease }}
-              className="mt-6 font-body text-[14.5px] sm:text-[16px] font-medium leading-relaxed text-ink/75 max-w-lg"
+              className="mt-6 font-body text-[15.5px] sm:text-[17.5px] font-medium leading-relaxed text-ink/80 max-w-xl"
             >
               Practical engineering and coordinated design for industrial, residential, and commercial facilities across India and abroad.
             </motion.p>

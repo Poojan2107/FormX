@@ -31,18 +31,12 @@ export function EventPartners() {
       <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-8">
         
         {/* Header Strip — Centered WHO WE PARTNER WITH with Red Horizontal Lines */}
-        <div className="relative mb-14 flex flex-col items-center justify-center">
-          <span className="font-mono text-[11px] font-black uppercase tracking-[0.3em] text-x-red mb-3">
-            // COLLABORATIVE ENGINEERING MATRIX
-          </span>
-          
-          <div className="relative w-full flex items-center justify-center">
-            <div className="h-[2px] w-full flex-1 bg-gradient-to-r from-transparent via-x-red to-x-red" />
-            <h2 className="px-6 sm:px-10 font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase tracking-[0.14em] text-white text-center">
-              Who We Partner With
-            </h2>
-            <div className="h-[2px] w-full flex-1 bg-gradient-to-l from-transparent via-x-red to-x-red" />
-          </div>
+        <div className="relative mb-14 flex items-center justify-center">
+          <div className="h-[2px] w-full flex-1 bg-gradient-to-r from-transparent via-x-red to-x-red" />
+          <h2 className="px-6 sm:px-10 font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-black uppercase tracking-[0.14em] text-white text-center">
+            Who We Partner With
+          </h2>
+          <div className="h-[2px] w-full flex-1 bg-gradient-to-l from-transparent via-x-red to-x-red" />
         </div>
 
         {/* Beautifully Composited 2-Tier Dark Glassmorphic Card Grid (4 Cards Top, 3 Cards Bottom) */}
@@ -61,11 +55,6 @@ export function EventPartners() {
                   transition={{ delay: i * 0.06, duration: 0.5 }}
                   className="group relative flex flex-col items-center justify-center border border-white/15 bg-white/[0.04] p-7 sm:p-9 text-center backdrop-blur-xs transition-all duration-300 hover:border-x-red hover:bg-x-red/[0.09] hover:shadow-[0_16px_36px_-10px_rgba(224,49,40,0.35)] hover:-translate-y-1"
                 >
-                  {/* Top Red CAD Index */}
-                  <span aria-hidden className="absolute top-2.5 right-3.5 font-mono text-[10px] font-bold text-x-red/50 select-none group-hover:text-x-red">
-                    0{i + 1}
-                  </span>
-
                   {/* Vector Icon */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-x-red transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
                     <EventIconFrame size="lg" className="text-x-red [&_svg]:size-10">
@@ -99,11 +88,6 @@ export function EventPartners() {
                   transition={{ delay: (i + 4) * 0.06, duration: 0.5 }}
                   className="group relative flex flex-col items-center justify-center border border-white/15 bg-white/[0.04] p-7 sm:p-9 text-center backdrop-blur-xs transition-all duration-300 hover:border-x-red hover:bg-x-red/[0.09] hover:shadow-[0_16px_36px_-10px_rgba(224,49,40,0.35)] hover:-translate-y-1"
                 >
-                  {/* Top Red CAD Index */}
-                  <span aria-hidden className="absolute top-2.5 right-3.5 font-mono text-[10px] font-bold text-x-red/50 select-none group-hover:text-x-red">
-                    0{i + 5}
-                  </span>
-
                   {/* Vector Icon */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-x-red transition-all duration-300 group-hover:border-x-red group-hover:bg-x-red/20 group-hover:scale-110">
                     <EventIconFrame size="lg" className="text-x-red [&_svg]:size-10">
