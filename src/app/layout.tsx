@@ -39,6 +39,9 @@ const eventMeta = isEventMode();
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://formxconsultants.com"),
+  alternates: {
+    canonical: "https://formxconsultants.com",
+  },
   title: {
     default: eventMeta
       ? "FormX Consultants | Website Taking Form"
@@ -48,6 +51,16 @@ export const metadata: Metadata = {
   description: eventMeta
     ? "FormX Consultants — Where Vision Takes Form. Website taking form. Launching soon. Architecture, Structure and Infrastructure from Ahmedabad."
     : "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
