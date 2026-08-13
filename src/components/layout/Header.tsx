@@ -116,7 +116,7 @@ function SiteHeader({
                 className="h-[2.6em] w-auto shrink-0 object-contain object-left"
                 priority
               />
-              <p className="min-w-0 text-left font-label text-[1em] font-black uppercase leading-[1.3] tracking-[0.12em] text-x-red sm:tracking-[0.2em]">
+              <p className="min-w-0 text-center font-label text-[1em] font-black uppercase leading-[1.3] tracking-[0.12em] text-x-red sm:tracking-[0.2em]">
                 <span className="block">WEBSITE IS TAKING FORM</span>
                 <span className="block">LAUNCHING SOON</span>
               </p>
