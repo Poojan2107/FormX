@@ -3,17 +3,9 @@ import type { NextRequest } from "next/server";
 import { isEventMode } from "@/config/siteMode";
 
 /** Paths that stay reachable during the event one-pager. */
-const EVENT_ALLOW = new Set([
-  "/",
-  "/robots.txt",
-  "/sitemap.xml",
-  "/manifest.webmanifest",
-  "/favicon.ico",
-  "/icon.png",
-  "/apple-icon.png",
-]);
+const EVENT_ALLOW = new Set(["/"]);
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (!isEventMode()) return NextResponse.next();
 
   const { pathname } = request.nextUrl;
@@ -24,7 +16,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/api") ||
     pathname.startsWith("/brochure") ||
     pathname.startsWith("/assets") ||
-    pathname.includes(".") // files with extensions (png, pdf, etc.)
+    pathname.includes(".")
   ) {
     return NextResponse.next();
   }
@@ -39,5 +31,11 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image).*)"],
+  matcher: [
+    /*
+     * Do not run on metadata or static files. Next.js 16 500s /sitemap.xml
+     * when this proxy wraps the metadata route.
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest).*)",
+  ],
 };
