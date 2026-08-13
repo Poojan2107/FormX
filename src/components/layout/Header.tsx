@@ -107,18 +107,16 @@ function SiteHeader({
 
         {eventMode ? (
           <div className="border-b border-white/10 bg-[#090908] py-2">
-            <div className="mx-auto flex max-w-full items-stretch justify-center gap-2 px-3 sm:gap-3 sm:px-4">
-              <span className="relative aspect-[14/5] w-auto shrink-0 self-stretch">
-                <Image
-                  src="/formx-logo-hd-on-dark.png"
-                  alt=""
-                  fill
-                  sizes="120px"
-                  className="object-contain object-left"
-                  priority
-                />
-              </span>
-              <p className="min-w-0 text-left font-label text-[10px] font-black uppercase leading-[1.3] tracking-[0.12em] text-x-red min-[360px]:text-[11px] sm:text-[13px] sm:tracking-[0.2em]">
+            <div className="mx-auto flex max-w-full items-center justify-center gap-2 px-3 text-[10px] min-[360px]:text-[11px] sm:gap-3 sm:px-4 sm:text-[13px]">
+              <Image
+                src="/formx-logo-hd-on-dark.png"
+                alt=""
+                width={700}
+                height={311}
+                className="h-[2.6em] w-auto shrink-0 object-contain object-left"
+                priority
+              />
+              <p className="min-w-0 text-left font-label text-[1em] font-black uppercase leading-[1.3] tracking-[0.12em] text-x-red sm:tracking-[0.2em]">
                 <span className="block">WEBSITE IS TAKING FORM</span>
                 <span className="block">LAUNCHING SOON</span>
               </p>
