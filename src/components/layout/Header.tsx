@@ -106,18 +106,21 @@ function SiteHeader({
         <div className="h-0.5 w-full bg-gradient-to-r from-x-red via-x-red to-transparent" />
 
         {eventMode ? (
-          <div className="border-b border-white/10 bg-[#090908] py-2.5 text-center overflow-hidden">
-            <div className="mx-auto flex items-center justify-center gap-2.5 px-3 text-center">
-              <Image
-                src="/formx-logo-hd-on-dark.png"
-                alt="FormX Consultants Logo"
-                width={140}
-                height={50}
-                className="h-5 sm:h-6.5 w-auto object-contain shrink-0"
-                priority
-              />
-              <p className="font-label text-[10.5px] min-[360px]:text-[11.5px] sm:text-[13.5px] font-black uppercase tracking-[0.16em] sm:tracking-[0.24em] text-x-red text-center whitespace-nowrap">
-                WEBSITE IS TAKING FORM, LAUNCHING SOON.
+          <div className="border-b border-white/10 bg-[#090908] py-2">
+            <div className="mx-auto flex max-w-full items-stretch justify-center gap-2 px-3 sm:gap-3 sm:px-4">
+              <span className="relative aspect-[14/5] w-auto shrink-0 self-stretch">
+                <Image
+                  src="/formx-logo-hd-on-dark.png"
+                  alt=""
+                  fill
+                  sizes="120px"
+                  className="object-contain object-left"
+                  priority
+                />
+              </span>
+              <p className="min-w-0 text-left font-label text-[10px] font-black uppercase leading-[1.3] tracking-[0.12em] text-x-red min-[360px]:text-[11px] sm:text-[13px] sm:tracking-[0.2em]">
+                <span className="block">WEBSITE IS TAKING FORM</span>
+                <span className="block">LAUNCHING SOON</span>
               </p>
             </div>
           </div>
