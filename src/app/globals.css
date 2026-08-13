@@ -126,10 +126,10 @@ svg {
   contain: paint layout;
 }
 
-/* Mobile menu / modal scroll lock — keep drawer scrollable */
+/* Mobile menu / modal scroll lock — body position is set in JS.
+   Do not overflow:hidden on html; that freezes iOS after scroll. */
 html.scroll-locked,
-html.scroll-locked body {
-  overflow: hidden !important;
+body.scroll-locked {
   overscroll-behavior: none;
 }
 

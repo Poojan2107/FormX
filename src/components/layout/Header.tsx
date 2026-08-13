@@ -19,6 +19,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { FormxLogoCutX } from "@/components/ui/XMotif";
 import { cn } from "@/lib/cn";
+import { lockBodyScroll, unlockBodyScroll } from "@/lib/bodyScrollLock";
 
 const eventNav = [
   { label: "About", href: "#about" },
@@ -59,44 +60,16 @@ function SiteHeader({
   }, [pathname, setOpen]);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const scrollbarGap = open ? window.innerWidth - root.clientWidth : 0;
-
-    if (open) {
-      root.classList.add("scroll-locked");
-      document.body.classList.add("scroll-locked");
-      if (scrollbarGap > 0) {
-        document.body.style.paddingRight = `${scrollbarGap}px`;
-      }
-    } else {
-      root.classList.remove("scroll-locked");
-      document.body.classList.remove("scroll-locked");
-      document.body.style.paddingRight = "";
-      document.body.style.overflow = "";
-      root.style.overflow = "";
-    }
-
-    window.dispatchEvent(
-      new CustomEvent("formx:scroll-lock", { detail: { locked: open } }),
-    );
-
-    return () => {
-      root.classList.remove("scroll-locked");
-      document.body.classList.remove("scroll-locked");
-      document.body.style.paddingRight = "";
-      document.body.style.overflow = "";
-      root.style.overflow = "";
-      window.dispatchEvent(
-        new CustomEvent("formx:scroll-lock", { detail: { locked: false } }),
-      );
-    };
+    if (!open) return;
+    lockBodyScroll();
+    return () => unlockBodyScroll();
   }, [open]);
 
   return (
     <>
       <header
         className={cn(
-          "z-50 w-full border-b",
+          "z-[70] w-full border-b",
           eventMode
             ? "sticky top-0 border-white/10 bg-[#090908] backdrop-blur-md"
             : "relative border-line/80 bg-white",
@@ -212,13 +185,17 @@ function SiteHeader({
       <AnimatePresence>
         {open ? (
           <motion.div
-            className="fx-grain fixed inset-0 h-dvh min-h-dvh w-screen z-[55] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a] lg:hidden"
-            style={{ WebkitOverflowScrolling: "touch" }}
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[60] flex flex-col bg-[#0a0a0a] lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
+            <div
+              className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain"
+              data-lenis-prevent
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
             <div className="pointer-events-none absolute inset-0 pattern-grid-dark opacity-25" aria-hidden />
             <div
               className="pointer-events-none absolute inset-0"
@@ -343,6 +320,7 @@ function SiteHeader({
                   {site.phone}
                 </a>
               </motion.div>
+            </div>
             </div>
           </motion.div>
         ) : null}
