@@ -36,6 +36,6 @@ export const config = {
      * Do not run on metadata or static files. Next.js 16 500s /sitemap.xml
      * when this proxy wraps the metadata route.
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|icon.svg|favicon-48.png|apple-icon.png|sitemap.xml|robots.txt|manifest.webmanifest).*)",
   ],
 };

@@ -35,22 +35,17 @@ export const viewport: Viewport = {
 
 import { isEventMode } from "@/config/siteMode";
 
-const eventMeta = isEventMode();
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://formxconsultants.com"),
   alternates: {
     canonical: "https://formxconsultants.com",
   },
   title: {
-    default: eventMeta
-      ? "FormX Consultants | Website Taking Form"
-      : "FormX Consultants | Where Vision Takes Form",
+    default: "FormX Consultants | Where Vision Takes Form",
     template: "%s | FormX Consultants",
   },
-  description: eventMeta
-    ? "FormX Consultants — Where Vision Takes Form. Website taking form. Launching soon. Architecture, Structure and Infrastructure from Ahmedabad."
-    : "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
+  description:
+    "FORM× Consultants — Ahmedabad. Architecture, Structure and Infrastructure for industrial and building facilities across India. Where Vision Takes Form.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -65,12 +60,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "FormX Consultants",
-    title: eventMeta
-      ? "FormX Consultants | Website Taking Form"
-      : "FormX Consultants | Where Vision Takes Form",
-    description: eventMeta
-      ? "Where Vision Takes Form. Website taking form. Launching soon."
-      : "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
+    title: "FormX Consultants | Where Vision Takes Form",
+    description:
+      "Architecture, Structure and Infrastructure from Ahmedabad. Where Vision Takes Form.",
     images: [
       {
         url: "/formx-logo-solid.png",
@@ -82,12 +74,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: eventMeta
-      ? "FormX Consultants | Website Taking Form"
-      : "FormX Consultants | Where Vision Takes Form",
-    description: eventMeta
-      ? "Where Vision Takes Form. Website taking form. Launching soon."
-      : "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
+    title: "FormX Consultants | Where Vision Takes Form",
+    description:
+      "Architecture, Structure and Infrastructure — construction-ready design from Ahmedabad.",
     images: ["/formx-logo-solid.png"],
   },
 };
